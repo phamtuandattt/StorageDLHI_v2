@@ -37,7 +37,6 @@ namespace StorageDLHI.DAL.DataProvider
             try
             {
                 DataSet ds = new DataSet();
-                DataTable dt = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter(sqlQuery, _connection);
                 da.Fill(ds, tableName);
                 return ds.Tables[tableName];
