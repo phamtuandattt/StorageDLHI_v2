@@ -88,3 +88,35 @@ WHERE NAME LIKE '%' + 'ES' + '%'
 -- SELECT *FROM NHAPHANG
 -- WHERE NGAYNHAP BETWEEN '1/1/2024' AND '15/1/2024'
 -- Phần ví dụ này do chưa có dữ liệu thật nên em để VD minh họa
+
+--------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
+--------------------------- PHẦN INSERT DỮ LIỆU VÀO BẢNG -----------------------------
+-- CÚ PHẤP:  INSERT INTO <TABLE_NAME> (<DANH SÁCH THUỘC TÍNH CẦN INSERT DỮ LIỆU>) VALUES ('<DANH SÁCH DỮ LIỆU CẦN INSERT>')
+-- <TABLE_NAME> : Là tên bảng dữ liệu cần insert dữ liệu. VD: SUPPLIERS, SUPPLIER_BANK,...
+-- (<DANH SÁCH THUỘC TÍNH CẦN INSERT DỮ LIỆU>): Phần này mình sẽ liệt kê những thuộc tính nào cần thêm dữ liệu
+--												VD: Mình cần INSERT dữ liệu cho 3 thuộc tính NAME, CERT, PHONE của bảng SUPPLIERS
+--												=> INSERT INTO SUPPLIER (NAME, CERT, PHONE)
+--												=> Phân liệt kê các thuộc tính cần INSERT dữ liệu này sẽ cho phép mình sắp xếp INSERT thuộc tính nào trước
+--												thuộc tính nào sau. VD: Mình muốn INSERT thuộc tính NAME, rồi đến PHONE, rồi đến CERT 
+--												=> Mình sẽ liệt kê theo thứ tự mình muốn ...SUPPLIER(NAME, PHONE, CERT)
+--												- Nếu như mình không liệt kê thứ tự, danh sách các thuộc tính thì mặc định khi INSERT 
+--												sẽ theo thứ tự của bảng đã tạo (Thứ tự giống như lúc mình viết câu lệnh CREATE TABLE ....)
+--												=> Phần này mình có thể bỏ qua, không cần thiết phải liệt kê, tùy trường hợp cần thì mình mới sử dụng
+-- (<DANH SÁCH DỮ LIỆU CẦN INSERT>): Là dữ liệu mà mình muốn thêm vào bảng
+--									- CHÚ Ý: DANH SÁCH DỮ LIỆU PHẢI TRÙNG KHỚP VỚI THỨ TỰ CÁC THUỘC TÍNH CỦA BẢNG
+-- VD: Bảng SUPPLIERS khi mình tạo các thuộc tính được sắp xếp như sau: (ID, NAME, CERT, EMAIL, PHONE, VIETTAT, ADDRESS, BANK_ID)
+--		=> <DANH SÁCH DỮ LIỆU CẦN INSERT> cũng phải được sắp xếp theo thứ tự trên
+--		=> ('...ID...', N'NCC_TEXT, '444555333', '0987654321', N'NCC, N'Mỹ xuân', '...BANK_ID...')
+-- VD: Thêm dữ liệu cho 3 thuộc tính ID, NAME, CERT của bảng SUPPLIER
+-- => INSERT INTO SUPPLIER (ID, NAME, CERT) -> LIỆT KÊ CÁC THUỘC TÍNH CẦN THÊM DỮ LIỆU
+-- => VALUES ('...ID...', N'TEST', '000999888') -> THÊM DỮ LIỆU TƯƠNG ỨNG THEO CÁC THUỘC TÍNH ĐÃ LIỆT KÊ
+-- VD: Thêm dữ liệu cho thuộc tính ID, PHONE, ADDRESS, BANK_ID của bảng SUPPLIERS
+-- => INSERT INTO SUPPLIERS (ID, PHONE, ADDRESS, BANK_ID)
+-- => VALUES ('...ID...', '0987654321', N'Mỹ Xuân', '...BANK_ID...')
+
+-- ==> Khi muốn thêm dữ liệu cho tất cả các thuộc tính trong bảng thì mình sẽ không cần phải liệt kê các thuộc tính cần INSERT
+-- ==> INSERT INTO SUPPLIER VALUES ('...ID...', N'TEST', '333444555', N'test@gmail.com', '0987654321', 'TE', N'Mỹ Xuân', '...BANK_ID...')
+
+SELECT *FROM SUPPLIER_BANKS
+INSERT INTO SUPPLIER_BANKS VALUES ('', N'', N'',N'')
