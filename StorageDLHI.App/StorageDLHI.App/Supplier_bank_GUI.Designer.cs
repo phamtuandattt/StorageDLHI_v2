@@ -38,6 +38,8 @@
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.grdBanks = new System.Windows.Forms.DataGridView();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdBanks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,6 +132,24 @@
             this.grdBanks.RowTemplate.Height = 24;
             this.grdBanks.Size = new System.Drawing.Size(776, 283);
             this.grdBanks.TabIndex = 3;
+            this.grdBanks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdBanks_CellClick);
+            // 
+            // txtID
+            // 
+            this.txtID.Location = new System.Drawing.Point(195, 115);
+            this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
+            this.txtID.Size = new System.Drawing.Size(246, 22);
+            this.txtID.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(55, 119);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(23, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "ID:";
             // 
             // Supplier_bank_GUI
             // 
@@ -140,9 +160,11 @@
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dd);
+            this.Controls.Add(this.txtID);
             this.Controls.Add(this.txtBeneficial);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtAcc);
@@ -166,5 +188,7 @@
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.DataGridView grdBanks;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Label label1;
     }
 }

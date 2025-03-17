@@ -118,5 +118,52 @@ WHERE NAME LIKE '%' + 'ES' + '%'
 -- ==> Khi muốn thêm dữ liệu cho tất cả các thuộc tính trong bảng thì mình sẽ không cần phải liệt kê các thuộc tính cần INSERT
 -- ==> INSERT INTO SUPPLIER VALUES ('...ID...', N'TEST', '333444555', N'test@gmail.com', '0987654321', 'TE', N'Mỹ Xuân', '...BANK_ID...')
 
-SELECT *FROM SUPPLIER_BANKS
-INSERT INTO SUPPLIER_BANKS VALUES ('', N'', N'',N'')
+
+
+--------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
+--------------------------- PHẦN UDPATE DỮ LIỆU --------------------------------------
+-- CÚ PHÁP CỦA UPDATE:
+--			UPDATE <TABLE_NAME> SET <DANH SÁCH CÁC THUỘC TÍNH CẦN UPDATE> WHERE <ĐIÊU KIỆN ĐỂ UPDATE>
+-- <TABLE_NAME>: Là bảng mình sẽ thực hiện thao tác UPDATE. VD: SUPPLIERS, SUPPLIER_BANK,...
+
+-- <DANH SÁCH CÁC THUỘC TÍNH CẦN UPDATE>: Liệt kê các thuộc tính và giá trị cần update tương ứng.
+-- VD: UPDATE thông tin nhà cung cấp. Tên nhà cung cấp = TEST 111, Cert = 000999000, địa chỉ = Phú mỹ
+-- Áp dụng cú pháp => UPDATE SUPPLIERS SET NAME = N'TEST 111, CERT = '000999000', ADDRESS = N'Phú Mỹ'(1)
+
+-- <ĐIỀU KIỆN ĐỂ UPDATE>: Phần này sẽ cho biết mình cần UPDATE thông tin cho đối tượng nào
+-- VD: UPDATE thông tin nhà cung cấp có ID = '...'. Với NAME = N'TEST 222', Cert = '999888777', ADDRESS = N'Bà Rịa'
+-- Áp dụng cú pháp => UPDATE SUPPLIERS SET NAME = N'TEST 222', CERT = '999888777', ADDRESS = N'Bà Rịa' WHERE ID = '...'(2)
+
+-- Câu lệnh UPDATE(1): Sẽ UPDATE thông tin NAME, CERT, ADDRESS mới cho tất cả các nhà cũng cấp. Do mình không chỉ định cụ thể điều kiện UPDATE
+-- Câu lệnh UPDATE(2): Sẽ chỉ UPDATE thông tin mới cho nhà cung cấp có ID = '...'.
+-- Mình cũng có thể UPDATE thông tin theo nhiều điều kiện, và liệt kê các điều kiện trong Hàm WHERE tương tự như mình SELECT dữ liệu
+-- VD: Update ADDRESS = N'Vũng Tàu', EMAIL = N'vt@gmail.com' cho nhà cung cấp có NAME = N'TEST 222' và CERT = '999888777'
+--		=> UPDATE SUPPLIERS SET ADDRESS = N'Vũng Tàu', EMAIL = N'vt@gmail.com' WHERE NAME = N'TEST 222' AND CERT = '999888777'
+--		=> SQL sẽ tìm những NCC thỏa 2 điều kiện NAME = N'TEST 222' và CERT = '999888777' để UPDATE thông tin
+--		=> Ngược lại nếu không có dòng nào thì sẽ không UPDATE
+-- Phần UPDATE sẽ còn nhiều phần nâng cao hơn nhưng do mình chưa có dữ liệu và điều kiện cụ thể nên mình chưa Ví Dụ được
+
+
+
+--------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
+--------------------------- PHẦN DELETE DỮ LIỆU --------------------------------------
+-- CÚ PHÁP:    DELETE <TABLE_NAME> WHERE <ĐIỀU KIỆN XÓA>
+-- <ĐIỀU KIỆN XÓA>: Tùy theo yêu cầu mình sẽ xét điều kiện để xóa
+-- VD: Xóa nhà cung cấp có tên TEST, trong bảng SUPPLIER_BANKS => Mình sẽ xét điều kiện NAME = N'TEST' 
+--		=> SQL sẽ tìm tất cả các dòng dữ liệu có NAME = N'TEST' trong bảng SUPPLIER_BANK để xóa
+--		=> DELETE SUPPLIER_BANKS WHERE NAME = N'TEST'
+--		=> DELETE SUPPLIER_BANKS WHERE ID = '6d86f5eb-b33c-43f6-921d-a21a6d6b1dfb' -> DELETE đòng nào có ID = '...'
+-- Mình cũng có thể xóa theo nhiều điều kiện: NAME = N'TEST' và BANK_ACCOUNT = '777777777'
+-- => DELETE SUPPLIER_BANKS WHERE NAME = N'TEST' AND BANK_ACCOUNT = '777777777'
+
+-- LƯU Ý QUAN TRỌNG: KHI THỰC HIỆN XÓA CÁC DÒNG DỮ LIỆU MÀ CÓ CHƯA KHÓA KHOẠI THÌ PHẢI LÀN LƯỢT XÓA THẰNG CHA TRƯỚC KHI XÓA THẰNG CON
+-- VD: Trong bảng SUPPLIER_BANK  có tài khoản ABC là của SUPPLIER Đất mới
+--		=> Mình đã logic từ trước thì thằng SUPPLIERS là cha của SUPPLIER_BANK
+--		=> Mình phải xóa thằng có chứa KHÓA NGOẠI TRƯỚC => Xóa thằng SUPPLIER VƯƠNG BỬU TRƯỚC
+--		=> Sau đó mình mới có thể xóa thằng SUPPLIER_BANK ABC
+-- ==> PHẢI XÓA THẰNG CÓ CHỨA KHÓA NGOẠI TRƯỚC SAU ĐÓ MỚI XÓA ĐƯỢC THẰNG THAM CHIẾU ĐẾN NÓ
+
+select *from SUPPLIERS
+select *from SUPPLIER_BANKS

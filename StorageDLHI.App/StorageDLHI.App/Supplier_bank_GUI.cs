@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StorageDLHI.DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,7 +25,67 @@ namespace StorageDLHI.App
         public Supplier_bank_GUI()
         {
             InitializeComponent();
+            // Tạo chuỗi connection
             _connection = new SqlConnection("server=DESKTOP-KD2BPDJ;database=DLHI_v2;Integrated Security = true;uid=sa;pwd=Aa123456@");
+
+
+            // Gọi hàm LoadData() để khi bắt đầu chương trình sẽ lấy dữ liệu từ CSDL lên và hiển thị trước
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            // Trước khi thao tác với CSDL luôn luôn nhớ đặt trong 1 vòng try - catch
+            try
+            {
+                // Mở đường kết nối xuống CSDL
+                if (_connection.State == ConnectionState.Closed) // Kiểm tra trạng thái
+                {
+                    _connection.Open(); // Mở kết nối
+                }
+
+                // B1: Tạo câu truy vấn SQL
+                // Ở đây mình sẽ lấy hết các dữ liệu trong bảng SUPPLIER_BANKS
+                // => Câu sql: SELECT *FROM SUPPLIER_BANKS
+                // Ở đây mình không cần sử dụng string.Format vì câu sql này đã đầy đủ thông tin rồi và không cần thay đổi gì cả
+                string sqlQuery = "SELECT *FROM SUPPLIER_BANKS";
+
+
+                // Ở thao tác này mình sẽ cần tạo biến để nhận giá trị từ sql trả về
+                // Để lấy dữ liệu từ SQL trả về mình sẽ cần sử dụng kiểu dữ liệu DẠNG 1 là kiểu dữ liệu DataTable
+                // Đầu tiền để có thể lấy được dữ liệu và gán cho DataTable thì mình cần tạo một DataSet
+                DataSet ds = new DataSet();
+
+                // Tiếp theo mình cần sử dụng Kiểu dữ liệu: SqlDataAdapter để đọc và lấy dữ liệu từ sql  
+                // SqlDataAdapter gồm 2 tham số khí khởi tạo: Câu lệnh SQL, ConnectionString
+                SqlDataAdapter da = new SqlDataAdapter(sqlQuery, _connection);
+
+                // Sau khi dữ liệu đã được lấy lên từ CSDL, mình sẽ thực hiện gán dữ liệu cho DataSet
+                // Theo CÚ PHÁP: <SqlDataAdapter>.Fill(<DataSet>, "Table_Name")
+                // "Table_Name": Đặt theo ý mình hiểu, ví dụ lấy DS ngân hàng thì đặt là DS_BANK, tùy ý
+                da.Fill(ds, "DS_BANKS");
+
+                // Sau khi đã gán dữ liệu cho DataSet thành công mình sẽ thực hiện lấy dữ liệu của DataSet và trả về cho DataTable
+                // Mình đã lấy dữ liệu và đặt tên cho nó là DS_BANKS -> Thì khi lấy mình cũng cần truyền đúng cái tên DS_BANKS
+                DataTable dt = new DataTable();
+                dt = ds.Tables["DS_BANKS"];
+
+                // Khi đã có được DataTable có dữ liệu thì mình sẽ hiển thị lên grid
+                // CÚ PHÁP: <Grid>.DataSource = <DataTable>
+                // <gird>: Là grid mình đã tạo trên form để hiển thị dữ liệu
+                // <DataTable>: Chính là "dt" mình đã có được ở bước trên
+                // ==>
+                grdBanks.DataSource = dt;
+
+
+
+                // Đóng kết nối xuống CSDL
+                _connection.Close();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         // Hàm xử lý khi nhấn btn add
@@ -143,22 +204,108 @@ namespace StorageDLHI.App
                 // Mình sẽ đưa ra 1 cảnh báo lỗi
                 throw new Exception(ex.Message);
             }
-
-
-           
-
         }
 
         // Hàm xử lý khi nhấn btn Modify
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            // Phải nhớ try - catch trước khi thao tác với CSDL
+            try
+            {
+                // Tạo đường kết nối xuống CSDL
+                if (_connection.State == ConnectionState.Closed) // Kiểm tra trạng thái
+                {
+                    _connection.Open(); // Mở kết nối
+                }
 
+
+                // Tương tự các bước như INSERT
+                // - B1: Tạo câu UPDATE SQL theo cú pháp: UPDATE <TABLE_NAME> SET <DANH SÁCH THUỘC TÍNH UPDATE> WHERE <ĐIỀU KIỆN UPDATE>
+                // - <TABLE_NAME>: SUPPLIER_BANKS
+                // - <DANH SÁCH THUỘC TÍNH UPDATE>: BANK_ACCOUNT, BANK_NAME, BANK_BENEFICIAL
+                // - <ĐIỀU KIỆN UPDATE>: ID = '...'
+                // Sử dụng string.Format để thay thế các giá trị vào câu lệnh SQL
+                string sqlQuery = string.Format("UPDATE SUPPLIER_BANKS SET BANK_ACCOUNT = '{0}', BANK_NAME = N'{1}', BANK_BENEFICIAL = N'{2}' WHERE ID = '{3}' ",
+                    txtAcc.Text, txtName.Text, txtBeneficial.Text, txtID.Text);
+
+                // B2: Tạo SqlCommand
+                SqlCommand cmd = new SqlCommand(sqlQuery, _connection);
+
+                // B3: Thực hiện câu lệnh và nhận kết quả trả về
+                // Trả về 1: là thành công
+                // Trả về -1: là không thành công
+                // Trả về 0: là không có gì được thực hiện
+                int rs = cmd.ExecuteNonQuery();
+
+                // ----------- B4: Kiểm tra kết quả và thông báo cho người dùng biết
+                if (rs == 1)
+                {
+                    MessageBox.Show("Thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Không thành công");
+                }
+
+
+                // Đóng kết nối xuống CSDL
+                _connection.Close();
+
+            }
+            catch (SqlException ex)
+            {
+                // Mình sẽ đưa ra 1 cảnh báo lỗi
+                throw new Exception(ex.Message);
+            }
         }
 
         // Hàm xử lý khi nhấn Load
         private void btnLoad_Click(object sender, EventArgs e)
         {
-
+            // Mình đã tạo hàm LoadData() ở trên nên ở đây mình sẽ gọi lại hàm LoadData()
+            LoadData();
         }
+
+
+        // Bắt sự kiện khi click vào mỗi ô sẽ hiển thị các dữ liệu tương ứng lên text box 
+        private void grdBanks_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Kiểm trả xem grdBanks có dòng dữ liệu nào không
+            // Nếu không có thì return => Có nghĩa là hủy bỏ các thao tác tiếp theo -> Tránh gây lỗi chương trình
+            if (grdBanks.Rows.Count <= 0) return; 
+
+            // Nếu có dữ liệu -> Lấy vị trí của con trỏ chuột đã nhấn vào -> Ví dụ nhấn vào dòng 1 thì Index sẽ bằng 0
+            // Do mọi thứ trọng lập trình đều bắt đầu từ số 0
+            // Mình nhìn trên màn mình là dòng đầu tiền sẽ luôn luôn bắt đầu với Index = 0
+            // Mình nhìn trên màn hình là dòng số 7 thì trong code Index sẽ bằng 6
+            // Nếu mà muốn tính lẹ thì nhìn trên màn hình sau đó -1 sẽ có được Index
+            // Dòng 5 => Index = 5 - 1 = 4
+            // Dòng 1991 => Index  = 1991 - 1 = 1990
+
+            // Lấy Index của dòng mình chọn(1)
+            // CÚ PHÁP: <grid chứa dữ liệu>.CurrentRow.Index;
+            int rsl = grdBanks.CurrentRow.Index;
+
+            // Tiếp theo mình sẽ lấy dữ liệu của ô mình mong muốn theo thứ tự từ trái qua phải, từ Index = 0 -> Index = 1, 2, 3
+            // CÚ PHÁP: <grid chứa dữ liệu>.Rows[<Index của dòng mình đã chọn>].Cells[<Ô dữ liệu mình muốn lấy>].Value.ToString()
+            // <grid chứa dữ liệu>: grdBanks (ID mình đã đặt khi tạo form)
+            // <Index của dòng mình đã chọn>: Mình đã lấy được ở phía trên số (1)
+            // <Ô dữ liệu mình muốn lấy>(2): VD: trên màn hình hiển thị dữ liệu theo tứ tự từ trái qua phải là: ID, ACCOUNT, NAME, BENEFICIAL
+            // -> Tương ứng Index của các cột đó sẽ là
+            // - ID (Index =  0)
+            // - ACCOUNT (Index = 1)
+            // - NAME (Index = 2)
+            // - BENEFICIAL (Index = 3)
+            // => Mình lấy BENEFICIAL thì (2) = 3, tương tự lấy ACCOUNT thì (2) = 1
+            // => Mình lấy ID => (2) = 0
+            // => Theo cú pháp mình sẽ được: grdBanks.Rows[rsl].Cells[0].Value.ToString();
+            var idString = grdBanks.Rows[rsl].Cells[0].Value.ToString();
+
+            // => Sau khi mình đã lấy được giá trị của cột ID thì mình sẽ hiển thị nó lên textbox
+            // Mình sẽ gán giá trị cho TextBox txtID bằng phương thức .Text
+            txtID.Text = idString;
+        }
+
+
     }
 }
