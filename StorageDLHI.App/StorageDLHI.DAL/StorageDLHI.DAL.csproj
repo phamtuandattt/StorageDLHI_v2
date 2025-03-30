@@ -51,8 +51,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataProvider\SQLServerProvider.cs" />
+    <Compile Include="Models\Company_Infos.cs" />
+    <Compile Include="Models\Costs.cs" />
+    <Compile Include="Models\Delivery_Products.cs" />
+    <Compile Include="Models\Departments.cs" />
+    <Compile Include="Models\Import_Products.cs" />
+    <Compile Include="Models\Material_Source.cs" />
+    <Compile Include="Models\Material_Standards.cs" />
+    <Compile Include="Models\Material_Types.cs" />
+    <Compile Include="Models\Mprs.cs" />
+    <Compile Include="Models\Origins.cs" />
+    <Compile Include="Models\Pos.cs" />
+    <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\Product_Types.cs" />
+    <Compile Include="Models\Staffs.cs" />
+    <Compile Include="Models\Staff_Roles.cs" />
     <Compile Include="Models\Suppliers.cs" />
     <Compile Include="Models\Supplier_Bank.cs" />
+    <Compile Include="Models\Taxs.cs" />
+    <Compile Include="Models\Units.cs" />
+    <Compile Include="Models\Warehouses.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryStatements\QueryStatement.cs" />
   </ItemGroup>
