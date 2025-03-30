@@ -14,9 +14,23 @@ namespace StorageDLHI.App
         [STAThread]
         static void Main()
         {
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new frmConnectSystem());
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Supplier_bank_GUI());
+
+            if (string.IsNullOrEmpty(Properties.Settings.Default.DbConnectionString))
+            {
+                // First-time setup
+                Application.Run(new frmConnectSystem());
+            }
+            else
+            {
+                // Connection already configured
+                Application.Run(new Form1());
+            }
         }
     }
 }
