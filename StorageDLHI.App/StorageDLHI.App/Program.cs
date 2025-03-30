@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StorageDLHI.App.MainGUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace StorageDLHI.App
             else
             {
                 // Connection already configured
-                Application.Run(new Form1());
+                Application.Run(new Main());
             }
         }
     }

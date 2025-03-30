@@ -1,4 +1,5 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
+using StorageDLHI.App.MainGUI;
 using StorageDLHI.DAL.DataProvider;
 using System;
 using System.Collections.Generic;
@@ -68,7 +69,7 @@ namespace StorageDLHI.App
                     KryptonMessageBox.Show("Connection saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Proceed to main application form
-                    Form1 main = new Form1();
+                    Main main = new Main();
                     this.Hide();
                     main.ShowDialog();
                     this.Close(); ;
