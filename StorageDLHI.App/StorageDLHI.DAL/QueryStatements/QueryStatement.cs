@@ -10,5 +10,7 @@ namespace StorageDLHI.DAL.QueryStatements
     {
         public const string GET_SUPPLIERS = "SELECT *FROM SUPPLIERS";
         public const string INSERT_SUPPLIERS = "INSERT INTO SUPPLIERS VALUES ('{0}', N'{1}', '{2}', N'{3}', '{4}', N'{5}', N'{6}', '{7}')";
+
+        public const string GET_SUPPLIER_BANKS = "select *from SUPPLIER_BANKS";
     }
 }

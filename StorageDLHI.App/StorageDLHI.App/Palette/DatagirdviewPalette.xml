@@ -1,0 +1,151 @@
+﻿<?xml version="1.0"?>
+<!--Created by exporting the settings of a KryptonPalette instance.-->
+<!--For more information about Krypton visit www.ComponentFactory.com-->
+<!--WARNING: Modifying this file may render it invalid for importing.-->
+<KryptonPalette Version="18" Generated="Sunday, 30 March 2025, 19:00">
+	<Properties>
+		<ButtonSpecs>
+			<FormClose>
+				<Image Type="Image" Value="ImageCache1" />
+				<Style Type="PaletteButtonStyle" Value="Form" />
+			</FormClose>
+			<FormMin>
+				<Image Type="Image" Value="ImageCache2" />
+			</FormMin>
+			<FormMax>
+				<Image Type="Image" Value="ImageCache3" />
+			</FormMax>
+			<FormRestore>
+				<Image Type="Image" Value="ImageCache3" />
+			</FormRestore>
+		</ButtonSpecs>
+		<ButtonStyles>
+			<ButtonForm>
+				<StateNormal>
+					<Back>
+						<Color1 Type="Color" Value="White" />
+						<Color2 Type="Color" Value="White" />
+					</Back>
+					<Border>
+						<DrawBorders Type="PaletteDrawBorders" Value="Top,Bottom,Left,Right" />
+						<Width Type="Int" Value="0" />
+					</Border>
+				</StateNormal>
+				<StateTracking>
+					<Back>
+						<Color1 Type="Color" Value="White" />
+						<Color2 Type="Color" Value="White" />
+					</Back>
+					<Border>
+						<DrawBorders Type="PaletteDrawBorders" Value="Top,Bottom,Left,Right" />
+					</Border>
+				</StateTracking>
+				<StatePressed>
+					<Back>
+						<Color1 Type="Color" Value="White" />
+						<Color2 Type="Color" Value="White" />
+					</Back>
+					<Border>
+						<DrawBorders Type="PaletteDrawBorders" Value="Top,Bottom,Left,Right" />
+					</Border>
+				</StatePressed>
+			</ButtonForm>
+		</ButtonStyles>
+		<Common>
+			<StateCommon>
+				<Back>
+					<Color1 Type="Color" Value="White" />
+					<Color2 Type="Color" Value="White" />
+				</Back>
+				<Border>
+					<DrawBorders Type="PaletteDrawBorders" Value="Top,Bottom,Left,Right" />
+					<Rounding Type="Int" Value="15" />
+				</Border>
+			</StateCommon>
+		</Common>
+		<FormStyles>
+			<FormMain>
+				<StateCommon>
+					<Back>
+						<Color1 Type="Color" Value="White" />
+						<Color2 Type="Color" Value="White" />
+					</Back>
+				</StateCommon>
+			</FormMain>
+		</FormStyles>
+		<HeaderStyles>
+			<HeaderForm>
+				<StateCommon>
+					<Back>
+						<Color1 Type="Color" Value="Gainsboro" />
+						<Color2 Type="Color" Value="Gainsboro" />
+					</Back>
+					<Border>
+						<DrawBorders Type="PaletteDrawBorders" Value="None" />
+						<Color1 Type="Color" Value="Gainsboro" />
+						<Color2 Type="Color" Value="Gainsboro" />
+					</Border>
+					<Content>
+						<Padding Type="Padding" Value="10, -1, 5, -1" />
+					</Content>
+				</StateCommon>
+			</HeaderForm>
+		</HeaderStyles>
+		<GridStyles>
+			<GridCommon>
+				<StateCommon>
+					<Background>
+						<Color1 Type="Color" Value="White" />
+						<Color2 Type="Color" Value="White" />
+					</Background>
+					<DataCell>
+						<Border>
+							<DrawBorders Type="PaletteDrawBorders" Value="All" />
+							<Color1 Type="Color" Value="Gainsboro" />
+							<Color2 Type="Color" Value="Gainsboro" />
+							<Style Type="PaletteBorderStyle" Value="Solid" />
+						</Border>
+					</DataCell>
+					<ColumnHeader>
+						<Back>
+							<Color1 Type="Color" Value="Gainsboro" />
+							<Color2 Type="Color" Value="Gainsboro" />
+						</Back>
+						<Border>
+							<DrawBorders Type="PaletteDrawBorders" Value="All" />
+							<Color1 Type="Color" Value="Gainsboro" />
+							<Color2 Type="Color" Value="Gainsboro" />
+							<Style Type="PaletteBorderStyle" Value="Solid" />
+						</Border>
+						<Content>
+							<Color1 Type="Color" Value="Black" />
+							<Color2 Type="Color" Value="Black" />
+						</Content>
+					</ColumnHeader>
+					<RowHeader>
+						<Back>
+							<Color1 Type="Color" Value="Gainsboro" />
+							<Color2 Type="Color" Value="Gainsboro" />
+						</Back>
+						<Border>
+							<DrawBorders Type="PaletteDrawBorders" Value="All" />
+							<Color1 Type="Color" Value="Gainsboro" />
+							<Color2 Type="Color" Value="Gainsboro" />
+							<Style Type="PaletteBorderStyle" Value="Solid" />
+						</Border>
+						<Content>
+							<Color1 Type="Color" Value="Black" />
+							<Color2 Type="Color" Value="Black" />
+						</Content>
+					</RowHeader>
+				</StateCommon>
+			</GridCommon>
+		</GridStyles>
+		<BasePaletteMode Type="PaletteMode" Value="Global" />
+	</Properties>
+	<Images>
+		<Image Name="ImageCache1"><![CDATA[AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJhd2luZy5CaXRtYXABAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAlAEAAAKJUE5HDQoaCgAAAA1JSERSAAAADwAAAA8IBgAAADvWlUoAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7CAAAOwgEVKEqAAAABNklEQVQ4T4VSO04DMRQcr7zZzYYmTSQainCEdDQpkBAnoOAMEVWKFFBRcIV0HIIDcAByAW4AEgUIlE0gIcwktrQsXvykkT9vRn7veVCNDWDLLDssi+J00WpNlml6w3X8lWXHH0Wxz7xx1N8xGwxSEi9XSfK4NmZF4saD5wXvZ8xf3A+H1kl24YS3a2BZFdXxDZSs5pr7ZCvkxlJ4FRN6sIoXtnbCvYF6VKl10n/4tPbuGdiDhlPvMQbN4LXX64MlT0KEGN47nXPoO0LJGMp2e6SXx6FkDHz5DDKAeggRmsABv8273QPIOTw8hEhNYKtTrrn+2cg5MkCV0ARW+TTP86OtSRSynJwjA4QEHhLSFyPudw7zoQs5Rwaoz0A9qlS9+Efogwkj58gA+kd9h6aq4TCXO5oL4Ac/rmJkVwEfvAAAAABJRU5ErkJgggs=]]></Image>
+		<Image Name="ImageCache2"><![CDATA[AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJhd2luZy5CaXRtYXABAAAABERhdGEHAgIAAAAJAwAAAA8DAAAA7QEAAAKJUE5HDQoaCgAAAA1JSERSAAAADwAAAA8IBgAAADvWlUoAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7CAAAOwgEVKEqAAAABj0lEQVQ4T2NABi530/i1LkR4qF0OnSR70f+I1AW/S0D6gOrFkHaNi2EWIY8KOaFKUYHPpSINqQu+WwUuun/hu+j6Hx0LXXR/JX3Bb5X7+XQFqBYI8L1SoSJ+3ucm/wXXf9g0wjD/Rde/QHU7vC9lCoI12l/J4pG66LcGJIFNAzoWuOj2S+lSaJ79/noWBp1LsZbCFzw/YFOIC0tc8L7vdDdPnEHrUkQxNgX4MMh7VheSghkUL4UswKaAENa+GNXLoHQ5ZCU2SUJY41LENAa1y2ETsUkSwjoXI8uBARYRBgzB39gU4MKCFzy+u18rMGIwvJokL3bR6zI2Rbiw3IXAZcZn0rgYGOrrmTTPh5cCQ/AHNoXoWOiCx2vNi1F2wCTCCE4o9cAIV7sQ0iJ80eMNNg0gDExE/4UveLxQvxCRV/+/ngmsEQZAAgaXYlzlLgSsByr6ClIM0yh63uudwoWgqaAEVf//P6pGOPj/n1HvQgy32+VMWYfL2cEWl9IynC9m+TvdLJS2vx/PAVUFBQwMABogkzNeryyiAAAAAElFTkSuQmCCCw==]]></Image>
+		<Image Name="ImageCache3"><![CDATA[AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJhd2luZy5CaXRtYXABAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAdAEAAAKJUE5HDQoaCgAAAA1JSERSAAAADwAAAA4IBgAAAPCKRu8AAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7CAAAOwgEVKEqAAAABFklEQVQ4T6WTvUoDQRSFL7PLspoouEZE1E4sxMdRER8jKZIuj6GNrYiIhYhYC0qSmdmAgoUotrHQJ5Az3s2MYMJdt/DAxxRzvt352aXfca6rMEz3oOMrmOgdJv7iccTjJfTMjuuSCtXJoJetQat7Z/gZJcBGt3iaXQmKD/L6Eox6lYRpuPeM/txiUFk28blULIP7J17Msy0YglQqA5oAO79BsElbKlTBXrNY8rE0WQXfwuF/5CNyedKRJquATlqEQW1bmvyL8YH1G5v+xG18IZXK4K2ejsUieKgt8+W/ScVp+Ct8cabeCKoPHhfWYVVPEn7gF9xhmK0GZTLubDdCnh7wNm74ND+9EH3wMq8xSPeLHydUOUTfWgbk8JUDHWsAAAAASUVORK5CYIIL]]></Image>
+	</Images>
+</KryptonPalette>

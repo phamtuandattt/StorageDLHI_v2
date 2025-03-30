@@ -117,41 +117,78 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>306, 17</value>
+  </metadata>
+  <metadata name="toolStrip6.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>810, 17</value>
+  </metadata>
+  <metadata name="toolStrip5.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>684, 17</value>
+  </metadata>
+  <metadata name="toolStrip3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>432, 17</value>
+  </metadata>
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="toolStrip4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>558, 17</value>
+  </metadata>
+  <metadata name="kryptonPalette1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>143, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="kryptonPalette1.ButtonSpecs.FormClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vwAADr8BOAVTJAAAATZJREFUOE+FUjtOAzEUHK+82c2GJk0kGopwhHQ0KZAQJ6DgDBFVihRQUXCFdByC
+        A3AAcgFuABIFCJRNICHMJLa0LF78pJE/b0Z+73lQjQ1gyyw7LIvidNFqTZZpesN1/JVlxx9Fsc+8cdTf
+        MRsMUhIvV0nyuDZmReLGg+cF72fMX9wPh9ZJduGEt2tgWRXV8Q2UrOaa+2Qr5MZSeBUTerCKF7Z2wr2B
+        elSpddJ/+LT27hnYg4ZT7zEGzeC11+uDJU9ChBjeO51z6DtCyRjKdnukl8ehZAx8+QwygHoIEZrAAb/N
+        u90DyDk8PIRITWCrU665/tnIOTJAldAEVvk0z/OjrUkUspycIwOEBB4S0hcj7ncO86ELOUcGqM9APapU
+        vfhH6IMJI+fIAPpHfYemquEwlzuaC+AHP65iZFcBH7wAAAAASUVORK5CYII=
+</value>
   </data>
-  <data name="dollar-symbol" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dollar-symbol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="kryptonPalette1.ButtonSpecs.FormMax.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA8AAAAOCAYAAADwikbvAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vwAADr8BOAVTJAAAARZJREFUOE+lk71KA0EUhS+zy7KaKLhGRNROLMTHUREfIymSLo+hja2IiIWIWAtK
+        kpnZgIKFKLax0CeQM97NjGDCXbfwwMcUc77d+dml33GuqzBM96DjK5joHSb+4nHE4yX0zI7rkgrVyaCX
+        rUGre2f4GSXARrd4ml0Jig/y+hKMepWEabj3jP7cYlBZNvG5VCyD+ydezLMtGIJUKgOaADu/QbBJWypU
+        wV6zWPKxNFkF38Lhf+QjcnnSkSargE5ahEFtW5r8i/GB9Rub/sRtfCGVyuCtno7FInioLfPlv0nFafgr
+        fHGm3giqDx4X1mFVTxJ+4BfcYZitBmUy7mw3Qp4e8DZu+DQ/vRB98DKvMUj3ix8nVDlE31oG5PCVAx1r
+        AAAAAElFTkSuQmCC
+</value>
   </data>
-  <data name="warehouse (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\warehouse (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="kryptonPalette1.ButtonSpecs.FormMin.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vwAADr8BOAVTJAAAAY9JREFUOE9jQAYud9P4tS5EeKhdDp0ke9H/iNQFv0tA+oDqxZB2jYthFiGPCjmh
+        SlGBz6UiDakLvlsFLrp/4bvo+h8dC110fyV9wW+V+/l0BagWCPC9UqEift7nJv8F13/YNMIw/0XXv0B1
+        O7wvZQqCNdpfyeKRuui3BiSBTQM6Frjo9kvpUmie/f56FgadS7GWwhc8P2BTiAtLXPC+73Q3T5xB61JE
+        MTYF+DDIe1YXkoIZFC+FLMCmgBDWvhjVy6B0OWQlNklCWONSxDQGtcthE7FJEsI6FyPLgQEWEQYMwd/Y
+        FODCghc8vrtfKzBiMLyaJC920esyNkW4sNyFwGXGZ9K4GBjq65k0z4eXAkPwBzaF6FjogsdrzYtRdsAk
+        wghOKPXACFe7ENIifNHjDTYNIAxMRP+FL3i8UL8QkVf/v54JrBEGQAIGl2Jc5S4ErAcq+gpSDNMoet7r
+        ncKFoKmgBFX//z+qRjj4/59R70IMt9vlTFmHy9nBFpfSMpwvZvk73SyUtr8fzwFVBQUMDAAaIJMzXq8s
+        ogAAAABJRU5ErkJggg==
+</value>
   </data>
-  <data name="red-dot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\red-dot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="kryptonPalette1.ButtonSpecs.FormRestore.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA8AAAAOCAYAAADwikbvAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vwAADr8BOAVTJAAAARZJREFUOE+lk71KA0EUhS+zy7KaKLhGRNROLMTHUREfIymSLo+hja2IiIWIWAtK
+        kpnZgIKFKLax0CeQM97NjGDCXbfwwMcUc77d+dml33GuqzBM96DjK5joHSb+4nHE4yX0zI7rkgrVyaCX
+        rUGre2f4GSXARrd4ml0Jig/y+hKMepWEabj3jP7cYlBZNvG5VCyD+ydezLMtGIJUKgOaADu/QbBJWypU
+        wV6zWPKxNFkF38Lhf+QjcnnSkSargE5ahEFtW5r8i/GB9Rub/sRtfCGVyuCtno7FInioLfPlv0nFafgr
+        fHGm3giqDx4X1mFVTxJ+4BfcYZitBmUy7mw3Qp4e8DZu+DQ/vRB98DKvMUj3ix8nVDlE31oG5PCVAx1r
+        AAAAAElFTkSuQmCC
+</value>
   </data>
-  <data name="warehouse" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\warehouse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="purchasing" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\purchasing.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="export" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\export.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="green-dot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\green-dot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="yellow-dot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\yellow-dot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="shopping-cart" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\shopping-cart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="list" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\list.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  <metadata name="toolStrip4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>558, 17</value>
+  </metadata>
 </root>

@@ -1,4 +1,5 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
+using StorageDLHI.App.MenuGUI.MenuControl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -60,6 +61,14 @@ namespace StorageDLHI.App.MainGUI
 
             KryptonMessageBox.Show("Connection settings reset. Please restart the application.", "Reset", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Application.Exit();
+        }
+
+        private void tlsMaterial_Click(object sender, EventArgs e)
+        {
+            ManageCommonUC ucItems = new ManageCommonUC();
+            ucItems.Dock = DockStyle.Fill;
+            pnMain.Controls.Add(ucItems);
+            ucItems.BringToFront();
         }
     }
 }

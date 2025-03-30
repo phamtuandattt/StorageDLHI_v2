@@ -27,5 +27,11 @@ namespace StorageDLHI.BLL.SupplierDAO
 
             return data.Insert(sqlQuery) > 0;
         }
+
+        public static DataTable GetSupplierBanks()
+        {
+            var supls = data.GetData(QueryStatement.GET_SUPPLIER_BANKS, "SUPPLIER_BANKS");
+            return supls;
+        }
     }
 }
