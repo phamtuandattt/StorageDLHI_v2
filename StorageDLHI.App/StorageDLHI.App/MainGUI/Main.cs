@@ -1,5 +1,6 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using StorageDLHI.App.MenuGUI.MenuControl;
+using StorageDLHI.App.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,8 @@ namespace StorageDLHI.App.MainGUI
         public Main()
         {
             InitializeComponent();
+
+            ShareData.UserName = "David Hoang";
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)

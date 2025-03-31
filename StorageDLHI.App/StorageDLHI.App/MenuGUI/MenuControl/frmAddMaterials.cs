@@ -1,7 +1,9 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using StorageDLHI.App.Enums;
+using StorageDLHI.App.Shared;
 using StorageDLHI.BLL.MaterialDAO;
 using StorageDLHI.DAL.Models;
+using StorageDLHI.Infrastructor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +22,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
         private bool status = true;
         private MaterialCommonDto models = null;
 
+
         public frmAddMaterials()
         {
             InitializeComponent();
@@ -30,8 +33,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
             InitializeComponent();
             this.Text = title;
             type = (int)materials;
-            this.status = status;
-            
+            this.status = status;           
             this.models = models;
 
             if (status)
@@ -149,6 +151,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         if (MaterialDAO.UpdateOrigin(model))
                         {
                             KryptonMessageBox.Show("Update Origins success!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoggerConfig.Logger.Info($"Update Origins by {ShareData.UserName} success!");
                             this.Close();
                         }
                         else
@@ -169,6 +172,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         if (MaterialDAO.UpdateMaterialType(typeModel))
                         {
                             KryptonMessageBox.Show("Update Types success!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoggerConfig.Logger.Info($"Update Material Types by {ShareData.UserName} success!");
                             this.Close();
                         }
                         else
@@ -188,6 +192,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         if (MaterialDAO.UpdateMaterialStandard(standModel))
                         {
                             KryptonMessageBox.Show("Update Standard success!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoggerConfig.Logger.Info($"Update Material Standard by {ShareData.UserName} success!");
                             this.Close();
                         }
                         else

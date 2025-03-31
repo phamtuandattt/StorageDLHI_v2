@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageDLHI.DAL", "StorageD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageDLHI.BLL", "StorageDLHI.BLL\StorageDLHI.BLL.csproj", "{CC2FC004-401C-4BAE-AB40-5408A8BDE75E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageDLHI.Infrastructor", "StorageDLHI.Infrastructor\StorageDLHI.Infrastructor.csproj", "{2026E5F3-B21F-4C73-8C72-5B33A4A79BEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{CC2FC004-401C-4BAE-AB40-5408A8BDE75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC2FC004-401C-4BAE-AB40-5408A8BDE75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC2FC004-401C-4BAE-AB40-5408A8BDE75E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2026E5F3-B21F-4C73-8C72-5B33A4A79BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2026E5F3-B21F-4C73-8C72-5B33A4A79BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2026E5F3-B21F-4C73-8C72-5B33A4A79BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2026E5F3-B21F-4C73-8C72-5B33A4A79BEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
