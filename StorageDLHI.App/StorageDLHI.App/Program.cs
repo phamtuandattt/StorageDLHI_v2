@@ -1,4 +1,5 @@
 ﻿using StorageDLHI.App.MainGUI;
+using StorageDLHI.App.MenuGUI.MenuControl;
 using System;
 using System.Collections.Generic;
 using System.Linq;

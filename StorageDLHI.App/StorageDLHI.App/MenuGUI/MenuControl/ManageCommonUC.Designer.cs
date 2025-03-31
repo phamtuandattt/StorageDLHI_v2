@@ -34,47 +34,56 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonGroupBox2 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.kryptonPanel9 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.dgvMaterialTypes = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.tlsAddMaterialTypes = new System.Windows.Forms.ToolStripButton();
+            this.tlsLoadTypes = new System.Windows.Forms.ToolStripButton();
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonPanel8 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.dgvOrigins = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnAddOrigins = new System.Windows.Forms.ToolStripButton();
+            this.tlsLoadOrigins = new System.Windows.Forms.ToolStripButton();
             this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonGroupBox6 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
-            this.kryptonPanel5 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.kryptonGroupBox5 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
-            this.kryptonPanel6 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.kryptonGroupBox4 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
-            this.kryptonPanel7 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.kryptonGroupBox3 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
-            this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
-            this.kryptonPanel9 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.kryptonPanel10 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.dgvStandards = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
-            this.pnUnit = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.dgvUnits = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.toolStrip4 = new System.Windows.Forms.ToolStrip();
-            this.kryptonPanel12 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.dgvCost = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.toolStrip5 = new System.Windows.Forms.ToolStrip();
             this.kryptonPanel13 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.dgvTax = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.toolStrip6 = new System.Windows.Forms.ToolStrip();
-            this.tlsAddMaterialTypes = new System.Windows.Forms.ToolStripButton();
-            this.btnAddOrigins = new System.Windows.Forms.ToolStripButton();
-            this.tlsLoadOrigins = new System.Windows.Forms.ToolStripButton();
             this.tlsAddTax = new System.Windows.Forms.ToolStripButton();
-            this.tlsAddCost = new System.Windows.Forms.ToolStripButton();
-            this.tlsAddUnits = new System.Windows.Forms.ToolStripButton();
-            this.tlsAddStandard = new System.Windows.Forms.ToolStripButton();
-            this.tlsLoadTypes = new System.Windows.Forms.ToolStripButton();
-            this.tlsLoadStandard = new System.Windows.Forms.ToolStripButton();
-            this.tlsLoadUnits = new System.Windows.Forms.ToolStripButton();
-            this.tlsLoadCost = new System.Windows.Forms.ToolStripButton();
             this.tlsLoadTax = new System.Windows.Forms.ToolStripButton();
-            this.dgvMaterialTypes = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.kryptonPanel5 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonGroupBox5 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.kryptonPanel12 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.dgvCost = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.toolStrip5 = new System.Windows.Forms.ToolStrip();
+            this.tlsAddCost = new System.Windows.Forms.ToolStripButton();
+            this.tlsLoadCost = new System.Windows.Forms.ToolStripButton();
+            this.kryptonPanel6 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonGroupBox4 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.pnUnit = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.dgvUnits = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.toolStrip4 = new System.Windows.Forms.ToolStrip();
+            this.tlsAddUnits = new System.Windows.Forms.ToolStripButton();
+            this.tlsLoadUnits = new System.Windows.Forms.ToolStripButton();
+            this.kryptonPanel7 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonGroupBox3 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.kryptonPanel10 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.dgvStandards = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.tlsAddStandard = new System.Windows.Forms.ToolStripButton();
+            this.tlsLoadStandard = new System.Windows.Forms.ToolStripButton();
+            this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORIGIN_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORIGIN_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -84,6 +93,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox2.Panel)).BeginInit();
             this.kryptonGroupBox2.Panel.SuspendLayout();
             this.kryptonGroupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel9)).BeginInit();
+            this.kryptonPanel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMaterialTypes)).BeginInit();
+            this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
             this.kryptonPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
@@ -100,44 +113,40 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox6.Panel)).BeginInit();
             this.kryptonGroupBox6.Panel.SuspendLayout();
             this.kryptonGroupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel13)).BeginInit();
+            this.kryptonPanel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTax)).BeginInit();
+            this.toolStrip6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).BeginInit();
             this.kryptonPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).BeginInit();
             this.kryptonGroupBox5.Panel.SuspendLayout();
             this.kryptonGroupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel12)).BeginInit();
+            this.kryptonPanel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCost)).BeginInit();
+            this.toolStrip5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel6)).BeginInit();
             this.kryptonPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).BeginInit();
             this.kryptonGroupBox4.Panel.SuspendLayout();
             this.kryptonGroupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnUnit)).BeginInit();
+            this.pnUnit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUnits)).BeginInit();
+            this.toolStrip4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel7)).BeginInit();
             this.kryptonPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).BeginInit();
             this.kryptonGroupBox3.Panel.SuspendLayout();
             this.kryptonGroupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel9)).BeginInit();
-            this.kryptonPanel9.SuspendLayout();
-            this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel10)).BeginInit();
             this.kryptonPanel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStandards)).BeginInit();
             this.toolStrip3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnUnit)).BeginInit();
-            this.pnUnit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUnits)).BeginInit();
-            this.toolStrip4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel12)).BeginInit();
-            this.kryptonPanel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCost)).BeginInit();
-            this.toolStrip5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel13)).BeginInit();
-            this.kryptonPanel13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTax)).BeginInit();
-            this.toolStrip6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMaterialTypes)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -196,6 +205,77 @@
             this.kryptonGroupBox2.TabIndex = 0;
             this.kryptonGroupBox2.Values.Heading = "Material Types";
             // 
+            // kryptonPanel9
+            // 
+            this.kryptonPanel9.Controls.Add(this.dgvMaterialTypes);
+            this.kryptonPanel9.Controls.Add(this.toolStrip2);
+            this.kryptonPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel9.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel9.Name = "kryptonPanel9";
+            this.kryptonPanel9.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.kryptonPanel9.Size = new System.Drawing.Size(454, 355);
+            this.kryptonPanel9.TabIndex = 0;
+            // 
+            // dgvMaterialTypes
+            // 
+            this.dgvMaterialTypes.AllowUserToAddRows = false;
+            this.dgvMaterialTypes.AllowUserToDeleteRows = false;
+            this.dgvMaterialTypes.AllowUserToResizeRows = false;
+            this.dgvMaterialTypes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMaterialTypes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMaterialTypes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
+            this.dgvMaterialTypes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMaterialTypes.Location = new System.Drawing.Point(0, 27);
+            this.dgvMaterialTypes.MultiSelect = false;
+            this.dgvMaterialTypes.Name = "dgvMaterialTypes";
+            this.dgvMaterialTypes.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.dgvMaterialTypes.ReadOnly = true;
+            this.dgvMaterialTypes.RowHeadersWidth = 51;
+            this.dgvMaterialTypes.RowTemplate.Height = 24;
+            this.dgvMaterialTypes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMaterialTypes.Size = new System.Drawing.Size(454, 328);
+            this.dgvMaterialTypes.TabIndex = 1;
+            this.dgvMaterialTypes.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaterialTypes_CellContentDoubleClick);
+            this.dgvMaterialTypes.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvMaterialTypes_RowPostPaint);
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.BackColor = System.Drawing.Color.White;
+            this.toolStrip2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlsAddMaterialTypes,
+            this.tlsLoadTypes});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip2.Size = new System.Drawing.Size(454, 27);
+            this.toolStrip2.TabIndex = 0;
+            this.toolStrip2.Text = "toolStrip1";
+            // 
+            // tlsAddMaterialTypes
+            // 
+            this.tlsAddMaterialTypes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsAddMaterialTypes.Image = global::StorageDLHI.App.Properties.Resources.add;
+            this.tlsAddMaterialTypes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsAddMaterialTypes.Name = "tlsAddMaterialTypes";
+            this.tlsAddMaterialTypes.Size = new System.Drawing.Size(29, 24);
+            this.tlsAddMaterialTypes.Text = "Add";
+            this.tlsAddMaterialTypes.Click += new System.EventHandler(this.tlsAddMaterialTypes_Click);
+            // 
+            // tlsLoadTypes
+            // 
+            this.tlsLoadTypes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsLoadTypes.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.tlsLoadTypes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsLoadTypes.Name = "tlsLoadTypes";
+            this.tlsLoadTypes.Size = new System.Drawing.Size(29, 24);
+            this.tlsLoadTypes.Text = "toolStripButton1";
+            this.tlsLoadTypes.Click += new System.EventHandler(this.tlsLoadTypes_Click);
+            // 
             // kryptonPanel3
             // 
             this.kryptonPanel3.Controls.Add(this.kryptonGroupBox1);
@@ -239,6 +319,10 @@
             this.dgvOrigins.AllowUserToResizeRows = false;
             this.dgvOrigins.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOrigins.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrigins.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.ORIGIN_CODE,
+            this.ORIGIN_NAME});
             this.dgvOrigins.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvOrigins.Location = new System.Drawing.Point(0, 27);
             this.dgvOrigins.MultiSelect = false;
@@ -250,6 +334,7 @@
             this.dgvOrigins.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrigins.Size = new System.Drawing.Size(454, 328);
             this.dgvOrigins.TabIndex = 1;
+            this.dgvOrigins.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrigins_CellContentDoubleClick);
             this.dgvOrigins.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvOrigins_RowPostPaint);
             // 
             // toolStrip1
@@ -266,6 +351,26 @@
             this.toolStrip1.Size = new System.Drawing.Size(454, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnAddOrigins
+            // 
+            this.btnAddOrigins.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAddOrigins.Image = global::StorageDLHI.App.Properties.Resources.add;
+            this.btnAddOrigins.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAddOrigins.Name = "btnAddOrigins";
+            this.btnAddOrigins.Size = new System.Drawing.Size(29, 24);
+            this.btnAddOrigins.Text = "Add";
+            this.btnAddOrigins.Click += new System.EventHandler(this.btnAddOrigins_Click);
+            // 
+            // tlsLoadOrigins
+            // 
+            this.tlsLoadOrigins.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsLoadOrigins.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.tlsLoadOrigins.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsLoadOrigins.Name = "tlsLoadOrigins";
+            this.tlsLoadOrigins.Size = new System.Drawing.Size(29, 24);
+            this.tlsLoadOrigins.Text = "toolStripButton1";
+            this.tlsLoadOrigins.Click += new System.EventHandler(this.tlsLoadOrigins_Click);
             // 
             // kryptonPanel4
             // 
@@ -291,290 +396,6 @@
             this.kryptonGroupBox6.Size = new System.Drawing.Size(458, 383);
             this.kryptonGroupBox6.TabIndex = 0;
             this.kryptonGroupBox6.Values.Heading = "Tax";
-            // 
-            // kryptonPanel5
-            // 
-            this.kryptonPanel5.Controls.Add(this.kryptonGroupBox5);
-            this.kryptonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel5.Location = new System.Drawing.Point(467, 392);
-            this.kryptonPanel5.Name = "kryptonPanel5";
-            this.kryptonPanel5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel5.Size = new System.Drawing.Size(458, 383);
-            this.kryptonPanel5.TabIndex = 0;
-            // 
-            // kryptonGroupBox5
-            // 
-            this.kryptonGroupBox5.CaptionStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonGroupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox5.Location = new System.Drawing.Point(0, 0);
-            this.kryptonGroupBox5.Name = "kryptonGroupBox5";
-            this.kryptonGroupBox5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            // 
-            // kryptonGroupBox5.Panel
-            // 
-            this.kryptonGroupBox5.Panel.Controls.Add(this.kryptonPanel12);
-            this.kryptonGroupBox5.Size = new System.Drawing.Size(458, 383);
-            this.kryptonGroupBox5.TabIndex = 0;
-            this.kryptonGroupBox5.Values.Heading = "Cost";
-            // 
-            // kryptonPanel6
-            // 
-            this.kryptonPanel6.Controls.Add(this.kryptonGroupBox4);
-            this.kryptonPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel6.Location = new System.Drawing.Point(931, 392);
-            this.kryptonPanel6.Name = "kryptonPanel6";
-            this.kryptonPanel6.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel6.Size = new System.Drawing.Size(459, 383);
-            this.kryptonPanel6.TabIndex = 0;
-            // 
-            // kryptonGroupBox4
-            // 
-            this.kryptonGroupBox4.CaptionStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox4.Location = new System.Drawing.Point(0, 0);
-            this.kryptonGroupBox4.Name = "kryptonGroupBox4";
-            this.kryptonGroupBox4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            // 
-            // kryptonGroupBox4.Panel
-            // 
-            this.kryptonGroupBox4.Panel.Controls.Add(this.pnUnit);
-            this.kryptonGroupBox4.Size = new System.Drawing.Size(459, 383);
-            this.kryptonGroupBox4.TabIndex = 0;
-            this.kryptonGroupBox4.Values.Heading = "Units";
-            // 
-            // kryptonPanel7
-            // 
-            this.kryptonPanel7.Controls.Add(this.kryptonGroupBox3);
-            this.kryptonPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel7.Location = new System.Drawing.Point(931, 3);
-            this.kryptonPanel7.Name = "kryptonPanel7";
-            this.kryptonPanel7.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel7.Size = new System.Drawing.Size(459, 383);
-            this.kryptonPanel7.TabIndex = 0;
-            // 
-            // kryptonGroupBox3
-            // 
-            this.kryptonGroupBox3.CaptionStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox3.Location = new System.Drawing.Point(0, 0);
-            this.kryptonGroupBox3.Name = "kryptonGroupBox3";
-            this.kryptonGroupBox3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            // 
-            // kryptonGroupBox3.Panel
-            // 
-            this.kryptonGroupBox3.Panel.Controls.Add(this.kryptonPanel10);
-            this.kryptonGroupBox3.Size = new System.Drawing.Size(459, 383);
-            this.kryptonGroupBox3.TabIndex = 0;
-            this.kryptonGroupBox3.Values.Heading = "Material Standards";
-            // 
-            // kryptonPalette1
-            // 
-            this.kryptonPalette1.BasePaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Global;
-            this.kryptonPalette1.ButtonSpecs.FormClose.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormClose.Image")));
-            this.kryptonPalette1.ButtonSpecs.FormClose.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Form;
-            this.kryptonPalette1.ButtonSpecs.FormMax.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormMax.Image")));
-            this.kryptonPalette1.ButtonSpecs.FormMin.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormMin.Image")));
-            this.kryptonPalette1.ButtonSpecs.FormRestore.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormRestore.Image")));
-            this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Back.Color1 = System.Drawing.Color.White;
-            this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Back.Color2 = System.Drawing.Color.White;
-            this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Border.Width = 0;
-            this.kryptonPalette1.ButtonStyles.ButtonForm.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.kryptonPalette1.ButtonStyles.ButtonForm.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.kryptonPalette1.ButtonStyles.ButtonForm.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.kryptonPalette1.ButtonStyles.ButtonForm.StateTracking.Back.Color1 = System.Drawing.Color.White;
-            this.kryptonPalette1.ButtonStyles.ButtonForm.StateTracking.Back.Color2 = System.Drawing.Color.White;
-            this.kryptonPalette1.ButtonStyles.ButtonForm.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.kryptonPalette1.Common.StateCommon.Back.Color1 = System.Drawing.Color.White;
-            this.kryptonPalette1.Common.StateCommon.Back.Color2 = System.Drawing.Color.White;
-            this.kryptonPalette1.Common.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.kryptonPalette1.Common.StateCommon.Border.Rounding = 15;
-            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color1 = System.Drawing.Color.White;
-            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color2 = System.Drawing.Color.White;
-            this.kryptonPalette1.GridStyles.GridCommon.StateCommon.Background.Color1 = System.Drawing.Color.White;
-            this.kryptonPalette1.GridStyles.GridCommon.StateCommon.Background.Color2 = System.Drawing.Color.White;
-            this.kryptonPalette1.GridStyles.GridCommon.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
-            this.kryptonPalette1.GridStyles.GridCommon.StateCommon.DataCell.Border.Color1 = System.Drawing.Color.Gainsboro;
-            this.kryptonPalette1.GridStyles.GridCommon.StateCommon.DataCell.Border.Color2 = System.Drawing.Color.Gainsboro;
-            this.kryptonPalette1.GridStyles.GridCommon.StateCommon.DataCell.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
-            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Back.Color1 = System.Drawing.Color.Gainsboro;
-            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Back.Color2 = System.Drawing.Color.Gainsboro;
-            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Border.Color1 = System.Drawing.Color.Gainsboro;
-            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Border.Color2 = System.Drawing.Color.Gainsboro;
-            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
-            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, 5, -1);
-            // 
-            // kryptonPanel9
-            // 
-            this.kryptonPanel9.Controls.Add(this.dgvMaterialTypes);
-            this.kryptonPanel9.Controls.Add(this.toolStrip2);
-            this.kryptonPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel9.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel9.Name = "kryptonPanel9";
-            this.kryptonPanel9.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel9.Size = new System.Drawing.Size(454, 355);
-            this.kryptonPanel9.TabIndex = 0;
-            // 
-            // toolStrip2
-            // 
-            this.toolStrip2.BackColor = System.Drawing.Color.White;
-            this.toolStrip2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlsAddMaterialTypes,
-            this.tlsLoadTypes});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip2.Size = new System.Drawing.Size(454, 27);
-            this.toolStrip2.TabIndex = 0;
-            this.toolStrip2.Text = "toolStrip1";
-            // 
-            // kryptonPanel10
-            // 
-            this.kryptonPanel10.Controls.Add(this.dgvStandards);
-            this.kryptonPanel10.Controls.Add(this.toolStrip3);
-            this.kryptonPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel10.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel10.Name = "kryptonPanel10";
-            this.kryptonPanel10.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel10.Size = new System.Drawing.Size(455, 355);
-            this.kryptonPanel10.TabIndex = 0;
-            // 
-            // dgvStandards
-            // 
-            this.dgvStandards.AllowUserToAddRows = false;
-            this.dgvStandards.AllowUserToDeleteRows = false;
-            this.dgvStandards.AllowUserToResizeRows = false;
-            this.dgvStandards.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvStandards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStandards.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvStandards.Location = new System.Drawing.Point(0, 27);
-            this.dgvStandards.MultiSelect = false;
-            this.dgvStandards.Name = "dgvStandards";
-            this.dgvStandards.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.dgvStandards.ReadOnly = true;
-            this.dgvStandards.RowHeadersWidth = 51;
-            this.dgvStandards.RowTemplate.Height = 24;
-            this.dgvStandards.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStandards.Size = new System.Drawing.Size(455, 328);
-            this.dgvStandards.TabIndex = 1;
-            this.dgvStandards.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvStandards_RowPostPaint);
-            // 
-            // toolStrip3
-            // 
-            this.toolStrip3.BackColor = System.Drawing.Color.White;
-            this.toolStrip3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlsAddStandard,
-            this.tlsLoadStandard});
-            this.toolStrip3.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip3.Size = new System.Drawing.Size(455, 27);
-            this.toolStrip3.TabIndex = 0;
-            this.toolStrip3.Text = "toolStrip1";
-            // 
-            // pnUnit
-            // 
-            this.pnUnit.Controls.Add(this.dgvUnits);
-            this.pnUnit.Controls.Add(this.toolStrip4);
-            this.pnUnit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnUnit.Location = new System.Drawing.Point(0, 0);
-            this.pnUnit.Name = "pnUnit";
-            this.pnUnit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.pnUnit.Size = new System.Drawing.Size(455, 355);
-            this.pnUnit.TabIndex = 0;
-            // 
-            // dgvUnits
-            // 
-            this.dgvUnits.AllowUserToAddRows = false;
-            this.dgvUnits.AllowUserToDeleteRows = false;
-            this.dgvUnits.AllowUserToResizeRows = false;
-            this.dgvUnits.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvUnits.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUnits.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvUnits.Location = new System.Drawing.Point(0, 27);
-            this.dgvUnits.MultiSelect = false;
-            this.dgvUnits.Name = "dgvUnits";
-            this.dgvUnits.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.dgvUnits.ReadOnly = true;
-            this.dgvUnits.RowHeadersWidth = 51;
-            this.dgvUnits.RowTemplate.Height = 24;
-            this.dgvUnits.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUnits.Size = new System.Drawing.Size(455, 328);
-            this.dgvUnits.TabIndex = 1;
-            this.dgvUnits.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvUnits_RowPostPaint);
-            // 
-            // toolStrip4
-            // 
-            this.toolStrip4.BackColor = System.Drawing.Color.White;
-            this.toolStrip4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip4.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlsAddUnits,
-            this.tlsLoadUnits});
-            this.toolStrip4.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip4.Name = "toolStrip4";
-            this.toolStrip4.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip4.Size = new System.Drawing.Size(455, 27);
-            this.toolStrip4.TabIndex = 0;
-            this.toolStrip4.Text = "toolStrip1";
-            // 
-            // kryptonPanel12
-            // 
-            this.kryptonPanel12.Controls.Add(this.dgvCost);
-            this.kryptonPanel12.Controls.Add(this.toolStrip5);
-            this.kryptonPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel12.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel12.Name = "kryptonPanel12";
-            this.kryptonPanel12.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel12.Size = new System.Drawing.Size(454, 355);
-            this.kryptonPanel12.TabIndex = 0;
-            // 
-            // dgvCost
-            // 
-            this.dgvCost.AllowUserToAddRows = false;
-            this.dgvCost.AllowUserToDeleteRows = false;
-            this.dgvCost.AllowUserToResizeRows = false;
-            this.dgvCost.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCost.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCost.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvCost.Location = new System.Drawing.Point(0, 27);
-            this.dgvCost.MultiSelect = false;
-            this.dgvCost.Name = "dgvCost";
-            this.dgvCost.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.dgvCost.ReadOnly = true;
-            this.dgvCost.RowHeadersWidth = 51;
-            this.dgvCost.RowTemplate.Height = 24;
-            this.dgvCost.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCost.Size = new System.Drawing.Size(454, 328);
-            this.dgvCost.TabIndex = 1;
-            this.dgvCost.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvCost_RowPostPaint);
-            // 
-            // toolStrip5
-            // 
-            this.toolStrip5.BackColor = System.Drawing.Color.White;
-            this.toolStrip5.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip5.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip5.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlsAddCost,
-            this.tlsLoadCost});
-            this.toolStrip5.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip5.Name = "toolStrip5";
-            this.toolStrip5.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip5.Size = new System.Drawing.Size(454, 27);
-            this.toolStrip5.TabIndex = 0;
-            this.toolStrip5.Text = "toolStrip1";
             // 
             // kryptonPanel13
             // 
@@ -622,35 +443,6 @@
             this.toolStrip6.TabIndex = 0;
             this.toolStrip6.Text = "toolStrip1";
             // 
-            // tlsAddMaterialTypes
-            // 
-            this.tlsAddMaterialTypes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsAddMaterialTypes.Image = global::StorageDLHI.App.Properties.Resources.add;
-            this.tlsAddMaterialTypes.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsAddMaterialTypes.Name = "tlsAddMaterialTypes";
-            this.tlsAddMaterialTypes.Size = new System.Drawing.Size(29, 24);
-            this.tlsAddMaterialTypes.Text = "Add";
-            this.tlsAddMaterialTypes.Click += new System.EventHandler(this.tlsAddMaterialTypes_Click);
-            // 
-            // btnAddOrigins
-            // 
-            this.btnAddOrigins.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnAddOrigins.Image = global::StorageDLHI.App.Properties.Resources.add;
-            this.btnAddOrigins.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAddOrigins.Name = "btnAddOrigins";
-            this.btnAddOrigins.Size = new System.Drawing.Size(29, 24);
-            this.btnAddOrigins.Text = "Add";
-            this.btnAddOrigins.Click += new System.EventHandler(this.btnAddOrigins_Click);
-            // 
-            // tlsLoadOrigins
-            // 
-            this.tlsLoadOrigins.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsLoadOrigins.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.tlsLoadOrigins.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsLoadOrigins.Name = "tlsLoadOrigins";
-            this.tlsLoadOrigins.Size = new System.Drawing.Size(29, 24);
-            this.tlsLoadOrigins.Text = "toolStripButton1";
-            // 
             // tlsAddTax
             // 
             this.tlsAddTax.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -660,6 +452,86 @@
             this.tlsAddTax.Size = new System.Drawing.Size(29, 24);
             this.tlsAddTax.Text = "Add";
             this.tlsAddTax.Click += new System.EventHandler(this.tlsAddTax_Click);
+            // 
+            // tlsLoadTax
+            // 
+            this.tlsLoadTax.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsLoadTax.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.tlsLoadTax.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsLoadTax.Name = "tlsLoadTax";
+            this.tlsLoadTax.Size = new System.Drawing.Size(29, 24);
+            this.tlsLoadTax.Text = "toolStripButton1";
+            // 
+            // kryptonPanel5
+            // 
+            this.kryptonPanel5.Controls.Add(this.kryptonGroupBox5);
+            this.kryptonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel5.Location = new System.Drawing.Point(467, 392);
+            this.kryptonPanel5.Name = "kryptonPanel5";
+            this.kryptonPanel5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.kryptonPanel5.Size = new System.Drawing.Size(458, 383);
+            this.kryptonPanel5.TabIndex = 0;
+            // 
+            // kryptonGroupBox5
+            // 
+            this.kryptonGroupBox5.CaptionStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kryptonGroupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonGroupBox5.Location = new System.Drawing.Point(0, 0);
+            this.kryptonGroupBox5.Name = "kryptonGroupBox5";
+            this.kryptonGroupBox5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            // 
+            // kryptonGroupBox5.Panel
+            // 
+            this.kryptonGroupBox5.Panel.Controls.Add(this.kryptonPanel12);
+            this.kryptonGroupBox5.Size = new System.Drawing.Size(458, 383);
+            this.kryptonGroupBox5.TabIndex = 0;
+            this.kryptonGroupBox5.Values.Heading = "Cost";
+            // 
+            // kryptonPanel12
+            // 
+            this.kryptonPanel12.Controls.Add(this.dgvCost);
+            this.kryptonPanel12.Controls.Add(this.toolStrip5);
+            this.kryptonPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel12.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel12.Name = "kryptonPanel12";
+            this.kryptonPanel12.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.kryptonPanel12.Size = new System.Drawing.Size(454, 355);
+            this.kryptonPanel12.TabIndex = 0;
+            // 
+            // dgvCost
+            // 
+            this.dgvCost.AllowUserToAddRows = false;
+            this.dgvCost.AllowUserToDeleteRows = false;
+            this.dgvCost.AllowUserToResizeRows = false;
+            this.dgvCost.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCost.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCost.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvCost.Location = new System.Drawing.Point(0, 27);
+            this.dgvCost.MultiSelect = false;
+            this.dgvCost.Name = "dgvCost";
+            this.dgvCost.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.dgvCost.ReadOnly = true;
+            this.dgvCost.RowHeadersWidth = 51;
+            this.dgvCost.RowTemplate.Height = 24;
+            this.dgvCost.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCost.Size = new System.Drawing.Size(454, 328);
+            this.dgvCost.TabIndex = 1;
+            this.dgvCost.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvCost_RowPostPaint);
+            // 
+            // toolStrip5
+            // 
+            this.toolStrip5.BackColor = System.Drawing.Color.White;
+            this.toolStrip5.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip5.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip5.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlsAddCost,
+            this.tlsLoadCost});
+            this.toolStrip5.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip5.Name = "toolStrip5";
+            this.toolStrip5.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip5.Size = new System.Drawing.Size(454, 27);
+            this.toolStrip5.TabIndex = 0;
+            this.toolStrip5.Text = "toolStrip1";
             // 
             // tlsAddCost
             // 
@@ -671,6 +543,86 @@
             this.tlsAddCost.Text = "Add";
             this.tlsAddCost.Click += new System.EventHandler(this.tlsAddCost_Click);
             // 
+            // tlsLoadCost
+            // 
+            this.tlsLoadCost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsLoadCost.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.tlsLoadCost.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsLoadCost.Name = "tlsLoadCost";
+            this.tlsLoadCost.Size = new System.Drawing.Size(29, 24);
+            this.tlsLoadCost.Text = "toolStripButton1";
+            // 
+            // kryptonPanel6
+            // 
+            this.kryptonPanel6.Controls.Add(this.kryptonGroupBox4);
+            this.kryptonPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel6.Location = new System.Drawing.Point(931, 392);
+            this.kryptonPanel6.Name = "kryptonPanel6";
+            this.kryptonPanel6.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.kryptonPanel6.Size = new System.Drawing.Size(459, 383);
+            this.kryptonPanel6.TabIndex = 0;
+            // 
+            // kryptonGroupBox4
+            // 
+            this.kryptonGroupBox4.CaptionStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kryptonGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonGroupBox4.Location = new System.Drawing.Point(0, 0);
+            this.kryptonGroupBox4.Name = "kryptonGroupBox4";
+            this.kryptonGroupBox4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            // 
+            // kryptonGroupBox4.Panel
+            // 
+            this.kryptonGroupBox4.Panel.Controls.Add(this.pnUnit);
+            this.kryptonGroupBox4.Size = new System.Drawing.Size(459, 383);
+            this.kryptonGroupBox4.TabIndex = 0;
+            this.kryptonGroupBox4.Values.Heading = "Units";
+            // 
+            // pnUnit
+            // 
+            this.pnUnit.Controls.Add(this.dgvUnits);
+            this.pnUnit.Controls.Add(this.toolStrip4);
+            this.pnUnit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnUnit.Location = new System.Drawing.Point(0, 0);
+            this.pnUnit.Name = "pnUnit";
+            this.pnUnit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.pnUnit.Size = new System.Drawing.Size(455, 355);
+            this.pnUnit.TabIndex = 0;
+            // 
+            // dgvUnits
+            // 
+            this.dgvUnits.AllowUserToAddRows = false;
+            this.dgvUnits.AllowUserToDeleteRows = false;
+            this.dgvUnits.AllowUserToResizeRows = false;
+            this.dgvUnits.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvUnits.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUnits.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvUnits.Location = new System.Drawing.Point(0, 27);
+            this.dgvUnits.MultiSelect = false;
+            this.dgvUnits.Name = "dgvUnits";
+            this.dgvUnits.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.dgvUnits.ReadOnly = true;
+            this.dgvUnits.RowHeadersWidth = 51;
+            this.dgvUnits.RowTemplate.Height = 24;
+            this.dgvUnits.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvUnits.Size = new System.Drawing.Size(455, 328);
+            this.dgvUnits.TabIndex = 1;
+            this.dgvUnits.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvUnits_RowPostPaint);
+            // 
+            // toolStrip4
+            // 
+            this.toolStrip4.BackColor = System.Drawing.Color.White;
+            this.toolStrip4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip4.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlsAddUnits,
+            this.tlsLoadUnits});
+            this.toolStrip4.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip4.Name = "toolStrip4";
+            this.toolStrip4.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip4.Size = new System.Drawing.Size(455, 27);
+            this.toolStrip4.TabIndex = 0;
+            this.toolStrip4.Text = "toolStrip1";
+            // 
             // tlsAddUnits
             // 
             this.tlsAddUnits.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -680,6 +632,91 @@
             this.tlsAddUnits.Size = new System.Drawing.Size(29, 24);
             this.tlsAddUnits.Text = "Add";
             this.tlsAddUnits.Click += new System.EventHandler(this.tlsAddUnits_Click);
+            // 
+            // tlsLoadUnits
+            // 
+            this.tlsLoadUnits.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsLoadUnits.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.tlsLoadUnits.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsLoadUnits.Name = "tlsLoadUnits";
+            this.tlsLoadUnits.Size = new System.Drawing.Size(29, 24);
+            this.tlsLoadUnits.Text = "toolStripButton1";
+            // 
+            // kryptonPanel7
+            // 
+            this.kryptonPanel7.Controls.Add(this.kryptonGroupBox3);
+            this.kryptonPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel7.Location = new System.Drawing.Point(931, 3);
+            this.kryptonPanel7.Name = "kryptonPanel7";
+            this.kryptonPanel7.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.kryptonPanel7.Size = new System.Drawing.Size(459, 383);
+            this.kryptonPanel7.TabIndex = 0;
+            // 
+            // kryptonGroupBox3
+            // 
+            this.kryptonGroupBox3.CaptionStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kryptonGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonGroupBox3.Location = new System.Drawing.Point(0, 0);
+            this.kryptonGroupBox3.Name = "kryptonGroupBox3";
+            this.kryptonGroupBox3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            // 
+            // kryptonGroupBox3.Panel
+            // 
+            this.kryptonGroupBox3.Panel.Controls.Add(this.kryptonPanel10);
+            this.kryptonGroupBox3.Size = new System.Drawing.Size(459, 383);
+            this.kryptonGroupBox3.TabIndex = 0;
+            this.kryptonGroupBox3.Values.Heading = "Material Standards";
+            // 
+            // kryptonPanel10
+            // 
+            this.kryptonPanel10.Controls.Add(this.dgvStandards);
+            this.kryptonPanel10.Controls.Add(this.toolStrip3);
+            this.kryptonPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel10.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel10.Name = "kryptonPanel10";
+            this.kryptonPanel10.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.kryptonPanel10.Size = new System.Drawing.Size(455, 355);
+            this.kryptonPanel10.TabIndex = 0;
+            // 
+            // dgvStandards
+            // 
+            this.dgvStandards.AllowUserToAddRows = false;
+            this.dgvStandards.AllowUserToDeleteRows = false;
+            this.dgvStandards.AllowUserToResizeRows = false;
+            this.dgvStandards.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvStandards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStandards.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column4,
+            this.Column5,
+            this.Column6});
+            this.dgvStandards.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvStandards.Location = new System.Drawing.Point(0, 27);
+            this.dgvStandards.MultiSelect = false;
+            this.dgvStandards.Name = "dgvStandards";
+            this.dgvStandards.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.dgvStandards.ReadOnly = true;
+            this.dgvStandards.RowHeadersWidth = 51;
+            this.dgvStandards.RowTemplate.Height = 24;
+            this.dgvStandards.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvStandards.Size = new System.Drawing.Size(455, 328);
+            this.dgvStandards.TabIndex = 1;
+            this.dgvStandards.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStandards_CellContentDoubleClick);
+            this.dgvStandards.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvStandards_RowPostPaint);
+            // 
+            // toolStrip3
+            // 
+            this.toolStrip3.BackColor = System.Drawing.Color.White;
+            this.toolStrip3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlsAddStandard,
+            this.tlsLoadStandard});
+            this.toolStrip3.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip3.Name = "toolStrip3";
+            this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip3.Size = new System.Drawing.Size(455, 27);
+            this.toolStrip3.TabIndex = 0;
+            this.toolStrip3.Text = "toolStrip1";
             // 
             // tlsAddStandard
             // 
@@ -691,15 +728,6 @@
             this.tlsAddStandard.Text = "Add";
             this.tlsAddStandard.Click += new System.EventHandler(this.tlsAddStandard_Click);
             // 
-            // tlsLoadTypes
-            // 
-            this.tlsLoadTypes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsLoadTypes.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.tlsLoadTypes.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsLoadTypes.Name = "tlsLoadTypes";
-            this.tlsLoadTypes.Size = new System.Drawing.Size(29, 24);
-            this.tlsLoadTypes.Text = "toolStripButton1";
-            // 
             // tlsLoadStandard
             // 
             this.tlsLoadStandard.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -708,53 +736,124 @@
             this.tlsLoadStandard.Name = "tlsLoadStandard";
             this.tlsLoadStandard.Size = new System.Drawing.Size(29, 24);
             this.tlsLoadStandard.Text = "toolStripButton1";
+            this.tlsLoadStandard.Click += new System.EventHandler(this.tlsLoadStandard_Click);
             // 
-            // tlsLoadUnits
+            // kryptonPalette1
             // 
-            this.tlsLoadUnits.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsLoadUnits.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.tlsLoadUnits.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsLoadUnits.Name = "tlsLoadUnits";
-            this.tlsLoadUnits.Size = new System.Drawing.Size(29, 24);
-            this.tlsLoadUnits.Text = "toolStripButton1";
+            this.kryptonPalette1.BasePaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Global;
+            this.kryptonPalette1.ButtonSpecs.FormClose.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormClose.Image")));
+            this.kryptonPalette1.ButtonSpecs.FormClose.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Form;
+            this.kryptonPalette1.ButtonSpecs.FormMax.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormMax.Image")));
+            this.kryptonPalette1.ButtonSpecs.FormMin.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormMin.Image")));
+            this.kryptonPalette1.ButtonSpecs.FormRestore.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormRestore.Image")));
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Back.Color1 = System.Drawing.Color.White;
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Back.Color2 = System.Drawing.Color.White;
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Border.Width = 0;
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StatePressed.Back.Color1 = System.Drawing.Color.White;
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StatePressed.Back.Color2 = System.Drawing.Color.White;
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StateTracking.Back.Color1 = System.Drawing.Color.White;
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StateTracking.Back.Color2 = System.Drawing.Color.White;
+            this.kryptonPalette1.ButtonStyles.ButtonForm.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonPalette1.Common.StateCommon.Back.Color1 = System.Drawing.Color.White;
+            this.kryptonPalette1.Common.StateCommon.Back.Color2 = System.Drawing.Color.White;
+            this.kryptonPalette1.Common.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonPalette1.Common.StateCommon.Border.Rounding = 15;
+            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color1 = System.Drawing.Color.White;
+            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color2 = System.Drawing.Color.White;
+            this.kryptonPalette1.GridStyles.GridCommon.StateCommon.Background.Color1 = System.Drawing.Color.White;
+            this.kryptonPalette1.GridStyles.GridCommon.StateCommon.Background.Color2 = System.Drawing.Color.White;
+            this.kryptonPalette1.GridStyles.GridCommon.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
+            this.kryptonPalette1.GridStyles.GridCommon.StateCommon.DataCell.Border.Color1 = System.Drawing.Color.Gainsboro;
+            this.kryptonPalette1.GridStyles.GridCommon.StateCommon.DataCell.Border.Color2 = System.Drawing.Color.Gainsboro;
+            this.kryptonPalette1.GridStyles.GridCommon.StateCommon.DataCell.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
+            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Back.Color1 = System.Drawing.Color.Gainsboro;
+            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Back.Color2 = System.Drawing.Color.Gainsboro;
+            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Border.Color1 = System.Drawing.Color.Gainsboro;
+            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Border.Color2 = System.Drawing.Color.Gainsboro;
+            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
+            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, 5, -1);
             // 
-            // tlsLoadCost
+            // ID
             // 
-            this.tlsLoadCost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsLoadCost.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.tlsLoadCost.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsLoadCost.Name = "tlsLoadCost";
-            this.tlsLoadCost.Size = new System.Drawing.Size(29, 24);
-            this.tlsLoadCost.Text = "toolStripButton1";
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
             // 
-            // tlsLoadTax
+            // ORIGIN_CODE
             // 
-            this.tlsLoadTax.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsLoadTax.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.tlsLoadTax.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsLoadTax.Name = "tlsLoadTax";
-            this.tlsLoadTax.Size = new System.Drawing.Size(29, 24);
-            this.tlsLoadTax.Text = "toolStripButton1";
+            this.ORIGIN_CODE.DataPropertyName = "ORIGIN_CODE";
+            this.ORIGIN_CODE.HeaderText = "Code";
+            this.ORIGIN_CODE.MinimumWidth = 6;
+            this.ORIGIN_CODE.Name = "ORIGIN_CODE";
+            this.ORIGIN_CODE.ReadOnly = true;
             // 
-            // dgvMaterialTypes
+            // ORIGIN_NAME
             // 
-            this.dgvMaterialTypes.AllowUserToAddRows = false;
-            this.dgvMaterialTypes.AllowUserToDeleteRows = false;
-            this.dgvMaterialTypes.AllowUserToResizeRows = false;
-            this.dgvMaterialTypes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMaterialTypes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMaterialTypes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMaterialTypes.Location = new System.Drawing.Point(0, 27);
-            this.dgvMaterialTypes.MultiSelect = false;
-            this.dgvMaterialTypes.Name = "dgvMaterialTypes";
-            this.dgvMaterialTypes.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.dgvMaterialTypes.ReadOnly = true;
-            this.dgvMaterialTypes.RowHeadersWidth = 51;
-            this.dgvMaterialTypes.RowTemplate.Height = 24;
-            this.dgvMaterialTypes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMaterialTypes.Size = new System.Drawing.Size(454, 328);
-            this.dgvMaterialTypes.TabIndex = 1;
-            this.dgvMaterialTypes.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvMaterialTypes_RowPostPaint);
+            this.ORIGIN_NAME.DataPropertyName = "ORIGIN_NAME";
+            this.ORIGIN_NAME.HeaderText = "Description";
+            this.ORIGIN_NAME.MinimumWidth = 6;
+            this.ORIGIN_NAME.Name = "ORIGIN_NAME";
+            this.ORIGIN_NAME.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "ID";
+            this.Column1.HeaderText = "ID";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "TYPE_CODE";
+            this.Column2.HeaderText = "Code";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "TYPE_DES";
+            this.Column3.HeaderText = "Description";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "ID";
+            this.Column4.HeaderText = "ID";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "STANDARD_CODE";
+            this.Column5.HeaderText = "Code";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "STANDARD_DES";
+            this.Column6.HeaderText = "Description";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // ManageCommonUC
             // 
@@ -772,6 +871,12 @@
             this.kryptonGroupBox2.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox2)).EndInit();
             this.kryptonGroupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel9)).EndInit();
+            this.kryptonPanel9.ResumeLayout(false);
+            this.kryptonPanel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMaterialTypes)).EndInit();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
             this.kryptonPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
@@ -790,54 +895,48 @@
             this.kryptonGroupBox6.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox6)).EndInit();
             this.kryptonGroupBox6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).EndInit();
-            this.kryptonPanel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).EndInit();
-            this.kryptonGroupBox5.Panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).EndInit();
-            this.kryptonGroupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel6)).EndInit();
-            this.kryptonPanel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).EndInit();
-            this.kryptonGroupBox4.Panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).EndInit();
-            this.kryptonGroupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel7)).EndInit();
-            this.kryptonPanel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).EndInit();
-            this.kryptonGroupBox3.Panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).EndInit();
-            this.kryptonGroupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel9)).EndInit();
-            this.kryptonPanel9.ResumeLayout(false);
-            this.kryptonPanel9.PerformLayout();
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel10)).EndInit();
-            this.kryptonPanel10.ResumeLayout(false);
-            this.kryptonPanel10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStandards)).EndInit();
-            this.toolStrip3.ResumeLayout(false);
-            this.toolStrip3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnUnit)).EndInit();
-            this.pnUnit.ResumeLayout(false);
-            this.pnUnit.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUnits)).EndInit();
-            this.toolStrip4.ResumeLayout(false);
-            this.toolStrip4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel12)).EndInit();
-            this.kryptonPanel12.ResumeLayout(false);
-            this.kryptonPanel12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCost)).EndInit();
-            this.toolStrip5.ResumeLayout(false);
-            this.toolStrip5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel13)).EndInit();
             this.kryptonPanel13.ResumeLayout(false);
             this.kryptonPanel13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTax)).EndInit();
             this.toolStrip6.ResumeLayout(false);
             this.toolStrip6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMaterialTypes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).EndInit();
+            this.kryptonPanel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).EndInit();
+            this.kryptonGroupBox5.Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).EndInit();
+            this.kryptonGroupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel12)).EndInit();
+            this.kryptonPanel12.ResumeLayout(false);
+            this.kryptonPanel12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCost)).EndInit();
+            this.toolStrip5.ResumeLayout(false);
+            this.toolStrip5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel6)).EndInit();
+            this.kryptonPanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).EndInit();
+            this.kryptonGroupBox4.Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).EndInit();
+            this.kryptonGroupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pnUnit)).EndInit();
+            this.pnUnit.ResumeLayout(false);
+            this.pnUnit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUnits)).EndInit();
+            this.toolStrip4.ResumeLayout(false);
+            this.toolStrip4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel7)).EndInit();
+            this.kryptonPanel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).EndInit();
+            this.kryptonGroupBox3.Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).EndInit();
+            this.kryptonGroupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel10)).EndInit();
+            this.kryptonPanel10.ResumeLayout(false);
+            this.kryptonPanel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStandards)).EndInit();
+            this.toolStrip3.ResumeLayout(false);
+            this.toolStrip3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -889,5 +988,14 @@
         private System.Windows.Forms.ToolStripButton tlsLoadUnits;
         private System.Windows.Forms.ToolStripButton tlsLoadStandard;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvMaterialTypes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ORIGIN_CODE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ORIGIN_NAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
     }
 }
