@@ -15,5 +15,9 @@ namespace StorageDLHI.Infrastructor.Caches
         public const string TAX_DATATABLE_ALLTAX = "Tax.DataTable.AllTax";
         public const string UNIT_DATATABLE_ALLUNIT = "Unit.DataTable.AllUnit";
         public const string COST_DATATABLE_ALLCOST = "Cost.DataTable.AllCost";
+
+        public const string SUPPLIER_DATATABLE_ALL_SUPPLIER = "Supplier.DataTable.AllSupplier";
+        public const string BANK_DETAIL_SUPPLIER_ID = "Bank.Detail.Supplier.Id.{0}";
+        public const string SUPPLIER_BANK_DATATABLE_ALL_SUPPLIER_BANK = "SupplierBank.DataTable.AllSupplierBanks";
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
+using StorageDLHI.App.Common;
 using StorageDLHI.App.Enums;
 using StorageDLHI.BLL.MaterialDAO;
 using StorageDLHI.DAL.Models;
@@ -87,7 +88,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         };
                         if (MaterialDAO.InsertOrigin(model))
                         {
-                            KryptonMessageBox.Show("Add Origins success!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBoxHelper.ShowInfo("Add Origins success!");
                             this.Close();
                         }
                         else

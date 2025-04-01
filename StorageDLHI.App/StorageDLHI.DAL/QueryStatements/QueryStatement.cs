@@ -14,6 +14,7 @@ namespace StorageDLHI.DAL.QueryStatements
 
         // Supplier banks
         public const string GET_SUPPLIER_BANKS = "select *from SUPPLIER_BANKS";
+        public const string GET_BANK_BY_SUPPLIER = "SELECT *FROM SUPPLIER_BANKS WHERE SUPPLIER_ID = '{0}'";
 
         // Material Origins
         public const string GET_ORIGINS = "SELECT *FROM ORIGINS";

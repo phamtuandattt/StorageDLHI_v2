@@ -20,12 +20,17 @@ namespace StorageDLHI.BLL.SupplierDAO
             return supls;
         }
 
-        public static bool Insert(Suppliers model)
+        public static bool InsertSupplier(Suppliers model)
         {
             string sqlQuery = string.Format(QueryStatement.INSERT_SUPPLIERS, model.Id, model.Name, model.Cert, model.Email, model.Phone,
                 model.Viettat, model.Address, model.Bank_Id);
 
             return data.Insert(sqlQuery) > 0;
+        }
+
+        public static DataTable GetBankBySupplier(Guid supId)
+        {
+            return data.GetData(string.Format(QueryStatement.GET_BANK_BY_SUPPLIER, supId), "BANK");
         }
 
         public static DataTable GetSupplierBanks()

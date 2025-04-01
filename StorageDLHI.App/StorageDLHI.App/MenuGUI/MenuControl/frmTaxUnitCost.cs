@@ -1,4 +1,5 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
+using StorageDLHI.App.Common;
 using StorageDLHI.App.Enums;
 using StorageDLHI.BLL.MaterialDAO;
 using StorageDLHI.DAL.Models;
@@ -81,13 +82,13 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         Taxs taxs = new Taxs() { Id = Guid.NewGuid(), Tax_Percent = txtName.Text.Trim() };
                         if (MaterialDAO.InsertTax(taxs))
                         {
-                            KryptonMessageBox.Show("Add Tax success!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBoxHelper.ShowInfo("Add Tax success!");
                             LoggerConfig.Logger.Info($"Add Tax success by {ShareData.UserName}");
                             this.Close();
                         }
                         else
                         {
-                            KryptonMessageBox.Show("Add Tax fail!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBoxHelper.ShowWarning("Add Tax fail!");
                             this.Close();
                         }
                         break;
@@ -95,13 +96,13 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         Units unit = new Units() { Id = Guid.NewGuid(), Unit_Code = txtName.Text.Trim() };
                         if (MaterialDAO.InsertUnit(unit))
                         {
-                            KryptonMessageBox.Show("Add Unit success!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBoxHelper.ShowInfo("Add Unit success!");
                             LoggerConfig.Logger.Info($"Add Unit success by {ShareData.UserName}");
                             this.Close();
                         }
                         else
                         {
-                            KryptonMessageBox.Show("Add Unit fail!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBoxHelper.ShowWarning("Add Unit fail!");
                             this.Close();
                         }
                         break;
@@ -109,13 +110,13 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         Costs cost = new Costs() { Id = Guid.NewGuid(), Cost_Name = txtName.Text.Trim() };
                         if (MaterialDAO.InsertCost(cost))
                         {
-                            KryptonMessageBox.Show("Add Cost success!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBoxHelper.ShowInfo("Add Cost success!");
                             LoggerConfig.Logger.Info($"Add Cost success by {ShareData.UserName}");
                             this.Close();
                         }
                         else
                         {
-                            KryptonMessageBox.Show("Add Cost fail!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBoxHelper.ShowWarning("Add Cost fail!");
                             this.Close();
                         }
                         break;
@@ -129,13 +130,13 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         Taxs taxs = new Taxs() { Id = this.models.Taxs.Id, Tax_Percent = txtName.Text.Trim() };
                         if (MaterialDAO.UpdateTax(taxs))
                         {
-                            KryptonMessageBox.Show("Update Tax success!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBoxHelper.ShowInfo("Update Tax success!");
                             LoggerConfig.Logger.Info($"Update Tax success by {ShareData.UserName}");
                             this.Close();
                         }
                         else
                         {
-                            KryptonMessageBox.Show("Update Tax fail!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBoxHelper.ShowWarning("Update Tax fail!");
                             this.Close();
                         }
                         break;
@@ -143,13 +144,13 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         Units unit = new Units() { Id = this.models.Units.Id, Unit_Code = txtName.Text.Trim() };
                         if (MaterialDAO.UpdateUnit(unit))
                         {
-                            KryptonMessageBox.Show("Update Unit success!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBoxHelper.ShowInfo("Update Unit success!");
                             LoggerConfig.Logger.Info($"Update Unit success by {ShareData.UserName}");
                             this.Close();
                         }
                         else
                         {
-                            KryptonMessageBox.Show("Update Unit fail!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBoxHelper.ShowWarning("Update Unit fail!");
                             this.Close();
                         }
                         break;
@@ -157,13 +158,13 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         Costs cost = new Costs() { Id = this.models.Costs.Id, Cost_Name = txtName.Text.Trim() };
                         if (MaterialDAO.UpdateCost(cost))
                         {
-                            KryptonMessageBox.Show("Update Cost success!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBoxHelper.ShowInfo("Update Cost success!");
                             LoggerConfig.Logger.Info($"Update Cost success by {ShareData.UserName}");
                             this.Close();
                         }
                         else
                         {
-                            KryptonMessageBox.Show("Update Cost fail!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBoxHelper.ShowWarning("Update Cost fail!");
                             this.Close();
                         }
                         break;

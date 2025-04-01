@@ -1,11 +1,13 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using StorageDLHI.App.Common;
 using StorageDLHI.App.MenuGUI.MenuControl;
+using StorageDLHI.App.SupplierGUI;
 using StorageDLHI.Infrastructor.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Deployment.Application;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -73,6 +75,14 @@ namespace StorageDLHI.App.MainGUI
             ucItems.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucItems);
             ucItems.BringToFront();
+        }
+
+        private void tlsSuppliers_Click(object sender, EventArgs e)
+        {
+            ucSuppliers ucSuppliers = new ucSuppliers();
+            ucSuppliers.Dock = DockStyle.Fill;
+            pnMain.Controls.Add(ucSuppliers);
+            ucSuppliers.BringToFront();
         }
     }
 }

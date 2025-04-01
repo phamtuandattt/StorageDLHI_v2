@@ -35,10 +35,11 @@
             this.hệThốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.quảnLýToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsMaterial = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.tlsSuppliers = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsPO = new System.Windows.Forms.ToolStripButton();
             this.tlsMPR = new System.Windows.Forms.ToolStripButton();
             this.tlsImport = new System.Windows.Forms.ToolStripButton();
@@ -120,22 +121,38 @@
             this.logoutToolStripMenuItem,
             this.resetToolStripMenuItem});
             this.hệThốngToolStripMenuItem.Name = "hệThốngToolStripMenuItem";
-            this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
-            this.hệThốngToolStripMenuItem.Text = "Hệ thống";
+            this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
+            this.hệThốngToolStripMenuItem.Text = "System";
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
-            this.logoutToolStripMenuItem.Text = "Đăng xuất";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
+            this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // resetToolStripMenuItem
             // 
             this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
             this.resetToolStripMenuItem.Text = "Reset";
             this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
+            // 
+            // quảnLýToolStripMenuItem
+            // 
+            this.quảnLýToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlsMaterial,
+            this.tlsSuppliers});
+            this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
+            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(111, 24);
+            this.quảnLýToolStripMenuItem.Text = "Management";
+            // 
+            // tlsMaterial
+            // 
+            this.tlsMaterial.Name = "tlsMaterial";
+            this.tlsMaterial.Size = new System.Drawing.Size(224, 26);
+            this.tlsMaterial.Text = "Materials";
+            this.tlsMaterial.Click += new System.EventHandler(this.tlsMaterial_Click);
             // 
             // toolStrip1
             // 
@@ -155,21 +172,6 @@
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // quảnLýToolStripMenuItem
-            // 
-            this.quảnLýToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlsMaterial});
-            this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
-            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
-            this.quảnLýToolStripMenuItem.Text = "Quản lý";
-            // 
-            // tlsMaterial
-            // 
-            this.tlsMaterial.Name = "tlsMaterial";
-            this.tlsMaterial.Size = new System.Drawing.Size(224, 26);
-            this.tlsMaterial.Text = "Vật liệu";
-            this.tlsMaterial.Click += new System.EventHandler(this.tlsMaterial_Click);
-            // 
             // pnMain
             // 
             this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -178,6 +180,13 @@
             this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.pnMain.Size = new System.Drawing.Size(1397, 586);
             this.pnMain.TabIndex = 2;
+            // 
+            // tlsSuppliers
+            // 
+            this.tlsSuppliers.Name = "tlsSuppliers";
+            this.tlsSuppliers.Size = new System.Drawing.Size(224, 26);
+            this.tlsSuppliers.Text = "Suppliers";
+            this.tlsSuppliers.Click += new System.EventHandler(this.tlsSuppliers_Click);
             // 
             // tlsPO
             // 
@@ -282,5 +291,6 @@
         private System.Windows.Forms.ToolStripMenuItem quảnLýToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tlsMaterial;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnMain;
+        private System.Windows.Forms.ToolStripMenuItem tlsSuppliers;
     }
 }

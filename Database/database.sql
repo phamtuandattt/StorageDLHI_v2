@@ -78,15 +78,6 @@ CREATE TABLE SUPPLIERS (
 
 	-- Tạo khóa chính
 	CONSTRAINT PK_SUPPLIERS PRIMARY KEY (ID),
-	
-	-- THÊM THUỘC TÍNH KHÓA NGOẠI
-	-- Cho về đầu tiên: 1 SUPPLIERS SẼ CÓ 1 HOẶC NHIỀU BANKS
-	-- Này nói dân dã và có cái mẹo dễ hiểu dễ làm nhất, là thằng nào làm cha thì thằng đó có thuộc tính con
-	-- Mình sẽ cần tạo 1 thuộc tính con -> Theo cú pháp em nghĩ ra cho dễ nhận biết <TÊN CON>_ID -> BANK_ID
-	-- Thuộc tính con có thể KHÁC TÊN với KHÓA CHÍNH trong bảng CON, nhưng BẮT BUỘC phải CÙNG KIỂ DỮ LIỆU
-	BANK_ID UNIQUEIDENTIFIER, -- Tạo thuộc tính khóa ngoại
-	-- TẠO KHÓA NGOẠI theo cú pháp CONSTRAINT FK_<BẢNG CHA>_<BẢNG CON> FOREIGN KEY <THUỘC TÍNH KHÓA NGOAI> REFERNCES <BẢNG CON>(<THUỘC TÍNH KHÓA CHÍNH CỦA BẢNG CON>)
-	CONSTRAINT FK_SUPPLIERS_SUPPLIER_BANKS FOREIGN KEY (BANK_ID) REFERENCES SUPPLIER_BANKS(ID),
 )
 
 -- QUan trọng nhất là xác định được mối quan hệ giữa các bảng, và xác định được 2 bảng CÓ THỂ KẾT NỐI VỚI NHAU thông qua thuộc tính nào
@@ -107,12 +98,14 @@ GO
 CREATE TABLE SUPPLIER_BANKS (
 	-- B1: Xác định khóa chính và thêm NOT NULL
 	ID UNIQUEIDENTIFIER NOT NULL,
+	SUPPLIER_ID UNIQUEIDENTIFIER NOT NULL,
 	BANK_ACCOUNT CHAR(50), -- STK chỉ chứa sổ và không thể nào hơn 50 ký tự nên mình gắn cứng độ dài để đỡ tốn bộ nhớ
 	BANK_NAME NVARCHAR(500), -- Có tiếng việt không biết độ dài
 	BANK_BENEFICIAL NVARCHAR(500), -- Có tiếng việt không biết độ dài
 
 	-- B2: Tạo khóa chính với cú pháp: CONSTRAINT <NAME> PRIMARY KEY (<THUỘC TÍNH KHÓA CHÍNH>)
-	CONSTRAINT PK_SUPPLIER_BANKS PRIMARY KEY (ID)
+	CONSTRAINT PK_SUPPLIER_BANKS PRIMARY KEY (ID, SUPPLIER_ID),
+	CONSTRAINT FK_SUPPLIER_BANKS_SUPPLIER FOREIGN KEY (SUPPLIER_ID) REFERENCES SUPPLIERS(ID)
 )
 
 CREATE TABLE COMPANY_INFOS (
@@ -180,7 +173,7 @@ CREATE TABLE MATERIAL_STANDARD (
 
 CREATE TABLE TAX (
 	ID UNIQUEIDENTIFIER NOT NULL,
-	TAX_PERCENT NVARCHAR(5),
+	TAX_PERCENT NVARCHAR(50),
 
 	CONSTRAINT PK_TAX PRIMARY KEY (ID)
 )
@@ -194,7 +187,7 @@ CREATE TABLE COST (
 
 CREATE TABLE UNITS (
 	ID UNIQUEIDENTIFIER NOT NULL,
-	UNIT_CODE NVARCHAR(10),
+	UNIT_CODE NVARCHAR(50),
 
 	CONSTRAINT PK_UNITS PRIMARY KEY (ID)
 )

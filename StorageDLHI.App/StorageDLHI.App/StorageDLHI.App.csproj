@@ -78,6 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\MessageBoxHelper.cs" />
     <Compile Include="Common\NotificationManager.cs" />
     <Compile Include="Common\TitleManager.cs" />
     <Compile Include="Enums\En.cs" />
@@ -113,6 +114,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SupplierGUI\ucSuppliers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SupplierGUI\ucSuppliers.Designer.cs">
+      <DependentUpon>ucSuppliers.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmConnectSystem.resx">
       <DependentUpon>frmConnectSystem.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,6 +145,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SupplierGUI\ucSuppliers.resx">
+      <DependentUpon>ucSuppliers.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
