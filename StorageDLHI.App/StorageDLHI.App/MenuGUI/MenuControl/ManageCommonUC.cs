@@ -1,7 +1,9 @@
-﻿using StorageDLHI.App.Enums;
+﻿using StorageDLHI.App.Common;
+using StorageDLHI.App.Enums;
 using StorageDLHI.BLL.MaterialDAO;
 using StorageDLHI.BLL.SupplierDAO;
 using StorageDLHI.DAL.Models;
+using StorageDLHI.Infrastructor.Caches;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
@@ -20,36 +22,84 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
         public ManageCommonUC()
         {
             InitializeComponent();
-
             LoadData();
-
         }
 
         private void LoadData()
         {
-            dgvOrigins.DataSource = MaterialDAO.GetOrigins();
-            dgvMaterialTypes.DataSource = MaterialDAO.GetMaterialTypes();
-            dgvStandards.DataSource = MaterialDAO.GetMaterialStandards();
+            LoadOrigins();
+            LoadMaterialTypes();
+            LoadStandards();
+        }
+
+        private void LoadOrigins ()
+        {
+            if (!CacheManager.Exists(CacheKeys.ORIGIN_DATATABLE_ALLORIGIN))
+            {
+                var dtOr = MaterialDAO.GetOrigins();
+                CacheManager.Add(CacheKeys.ORIGIN_DATATABLE_ALLORIGIN, dtOr);
+                dgvOrigins.DataSource = dtOr;
+            }
+            else
+            {
+                dgvOrigins.DataSource = CacheManager.Get<DataTable>(CacheKeys.ORIGIN_DATATABLE_ALLORIGIN);
+            }
+        }
+
+        private void LoadMaterialTypes ()
+        {
+            if (!CacheManager.Exists(CacheKeys.MATERIAL_TYPE_DATATABLE_ALLTYPE))
+            {
+                var dtType = MaterialDAO.GetMaterialTypes();
+                CacheManager.Add(CacheKeys.MATERIAL_TYPE_DATATABLE_ALLTYPE, dtType);
+                dgvMaterialTypes.DataSource = dtType;
+            }
+            else
+            {
+                dgvMaterialTypes.DataSource = CacheManager.Get<DataTable>(CacheKeys.MATERIAL_TYPE_DATATABLE_ALLTYPE);
+            }
+        }
+
+        private void LoadStandards()
+        {
+            if (!CacheManager.Exists(CacheKeys.STANDARD_DATATABLE_ALLSTANDARD))
+            {
+                var dtSt = MaterialDAO.GetMaterialStandards();
+                CacheManager.Add(CacheKeys.STANDARD_DATATABLE_ALLSTANDARD, dtSt);
+                dgvStandards.DataSource = dtSt;
+            }
+            else
+            {
+                dgvStandards.DataSource = CacheManager.Get<DataTable>(CacheKeys.STANDARD_DATATABLE_ALLSTANDARD);
+            }
         }
 
         private void btnAddOrigins_Click(object sender, EventArgs e)
         {
-            frmAddMaterials frmAdd = new frmAddMaterials("Add Origins", Enums.Materials.Origins, true, null);
+            frmAddMaterials frmAdd = new frmAddMaterials(TitleManager.ORIGIN_ADD_TITLE, Enums.Materials.Origins, true, null);
             frmAdd.ShowDialog();
+
+            // Overwrite cache after add item
+            CacheManager.Add(CacheKeys.ORIGIN_DATATABLE_ALLORIGIN, MaterialDAO.GetOrigins());
+
             LoadData();
         }
 
         private void tlsAddMaterialTypes_Click(object sender, EventArgs e)
         {
-            frmAddMaterials frmAdd = new frmAddMaterials("Add Material Types", Enums.Materials.Types, true, null);
+            frmAddMaterials frmAdd = new frmAddMaterials(TitleManager.MATERIAL_TYPE_ADD_TITLE, Enums.Materials.Types, true, null);
             frmAdd.ShowDialog();
+            // Overwrite cache after add item
+            CacheManager.Add(CacheKeys.MATERIAL_TYPE_DATATABLE_ALLTYPE, MaterialDAO.GetMaterialTypes());
             LoadData();
         }
 
         private void tlsAddStandard_Click(object sender, EventArgs e)
         {
-            frmAddMaterials frmAdd = new frmAddMaterials("Add Material Standards", Enums.Materials.Standards, true, null);
+            frmAddMaterials frmAdd = new frmAddMaterials(TitleManager.STANDARD_ADD_TITLE, Enums.Materials.Standards, true, null);
             frmAdd.ShowDialog();
+            // Overwrite cache after add item
+            CacheManager.Add(CacheKeys.STANDARD_DATATABLE_ALLSTANDARD, MaterialDAO.GetMaterialStandards());
             LoadData();
         }
 

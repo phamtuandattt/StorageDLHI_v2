@@ -14,7 +14,7 @@ namespace StorageDLHI.App.Enums
         Standards = 3,
     }
 
-    public class Common
+    public class En
     {
 
     }
