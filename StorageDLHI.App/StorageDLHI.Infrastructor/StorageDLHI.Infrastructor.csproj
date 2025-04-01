@@ -51,6 +51,7 @@
     <Compile Include="Caches\CacheManager.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\ShareData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="log4net.config">

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StorageDLHI.Infrastructor;
+using StorageDLHI.Infrastructor.Shared;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -43,6 +45,7 @@ namespace StorageDLHI.DAL.DataProvider
             }
             catch (SqlException ex)
             {
+                LoggerConfig.Logger.Error($"{ex.Message} by {ShareData.UserName}");
                 return null;
                 throw new Exception(ex.Message);
             }
@@ -59,6 +62,7 @@ namespace StorageDLHI.DAL.DataProvider
             }
             catch (SqlException ex)
             {
+                LoggerConfig.Logger.Error($"{ex.Message} by {ShareData.UserName}");
                 return false;
                 throw new Exception(ex.Message);
             }
@@ -80,6 +84,7 @@ namespace StorageDLHI.DAL.DataProvider
             }
             catch (SqlException ex)
             {
+                LoggerConfig.Logger.Error($"{ex.Message} by {ShareData.UserName}");
                 return -1;
                 throw new Exception(ex.Message);
             }
@@ -101,6 +106,7 @@ namespace StorageDLHI.DAL.DataProvider
             }
             catch (SqlException ex)
             {
+                LoggerConfig.Logger.Error($"{ex.Message} by {ShareData.UserName}");
                 return -1;
                 throw new Exception(ex.Message);
             }
@@ -122,6 +128,7 @@ namespace StorageDLHI.DAL.DataProvider
             }
             catch (SqlException ex)
             {
+                LoggerConfig.Logger.Error($"{ex.Message} by {ShareData.UserName}");
                 return -1;
                 throw new Exception(ex.Message);
             }

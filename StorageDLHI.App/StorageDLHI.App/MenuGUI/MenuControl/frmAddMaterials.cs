@@ -1,9 +1,9 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using StorageDLHI.App.Enums;
-using StorageDLHI.App.Shared;
 using StorageDLHI.BLL.MaterialDAO;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.Infrastructor;
+using StorageDLHI.Infrastructor.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -92,7 +92,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         }
                         else
                         {
-                            KryptonMessageBox.Show("Add Origins fail!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            KryptonMessageBox.Show("Add Origins fail!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             this.Close();
                         }
 
@@ -112,7 +112,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         }
                         else
                         {
-                            KryptonMessageBox.Show("Add Types fail!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            KryptonMessageBox.Show("Add Types fail!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             this.Close();
                         }
                         break;
@@ -131,7 +131,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         }
                         else
                         {
-                            KryptonMessageBox.Show("Add Standard fail!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            KryptonMessageBox.Show("Add Standard fail!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             this.Close();
                         }
                         break;
@@ -156,7 +156,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         }
                         else
                         {
-                            KryptonMessageBox.Show("Update Origins fail!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            KryptonMessageBox.Show("Update Origins fail!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             this.Close();
                         }
 
@@ -177,7 +177,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         }
                         else
                         {
-                            KryptonMessageBox.Show("Update Types fail!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            KryptonMessageBox.Show("Update Types fail!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             this.Close();
                         }
                         break;
@@ -197,7 +197,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         }
                         else
                         {
-                            KryptonMessageBox.Show("Update Standard fail!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            KryptonMessageBox.Show("Update Standard fail!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             this.Close();
                         }
                         break;

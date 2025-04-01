@@ -9,7 +9,17 @@ namespace StorageDLHI.App.Common
     public static class TitleManager
     {
         public const string ORIGIN_ADD_TITLE = "Add Origins";
+        public const string ORIGIN_UPDATE_TITLE = "Update Origin";
         public const string MATERIAL_TYPE_ADD_TITLE = "Add Material Types";
+        public const string MATERIAL_TYPE_UPDATE_TITLE = "Update Material Standards";
         public const string STANDARD_ADD_TITLE = "Add Material Standards";
+        public const string STANDARD_UPDATE_TITLE = "Update Material Type";
+
+        public const string TAX_ADD_TITLE = "Add Tax";
+        public const string TAX_UPDATE_TITLE = "Update Tax";
+        public const string UNIT_ADD_TITLE = "Add Unit";
+        public const string UNIT_UPDATE_TITLE = "Update Unit";
+        public const string COST_ADD_TITLE = "Add Cost";
+        public const string COST_UPDATE_TITLE = "Update Cost";
     }
 }

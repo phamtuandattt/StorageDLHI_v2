@@ -65,5 +65,56 @@ namespace StorageDLHI.BLL.MaterialDAO
         {
             return data.GetData(QueryStatement.GET_MATERIAL_STANDARDS, "Standards");
         }
+
+        public static bool InsertTax(Taxs taxs)
+        {
+            string sqlQuery = string.Format(QueryStatement.INSERT_TAX, taxs.Id, taxs.Tax_Percent);
+            return data.Insert(sqlQuery) > 0;
+        }
+
+        public static bool InsertUnit(Units units)
+        {
+            string sqlQuery = string.Format(QueryStatement.INSERT_UNIT, units.Id, units.Unit_Code);
+            return data.Insert(sqlQuery) > 0;
+        }
+
+        public static bool InsertCost(Costs costs)
+        {
+            string sqlQuery = string.Format(QueryStatement.INSERT_COST, costs.Id, costs.Cost_Name);
+            return data.Insert(sqlQuery) > 0;
+        }
+
+        public static bool UpdateTax(Taxs taxs)
+        {
+            string sqlQuery = string.Format(QueryStatement.UPDATE_TAX, taxs.Tax_Percent, taxs.Id);
+            return data.Insert(sqlQuery) > 0;
+        }
+
+        public static bool UpdateUnit(Units units)
+        {
+            string sqlQuery = string.Format(QueryStatement.UPDATE_UNIT, units.Unit_Code, units.Id);
+            return data.Insert(sqlQuery) > 0;
+        }
+
+        public static bool UpdateCost(Costs costs)
+        {
+            string sqlQuery = string.Format(QueryStatement.UPDATE_COST, costs.Cost_Name, costs.Id);
+            return data.Insert(sqlQuery) > 0;
+        }
+
+        public static DataTable GetTaxs()
+        {
+            return data.GetData(QueryStatement.GET_TAXS, "TAXS");
+        }
+
+        public static DataTable GetUnits()
+        {
+            return data.GetData(QueryStatement.GET_UNIT, "UNITS");
+        }
+
+        public static DataTable GetCosts()
+        {
+            return data.GetData(QueryStatement.GET_COST, "COSTS");
+        }
     }
 }

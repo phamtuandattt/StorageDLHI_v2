@@ -29,5 +29,21 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_MATERIAL_STANDARDS = "SELECT *FROM MATERIAL_STANDARD";
         public const string INSERT_MATEIAL_STANDARD = "INSERT INTO MATERIAL_STANDARD VALUES ('{0}', '{1}', N'{2}')";
         public const string UPDATE_MATERIAL_STANDARD = "UPDATE MATERIAL_STANDARD SET STANDARD_CODE = '{0}', STANDARD_DES = N'{1}' WHERE ID = '{2}'";
+
+        // Tax
+        public const string GET_TAXS = "SELECT *FROM TAX";
+        public const string INSERT_TAX = "INSERT INTO TAX VALUES ('{0}', N'{1}')";
+        public const string UPDATE_TAX = "UPDATE TAX SET TAX_PERCENT = N'{0}' WHERE ID = '{1}'";
+
+        // Unit
+        public const string GET_UNIT = "SELECT *FROM UNITS";
+        public const string INSERT_UNIT = "INSERT INTO UNITS VALUES ('{0}', N'{1}')";
+        public const string UPDATE_UNIT = "UPDATE UNITS SET UNIT_CODE = N'{0}' WHERE ID = '{1}'";
+
+        // Cost
+        public const string GET_COST = "SELECT *FROM COST";
+        public const string INSERT_COST = "INSERT INTO COST VALUES ('{0}', N'{1}')";
+        public const string UPDATE_COST = "UPDATE COST SET COST_NAME = N'{0}' WHERE ID = '{1}'";
+
     }
 }

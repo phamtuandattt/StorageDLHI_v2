@@ -1,6 +1,7 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
+using StorageDLHI.App.Common;
 using StorageDLHI.App.MenuGUI.MenuControl;
-using StorageDLHI.App.Shared;
+using StorageDLHI.Infrastructor.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -62,7 +63,7 @@ namespace StorageDLHI.App.MainGUI
             Properties.Settings.Default.DbConnectionString = "";
             Properties.Settings.Default.Save();
 
-            KryptonMessageBox.Show("Connection settings reset. Please restart the application.", "Reset", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            KryptonMessageBox.Show(NotificationManager.RESET_CONNECTION_STRING, "Reset", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Application.Exit();
         }
 

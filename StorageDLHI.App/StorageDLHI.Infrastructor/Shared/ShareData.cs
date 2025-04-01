@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StorageDLHI.App.Shared
+namespace StorageDLHI.Infrastructor.Shared
 {
     public static class ShareData
     {
