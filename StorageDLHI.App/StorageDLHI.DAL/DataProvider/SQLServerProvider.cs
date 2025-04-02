@@ -3,6 +3,7 @@ using StorageDLHI.Infrastructor.Shared;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -58,6 +59,7 @@ namespace StorageDLHI.DAL.DataProvider
                 SqlDataAdapter da = new SqlDataAdapter(sqlQuery, _connection);
                 SqlCommandBuilder cmd = new SqlCommandBuilder(da);
                 da.Update(tableUpdate);
+                LoggerConfig.Logger.Info($"Update database \"{sqlQuery}\" by {ShareData.UserName}");
                 return true;
             }
             catch (SqlException ex)
@@ -79,6 +81,7 @@ namespace StorageDLHI.DAL.DataProvider
                 SqlCommand cmd = new SqlCommand(sqlQuery, _connection);
                 int rs = cmd.ExecuteNonQuery();
                 _connection.Close();
+                LoggerConfig.Logger.Info($"Insert database \"{sqlQuery}\" by {ShareData.UserName}");
 
                 return rs;
             }
@@ -101,6 +104,7 @@ namespace StorageDLHI.DAL.DataProvider
                 SqlCommand cmd = new SqlCommand(sqlQeuery, _connection);
                 int rs = cmd.ExecuteNonQuery();
                 _connection.Close();
+                LoggerConfig.Logger.Info($"Update record \"{sqlQeuery}\" by {ShareData.UserName}");
 
                 return rs;
             }
@@ -123,6 +127,7 @@ namespace StorageDLHI.DAL.DataProvider
                 SqlCommand cmd = new SqlCommand(sqlQuery, _connection);
                 int rs = cmd.ExecuteNonQuery();
                 _connection.Close();
+                LoggerConfig.Logger.Info($"Delete \"{sqlQuery}\" by {ShareData.UserName}");
 
                 return rs;
             }

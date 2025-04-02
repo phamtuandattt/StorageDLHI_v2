@@ -10,11 +10,15 @@ namespace StorageDLHI.DAL.QueryStatements
     {
         // Supplier
         public const string GET_SUPPLIERS = "SELECT *FROM SUPPLIERS";
-        public const string INSERT_SUPPLIERS = "INSERT INTO SUPPLIERS VALUES ('{0}', N'{1}', '{2}', N'{3}', '{4}', N'{5}', N'{6}', '{7}')";
+        public const string INSERT_SUPPLIERS = "INSERT INTO SUPPLIERS VALUES ('{0}', N'{1}', '{2}', N'{3}', '{4}', N'{5}', N'{6}')";
+        public const string UPDATE_SUPPLIER = "UPDATE SUPPLIERS SET NAME = N'{0}', CERT = '{1}', EMAIL = N'{2}', PHONE = '{3}', VIETTAT = N'{4}', ADDRESS = N'{5}' WHERE ID = '{6}'";
+        public const string DELETE_SUPPLIER = "DELETE SUPPLIERS WHERE ID = '{0}'";
 
         // Supplier banks
-        public const string GET_SUPPLIER_BANKS = "select *from SUPPLIER_BANKS";
+        public const string GET_SUPPLIER_BANKS = "SELECT *FROM SUPPLIER_BANKS";
+        public const string GET_SUPPLIER_BANKS_FORM = "SELECT *FROM SUPPLIER_BANKS WHERE ID = '00000000-0000-0000-0000-000000000000'";
         public const string GET_BANK_BY_SUPPLIER = "SELECT *FROM SUPPLIER_BANKS WHERE SUPPLIER_ID = '{0}'";
+        public const string UPDATE_BANK = "UPDATE SUPPLIER_BANKS SET BANK_ACCOUNT = '{0}', BANK_NAME = N'{1}', BANK_BENEFICIAL = N'{2}' WHERE ID = '{3}'";
 
         // Material Origins
         public const string GET_ORIGINS = "SELECT *FROM ORIGINS";
