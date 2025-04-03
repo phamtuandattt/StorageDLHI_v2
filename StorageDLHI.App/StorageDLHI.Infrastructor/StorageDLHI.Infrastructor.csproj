@@ -52,6 +52,7 @@
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\ShareData.cs" />
+    <Compile Include="Shared\Validator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="log4net.config">

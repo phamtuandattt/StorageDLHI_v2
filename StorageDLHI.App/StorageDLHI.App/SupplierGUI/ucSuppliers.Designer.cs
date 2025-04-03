@@ -39,6 +39,8 @@
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.btnAddBank = new System.Windows.Forms.ToolStripButton();
+            this.btnLoadBank = new System.Windows.Forms.ToolStripButton();
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.dgvSuppliers = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
@@ -50,8 +52,6 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnAddBank = new System.Windows.Forms.ToolStripButton();
-            this.btnLoadBank = new System.Windows.Forms.ToolStripButton();
             this.btnAddSupplier = new System.Windows.Forms.ToolStripButton();
             this.tlsLoadSupplier = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -205,6 +205,28 @@
             this.toolStrip2.TabIndex = 3;
             this.toolStrip2.Text = "toolStrip2";
             // 
+            // btnAddBank
+            // 
+            this.btnAddBank.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAddBank.Image = global::StorageDLHI.App.Properties.Resources.add;
+            this.btnAddBank.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAddBank.Name = "btnAddBank";
+            this.btnAddBank.Size = new System.Drawing.Size(29, 24);
+            this.btnAddBank.Text = "Add";
+            this.btnAddBank.Visible = false;
+            this.btnAddBank.Click += new System.EventHandler(this.btnAddBank_Click);
+            // 
+            // btnLoadBank
+            // 
+            this.btnLoadBank.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnLoadBank.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.btnLoadBank.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnLoadBank.Name = "btnLoadBank";
+            this.btnLoadBank.Size = new System.Drawing.Size(29, 24);
+            this.btnLoadBank.Text = "toolStripButton1";
+            this.btnLoadBank.Visible = false;
+            this.btnLoadBank.Click += new System.EventHandler(this.btnLoadBank_Click);
+            // 
             // kryptonPanel3
             // 
             this.kryptonPanel3.Controls.Add(this.kryptonGroupBox1);
@@ -332,28 +354,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(684, 27);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // btnAddBank
-            // 
-            this.btnAddBank.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnAddBank.Image = global::StorageDLHI.App.Properties.Resources.add;
-            this.btnAddBank.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAddBank.Name = "btnAddBank";
-            this.btnAddBank.Size = new System.Drawing.Size(29, 28);
-            this.btnAddBank.Text = "Add";
-            this.btnAddBank.Visible = false;
-            this.btnAddBank.Click += new System.EventHandler(this.btnAddBank_Click);
-            // 
-            // btnLoadBank
-            // 
-            this.btnLoadBank.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnLoadBank.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.btnLoadBank.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnLoadBank.Name = "btnLoadBank";
-            this.btnLoadBank.Size = new System.Drawing.Size(29, 24);
-            this.btnLoadBank.Text = "toolStripButton1";
-            this.btnLoadBank.Visible = false;
-            this.btnLoadBank.Click += new System.EventHandler(this.btnLoadBank_Click);
             // 
             // btnAddSupplier
             // 

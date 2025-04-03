@@ -37,9 +37,9 @@
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsMaterial = new System.Windows.Forms.ToolStripMenuItem();
+            this.tlsSuppliers = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.tlsSuppliers = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsPO = new System.Windows.Forms.ToolStripButton();
             this.tlsMPR = new System.Windows.Forms.ToolStripButton();
             this.tlsImport = new System.Windows.Forms.ToolStripButton();
@@ -150,9 +150,16 @@
             // tlsMaterial
             // 
             this.tlsMaterial.Name = "tlsMaterial";
-            this.tlsMaterial.Size = new System.Drawing.Size(224, 26);
+            this.tlsMaterial.Size = new System.Drawing.Size(153, 26);
             this.tlsMaterial.Text = "Materials";
             this.tlsMaterial.Click += new System.EventHandler(this.tlsMaterial_Click);
+            // 
+            // tlsSuppliers
+            // 
+            this.tlsSuppliers.Name = "tlsSuppliers";
+            this.tlsSuppliers.Size = new System.Drawing.Size(153, 26);
+            this.tlsSuppliers.Text = "Suppliers";
+            this.tlsSuppliers.Click += new System.EventHandler(this.tlsSuppliers_Click);
             // 
             // toolStrip1
             // 
@@ -180,13 +187,6 @@
             this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.pnMain.Size = new System.Drawing.Size(1397, 586);
             this.pnMain.TabIndex = 2;
-            // 
-            // tlsSuppliers
-            // 
-            this.tlsSuppliers.Name = "tlsSuppliers";
-            this.tlsSuppliers.Size = new System.Drawing.Size(224, 26);
-            this.tlsSuppliers.Text = "Suppliers";
-            this.tlsSuppliers.Click += new System.EventHandler(this.tlsSuppliers_Click);
             // 
             // tlsPO
             // 

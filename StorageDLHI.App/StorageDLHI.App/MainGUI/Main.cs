@@ -1,6 +1,7 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using StorageDLHI.App.Common;
 using StorageDLHI.App.MenuGUI.MenuControl;
+using StorageDLHI.App.MprGUI;
 using StorageDLHI.App.SupplierGUI;
 using StorageDLHI.Infrastructor.Shared;
 using System;
@@ -42,7 +43,10 @@ namespace StorageDLHI.App.MainGUI
 
         private void tlsMPR_Click(object sender, EventArgs e)
         {
-
+            ucMPRMain ucMPRMain = new ucMPRMain();
+            ucMPRMain.Dock = DockStyle.Fill;
+            pnMain.Controls.Add(ucMPRMain);
+            ucMPRMain.BringToFront();
         }
 
         private void tlsImport_Click(object sender, EventArgs e)
