@@ -64,6 +64,11 @@ namespace StorageDLHI.BLL.SupplierDAO
             return data.GetData(string.Format(QueryStatement.GET_BANK_BY_SUPPLIER, supId), "BANK");
         }
 
+        public static bool DeleteBank(Guid BankId)
+        {
+            return data.Delete(string.Format(QueryStatement.DELETE_BANK, BankId)) > 0;
+        }
+
         public static DataTable GetSupplierBanksForms()
         {
             var supls = data.GetData(QueryStatement.GET_SUPPLIER_BANKS_FORM, "SUPPLIER_BANKS");

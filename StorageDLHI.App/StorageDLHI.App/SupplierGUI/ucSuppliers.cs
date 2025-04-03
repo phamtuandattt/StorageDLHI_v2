@@ -34,6 +34,11 @@ namespace StorageDLHI.App.SupplierGUI
             {
                 dgvSuppliers.DataSource = CacheManager.Get<DataTable>(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER);
             }
+
+            if (dgvSuppliers.Rows.Count <= 0) return;
+            dgvSuppliers.Rows[0].Selected = true;
+            LoadBankBySupplier(Guid.Parse(dgvSuppliers.Rows[0].Cells[0].Value.ToString()));
+
         }
 
         private void LoadBankBySupplier(Guid supplierId)
@@ -57,6 +62,7 @@ namespace StorageDLHI.App.SupplierGUI
 
             var dtSp = SupplierDAO.GetSuppliers();
             CacheManager.Add(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER, dtSp);
+            LoadData();
         }
 
         private void tlsLoadSupplier_Click(object sender, EventArgs e)
@@ -139,6 +145,8 @@ namespace StorageDLHI.App.SupplierGUI
 
             CacheManager.Add(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER, SupplierDAO.GetSuppliers());
             CacheManager.Add(string.Format(CacheKeys.BANK_DETAIL_SUPPLIER_ID, supplierId), SupplierDAO.GetBankBySupplier(supplierId));
+
+            LoadData();
         }
     }
 }

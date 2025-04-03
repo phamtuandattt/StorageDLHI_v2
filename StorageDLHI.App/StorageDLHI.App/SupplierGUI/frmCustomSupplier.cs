@@ -35,9 +35,14 @@ namespace StorageDLHI.App.SupplierGUI
             if (!status)
             {
                 // Load exist banks
-                dgvBankOfSup.DataSource = dtBanks;
+                if (dtBanks.Rows.Count > 0)
+                {
+                    this.dtBanks = dtBanks; 
+                    dgvBankOfSup.DataSource = dtBanks;
+                    dgvBankOfSup.Rows[0].Selected = true;
+                }
+
                 this.spModel = spModel;
-                this.dtBanks = dtBanks;
                 txtName.Text = this.spModel.Name;
                 txtCert.Text = this.spModel.Cert;
                 txtEmail.Text = this.spModel.Email;
@@ -175,13 +180,48 @@ namespace StorageDLHI.App.SupplierGUI
 
         private void tlsAddBank_Click(object sender, EventArgs e)
         {
-            DataRow r_new = this.dtBanks.NewRow();
-            this.dtBanks.Rows.Add(r_new);
+            if (this.dtBanks is null)
+            {
+                this.dtBanks = SupplierDAO.GetSupplierBanksForms();
+                DataRow r_new = this.dtBanks.NewRow();
+                this.dtBanks.Rows.Add(r_new);
+                dgvBankOfSup.DataSource = this.dtBanks;
+            }
+            else
+            {
+                DataRow r_new = this.dtBanks.NewRow();
+                this.dtBanks.Rows.Add(r_new);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (dgvBankOfSup.Rows.Count <= 0) return;
+            int rsl = dgvBankOfSup.CurrentRow.Index;
+            var bankId = Guid.Parse(dgvBankOfSup.Rows[rsl].Cells[0].Value.ToString().Trim());
+            var bankAcc = dgvBankOfSup.Rows[rsl].Cells[2].Value.ToString().Trim();
 
+            if (!MessageBoxHelper.Confirm($"Are you sure DELETE Bank account [{bankAcc}] ?"))
+            {
+                return;
+            }
+            if (SupplierDAO.DeleteBank(bankId))
+            {
+                foreach (DataRow dr in dtBanks.Rows)
+                {
+                    if (Guid.Parse(dr["ID"].ToString().Trim()) == bankId)
+                    {
+                        dtBanks.Rows.Remove(dr);
+                        break;
+                    }
+                }
+                dgvBankOfSup.DataSource = dtBanks;
+                MessageBoxHelper.ShowInfo("Delete completed !");
+            }
+            else
+            {
+                MessageBoxHelper.ShowWarning("Delete uncompleted !");
+            }
         }
     }
 }

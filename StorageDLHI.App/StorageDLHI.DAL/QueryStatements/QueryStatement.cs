@@ -19,6 +19,7 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_SUPPLIER_BANKS_FORM = "SELECT *FROM SUPPLIER_BANKS WHERE ID = '00000000-0000-0000-0000-000000000000'";
         public const string GET_BANK_BY_SUPPLIER = "SELECT *FROM SUPPLIER_BANKS WHERE SUPPLIER_ID = '{0}'";
         public const string UPDATE_BANK = "UPDATE SUPPLIER_BANKS SET BANK_ACCOUNT = '{0}', BANK_NAME = N'{1}', BANK_BENEFICIAL = N'{2}' WHERE ID = '{3}'";
+        public const string DELETE_BANK = "DELETE SUPPLIER_BANKS WHERE ID = '{0}'";
 
         // Material Origins
         public const string GET_ORIGINS = "SELECT *FROM ORIGINS";

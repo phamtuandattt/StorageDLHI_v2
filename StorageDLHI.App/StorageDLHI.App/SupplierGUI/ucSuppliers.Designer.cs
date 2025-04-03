@@ -256,8 +256,10 @@
             this.dgvSuppliers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSuppliers.Size = new System.Drawing.Size(680, 642);
             this.dgvSuppliers.TabIndex = 2;
+            this.dgvSuppliers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSuppliers_CellContentClick);
             this.dgvSuppliers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSuppliers_CellContentClick);
             this.dgvSuppliers.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSuppliers_CellContentDoubleClick);
+            this.dgvSuppliers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSuppliers_CellContentDoubleClick);
             this.dgvSuppliers.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvSuppliers_RowPostPaint);
             // 
             // Column1
@@ -348,7 +350,7 @@
             this.btnLoadBank.Image = global::StorageDLHI.App.Properties.Resources.refresh;
             this.btnLoadBank.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnLoadBank.Name = "btnLoadBank";
-            this.btnLoadBank.Size = new System.Drawing.Size(29, 28);
+            this.btnLoadBank.Size = new System.Drawing.Size(29, 24);
             this.btnLoadBank.Text = "toolStripButton1";
             this.btnLoadBank.Visible = false;
             this.btnLoadBank.Click += new System.EventHandler(this.btnLoadBank_Click);
