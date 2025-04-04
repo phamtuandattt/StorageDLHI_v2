@@ -1,6 +1,6 @@
 ﻿using StorageDLHI.App.MainGUI;
 using StorageDLHI.App.MenuGUI.MenuControl;
-using StorageDLHI.App.SupplierGUI;
+using StorageDLHI.App.ProductGUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +32,7 @@ namespace StorageDLHI.App
             else
             {
                 // Connection already configured
-                Application.Run(new Main());
+                Application.Run(new frmCustomProd());
             }
         }
     }

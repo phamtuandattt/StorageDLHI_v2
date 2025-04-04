@@ -25,16 +25,23 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_ORIGINS = "SELECT *FROM ORIGINS";
         public const string INSERT_ORIGIN = "INSERT INTO ORIGINS VALUES ('{0}', '{1}', N'{2}')";
         public const string UPDATE_ORIGIN = "UPDATE ORIGINS SET ORIGIN_CODE = '{0}', ORIGIN_NAME = N'{1}' WHERE ID = '{2}'";
+        public const string PROPERTY_ORIGIN_CODE = "ORIGIN_CODE";
+        public const string PROPERTY_ORIGIN_NAME = "ORIGIN_NAME";
+
 
         // Material Types
         public const string GET_MATERIAL_TYPES = "SELECT *FROM MATERIAL_TYPES";
         public const string INSERT_MATERIAL_TYPE = "INSERT INTO MATERIAL_TYPES VALUES ('{0}', '{1}', N'{2}')";
         public const string UPDATE_MATERIAL_TYPE = "UPDATE MATERIAL_TYPES SET TYPE_CODE = '{0}', TYPE_DES = N'{1}' WHERE ID = '{2}'";
+        public const string PROPERTY_M_TYPE_CODE = "TYPE_CODE";
+        public const string PROPERTY_M_TYPE_DES = "TYPE_DES";
 
         // Material Standards
         public const string GET_MATERIAL_STANDARDS = "SELECT *FROM MATERIAL_STANDARD";
         public const string INSERT_MATEIAL_STANDARD = "INSERT INTO MATERIAL_STANDARD VALUES ('{0}', '{1}', N'{2}')";
         public const string UPDATE_MATERIAL_STANDARD = "UPDATE MATERIAL_STANDARD SET STANDARD_CODE = '{0}', STANDARD_DES = N'{1}' WHERE ID = '{2}'";
+        public const string PROPERTY_M_STANDARD_CODE = "STANDARD_CODE";
+        public const string PROPERTY_M_STANDARD_DES = "STANDARD_DES";
 
         // Tax
         public const string GET_TAXS = "SELECT *FROM TAX";
@@ -45,6 +52,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_UNIT = "SELECT *FROM UNITS";
         public const string INSERT_UNIT = "INSERT INTO UNITS VALUES ('{0}', N'{1}')";
         public const string UPDATE_UNIT = "UPDATE UNITS SET UNIT_CODE = N'{0}' WHERE ID = '{1}'";
+        public const string PROPERTY_UNIT_ID = "ID";
+        public const string PROPERTY_UNIT_CODE = "UNIT_CODE";
 
         // Cost
         public const string GET_COST = "SELECT *FROM COST";
