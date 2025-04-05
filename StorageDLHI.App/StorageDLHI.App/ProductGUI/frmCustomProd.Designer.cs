@@ -1527,6 +1527,10 @@
             // 
             this.kryptonGroupBox1.Panel.Controls.Add(this.picItem);
             this.kryptonGroupBox1.Size = new System.Drawing.Size(328, 408);
+            this.kryptonGroupBox1.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonGroupBox1.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.kryptonGroupBox1.TabIndex = 0;
             this.kryptonGroupBox1.Values.Heading = "...";
             // 
@@ -1535,8 +1539,8 @@
             this.picItem.BackgroundImage = global::StorageDLHI.App.Properties.Resources.picture_bg;
             this.picItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.picItem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picItem.ErrorImage = global::StorageDLHI.App.Properties.Resources.photo;
-            this.picItem.InitialImage = global::StorageDLHI.App.Properties.Resources.photo;
+            this.picItem.ErrorImage = null;
+            this.picItem.InitialImage = null;
             this.picItem.Location = new System.Drawing.Point(0, 0);
             this.picItem.Margin = new System.Windows.Forms.Padding(4);
             this.picItem.Name = "picItem";

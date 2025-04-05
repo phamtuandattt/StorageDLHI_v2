@@ -27,7 +27,7 @@ namespace StorageDLHI.App.ProductGUI
             LoadData();
 
 
-            var modelT = ProductDAO.GetProduct(Guid.Parse("6165C282-C47A-4423-A580-126A023AF473"));
+            var modelT = ProductDAO.GetProduct(Guid.Parse("18A8353E-F0A8-445F-9B0F-D287F05607F9"));
             picItem.Image = modelT.Image.Length == 100 ? picItem.InitialImage : Image.FromStream(new MemoryStream(modelT.Image));
 
         }
@@ -142,16 +142,31 @@ namespace StorageDLHI.App.ProductGUI
                 G_Weight = txtWeigth.Text.Trim(),
                 Used_Note = txtUsageNote.Text.Trim(),
                 UnitId = Guid.Parse(cboUnit.SelectedValue.ToString()),
-
             };
-            if (ProductDAO.Insert(prod))
+
+            if (!string.IsNullOrEmpty(path)) 
             {
-                MessageBoxHelper.ShowInfo("Add product success !");
+                if (ProductDAO.Insert(prod))
+                {
+                    MessageBoxHelper.ShowInfo("Add product success !");
+                }
+                else
+                {
+                    MessageBoxHelper.ShowWarning("Add product fail !");
+                }
             }
             else
             {
-                MessageBoxHelper.ShowWarning("Add product fail !");
+                if (ProductDAO.InsertNoImage(prod))
+                {
+                    MessageBoxHelper.ShowInfo("Add product success !");
+                }
+                else
+                {
+                    MessageBoxHelper.ShowWarning("Add product fail !");
+                }
             }
+
         }
 
         private void btnClearContent_Click(object sender, EventArgs e)

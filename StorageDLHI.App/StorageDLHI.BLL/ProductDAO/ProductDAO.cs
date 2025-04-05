@@ -24,6 +24,15 @@ namespace StorageDLHI.BLL.ProductDAO
             return data.Insert(sqlQuery) > 0;
         }
 
+        public static bool InsertNoImage(Products product)
+        {
+            string sqlQuery = string.Format(QueryStatement.ADD_PROD_NO_IMAGE, product.Id, product.Product_Name, product.Product_Des_2, product.Product_Code,
+                product.Product_Material_Code, product.A_Thinhness, product.B_Depth, product.C_Witdh,
+                product.D_Web, product.E_Flag, product.F_Length, product.G_Weight, product.Used_Note, product.UnitId);
+
+            return data.Insert(sqlQuery) > 0;
+        }
+
         public static Products GetProduct(Guid prodId)
         {
             var dt = data.GetData(string.Format(QueryStatement.GET_PROD, prodId), "PRODUCT_BY_ID");
