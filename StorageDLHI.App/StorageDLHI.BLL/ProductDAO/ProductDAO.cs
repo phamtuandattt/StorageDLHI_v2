@@ -15,11 +15,17 @@ namespace StorageDLHI.BLL.ProductDAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
+        public static DataTable GetProductsForCreateMPR()
+        {
+            return data.GetData(QueryStatement.GET_PRODUCTS_FOR_CREATE_MPR, "PROs_FOR_MPR");
+        }
+
         public static bool Insert(Products product)
         {
             string sqlQuery = string.Format(QueryStatement.ADD_PROD, product.Id, product.Product_Name, product.Product_Des_2, product.Product_Code,
                 product.Product_Material_Code, product.PictureLink, product.Picture, product.A_Thinhness, product.B_Depth, product.C_Witdh,
-                product.D_Web, product.E_Flag, product.F_Length, product.G_Weight, product.Used_Note, product.UnitId);
+                product.D_Web, product.E_Flag, product.F_Length, product.G_Weight, product.Used_Note, product.UnitId, product.Origin_Id,
+                product.M_Type_Id, product.Stand_Id);
 
             return data.Insert(sqlQuery) > 0;
         }
@@ -28,9 +34,20 @@ namespace StorageDLHI.BLL.ProductDAO
         {
             string sqlQuery = string.Format(QueryStatement.ADD_PROD_NO_IMAGE, product.Id, product.Product_Name, product.Product_Des_2, product.Product_Code,
                 product.Product_Material_Code, product.A_Thinhness, product.B_Depth, product.C_Witdh,
-                product.D_Web, product.E_Flag, product.F_Length, product.G_Weight, product.Used_Note, product.UnitId);
+                product.D_Web, product.E_Flag, product.F_Length, product.G_Weight, product.Used_Note, product.UnitId, product.Origin_Id,
+                product.M_Type_Id, product.Stand_Id);
 
             return data.Insert(sqlQuery) > 0;
+        }
+
+        public static bool Update(Products product)
+        {
+            string sqlQuery = string.Format(QueryStatement.UPDATE_PROD, product.Product_Name, product.Product_Des_2, product.Product_Code,
+                product.Product_Material_Code, product.PictureLink, product.Picture, product.A_Thinhness, product.B_Depth, product.C_Witdh,
+                product.D_Web, product.E_Flag, product.F_Length, product.G_Weight, product.Used_Note, product.UnitId, product.Origin_Id,
+                product.M_Type_Id, product.Stand_Id, product.Id);
+
+            return data.Update(sqlQuery) > 0;
         }
 
         public static Products GetProduct(Guid prodId)
@@ -54,7 +71,10 @@ namespace StorageDLHI.BLL.ProductDAO
                 F_Length = row[QueryStatement.PROPERTY_PROD_F].ToString(),
                 G_Weight = row[QueryStatement.PROPERTY_PROD_G].ToString(),
                 Used_Note = row[QueryStatement.PROPERTY_PROD_USAGE].ToString(),
-                UnitId = Guid.Parse(row[QueryStatement.PROPERTY_PROD_UNIT_ID].ToString())
+                UnitId = Guid.Parse(row[QueryStatement.PROPERTY_PROD_UNIT_ID].ToString()),
+                Origin_Id = Guid.Parse(row[QueryStatement.PROPERTY_PROD_ORIGIN_ID].ToString()),
+                M_Type_Id = Guid.Parse(row[QueryStatement.PROPERTY_PROD_M_TYPE_ID].ToString()),
+                Stand_Id = Guid.Parse(row[QueryStatement.PROPERTY_PROD_STANDARD_ID].ToString()),
             };
 
             return prod ?? new Products();

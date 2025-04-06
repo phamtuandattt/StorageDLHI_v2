@@ -8,6 +8,9 @@ namespace StorageDLHI.DAL.QueryStatements
 {
     public class QueryStatement
     {
+        // Display combobox property
+        public const string PROPERTY_FOR_ORI_TYPE_STAND_VALUE = "ValueMember";
+        public const string PROPERTY_FOR_ORI_TYPE_STAND_DISPLAY = "DisplayMember";
         // Supplier
         public const string GET_SUPPLIERS = "SELECT *FROM SUPPLIERS";
         public const string INSERT_SUPPLIERS = "INSERT INTO SUPPLIERS VALUES ('{0}', N'{1}', '{2}', N'{3}', '{4}', N'{5}', N'{6}')";
@@ -61,8 +64,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string UPDATE_COST = "UPDATE COST SET COST_NAME = N'{0}' WHERE ID = '{1}'";
 
         // Product
-        public const string ADD_PROD = "INSERT INTO PRODUCTS \r\n(ID, \r\nPRODUCT_NAME, \r\nPRODUCT_DES_2, \r\nPRODUCT_CODE, \r\nPRODUCT_MATERIAL_CODE, \r\nPICTURE_LINK, \r\nPICTURE, \r\nA_THINHNESS, \r\nB_DEPTH, \r\nC_WIDTH, \r\nD_WEB,\r\nE_FLAG, \r\nF_LENGTH, \r\nG_WEIGHT, \r\nUSED_NOTE,\r\nUNIT_ID) \r\nVALUES \r\n('{0}',\r\nN'{1}', \r\n'{2}', \r\n'{3}',\r\n'{4}',\r\nN'{5}',\r\n(SELECT *FROM OPENROWSET(BULK N'{6}', SINGLE_BLOB) AS IMAGE), \r\n'{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}', N'{15}')";
-        public const string ADD_PROD_NO_IMAGE = "INSERT INTO PRODUCTS \r\n(ID, \r\nPRODUCT_NAME, \r\nPRODUCT_DES_2, \r\nPRODUCT_CODE, \r\nPRODUCT_MATERIAL_CODE, \r\nA_THINHNESS, \r\nB_DEPTH, \r\nC_WIDTH, \r\nD_WEB,\r\nE_FLAG, \r\nF_LENGTH, \r\nG_WEIGHT, \r\nUSED_NOTE,\r\nUNIT_ID) \r\nVALUES \r\n('{0}',\r\nN'{1}', \r\n'{2}', \r\n'{3}',\r\n'{4}', \r\n'{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', N'{13}')";
+        public const string ADD_PROD = "INSERT INTO PRODUCTS \r\n(ID, \r\nPRODUCT_NAME, \r\nPRODUCT_DES_2, \r\nPRODUCT_CODE, \r\nPRODUCT_MATERIAL_CODE, \r\nPICTURE_LINK, \r\nPICTURE, \r\nA_THINHNESS, \r\nB_DEPTH, \r\nC_WIDTH, \r\nD_WEB,\r\nE_FLAG, \r\nF_LENGTH, \r\nG_WEIGHT, \r\nUSED_NOTE,\r\nUNIT_ID,\r\nORIGIN_ID,\r\nM_TYPE_ID,\r\nSTANDARD_ID) \r\nVALUES \r\n('{0}',\r\nN'{1}', \r\n'{2}', \r\n'{3}',\r\n'{4}',\r\nN'{5}',\r\n(SELECT *FROM OPENROWSET(BULK N'{6}', SINGLE_BLOB) AS IMAGE), \r\n'{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}', N'{15}', '{16}', '{17}', '{18}')";
+        public const string ADD_PROD_NO_IMAGE = "INSERT INTO PRODUCTS \r\n(ID, \r\nPRODUCT_NAME, \r\nPRODUCT_DES_2, \r\nPRODUCT_CODE, \r\nPRODUCT_MATERIAL_CODE, \r\nA_THINHNESS, \r\nB_DEPTH, \r\nC_WIDTH, \r\nD_WEB,\r\nE_FLAG, \r\nF_LENGTH, \r\nG_WEIGHT, \r\nUSED_NOTE,\r\nUNIT_ID,\r\nORIGIN_ID,\r\nM_TYPE_ID,\r\nSTANDARD_ID) \r\nVALUES \r\n('{0}',\r\nN'{1}', \r\n'{2}', \r\n'{3}',\r\n'{4}', \r\n'{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', N'{13}', '{14}', '{15}', '{16}')";
         public const string GET_PROD = "SELECT *FROM PRODUCTS WHERE ID = '{0}'";
         public const string PROPERTY_PROD_ID = "ID";
         public const string PROPERTY_PROD_NAME = "PRODUCT_NAME";
@@ -80,6 +83,13 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_PROD_G = "G_WEIGHT";
         public const string PROPERTY_PROD_USAGE = "USED_NOTE";
         public const string PROPERTY_PROD_UNIT_ID = "UNIT_ID";
+        public const string PROPERTY_PROD_ORIGIN_ID = "ORIGIN_ID";
+        public const string PROPERTY_PROD_M_TYPE_ID = "M_TYPE_ID";
+        public const string PROPERTY_PROD_STANDARD_ID = "STANDARD_ID";
+        public const string UPDATE_PROD = "UPDATE PRODUCTS\r\nSET PRODUCT_NAME = N'{0}', PRODUCT_DES_2 = '{1}', PRODUCT_CODE = '{2}', PRODUCT_MATERIAL_CODE = '{3}',\r\nPICTURE_LINK = N'{4}', PICTURE = (SELECT *FROM OPENROWSET(BULK N'{5}', SINGLE_BLOB) AS IMAGE),\r\nA_THINHNESS = '{6}', B_DEPTH = '{7}', C_WIDTH = '{8}', D_WEB ='{9}', E_FLAG = '{10}', F_LENGTH = '{11}', G_WEIGHT = '{12}',\r\nUSED_NOTE = N'{13}', UNIT_ID = '{14}', \tORIGIN_ID = '{15}', M_TYPE_ID = '{16}', STANDARD_ID = '{17}'\r\nWHERE ID = '{18}'";
+        public const string GET_PRODUCTS_FOR_CREATE_MPR = "EXEC GET_PRODUCTS";
+
+
 
     }
 }

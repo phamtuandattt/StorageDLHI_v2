@@ -15,45 +15,100 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace StorageDLHI.App.ProductGUI
 {
     public partial class frmCustomProd : KryptonForm
     {
         private string path = string.Empty;
+        private bool status = false;
+        private Products pModel = null;
+
         public frmCustomProd()
         {
             InitializeComponent();
             LoadData();
 
 
-            var modelT = ProductDAO.GetProduct(Guid.Parse("18A8353E-F0A8-445F-9B0F-D287F05607F9"));
-            picItem.Image = modelT.Image.Length == 100 ? picItem.InitialImage : Image.FromStream(new MemoryStream(modelT.Image));
+            this.pModel = ProductDAO.GetProduct(Guid.Parse("1730930D-FD63-46C5-9B63-698B2AF63C22"));
 
+            txtProdCode.Text = this.pModel.Product_Code.Trim();
+            txtDes2.Text = this.pModel.Product_Des_2.Trim();
+            txtProdName.Text = this.pModel.Product_Name.Trim();
+            cboOrigin.SelectedValue = this.pModel.Origin_Id;
+            cboType.SelectedValue = this.pModel.M_Type_Id;
+            cboStandard.SelectedValue = this.pModel.Stand_Id;
+            txtThinh.Text = this.pModel.A_Thinhness.Trim();
+            txtDep.Text = this.pModel.B_Depth.Trim();
+            txtWidth.Text = this.pModel.C_Witdh.Trim();
+            txtWeb.Text = this.pModel.D_Web.Trim();
+            txtFlag.Text = this.pModel.E_Flag.Trim();
+            txtLength.Text = this.pModel.F_Length.Trim();
+            txtWeigth.Text = this.pModel.G_Weight.Trim();
+            txtUsageNote.Text = this.pModel.Used_Note.Trim();
+            cboUnit.SelectedValue = this.pModel.UnitId;
+            picItem.Image = this.pModel.Image.Length == 100 ? picItem.InitialImage : Image.FromStream(new MemoryStream(this.pModel.Image));
+            path = this.pModel.PictureLink;
+        }
+
+        public frmCustomProd(string title, bool status, Products pModel) // true is ADD || UPDATE
+        {
+            InitializeComponent();
+            LoadData();
+            this.pModel = pModel;
+            this.status = status;
+
+            if (!status)
+            {
+                txtProdCode.Text = this.pModel.Product_Code.Trim();
+                txtDes2.Text = this.pModel.Product_Des_2.Trim();
+                txtProdName.Text = this.pModel.Product_Name.Trim();
+                cboOrigin.SelectedValue = this.pModel.Origin_Id;
+                cboType.SelectedValue = this.pModel.M_Type_Id;
+                cboStandard.SelectedValue = this.pModel.Stand_Id;
+                txtThinh.Text = this.pModel.A_Thinhness.Trim();
+                txtDep.Text = this.pModel.B_Depth.Trim();
+                txtWidth.Text = this.pModel.C_Witdh.Trim();
+                txtWeb.Text = this.pModel.D_Web.Trim();
+                txtFlag.Text = this.pModel.E_Flag.Trim();
+                txtLength.Text = this.pModel.F_Length.Trim();
+                txtWeigth.Text = this.pModel.G_Weight.Trim();
+                txtUsageNote.Text = this.pModel.Used_Note.Trim();
+                cboUnit.SelectedValue = this.pModel.UnitId;
+                picItem.Image = this.pModel.Image.Length == 100 ? picItem.InitialImage : Image.FromStream(new MemoryStream(this.pModel.Image));
+                path = this.pModel.PictureLink;
+            }
         }
 
         private void LoadData()
         {
             txtProdCode.Focus();
 
-            var dtOrigins = MaterialDAO.GetOrigins();
-            LoadDataCombox(cboOrigin, dtOrigins, QueryStatement.PROPERTY_ORIGIN_NAME, QueryStatement.PROPERTY_ORIGIN_CODE);
+            var dtOrigins = MaterialDAO.GetOriginForCombobox();
+            LoadDataCombox(cboOrigin, dtOrigins);
 
-            var dtMTypes = MaterialDAO.GetMaterialTypes();
-            LoadDataCombox(cboType, dtMTypes, QueryStatement.PROPERTY_M_TYPE_DES, QueryStatement.PROPERTY_M_TYPE_CODE);
+            var dtMTypes = MaterialDAO.GetMTypeForCombobox();
+            LoadDataCombox(cboType, dtMTypes);
 
-            var dtStand = MaterialDAO.GetMaterialStandards();
-            LoadDataCombox(cboStandard, dtStand, QueryStatement.PROPERTY_M_STANDARD_DES, QueryStatement.PROPERTY_M_STANDARD_CODE);
+            var dtStand = MaterialDAO.GetStandForCombobox();
+            LoadDataCombox(cboStandard, dtStand);
 
             var dtUnits = MaterialDAO.GetUnits();
-            LoadDataCombox(cboUnit, dtUnits, QueryStatement.PROPERTY_UNIT_CODE, QueryStatement.PROPERTY_UNIT_ID);
+            cboUnit.DataSource = dtUnits;
+            cboUnit.DisplayMember = QueryStatement.PROPERTY_UNIT_CODE;
+            cboUnit.ValueMember = QueryStatement.PROPERTY_UNIT_ID;
+            if (dtUnits != null)
+            {
+                cboUnit.SelectedIndex = 0;
+            }
         }
 
-        private void LoadDataCombox(KryptonComboBox comboBox, DataTable dataTable, string displayMember, string valueMember)
+        private void LoadDataCombox(KryptonComboBox comboBox, DataTable dataTable)
         {
             comboBox.DataSource = dataTable;
-            comboBox.DisplayMember = displayMember;
-            comboBox.ValueMember = valueMember;
+            comboBox.DisplayMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_DISPLAY;
+            comboBox.ValueMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_VALUE;
             if (dataTable != null)
             {
               comboBox.SelectedIndex = 0;
@@ -107,9 +162,13 @@ namespace StorageDLHI.App.ProductGUI
             var T1 = txtWeb.Text.Trim();
             var T2 = txtFlag.Text.Trim();
 
-            var ori_code = cboOrigin.SelectedValue.ToString().Trim();
-            var m_type_code = cboType.SelectedValue.ToString().Trim();
-            var stand_code = cboStandard.SelectedValue.ToString().Trim();
+            var oriInfos = cboOrigin.Text.ToString().Split('|');
+            var mTypeInfo = cboType.Text.ToString().Split('|');
+            var standInfo = cboStandard.Text.ToString().Split('|');
+
+            var ori_code = oriInfos[0].Trim();
+            var m_type_code = mTypeInfo[0].Trim();
+            var stand_code = standInfo[0].Trim();
             var size = H + B + T1 + T2;
             var length = txtLength.Text.Trim();
 
@@ -124,46 +183,108 @@ namespace StorageDLHI.App.ProductGUI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Products prod = new Products()
+            if (status)
             {
-                Id = Guid.NewGuid(),
-                Product_Name = txtProdName.Text.Trim(),
-                Product_Des_2 = txtDes2.Text.Trim().ToUpper(),
-                Product_Code = txtProdCode.Text.Trim().ToUpper(),
-                Product_Material_Code = cboStandard.Text.Trim(),
-                PictureLink = path,
-                Picture = path,
-                A_Thinhness = txtThinh.Text.Trim(),
-                B_Depth = txtDep.Text.Trim(),
-                C_Witdh = txtWidth.Text.Trim(),
-                D_Web = txtWeb.Text.Trim(),
-                E_Flag = txtFlag.Text.Trim(),
-                F_Length = txtLength.Text.Trim(),
-                G_Weight = txtWeigth.Text.Trim(),
-                Used_Note = txtUsageNote.Text.Trim(),
-                UnitId = Guid.Parse(cboUnit.SelectedValue.ToString()),
-            };
+                var oriInfos = cboOrigin.Text.ToString().Split('|');
+                var mTypeInfo = cboType.Text.ToString().Split('|');
+                var standInfo = cboStandard.Text.ToString().Split('|');
 
-            if (!string.IsNullOrEmpty(path)) 
-            {
-                if (ProductDAO.Insert(prod))
+                Products prod = new Products()
                 {
-                    MessageBoxHelper.ShowInfo("Add product success !");
+                    Id = Guid.NewGuid(),
+                    Product_Name = txtProdName.Text.Trim(),
+                    Product_Des_2 = txtDes2.Text.Trim().ToUpper(),
+                    Product_Code = txtProdCode.Text.Trim().ToUpper(),
+                    Product_Material_Code = cboStandard.Text.Trim(),
+                    PictureLink = path,
+                    Picture = path,
+                    A_Thinhness = txtThinh.Text.Trim(),
+                    B_Depth = txtDep.Text.Trim(),
+                    C_Witdh = txtWidth.Text.Trim(),
+                    D_Web = txtWeb.Text.Trim(),
+                    E_Flag = txtFlag.Text.Trim(),
+                    F_Length = txtLength.Text.Trim(),
+                    G_Weight = txtWeigth.Text.Trim(),
+                    Used_Note = txtUsageNote.Text.Trim(),
+                    UnitId = Guid.Parse(cboUnit.SelectedValue.ToString()),
+                    Origin_Id = Guid.Parse(cboOrigin.SelectedValue.ToString()),
+                    M_Type_Id = Guid.Parse(cboType.SelectedValue.ToString()),
+                    Stand_Id = Guid.Parse(cboStandard.SelectedValue.ToString()),
+                };
+
+                if (!string.IsNullOrEmpty(path))
+                {
+                    if (ProductDAO.Insert(prod))
+                    {
+                        MessageBoxHelper.ShowInfo("Add product success !");
+                    }
+                    else
+                    {
+                        MessageBoxHelper.ShowWarning("Add product fail !");
+                    }
                 }
                 else
                 {
-                    MessageBoxHelper.ShowWarning("Add product fail !");
+                    if (ProductDAO.InsertNoImage(prod))
+                    {
+                        MessageBoxHelper.ShowInfo("Add product success !");
+                    }
+                    else
+                    {
+                        MessageBoxHelper.ShowWarning("Add product fail !");
+                    }
                 }
             }
             else
             {
-                if (ProductDAO.InsertNoImage(prod))
+                var oriInfos = cboOrigin.Text.ToString().Split('|');
+                var mTypeInfo = cboType.Text.ToString().Split('|');
+                var standInfo = cboStandard.Text.ToString().Split('|');
+
+                Products prod = new Products()
                 {
-                    MessageBoxHelper.ShowInfo("Add product success !");
+                    Id = this.pModel.Id,
+                    Product_Name = txtProdName.Text.Trim(),
+                    Product_Des_2 = txtDes2.Text.Trim().ToUpper(),
+                    Product_Code = txtProdCode.Text.Trim().ToUpper(),
+                    Product_Material_Code = cboStandard.Text.Trim(),
+                    PictureLink = path,
+                    Picture = path,
+                    A_Thinhness = txtThinh.Text.Trim(),
+                    B_Depth = txtDep.Text.Trim(),
+                    C_Witdh = txtWidth.Text.Trim(),
+                    D_Web = txtWeb.Text.Trim(),
+                    E_Flag = txtFlag.Text.Trim(),
+                    F_Length = txtLength.Text.Trim(),
+                    G_Weight = txtWeigth.Text.Trim(),
+                    Used_Note = txtUsageNote.Text.Trim(),
+                    UnitId = Guid.Parse(cboUnit.SelectedValue.ToString()),
+                    Origin_Id = Guid.Parse(cboOrigin.SelectedValue.ToString()),
+                    M_Type_Id = Guid.Parse(cboType.SelectedValue.ToString()),
+                    Stand_Id = Guid.Parse(cboStandard.SelectedValue.ToString()),
+                };
+
+                if (!string.IsNullOrEmpty(path))
+                {
+                    if (ProductDAO.Update(prod))
+                    {
+                        MessageBoxHelper.ShowInfo("Update product success !");
+                    }
+                    else
+                    {
+                        MessageBoxHelper.ShowWarning("Update product fail !");
+                    }
                 }
                 else
                 {
-                    MessageBoxHelper.ShowWarning("Add product fail !");
+                    if (ProductDAO.InsertNoImage(prod))
+                    {
+                        MessageBoxHelper.ShowInfo("Update product success !");
+                    }
+                    else
+                    {
+                        MessageBoxHelper.ShowWarning("Update product fail !");
+                    }
                 }
             }
 

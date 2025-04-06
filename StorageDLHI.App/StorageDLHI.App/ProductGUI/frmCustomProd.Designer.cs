@@ -1557,9 +1557,12 @@
             this.ClientSize = new System.Drawing.Size(1401, 414);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1419, 461);
+            this.MinimumSize = new System.Drawing.Size(1419, 461);
             this.Name = "frmCustomProd";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel44)).EndInit();

@@ -51,6 +51,39 @@ namespace StorageDLHI.BLL.MaterialDAO
             return data.Update(sqlQuery) > 0;
         }
 
+        public static DataTable GetOriginForCombobox()
+        {
+            return GetDataForCombobox(QueryStatement.GET_ORIGINS, "OrginForCob");
+        }
+
+        public static DataTable GetMTypeForCombobox()
+        {
+            return GetDataForCombobox(QueryStatement.GET_MATERIAL_TYPES, "MTypeForCob");
+        }
+
+        public static DataTable GetStandForCombobox()
+        {
+            return GetDataForCombobox(QueryStatement.GET_MATERIAL_STANDARDS, "StandForCob");
+        }
+
+        public static DataTable GetDataForCombobox(string sqlQuery, string tableName)
+        {
+            var dt = data.GetData(sqlQuery, tableName);
+            var dtForCbo = new DataTable();
+            dtForCbo.Columns.Add(QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_VALUE);
+            dtForCbo.Columns.Add(QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_DISPLAY);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                DataRow r = dtForCbo.NewRow();
+                r[0] = row[0].ToString().Trim();
+                r[1] = row[1].ToString().Trim() + "|" + row[2];
+                dtForCbo.Rows.Add(r);
+            }
+
+            return dtForCbo;
+        }
+
         public static DataTable GetOrigins()
         {
             return data.GetData(QueryStatement.GET_ORIGINS, "Origins");

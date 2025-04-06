@@ -24,5 +24,8 @@ namespace StorageDLHI.App.Common
 
         public const string SUPPLIER_ADD_TITLE = "Add Supplier";
         public const string SUPPLIER_UPDATE_TITLE = "Update Supplier";
+
+        public const string PROD_ADD_TITLE = "Add product";
+        public const string PROD_UPDATE_TITLE = "Update product";
     }
 }

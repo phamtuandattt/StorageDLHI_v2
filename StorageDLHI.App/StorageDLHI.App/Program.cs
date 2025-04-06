@@ -32,7 +32,7 @@ namespace StorageDLHI.App
             else
             {
                 // Connection already configured
-                Application.Run(new frmCustomProd());
+                Application.Run(new Main());
             }
         }
     }
