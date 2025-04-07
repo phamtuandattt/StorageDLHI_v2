@@ -274,6 +274,7 @@
             this.txtSearchProd.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSearchProd.Name = "txtSearchProd";
             this.txtSearchProd.Size = new System.Drawing.Size(150, 27);
+            this.txtSearchProd.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchProd_KeyUp);
             // 
             // kryptonPanel2
             // 

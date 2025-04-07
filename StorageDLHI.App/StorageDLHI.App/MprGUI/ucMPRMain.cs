@@ -2,6 +2,7 @@
 using StorageDLHI.App.ProductGUI;
 using StorageDLHI.BLL.ProductDAO;
 using StorageDLHI.DAL.Models;
+using StorageDLHI.DAL.QueryStatements;
 using StorageDLHI.Infrastructor.Caches;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace StorageDLHI.App.MprGUI
     {
         private int TotalProd = 0;
         private List<Guid> prodsAdded = new List<Guid>();
+        private DataTable dtProds = null;
 
         public ucMPRMain()
         {
@@ -34,13 +36,14 @@ namespace StorageDLHI.App.MprGUI
         {
             if (!CacheManager.Exists(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR))
             {
-                var dtProds = ProductDAO.GetProductsForCreateMPR();
+                dtProds = ProductDAO.GetProductsForCreateMPR();
                 CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, dtProds);
                 dgvProds.DataSource = dtProds;
             }
             else
             {
                 dgvProds.DataSource = CacheManager.Get<DataTable>(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR);
+                dtProds = CacheManager.Get<DataTable>(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR);
             }
         }
 
@@ -266,6 +269,30 @@ namespace StorageDLHI.App.MprGUI
                 dgvProdExistMpr.Rows.RemoveAt(rsl);
                 prodsAdded.Remove(Guid.Parse(dgvProds.Rows[rsl].Cells[0].Value.ToString()));
             }
+        }
+
+        private void txtSearchProd_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (txtSearchProd.Text.Length == 0)
+            {
+                dgvProds.DataSource = this.dtProds;
+            }
+            DataView dv = dtProds.DefaultView;
+            dv.RowFilter = $"{QueryStatement.PROPERTY_PROD_NAME} LIKE '%{txtSearchProd.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_DES_2} LIKE '%{txtSearchProd.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_CODE} LIKE '%{txtSearchProd.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_MATERIAL_CODE} LIKE '%{txtSearchProd.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_A} LIKE '%{txtSearchProd.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_B} LIKE '%{txtSearchProd.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_C} LIKE '%{txtSearchProd.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_D} LIKE '%{txtSearchProd.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_E} LIKE '%{txtSearchProd.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_F} LIKE '%{txtSearchProd.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_G} LIKE '%{txtSearchProd.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_USAGE} LIKE '%{txtSearchProd.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_UNIT_CODE} LIKE '%{txtSearchProd.Text}%' ";
+
+            dgvProds.DataSource = dv;
         }
     }
 }
