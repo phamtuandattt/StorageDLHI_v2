@@ -80,23 +80,25 @@ namespace StorageDLHI.App.MprGUI
             if (dgvProds.Rows.Count <= 0) return;
             int rsl = dgvProds.CurrentRow.Index;
 
-            if (prodsAdded.Contains(Guid.Parse(dgvProds.Rows[rsl].Cells[0].Value.ToString())))
+            Guid prodId = Guid.Parse(dgvProds.Rows[rsl].Cells[0].Value.ToString());
+
+            if (prodsAdded.Contains(prodId))
             {
-                if (!MessageBoxHelper.Confirm("You added product into MPRs. Do you want to add or update quantity ?"))
+                if (!MessageBoxHelper.Confirm($"You added product [{dgvProds.Rows[rsl].Cells[1].Value.ToString()}]into MPRs. " +
+                    $"\nDo you want to add or update quantity ?"))
                 {
                     return;
                 }
                 // Remove exist row in MPRs
-                foreach (DataGridViewRow row in dgvProdExistMpr.Rows)
+                // Also delete from the DataTable (dtProdsOfMprs)
+                DataRow[] rowsToDelete = dtProdsOfMprs.Select($"ID = '{prodId}'");
+                foreach (DataRow r in rowsToDelete)
                 {
-                    if (row.Cells[0].Value.ToString().Equals(dgvProds.Rows[rsl].Cells[0].Value.ToString()))
-                    {
-                        dgvProdExistMpr.Rows.RemoveAt(row.Index);
-                        dtProdsOfMprs.Rows.RemoveAt(row.Index);
-                        prodsAdded.Remove(Guid.Parse(dgvProds.Rows[rsl].Cells[0].Value.ToString()));
-                        break;
-                    }
+                    dtProdsOfMprs.Rows.Remove(r);
                 }
+
+                // Remove from tracking list
+                prodsAdded.Remove(prodId);
             }
 
             frmGetQty frmGetQty = new frmGetQty();
@@ -110,41 +112,15 @@ namespace StorageDLHI.App.MprGUI
             dataRow[2] = dgvProds.Rows[rsl].Cells[2].Value.ToString().Trim().ToUpper();
             dataRow[3] = dgvProds.Rows[rsl].Cells[3].Value.ToString().Trim().ToUpper();
             dataRow[4] = dgvProds.Rows[rsl].Cells[4].Value.ToString().Trim().ToUpper();
-            dataRow[5] = dgvProds.Rows[rsl].Cells[5].Value.ToString().Trim();
-            dataRow[6] = dgvProds.Rows[rsl].Cells[6].Value.ToString().Trim();
-            dataRow[7] = dgvProds.Rows[rsl].Cells[7].Value.ToString().Trim();
-            dataRow[8] = dgvProds.Rows[rsl].Cells[8].Value.ToString().Trim();
-            dataRow[9] = dgvProds.Rows[rsl].Cells[9].Value.ToString().Trim();
-            dataRow[10] = dgvProds.Rows[rsl].Cells[10].Value.ToString().Trim();
-            dataRow[11] = dgvProds.Rows[rsl].Cells[11].Value.ToString().Trim();
-            dataRow[12] = dgvProds.Rows[rsl].Cells[12].Value.ToString().Trim();
+            dataRow[5] = dgvProds.Rows[rsl].Cells[6].Value.ToString().Trim();
+            dataRow[6] = dgvProds.Rows[rsl].Cells[7].Value.ToString().Trim();
+            dataRow[7] = dgvProds.Rows[rsl].Cells[8].Value.ToString().Trim();
+            dataRow[8] = dgvProds.Rows[rsl].Cells[9].Value.ToString().Trim();
+            dataRow[9] = dgvProds.Rows[rsl].Cells[10].Value.ToString().Trim();
+            dataRow[10] = dgvProds.Rows[rsl].Cells[11].Value.ToString().Trim();
+            dataRow[11] = dgvProds.Rows[rsl].Cells[12].Value.ToString().Trim();
+            dataRow[12] = dgvProds.Rows[rsl].Cells[13].Value.ToString().Trim();
             dataRow[13] = qtyAdd;
-
-
-            //string[] row_added = new string[]
-            //{
-            //    dgvProds.Rows[rsl].Cells[0].Value.ToString(),
-            //    dgvProds.Rows[rsl].Cells[1].Value.ToString().Trim(),
-            //    dgvProds.Rows[rsl].Cells[2].Value.ToString().Trim().ToUpper(),
-            //    dgvProds.Rows[rsl].Cells[3].Value.ToString().Trim().ToUpper(),
-            //    dgvProds.Rows[rsl].Cells[4].Value.ToString().Trim(),
-            //    //imgArr, //5
-            //    dgvProds.Rows[rsl].Cells[6].Value.ToString().Trim(),
-            //    dgvProds.Rows[rsl].Cells[7].Value.ToString().Trim(),
-            //    dgvProds.Rows[rsl].Cells[8].Value.ToString().Trim(),
-            //    dgvProds.Rows[rsl].Cells[9].Value.ToString().Trim(),
-            //    dgvProds.Rows[rsl].Cells[10].Value.ToString().Trim(),
-            //    dgvProds.Rows[rsl].Cells[11].Value.ToString().Trim(),
-            //    dgvProds.Rows[rsl].Cells[12].Value.ToString().Trim(),
-            //    dgvProds.Rows[rsl].Cells[13].Value.ToString().Trim(),
-            //    qtyAdd + ""
-            //    //dgvProds.Rows[rsl].Cells[14].Value.ToString().Trim(), // Usage note
-            //    //dgvProds.Rows[rsl].Cells[15].Value.ToString().Trim(),
-            //    //dgvProds.Rows[rsl].Cells[17].Value.ToString().Trim(),
-            //    //dgvProds.Rows[rsl].Cells[18].Value.ToString().Trim(),
-            //    //dgvProds.Rows[rsl].Cells[19].Value.ToString().Trim(),
-            //    //dgvProds.Rows[rsl].Cells[16].Value.ToString().Trim(),
-            //};
 
             dtProdsOfMprs.Rows.Add(dataRow);
             prodsAdded.Add(Guid.Parse(dgvProds.Rows[rsl].Cells[0].Value.ToString()));
@@ -246,7 +222,7 @@ namespace StorageDLHI.App.MprGUI
             if (dgvProdExistMpr.Rows.Count <= 0) return;
             int rsl = dgvProdExistMpr.CurrentRow.Index;
 
-            if (!MessageBoxHelper.Confirm("You added product into MPRs. Do you want to add or update quantity ?"))
+            if (!MessageBoxHelper.Confirm("Do you want to update quantity ?"))
             {
                 return;
             }
@@ -278,34 +254,45 @@ namespace StorageDLHI.App.MprGUI
             if (dgvProdExistMpr.Rows.Count <= 0) return;
             int rsl = dgvProdExistMpr.CurrentRow.Index;
 
-            if (prodsAdded.Contains(Guid.Parse(dgvProdExistMpr.Rows[rsl].Cells[0].Value.ToString())))
+            // Ask for confirmation before deleting
+            string prodName = dgvProdExistMpr.Rows[rsl].Cells[1].Value.ToString();
+            if (!MessageBoxHelper.Confirm($"Do you want to delete product [{prodName}] out of MPRs ?"))
             {
-                if (!MessageBoxHelper.Confirm($"Do you want to delete product [{dgvProdExistMpr.Rows[rsl].Cells[1].Value.ToString()}] out of MPRs ?"))
-                {
-                    return;
-                }
-                // Remove exist row in MPRs
-                dgvProdExistMpr.Rows.RemoveAt(rsl);
-                dtProdsOfMprs.Rows.RemoveAt(rsl);
-                prodsAdded.Remove(Guid.Parse(dgvProds.Rows[rsl].Cells[0].Value.ToString()));
+                return;
             }
+
+            DeleteProdOfMprs(rsl);
         }
 
         private void tlsDeleteProdExist_Click(object sender, EventArgs e)
         {
             if (dgvProdExistMpr.Rows.Count <= 0) return;
             int rsl = dgvProdExistMpr.CurrentRow.Index;
-
-            if (prodsAdded.Contains(Guid.Parse(dgvProdExistMpr.Rows[rsl].Cells[0].Value.ToString())))
+            // Ask for confirmation before deleting
+            string prodName = dgvProdExistMpr.Rows[rsl].Cells[1].Value.ToString();
+            if (!MessageBoxHelper.Confirm($"Do you want to delete product [{prodName}] out of MPRs ?"))
             {
-                if (!MessageBoxHelper.Confirm($"Do you want to delete product [{dgvProdExistMpr.Rows[rsl].Cells[1].Value.ToString()}] out of MPRs ?"))
+                return;
+            }
+            DeleteProdOfMprs(rsl);
+        }
+
+        private void DeleteProdOfMprs(int rsl)
+        {
+            // Get the Guid of the product from the selected row
+            Guid prodId = Guid.Parse(dgvProdExistMpr.Rows[rsl].Cells[0].Value.ToString());
+
+            if (prodsAdded.Contains(prodId))
+            {
+                // Also delete from the DataTable (dtProdsOfMprs)
+                DataRow[] rowsToDelete = dtProdsOfMprs.Select($"ID = '{prodId}'");
+                foreach (DataRow row in rowsToDelete)
                 {
-                    return;
+                    dtProdsOfMprs.Rows.Remove(row);
                 }
-                // Remove exist row in MPRs
-                dgvProdExistMpr.Rows.RemoveAt(rsl);
-                dtProdsOfMprs.Rows.RemoveAt(rsl);
-                prodsAdded.Remove(Guid.Parse(dgvProds.Rows[rsl].Cells[0].Value.ToString()));
+
+                // Remove from tracking list
+                prodsAdded.Remove(prodId);
             }
         }
 
@@ -355,6 +342,12 @@ namespace StorageDLHI.App.MprGUI
                 $"OR {QueryStatement.PROPERTY_PROD_UNIT_CODE} LIKE '%{txtSearchProdExistMPR.Text}%' ";
 
             dgvProdExistMpr.DataSource = dv;
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_ADD_INFO, true, dtProdsOfMprs);
+            frmCustomInfoMpr.ShowDialog();
         }
     }
 }

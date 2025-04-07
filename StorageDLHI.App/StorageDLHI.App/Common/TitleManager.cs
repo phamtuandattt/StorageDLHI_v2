@@ -27,5 +27,8 @@ namespace StorageDLHI.App.Common
 
         public const string PROD_ADD_TITLE = "Add product";
         public const string PROD_UPDATE_TITLE = "Update product";
+
+        public const string MPR_ADD_INFO = "Add MPR";
+        public const string MPR_UPDATE_INFO = "Update MPR";
     }
 }

@@ -112,6 +112,12 @@
     <Compile Include="MenuGUI\MenuControl\ManageCommonUC.Designer.cs">
       <DependentUpon>ManageCommonUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="MprGUI\frmCustomInfoMpr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MprGUI\frmCustomInfoMpr.Designer.cs">
+      <DependentUpon>frmCustomInfoMpr.cs</DependentUpon>
+    </Compile>
     <Compile Include="MprGUI\frmGetQty.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MenuGUI\MenuControl\ManageCommonUC.resx">
       <DependentUpon>ManageCommonUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MprGUI\frmCustomInfoMpr.resx">
+      <DependentUpon>frmCustomInfoMpr.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MprGUI\frmGetQty.resx">
       <DependentUpon>frmGetQty.cs</DependentUpon>

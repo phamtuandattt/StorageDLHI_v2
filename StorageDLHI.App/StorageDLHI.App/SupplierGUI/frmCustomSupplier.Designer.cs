@@ -557,10 +557,10 @@
             // 
             this.kryptonPanel14.Controls.Add(this.kryptonGroupBox2);
             this.kryptonPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel14.Location = new System.Drawing.Point(0, 31);
+            this.kryptonPanel14.Location = new System.Drawing.Point(0, 27);
             this.kryptonPanel14.Name = "kryptonPanel14";
             this.kryptonPanel14.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel14.Size = new System.Drawing.Size(1023, 375);
+            this.kryptonPanel14.Size = new System.Drawing.Size(1023, 379);
             this.kryptonPanel14.TabIndex = 3;
             // 
             // kryptonGroupBox2
@@ -573,7 +573,7 @@
             // kryptonGroupBox2.Panel
             // 
             this.kryptonGroupBox2.Panel.Controls.Add(this.dgvBankOfSup);
-            this.kryptonGroupBox2.Size = new System.Drawing.Size(1023, 375);
+            this.kryptonGroupBox2.Size = new System.Drawing.Size(1023, 379);
             this.kryptonGroupBox2.TabIndex = 1;
             this.kryptonGroupBox2.Values.Heading = "List of bank account";
             // 
@@ -594,7 +594,7 @@
             this.dgvBankOfSup.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.dgvBankOfSup.RowHeadersWidth = 51;
             this.dgvBankOfSup.RowTemplate.Height = 24;
-            this.dgvBankOfSup.Size = new System.Drawing.Size(1019, 347);
+            this.dgvBankOfSup.Size = new System.Drawing.Size(1019, 351);
             this.dgvBankOfSup.TabIndex = 0;
             // 
             // Column1
@@ -642,7 +642,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(1023, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1023, 27);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
