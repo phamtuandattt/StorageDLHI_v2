@@ -1540,7 +1540,7 @@
             this.picItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.picItem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picItem.ErrorImage = null;
-            this.picItem.InitialImage = null;
+            this.picItem.InitialImage = global::StorageDLHI.App.Properties.Resources.picture_bg;
             this.picItem.Location = new System.Drawing.Point(0, 0);
             this.picItem.Margin = new System.Windows.Forms.Padding(4);
             this.picItem.Name = "picItem";

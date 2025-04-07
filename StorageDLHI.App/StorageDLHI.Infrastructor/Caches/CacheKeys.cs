@@ -19,5 +19,8 @@ namespace StorageDLHI.Infrastructor.Caches
         public const string SUPPLIER_DATATABLE_ALL_SUPPLIER = "Supplier.DataTable.AllSupplier";
         public const string BANK_DETAIL_SUPPLIER_ID = "Bank.Detail.Supplier.Id.{0}";
         public const string SUPPLIER_BANK_DATATABLE_ALL_SUPPLIER_BANK = "SupplierBank.DataTable.AllSupplierBanks";
+
+        public const string PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR = "Product.DataTable.AllProForMpr";
+        public const string PRODCT_DETAIL_BY_ID = "Product.Detail.Product.Id.{0}";
     }
 }

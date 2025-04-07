@@ -195,7 +195,7 @@ namespace StorageDLHI.App.ProductGUI
                     Product_Name = txtProdName.Text.Trim(),
                     Product_Des_2 = txtDes2.Text.Trim().ToUpper(),
                     Product_Code = txtProdCode.Text.Trim().ToUpper(),
-                    Product_Material_Code = cboStandard.Text.Trim(),
+                    Product_Material_Code = standInfo[1].Trim(), //cboStandard.Text.Trim(),
                     PictureLink = path,
                     Picture = path,
                     A_Thinhness = txtThinh.Text.Trim(),
@@ -217,6 +217,7 @@ namespace StorageDLHI.App.ProductGUI
                     if (ProductDAO.Insert(prod))
                     {
                         MessageBoxHelper.ShowInfo("Add product success !");
+                        this.Close();
                     }
                     else
                     {
@@ -228,6 +229,7 @@ namespace StorageDLHI.App.ProductGUI
                     if (ProductDAO.InsertNoImage(prod))
                     {
                         MessageBoxHelper.ShowInfo("Add product success !");
+                        this.Close();
                     }
                     else
                     {
@@ -247,7 +249,7 @@ namespace StorageDLHI.App.ProductGUI
                     Product_Name = txtProdName.Text.Trim(),
                     Product_Des_2 = txtDes2.Text.Trim().ToUpper(),
                     Product_Code = txtProdCode.Text.Trim().ToUpper(),
-                    Product_Material_Code = cboStandard.Text.Trim(),
+                    Product_Material_Code = standInfo[1].Trim(), // cboStandard.Text.Trim(),
                     PictureLink = path,
                     Picture = path,
                     A_Thinhness = txtThinh.Text.Trim(),
@@ -269,6 +271,7 @@ namespace StorageDLHI.App.ProductGUI
                     if (ProductDAO.Update(prod))
                     {
                         MessageBoxHelper.ShowInfo("Update product success !");
+                        this.Close();
                     }
                     else
                     {
@@ -280,6 +283,7 @@ namespace StorageDLHI.App.ProductGUI
                     if (ProductDAO.InsertNoImage(prod))
                     {
                         MessageBoxHelper.ShowInfo("Update product success !");
+                        this.Close();
                     }
                     else
                     {
