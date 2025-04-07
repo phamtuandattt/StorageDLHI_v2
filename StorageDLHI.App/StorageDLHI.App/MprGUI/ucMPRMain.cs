@@ -24,12 +24,30 @@ namespace StorageDLHI.App.MprGUI
     {
         private int TotalProd = 0;
         private List<Guid> prodsAdded = new List<Guid>();
-        private DataTable dtProds = null;
+        private DataTable dtProds = new DataTable();
+        private DataTable dtProdsOfMprs = new DataTable();
 
         public ucMPRMain()
         {
             InitializeComponent();
             LoadData();
+
+            dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_ID);
+            dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_NAME);
+            dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_DES_2);
+            dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_CODE);
+            dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_MATERIAL_CODE);
+            dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_A);
+            dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_B);
+            dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_C);
+            dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_D);
+            dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_E);
+            dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_F);
+            dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_G);
+            dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_UNIT_CODE);
+            dtProdsOfMprs.Columns.Add("QTY");
+
+            dgvProdExistMpr.DataSource = dtProdsOfMprs;
         }
 
         private void LoadData()
@@ -74,6 +92,7 @@ namespace StorageDLHI.App.MprGUI
                     if (row.Cells[0].Value.ToString().Equals(dgvProds.Rows[rsl].Cells[0].Value.ToString()))
                     {
                         dgvProdExistMpr.Rows.RemoveAt(row.Index);
+                        dtProdsOfMprs.Rows.RemoveAt(row.Index);
                         prodsAdded.Remove(Guid.Parse(dgvProds.Rows[rsl].Cells[0].Value.ToString()));
                         break;
                     }
@@ -85,32 +104,49 @@ namespace StorageDLHI.App.MprGUI
 
             int qtyAdd = frmGetQty.Qty;
 
-            string[] row_added = new string[]
-            {
-                dgvProds.Rows[rsl].Cells[0].Value.ToString(),
-                dgvProds.Rows[rsl].Cells[1].Value.ToString().Trim(),
-                dgvProds.Rows[rsl].Cells[2].Value.ToString().Trim().ToUpper(),
-                dgvProds.Rows[rsl].Cells[3].Value.ToString().Trim().ToUpper(),
-                dgvProds.Rows[rsl].Cells[4].Value.ToString().Trim(),
-                //imgArr, //5
-                dgvProds.Rows[rsl].Cells[6].Value.ToString().Trim(),
-                dgvProds.Rows[rsl].Cells[7].Value.ToString().Trim(),
-                dgvProds.Rows[rsl].Cells[8].Value.ToString().Trim(),
-                dgvProds.Rows[rsl].Cells[9].Value.ToString().Trim(),
-                dgvProds.Rows[rsl].Cells[10].Value.ToString().Trim(),
-                dgvProds.Rows[rsl].Cells[11].Value.ToString().Trim(),
-                dgvProds.Rows[rsl].Cells[12].Value.ToString().Trim(),
-                dgvProds.Rows[rsl].Cells[13].Value.ToString().Trim(),
-                qtyAdd + ""
-                //dgvProds.Rows[rsl].Cells[14].Value.ToString().Trim(), // Usage note
-                //dgvProds.Rows[rsl].Cells[15].Value.ToString().Trim(),
-                //dgvProds.Rows[rsl].Cells[17].Value.ToString().Trim(),
-                //dgvProds.Rows[rsl].Cells[18].Value.ToString().Trim(),
-                //dgvProds.Rows[rsl].Cells[19].Value.ToString().Trim(),
-                //dgvProds.Rows[rsl].Cells[16].Value.ToString().Trim(),
-            };
+            DataRow dataRow = dtProdsOfMprs.NewRow();
+            dataRow[0] = dgvProds.Rows[rsl].Cells[0].Value.ToString();
+            dataRow[1] = dgvProds.Rows[rsl].Cells[1].Value.ToString().Trim();
+            dataRow[2] = dgvProds.Rows[rsl].Cells[2].Value.ToString().Trim().ToUpper();
+            dataRow[3] = dgvProds.Rows[rsl].Cells[3].Value.ToString().Trim().ToUpper();
+            dataRow[4] = dgvProds.Rows[rsl].Cells[4].Value.ToString().Trim().ToUpper();
+            dataRow[5] = dgvProds.Rows[rsl].Cells[5].Value.ToString().Trim();
+            dataRow[6] = dgvProds.Rows[rsl].Cells[6].Value.ToString().Trim();
+            dataRow[7] = dgvProds.Rows[rsl].Cells[7].Value.ToString().Trim();
+            dataRow[8] = dgvProds.Rows[rsl].Cells[8].Value.ToString().Trim();
+            dataRow[9] = dgvProds.Rows[rsl].Cells[9].Value.ToString().Trim();
+            dataRow[10] = dgvProds.Rows[rsl].Cells[10].Value.ToString().Trim();
+            dataRow[11] = dgvProds.Rows[rsl].Cells[11].Value.ToString().Trim();
+            dataRow[12] = dgvProds.Rows[rsl].Cells[12].Value.ToString().Trim();
+            dataRow[13] = qtyAdd;
 
-            dgvProdExistMpr.Rows.Add(row_added);
+
+            //string[] row_added = new string[]
+            //{
+            //    dgvProds.Rows[rsl].Cells[0].Value.ToString(),
+            //    dgvProds.Rows[rsl].Cells[1].Value.ToString().Trim(),
+            //    dgvProds.Rows[rsl].Cells[2].Value.ToString().Trim().ToUpper(),
+            //    dgvProds.Rows[rsl].Cells[3].Value.ToString().Trim().ToUpper(),
+            //    dgvProds.Rows[rsl].Cells[4].Value.ToString().Trim(),
+            //    //imgArr, //5
+            //    dgvProds.Rows[rsl].Cells[6].Value.ToString().Trim(),
+            //    dgvProds.Rows[rsl].Cells[7].Value.ToString().Trim(),
+            //    dgvProds.Rows[rsl].Cells[8].Value.ToString().Trim(),
+            //    dgvProds.Rows[rsl].Cells[9].Value.ToString().Trim(),
+            //    dgvProds.Rows[rsl].Cells[10].Value.ToString().Trim(),
+            //    dgvProds.Rows[rsl].Cells[11].Value.ToString().Trim(),
+            //    dgvProds.Rows[rsl].Cells[12].Value.ToString().Trim(),
+            //    dgvProds.Rows[rsl].Cells[13].Value.ToString().Trim(),
+            //    qtyAdd + ""
+            //    //dgvProds.Rows[rsl].Cells[14].Value.ToString().Trim(), // Usage note
+            //    //dgvProds.Rows[rsl].Cells[15].Value.ToString().Trim(),
+            //    //dgvProds.Rows[rsl].Cells[17].Value.ToString().Trim(),
+            //    //dgvProds.Rows[rsl].Cells[18].Value.ToString().Trim(),
+            //    //dgvProds.Rows[rsl].Cells[19].Value.ToString().Trim(),
+            //    //dgvProds.Rows[rsl].Cells[16].Value.ToString().Trim(),
+            //};
+
+            dtProdsOfMprs.Rows.Add(dataRow);
             prodsAdded.Add(Guid.Parse(dgvProds.Rows[rsl].Cells[0].Value.ToString()));
             dgvProdExistMpr.Rows[0].Selected = true;
         }
@@ -250,6 +286,7 @@ namespace StorageDLHI.App.MprGUI
                 }
                 // Remove exist row in MPRs
                 dgvProdExistMpr.Rows.RemoveAt(rsl);
+                dtProdsOfMprs.Rows.RemoveAt(rsl);
                 prodsAdded.Remove(Guid.Parse(dgvProds.Rows[rsl].Cells[0].Value.ToString()));
             }
         }
@@ -267,6 +304,7 @@ namespace StorageDLHI.App.MprGUI
                 }
                 // Remove exist row in MPRs
                 dgvProdExistMpr.Rows.RemoveAt(rsl);
+                dtProdsOfMprs.Rows.RemoveAt(rsl);
                 prodsAdded.Remove(Guid.Parse(dgvProds.Rows[rsl].Cells[0].Value.ToString()));
             }
         }
@@ -275,7 +313,8 @@ namespace StorageDLHI.App.MprGUI
         {
             if (txtSearchProd.Text.Length == 0)
             {
-                dgvProds.DataSource = this.dtProds;
+                //dgvProds.DataSource = this.dtProds;
+                dgvProds.Refresh();
             }
             DataView dv = dtProds.DefaultView;
             dv.RowFilter = $"{QueryStatement.PROPERTY_PROD_NAME} LIKE '%{txtSearchProd.Text}%' " +
@@ -293,6 +332,29 @@ namespace StorageDLHI.App.MprGUI
                 $"OR {QueryStatement.PROPERTY_PROD_UNIT_CODE} LIKE '%{txtSearchProd.Text}%' ";
 
             dgvProds.DataSource = dv;
+        }
+
+        private void txtSearchProdExistMPR_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (txtSearchProdExistMPR.Text.Length == 0)
+            {
+                dgvProdExistMpr.Refresh();
+            }
+            DataView dv = dtProdsOfMprs.DefaultView;
+            dv.RowFilter = $"{QueryStatement.PROPERTY_PROD_NAME} LIKE '%{txtSearchProdExistMPR.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_DES_2} LIKE '%{txtSearchProdExistMPR.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_CODE} LIKE '%{txtSearchProdExistMPR.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_MATERIAL_CODE} LIKE '%{txtSearchProdExistMPR.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_A} LIKE '%{txtSearchProdExistMPR.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_B} LIKE '%{txtSearchProdExistMPR.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_C} LIKE '%{txtSearchProdExistMPR.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_D} LIKE '%{txtSearchProdExistMPR.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_E} LIKE '%{txtSearchProdExistMPR.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_F} LIKE '%{txtSearchProdExistMPR.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_G} LIKE '%{txtSearchProdExistMPR.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_PROD_UNIT_CODE} LIKE '%{txtSearchProdExistMPR.Text}%' ";
+
+            dgvProdExistMpr.DataSource = dv;
         }
     }
 }

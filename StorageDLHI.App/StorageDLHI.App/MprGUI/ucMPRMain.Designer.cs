@@ -73,6 +73,9 @@
             this.btnConfirm = new System.Windows.Forms.ToolStripButton();
             this.dgvProdExistMpr = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.tlsLabalQtyProd = new System.Windows.Forms.ToolStripLabel();
+            this.ctmUpdateQtyProdMpr = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.updateQuantityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,9 +90,6 @@
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ctmUpdateQtyProdMpr = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.updateQuantityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pageMPRs)).BeginInit();
@@ -336,6 +336,7 @@
             this.txtSearchProdExistMPR.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSearchProdExistMPR.Name = "txtSearchProdExistMPR";
             this.txtSearchProdExistMPR.Size = new System.Drawing.Size(150, 27);
+            this.txtSearchProdExistMPR.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchProdExistMPR_KeyUp);
             // 
             // Column1
             // 
@@ -590,6 +591,30 @@
             this.tlsLabalQtyProd.Text = "(0)";
             this.tlsLabalQtyProd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // ctmUpdateQtyProdMpr
+            // 
+            this.ctmUpdateQtyProdMpr.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ctmUpdateQtyProdMpr.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.ctmUpdateQtyProdMpr.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.updateQuantityToolStripMenuItem,
+            this.deleteProductToolStripMenuItem});
+            this.ctmUpdateQtyProdMpr.Name = "ctmUpdateQtyProdMpr";
+            this.ctmUpdateQtyProdMpr.Size = new System.Drawing.Size(186, 52);
+            // 
+            // updateQuantityToolStripMenuItem
+            // 
+            this.updateQuantityToolStripMenuItem.Name = "updateQuantityToolStripMenuItem";
+            this.updateQuantityToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.updateQuantityToolStripMenuItem.Text = "Update quantity";
+            this.updateQuantityToolStripMenuItem.Click += new System.EventHandler(this.updateQuantityToolStripMenuItem_Click);
+            // 
+            // deleteProductToolStripMenuItem
+            // 
+            this.deleteProductToolStripMenuItem.Name = "deleteProductToolStripMenuItem";
+            this.deleteProductToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.deleteProductToolStripMenuItem.Text = "Delete product";
+            this.deleteProductToolStripMenuItem.Click += new System.EventHandler(this.deleteProductToolStripMenuItem_Click);
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
@@ -697,34 +722,11 @@
             // 
             // dataGridViewTextBoxColumn14
             // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "QTY";
             this.dataGridViewTextBoxColumn14.HeaderText = "Quantity";
             this.dataGridViewTextBoxColumn14.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            // 
-            // ctmUpdateQtyProdMpr
-            // 
-            this.ctmUpdateQtyProdMpr.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ctmUpdateQtyProdMpr.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.ctmUpdateQtyProdMpr.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.updateQuantityToolStripMenuItem,
-            this.deleteProductToolStripMenuItem});
-            this.ctmUpdateQtyProdMpr.Name = "ctmUpdateQtyProdMpr";
-            this.ctmUpdateQtyProdMpr.Size = new System.Drawing.Size(186, 52);
-            // 
-            // updateQuantityToolStripMenuItem
-            // 
-            this.updateQuantityToolStripMenuItem.Name = "updateQuantityToolStripMenuItem";
-            this.updateQuantityToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.updateQuantityToolStripMenuItem.Text = "Update quantity";
-            this.updateQuantityToolStripMenuItem.Click += new System.EventHandler(this.updateQuantityToolStripMenuItem_Click);
-            // 
-            // deleteProductToolStripMenuItem
-            // 
-            this.deleteProductToolStripMenuItem.Name = "deleteProductToolStripMenuItem";
-            this.deleteProductToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.deleteProductToolStripMenuItem.Text = "Delete product";
-            this.deleteProductToolStripMenuItem.Click += new System.EventHandler(this.deleteProductToolStripMenuItem_Click);
             // 
             // ucMPRMain
             // 
@@ -812,6 +814,9 @@
         private System.Windows.Forms.ToolStripMenuItem updateProductToolStripMenuItem;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvProdExistMpr;
         private System.Windows.Forms.ToolStripLabel tlsLabalQtyProd;
+        private System.Windows.Forms.ContextMenuStrip ctmUpdateQtyProdMpr;
+        private System.Windows.Forms.ToolStripMenuItem updateQuantityToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteProductToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -826,8 +831,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.ContextMenuStrip ctmUpdateQtyProdMpr;
-        private System.Windows.Forms.ToolStripMenuItem updateQuantityToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteProductToolStripMenuItem;
     }
 }
