@@ -31,6 +31,30 @@
             this.components = new System.ComponentModel.Container();
             this.kryptonNavigator1 = new ComponentFactory.Krypton.Navigator.KryptonNavigator();
             this.pageMPRs = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonPanel5 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.kryptonGroupBox5 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.dgvMPRDetail = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.ctmUpdateInfoProd = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.updateProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kryptonGroupBox3 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.dgvMPRs = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ctmUpdateMpr = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editMPRInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.pageAddMPR = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -56,26 +80,13 @@
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ctmUpdateInfoProd = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.updateProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnAddProd = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.txtSearchProd = new System.Windows.Forms.ToolStripTextBox();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonGroupBox2 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.dgvProdExistMpr = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.ctmUpdateQtyProdMpr = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.updateQuantityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.tlsDeleteProdExist = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.txtSearchProdExistMPR = new System.Windows.Forms.ToolStripTextBox();
-            this.btnConfirm = new System.Windows.Forms.ToolStripButton();
-            this.tlsLabalQtyProd = new System.Windows.Forms.ToolStripLabel();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,33 +102,59 @@
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.ctmUpdateQtyProdMpr = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.updateQuantityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.txtSearchProdExistMPR = new System.Windows.Forms.ToolStripTextBox();
+            this.tlsLabalQtyProd = new System.Windows.Forms.ToolStripLabel();
+            this.Column33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column43 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column44 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column45 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column46 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column47 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column48 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnReload = new System.Windows.Forms.ToolStripButton();
-            this.kryptonPanel5 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.kryptonGroupBox3 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
-            this.dgvMPRs = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.kryptonGroupBox5 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
-            this.dgvMPRDetail = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ctmUpdateMpr = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editMPRInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAddProd = new System.Windows.Forms.ToolStripButton();
+            this.tlsDeleteProdExist = new System.Windows.Forms.ToolStripButton();
+            this.btnConfirm = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pageMPRs)).BeginInit();
             this.pageMPRs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
+            this.kryptonPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel4)).BeginInit();
+            this.kryptonPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).BeginInit();
+            this.kryptonPanel5.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).BeginInit();
+            this.kryptonGroupBox5.Panel.SuspendLayout();
+            this.kryptonGroupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMPRDetail)).BeginInit();
+            this.ctmUpdateInfoProd.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).BeginInit();
+            this.kryptonGroupBox3.Panel.SuspendLayout();
+            this.kryptonGroupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMPRs)).BeginInit();
+            this.ctmUpdateMpr.SuspendLayout();
+            this.toolStrip3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pageAddMPR)).BeginInit();
             this.pageAddMPR.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -128,7 +165,6 @@
             this.kryptonGroupBox1.Panel.SuspendLayout();
             this.kryptonGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProds)).BeginInit();
-            this.ctmUpdateInfoProd.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
@@ -139,25 +175,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdExistMpr)).BeginInit();
             this.ctmUpdateQtyProdMpr.SuspendLayout();
             this.toolStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
-            this.kryptonPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel4)).BeginInit();
-            this.kryptonPanel4.SuspendLayout();
-            this.toolStrip3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).BeginInit();
-            this.kryptonPanel5.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).BeginInit();
-            this.kryptonGroupBox3.Panel.SuspendLayout();
-            this.kryptonGroupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMPRs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).BeginInit();
-            this.kryptonGroupBox5.Panel.SuspendLayout();
-            this.kryptonGroupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMPRDetail)).BeginInit();
-            this.ctmUpdateMpr.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonNavigator1
@@ -191,6 +208,281 @@
             this.pageMPRs.Text = "MPR List";
             this.pageMPRs.ToolTipTitle = "MPR List";
             this.pageMPRs.UniqueName = "37E7262BB4BD4315628A3D632D8EE9F7";
+            // 
+            // kryptonPanel3
+            // 
+            this.kryptonPanel3.Controls.Add(this.kryptonPanel4);
+            this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel3.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel3.Name = "kryptonPanel3";
+            this.kryptonPanel3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.kryptonPanel3.Size = new System.Drawing.Size(1384, 726);
+            this.kryptonPanel3.TabIndex = 2;
+            // 
+            // kryptonPanel4
+            // 
+            this.kryptonPanel4.Controls.Add(this.kryptonPanel5);
+            this.kryptonPanel4.Controls.Add(this.toolStrip3);
+            this.kryptonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel4.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel4.Name = "kryptonPanel4";
+            this.kryptonPanel4.Size = new System.Drawing.Size(1384, 726);
+            this.kryptonPanel4.TabIndex = 0;
+            // 
+            // kryptonPanel5
+            // 
+            this.kryptonPanel5.Controls.Add(this.tableLayoutPanel2);
+            this.kryptonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel5.Location = new System.Drawing.Point(0, 27);
+            this.kryptonPanel5.Name = "kryptonPanel5";
+            this.kryptonPanel5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.kryptonPanel5.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundCustom1;
+            this.kryptonPanel5.Size = new System.Drawing.Size(1384, 699);
+            this.kryptonPanel5.TabIndex = 6;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.94798F));
+            this.tableLayoutPanel2.Controls.Add(this.kryptonGroupBox5, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.kryptonGroupBox3, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.48927F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.51073F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1384, 699);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // kryptonGroupBox5
+            // 
+            this.kryptonGroupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonGroupBox5.Location = new System.Drawing.Point(3, 300);
+            this.kryptonGroupBox5.Name = "kryptonGroupBox5";
+            this.kryptonGroupBox5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            // 
+            // kryptonGroupBox5.Panel
+            // 
+            this.kryptonGroupBox5.Panel.Controls.Add(this.dgvMPRDetail);
+            this.kryptonGroupBox5.Size = new System.Drawing.Size(1378, 396);
+            this.kryptonGroupBox5.TabIndex = 2;
+            this.kryptonGroupBox5.Values.Heading = "MPR Detail";
+            // 
+            // dgvMPRDetail
+            // 
+            this.dgvMPRDetail.AllowUserToAddRows = false;
+            this.dgvMPRDetail.AllowUserToDeleteRows = false;
+            this.dgvMPRDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMPRDetail.ColumnHeadersHeight = 30;
+            this.dgvMPRDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column33,
+            this.Column34,
+            this.Column35,
+            this.Column36,
+            this.Column37,
+            this.Column38,
+            this.Column39,
+            this.Column40,
+            this.Column41,
+            this.Column42,
+            this.Column43,
+            this.Column44,
+            this.Column45,
+            this.Column46,
+            this.Column47,
+            this.Column48,
+            this.Column49});
+            this.dgvMPRDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMPRDetail.Location = new System.Drawing.Point(0, 0);
+            this.dgvMPRDetail.Name = "dgvMPRDetail";
+            this.dgvMPRDetail.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.dgvMPRDetail.ReadOnly = true;
+            this.dgvMPRDetail.RowHeadersWidth = 51;
+            this.dgvMPRDetail.RowTemplate.Height = 30;
+            this.dgvMPRDetail.Size = new System.Drawing.Size(1374, 368);
+            this.dgvMPRDetail.TabIndex = 3;
+            this.dgvMPRDetail.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMPRDetail_CellMouseDown);
+            // 
+            // ctmUpdateInfoProd
+            // 
+            this.ctmUpdateInfoProd.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ctmUpdateInfoProd.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.ctmUpdateInfoProd.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.updateProductToolStripMenuItem});
+            this.ctmUpdateInfoProd.Name = "ctmUpdateInfoProd";
+            this.ctmUpdateInfoProd.Size = new System.Drawing.Size(184, 28);
+            // 
+            // updateProductToolStripMenuItem
+            // 
+            this.updateProductToolStripMenuItem.Name = "updateProductToolStripMenuItem";
+            this.updateProductToolStripMenuItem.Size = new System.Drawing.Size(183, 24);
+            this.updateProductToolStripMenuItem.Text = "Update product";
+            this.updateProductToolStripMenuItem.Click += new System.EventHandler(this.updateProductToolStripMenuItem_Click);
+            // 
+            // kryptonGroupBox3
+            // 
+            this.kryptonGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonGroupBox3.Location = new System.Drawing.Point(3, 3);
+            this.kryptonGroupBox3.Name = "kryptonGroupBox3";
+            this.kryptonGroupBox3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            // 
+            // kryptonGroupBox3.Panel
+            // 
+            this.kryptonGroupBox3.Panel.Controls.Add(this.dgvMPRs);
+            this.kryptonGroupBox3.Size = new System.Drawing.Size(1378, 291);
+            this.kryptonGroupBox3.TabIndex = 0;
+            this.kryptonGroupBox3.Values.Heading = "MPRs";
+            // 
+            // dgvMPRs
+            // 
+            this.dgvMPRs.AllowUserToAddRows = false;
+            this.dgvMPRs.AllowUserToDeleteRows = false;
+            this.dgvMPRs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMPRs.ColumnHeadersHeight = 30;
+            this.dgvMPRs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column22,
+            this.Column23,
+            this.Column24,
+            this.Column25,
+            this.Column26,
+            this.Column27,
+            this.Column28,
+            this.Column29,
+            this.Column30,
+            this.Column31,
+            this.Column32});
+            this.dgvMPRs.ContextMenuStrip = this.ctmUpdateMpr;
+            this.dgvMPRs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMPRs.Location = new System.Drawing.Point(0, 0);
+            this.dgvMPRs.Name = "dgvMPRs";
+            this.dgvMPRs.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.dgvMPRs.ReadOnly = true;
+            this.dgvMPRs.RowHeadersWidth = 51;
+            this.dgvMPRs.RowTemplate.Height = 30;
+            this.dgvMPRs.Size = new System.Drawing.Size(1374, 263);
+            this.dgvMPRs.TabIndex = 2;
+            this.dgvMPRs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMPRs_CellClick);
+            this.dgvMPRs.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMPRs_CellMouseDown);
+            this.dgvMPRs.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvMPRs_RowPostPaint);
+            // 
+            // Column22
+            // 
+            this.Column22.DataPropertyName = "ID";
+            this.Column22.HeaderText = "ID";
+            this.Column22.MinimumWidth = 6;
+            this.Column22.Name = "Column22";
+            this.Column22.ReadOnly = true;
+            // 
+            // Column23
+            // 
+            this.Column23.DataPropertyName = "MPR_NO";
+            this.Column23.HeaderText = "MPR No";
+            this.Column23.MinimumWidth = 6;
+            this.Column23.Name = "Column23";
+            this.Column23.ReadOnly = true;
+            // 
+            // Column24
+            // 
+            this.Column24.DataPropertyName = "MPR_WO_NO";
+            this.Column24.HeaderText = "WO No";
+            this.Column24.MinimumWidth = 6;
+            this.Column24.Name = "Column24";
+            this.Column24.ReadOnly = true;
+            // 
+            // Column25
+            // 
+            this.Column25.DataPropertyName = "MPR_PROJECT_NAME";
+            this.Column25.HeaderText = "Project name";
+            this.Column25.MinimumWidth = 6;
+            this.Column25.Name = "Column25";
+            this.Column25.ReadOnly = true;
+            // 
+            // Column26
+            // 
+            this.Column26.DataPropertyName = "MPR_REV_TOTAL";
+            this.Column26.HeaderText = "Rev total";
+            this.Column26.MinimumWidth = 6;
+            this.Column26.Name = "Column26";
+            this.Column26.ReadOnly = true;
+            // 
+            // Column27
+            // 
+            this.Column27.DataPropertyName = "MPR_CREATE_DATE";
+            this.Column27.HeaderText = "Create date";
+            this.Column27.MinimumWidth = 6;
+            this.Column27.Name = "Column27";
+            this.Column27.ReadOnly = true;
+            // 
+            // Column28
+            // 
+            this.Column28.DataPropertyName = "MPR_EXPECTED_DELIVERY_DATE";
+            this.Column28.HeaderText = "Expected delivery date";
+            this.Column28.MinimumWidth = 6;
+            this.Column28.Name = "Column28";
+            this.Column28.ReadOnly = true;
+            // 
+            // Column29
+            // 
+            this.Column29.DataPropertyName = "MPR_PREPARED";
+            this.Column29.HeaderText = "Prepared";
+            this.Column29.MinimumWidth = 6;
+            this.Column29.Name = "Column29";
+            this.Column29.ReadOnly = true;
+            // 
+            // Column30
+            // 
+            this.Column30.DataPropertyName = "MPR_REVIEWED";
+            this.Column30.HeaderText = "Reviewed";
+            this.Column30.MinimumWidth = 6;
+            this.Column30.Name = "Column30";
+            this.Column30.ReadOnly = true;
+            // 
+            // Column31
+            // 
+            this.Column31.DataPropertyName = "MPR_APPROVED";
+            this.Column31.HeaderText = "Approved";
+            this.Column31.MinimumWidth = 6;
+            this.Column31.Name = "Column31";
+            this.Column31.ReadOnly = true;
+            // 
+            // Column32
+            // 
+            this.Column32.DataPropertyName = "STAFF_ID";
+            this.Column32.HeaderText = "Staff";
+            this.Column32.MinimumWidth = 6;
+            this.Column32.Name = "Column32";
+            this.Column32.ReadOnly = true;
+            this.Column32.Visible = false;
+            // 
+            // ctmUpdateMpr
+            // 
+            this.ctmUpdateMpr.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ctmUpdateMpr.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.ctmUpdateMpr.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editMPRInfoToolStripMenuItem});
+            this.ctmUpdateMpr.Name = "ctmUpdateMpr";
+            this.ctmUpdateMpr.Size = new System.Drawing.Size(169, 28);
+            // 
+            // editMPRInfoToolStripMenuItem
+            // 
+            this.editMPRInfoToolStripMenuItem.Name = "editMPRInfoToolStripMenuItem";
+            this.editMPRInfoToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
+            this.editMPRInfoToolStripMenuItem.Text = "Edit MPR info";
+            this.editMPRInfoToolStripMenuItem.Click += new System.EventHandler(this.editMPRInfoToolStripMenuItem_Click);
+            // 
+            // toolStrip3
+            // 
+            this.toolStrip3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnReload});
+            this.toolStrip3.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip3.Name = "toolStrip3";
+            this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip3.Size = new System.Drawing.Size(1384, 27);
+            this.toolStrip3.TabIndex = 5;
+            this.toolStrip3.Text = "toolStrip3";
             // 
             // pageAddMPR
             // 
@@ -234,14 +526,14 @@
             // kryptonGroupBox1
             // 
             this.kryptonGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox1.Location = new System.Drawing.Point(0, 27);
+            this.kryptonGroupBox1.Location = new System.Drawing.Point(0, 31);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             this.kryptonGroupBox1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             // 
             // kryptonGroupBox1.Panel
             // 
             this.kryptonGroupBox1.Panel.Controls.Add(this.dgvProds);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(1378, 330);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(1378, 326);
             this.kryptonGroupBox1.TabIndex = 1;
             this.kryptonGroupBox1.Values.Heading = "Product list";
             // 
@@ -280,7 +572,7 @@
             this.dgvProds.ReadOnly = true;
             this.dgvProds.RowHeadersWidth = 51;
             this.dgvProds.RowTemplate.Height = 100;
-            this.dgvProds.Size = new System.Drawing.Size(1374, 302);
+            this.dgvProds.Size = new System.Drawing.Size(1374, 298);
             this.dgvProds.TabIndex = 1;
             this.dgvProds.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProds_CellDoubleClick);
             this.dgvProds.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProds_CellMouseDown);
@@ -453,22 +745,6 @@
             this.Column20.ReadOnly = true;
             this.Column20.Visible = false;
             // 
-            // ctmUpdateInfoProd
-            // 
-            this.ctmUpdateInfoProd.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ctmUpdateInfoProd.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.ctmUpdateInfoProd.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.updateProductToolStripMenuItem});
-            this.ctmUpdateInfoProd.Name = "ctmUpdateInfoProd";
-            this.ctmUpdateInfoProd.Size = new System.Drawing.Size(184, 28);
-            // 
-            // updateProductToolStripMenuItem
-            // 
-            this.updateProductToolStripMenuItem.Name = "updateProductToolStripMenuItem";
-            this.updateProductToolStripMenuItem.Size = new System.Drawing.Size(183, 24);
-            this.updateProductToolStripMenuItem.Text = "Update product";
-            this.updateProductToolStripMenuItem.Click += new System.EventHandler(this.updateProductToolStripMenuItem_Click);
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -481,29 +757,19 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(1378, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1378, 31);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // btnAddProd
-            // 
-            this.btnAddProd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnAddProd.Image = global::StorageDLHI.App.Properties.Resources.add;
-            this.btnAddProd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAddProd.Name = "btnAddProd";
-            this.btnAddProd.Size = new System.Drawing.Size(29, 24);
-            this.btnAddProd.Text = "Add new product for create MPR";
-            this.btnAddProd.Click += new System.EventHandler(this.btnAddProd_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(56, 24);
+            this.toolStripLabel1.Size = new System.Drawing.Size(56, 28);
             this.toolStripLabel1.Text = "Search:";
             // 
             // txtSearchProd
@@ -528,14 +794,14 @@
             // kryptonGroupBox2
             // 
             this.kryptonGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox2.Location = new System.Drawing.Point(0, 27);
+            this.kryptonGroupBox2.Location = new System.Drawing.Point(0, 31);
             this.kryptonGroupBox2.Name = "kryptonGroupBox2";
             this.kryptonGroupBox2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             // 
             // kryptonGroupBox2.Panel
             // 
             this.kryptonGroupBox2.Panel.Controls.Add(this.dgvProdExistMpr);
-            this.kryptonGroupBox2.Size = new System.Drawing.Size(1378, 330);
+            this.kryptonGroupBox2.Size = new System.Drawing.Size(1378, 326);
             this.kryptonGroupBox2.TabIndex = 1;
             this.kryptonGroupBox2.Values.Heading = "Products of MPRs";
             // 
@@ -569,98 +835,10 @@
             this.dgvProdExistMpr.ReadOnly = true;
             this.dgvProdExistMpr.RowHeadersWidth = 51;
             this.dgvProdExistMpr.RowTemplate.Height = 50;
-            this.dgvProdExistMpr.Size = new System.Drawing.Size(1374, 302);
+            this.dgvProdExistMpr.Size = new System.Drawing.Size(1374, 298);
             this.dgvProdExistMpr.TabIndex = 2;
             this.dgvProdExistMpr.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProdExistMpr_CellMouseDown);
             this.dgvProdExistMpr.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvProdExistMpr_RowPostPaint);
-            // 
-            // ctmUpdateQtyProdMpr
-            // 
-            this.ctmUpdateQtyProdMpr.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ctmUpdateQtyProdMpr.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.ctmUpdateQtyProdMpr.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.updateQuantityToolStripMenuItem,
-            this.deleteProductToolStripMenuItem});
-            this.ctmUpdateQtyProdMpr.Name = "ctmUpdateQtyProdMpr";
-            this.ctmUpdateQtyProdMpr.Size = new System.Drawing.Size(186, 52);
-            // 
-            // updateQuantityToolStripMenuItem
-            // 
-            this.updateQuantityToolStripMenuItem.Name = "updateQuantityToolStripMenuItem";
-            this.updateQuantityToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
-            this.updateQuantityToolStripMenuItem.Text = "Update quantity";
-            this.updateQuantityToolStripMenuItem.Click += new System.EventHandler(this.updateQuantityToolStripMenuItem_Click);
-            // 
-            // deleteProductToolStripMenuItem
-            // 
-            this.deleteProductToolStripMenuItem.Name = "deleteProductToolStripMenuItem";
-            this.deleteProductToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
-            this.deleteProductToolStripMenuItem.Text = "Delete product";
-            this.deleteProductToolStripMenuItem.Click += new System.EventHandler(this.deleteProductToolStripMenuItem_Click);
-            // 
-            // toolStrip2
-            // 
-            this.toolStrip2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlsDeleteProdExist,
-            this.toolStripSeparator2,
-            this.toolStripLabel2,
-            this.txtSearchProdExistMPR,
-            this.btnConfirm,
-            this.tlsLabalQtyProd});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip2.Size = new System.Drawing.Size(1378, 27);
-            this.toolStrip2.TabIndex = 0;
-            this.toolStrip2.Text = "toolStrip2";
-            // 
-            // tlsDeleteProdExist
-            // 
-            this.tlsDeleteProdExist.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsDeleteProdExist.Image = global::StorageDLHI.App.Properties.Resources.bin;
-            this.tlsDeleteProdExist.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsDeleteProdExist.Name = "tlsDeleteProdExist";
-            this.tlsDeleteProdExist.Size = new System.Drawing.Size(29, 24);
-            this.tlsDeleteProdExist.Text = "toolStripButton1";
-            this.tlsDeleteProdExist.Click += new System.EventHandler(this.tlsDeleteProdExist_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
-            // 
-            // toolStripLabel2
-            // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(56, 24);
-            this.toolStripLabel2.Text = "Search:";
-            // 
-            // txtSearchProdExistMPR
-            // 
-            this.txtSearchProdExistMPR.AutoSize = false;
-            this.txtSearchProdExistMPR.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtSearchProdExistMPR.Name = "txtSearchProdExistMPR";
-            this.txtSearchProdExistMPR.Size = new System.Drawing.Size(150, 27);
-            this.txtSearchProdExistMPR.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchProdExistMPR_KeyUp);
-            // 
-            // btnConfirm
-            // 
-            this.btnConfirm.Image = global::StorageDLHI.App.Properties.Resources.right;
-            this.btnConfirm.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(91, 24);
-            this.btnConfirm.Text = "Comfirm";
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
-            // 
-            // tlsLabalQtyProd
-            // 
-            this.tlsLabalQtyProd.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tlsLabalQtyProd.Name = "tlsLabalQtyProd";
-            this.tlsLabalQtyProd.Size = new System.Drawing.Size(27, 24);
-            this.tlsLabalQtyProd.Text = "(0)";
-            this.tlsLabalQtyProd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -783,38 +961,210 @@
             this.Column21.Name = "Column21";
             this.Column21.ReadOnly = true;
             // 
-            // kryptonPanel3
+            // ctmUpdateQtyProdMpr
             // 
-            this.kryptonPanel3.Controls.Add(this.kryptonPanel4);
-            this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel3.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel3.Name = "kryptonPanel3";
-            this.kryptonPanel3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel3.Size = new System.Drawing.Size(1384, 726);
-            this.kryptonPanel3.TabIndex = 2;
+            this.ctmUpdateQtyProdMpr.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ctmUpdateQtyProdMpr.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.ctmUpdateQtyProdMpr.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.updateQuantityToolStripMenuItem,
+            this.deleteProductToolStripMenuItem});
+            this.ctmUpdateQtyProdMpr.Name = "ctmUpdateQtyProdMpr";
+            this.ctmUpdateQtyProdMpr.Size = new System.Drawing.Size(186, 52);
             // 
-            // kryptonPanel4
+            // updateQuantityToolStripMenuItem
             // 
-            this.kryptonPanel4.Controls.Add(this.kryptonPanel5);
-            this.kryptonPanel4.Controls.Add(this.toolStrip3);
-            this.kryptonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel4.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel4.Name = "kryptonPanel4";
-            this.kryptonPanel4.Size = new System.Drawing.Size(1384, 726);
-            this.kryptonPanel4.TabIndex = 0;
+            this.updateQuantityToolStripMenuItem.Name = "updateQuantityToolStripMenuItem";
+            this.updateQuantityToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
+            this.updateQuantityToolStripMenuItem.Text = "Update quantity";
+            this.updateQuantityToolStripMenuItem.Click += new System.EventHandler(this.updateQuantityToolStripMenuItem_Click);
             // 
-            // toolStrip3
+            // deleteProductToolStripMenuItem
             // 
-            this.toolStrip3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnReload});
-            this.toolStrip3.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip3.Size = new System.Drawing.Size(1384, 27);
-            this.toolStrip3.TabIndex = 5;
-            this.toolStrip3.Text = "toolStrip3";
+            this.deleteProductToolStripMenuItem.Name = "deleteProductToolStripMenuItem";
+            this.deleteProductToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
+            this.deleteProductToolStripMenuItem.Text = "Delete product";
+            this.deleteProductToolStripMenuItem.Click += new System.EventHandler(this.deleteProductToolStripMenuItem_Click);
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlsDeleteProdExist,
+            this.toolStripSeparator2,
+            this.toolStripLabel2,
+            this.txtSearchProdExistMPR,
+            this.btnConfirm,
+            this.tlsLabalQtyProd});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip2.Size = new System.Drawing.Size(1378, 31);
+            this.toolStrip2.TabIndex = 0;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(56, 28);
+            this.toolStripLabel2.Text = "Search:";
+            // 
+            // txtSearchProdExistMPR
+            // 
+            this.txtSearchProdExistMPR.AutoSize = false;
+            this.txtSearchProdExistMPR.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSearchProdExistMPR.Name = "txtSearchProdExistMPR";
+            this.txtSearchProdExistMPR.Size = new System.Drawing.Size(150, 27);
+            this.txtSearchProdExistMPR.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchProdExistMPR_KeyUp);
+            // 
+            // tlsLabalQtyProd
+            // 
+            this.tlsLabalQtyProd.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tlsLabalQtyProd.Name = "tlsLabalQtyProd";
+            this.tlsLabalQtyProd.Size = new System.Drawing.Size(27, 28);
+            this.tlsLabalQtyProd.Text = "(0)";
+            this.tlsLabalQtyProd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // Column33
+            // 
+            this.Column33.DataPropertyName = "ID";
+            this.Column33.HeaderText = "ID";
+            this.Column33.MinimumWidth = 6;
+            this.Column33.Name = "Column33";
+            this.Column33.ReadOnly = true;
+            // 
+            // Column34
+            // 
+            this.Column34.DataPropertyName = "MPR_ID";
+            this.Column34.HeaderText = "MPR_ID";
+            this.Column34.MinimumWidth = 6;
+            this.Column34.Name = "Column34";
+            this.Column34.ReadOnly = true;
+            // 
+            // Column35
+            // 
+            this.Column35.DataPropertyName = "PRODUCT_ID";
+            this.Column35.HeaderText = "PRODUCT_ID";
+            this.Column35.MinimumWidth = 6;
+            this.Column35.Name = "Column35";
+            this.Column35.ReadOnly = true;
+            // 
+            // Column36
+            // 
+            this.Column36.DataPropertyName = "PRODUCT_NAME";
+            this.Column36.HeaderText = "Product name";
+            this.Column36.MinimumWidth = 6;
+            this.Column36.Name = "Column36";
+            this.Column36.ReadOnly = true;
+            // 
+            // Column37
+            // 
+            this.Column37.DataPropertyName = "PRODUCT_DES_2";
+            this.Column37.HeaderText = "Description 2";
+            this.Column37.MinimumWidth = 6;
+            this.Column37.Name = "Column37";
+            this.Column37.ReadOnly = true;
+            // 
+            // Column38
+            // 
+            this.Column38.DataPropertyName = "PRODUCT_MATERIAL_CODE";
+            this.Column38.HeaderText = "Material";
+            this.Column38.MinimumWidth = 6;
+            this.Column38.Name = "Column38";
+            this.Column38.ReadOnly = true;
+            // 
+            // Column39
+            // 
+            this.Column39.DataPropertyName = "A_THINHNESS";
+            this.Column39.HeaderText = "A_Thinh";
+            this.Column39.MinimumWidth = 6;
+            this.Column39.Name = "Column39";
+            this.Column39.ReadOnly = true;
+            // 
+            // Column40
+            // 
+            this.Column40.DataPropertyName = "B_DEPTH";
+            this.Column40.HeaderText = "B_Depth";
+            this.Column40.MinimumWidth = 6;
+            this.Column40.Name = "Column40";
+            this.Column40.ReadOnly = true;
+            // 
+            // Column41
+            // 
+            this.Column41.DataPropertyName = "C_WIDTH";
+            this.Column41.HeaderText = "C_Width";
+            this.Column41.MinimumWidth = 6;
+            this.Column41.Name = "Column41";
+            this.Column41.ReadOnly = true;
+            // 
+            // Column42
+            // 
+            this.Column42.DataPropertyName = "D_WEB";
+            this.Column42.HeaderText = "D_Web";
+            this.Column42.MinimumWidth = 6;
+            this.Column42.Name = "Column42";
+            this.Column42.ReadOnly = true;
+            // 
+            // Column43
+            // 
+            this.Column43.DataPropertyName = "E_FLAG";
+            this.Column43.HeaderText = "E_FLag";
+            this.Column43.MinimumWidth = 6;
+            this.Column43.Name = "Column43";
+            this.Column43.ReadOnly = true;
+            // 
+            // Column44
+            // 
+            this.Column44.DataPropertyName = "F_LENGTH";
+            this.Column44.HeaderText = "F_Length";
+            this.Column44.MinimumWidth = 6;
+            this.Column44.Name = "Column44";
+            this.Column44.ReadOnly = true;
+            // 
+            // Column45
+            // 
+            this.Column45.DataPropertyName = "G_WEIGHT";
+            this.Column45.HeaderText = "G_Weight";
+            this.Column45.MinimumWidth = 6;
+            this.Column45.Name = "Column45";
+            this.Column45.ReadOnly = true;
+            // 
+            // Column46
+            // 
+            this.Column46.DataPropertyName = "MPR_QTY";
+            this.Column46.HeaderText = "Q\'ty";
+            this.Column46.MinimumWidth = 6;
+            this.Column46.Name = "Column46";
+            this.Column46.ReadOnly = true;
+            // 
+            // Column47
+            // 
+            this.Column47.DataPropertyName = "USAGE";
+            this.Column47.HeaderText = "Usage";
+            this.Column47.MinimumWidth = 6;
+            this.Column47.Name = "Column47";
+            this.Column47.ReadOnly = true;
+            // 
+            // Column48
+            // 
+            this.Column48.DataPropertyName = "ISSUE_DATE";
+            this.Column48.HeaderText = "Issue date";
+            this.Column48.MinimumWidth = 6;
+            this.Column48.Name = "Column48";
+            this.Column48.ReadOnly = true;
+            // 
+            // Column49
+            // 
+            this.Column49.DataPropertyName = "MPR_REMARKS";
+            this.Column49.HeaderText = "Remarks";
+            this.Column49.MinimumWidth = 6;
+            this.Column49.Name = "Column49";
+            this.Column49.ReadOnly = true;
             // 
             // btnReload
             // 
@@ -826,212 +1176,34 @@
             this.btnReload.Text = "Refresh";
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
-            // kryptonPanel5
+            // btnAddProd
             // 
-            this.kryptonPanel5.Controls.Add(this.tableLayoutPanel2);
-            this.kryptonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel5.Location = new System.Drawing.Point(0, 27);
-            this.kryptonPanel5.Name = "kryptonPanel5";
-            this.kryptonPanel5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel5.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundCustom1;
-            this.kryptonPanel5.Size = new System.Drawing.Size(1384, 699);
-            this.kryptonPanel5.TabIndex = 6;
+            this.btnAddProd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAddProd.Image = global::StorageDLHI.App.Properties.Resources.add;
+            this.btnAddProd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAddProd.Name = "btnAddProd";
+            this.btnAddProd.Size = new System.Drawing.Size(29, 28);
+            this.btnAddProd.Text = "Add new product for create MPR";
+            this.btnAddProd.Click += new System.EventHandler(this.btnAddProd_Click);
             // 
-            // tableLayoutPanel2
+            // tlsDeleteProdExist
             // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.94798F));
-            this.tableLayoutPanel2.Controls.Add(this.kryptonGroupBox5, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.kryptonGroupBox3, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.48927F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.51073F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1384, 699);
-            this.tableLayoutPanel2.TabIndex = 0;
+            this.tlsDeleteProdExist.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsDeleteProdExist.Image = global::StorageDLHI.App.Properties.Resources.bin;
+            this.tlsDeleteProdExist.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsDeleteProdExist.Name = "tlsDeleteProdExist";
+            this.tlsDeleteProdExist.Size = new System.Drawing.Size(29, 28);
+            this.tlsDeleteProdExist.Text = "toolStripButton1";
+            this.tlsDeleteProdExist.Click += new System.EventHandler(this.tlsDeleteProdExist_Click);
             // 
-            // kryptonGroupBox3
+            // btnConfirm
             // 
-            this.kryptonGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox3.Location = new System.Drawing.Point(3, 3);
-            this.kryptonGroupBox3.Name = "kryptonGroupBox3";
-            this.kryptonGroupBox3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            // 
-            // kryptonGroupBox3.Panel
-            // 
-            this.kryptonGroupBox3.Panel.Controls.Add(this.dgvMPRs);
-            this.kryptonGroupBox3.Size = new System.Drawing.Size(1378, 291);
-            this.kryptonGroupBox3.TabIndex = 0;
-            this.kryptonGroupBox3.Values.Heading = "MPRs";
-            // 
-            // dgvMPRs
-            // 
-            this.dgvMPRs.AllowUserToAddRows = false;
-            this.dgvMPRs.AllowUserToDeleteRows = false;
-            this.dgvMPRs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMPRs.ColumnHeadersHeight = 30;
-            this.dgvMPRs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column22,
-            this.Column23,
-            this.Column24,
-            this.Column25,
-            this.Column26,
-            this.Column27,
-            this.Column28,
-            this.Column29,
-            this.Column30,
-            this.Column31,
-            this.Column32});
-            this.dgvMPRs.ContextMenuStrip = this.ctmUpdateMpr;
-            this.dgvMPRs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMPRs.Location = new System.Drawing.Point(0, 0);
-            this.dgvMPRs.Name = "dgvMPRs";
-            this.dgvMPRs.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.dgvMPRs.ReadOnly = true;
-            this.dgvMPRs.RowHeadersWidth = 51;
-            this.dgvMPRs.RowTemplate.Height = 30;
-            this.dgvMPRs.Size = new System.Drawing.Size(1374, 263);
-            this.dgvMPRs.TabIndex = 2;
-            this.dgvMPRs.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMPRs_CellMouseDown);
-            this.dgvMPRs.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvMPRs_RowPostPaint);
-            // 
-            // kryptonGroupBox5
-            // 
-            this.kryptonGroupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox5.Location = new System.Drawing.Point(3, 300);
-            this.kryptonGroupBox5.Name = "kryptonGroupBox5";
-            this.kryptonGroupBox5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            // 
-            // kryptonGroupBox5.Panel
-            // 
-            this.kryptonGroupBox5.Panel.Controls.Add(this.dgvMPRDetail);
-            this.kryptonGroupBox5.Size = new System.Drawing.Size(1378, 396);
-            this.kryptonGroupBox5.TabIndex = 2;
-            this.kryptonGroupBox5.Values.Heading = "MPR Detail";
-            // 
-            // dgvMPRDetail
-            // 
-            this.dgvMPRDetail.AllowUserToAddRows = false;
-            this.dgvMPRDetail.AllowUserToDeleteRows = false;
-            this.dgvMPRDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMPRDetail.ColumnHeadersHeight = 30;
-            this.dgvMPRDetail.ContextMenuStrip = this.ctmUpdateInfoProd;
-            this.dgvMPRDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMPRDetail.Location = new System.Drawing.Point(0, 0);
-            this.dgvMPRDetail.Name = "dgvMPRDetail";
-            this.dgvMPRDetail.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.dgvMPRDetail.ReadOnly = true;
-            this.dgvMPRDetail.RowHeadersWidth = 51;
-            this.dgvMPRDetail.RowTemplate.Height = 100;
-            this.dgvMPRDetail.Size = new System.Drawing.Size(1374, 368);
-            this.dgvMPRDetail.TabIndex = 3;
-            // 
-            // Column22
-            // 
-            this.Column22.DataPropertyName = "ID";
-            this.Column22.HeaderText = "ID";
-            this.Column22.MinimumWidth = 6;
-            this.Column22.Name = "Column22";
-            this.Column22.ReadOnly = true;
-            // 
-            // Column23
-            // 
-            this.Column23.DataPropertyName = "MPR_NO";
-            this.Column23.HeaderText = "MPR No";
-            this.Column23.MinimumWidth = 6;
-            this.Column23.Name = "Column23";
-            this.Column23.ReadOnly = true;
-            // 
-            // Column24
-            // 
-            this.Column24.DataPropertyName = "MPR_WO_NO";
-            this.Column24.HeaderText = "WO No";
-            this.Column24.MinimumWidth = 6;
-            this.Column24.Name = "Column24";
-            this.Column24.ReadOnly = true;
-            // 
-            // Column25
-            // 
-            this.Column25.DataPropertyName = "MPR_PROJECT_NAME";
-            this.Column25.HeaderText = "Project name";
-            this.Column25.MinimumWidth = 6;
-            this.Column25.Name = "Column25";
-            this.Column25.ReadOnly = true;
-            // 
-            // Column26
-            // 
-            this.Column26.DataPropertyName = "MPR_REV_TOTAL";
-            this.Column26.HeaderText = "Rev total";
-            this.Column26.MinimumWidth = 6;
-            this.Column26.Name = "Column26";
-            this.Column26.ReadOnly = true;
-            // 
-            // Column27
-            // 
-            this.Column27.DataPropertyName = "MPR_CREATE_DATE";
-            this.Column27.HeaderText = "Create date";
-            this.Column27.MinimumWidth = 6;
-            this.Column27.Name = "Column27";
-            this.Column27.ReadOnly = true;
-            // 
-            // Column28
-            // 
-            this.Column28.DataPropertyName = "MPR_EXPECTED_DELIVERY_DATE";
-            this.Column28.HeaderText = "Expected delivery date";
-            this.Column28.MinimumWidth = 6;
-            this.Column28.Name = "Column28";
-            this.Column28.ReadOnly = true;
-            // 
-            // Column29
-            // 
-            this.Column29.DataPropertyName = "MPR_PREPARED";
-            this.Column29.HeaderText = "Prepared";
-            this.Column29.MinimumWidth = 6;
-            this.Column29.Name = "Column29";
-            this.Column29.ReadOnly = true;
-            // 
-            // Column30
-            // 
-            this.Column30.DataPropertyName = "MPR_REVIEWED";
-            this.Column30.HeaderText = "Reviewed";
-            this.Column30.MinimumWidth = 6;
-            this.Column30.Name = "Column30";
-            this.Column30.ReadOnly = true;
-            // 
-            // Column31
-            // 
-            this.Column31.DataPropertyName = "MPR_APPROVED";
-            this.Column31.HeaderText = "Approved";
-            this.Column31.MinimumWidth = 6;
-            this.Column31.Name = "Column31";
-            this.Column31.ReadOnly = true;
-            // 
-            // Column32
-            // 
-            this.Column32.DataPropertyName = "STAFF_ID";
-            this.Column32.HeaderText = "Staff";
-            this.Column32.MinimumWidth = 6;
-            this.Column32.Name = "Column32";
-            this.Column32.ReadOnly = true;
-            this.Column32.Visible = false;
-            // 
-            // ctmUpdateMpr
-            // 
-            this.ctmUpdateMpr.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ctmUpdateMpr.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.ctmUpdateMpr.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editMPRInfoToolStripMenuItem});
-            this.ctmUpdateMpr.Name = "ctmUpdateMpr";
-            this.ctmUpdateMpr.Size = new System.Drawing.Size(169, 28);
-            // 
-            // editMPRInfoToolStripMenuItem
-            // 
-            this.editMPRInfoToolStripMenuItem.Name = "editMPRInfoToolStripMenuItem";
-            this.editMPRInfoToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.editMPRInfoToolStripMenuItem.Text = "Edit MPR info";
-            this.editMPRInfoToolStripMenuItem.Click += new System.EventHandler(this.editMPRInfoToolStripMenuItem_Click);
+            this.btnConfirm.Image = global::StorageDLHI.App.Properties.Resources.right;
+            this.btnConfirm.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(91, 28);
+            this.btnConfirm.Text = "Comfirm";
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // ucMPRMain
             // 
@@ -1045,6 +1217,28 @@
             this.kryptonNavigator1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pageMPRs)).EndInit();
             this.pageMPRs.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
+            this.kryptonPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel4)).EndInit();
+            this.kryptonPanel4.ResumeLayout(false);
+            this.kryptonPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).EndInit();
+            this.kryptonPanel5.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).EndInit();
+            this.kryptonGroupBox5.Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).EndInit();
+            this.kryptonGroupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMPRDetail)).EndInit();
+            this.ctmUpdateInfoProd.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).EndInit();
+            this.kryptonGroupBox3.Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).EndInit();
+            this.kryptonGroupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMPRs)).EndInit();
+            this.ctmUpdateMpr.ResumeLayout(false);
+            this.toolStrip3.ResumeLayout(false);
+            this.toolStrip3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pageAddMPR)).EndInit();
             this.pageAddMPR.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -1056,7 +1250,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
             this.kryptonGroupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProds)).EndInit();
-            this.ctmUpdateInfoProd.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
@@ -1070,27 +1263,6 @@
             this.ctmUpdateQtyProdMpr.ResumeLayout(false);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
-            this.kryptonPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel4)).EndInit();
-            this.kryptonPanel4.ResumeLayout(false);
-            this.kryptonPanel4.PerformLayout();
-            this.toolStrip3.ResumeLayout(false);
-            this.toolStrip3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).EndInit();
-            this.kryptonPanel5.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).EndInit();
-            this.kryptonGroupBox3.Panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).EndInit();
-            this.kryptonGroupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMPRs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).EndInit();
-            this.kryptonGroupBox5.Panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).EndInit();
-            this.kryptonGroupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMPRDetail)).EndInit();
-            this.ctmUpdateMpr.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1182,5 +1354,22 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column32;
         private System.Windows.Forms.ContextMenuStrip ctmUpdateMpr;
         private System.Windows.Forms.ToolStripMenuItem editMPRInfoToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column33;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column34;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column35;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column36;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column37;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column38;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column39;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column40;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column41;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column42;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column43;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column44;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column45;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column46;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column47;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column48;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column49;
     }
 }

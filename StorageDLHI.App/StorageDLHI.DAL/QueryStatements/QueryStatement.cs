@@ -92,13 +92,14 @@ namespace StorageDLHI.DAL.QueryStatements
 
         // MPRs
         public const string GET_MPR_DETAILs = "SELECT *FROM MPR_DETAIL";
-        public const string GET_MPR_DETAIL_BY_MPR_ID = "SELECT *FROM MPR_DETAIL WHERE MPR_ID = '{0}'";
+        //public const string GET_MPR_DETAIL_BY_MPR_ID = "SELECT *FROM MPR_DETAIL WHERE MPR_ID = '{0}'";
         public const string ADD_MPR = "SET DATEFORMAT DMY INSERT INTO MPRS (ID, MPR_NO, MPR_WO_NO, MPR_PROJECT_NAME, MPR_REV_TOTAL, \r\nMPR_CREATE_DATE, MPR_EXPECTED_DELIVERY_DATE, MPR_PREPARED, MPR_REVIEWED, MPR_APPROVED)\r\nVALUES ('{0}', '{1}', '{2}', '{3}', N'{4}', N'{5}', N'{6}', N'{7}', '{8}', '{9}')";
         public const string ADD_MPR_DETAIL = "";
         public const string DELETE_MPR = "DELETE FROM MPRS WHERE ID = '{0}'";
         public const string GET_MPR_DETAIL_FORM = "SELECT *FROM MPR_DETAIL WHERE ID = '00000000-0000-0000-0000-000000000000'";
         public const string GET_MPRs = "SELECT *FROM MPRS";
         public const string UPDATE_MPR_INFO = "SET DATEFORMAT DMY UPDATE MPRS SET MPR_EXPECTED_DELIVERY_DATE = '{0}', MPR_PREPARED = N'{1}', MPR_REVIEWED = N'{2}', MPR_APPROVED = N'{3}' WHERE ID = '{4}'";
+        public const string GET_MPR_DETAIL_BY_ID = "EXEC GET_MPR_DETAIL '{0}'";
 
     }
 }

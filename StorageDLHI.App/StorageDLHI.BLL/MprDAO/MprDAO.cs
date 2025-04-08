@@ -48,5 +48,11 @@ namespace StorageDLHI.BLL.MprDAO
                 mprs.Mpr_Approved, mprs.Id);
             return data.Update(sqlQuery) > 0;
         }
+
+        public static DataTable GetMprDetailByMpr(Guid mprId)
+        {
+            string sqlQuery = string.Format(QueryStatement.GET_MPR_DETAIL_BY_ID, mprId);
+            return data.GetData(sqlQuery, "MPR_DETAIL_BY_MPR_ID");
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using StorageDLHI.App.Common;
+using StorageDLHI.App.Common.CommonGUI;
 using StorageDLHI.App.MenuGUI.MenuControl;
 using StorageDLHI.App.ProductGUI;
 using StorageDLHI.BLL.MprDAO;
@@ -14,6 +15,8 @@ using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
@@ -29,11 +32,15 @@ namespace StorageDLHI.App.MprGUI
         private DataTable dtProds = new DataTable();
         private DataTable dtProdsOfMprs = new DataTable();
         private DataTable dtMprs = new DataTable();
+        private DataTable dtMprDetailById = new DataTable();
 
         public ucMPRMain()
         {
             InitializeComponent();
             LoadData();
+
+            loading = new LoadingControl();
+            this.Controls.Add(loading);
 
             dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_ID);
             dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_NAME);
@@ -77,6 +84,21 @@ namespace StorageDLHI.App.MprGUI
             else
             {
                 dgvMPRs.DataSource = CacheManager.Get<DataTable>(CacheKeys.MPRS_DATATABLE_ALL_MPRS);
+            }
+
+            if (dtMprs.Rows.Count > 0 && dtMprs != null)
+            {
+                var mprId = Guid.Parse(dgvMPRs.Rows[0].Cells[0].Value.ToString());
+                if (!CacheManager.Exists(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId)))
+                {
+                    dtMprDetailById = MprDAO.GetMprDetailByMpr(mprId);
+                    CacheManager.Add(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId), dtMprDetailById);
+                    dgvMPRDetail.DataSource = dtMprDetailById;
+                }
+                else
+                {
+                    dgvMPRDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId));
+                }
             }
         }
 
@@ -390,8 +412,16 @@ namespace StorageDLHI.App.MprGUI
             dgvProdExistMpr.Refresh();
         }
 
-        private void btnReload_Click(object sender, EventArgs e)
+        private LoadingControl loading;
+
+        private async void btnReload_Click(object sender, EventArgs e)
         {
+
+
+            loading.ShowLoader();
+            await Task.Delay(3000); // Simulate long task
+            loading.HideLoader();
+
             LoadData();
         }
 
@@ -441,7 +471,41 @@ namespace StorageDLHI.App.MprGUI
                     this.dgvMPRs.Rows[rowSelected].Selected = true;
                 }
             }
+        }
 
+        private void dgvMPRs_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvMPRs.Rows.Count <= 0) { return; }
+            int rsl = dgvMPRs.CurrentRow.Index;
+
+            var mprId = Guid.Parse(dgvMPRs.Rows[rsl].Cells[0].Value.ToString());
+            if (!CacheManager.Exists(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId)))
+            {
+                dtMprDetailById = MprDAO.GetMprDetailByMpr(mprId);
+                CacheManager.Add(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId), dtMprDetailById);
+                dgvMPRDetail.DataSource = dtMprDetailById;
+            }
+            else
+            {
+                dgvMPRDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId));
+            }
+        }
+
+        private void dgvMPRDetail_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dgvMPRs.Rows.Count <= 0)
+            {
+                return;
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                int rowSelected = e.RowIndex;
+                if (e.RowIndex != -1)
+                {
+                    this.dgvMPRs.ClearSelection();
+                    this.dgvMPRs.Rows[rowSelected].Selected = true;
+                }
+            }
         }
     }
 }
