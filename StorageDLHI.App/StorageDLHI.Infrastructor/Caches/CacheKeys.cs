@@ -22,5 +22,8 @@ namespace StorageDLHI.Infrastructor.Caches
 
         public const string PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR = "Product.DataTable.AllProForMpr";
         public const string PRODCT_DETAIL_BY_ID = "Product.Detail.Product.Id.{0}";
+
+        public const string MPRS_DATATABLE_ALL_MPRS = "Mprs.DataTable.AllMprs";
+        public const string MPR_DETAIL_BY_ID = "Mprs.Detail.Mpr.ID.{0}";
     }
 }

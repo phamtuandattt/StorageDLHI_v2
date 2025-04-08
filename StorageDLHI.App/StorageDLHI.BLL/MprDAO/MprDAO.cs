@@ -36,5 +36,17 @@ namespace StorageDLHI.BLL.MprDAO
         {
             return data.GetData(QueryStatement.GET_MPR_DETAIL_FORM, "MPR_DETAIL_FORM");
         }
+
+        public static DataTable GetMprs()
+        {
+            return data.GetData(QueryStatement.GET_MPRs, "MPRs");
+        }
+
+        public static bool UpdateMprInfo(Mprs mprs)
+        {
+            string sqlQuery = string.Format(QueryStatement.UPDATE_MPR_INFO, mprs.Expected_Delivery_Date, mprs.Mpr_Prepared, mprs.Mpr_Reviewed,
+                mprs.Mpr_Approved, mprs.Id);
+            return data.Update(sqlQuery) > 0;
+        }
     }
 }

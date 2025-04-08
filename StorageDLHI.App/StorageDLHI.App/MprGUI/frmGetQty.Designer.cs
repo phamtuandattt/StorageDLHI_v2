@@ -166,27 +166,30 @@
             this.txtQtyProd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtQtyProd.Location = new System.Drawing.Point(3, 4);
+            this.txtQtyProd.Location = new System.Drawing.Point(3, 8);
             this.txtQtyProd.Maximum = new decimal(new int[] {
             10000000,
             0,
             0,
             0});
-            this.txtQtyProd.MaximumSize = new System.Drawing.Size(211, 30);
             this.txtQtyProd.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.txtQtyProd.MinimumSize = new System.Drawing.Size(211, 30);
             this.txtQtyProd.Name = "txtQtyProd";
-            this.txtQtyProd.Size = new System.Drawing.Size(211, 30);
+            this.txtQtyProd.Size = new System.Drawing.Size(211, 28);
+            this.txtQtyProd.StateActive.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtQtyProd.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.txtQtyProd.StateCommon.Border.Width = 2;
             this.txtQtyProd.StateCommon.Content.Padding = new System.Windows.Forms.Padding(1);
+            this.txtQtyProd.StateNormal.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtQtyProd.TabIndex = 1;
+            this.txtQtyProd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtQtyProd.ThousandsSeparator = true;
+            this.txtQtyProd.UpDownButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Alternate;
             this.txtQtyProd.Value = new decimal(new int[] {
             1,
             0,
@@ -285,7 +288,8 @@
             this.ClientSize = new System.Drawing.Size(447, 92);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(405, 95);
+            this.MaximumSize = new System.Drawing.Size(465, 139);
+            this.MinimumSize = new System.Drawing.Size(465, 139);
             this.Name = "frmGetQty";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;

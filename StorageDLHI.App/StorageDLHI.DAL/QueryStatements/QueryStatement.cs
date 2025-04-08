@@ -97,6 +97,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string ADD_MPR_DETAIL = "";
         public const string DELETE_MPR = "DELETE FROM MPRS WHERE ID = '{0}'";
         public const string GET_MPR_DETAIL_FORM = "SELECT *FROM MPR_DETAIL WHERE ID = '00000000-0000-0000-0000-000000000000'";
+        public const string GET_MPRs = "SELECT *FROM MPRS";
+        public const string UPDATE_MPR_INFO = "SET DATEFORMAT DMY UPDATE MPRS SET MPR_EXPECTED_DELIVERY_DATE = '{0}', MPR_PREPARED = N'{1}', MPR_REVIEWED = N'{2}', MPR_APPROVED = N'{3}' WHERE ID = '{4}'";
 
     }
 }

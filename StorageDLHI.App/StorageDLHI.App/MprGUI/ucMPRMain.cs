@@ -1,5 +1,7 @@
 ﻿using StorageDLHI.App.Common;
+using StorageDLHI.App.MenuGUI.MenuControl;
 using StorageDLHI.App.ProductGUI;
+using StorageDLHI.BLL.MprDAO;
 using StorageDLHI.BLL.ProductDAO;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
@@ -26,6 +28,7 @@ namespace StorageDLHI.App.MprGUI
         private List<Guid> prodsAdded = new List<Guid>();
         private DataTable dtProds = new DataTable();
         private DataTable dtProdsOfMprs = new DataTable();
+        private DataTable dtMprs = new DataTable();
 
         public ucMPRMain()
         {
@@ -64,6 +67,17 @@ namespace StorageDLHI.App.MprGUI
                 dgvProds.DataSource = CacheManager.Get<DataTable>(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR);
                 dtProds = CacheManager.Get<DataTable>(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR);
             }
+
+            if (!CacheManager.Exists(CacheKeys.MPRS_DATATABLE_ALL_MPRS))
+            {
+                dtMprs = MprDAO.GetMprs();
+                CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, dtMprs);
+                dgvMPRs.DataSource = dtMprs;
+            }
+            else
+            {
+                dgvMPRs.DataSource = CacheManager.Get<DataTable>(CacheKeys.MPRS_DATATABLE_ALL_MPRS);
+            }
         }
 
         private void btnAddProd_Click(object sender, EventArgs e)
@@ -71,9 +85,9 @@ namespace StorageDLHI.App.MprGUI
             frmCustomProd frmCustomProd = new frmCustomProd(TitleManager.PROD_ADD_TITLE, true, null);
             frmCustomProd.ShowDialog();
 
-            LoadData();
             // Overwrite cache Products
             CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, ProductDAO.GetProductsForCreateMPR());
+            LoadData();
         }
 
         private void dgvProds_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -235,8 +249,14 @@ namespace StorageDLHI.App.MprGUI
             }
             frmGetQty frmGetQty = new frmGetQty();
             frmGetQty.ShowDialog();
+            int qtyAdd = frmGetQty.Qty;
+            if (qtyAdd <= 0)
+            {
+                return;
+            }
 
             dgvProdExistMpr.Rows[rsl].Cells[13].Value = frmGetQty.Qty;
+            dgvProdExistMpr.Rows[rsl].Cells[14].Value = frmGetQty.UsageNote;
         }
 
         private void dgvProdExistMpr_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -361,6 +381,67 @@ namespace StorageDLHI.App.MprGUI
 
             frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_ADD_INFO, true, dtProdsOfMprs);
             frmCustomInfoMpr.ShowDialog();
+
+            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, MprDAO.GetMprs());
+            LoadData();
+
+            prodsAdded.Clear();
+            dtProdsOfMprs.Clear();
+            dgvProdExistMpr.Refresh();
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void dgvMPRs_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            RenderNumbering(sender, e);
+        }
+
+        private void editMPRInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvMPRs.Rows.Count <= 0) { return; }
+            int rsl = dgvMPRs.CurrentRow.Index;
+
+            Mprs mprs = new Mprs()
+            {
+                Id = Guid.Parse(dgvMPRs.Rows[rsl].Cells[0].Value.ToString().Trim()),
+                Mpr_No = dgvMPRs.Rows[rsl].Cells[1].Value.ToString().Trim(),
+                Mpr_Wo_No = dgvMPRs.Rows[rsl].Cells[2].Value.ToString().Trim(),
+                Mpr_Project_Name_Code = dgvMPRs.Rows[rsl].Cells[3].Value.ToString().Trim(),
+                Mpr_Rev_Total = dgvMPRs.Rows[rsl].Cells[4].Value.ToString().Trim(),
+                CreateDate = DateTime.Parse(dgvMPRs.Rows[rsl].Cells[5].Value.ToString().Trim()),
+                Expected_Delivery_Date = DateTime.Parse(dgvMPRs.Rows[rsl].Cells[6].Value.ToString().Trim()),
+                Mpr_Prepared = dgvMPRs.Rows[rsl].Cells[7].Value.ToString().Trim(),
+                Mpr_Reviewed = dgvMPRs.Rows[rsl].Cells[8].Value.ToString().Trim(),
+                Mpr_Approved = dgvMPRs.Rows[rsl].Cells[9].Value.ToString().Trim(),
+            };
+
+            frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_UPDATE_INFO, false, mprs);
+            frmCustomInfoMpr.ShowDialog();
+
+            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, MprDAO.GetMprs());
+            LoadData();
+        }
+
+        private void dgvMPRs_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dgvMPRs.Rows.Count <= 0)
+            {
+                return;
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                int rowSelected = e.RowIndex;
+                if (e.RowIndex != -1)
+                {
+                    this.dgvMPRs.ClearSelection();
+                    this.dgvMPRs.Rows[rowSelected].Selected = true;
+                }
+            }
+
         }
     }
 }
