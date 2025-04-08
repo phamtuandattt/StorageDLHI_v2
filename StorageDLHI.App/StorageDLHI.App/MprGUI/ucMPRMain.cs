@@ -46,6 +46,7 @@ namespace StorageDLHI.App.MprGUI
             dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_G);
             dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_UNIT_CODE);
             dtProdsOfMprs.Columns.Add("QTY");
+            dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_USAGE);
 
             dgvProdExistMpr.DataSource = dtProdsOfMprs;
         }
@@ -105,6 +106,11 @@ namespace StorageDLHI.App.MprGUI
             frmGetQty.ShowDialog();
 
             int qtyAdd = frmGetQty.Qty;
+            if (qtyAdd <= 0)
+            {
+                return;
+            }
+            string usageNote = frmGetQty.UsageNote;
 
             DataRow dataRow = dtProdsOfMprs.NewRow();
             dataRow[0] = dgvProds.Rows[rsl].Cells[0].Value.ToString();
@@ -121,6 +127,7 @@ namespace StorageDLHI.App.MprGUI
             dataRow[11] = dgvProds.Rows[rsl].Cells[12].Value.ToString().Trim();
             dataRow[12] = dgvProds.Rows[rsl].Cells[13].Value.ToString().Trim();
             dataRow[13] = qtyAdd;
+            dataRow[14] = usageNote;
 
             dtProdsOfMprs.Rows.Add(dataRow);
             prodsAdded.Add(Guid.Parse(dgvProds.Rows[rsl].Cells[0].Value.ToString()));
@@ -346,6 +353,12 @@ namespace StorageDLHI.App.MprGUI
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            if (dtProdsOfMprs.Rows.Count <= 0 && dgvProdExistMpr.Rows.Count <= 0)
+            {
+                MessageBoxHelper.ShowWarning("Please add product to create MPRs !");
+                return; 
+            }
+
             frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_ADD_INFO, true, dtProdsOfMprs);
             frmCustomInfoMpr.ShowDialog();
         }

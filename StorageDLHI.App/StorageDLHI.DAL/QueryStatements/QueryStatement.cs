@@ -90,7 +90,13 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string UPDATE_PROD = "UPDATE PRODUCTS\r\nSET PRODUCT_NAME = N'{0}', PRODUCT_DES_2 = '{1}', PRODUCT_CODE = '{2}', PRODUCT_MATERIAL_CODE = '{3}',\r\nPICTURE_LINK = N'{4}', PICTURE = (SELECT *FROM OPENROWSET(BULK N'{5}', SINGLE_BLOB) AS IMAGE),\r\nA_THINHNESS = '{6}', B_DEPTH = '{7}', C_WIDTH = '{8}', D_WEB ='{9}', E_FLAG = '{10}', F_LENGTH = '{11}', G_WEIGHT = '{12}',\r\nUSED_NOTE = N'{13}', UNIT_ID = '{14}', \tORIGIN_ID = '{15}', M_TYPE_ID = '{16}', STANDARD_ID = '{17}'\r\nWHERE ID = '{18}'";
         public const string GET_PRODUCTS_FOR_CREATE_MPR = "EXEC GET_PRODUCTS";
 
-
+        // MPRs
+        public const string GET_MPR_DETAILs = "SELECT *FROM MPR_DETAIL";
+        public const string GET_MPR_DETAIL_BY_MPR_ID = "SELECT *FROM MPR_DETAIL WHERE MPR_ID = '{0}'";
+        public const string ADD_MPR = "SET DATEFORMAT DMY INSERT INTO MPRS (ID, MPR_NO, MPR_WO_NO, MPR_PROJECT_NAME, MPR_REV_TOTAL, \r\nMPR_CREATE_DATE, MPR_EXPECTED_DELIVERY_DATE, MPR_PREPARED, MPR_REVIEWED, MPR_APPROVED)\r\nVALUES ('{0}', '{1}', '{2}', '{3}', N'{4}', N'{5}', N'{6}', N'{7}', '{8}', '{9}')";
+        public const string ADD_MPR_DETAIL = "";
+        public const string DELETE_MPR = "DELETE FROM MPRS WHERE ID = '{0}'";
+        public const string GET_MPR_DETAIL_FORM = "SELECT *FROM MPR_DETAIL WHERE ID = '00000000-0000-0000-0000-000000000000'";
 
     }
 }

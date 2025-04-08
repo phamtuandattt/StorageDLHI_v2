@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MaterialDAO\MaterialDAO.cs" />
+    <Compile Include="MprDAO\MprDAO.cs" />
     <Compile Include="ProductDAO\ProductDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SupplierDAO\SupplierDAO.cs" />

@@ -14,6 +14,7 @@ namespace StorageDLHI.App.MprGUI
     public partial class frmGetQty : KryptonForm
     {
         public int Qty { get; set; }
+        public string UsageNote { get; set; }
 
         public frmGetQty()
         {
@@ -23,6 +24,13 @@ namespace StorageDLHI.App.MprGUI
         private void btnAddProdIntoMpr_Click(object sender, EventArgs e)
         {
             Qty = int.Parse(txtQtyProd.Value.ToString().Trim());
+            UsageNote = txtUsage.Text.Trim();
+            this.Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Qty = 0;
             this.Close();
         }
     }

@@ -59,12 +59,23 @@
             this.ctmUpdateInfoProd = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.updateProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnAddProd = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.txtSearchProd = new System.Windows.Forms.ToolStripTextBox();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonGroupBox2 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.dgvProdExistMpr = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.ctmUpdateQtyProdMpr = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.updateQuantityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.tlsDeleteProdExist = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.txtSearchProdExistMPR = new System.Windows.Forms.ToolStripTextBox();
+            this.btnConfirm = new System.Windows.Forms.ToolStripButton();
+            this.tlsLabalQtyProd = new System.Windows.Forms.ToolStripLabel();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,17 +90,7 @@
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ctmUpdateQtyProdMpr = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.updateQuantityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.txtSearchProdExistMPR = new System.Windows.Forms.ToolStripTextBox();
-            this.tlsLabalQtyProd = new System.Windows.Forms.ToolStripLabel();
-            this.btnAddProd = new System.Windows.Forms.ToolStripButton();
-            this.tlsDeleteProdExist = new System.Windows.Forms.ToolStripButton();
-            this.btnConfirm = new System.Windows.Forms.ToolStripButton();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pageMPRs)).BeginInit();
@@ -440,15 +441,25 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // btnAddProd
+            // 
+            this.btnAddProd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAddProd.Image = global::StorageDLHI.App.Properties.Resources.add;
+            this.btnAddProd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAddProd.Name = "btnAddProd";
+            this.btnAddProd.Size = new System.Drawing.Size(29, 24);
+            this.btnAddProd.Text = "Add new product for create MPR";
+            this.btnAddProd.Click += new System.EventHandler(this.btnAddProd_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(56, 28);
+            this.toolStripLabel1.Size = new System.Drawing.Size(56, 24);
             this.toolStripLabel1.Text = "Search:";
             // 
             // txtSearchProd
@@ -504,7 +515,8 @@
             this.dataGridViewTextBoxColumn11,
             this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14});
+            this.dataGridViewTextBoxColumn14,
+            this.Column21});
             this.dgvProdExistMpr.ContextMenuStrip = this.ctmUpdateQtyProdMpr;
             this.dgvProdExistMpr.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProdExistMpr.Location = new System.Drawing.Point(0, 0);
@@ -517,6 +529,94 @@
             this.dgvProdExistMpr.TabIndex = 2;
             this.dgvProdExistMpr.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProdExistMpr_CellMouseDown);
             this.dgvProdExistMpr.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvProdExistMpr_RowPostPaint);
+            // 
+            // ctmUpdateQtyProdMpr
+            // 
+            this.ctmUpdateQtyProdMpr.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ctmUpdateQtyProdMpr.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.ctmUpdateQtyProdMpr.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.updateQuantityToolStripMenuItem,
+            this.deleteProductToolStripMenuItem});
+            this.ctmUpdateQtyProdMpr.Name = "ctmUpdateQtyProdMpr";
+            this.ctmUpdateQtyProdMpr.Size = new System.Drawing.Size(186, 52);
+            // 
+            // updateQuantityToolStripMenuItem
+            // 
+            this.updateQuantityToolStripMenuItem.Name = "updateQuantityToolStripMenuItem";
+            this.updateQuantityToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
+            this.updateQuantityToolStripMenuItem.Text = "Update quantity";
+            this.updateQuantityToolStripMenuItem.Click += new System.EventHandler(this.updateQuantityToolStripMenuItem_Click);
+            // 
+            // deleteProductToolStripMenuItem
+            // 
+            this.deleteProductToolStripMenuItem.Name = "deleteProductToolStripMenuItem";
+            this.deleteProductToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
+            this.deleteProductToolStripMenuItem.Text = "Delete product";
+            this.deleteProductToolStripMenuItem.Click += new System.EventHandler(this.deleteProductToolStripMenuItem_Click);
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlsDeleteProdExist,
+            this.toolStripSeparator2,
+            this.toolStripLabel2,
+            this.txtSearchProdExistMPR,
+            this.btnConfirm,
+            this.tlsLabalQtyProd});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip2.Size = new System.Drawing.Size(1378, 27);
+            this.toolStrip2.TabIndex = 0;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // tlsDeleteProdExist
+            // 
+            this.tlsDeleteProdExist.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsDeleteProdExist.Image = global::StorageDLHI.App.Properties.Resources.bin;
+            this.tlsDeleteProdExist.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsDeleteProdExist.Name = "tlsDeleteProdExist";
+            this.tlsDeleteProdExist.Size = new System.Drawing.Size(29, 24);
+            this.tlsDeleteProdExist.Text = "toolStripButton1";
+            this.tlsDeleteProdExist.Click += new System.EventHandler(this.tlsDeleteProdExist_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(56, 24);
+            this.toolStripLabel2.Text = "Search:";
+            // 
+            // txtSearchProdExistMPR
+            // 
+            this.txtSearchProdExistMPR.AutoSize = false;
+            this.txtSearchProdExistMPR.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSearchProdExistMPR.Name = "txtSearchProdExistMPR";
+            this.txtSearchProdExistMPR.Size = new System.Drawing.Size(150, 27);
+            this.txtSearchProdExistMPR.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchProdExistMPR_KeyUp);
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.Image = global::StorageDLHI.App.Properties.Resources.right;
+            this.btnConfirm.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(91, 24);
+            this.btnConfirm.Text = "Comfirm";
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // tlsLabalQtyProd
+            // 
+            this.tlsLabalQtyProd.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tlsLabalQtyProd.Name = "tlsLabalQtyProd";
+            this.tlsLabalQtyProd.Size = new System.Drawing.Size(27, 24);
+            this.tlsLabalQtyProd.Text = "(0)";
+            this.tlsLabalQtyProd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -631,103 +731,13 @@
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.ReadOnly = true;
             // 
-            // ctmUpdateQtyProdMpr
+            // Column21
             // 
-            this.ctmUpdateQtyProdMpr.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ctmUpdateQtyProdMpr.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.ctmUpdateQtyProdMpr.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.updateQuantityToolStripMenuItem,
-            this.deleteProductToolStripMenuItem});
-            this.ctmUpdateQtyProdMpr.Name = "ctmUpdateQtyProdMpr";
-            this.ctmUpdateQtyProdMpr.Size = new System.Drawing.Size(186, 52);
-            // 
-            // updateQuantityToolStripMenuItem
-            // 
-            this.updateQuantityToolStripMenuItem.Name = "updateQuantityToolStripMenuItem";
-            this.updateQuantityToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
-            this.updateQuantityToolStripMenuItem.Text = "Update quantity";
-            this.updateQuantityToolStripMenuItem.Click += new System.EventHandler(this.updateQuantityToolStripMenuItem_Click);
-            // 
-            // deleteProductToolStripMenuItem
-            // 
-            this.deleteProductToolStripMenuItem.Name = "deleteProductToolStripMenuItem";
-            this.deleteProductToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
-            this.deleteProductToolStripMenuItem.Text = "Delete product";
-            this.deleteProductToolStripMenuItem.Click += new System.EventHandler(this.deleteProductToolStripMenuItem_Click);
-            // 
-            // toolStrip2
-            // 
-            this.toolStrip2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlsDeleteProdExist,
-            this.toolStripSeparator2,
-            this.toolStripLabel2,
-            this.txtSearchProdExistMPR,
-            this.btnConfirm,
-            this.tlsLabalQtyProd});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip2.Size = new System.Drawing.Size(1378, 27);
-            this.toolStrip2.TabIndex = 0;
-            this.toolStrip2.Text = "toolStrip2";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
-            // 
-            // toolStripLabel2
-            // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(56, 28);
-            this.toolStripLabel2.Text = "Search:";
-            // 
-            // txtSearchProdExistMPR
-            // 
-            this.txtSearchProdExistMPR.AutoSize = false;
-            this.txtSearchProdExistMPR.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtSearchProdExistMPR.Name = "txtSearchProdExistMPR";
-            this.txtSearchProdExistMPR.Size = new System.Drawing.Size(150, 27);
-            this.txtSearchProdExistMPR.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchProdExistMPR_KeyUp);
-            // 
-            // tlsLabalQtyProd
-            // 
-            this.tlsLabalQtyProd.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tlsLabalQtyProd.Name = "tlsLabalQtyProd";
-            this.tlsLabalQtyProd.Size = new System.Drawing.Size(27, 28);
-            this.tlsLabalQtyProd.Text = "(0)";
-            this.tlsLabalQtyProd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnAddProd
-            // 
-            this.btnAddProd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnAddProd.Image = global::StorageDLHI.App.Properties.Resources.add;
-            this.btnAddProd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAddProd.Name = "btnAddProd";
-            this.btnAddProd.Size = new System.Drawing.Size(29, 28);
-            this.btnAddProd.Text = "Add new product for create MPR";
-            this.btnAddProd.Click += new System.EventHandler(this.btnAddProd_Click);
-            // 
-            // tlsDeleteProdExist
-            // 
-            this.tlsDeleteProdExist.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsDeleteProdExist.Image = global::StorageDLHI.App.Properties.Resources.bin;
-            this.tlsDeleteProdExist.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsDeleteProdExist.Name = "tlsDeleteProdExist";
-            this.tlsDeleteProdExist.Size = new System.Drawing.Size(29, 28);
-            this.tlsDeleteProdExist.Text = "toolStripButton1";
-            this.tlsDeleteProdExist.Click += new System.EventHandler(this.tlsDeleteProdExist_Click);
-            // 
-            // btnConfirm
-            // 
-            this.btnConfirm.Image = global::StorageDLHI.App.Properties.Resources.right;
-            this.btnConfirm.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(91, 24);
-            this.btnConfirm.Text = "Comfirm";
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            this.Column21.DataPropertyName = "USED_NOTE";
+            this.Column21.HeaderText = "Usage note";
+            this.Column21.MinimumWidth = 6;
+            this.Column21.Name = "Column21";
+            this.Column21.ReadOnly = true;
             // 
             // ucMPRMain
             // 
@@ -832,5 +842,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
     }
 }
