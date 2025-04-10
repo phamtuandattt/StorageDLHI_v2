@@ -3,6 +3,7 @@ using StorageDLHI.App.Common;
 using StorageDLHI.App.Common.CommonGUI;
 using StorageDLHI.App.MenuGUI.MenuControl;
 using StorageDLHI.App.MprGUI;
+using StorageDLHI.App.PoGUI;
 using StorageDLHI.App.SupplierGUI;
 using StorageDLHI.Infrastructor.Shared;
 using System;
@@ -37,9 +38,12 @@ namespace StorageDLHI.App.MainGUI
             ResetConnectionString(sender, e);
         }
 
-        private async void tlsPO_Click(object sender, EventArgs e)
+        private void tlsPO_Click(object sender, EventArgs e)
         {
-
+            ucPOMain ucPOMain = new ucPOMain();
+            ucPOMain.Dock = DockStyle.Fill;
+            pnMain.Controls.Add(ucPOMain);
+            ucPOMain.BringToFront();
         }
 
         private void tlsMPR_Click(object sender, EventArgs e)

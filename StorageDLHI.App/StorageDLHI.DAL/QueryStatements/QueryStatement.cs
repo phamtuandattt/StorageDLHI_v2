@@ -101,5 +101,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string UPDATE_MPR_INFO = "SET DATEFORMAT DMY UPDATE MPRS SET MPR_EXPECTED_DELIVERY_DATE = '{0}', MPR_PREPARED = N'{1}', MPR_REVIEWED = N'{2}', MPR_APPROVED = N'{3}' WHERE ID = '{4}'";
         public const string GET_MPR_DETAIL_BY_ID = "EXEC GET_MPR_DETAIL '{0}'";
 
+        // PO
+        
+
     }
 }

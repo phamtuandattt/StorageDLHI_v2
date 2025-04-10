@@ -513,5 +513,22 @@ namespace StorageDLHI.App.MprGUI
         {
             Common.Common.RenderNumbering(sender, e, this.Font);
         }
+
+        private void dgvMPRDetail_CellMouseDown_1(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dgvMPRDetail.Rows.Count <= 0)
+            {
+                return;
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                int rowSelected = e.RowIndex;
+                if (e.RowIndex != -1)
+                {
+                    this.dgvMPRDetail.ClearSelection();
+                    this.dgvMPRDetail.Rows[rowSelected].Selected = true;
+                }
+            }
+        }
     }
 }

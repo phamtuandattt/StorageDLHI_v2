@@ -138,6 +138,18 @@
     <Compile Include="MprGUI\ucMPRMain.Designer.cs">
       <DependentUpon>ucMPRMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="PoGUI\frmUpdateInfoProdForPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PoGUI\frmUpdateInfoProdForPO.Designer.cs">
+      <DependentUpon>frmUpdateInfoProdForPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PoGUI\ucPOMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PoGUI\ucPOMain.Designer.cs">
+      <DependentUpon>ucPOMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProductGUI\frmCustomProd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +196,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MprGUI\ucMPRMain.resx">
       <DependentUpon>ucMPRMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PoGUI\frmUpdateInfoProdForPO.resx">
+      <DependentUpon>frmUpdateInfoProdForPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PoGUI\ucPOMain.resx">
+      <DependentUpon>ucPOMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductGUI\frmCustomProd.resx">
       <DependentUpon>frmCustomProd.cs</DependentUpon>
@@ -243,6 +261,7 @@
     <Content Include="Resources\export.png" />
     <Content Include="Resources\green-dot.png" />
     <Content Include="Resources\list.png" />
+    <Content Include="Resources\mark.png" />
     <Content Include="Resources\pencial.png" />
     <Content Include="Resources\photo.png" />
     <Content Include="Resources\picture-bg.jpg" />
