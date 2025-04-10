@@ -312,15 +312,20 @@ namespace StorageDLHI.App.MprGUI
 
         private void tlsDeleteProdExist_Click(object sender, EventArgs e)
         {
-            if (dgvProdExistMpr.Rows.Count <= 0) return;
-            int rsl = dgvProdExistMpr.CurrentRow.Index;
-            // Ask for confirmation before deleting
-            string prodName = dgvProdExistMpr.Rows[rsl].Cells[1].Value.ToString();
-            if (!MessageBoxHelper.Confirm($"Do you want to delete product [{prodName}] out of MPRs ?"))
+            //if (dgvProdExistMpr.Rows.Count <= 0) return;
+            //int rsl = dgvProdExistMpr.CurrentRow.Index;
+            //// Ask for confirmation before deleting
+            //string prodName = dgvProdExistMpr.Rows[rsl].Cells[1].Value.ToString();
+            //DeleteProdOfMprs(rsl);
+
+            if (!MessageBoxHelper.Confirm($"Do you want to clear all product out of MPRs ?"))
             {
                 return;
             }
-            DeleteProdOfMprs(rsl);
+
+            prodsAdded.Clear();
+            dtProdsOfMprs.Clear();
+            dgvProdExistMpr.Refresh();
         }
 
         private void DeleteProdOfMprs(int rsl)
@@ -400,6 +405,11 @@ namespace StorageDLHI.App.MprGUI
 
             frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_ADD_INFO, true, dtProdsOfMprs);
             frmCustomInfoMpr.ShowDialog();
+
+            if (!frmCustomInfoMpr.CanelOrConfirm)
+            {
+                return;
+            }
 
             CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, MprDAO.GetMprs());
             LoadData();
@@ -497,6 +507,11 @@ namespace StorageDLHI.App.MprGUI
                     this.dgvMPRs.Rows[rowSelected].Selected = true;
                 }
             }
+        }
+
+        private void dgvMPRDetail_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Common.Common.RenderNumbering(sender, e, this.Font);
         }
     }
 }

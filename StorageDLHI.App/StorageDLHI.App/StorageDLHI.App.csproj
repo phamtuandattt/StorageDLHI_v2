@@ -78,6 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Common.cs" />
     <Compile Include="Common\CommonGUI\LoadingForm.cs">
       <SubType>Form</SubType>
     </Compile>

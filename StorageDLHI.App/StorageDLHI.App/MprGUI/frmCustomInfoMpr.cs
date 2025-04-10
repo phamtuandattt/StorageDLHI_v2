@@ -21,6 +21,7 @@ namespace StorageDLHI.App.MprGUI
         private DataTable dtProdOfMpr = new DataTable();
         private DataTable dtProdOfMprAdd = MprDAO.GetMprDetailForm();
         private Mprs dtMPRDetail = new Mprs();
+        public bool CanelOrConfirm { get; set; } = true; // true is confirm || cancel
 
         public frmCustomInfoMpr()
         {
@@ -140,6 +141,7 @@ namespace StorageDLHI.App.MprGUI
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            this.CanelOrConfirm = false;
             this.Close();
         }
     }
