@@ -39,9 +39,6 @@ namespace StorageDLHI.App.MprGUI
             InitializeComponent();
             LoadData();
 
-            loading = new LoadingControl();
-            this.Controls.Add(loading);
-
             dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_ID);
             dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_NAME);
             dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_DES_2);
@@ -412,15 +409,9 @@ namespace StorageDLHI.App.MprGUI
             dgvProdExistMpr.Refresh();
         }
 
-        private LoadingControl loading;
-
-        private async void btnReload_Click(object sender, EventArgs e)
+        private void btnReload_Click(object sender, EventArgs e)
         {
-
-
-            loading.ShowLoader();
-            await Task.Delay(3000); // Simulate long task
-            loading.HideLoader();
+            ShowDialogManager.ShowDialogHelp();
 
             LoadData();
         }

@@ -78,14 +78,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\CommonGUI\LoadingControl.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Common\CommonGUI\LoadingForm.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Common\CommonGUI\LoadingControl.Designer.cs">
-      <DependentUpon>LoadingControl.cs</DependentUpon>
+    <Compile Include="Common\CommonGUI\LoadingForm.Designer.cs">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\MessageBoxHelper.cs" />
     <Compile Include="Common\NotificationManager.cs" />
+    <Compile Include="Common\ShowDialogManager.cs" />
     <Compile Include="Common\TitleManager.cs" />
     <Compile Include="Enums\En.cs" />
     <Compile Include="frmConnectSystem.cs">
@@ -156,8 +157,8 @@
     <Compile Include="SupplierGUI\ucSuppliers.Designer.cs">
       <DependentUpon>ucSuppliers.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Common\CommonGUI\LoadingControl.resx">
-      <DependentUpon>LoadingControl.cs</DependentUpon>
+    <EmbeddedResource Include="Common\CommonGUI\LoadingForm.resx">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConnectSystem.resx">
       <DependentUpon>frmConnectSystem.cs</DependentUpon>

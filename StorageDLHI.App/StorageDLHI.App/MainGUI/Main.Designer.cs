@@ -39,12 +39,12 @@
             this.tlsMaterial = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsSuppliers = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.tlsPO = new System.Windows.Forms.ToolStripButton();
             this.tlsMPR = new System.Windows.Forms.ToolStripButton();
             this.tlsImport = new System.Windows.Forms.ToolStripButton();
             this.tlsExport = new System.Windows.Forms.ToolStripButton();
             this.tlsInventory = new System.Windows.Forms.ToolStripButton();
+            this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnMain)).BeginInit();
@@ -179,15 +179,6 @@
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // pnMain
-            // 
-            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnMain.Location = new System.Drawing.Point(0, 125);
-            this.pnMain.Name = "pnMain";
-            this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.pnMain.Size = new System.Drawing.Size(1397, 586);
-            this.pnMain.TabIndex = 2;
-            // 
             // tlsPO
             // 
             this.tlsPO.AutoSize = false;
@@ -247,6 +238,15 @@
             this.tlsInventory.Text = "Inventory";
             this.tlsInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tlsInventory.Click += new System.EventHandler(this.tlsInventory_Click);
+            // 
+            // pnMain
+            // 
+            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnMain.Location = new System.Drawing.Point(0, 125);
+            this.pnMain.Name = "pnMain";
+            this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.pnMain.Size = new System.Drawing.Size(1397, 586);
+            this.pnMain.TabIndex = 2;
             // 
             // Main
             // 

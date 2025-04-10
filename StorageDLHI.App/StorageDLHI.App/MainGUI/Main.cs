@@ -1,5 +1,6 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using StorageDLHI.App.Common;
+using StorageDLHI.App.Common.CommonGUI;
 using StorageDLHI.App.MenuGUI.MenuControl;
 using StorageDLHI.App.MprGUI;
 using StorageDLHI.App.SupplierGUI;
@@ -36,7 +37,7 @@ namespace StorageDLHI.App.MainGUI
             ResetConnectionString(sender, e);
         }
 
-        private void tlsPO_Click(object sender, EventArgs e)
+        private async void tlsPO_Click(object sender, EventArgs e)
         {
 
         }
