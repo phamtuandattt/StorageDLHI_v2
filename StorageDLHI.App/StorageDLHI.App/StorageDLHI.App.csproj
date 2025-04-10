@@ -138,6 +138,12 @@
     <Compile Include="MprGUI\ucMPRMain.Designer.cs">
       <DependentUpon>ucMPRMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="PoGUI\frmCustomInfoPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PoGUI\frmCustomInfoPO.Designer.cs">
+      <DependentUpon>frmCustomInfoPO.cs</DependentUpon>
+    </Compile>
     <Compile Include="PoGUI\frmUpdateInfoProdForPO.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MprGUI\ucMPRMain.resx">
       <DependentUpon>ucMPRMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PoGUI\frmCustomInfoPO.resx">
+      <DependentUpon>frmCustomInfoPO.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PoGUI\frmUpdateInfoProdForPO.resx">
       <DependentUpon>frmUpdateInfoProdForPO.cs</DependentUpon>

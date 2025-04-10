@@ -118,11 +118,12 @@ namespace StorageDLHI.App.PoGUI
                     dtProdsOfAddPO.Clear();
                     prodsAdded.Clear();
                     dgvProdOfPO.Refresh();
+                    dgvMPRs.Rows[rsl].Selected = true;
                 }
                 else
                 {
                     tlsMPRNo.Text = $"MPR No: [{dgvMPRs.Rows[this.previousRowIndex].Cells[1].Value.ToString().Trim()}]\t";
-                    dgvMPRs.Rows[this.rslOld].Selected = true;
+                    dgvMPRs.Rows[this.previousRowIndex].Selected = true;
                     return;
                 }
             }
@@ -333,6 +334,12 @@ namespace StorageDLHI.App.PoGUI
                 // ✅ Save this as the new previous row
                 previousRowIndex = currentRowIndex;
             }
+        }
+
+        private void btnAddPO_Click(object sender, EventArgs e)
+        {
+            frmCustomInfoPO frmCustomInfoPO = new frmCustomInfoPO();
+            frmCustomInfoPO.ShowDialog();
         }
     }
 }
