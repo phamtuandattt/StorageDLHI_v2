@@ -53,6 +53,13 @@
       <Project>{6fc28d64-a8df-46e2-a1eb-bfe0aae9b85a}</Project>
       <Name>StorageDLHI.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StorageDLHI.Infrastructor\StorageDLHI.Infrastructor.csproj">
+      <Project>{2026e5f3-b21f-4c73-8c72-5b33a4a79beb}</Project>
+      <Name>StorageDLHI.Infrastructor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

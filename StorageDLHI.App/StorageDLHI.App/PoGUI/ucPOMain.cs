@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -44,21 +45,20 @@ namespace StorageDLHI.App.PoGUI
             dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_DES_2);
             dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_CODE);
             dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_MATERIAL_CODE);
-            dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_A);
-            dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_B);
-            dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_C);
-            dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_D);
-            dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_E);
-            dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_F);
-            dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_G);
-            dtProdsOfAddPO.Columns.Add("QTY");
-            dtProdsOfAddPO.Columns.Add("PO_PRICE");
-            dtProdsOfAddPO.Columns.Add("PO_AMOUNT");
+            dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_A, typeof(Int32));
+            dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_B, typeof(Int32));
+            dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_C, typeof(Int32));
+            dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_D, typeof(Int32));
+            dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_E, typeof(Int32));
+            dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_F, typeof(Int32));
+            dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_G, typeof(Int32));
+            dtProdsOfAddPO.Columns.Add("QTY", typeof(Int32));
+            dtProdsOfAddPO.Columns.Add("PO_PRICE", typeof(Int32));
+            dtProdsOfAddPO.Columns.Add("PO_AMOUNT", typeof(Int32));
             dtProdsOfAddPO.Columns.Add("PO_RECEVIE");
             dtProdsOfAddPO.Columns.Add("PO_REMARKS");
 
             dgvProdOfPO.DataSource = dtProdsOfAddPO;
-
         }
 
         private void LoadData()
@@ -174,16 +174,16 @@ namespace StorageDLHI.App.PoGUI
             dataRow[2] = dgvMPRDetail.Rows[rsl].Cells[4].Value.ToString().Trim().ToUpper();
             dataRow[3] = "";
             dataRow[4] = dgvMPRDetail.Rows[rsl].Cells[5].Value.ToString().Trim().ToUpper();
-            dataRow[5] = dgvMPRDetail.Rows[rsl].Cells[6].Value.ToString().Trim();
-            dataRow[6] = dgvMPRDetail.Rows[rsl].Cells[7].Value.ToString().Trim();
-            dataRow[7] = dgvMPRDetail.Rows[rsl].Cells[8].Value.ToString().Trim();
-            dataRow[8] = dgvMPRDetail.Rows[rsl].Cells[9].Value.ToString().Trim();
-            dataRow[9] = dgvMPRDetail.Rows[rsl].Cells[10].Value.ToString().Trim();
-            dataRow[10] = dgvMPRDetail.Rows[rsl].Cells[11].Value.ToString().Trim();
-            dataRow[11] = dgvMPRDetail.Rows[rsl].Cells[12].Value.ToString().Trim();
-            dataRow[12] = dgvMPRDetail.Rows[rsl].Cells[13].Value.ToString().Trim();
-            dataRow[13] = frmAddPriceForProdPO.Price; // Price
-            dataRow[14] = Int32.Parse(dgvMPRDetail.Rows[rsl].Cells[13].Value.ToString().Trim()) * frmAddPriceForProdPO.Price; // Amount
+            dataRow[5] = (dgvMPRDetail.Rows[rsl].Cells[6].Value.ToString().Trim());
+            dataRow[6] = (dgvMPRDetail.Rows[rsl].Cells[7].Value.ToString().Trim());
+            dataRow[7] = (dgvMPRDetail.Rows[rsl].Cells[8].Value.ToString().Trim());
+            dataRow[8] = (dgvMPRDetail.Rows[rsl].Cells[9].Value.ToString().Trim());
+            dataRow[9] = (dgvMPRDetail.Rows[rsl].Cells[10].Value.ToString().Trim());
+            dataRow[10] = (dgvMPRDetail.Rows[rsl].Cells[11].Value.ToString().Trim());
+            dataRow[11] = (dgvMPRDetail.Rows[rsl].Cells[12].Value.ToString().Trim());
+            dataRow[12] = CheckOrReturnNumber(dgvMPRDetail.Rows[rsl].Cells[13].Value.ToString().Trim()); // Qty
+            dataRow[13] = CheckOrReturnNumber(frmAddPriceForProdPO.Price.ToString()); // Price
+            dataRow[14] = CheckOrReturnNumber(dgvMPRDetail.Rows[rsl].Cells[13].Value.ToString().Trim()) * frmAddPriceForProdPO.Price; // Amount
             dataRow[15] = frmAddPriceForProdPO.Recevie;
             dataRow[16] = frmAddPriceForProdPO.Remark;
 
@@ -191,6 +191,13 @@ namespace StorageDLHI.App.PoGUI
             dtProdsOfAddPO.Rows.Add(dataRow);
             prodsAdded.Add(prodId);
             dgvProdOfPO.Rows[0].Selected = true;
+        }
+
+        private Int32 CheckOrReturnNumber(string numberString)
+        {
+            return !string.IsNullOrEmpty(numberString.Trim())
+                && numberString.Trim().Length > 0
+                ? Int32.Parse(numberString.Trim()) : 0;
         }
 
         private void dgvMPRs_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -213,7 +220,7 @@ namespace StorageDLHI.App.PoGUI
             if (dgvProdOfPO.Rows.Count <= 0) return;
             int rsl = dgvProdOfPO.CurrentRow.Index;
 
-            int qty = int.Parse(dgvProdOfPO.Rows[rsl].Cells[12].Value.ToString());
+            int qty = CheckOrReturnNumber(dgvProdOfPO.Rows[rsl].Cells[12].Value.ToString());
 
             Products product = new Products()
             {
@@ -229,19 +236,20 @@ namespace StorageDLHI.App.PoGUI
 
             CustomProdOfPO customProdOfPO = new CustomProdOfPO()
             {
-                Qty = qty,
-                Price = Int32.Parse(dgvProdOfPO.Rows[rsl].Cells[13].Value.ToString()),
-                Recevie = dgvProdOfPO.Rows[rsl].Cells[15].Value.ToString(),
-                Remark = dgvProdOfPO.Rows[rsl].Cells[16].Value.ToString()
+                Qty = qty > 0 ? qty : 1,
+                Price = CheckOrReturnNumber(dgvProdOfPO.Rows[rsl].Cells[13].Value.ToString()) == 0 
+                    ? 1 : CheckOrReturnNumber(dgvProdOfPO.Rows[rsl].Cells[13].Value.ToString()),
+                Recevie = dgvProdOfPO.Rows[rsl].Cells[15].Value.ToString().Trim(),
+                Remark = dgvProdOfPO.Rows[rsl].Cells[16].Value.ToString().Trim()
             };
 
             frmUpdateInfoProdForPO frmUp = new frmUpdateInfoProdForPO(TitleManager.PROD_UPDATE_TITLE, customProdOfPO, product);
             frmUp.ShowDialog();
 
             if (frmUp.prodOfPO.Qty == 0) { return; }
+            totalAmount -= qty;
 
             var prodModify = frmUp.prod;
-
 
             //dgvMPRDetail.Rows[rsl].Cells[0].Value = prodModify.Id;
             dgvProdOfPO.Rows[rsl].Cells[5].Value = prodModify.A_Thinhness;
@@ -256,6 +264,7 @@ namespace StorageDLHI.App.PoGUI
             dgvProdOfPO.Rows[rsl].Cells[14].Value = frmUp.prodOfPO.Price * frmUp.prodOfPO.Qty; // amount
             dgvProdOfPO.Rows[rsl].Cells[15].Value = frmUp.prodOfPO.Recevie;
             dgvProdOfPO.Rows[rsl].Cells[16].Value = frmUp.prodOfPO.Remark;
+            totalAmount += frmUp.prodOfPO.Qty;
         }
 
         private void dgvProdOfPO_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -295,17 +304,18 @@ namespace StorageDLHI.App.PoGUI
                 dataRow[2] = dgvMPRDetail.Rows[i].Cells[4].Value.ToString().Trim().ToUpper();
                 dataRow[3] = "";
                 dataRow[4] = dgvMPRDetail.Rows[i].Cells[5].Value.ToString().Trim().ToUpper();
-                dataRow[5] = dgvMPRDetail.Rows[i].Cells[6].Value.ToString().Trim();
-                dataRow[6] = dgvMPRDetail.Rows[i].Cells[7].Value.ToString().Trim();
-                dataRow[7] = dgvMPRDetail.Rows[i].Cells[8].Value.ToString().Trim();
-                dataRow[8] = dgvMPRDetail.Rows[i].Cells[9].Value.ToString().Trim();
-                dataRow[9] = dgvMPRDetail.Rows[i].Cells[10].Value.ToString().Trim();
-                dataRow[10] = dgvMPRDetail.Rows[i].Cells[11].Value.ToString().Trim();
-                dataRow[11] = dgvMPRDetail.Rows[i].Cells[12].Value.ToString().Trim();
-                dataRow[12] = dgvMPRDetail.Rows[i].Cells[13].Value.ToString().Trim();
+                dataRow[5] = (dgvMPRDetail.Rows[i].Cells[6].Value.ToString().Trim());
+                dataRow[6] = (dgvMPRDetail.Rows[i].Cells[7].Value.ToString().Trim());
+                dataRow[7] = (dgvMPRDetail.Rows[i].Cells[8].Value.ToString().Trim());
+                dataRow[8] = (dgvMPRDetail.Rows[i].Cells[9].Value.ToString().Trim());
+                dataRow[9] = (dgvMPRDetail.Rows[i].Cells[10].Value.ToString().Trim());
+                dataRow[10] = (dgvMPRDetail.Rows[i].Cells[11].Value.ToString().Trim());
+                dataRow[11] = (dgvMPRDetail.Rows[i].Cells[12].Value.ToString().Trim());
+                dataRow[12] = CheckOrReturnNumber(dgvMPRDetail.Rows[i].Cells[13].Value.ToString().Trim());
 
                 dtProdsOfAddPO.Rows.Add(dataRow);
                 prodsAdded.Add(prodId);
+                totalAmount += CheckOrReturnNumber(dgvMPRDetail.Rows[i].Cells[13].Value.ToString().Trim());
             }
 
             dgvProdOfPO.Rows[0].Selected = true;
@@ -334,6 +344,7 @@ namespace StorageDLHI.App.PoGUI
                     dtProdsOfAddPO.Clear();
                     prodsAdded.Clear();
                     dgvProdOfPO.Refresh();
+                    totalAmount = 0;
                 }
                 else
                 {
@@ -363,6 +374,16 @@ namespace StorageDLHI.App.PoGUI
                 MessageBoxHelper.ShowWarning("Please add product of MPR to create PO!");
                 return;
             }
+
+            foreach (DataRow dataRow in dtProdsOfAddPO.Rows)
+            {
+                if (string.IsNullOrEmpty(dataRow[13].ToString().Trim()))
+                {
+                    MessageBoxHelper.ShowWarning($"Please enter value [Price] for product [{dataRow[1].ToString().Trim()}] before create PO !");
+                    return;
+                }
+            }
+
             int rsl = dgvProdOfPO.CurrentRow.Index;
 
             Pos mPO = new Pos()
@@ -384,6 +405,60 @@ namespace StorageDLHI.App.PoGUI
             dtProdsOfAddPO.Clear();
             prodsAdded.Clear();
             dgvProdOfPO.Refresh();
+            totalAmount = 0;
+        }
+
+        private void dgvProdOfPO_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvProdOfPO.Columns["A_THINHNESS"].DefaultCellStyle.Format = "N0";
+            dgvProdOfPO.Columns["B_DEPTH"].DefaultCellStyle.Format = "N0";
+            dgvProdOfPO.Columns["C_WIDTH"].DefaultCellStyle.Format = "N0";
+            dgvProdOfPO.Columns["D_WEB"].DefaultCellStyle.Format = "N0";
+            dgvProdOfPO.Columns["E_FLAG"].DefaultCellStyle.Format = "N0";
+            dgvProdOfPO.Columns["F_LENGTH"].DefaultCellStyle.Format = "N0";
+            dgvProdOfPO.Columns["G_WEIGHT"].DefaultCellStyle.Format = "N0";
+            dgvProdOfPO.Columns["QTY"].DefaultCellStyle.Format = "N0";
+            dgvProdOfPO.Columns["PO_PRICE"].DefaultCellStyle.Format = "N0";
+            dgvProdOfPO.Columns["PO_AMOUNT"].DefaultCellStyle.Format = "N0";
+
+            //Common.Common.HideZeroValueColumns(dgvProdOfPO);
+        }
+
+        private void dgvMPRDetail_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvMPRDetail.Columns["A_THINHNESS_M"].DefaultCellStyle.Format = "N0";
+            dgvMPRDetail.Columns["B_DEPTH_M"].DefaultCellStyle.Format = "N0";
+            dgvMPRDetail.Columns["C_WIDTH_M"].DefaultCellStyle.Format = "N0";
+            dgvMPRDetail.Columns["D_WEB_M"].DefaultCellStyle.Format = "N0";
+            dgvMPRDetail.Columns["E_FLAG_M"].DefaultCellStyle.Format = "N0";
+            dgvMPRDetail.Columns["F_LENGTH_M"].DefaultCellStyle.Format = "N0";
+            dgvMPRDetail.Columns["G_WEIGHT_M"].DefaultCellStyle.Format = "N0";
+            dgvMPRDetail.Columns["MPR_QTY_M"].DefaultCellStyle.Format = "N0";
+        }
+
+        private void InitializeFooterGrid()
+        {
+            // Clone columns from main grid
+            //foreach (DataGridViewColumn col in dgvProdOfPO.Columns)
+            //{
+            //    var footerCol = (DataGridViewColumn)col.Clone();
+            //    footerCol.Width = col.Width;
+            //    dataGridViewFooter.Columns.Add(footerCol);
+            //}
+
+            //// Add a single row
+            //dataGridViewFooter.Rows.Add();
+
+            //// Styling
+            //dataGridViewFooter.ReadOnly = true;
+            //dataGridViewFooter.AllowUserToAddRows = false;
+            //dataGridViewFooter.AllowUserToDeleteRows = false;
+            //dataGridViewFooter.AllowUserToResizeRows = false;
+            //dataGridViewFooter.AllowUserToResizeColumns = false;
+            //dataGridViewFooter.RowHeadersVisible = false;
+            //dataGridViewFooter.ColumnHeadersVisible = false;
+            //dataGridViewFooter.ScrollBars = ScrollBars.None;
+            //dataGridViewFooter.DefaultCellStyle.BackColor = Color.LightYellow;
         }
     }
 }

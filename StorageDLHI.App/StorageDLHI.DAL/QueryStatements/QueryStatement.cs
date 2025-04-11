@@ -16,6 +16,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string INSERT_SUPPLIERS = "INSERT INTO SUPPLIERS VALUES ('{0}', N'{1}', '{2}', N'{3}', '{4}', N'{5}', N'{6}')";
         public const string UPDATE_SUPPLIER = "UPDATE SUPPLIERS SET NAME = N'{0}', CERT = '{1}', EMAIL = N'{2}', PHONE = '{3}', VIETTAT = N'{4}', ADDRESS = N'{5}' WHERE ID = '{6}'";
         public const string DELETE_SUPPLIER = "DELETE SUPPLIERS WHERE ID = '{0}'";
+        public const string PROPERTY_SUPPLIER_ID = "ID";
+        public const string PROPERTY_SUPPLIER_NAME = "NAME";
 
         // Supplier banks
         public const string GET_SUPPLIER_BANKS = "SELECT *FROM SUPPLIER_BANKS";
@@ -106,7 +108,7 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_MPR_DETAIL_BY_ID = "EXEC GET_MPR_DETAIL '{0}'";
 
         // PO
-        public const string INSERT_PO = "INSERT INTO POS VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', N'{5}', '{6}', '{7}', N'{8}', N'{9}', N'{10}', N'{11}', N'{12}', N'{13}', {14}, '{15}', '{16}', '{17}', '{18}')  ";
+        public const string INSERT_PO = "SET DATEFORMAT DMY INSERT INTO POS VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', N'{5}', '{6}', '{7}', N'{8}', N'{9}', N'{10}', N'{11}', N'{12}', N'{13}', {14}, '{15}', '{16}', '{17}', '{18}')  ";
         public const string GET_PO_DETAIL_FORM = "SELECT *FROM PO_DETAIL WHERE ID = '00000000-0000-0000-0000-000000000000'";
         public const string GET_PO_DETAILS = "SELECT *FROM PO_DETAIL";
         public const string DELETE_PO_BY_ID = "DELETE FROM POS WHERE ID = '{0}'";

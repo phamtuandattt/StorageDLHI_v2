@@ -1,6 +1,7 @@
 ﻿using StorageDLHI.DAL.DataProvider;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
+using StorageDLHI.Infrastructor.Commons;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -52,7 +53,20 @@ namespace StorageDLHI.BLL.MprDAO
         public static DataTable GetMprDetailByMpr(Guid mprId)
         {
             string sqlQuery = string.Format(QueryStatement.GET_MPR_DETAIL_BY_ID, mprId);
-            return data.GetData(sqlQuery, "MPR_DETAIL_BY_MPR_ID");
+            var dtMprDetail = data.GetData(sqlQuery, "MPR_DETAIL_BY_MPR_ID");
+            foreach (DataRow row in dtMprDetail.Rows)
+            {
+                row[7] = Common.CheckOrReturnNumber((row[7].ToString()));
+                row[6] = Common.CheckOrReturnNumber((row[6].ToString()));
+                row[8] = Common.CheckOrReturnNumber((row[8].ToString()));
+                row[9] = Common.CheckOrReturnNumber((row[9].ToString()));
+                row[10] = Common.CheckOrReturnNumber(row[10].ToString());
+                row[11] = Common.CheckOrReturnNumber(row[11].ToString());
+                row[12] = Common.CheckOrReturnNumber(row[12].ToString());
+                row[13] = Common.CheckOrReturnNumber(row[13].ToString());
+            }
+
+            return dtMprDetail;
         }
     }
 }

@@ -25,5 +25,37 @@ namespace StorageDLHI.App.Common
             var headerBounds = new Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height);
             e.Graphics.DrawString(rowIdx, font, SystemBrushes.ControlText, headerBounds, centerFormat);
         }
+
+        public static void HideZeroValueColumns(DataGridView dgv)
+        {
+            foreach (DataGridViewColumn col in dgv.Columns)
+            {
+                bool allZeros = true;
+
+                foreach (DataGridViewRow row in dgv.Rows)
+                {
+                    if (!row.IsNewRow && row.Cells[col.Index].Value != null)
+                    {
+                        if (decimal.TryParse(row.Cells[col.Index].Value.ToString(), out decimal value))
+                        {
+                            if (value != 0)
+                            {
+                                allZeros = false;
+                                break; // No need to keep checking
+                            }
+                        }
+                        else
+                        {
+                            // Non-numeric value found; keep the column
+                            allZeros = false;
+                            break;
+                        }
+                    }
+                }
+
+                // Hide the column if all values are 0
+                col.Visible = !allZeros;
+            }
+        }
     }
 }

@@ -2,6 +2,7 @@
 using StorageDLHI.App.Common;
 using StorageDLHI.BLL.MaterialDAO;
 using StorageDLHI.BLL.PoDAO;
+using StorageDLHI.BLL.SupplierDAO;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
 using StorageDLHI.Infrastructor.Caches;
@@ -54,6 +55,7 @@ namespace StorageDLHI.App.PoGUI
             {
                 var dtCost = MaterialDAO.GetCosts();
                 LoadDataCombox(cboCost, dtCost, QueryStatement.PROPERTY_COST_NAME, QueryStatement.PROPERTY_COST_ID);
+                CacheManager.Add(CacheKeys.COST_DATATABLE_ALLCOST, dtCost);
             }
             else
             {
@@ -61,15 +63,28 @@ namespace StorageDLHI.App.PoGUI
                 LoadDataCombox(cboCost, dtCostFromCache, QueryStatement.PROPERTY_COST_NAME, QueryStatement.PROPERTY_COST_ID);
             }
 
-            if (!CacheManager.Exists(CacheKeys.COST_DATATABLE_ALLCOST))
+            if (!CacheManager.Exists(CacheKeys.TAX_DATATABLE_ALLTAX))
             {
                 var dtTax = MaterialDAO.GetTaxs();
                 LoadDataCombox(cboTax, dtTax, QueryStatement.PROPERTY_TAX_PERCENT, QueryStatement.PROPERTY_TAX_ID);
+                CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX, dtTax);
             }
             else
             {
                 var dtTaxFromCache = CacheManager.Get<DataTable>(CacheKeys.TAX_DATATABLE_ALLTAX);
                 LoadDataCombox(cboCost, dtTaxFromCache, QueryStatement.PROPERTY_COST_NAME, QueryStatement.PROPERTY_COST_ID);
+            }
+
+            if (!CacheManager.Exists(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER))
+            {
+                var dtSupp = SupplierDAO.GetSuppliers();
+                LoadDataCombox(cboSuppplier, dtSupp, QueryStatement.PROPERTY_SUPPLIER_NAME, QueryStatement.PROPERTY_SUPPLIER_ID);
+                CacheManager.Add(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER, dtSupp);
+            }
+            else
+            {
+                var dtSuppFromCache = CacheManager.Get<DataTable>(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER);
+                LoadDataCombox(cboSuppplier, dtSuppFromCache, QueryStatement.PROPERTY_SUPPLIER_NAME, QueryStatement.PROPERTY_SUPPLIER_NAME);
             }
 
         }
@@ -120,7 +135,7 @@ namespace StorageDLHI.App.PoGUI
                 Po_Total_Amount = totalAmount,
                 CostId = Guid.Parse(cboCost.SelectedValue.ToString()),
                 TaxId = Guid.Parse(cboTax.SelectedValue.ToString()),
-                SupplierId = Guid.Parse("FDDA2976-2BB1-433D-AC04-08CC3360F182"),
+                SupplierId = Guid.Parse(cboSuppplier.SelectedValue.ToString()),
                 Staff_Id = Guid.Parse("d8f320fd-106b-4859-a4aa-421e4decad89"), //ShareData.UserId.ToString()
             };
 
