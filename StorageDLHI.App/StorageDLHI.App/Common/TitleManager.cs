@@ -30,5 +30,8 @@ namespace StorageDLHI.App.Common
 
         public const string MPR_ADD_INFO = "Add MPR";
         public const string MPR_UPDATE_INFO = "Update MPR";
+
+        public const string PO_ADD = "Add PO";
+        public const string PO_UPDATE = "Update PO";
     }
 }

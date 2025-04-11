@@ -40,4 +40,11 @@ namespace StorageDLHI.App.Enums
         public Costs Costs { get; set; }
     }
 
+    public class CustomProdOfPO
+    {
+        public Int32 Qty { get; set; }
+        public Int32 Price { get; set; }
+        public string Recevie { get; set; }
+        public string Remark { get; set; }
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
+using StorageDLHI.App.Enums;
 using StorageDLHI.DAL.Models;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,8 @@ namespace StorageDLHI.App.PoGUI
     public partial class frmUpdateInfoProdForPO : KryptonForm
     {
         public Products prod { get; set; }
-        public int qty { get; set; }
+        public CustomProdOfPO prodOfPO { get; set; }
+
         private Guid prodId = Guid.Empty;
         
         public frmUpdateInfoProdForPO()
@@ -23,11 +25,11 @@ namespace StorageDLHI.App.PoGUI
             InitializeComponent();
         }
 
-        public frmUpdateInfoProdForPO(string title, int qty, Products prod)
+        public frmUpdateInfoProdForPO(string title, CustomProdOfPO customProdOfPO, Products prod)
         {
             InitializeComponent();
             this.Text = title;
-            this.qty = qty;
+            this.prodOfPO = customProdOfPO;
             this.prod = prod;
             this.prodId = prod.Id;
 
@@ -38,7 +40,10 @@ namespace StorageDLHI.App.PoGUI
             txtFlag.Text = prod.E_Flag;
             txtLength.Text = prod.F_Length;
             txtWeigth.Text = prod.G_Weight;
-            txtQty.Text = qty.ToString();
+            txtQty.Text = this.prodOfPO.Qty.ToString();
+            txtPrice.Value = this.prodOfPO.Price;
+            txtRecevie.Text = this.prodOfPO.Recevie;
+            txtRemark.Text = this.prodOfPO.Remark;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -51,14 +56,17 @@ namespace StorageDLHI.App.PoGUI
             this.prod.E_Flag = txtFlag.Text.Trim();
             this.prod.F_Length = txtLength.Text.Trim();
             this.prod.G_Weight = txtWeigth.Text.Trim();
-            this.qty = int.Parse(txtQty.Text.Trim());
+            this.prodOfPO.Qty = int.Parse(txtQty.Text.Trim());
+            this.prodOfPO.Price = (Int32)txtPrice.Value;
+            this.prodOfPO.Recevie = txtRecevie.Text.Trim();
+            this.prodOfPO.Remark = txtRemark.Text.Trim();
 
             this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.qty = 0;
+            this.prodOfPO.Qty = 0;
             this.Close();
         }
     }

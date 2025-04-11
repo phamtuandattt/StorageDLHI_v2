@@ -26,6 +26,7 @@ namespace StorageDLHI.App.MainGUI
             InitializeComponent();
 
             ShareData.UserName = "David Hoang";
+            ShareData.UserId = Guid.NewGuid();
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)

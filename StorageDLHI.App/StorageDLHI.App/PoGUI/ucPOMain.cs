@@ -1,5 +1,7 @@
 ﻿using StorageDLHI.App.Common;
+using StorageDLHI.App.Enums;
 using StorageDLHI.BLL.MprDAO;
+using StorageDLHI.BLL.PoDAO;
 using StorageDLHI.BLL.ProductDAO;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
@@ -28,6 +30,7 @@ namespace StorageDLHI.App.PoGUI
 
         private int rslOld;
         private int previousRowIndex = -1;
+        private Int32 totalAmount = 0;
 
 
         public ucPOMain()
@@ -49,6 +52,10 @@ namespace StorageDLHI.App.PoGUI
             dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_F);
             dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_G);
             dtProdsOfAddPO.Columns.Add("QTY");
+            dtProdsOfAddPO.Columns.Add("PO_PRICE");
+            dtProdsOfAddPO.Columns.Add("PO_AMOUNT");
+            dtProdsOfAddPO.Columns.Add("PO_RECEVIE");
+            dtProdsOfAddPO.Columns.Add("PO_REMARKS");
 
             dgvProdOfPO.DataSource = dtProdsOfAddPO;
 
@@ -145,24 +152,20 @@ namespace StorageDLHI.App.PoGUI
         {
             if (dgvMPRDetail.Rows.Count <= 0) return;
             int rsl = dgvMPRDetail.CurrentRow.Index;
+
+            frmAddPriceForProdPO frmAddPriceForProdPO = new frmAddPriceForProdPO();
+            frmAddPriceForProdPO.ShowDialog();
+            
+            if (frmAddPriceForProdPO.Price == 0) { return; }
+
             tlsMPRNo.Text = $"MPR No: [{dgvMPRs.Rows[this.previousRowIndex].Cells[1].Value.ToString().Trim()}]\t";
 
-            Guid prodId = Guid.Parse(dgvMPRDetail.Rows[rsl].Cells[0].Value.ToString());
+            Guid prodId = Guid.Parse(dgvMPRDetail.Rows[rsl].Cells[2].Value.ToString());
 
             if (prodsAdded.Contains(prodId))
             {
                 MessageBoxHelper.ShowWarning($"You added product [{dgvMPRDetail.Rows[rsl].Cells[3].Value.ToString()}] into PO. ");
                 return;
-                // Remove exist row in PO
-                // Also delete from the DataTable (dtProdsOfAddPO)
-                //DataRow[] rowsToDelete = dtProdsOfAddPO.Select($"ID = '{prodId}'");
-                //foreach (DataRow r in rowsToDelete)
-                //{
-                //    dtProdsOfAddPO.Rows.Remove(r);
-                //}
-
-                //// Remove from tracking list
-                //prodsAdded.Remove(prodId);
             }
 
             DataRow dataRow = dtProdsOfAddPO.NewRow();
@@ -179,7 +182,12 @@ namespace StorageDLHI.App.PoGUI
             dataRow[10] = dgvMPRDetail.Rows[rsl].Cells[11].Value.ToString().Trim();
             dataRow[11] = dgvMPRDetail.Rows[rsl].Cells[12].Value.ToString().Trim();
             dataRow[12] = dgvMPRDetail.Rows[rsl].Cells[13].Value.ToString().Trim();
+            dataRow[13] = frmAddPriceForProdPO.Price; // Price
+            dataRow[14] = Int32.Parse(dgvMPRDetail.Rows[rsl].Cells[13].Value.ToString().Trim()) * frmAddPriceForProdPO.Price; // Amount
+            dataRow[15] = frmAddPriceForProdPO.Recevie;
+            dataRow[16] = frmAddPriceForProdPO.Remark;
 
+            totalAmount += Int32.Parse(dgvMPRDetail.Rows[rsl].Cells[13].Value.ToString().Trim()) * frmAddPriceForProdPO.Price; // Amount
             dtProdsOfAddPO.Rows.Add(dataRow);
             prodsAdded.Add(prodId);
             dgvProdOfPO.Rows[0].Selected = true;
@@ -219,10 +227,18 @@ namespace StorageDLHI.App.PoGUI
                 G_Weight = dgvProdOfPO.Rows[rsl].Cells[11].Value.ToString(),
             };
 
-            frmUpdateInfoProdForPO frmUp = new frmUpdateInfoProdForPO(TitleManager.PROD_UPDATE_TITLE, qty, product);
+            CustomProdOfPO customProdOfPO = new CustomProdOfPO()
+            {
+                Qty = qty,
+                Price = Int32.Parse(dgvProdOfPO.Rows[rsl].Cells[13].Value.ToString()),
+                Recevie = dgvProdOfPO.Rows[rsl].Cells[15].Value.ToString(),
+                Remark = dgvProdOfPO.Rows[rsl].Cells[16].Value.ToString()
+            };
+
+            frmUpdateInfoProdForPO frmUp = new frmUpdateInfoProdForPO(TitleManager.PROD_UPDATE_TITLE, customProdOfPO, product);
             frmUp.ShowDialog();
 
-            if (frmUp.qty == 0) { return; }
+            if (frmUp.prodOfPO.Qty == 0) { return; }
 
             var prodModify = frmUp.prod;
 
@@ -235,7 +251,11 @@ namespace StorageDLHI.App.PoGUI
             dgvProdOfPO.Rows[rsl].Cells[9].Value = prodModify.E_Flag;
             dgvProdOfPO.Rows[rsl].Cells[10].Value = prodModify.F_Length;
             dgvProdOfPO.Rows[rsl].Cells[11].Value = prodModify.G_Weight;
-            dgvProdOfPO.Rows[rsl].Cells[12].Value = frmUp.qty;
+            dgvProdOfPO.Rows[rsl].Cells[12].Value = frmUp.prodOfPO.Qty;
+            dgvProdOfPO.Rows[rsl].Cells[13].Value = frmUp.prodOfPO.Price;
+            dgvProdOfPO.Rows[rsl].Cells[14].Value = frmUp.prodOfPO.Price * frmUp.prodOfPO.Qty; // amount
+            dgvProdOfPO.Rows[rsl].Cells[15].Value = frmUp.prodOfPO.Recevie;
+            dgvProdOfPO.Rows[rsl].Cells[16].Value = frmUp.prodOfPO.Remark;
         }
 
         private void dgvProdOfPO_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -268,7 +288,7 @@ namespace StorageDLHI.App.PoGUI
 
             for (int i = 0; i < dgvMPRDetail.Rows.Count; i++)
             {
-                Guid prodId = Guid.Parse(dgvMPRDetail.Rows[i].Cells[0].Value.ToString());
+                Guid prodId = Guid.Parse(dgvMPRDetail.Rows[i].Cells[2].Value.ToString());
                 DataRow dataRow = dtProdsOfAddPO.NewRow();
                 dataRow[0] = prodId;
                 dataRow[1] = dgvMPRDetail.Rows[i].Cells[3].Value.ToString().Trim();
@@ -338,8 +358,32 @@ namespace StorageDLHI.App.PoGUI
 
         private void btnAddPO_Click(object sender, EventArgs e)
         {
-            frmCustomInfoPO frmCustomInfoPO = new frmCustomInfoPO();
+            if (dgvProdOfPO.Rows.Count <= 0) 
+            {
+                MessageBoxHelper.ShowWarning("Please add product of MPR to create PO!");
+                return;
+            }
+            int rsl = dgvProdOfPO.CurrentRow.Index;
+
+            Pos mPO = new Pos()
+            {
+                Po_Mpr_No = dgvMPRs.Rows[this.previousRowIndex].Cells[1].Value.ToString().Trim(),
+                Po_Wo_No = dgvMPRs.Rows[this.previousRowIndex].Cells[2].Value.ToString().Trim(),
+                Po_Project_Name = dgvMPRs.Rows[this.previousRowIndex].Cells[3].Value.ToString().Trim(),
+            };
+
+            frmCustomInfoPO frmCustomInfoPO = new frmCustomInfoPO(TitleManager.PO_ADD, true, mPO, dtProdsOfAddPO, totalAmount);
             frmCustomInfoPO.ShowDialog();
+
+            if (!frmCustomInfoPO.completed)
+            {
+                return;
+            }
+
+            tlsMPRNo.Text = "...";
+            dtProdsOfAddPO.Clear();
+            prodsAdded.Clear();
+            dgvProdOfPO.Refresh();
         }
     }
 }

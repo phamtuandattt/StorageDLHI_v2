@@ -50,6 +50,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_TAXS = "SELECT *FROM TAX";
         public const string INSERT_TAX = "INSERT INTO TAX VALUES ('{0}', N'{1}')";
         public const string UPDATE_TAX = "UPDATE TAX SET TAX_PERCENT = N'{0}' WHERE ID = '{1}'";
+        public const string PROPERTY_TAX_ID = "ID";
+        public const string PROPERTY_TAX_PERCENT = "TAX_PERCENT";
 
         // Unit
         public const string GET_UNIT = "SELECT *FROM UNITS";
@@ -62,6 +64,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_COST = "SELECT *FROM COST";
         public const string INSERT_COST = "INSERT INTO COST VALUES ('{0}', N'{1}')";
         public const string UPDATE_COST = "UPDATE COST SET COST_NAME = N'{0}' WHERE ID = '{1}'";
+        public const string PROPERTY_COST_ID = "ID";
+        public const string PROPERTY_COST_NAME = "COST_NAME";
 
         // Product
         public const string ADD_PROD = "INSERT INTO PRODUCTS \r\n(ID, \r\nPRODUCT_NAME, \r\nPRODUCT_DES_2, \r\nPRODUCT_CODE, \r\nPRODUCT_MATERIAL_CODE, \r\nPICTURE_LINK, \r\nPICTURE, \r\nA_THINHNESS, \r\nB_DEPTH, \r\nC_WIDTH, \r\nD_WEB,\r\nE_FLAG, \r\nF_LENGTH, \r\nG_WEIGHT, \r\nUSED_NOTE,\r\nUNIT_ID,\r\nORIGIN_ID,\r\nM_TYPE_ID,\r\nSTANDARD_ID) \r\nVALUES \r\n('{0}',\r\nN'{1}', \r\n'{2}', \r\n'{3}',\r\n'{4}',\r\nN'{5}',\r\n(SELECT *FROM OPENROWSET(BULK N'{6}', SINGLE_BLOB) AS IMAGE), \r\n'{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}', N'{15}', '{16}', '{17}', '{18}')";
@@ -102,7 +106,9 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_MPR_DETAIL_BY_ID = "EXEC GET_MPR_DETAIL '{0}'";
 
         // PO
-        
-
+        public const string INSERT_PO = "INSERT INTO POS VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', N'{5}', '{6}', '{7}', N'{8}', N'{9}', N'{10}', N'{11}', N'{12}', N'{13}', {14}, '{15}', '{16}', '{17}', '{18}')  ";
+        public const string GET_PO_DETAIL_FORM = "SELECT *FROM PO_DETAIL WHERE ID = '00000000-0000-0000-0000-000000000000'";
+        public const string GET_PO_DETAILS = "SELECT *FROM PO_DETAIL";
+        public const string DELETE_PO_BY_ID = "DELETE FROM POS WHERE ID = '{0}'";
     }
 }
