@@ -967,6 +967,7 @@
             this.cboSuppplier.Name = "cboSuppplier";
             this.cboSuppplier.Size = new System.Drawing.Size(747, 25);
             this.cboSuppplier.TabIndex = 1;
+            this.cboSuppplier.Validating += new System.ComponentModel.CancelEventHandler(this.cboSuppplier_Validating);
             // 
             // kryptonPanel8
             // 
@@ -1189,6 +1190,7 @@
             this.cboCost.Name = "cboCost";
             this.cboCost.Size = new System.Drawing.Size(295, 25);
             this.cboCost.TabIndex = 1;
+            this.cboCost.Validating += new System.ComponentModel.CancelEventHandler(this.cboCost_Validating);
             // 
             // kryptonPanel12
             // 
@@ -1279,6 +1281,7 @@
             this.Name = "frmCustomInfoPO";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCustomInfoPO_FormClosing);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel20.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel33)).EndInit();

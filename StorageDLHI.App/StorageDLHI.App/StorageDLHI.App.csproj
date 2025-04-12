@@ -150,6 +150,12 @@
     <Compile Include="PoGUI\frmCustomInfoPO.Designer.cs">
       <DependentUpon>frmCustomInfoPO.cs</DependentUpon>
     </Compile>
+    <Compile Include="PoGUI\frmSeacrhPOFromDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PoGUI\frmSeacrhPOFromDate.Designer.cs">
+      <DependentUpon>frmSeacrhPOFromDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="PoGUI\frmUpdateInfoProdForPO.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +220,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PoGUI\frmCustomInfoPO.resx">
       <DependentUpon>frmCustomInfoPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PoGUI\frmSeacrhPOFromDate.resx">
+      <DependentUpon>frmSeacrhPOFromDate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PoGUI\frmUpdateInfoProdForPO.resx">
       <DependentUpon>frmUpdateInfoProdForPO.cs</DependentUpon>
@@ -287,6 +296,7 @@
     <Content Include="Resources\red-dot.png" />
     <Content Include="Resources\refresh.png" />
     <Content Include="Resources\right.png" />
+    <Content Include="Resources\search.png" />
     <Content Include="Resources\shopping-cart.png" />
     <Content Include="Resources\warehouse %282%29.png" />
     <Content Include="Resources\warehouse.png" />

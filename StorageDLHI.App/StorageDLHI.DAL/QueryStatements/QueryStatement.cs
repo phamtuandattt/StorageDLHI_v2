@@ -114,5 +114,21 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string DELETE_PO_BY_ID = "DELETE FROM POS WHERE ID = '{0}'";
         public const string GET_PO_DETAIL_BY_PO_ID = "EXEC GET_PO_DETAIL '{0}'";
         public const string GET_POS = "EXEC GET_POS";
+        public const string PROPERTY_PO_NO = "PO_NO";
+        public const string PROPERTY_PO_MPR_NO = "PO_MPR_NO";
+        public const string PROPERTY_PO_WO_NO = "PO_WO_NO";
+        public const string PROPERTY_PO_PROJECT_NAME = "PO_PROJECT_NAME";
+        public const string PROPERTY_PO_REV_TOTAL = "PO_REV_TOTAL";
+        public const string PROPERTY_PO_CREATE_DATE = "PO_CREATE_DATE";
+        public const string PROPERTY_PO_EXPECTED_DELIVERY_DATE = "PO_EXPECTED_DELIVERY_DATE";
+        public const string PROPERTY_PO_PREPARED = "PO_PREPARED";
+        public const string PROPERTY_PO_REVIEWED = "PO_REVIEWED";
+        public const string PROPERTY_PO_AGREEMENT = "PO_AGREEMENT";
+        public const string PROPERTY_PO_APPROVED = "PO_APPROVED";
+        public const string PROPERTY_PO_PAYMENT_TERM = "PO_PAYMENT_TERM";
+        public const string PROPERTY_PO_DISPATCH_BOX = "PO_PLACE_OF_CONTRY";
+        public const string PROPERTY_PO_TOTAL_AMOUNT = "PO_TOTAL_AMOUNT";
+
+
     }
 }

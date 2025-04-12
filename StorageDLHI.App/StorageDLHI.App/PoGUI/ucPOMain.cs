@@ -17,6 +17,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Data.Entity.Infrastructure.Design.Executor;
 
 namespace StorageDLHI.App.PoGUI
 {
@@ -581,7 +582,60 @@ namespace StorageDLHI.App.PoGUI
         private void tlsReloadPOs_Click(object sender, EventArgs e)
         {
             CacheManager.Remove(CacheKeys.POS_DATATABLE_ALL_PO);
+            lblDateTimeSeacrh.Text = "";
             LoadData();
+        }
+
+        private void txtSearchPO_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtSearchPO.Text))
+            {
+                dgvPOList.Refresh();
+            }
+            var lstProperty = new List<string>()
+            {
+                QueryStatement.PROPERTY_PO_NO,
+                QueryStatement.PROPERTY_PO_MPR_NO,
+                QueryStatement.PROPERTY_PO_WO_NO,
+                QueryStatement.PROPERTY_PO_PROJECT_NAME,
+                QueryStatement.PROPERTY_PO_PREPARED,
+                QueryStatement.PROPERTY_PO_REVIEWED,
+                QueryStatement.PROPERTY_PO_AGREEMENT,
+                QueryStatement.PROPERTY_PO_APPROVED,
+                QueryStatement.PROPERTY_PO_PAYMENT_TERM,
+                QueryStatement.PROPERTY_PO_DISPATCH_BOX,
+            };
+
+            dgvPOList.DataSource = Common.Common.Search(txtSearchPO.Text.Trim(), dtPos, lstProperty);
+        }
+
+
+        private void tlsSearchDate_Click(object sender, EventArgs e)
+        {
+            if (dgvPOList.Rows.Count <= 0)
+            {
+                return;
+            }
+            frmSeacrhPOFromDate frmSeacrhPOFromDate = new frmSeacrhPOFromDate();
+            frmSeacrhPOFromDate.ShowDialog();
+
+            if (!frmSeacrhPOFromDate.IsSearch)
+            {
+                dgvPOList.Refresh();
+                return;
+            }
+
+            var lstProperty = new List<string>()
+            {
+                QueryStatement.GET_PRODUCTS_FOR_CREATE_MPR,
+                QueryStatement.PROPERTY_PO_EXPECTED_DELIVERY_DATE
+            };
+
+            DateTime fDate = frmSeacrhPOFromDate.FromDate;
+            DateTime tDate = frmSeacrhPOFromDate.ToDate;
+
+            lblDateTimeSeacrh.Text = $"From: {fDate.ToString("dd/MM/yyyy")} To: {tDate.ToString("dd/MM/yyyy")}";
+            dgvPOList.DataSource = Common.Common.SearchDate(fDate, tDate, dtPos);
         }
     }
 }

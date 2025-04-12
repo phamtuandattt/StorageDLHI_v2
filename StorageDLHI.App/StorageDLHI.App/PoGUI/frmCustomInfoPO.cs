@@ -215,24 +215,22 @@ namespace StorageDLHI.App.PoGUI
 
         private void cboTax_Validating(object sender, CancelEventArgs e)
         {
-            KryptonComboBox cb = sender as KryptonComboBox;
-            string typed = cb.Text;
+            Common.Common.AutoCompleteComboboxValidating(sender as KryptonComboBox, e);
+        }
 
-            bool match = false;
-            foreach (object item in cb.Items)
-            {
-                if (item.ToString().Equals(typed, StringComparison.OrdinalIgnoreCase))
-                {
-                    cb.SelectedItem = item;
-                    match = true;
-                    break;
-                }
-            }
+        private void cboCost_Validating(object sender, CancelEventArgs e)
+        {
+            Common.Common.AutoCompleteComboboxValidating(sender as KryptonComboBox, e);
+        }
 
-            if (!match)
-            {
-                cb.SelectedIndex = 0; // Default if no match
-            }
+        private void cboSuppplier_Validating(object sender, CancelEventArgs e)
+        {
+            Common.Common.AutoCompleteComboboxValidating(sender as KryptonComboBox, e);
+        }
+
+        private void frmCustomInfoPO_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.completed = false;
         }
     }
 }

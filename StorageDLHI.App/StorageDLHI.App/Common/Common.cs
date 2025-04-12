@@ -1,7 +1,14 @@
-﻿using System;
+﻿using ComponentFactory.Krypton.Toolkit;
+using StorageDLHI.DAL.Models;
+using StorageDLHI.DAL.QueryStatements;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -10,6 +17,58 @@ namespace StorageDLHI.App.Common
 {
     public static class Common
     {
+        public static DataView SearchDate(DateTime FromDate, DateTime ToDate, DataTable dtSource)
+        {
+            DataView dv = dtSource.DefaultView;
+            string filter = $"{QueryStatement.PROPERTY_PO_CREATE_DATE} >= '{FromDate:dd/MM/yyyy}' AND " +
+                            $"{QueryStatement.PROPERTY_PO_EXPECTED_DELIVERY_DATE} <= '{ToDate:dd/MM/yyyy}' ";
+    
+            dv.RowFilter = filter;
+
+            return dv;
+        }
+
+        public static DataView Search(string search, DataTable dtSource, List<string> lstProperty)
+        {
+            DataView dv = dtSource.DefaultView;
+            string filter = "";
+            foreach (var item in lstProperty)
+            {
+                if (string.IsNullOrEmpty(filter))
+                {
+                    filter = $"{item} LIKE '%{search}%' ";
+                }
+                else
+                {
+                    filter += $"OR {item} LIKE '%{search}%' ";
+                }
+            }
+            dv.RowFilter = filter;
+
+            return dv;
+        }
+
+        public static void AutoCompleteComboboxValidating(KryptonComboBox sender, CancelEventArgs e)
+        {
+            KryptonComboBox cb = sender as KryptonComboBox;
+            string typed = cb.Text;
+
+            bool match = false;
+            foreach (object item in cb.Items)
+            {
+                if (item.ToString().Equals(typed, StringComparison.OrdinalIgnoreCase))
+                {
+                    cb.SelectedItem = item;
+                    match = true;
+                    break;
+                }
+            }
+
+            if (!match)
+            {
+                cb.SelectedIndex = 0; // Default if no match
+            }
+        }
         public static void StyleFooterCell(DataGridViewCell cellCustom)
         {
             var cell = cellCustom;
