@@ -577,5 +577,11 @@ namespace StorageDLHI.App.PoGUI
                 }
             }
         }
+
+        private void tlsReloadPOs_Click(object sender, EventArgs e)
+        {
+            CacheManager.Remove(CacheKeys.POS_DATATABLE_ALL_PO);
+            LoadData();
+        }
     }
 }

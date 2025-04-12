@@ -530,5 +530,20 @@ namespace StorageDLHI.App.MprGUI
                 }
             }
         }
+
+        private void dgvProds_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex == 5 && e.RowIndex >= 0) //change 3 with your collumn index
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                if (dgvProds.Rows[e.RowIndex].Cells[5].Value.ToString().Length <= 0)
+                {
+                    dgvProds.Rows[e.RowIndex].Cells[5].Value = Properties.Resources.picture_bg;
+                }
+
+                e.Handled = true;
+            }
+        }
     }
 }

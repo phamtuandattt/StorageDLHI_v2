@@ -47,6 +47,8 @@ namespace StorageDLHI.App.PoGUI
             txtWoNo.Text = this.mPO.Po_Wo_No;
             txtProjectName.Text = this.mPO.Po_Project_Name;
             txtPrepared.Text = ShareData.UserName;
+
+            
         }
 
         private void LoadData()
@@ -72,7 +74,7 @@ namespace StorageDLHI.App.PoGUI
             else
             {
                 var dtTaxFromCache = CacheManager.Get<DataTable>(CacheKeys.TAX_DATATABLE_ALLTAX);
-                LoadDataCombox(cboCost, dtTaxFromCache, QueryStatement.PROPERTY_COST_NAME, QueryStatement.PROPERTY_COST_ID);
+                LoadDataCombox(cboTax, dtTaxFromCache, QueryStatement.PROPERTY_TAX_PERCENT, QueryStatement.PROPERTY_TAX_ID);
             }
 
             if (!CacheManager.Exists(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER))
@@ -84,7 +86,7 @@ namespace StorageDLHI.App.PoGUI
             else
             {
                 var dtSuppFromCache = CacheManager.Get<DataTable>(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER);
-                LoadDataCombox(cboSuppplier, dtSuppFromCache, QueryStatement.PROPERTY_SUPPLIER_NAME, QueryStatement.PROPERTY_SUPPLIER_NAME);
+                LoadDataCombox(cboSuppplier, dtSuppFromCache, QueryStatement.PROPERTY_SUPPLIER_NAME, QueryStatement.PROPERTY_SUPPLIER_ID);
             }
 
         }
@@ -209,6 +211,28 @@ namespace StorageDLHI.App.PoGUI
             txtDepo3.Enabled = false;
             txtOther.Enabled = true;
             txtOther.Focus();
+        }
+
+        private void cboTax_Validating(object sender, CancelEventArgs e)
+        {
+            KryptonComboBox cb = sender as KryptonComboBox;
+            string typed = cb.Text;
+
+            bool match = false;
+            foreach (object item in cb.Items)
+            {
+                if (item.ToString().Equals(typed, StringComparison.OrdinalIgnoreCase))
+                {
+                    cb.SelectedItem = item;
+                    match = true;
+                    break;
+                }
+            }
+
+            if (!match)
+            {
+                cb.SelectedIndex = 0; // Default if no match
+            }
         }
     }
 }

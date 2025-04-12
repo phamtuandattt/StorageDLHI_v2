@@ -40,7 +40,7 @@ namespace StorageDLHI.App.PoGUI
             txtFlag.Text = prod.E_Flag;
             txtLength.Text = prod.F_Length;
             txtWeigth.Text = prod.G_Weight;
-            txtQty.Text = this.prodOfPO.Qty.ToString();
+            txtQty.Value = this.prodOfPO.Qty;
             txtPrice.Value = this.prodOfPO.Price;
             txtRecevie.Text = this.prodOfPO.Recevie;
             txtRemark.Text = this.prodOfPO.Remark;
@@ -56,7 +56,7 @@ namespace StorageDLHI.App.PoGUI
             this.prod.E_Flag = txtFlag.Text.Trim();
             this.prod.F_Length = txtLength.Text.Trim();
             this.prod.G_Weight = txtWeigth.Text.Trim();
-            this.prodOfPO.Qty = int.Parse(txtQty.Text.Trim());
+            this.prodOfPO.Qty = (Int32)txtQty.Value;
             this.prodOfPO.Price = (Int32)txtPrice.Value;
             this.prodOfPO.Recevie = txtRecevie.Text.Trim();
             this.prodOfPO.Remark = txtRemark.Text.Trim();
