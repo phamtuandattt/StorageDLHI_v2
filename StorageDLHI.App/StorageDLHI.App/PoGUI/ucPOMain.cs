@@ -1,4 +1,5 @@
-﻿using StorageDLHI.App.Common;
+﻿using log4net.Appender;
+using StorageDLHI.App.Common;
 using StorageDLHI.App.Enums;
 using StorageDLHI.BLL.MprDAO;
 using StorageDLHI.BLL.PoDAO;
@@ -59,6 +60,8 @@ namespace StorageDLHI.App.PoGUI
             dtProdsOfAddPO.Columns.Add("PO_REMARKS");
 
             dgvProdOfPO.DataSource = dtProdsOfAddPO;
+
+            Common.Common.InitializeFooterGrid(dgvProdOfPO, dgvFooter);
         }
 
         private void LoadData()
@@ -109,6 +112,7 @@ namespace StorageDLHI.App.PoGUI
             dtProdsOfAddPO.Clear();
             prodsAdded.Clear();
             dgvProdOfPO.Refresh();
+            UpdateFooter();
         }
 
         private void dgvMPRs_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -146,6 +150,7 @@ namespace StorageDLHI.App.PoGUI
             {
                 dgvMPRDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId));
             }
+            UpdateFooter();
         }
 
         private void dgvMPRDetail_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -191,6 +196,7 @@ namespace StorageDLHI.App.PoGUI
             dtProdsOfAddPO.Rows.Add(dataRow);
             prodsAdded.Add(prodId);
             dgvProdOfPO.Rows[0].Selected = true;
+            UpdateFooter();
         }
 
         private Int32 CheckOrReturnNumber(string numberString)
@@ -265,6 +271,7 @@ namespace StorageDLHI.App.PoGUI
             dgvProdOfPO.Rows[rsl].Cells[15].Value = frmUp.prodOfPO.Recevie;
             dgvProdOfPO.Rows[rsl].Cells[16].Value = frmUp.prodOfPO.Remark;
             totalAmount += frmUp.prodOfPO.Qty;
+            UpdateFooter();
         }
 
         private void dgvProdOfPO_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -319,6 +326,8 @@ namespace StorageDLHI.App.PoGUI
             }
 
             dgvProdOfPO.Rows[0].Selected = true;
+
+            UpdateFooter();
         }
 
         private void dgvMPRs_CurrentCellChanged(object sender, EventArgs e)
@@ -406,6 +415,42 @@ namespace StorageDLHI.App.PoGUI
             prodsAdded.Clear();
             dgvProdOfPO.Refresh();
             totalAmount = 0;
+            UpdateFooter();
+        }
+
+        private void UpdateFooter()
+        {
+            Int32 totalQty = 0;
+            Int32 totalPrice = 0;
+            Int32 totalAmount = 0;
+
+            foreach (DataGridViewRow row in dgvProdOfPO.Rows)
+            {
+                if (Int32.TryParse(row.Cells[12].Value?.ToString(), out Int32 qty))
+                {
+                    totalQty += qty;
+                }
+
+                if (Int32.TryParse(row.Cells[13].Value?.ToString(), out Int32 price))
+                {
+                    totalPrice += price;
+                }
+
+                if (Int32.TryParse(row.Cells[14].Value?.ToString(), out Int32 amount))
+                {
+                    totalAmount += amount;
+                }
+            }
+
+            dgvFooter.Rows[0].Cells[1].Value = "TOTAL";
+            dgvFooter.Rows[0].Cells[12].Value = totalQty;
+            dgvFooter.Rows[0].Cells[13].Value = totalPrice.ToString("N0");
+            dgvFooter.Rows[0].Cells[14].Value = totalAmount.ToString("N0");
+
+            dgvFooter.Rows[0].Cells[1].Style.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            Common.Common.StyleFooterCell(dgvFooter.Rows[0].Cells[12]);
+            Common.Common.StyleFooterCell(dgvFooter.Rows[0].Cells[13]);
+            Common.Common.StyleFooterCell(dgvFooter.Rows[0].Cells[14]);
         }
 
         private void dgvProdOfPO_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -420,8 +465,6 @@ namespace StorageDLHI.App.PoGUI
             dgvProdOfPO.Columns["QTY"].DefaultCellStyle.Format = "N0";
             dgvProdOfPO.Columns["PO_PRICE"].DefaultCellStyle.Format = "N0";
             dgvProdOfPO.Columns["PO_AMOUNT"].DefaultCellStyle.Format = "N0";
-
-            //Common.Common.HideZeroValueColumns(dgvProdOfPO);
         }
 
         private void dgvMPRDetail_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -436,29 +479,21 @@ namespace StorageDLHI.App.PoGUI
             dgvMPRDetail.Columns["MPR_QTY_M"].DefaultCellStyle.Format = "N0";
         }
 
-        private void InitializeFooterGrid()
+        private void dgvProdOfPO_Scroll(object sender, ScrollEventArgs e)
         {
-            // Clone columns from main grid
-            //foreach (DataGridViewColumn col in dgvProdOfPO.Columns)
-            //{
-            //    var footerCol = (DataGridViewColumn)col.Clone();
-            //    footerCol.Width = col.Width;
-            //    dataGridViewFooter.Columns.Add(footerCol);
-            //}
+            dgvFooter.HorizontalScrollingOffset = dgvProdOfPO.HorizontalScrollingOffset;
+        }
 
-            //// Add a single row
-            //dataGridViewFooter.Rows.Add();
+        private void dgvProdOfPO_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+            // Apply the changed width to the corresponding column in the footer
+            if (e.Column.Index < dgvFooter.Columns.Count)
+            {
+                dgvFooter.Columns[e.Column.Index].Width = e.Column.Width;
+            }
 
-            //// Styling
-            //dataGridViewFooter.ReadOnly = true;
-            //dataGridViewFooter.AllowUserToAddRows = false;
-            //dataGridViewFooter.AllowUserToDeleteRows = false;
-            //dataGridViewFooter.AllowUserToResizeRows = false;
-            //dataGridViewFooter.AllowUserToResizeColumns = false;
-            //dataGridViewFooter.RowHeadersVisible = false;
-            //dataGridViewFooter.ColumnHeadersVisible = false;
-            //dataGridViewFooter.ScrollBars = ScrollBars.None;
-            //dataGridViewFooter.DefaultCellStyle.BackColor = Color.LightYellow;
+            // Resize for DataGridViewMain and DataGridViewFooter the same
+            Common.Common.AdjustFooterScrollbar(dgvProdOfPO, dgvFooter);
         }
     }
 }
