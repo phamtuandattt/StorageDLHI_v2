@@ -14,6 +14,17 @@ namespace StorageDLHI.BLL.PoDAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
+        public static DataTable GetPOs()
+        {
+            return data.GetData(QueryStatement.GET_POS, "POS");
+        }
+
+        public static DataTable GetPODetailById(Guid poId)
+        {
+            string sqlQuery = string.Format(QueryStatement.GET_PO_DETAIL_BY_PO_ID, poId);
+            return data.GetData(sqlQuery, "PO_DETAILS");
+        }
+
         public static bool InsertPO(Pos pos)
         {
             string sqlQuery = string.Format(QueryStatement.INSERT_PO, pos.Id, pos.Po_No, pos.Po_Mpr_No, pos.Po_Wo_No, pos.Po_Project_Name,

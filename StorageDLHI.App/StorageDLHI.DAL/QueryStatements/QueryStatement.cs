@@ -112,5 +112,7 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_PO_DETAIL_FORM = "SELECT *FROM PO_DETAIL WHERE ID = '00000000-0000-0000-0000-000000000000'";
         public const string GET_PO_DETAILS = "SELECT *FROM PO_DETAIL";
         public const string DELETE_PO_BY_ID = "DELETE FROM POS WHERE ID = '{0}'";
+        public const string GET_PO_DETAIL_BY_PO_ID = "EXEC GET_PO_DETAIL '{0}'";
+        public const string GET_POS = "EXEC GET_POS";
     }
 }

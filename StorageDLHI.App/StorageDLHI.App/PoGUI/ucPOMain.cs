@@ -34,6 +34,9 @@ namespace StorageDLHI.App.PoGUI
         private int previousRowIndex = -1;
         private Int32 totalAmount = 0;
 
+        private DataTable dtPos = new DataTable();
+        private DataTable dtPoById = new DataTable();
+
 
         public ucPOMain()
         {
@@ -66,6 +69,35 @@ namespace StorageDLHI.App.PoGUI
 
         private void LoadData()
         {
+            if (!CacheManager.Exists(CacheKeys.POS_DATATABLE_ALL_PO))
+            {
+                dtPos = PoDAO.GetPOs();
+                CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, dtPos);
+                dgvPOList.DataSource = dtPos;
+            }
+            else
+            {
+                dtPos = CacheManager.Get<DataTable>(CacheKeys.POS_DATATABLE_ALL_PO);
+                dgvPOList.DataSource = CacheManager.Get<DataTable>(CacheKeys.POS_DATATABLE_ALL_PO);
+            }
+
+            if (dtPos != null && dgvPOList.Rows.Count > 0)
+            {
+                Guid poId = Guid.Parse(dgvPOList.Rows[0].Cells[0].Value.ToString());
+                if (!CacheManager.Exists(string.Format(CacheKeys.PO_DETAL_BY_ID, poId)))
+                {
+                    dtPoById = PoDAO.GetPODetailById(poId);
+                    CacheManager.Add(string.Format(CacheKeys.PO_DETAL_BY_ID, poId), dtPoById);
+                    dgvPODetail.DataSource = dtPoById;
+                }
+                else
+                {
+                    dtPoById = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAL_BY_ID, poId));
+                    dgvPODetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAL_BY_ID, poId));
+                }
+            }
+
+
             if (!CacheManager.Exists(CacheKeys.MPRS_DATATABLE_ALL_MPRS))
             {
                 dtMprs = MprDAO.GetMprs();
@@ -416,6 +448,12 @@ namespace StorageDLHI.App.PoGUI
             dgvProdOfPO.Refresh();
             totalAmount = 0;
             UpdateFooter();
+
+            // Update data in cache
+            dtPos = PoDAO.GetPOs();
+            CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, dtPos);
+
+            LoadData();
         }
 
         private void UpdateFooter()
@@ -494,6 +532,50 @@ namespace StorageDLHI.App.PoGUI
 
             // Resize for DataGridViewMain and DataGridViewFooter the same
             Common.Common.AdjustFooterScrollbar(dgvProdOfPO, dgvFooter);
+        }
+
+        private void dgvPOList_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvPOList.Columns["PO_TOTAL_AMOUNT"].DefaultCellStyle.Format = "N0";
+        }
+
+        private void dgvPODetail_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvPODetail.Columns["PO_DETAIL_QTY"].DefaultCellStyle.Format = "N0";
+            dgvPODetail.Columns["PO_DETAIL_PRICE"].DefaultCellStyle.Format = "N0";
+            dgvPODetail.Columns["PO_DETAIL_AMOUNT"].DefaultCellStyle.Format = "N0";
+        }
+
+        private void dgvPOList_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Common.Common.RenderNumbering(sender, e, this.Font);
+        }
+
+        private void dgvPODetail_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Common.Common.RenderNumbering(sender, e, this.Font);
+        }
+
+        private void dgvPOList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvPOList.CurrentCell == null) return;
+            int currentRowIndex = dgvPOList.CurrentCell.RowIndex;
+
+            if (dtPos != null && dgvPOList.Rows.Count > 0)
+            {
+                Guid poId = Guid.Parse(dgvPOList.Rows[currentRowIndex].Cells[0].Value.ToString());
+                if (!CacheManager.Exists(string.Format(CacheKeys.PO_DETAL_BY_ID, poId)))
+                {
+                    dtPoById = PoDAO.GetPODetailById(poId);
+                    CacheManager.Add(string.Format(CacheKeys.PO_DETAL_BY_ID, poId), dtPoById);
+                    dgvPODetail.DataSource = dtPoById;
+                }
+                else
+                {
+                    dtPoById = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAL_BY_ID, poId));
+                    dgvPODetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAL_BY_ID, poId));
+                }
+            }
         }
     }
 }

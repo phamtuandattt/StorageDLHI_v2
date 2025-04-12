@@ -187,7 +187,7 @@
             this.kryptonNavigator1.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
             this.pageMPRs,
             this.pageAddMPR});
-            this.kryptonNavigator1.SelectedIndex = 1;
+            this.kryptonNavigator1.SelectedIndex = 0;
             this.kryptonNavigator1.Size = new System.Drawing.Size(1386, 757);
             this.kryptonNavigator1.StateCommon.Panel.Color1 = System.Drawing.Color.White;
             this.kryptonNavigator1.StateCommon.Panel.Color2 = System.Drawing.Color.White;
@@ -914,19 +914,19 @@
             this.btnAddProd.Image = global::StorageDLHI.App.Properties.Resources.add;
             this.btnAddProd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAddProd.Name = "btnAddProd";
-            this.btnAddProd.Size = new System.Drawing.Size(29, 28);
+            this.btnAddProd.Size = new System.Drawing.Size(29, 24);
             this.btnAddProd.Text = "Add new product for create MPR";
             this.btnAddProd.Click += new System.EventHandler(this.btnAddProd_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(56, 28);
+            this.toolStripLabel1.Size = new System.Drawing.Size(56, 24);
             this.toolStripLabel1.Text = "Search:";
             // 
             // txtSearchProd
@@ -1165,19 +1165,19 @@
             this.tlsDeleteProdExist.Image = global::StorageDLHI.App.Properties.Resources.bin;
             this.tlsDeleteProdExist.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsDeleteProdExist.Name = "tlsDeleteProdExist";
-            this.tlsDeleteProdExist.Size = new System.Drawing.Size(87, 28);
+            this.tlsDeleteProdExist.Size = new System.Drawing.Size(87, 24);
             this.tlsDeleteProdExist.Text = "Clear all";
             this.tlsDeleteProdExist.Click += new System.EventHandler(this.tlsDeleteProdExist_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(56, 28);
+            this.toolStripLabel2.Size = new System.Drawing.Size(56, 24);
             this.toolStripLabel2.Text = "Search:";
             // 
             // txtSearchProdExistMPR
@@ -1193,7 +1193,7 @@
             this.btnConfirm.Image = global::StorageDLHI.App.Properties.Resources.right;
             this.btnConfirm.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(91, 28);
+            this.btnConfirm.Size = new System.Drawing.Size(91, 24);
             this.btnConfirm.Text = "Comfirm";
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
@@ -1201,7 +1201,7 @@
             // 
             this.tlsLabalQtyProd.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tlsLabalQtyProd.Name = "tlsLabalQtyProd";
-            this.tlsLabalQtyProd.Size = new System.Drawing.Size(27, 28);
+            this.tlsLabalQtyProd.Size = new System.Drawing.Size(27, 24);
             this.tlsLabalQtyProd.Text = "(0)";
             this.tlsLabalQtyProd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
