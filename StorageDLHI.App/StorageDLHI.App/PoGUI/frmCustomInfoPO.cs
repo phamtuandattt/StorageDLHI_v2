@@ -48,7 +48,64 @@ namespace StorageDLHI.App.PoGUI
             txtProjectName.Text = this.mPO.Po_Project_Name;
             txtPrepared.Text = ShareData.UserName;
 
-            
+            if (status)
+            {
+                HideColumn(1);
+                ResizeFormToFitTable();
+            }
+            else
+            {
+                ShowSecondColumn(1);
+                ResizeFormToFitTable();
+            }
+        }
+
+        private void HideColumn(int columnIndex)
+        {
+            // Optionally hide controls in that column
+            foreach (Control c in tblLayouMain.Controls)
+            {
+                if (tblLayouMain.GetColumn(c) == columnIndex)
+                {
+                    c.Visible = false;
+                }
+            }
+            tblLayouMain.ColumnStyles[columnIndex].SizeType = SizeType.Absolute;
+            tblLayouMain.ColumnStyles[columnIndex].Width = 0;
+        }
+
+        private void ShowSecondColumn(int columnToShow, int width = 581)
+        {
+            foreach (Control ctrl in tblLayouMain.Controls)
+            {
+                if (tblLayouMain.GetColumn(ctrl) == columnToShow)
+                {
+                    ctrl.Visible = true;
+                }
+            }
+
+            tblLayouMain.ColumnStyles[columnToShow].SizeType = SizeType.Absolute;
+            tblLayouMain.ColumnStyles[columnToShow].Width = width;
+
+            tblLayouMain.Dock = DockStyle.Fill;
+            this.Size = new Size(1247, 581); // Restore size
+        }
+
+
+        private void ResizeFormToFitTable()
+        {
+            // Turn off Dock temporarily so the table can shrink to its real size
+            tblLayouMain.Dock = DockStyle.None;
+
+            // Let layout recalculate
+            tblLayouMain.PerformLayout();
+
+            // Resize the form to match the new size of the TableLayoutPanel
+            this.ClientSize = tblLayouMain.PreferredSize;
+
+            // (Optional) Prevent resizing beyond this size
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
         }
 
         private void LoadData()
