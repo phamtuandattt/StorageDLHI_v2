@@ -39,12 +39,13 @@
             this.tlsMaterial = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsSuppliers = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.tlsWarehouses = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsPO = new System.Windows.Forms.ToolStripButton();
             this.tlsMPR = new System.Windows.Forms.ToolStripButton();
             this.tlsImport = new System.Windows.Forms.ToolStripButton();
             this.tlsExport = new System.Windows.Forms.ToolStripButton();
             this.tlsInventory = new System.Windows.Forms.ToolStripButton();
-            this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnMain)).BeginInit();
@@ -142,7 +143,8 @@
             // 
             this.quảnLýToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tlsMaterial,
-            this.tlsSuppliers});
+            this.tlsSuppliers,
+            this.tlsWarehouses});
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
             this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(111, 24);
             this.quảnLýToolStripMenuItem.Text = "Management";
@@ -150,14 +152,14 @@
             // tlsMaterial
             // 
             this.tlsMaterial.Name = "tlsMaterial";
-            this.tlsMaterial.Size = new System.Drawing.Size(153, 26);
+            this.tlsMaterial.Size = new System.Drawing.Size(171, 26);
             this.tlsMaterial.Text = "Materials";
             this.tlsMaterial.Click += new System.EventHandler(this.tlsMaterial_Click);
             // 
             // tlsSuppliers
             // 
             this.tlsSuppliers.Name = "tlsSuppliers";
-            this.tlsSuppliers.Size = new System.Drawing.Size(153, 26);
+            this.tlsSuppliers.Size = new System.Drawing.Size(171, 26);
             this.tlsSuppliers.Text = "Suppliers";
             this.tlsSuppliers.Click += new System.EventHandler(this.tlsSuppliers_Click);
             // 
@@ -178,6 +180,22 @@
             this.toolStrip1.Size = new System.Drawing.Size(1397, 97);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // pnMain
+            // 
+            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnMain.Location = new System.Drawing.Point(0, 125);
+            this.pnMain.Name = "pnMain";
+            this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.pnMain.Size = new System.Drawing.Size(1397, 586);
+            this.pnMain.TabIndex = 2;
+            // 
+            // tlsWarehouses
+            // 
+            this.tlsWarehouses.Name = "tlsWarehouses";
+            this.tlsWarehouses.Size = new System.Drawing.Size(171, 26);
+            this.tlsWarehouses.Text = "Warehouses";
+            this.tlsWarehouses.Click += new System.EventHandler(this.tlsWarehouses_Click);
             // 
             // tlsPO
             // 
@@ -239,15 +257,6 @@
             this.tlsInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tlsInventory.Click += new System.EventHandler(this.tlsInventory_Click);
             // 
-            // pnMain
-            // 
-            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnMain.Location = new System.Drawing.Point(0, 125);
-            this.pnMain.Name = "pnMain";
-            this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.pnMain.Size = new System.Drawing.Size(1397, 586);
-            this.pnMain.TabIndex = 2;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -291,5 +300,6 @@
         private System.Windows.Forms.ToolStripMenuItem tlsMaterial;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnMain;
         private System.Windows.Forms.ToolStripMenuItem tlsSuppliers;
+        private System.Windows.Forms.ToolStripMenuItem tlsWarehouses;
     }
 }

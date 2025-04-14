@@ -78,6 +78,7 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.txtSearchPO = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tlsSearchDate = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.lblDateTimeSeacrh = new System.Windows.Forms.ToolStripLabel();
             this.pageAddPO = new ComponentFactory.Krypton.Navigator.KryptonPage();
@@ -151,7 +152,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAddAllProdIntoPO = new System.Windows.Forms.ToolStripButton();
             this.tlsMPRNo = new System.Windows.Forms.ToolStripLabel();
-            this.tlsSearchDate = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pagePOs)).BeginInit();
@@ -219,7 +219,7 @@
             this.kryptonNavigator1.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
             this.pagePOs,
             this.pageAddPO});
-            this.kryptonNavigator1.SelectedIndex = 0;
+            this.kryptonNavigator1.SelectedIndex = 1;
             this.kryptonNavigator1.Size = new System.Drawing.Size(1559, 741);
             this.kryptonNavigator1.StateCommon.Panel.Color1 = System.Drawing.Color.White;
             this.kryptonNavigator1.StateCommon.Panel.Color2 = System.Drawing.Color.White;
@@ -678,19 +678,19 @@
             this.tlsReloadPOs.Image = global::StorageDLHI.App.Properties.Resources.refresh;
             this.tlsReloadPOs.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsReloadPOs.Name = "tlsReloadPOs";
-            this.tlsReloadPOs.Size = new System.Drawing.Size(29, 28);
+            this.tlsReloadPOs.Size = new System.Drawing.Size(29, 24);
             this.tlsReloadPOs.Text = "Refresh";
             this.tlsReloadPOs.Click += new System.EventHandler(this.tlsReloadPOs_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(56, 28);
+            this.toolStripLabel1.Size = new System.Drawing.Size(56, 24);
             this.toolStripLabel1.Text = "Search:";
             // 
             // txtSearchPO
@@ -704,12 +704,22 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            // 
+            // tlsSearchDate
+            // 
+            this.tlsSearchDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsSearchDate.Image = global::StorageDLHI.App.Properties.Resources.search;
+            this.tlsSearchDate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsSearchDate.Name = "tlsSearchDate";
+            this.tlsSearchDate.Size = new System.Drawing.Size(29, 24);
+            this.tlsSearchDate.Text = "Seacrch date";
+            this.tlsSearchDate.Click += new System.EventHandler(this.tlsSearchDate_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
             // 
             // lblDateTimeSeacrh
             // 
@@ -1454,16 +1464,6 @@
             this.tlsMPRNo.Name = "tlsMPRNo";
             this.tlsMPRNo.Size = new System.Drawing.Size(18, 24);
             this.tlsMPRNo.Text = "...";
-            // 
-            // tlsSearchDate
-            // 
-            this.tlsSearchDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsSearchDate.Image = global::StorageDLHI.App.Properties.Resources.search;
-            this.tlsSearchDate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsSearchDate.Name = "tlsSearchDate";
-            this.tlsSearchDate.Size = new System.Drawing.Size(29, 28);
-            this.tlsSearchDate.Text = "Seacrch date";
-            this.tlsSearchDate.Click += new System.EventHandler(this.tlsSearchDate_Click);
             // 
             // ucPOMain
             // 

@@ -303,7 +303,7 @@ namespace StorageDLHI.App.PoGUI
             dgvProdOfPO.Rows[rsl].Cells[14].Value = frmUp.prodOfPO.Price * frmUp.prodOfPO.Qty; // amount
             dgvProdOfPO.Rows[rsl].Cells[15].Value = frmUp.prodOfPO.Recevie;
             dgvProdOfPO.Rows[rsl].Cells[16].Value = frmUp.prodOfPO.Remark;
-            totalAmount += frmUp.prodOfPO.Qty;
+            totalAmount += frmUp.prodOfPO.Price * frmUp.prodOfPO.Qty;
             UpdateFooter();
         }
 

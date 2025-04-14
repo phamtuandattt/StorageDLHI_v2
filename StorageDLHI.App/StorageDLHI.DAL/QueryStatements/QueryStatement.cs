@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -129,6 +130,12 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_PO_DISPATCH_BOX = "PO_PLACE_OF_CONTRY";
         public const string PROPERTY_PO_TOTAL_AMOUNT = "PO_TOTAL_AMOUNT";
 
+        // Warehouse
+        public const string INSERT_WAREHOUSE = "INSERT INTO WAREHOUSES VALUES ('{0}', '{1}', N'{2}', N'{3}')";
+        public const string PROPERTY_WAREHOUSE_DETAIL_ID = "WAREHOUSE_ID";
+        public const string PROPERTY_WAREHOUSE_NAME = "WAREHOUSE_NAME";
 
+        // Import 
+        public const string PROPERTY_IMPORT_ID = "";
     }
 }

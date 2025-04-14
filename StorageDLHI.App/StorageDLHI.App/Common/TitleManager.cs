@@ -33,5 +33,8 @@ namespace StorageDLHI.App.Common
 
         public const string PO_ADD = "Add PO";
         public const string PO_UPDATE = "Update PO";
+
+        public const string WAREHOUSE_ADD = "Add Warehouse";
+        public const string WAREHOUSE_UPDATE = "Update Warehouse";
     }
 }
