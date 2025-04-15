@@ -17,11 +17,21 @@ namespace StorageDLHI.App.Common
 {
     public static class Common
     {
-        public static DataView SearchDate(DateTime FromDate, DateTime ToDate, DataTable dtSource)
+        public static DataView SearchDate(DateTime FromDate, DateTime ToDate, DataTable dtSource, List<string> lstProperties)
         {
             DataView dv = dtSource.DefaultView;
-            string filter = $"{QueryStatement.PROPERTY_PO_CREATE_DATE} >= '{FromDate:dd/MM/yyyy}' AND " +
-                            $"{QueryStatement.PROPERTY_PO_EXPECTED_DELIVERY_DATE} <= '{ToDate:dd/MM/yyyy}' ";
+            string filter = "";
+            foreach (var item in lstProperties)
+            {
+                if (string.IsNullOrEmpty(filter))
+                {
+                    filter = $"{item} >= '{FromDate:dd/MM/yyyy}' ";
+                }
+                else
+                {
+                    filter += $"AND {item} <= '{ToDate:dd/MM/yyyy}' ";
+                }
+            }
     
             dv.RowFilter = filter;
 

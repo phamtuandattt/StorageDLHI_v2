@@ -107,6 +107,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_MPRs = "SELECT *FROM MPRS";
         public const string UPDATE_MPR_INFO = "SET DATEFORMAT DMY UPDATE MPRS SET MPR_EXPECTED_DELIVERY_DATE = '{0}', MPR_PREPARED = N'{1}', MPR_REVIEWED = N'{2}', MPR_APPROVED = N'{3}' WHERE ID = '{4}'";
         public const string GET_MPR_DETAIL_BY_ID = "EXEC GET_MPR_DETAIL '{0}'";
+        public const string PROPERTY_MPR_MPR_CREATE_DATE = "MPR_CREATE_DATE";
+        public const string PROPERTY_MPR_MPR_EXPECTED_DELIVERY_DATE = "MPR_EXPECTED_DELIVERY_DATE";
 
         // PO
         public const string INSERT_PO = "SET DATEFORMAT DMY INSERT INTO POS VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', N'{5}', '{6}', '{7}', N'{8}', N'{9}', N'{10}', N'{11}', N'{12}', N'{13}', {14}, '{15}', '{16}', '{17}', '{18}', {19})  ";
@@ -130,6 +132,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_PO_DISPATCH_BOX = "PO_PLACE_OF_CONTRY";
         public const string PROPERTY_PO_TOTAL_AMOUNT = "PO_TOTAL_AMOUNT";
         public const string GET_POS_FOR_IMPORT_PRODUCT = "GET_POS_FOR_IMPORT_PRODUCT";
+        public const string PROPERTY_PO_PO_CREATE_DATE = "PO_CREATE_DATE";
+        public const string PROPERTY_PO_PO_EXPECTED_DELIVERY_DATE = "PO_EXPECTED_DELIVERY_DATE";
         public const string UPDATE_PO_IS_IMPORTED = "UPDATE POS SET IS_IMPORTED = '{0}' WHERE ID = '{1}'";
 
         // Warehouse
@@ -143,7 +147,12 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_IMPORT_ID = "";
         public const string GET_IMPORT_DETAILS = "SELECT *FROM IMPORT_PRODUCT_DETAIL";
         public const string GET_IMPORT_DETAIL_FORM = "SELECT *FROM IMPORT_PRODUCT_DETAIL WHERE ID = '00000000-0000-0000-0000-000000000000'";
-        public const string ADD_IMPORT_PRODUCT = "SET DATEFORMAT DMY  INSERT INTO IMPORT_PRODUCTS VALUES('{0}', '{1}', {2}, {3}, {4}, {5}, '{6}')";
+        public const string ADD_IMPORT_PRODUCT = "SET DATEFORMAT DMY  INSERT INTO IMPORT_PRODUCTS VALUES('{0}', '{1}', {2}, {3}, {4}, {5}, '{6}',  N'{7}')";
         public const string DELETE_IMPORT_PRODUCT = "DELETE FROM IMPORT_PRODUCTS WHERE ID = '{0}'";
+        public const string GET_IMPORTS = "EXEC GET_IMPORTS";
+        public const string GET_IMPORT_DETAIL_BY_ID = "EXEC GET_IMPORT_DETAIL_BY_ID '{0}'";
+        public const string PROPERTY_IMPORT_PRODUCT_FROM_PO_NO = "FROM_PO_NO";
+        public const string PROPERTY_IMPORT_PRODUCT_IMPORT_DATE = "IMPORT_DATE";
+        public const string PROPERTY_IMPORT_PRODUCT_STAFF_NAME = "STAFF_NAME";
     }
 }

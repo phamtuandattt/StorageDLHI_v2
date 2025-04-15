@@ -34,6 +34,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonPanel5 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.cboWarehosue = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -42,10 +43,10 @@
             this.txtQtyProd = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonLabel18 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.cboWarehosue = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).BeginInit();
             this.kryptonPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboWarehosue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel4)).BeginInit();
             this.kryptonPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
@@ -54,7 +55,6 @@
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboWarehosue)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -151,6 +151,17 @@
             this.kryptonPanel5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonPanel5.Size = new System.Drawing.Size(276, 41);
             this.kryptonPanel5.TabIndex = 4;
+            // 
+            // cboWarehosue
+            // 
+            this.cboWarehosue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboWarehosue.DropDownWidth = 350;
+            this.cboWarehosue.Location = new System.Drawing.Point(3, 8);
+            this.cboWarehosue.Name = "cboWarehosue";
+            this.cboWarehosue.Size = new System.Drawing.Size(270, 25);
+            this.cboWarehosue.TabIndex = 1;
             // 
             // kryptonPanel4
             // 
@@ -271,17 +282,6 @@
             this.kryptonLabel18.TabIndex = 1;
             this.kryptonLabel18.Values.Text = "Quantity:";
             // 
-            // cboWarehosue
-            // 
-            this.cboWarehosue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboWarehosue.DropDownWidth = 350;
-            this.cboWarehosue.Location = new System.Drawing.Point(3, 8);
-            this.cboWarehosue.Name = "cboWarehosue";
-            this.cboWarehosue.Size = new System.Drawing.Size(270, 25);
-            this.cboWarehosue.TabIndex = 1;
-            // 
             // frmImportForWarehouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -292,9 +292,11 @@
             this.Name = "frmImportForWarehouse";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).EndInit();
             this.kryptonPanel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cboWarehosue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel4)).EndInit();
             this.kryptonPanel4.ResumeLayout(false);
             this.kryptonPanel4.PerformLayout();
@@ -305,7 +307,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboWarehosue)).EndInit();
             this.ResumeLayout(false);
 
         }

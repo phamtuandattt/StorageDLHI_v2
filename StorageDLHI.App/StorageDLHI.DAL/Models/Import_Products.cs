@@ -9,11 +9,12 @@ namespace StorageDLHI.DAL.Models
     public class Import_Products
     {
         public Guid Id { get; set; }
+        public string FromPONo { get; set; }
         public DateTime ImportDate { get; set; }
         public int ImportDay { get; set; }
         public int ImportMonth { get; set; }
         public int ImportYear { get; set; }
-        public int Import_Total_Qty { get; set; }
+        public Int32 Import_Total_Qty { get; set; }
         public Guid Staff_Id { get; set; }
     }
 

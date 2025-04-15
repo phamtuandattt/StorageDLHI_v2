@@ -13,6 +13,17 @@ namespace StorageDLHI.BLL.ImportDAO
     public static class ImportProductDAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
+
+        public static DataTable GetImportProducts()
+        {
+            return data.GetData(QueryStatement.GET_IMPORTS, "IMPORTS");
+        }
+
+        public static DataTable GetImportProductDetailByID(Guid guid)
+        {
+            return data.GetData(string.Format(QueryStatement.GET_IMPORT_DETAIL_BY_ID, guid), $"IMPORT_DETAIL_BY_ID_{guid}");
+        }
+
         public static DataTable GetImportProductDetailForm()
         {
             return data.GetData(QueryStatement.GET_IMPORT_DETAIL_FORM, "IMPORT_DETAIL_FORM");
@@ -21,7 +32,8 @@ namespace StorageDLHI.BLL.ImportDAO
         public static bool Insert(Import_Products import_Products)
         {
             string sqlQuery = string.Format(QueryStatement.ADD_IMPORT_PRODUCT, import_Products.Id, import_Products.ImportDate,
-                import_Products.ImportDay, import_Products.ImportMonth, import_Products.ImportYear, import_Products.Import_Total_Qty, import_Products.Staff_Id);
+                import_Products.ImportDay, import_Products.ImportMonth, import_Products.ImportYear, import_Products.Import_Total_Qty, 
+                import_Products.Staff_Id, import_Products.FromPONo);
             return data.Insert(sqlQuery) > 0;
         }
 

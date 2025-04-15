@@ -628,15 +628,15 @@ namespace StorageDLHI.App.PoGUI
 
             var lstProperty = new List<string>()
             {
-                QueryStatement.GET_PRODUCTS_FOR_CREATE_MPR,
-                QueryStatement.PROPERTY_PO_EXPECTED_DELIVERY_DATE
+                QueryStatement.PROPERTY_PO_PO_CREATE_DATE,
+                QueryStatement.PROPERTY_PO_PO_EXPECTED_DELIVERY_DATE
             };
 
             DateTime fDate = frmSeacrhPOFromDate.FromDate;
             DateTime tDate = frmSeacrhPOFromDate.ToDate;
 
             lblDateTimeSeacrh.Text = $"From: {fDate.ToString("dd/MM/yyyy")} To: {tDate.ToString("dd/MM/yyyy")}";
-            dgvPOList.DataSource = Common.Common.SearchDate(fDate, tDate, dtPos);
+            dgvPOList.DataSource = Common.Common.SearchDate(fDate, tDate, dtPos, lstProperty);
         }
     }
 }

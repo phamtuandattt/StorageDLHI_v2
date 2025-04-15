@@ -1,4 +1,5 @@
 ﻿using StorageDLHI.App.Common;
+using StorageDLHI.App.PoGUI;
 using StorageDLHI.BLL.ImportDAO;
 using StorageDLHI.BLL.MprDAO;
 using StorageDLHI.BLL.PoDAO;
@@ -10,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
@@ -26,6 +28,8 @@ namespace StorageDLHI.App.ImportGUI
         private DataTable dtProdForImport = new DataTable();
         private List<string> prodsAdded = new List<string>();
         private DataTable dtProdForImportForUpdateDB = new DataTable();
+        private DataTable dtImportProducts = new DataTable();
+        private DataTable dtImportProductDetailById = new DataTable();
 
         private bool isSyncingScroll = false;
         private int rslOld;
@@ -60,21 +64,40 @@ namespace StorageDLHI.App.ImportGUI
             UpdateFooterOfPoDetail();
 
             dtProdForImportForUpdateDB = ImportProductDAO.GetImportProductDetailForm();
-
-
-            // When load data PO just show PO do not Import
-            // -> Add column IsImport into Table POS in DB
-            // -> When Imported -> Update IsImport = true;
-
-
-
-
-
-
         }
 
         private void LoadData()
         {
+            // Load data common
+            if (!CacheManager.Exists(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL))
+            {
+                dtImportProducts = ImportProductDAO.GetImportProducts();
+                CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, dtImportProducts);
+                dgvImports.DataSource = dtImportProducts;
+            }
+            else
+            {
+                dtImportProducts = CacheManager.Get<DataTable>(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL);
+                dgvImports.DataSource = dtImportProducts;
+            }
+
+            if (dgvImports.Rows.Count > 0)
+            {
+                Guid imId = Guid.Parse(dgvImports.Rows[0].Cells[0].Value.ToString());
+                if (!CacheManager.Exists(string.Format(CacheKeys.IMPORT_PRODUCT_DETIAL_BY_ID, imId)))
+                {
+                    dtImportProductDetailById = ImportProductDAO.GetImportProductDetailByID(imId);
+                    CacheManager.Add(string.Format(CacheKeys.IMPORT_PRODUCT_DETIAL_BY_ID, imId), dtImportProductDetailById);
+                    dgvImportDetail.DataSource = dtImportProductDetailById;
+                }
+                else
+                {
+                    dtImportProductDetailById = CacheManager.Get<DataTable>(string.Format(CacheKeys.IMPORT_PRODUCT_DETIAL_BY_ID, imId));
+                    dgvImportDetail.DataSource = dtImportProductDetailById;
+                }
+            }
+
+            // Load data for Import
             if (!CacheManager.Exists(CacheKeys.POS_DATATABLE_ALL_PO))
             {
                 dtPos = PoDAO.GetPosForImportProduct();
@@ -132,6 +155,7 @@ namespace StorageDLHI.App.ImportGUI
             Import_Products import_Products = new Import_Products()
             {
                 Id = Guid.NewGuid(),
+                FromPONo = dgvPOs.Rows[dgvPOs.CurrentRow.Index].Cells[1].Value.ToString().Trim(),
                 ImportDate = DateTime.Now,
                 ImportDay = DateTime.Now.Day,
                 ImportMonth = DateTime.Now.Month,
@@ -183,6 +207,9 @@ namespace StorageDLHI.App.ImportGUI
             dtPos = PoDAO.GetPosForImportProduct();
             CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, dtPos.Copy());
             dgvPOs.DataSource = dtPos;
+
+            CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, ImportProductDAO.GetImportProducts());
+            LoadData();
         }
 
         private void btnAddAllProdToImport_Click(object sender, EventArgs e)
@@ -513,6 +540,92 @@ namespace StorageDLHI.App.ImportGUI
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void dgvImportDetail_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvImportDetail.Columns["QTY_PRODUCT_IMPORT"].DefaultCellStyle.Format = "N0";
+        }
+
+        private void tlsReloadImportList_Click(object sender, EventArgs e)
+        {
+            dgvImports.Refresh();
+            lblDateTimeSeacrh.Text = "";
+            LoadData();
+        }
+
+        private void dgvImports_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Common.Common.RenderNumbering(sender, e, this.Font);
+        }
+
+        private void dgvImportDetail_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Common.Common.RenderNumbering(sender, e, this.Font);
+        }
+
+        private void dgvImports_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvImports.Rows.Count <= 0)
+            {
+                return;
+            }
+
+            int rsl = dgvImports.CurrentRow.Index;
+            Guid imId = Guid.Parse(dgvImports.Rows[rsl].Cells[0].Value.ToString());
+            if (!CacheManager.Exists(string.Format(CacheKeys.IMPORT_PRODUCT_DETIAL_BY_ID, imId)))
+            {
+                dtImportProductDetailById = ImportProductDAO.GetImportProductDetailByID(imId);
+                CacheManager.Add(string.Format(CacheKeys.IMPORT_PRODUCT_DETIAL_BY_ID, imId), dtImportProductDetailById);
+                dgvImportDetail.DataSource = dtImportProductDetailById;
+            }
+            else
+            {
+                dtImportProductDetailById = CacheManager.Get<DataTable>(string.Format(CacheKeys.IMPORT_PRODUCT_DETIAL_BY_ID, imId));
+                dgvImportDetail.DataSource = dtImportProductDetailById;
+            }
+        }
+
+        private void txtSearchImportList_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtSearchImportList.Text))
+            {
+                dgvImports.Refresh();
+            }
+            var lstProperty = new List<string>()
+            {
+                QueryStatement.PROPERTY_IMPORT_PRODUCT_FROM_PO_NO,
+                QueryStatement.PROPERTY_IMPORT_PRODUCT_STAFF_NAME
+            };
+
+            dgvImports.DataSource = Common.Common.Search(txtSearchImportList.Text.Trim(), dtImportProducts, lstProperty);
+        }
+
+        private void tlsSearchDate_Click(object sender, EventArgs e)
+        {
+            if (dgvImports.Rows.Count <= 0)
+            {
+                return;
+            }
+            frmSeacrhPOFromDate frmSeacrhPOFromDate = new frmSeacrhPOFromDate();
+            frmSeacrhPOFromDate.ShowDialog();
+
+            if (!frmSeacrhPOFromDate.IsSearch)
+            {
+                dgvImports.Refresh();
+                return;
+            }
+
+            var lstProperty = new List<string>()
+            {
+                QueryStatement.PROPERTY_IMPORT_PRODUCT_IMPORT_DATE,
+            };
+
+            DateTime fDate = frmSeacrhPOFromDate.FromDate;
+            DateTime tDate = frmSeacrhPOFromDate.ToDate;
+
+            lblDateTimeSeacrh.Text = $"From: {fDate.ToString("dd/MM/yyyy")} To: {tDate.ToString("dd/MM/yyyy")}";
+            dgvImports.DataSource = Common.Common.SearchDate(fDate, tDate, dtImportProducts, lstProperty);
         }
     }
 }

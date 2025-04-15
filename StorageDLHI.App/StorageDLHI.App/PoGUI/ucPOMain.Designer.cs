@@ -678,19 +678,19 @@
             this.tlsReloadPOs.Image = global::StorageDLHI.App.Properties.Resources.refresh;
             this.tlsReloadPOs.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsReloadPOs.Name = "tlsReloadPOs";
-            this.tlsReloadPOs.Size = new System.Drawing.Size(29, 24);
+            this.tlsReloadPOs.Size = new System.Drawing.Size(29, 28);
             this.tlsReloadPOs.Text = "Refresh";
             this.tlsReloadPOs.Click += new System.EventHandler(this.tlsReloadPOs_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(56, 24);
+            this.toolStripLabel1.Size = new System.Drawing.Size(56, 28);
             this.toolStripLabel1.Text = "Search:";
             // 
             // txtSearchPO
@@ -704,7 +704,7 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
             // 
             // tlsSearchDate
             // 
@@ -712,19 +712,19 @@
             this.tlsSearchDate.Image = global::StorageDLHI.App.Properties.Resources.search;
             this.tlsSearchDate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsSearchDate.Name = "tlsSearchDate";
-            this.tlsSearchDate.Size = new System.Drawing.Size(29, 24);
+            this.tlsSearchDate.Size = new System.Drawing.Size(29, 28);
             this.tlsSearchDate.Text = "Seacrch date";
             this.tlsSearchDate.Click += new System.EventHandler(this.tlsSearchDate_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 31);
             // 
             // lblDateTimeSeacrh
             // 
             this.lblDateTimeSeacrh.Name = "lblDateTimeSeacrh";
-            this.lblDateTimeSeacrh.Size = new System.Drawing.Size(0, 24);
+            this.lblDateTimeSeacrh.Size = new System.Drawing.Size(0, 28);
             // 
             // pageAddPO
             // 
