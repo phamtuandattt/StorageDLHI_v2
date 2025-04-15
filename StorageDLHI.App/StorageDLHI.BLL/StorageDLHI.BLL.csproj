@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ImportDAO\ImportProductDAO.cs" />
     <Compile Include="MaterialDAO\MaterialDAO.cs" />
     <Compile Include="MprDAO\MprDAO.cs" />
     <Compile Include="PoDAO\PoDAO.cs" />

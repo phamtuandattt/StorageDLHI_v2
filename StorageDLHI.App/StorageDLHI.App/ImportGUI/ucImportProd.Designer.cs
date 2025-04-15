@@ -901,6 +901,7 @@
             this.toolStrip1.Size = new System.Drawing.Size(1347, 27);
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // btnClearProdsOfImport
             // 
@@ -959,6 +960,7 @@
             this.btnAddAllProdToImport.Name = "btnAddAllProdToImport";
             this.btnAddAllProdToImport.Size = new System.Drawing.Size(223, 24);
             this.btnAddAllProdToImport.Text = "Add all product to create PO";
+            this.btnAddAllProdToImport.Visible = false;
             this.btnAddAllProdToImport.Click += new System.EventHandler(this.btnAddAllProdToImport_Click);
             // 
             // tlsPONo

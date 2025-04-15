@@ -1,9 +1,11 @@
 ﻿using StorageDLHI.App.Common;
+using StorageDLHI.BLL.ImportDAO;
 using StorageDLHI.BLL.MprDAO;
 using StorageDLHI.BLL.PoDAO;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
 using StorageDLHI.Infrastructor.Caches;
+using StorageDLHI.Infrastructor.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,8 +24,8 @@ namespace StorageDLHI.App.ImportGUI
         private DataTable dtPos = new DataTable();
         private DataTable dtPoById = new DataTable();
         private DataTable dtProdForImport = new DataTable();
-        private List<Guid> prodsAdded = new List<Guid>();
-
+        private List<string> prodsAdded = new List<string>();
+        private DataTable dtProdForImportForUpdateDB = new DataTable();
 
         private bool isSyncingScroll = false;
         private int rslOld;
@@ -48,14 +50,16 @@ namespace StorageDLHI.App.ImportGUI
             dtProdForImport.Columns.Add(QueryStatement.PROPERTY_PROD_E);
             dtProdForImport.Columns.Add(QueryStatement.PROPERTY_PROD_F);
             dtProdForImport.Columns.Add(QueryStatement.PROPERTY_PROD_G);
-            dtProdForImport.Columns.Add("QTY_PROD_FOR_IMPORT", typeof(Int32));
-            dtProdForImport.Columns.Add(QueryStatement.PROPERTY_WAREHOUSE_NAME);
-            dtProdForImport.Columns.Add(QueryStatement.PROPERTY_WAREHOUSE_DETAIL_ID);
+            dtProdForImport.Columns.Add("QTY_PROD_FOR_IMPORT", typeof(Int32)); // 12
+            dtProdForImport.Columns.Add(QueryStatement.PROPERTY_WAREHOUSE_NAME); // 13
+            dtProdForImport.Columns.Add(QueryStatement.PROPERTY_WAREHOUSE_DETAIL_ID); // 14
 
             dgvProdForImport.DataSource = dtProdForImport;
             Common.Common.InitializeFooterGrid(dgvProdForImport, dgvFooter);
             Common.Common.InitializeFooterGrid(dgvPO_Detail, dgvFooterOfPODetail);
             UpdateFooterOfPoDetail();
+
+            dtProdForImportForUpdateDB = ImportProductDAO.GetImportProductDetailForm();
         }
 
         private void LoadData()
@@ -98,7 +102,70 @@ namespace StorageDLHI.App.ImportGUI
 
         private void btnAddImport_Click(object sender, EventArgs e)
         {
+            if (dgvPO_Detail.Rows.Count > 0)
+            {
+                MessageBoxHelper.ShowWarning("Please import all goods according to PO !");
+                return;
+            }
 
+            Int32 totalQty = 0;
+
+            foreach (DataGridViewRow row in dgvProdForImport.Rows)
+            {
+                if (Int32.TryParse(row.Cells[12].Value?.ToString(), out Int32 qty))
+                {
+                    totalQty += qty;
+                }
+            }
+
+            Import_Products import_Products = new Import_Products()
+            {
+                Id = Guid.NewGuid(),
+                ImportDate = DateTime.Now,
+                ImportDay = DateTime.Now.Day,
+                ImportMonth = DateTime.Now.Month,
+                ImportYear = DateTime.Now.Year,
+                Import_Total_Qty = totalQty,
+                Staff_Id = ShareData.UserId,
+            };
+
+            // Convert dtProdForImport to dtProdForImportUpdateDB
+            foreach (DataRow item in dtProdForImport.Rows)
+            {
+                DataRow newRow = dtProdForImportForUpdateDB.NewRow();
+                newRow[0] = Guid.NewGuid();
+                newRow[1] = import_Products.Id;
+                newRow[2] = item[0];
+                newRow[3] = item[14];
+                newRow[4] = item[12];
+
+                dtProdForImportForUpdateDB.Rows.Add(newRow);
+            }
+
+            if (ImportProductDAO.Insert(import_Products))
+            {
+                if (ImportProductDAO.InsertImportProdDetail(dtProdForImportForUpdateDB))
+                {
+                    MessageBoxHelper.ShowInfo("Successfully imported goods to warehouses");
+                }
+                else
+                {
+                    ImportProductDAO.DeleteImportProduct(import_Products.Id);
+                    MessageBoxHelper.ShowWarning("Unsuccessfully imported goods to warehouses");
+                }
+            }
+            else
+            {
+                MessageBoxHelper.ShowWarning("Unsuccessfully imported goods to warehouses");
+            }
+
+            dtProdForImport.Rows.Clear();
+
+            prodsAdded.Clear();
+            dgvPOs.Enabled = true;
+
+            UpdateFooter();
+            UpdateFooterOfPoDetail();
             dgvPOs.Enabled = true;
         }
 
@@ -134,7 +201,7 @@ namespace StorageDLHI.App.ImportGUI
                 dataRow[14] = "";
 
                 dtProdForImport.Rows.Add(dataRow);
-                prodsAdded.Add(prodId);
+                //prodsAdded.Add(prodId);
                 totalAmount += CheckOrReturnNumber(dgvPO_Detail.Rows[i].Cells[13].Value.ToString().Trim());
             }
 
@@ -266,6 +333,8 @@ namespace StorageDLHI.App.ImportGUI
             dgvPO_Detail.DataSource = dtPoById;
 
             dtProdForImport.Rows.Clear();
+
+            prodsAdded.Clear();
             dgvPOs.Enabled = true;
 
             UpdateFooter();
@@ -342,56 +411,92 @@ namespace StorageDLHI.App.ImportGUI
             tlsPONo.Text = $"PO No: [{dgvPOs.Rows[this.rslOld].Cells[1].Value.ToString().Trim()}]\t";
 
             Guid prodId = Guid.Parse(dgvPO_Detail.Rows[rsl].Cells[2].Value.ToString());
-
-            if (prodsAdded.Contains(prodId))
-            {
-                MessageBoxHelper.ShowWarning($"You added product [{dgvPO_Detail.Rows[rsl].Cells[3].Value.ToString()}] into Product of Import. ");
-                return;
-            }
-
-            frmImportForWarehouse frmImportForWarehouse = new frmImportForWarehouse();
+            var maxQty = Int32.Parse(dgvPO_Detail.Rows[rsl].Cells[13].Value.ToString().Trim());
+            frmImportForWarehouse frmImportForWarehouse = new frmImportForWarehouse(maxQty);
             frmImportForWarehouse.ShowDialog();
             if (!frmImportForWarehouse.IsAdd)
             {
                 return;
             }
+
             Warehouses wModel = frmImportForWarehouse.Warehouse;
 
-            DataRow dataRow = dtProdForImport.NewRow();
-            dataRow[0] = prodId;
-            dataRow[1] = dgvPO_Detail.Rows[rsl].Cells[3].Value.ToString().Trim();
-            dataRow[2] = dgvPO_Detail.Rows[rsl].Cells[4].Value.ToString().Trim().ToUpper();
-            dataRow[3] = "";
-            dataRow[4] = dgvPO_Detail.Rows[rsl].Cells[5].Value.ToString().Trim().ToUpper();
-            dataRow[5] = (dgvPO_Detail.Rows[rsl].Cells[6].Value.ToString().Trim());
-            dataRow[6] = (dgvPO_Detail.Rows[rsl].Cells[7].Value.ToString().Trim());
-            dataRow[7] = (dgvPO_Detail.Rows[rsl].Cells[8].Value.ToString().Trim());
-            dataRow[8] = (dgvPO_Detail.Rows[rsl].Cells[9].Value.ToString().Trim());
-            dataRow[9] = (dgvPO_Detail.Rows[rsl].Cells[10].Value.ToString().Trim());
-            dataRow[10] = (dgvPO_Detail.Rows[rsl].Cells[11].Value.ToString().Trim());
-            dataRow[11] = (dgvPO_Detail.Rows[rsl].Cells[12].Value.ToString().Trim());
-            dataRow[12] = CheckOrReturnNumber(dgvPO_Detail.Rows[rsl].Cells[13].Value.ToString().Trim()); // Qty
-            dataRow[13] = wModel.Warehouse_Name; // Warehouse name
-            dataRow[14] = wModel.Id;
+            if (prodsAdded.Contains(prodId + "|" + wModel.Id))
+            {
+                if (!MessageBoxHelper.Confirm($"You imported product [{dgvPO_Detail.Rows[rsl].Cells[3].Value.ToString()}] for Warehose [{wModel.Warehouse_Name}] ! \n" +
+                    $"Do you want update Qty for product ?"))
+                {
+                    return;
+                }
 
-            dtProdForImport.Rows.Add(dataRow);
-            prodsAdded.Add(prodId);
+                // Update Qty for Prod of PO Detail
+                dgvPO_Detail.Rows[rsl].Cells[13].Value = Int32.Parse(dgvPO_Detail.Rows[rsl].Cells[13].Value.ToString()) - frmImportForWarehouse.Qty;
+
+                // Update Qty for Prod of dtWarehouse
+                foreach (DataGridViewRow item in dgvProdForImport.Rows)
+                {
+                    if (item.Cells[0].Value.ToString().Trim().Equals(prodId.ToString()) &&
+                        item.Cells[14].Value.ToString().Trim().Equals(wModel.Id.ToString()))
+                    {
+                        item.Cells[12].Value = frmImportForWarehouse.Qty;
+                        UpdateFooterOfPoDetail();
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                // Get data from cache before delete Prod of PO Detail
+                Guid poId = Guid.Parse(dgvPOs.Rows[dgvPOs.CurrentRow.Index].Cells[0].Value.ToString());
+                var dtPoById_new = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAL_BY_ID, poId)).Copy();
+                // Update Qty for Prod of PO Detail
+                dgvPO_Detail.Rows[rsl].Cells[13].Value = Int32.Parse(dgvPO_Detail.Rows[rsl].Cells[13].Value.ToString()) - frmImportForWarehouse.Qty;
+                CacheManager.Add(string.Format(CacheKeys.PO_DETAL_BY_ID, poId), dtPoById_new);
+
+                DataRow dataRow = dtProdForImport.NewRow();
+                dataRow[0] = prodId;
+                dataRow[1] = dgvPO_Detail.Rows[rsl].Cells[3].Value.ToString().Trim();
+                dataRow[2] = dgvPO_Detail.Rows[rsl].Cells[4].Value.ToString().Trim().ToUpper();
+                dataRow[3] = "";
+                dataRow[4] = dgvPO_Detail.Rows[rsl].Cells[5].Value.ToString().Trim().ToUpper();
+                dataRow[5] = (dgvPO_Detail.Rows[rsl].Cells[6].Value.ToString().Trim());
+                dataRow[6] = (dgvPO_Detail.Rows[rsl].Cells[7].Value.ToString().Trim());
+                dataRow[7] = (dgvPO_Detail.Rows[rsl].Cells[8].Value.ToString().Trim());
+                dataRow[8] = (dgvPO_Detail.Rows[rsl].Cells[9].Value.ToString().Trim());
+                dataRow[9] = (dgvPO_Detail.Rows[rsl].Cells[10].Value.ToString().Trim());
+                dataRow[10] = (dgvPO_Detail.Rows[rsl].Cells[11].Value.ToString().Trim());
+                dataRow[11] = (dgvPO_Detail.Rows[rsl].Cells[12].Value.ToString().Trim());
+                dataRow[12] = CheckOrReturnNumber(frmImportForWarehouse.Qty.ToString()); // Qty
+                dataRow[13] = wModel.Warehouse_Name; // Warehouse name
+                dataRow[14] = wModel.Id;
+                dtProdForImport.Rows.Add(dataRow);
+                prodsAdded.Add(prodId + "|" + wModel.Id);
+            }
+
             totalAmount += CheckOrReturnNumber(dgvPO_Detail.Rows[rsl].Cells[13].Value.ToString().Trim());
 
             dgvProdForImport.Rows[0].Selected = true;
             dgvPOs.Enabled = false;
             UpdateFooter();
+            UpdateFooterOfPoDetail();
 
-            //// Get data from cache before delete dtPoById
-            //Guid poId = Guid.Parse(dgvPOs.Rows[dgvPOs.CurrentRow.Index].Cells[0].Value.ToString());
-            //var dtPoById_new = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAL_BY_ID, poId)).Copy();
+            if (Int32.Parse(dgvPO_Detail.Rows[rsl].Cells[13].Value.ToString().Trim()) <= 0)
+            {
+                // Get data from cache before delete Prod of PO Detail
+                Guid poId = Guid.Parse(dgvPOs.Rows[dgvPOs.CurrentRow.Index].Cells[0].Value.ToString());
+                var dtPoById_new = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAL_BY_ID, poId)).Copy();
 
-            //// Remove all dgvPODetail
-            //dtPoById.Rows.Clear();
+                dgvPO_Detail.Rows.RemoveAt(rsl);
 
-            //// Set data for cache after delete dtPoById
-            //CacheManager.Add(string.Format(CacheKeys.PO_DETAL_BY_ID, poId), dtPoById_new);
-            //UpdateFooterOfPoDetail();
+                // Set data for cache after delete dtPoById
+                CacheManager.Add(string.Format(CacheKeys.PO_DETAL_BY_ID, poId), dtPoById_new);
+                UpdateFooterOfPoDetail();
+            }
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }
