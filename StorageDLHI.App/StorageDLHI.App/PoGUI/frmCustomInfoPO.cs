@@ -196,6 +196,7 @@ namespace StorageDLHI.App.PoGUI
                 TaxId = Guid.Parse(cboTax.SelectedValue.ToString()),
                 SupplierId = Guid.Parse(cboSuppplier.SelectedValue.ToString()),
                 Staff_Id = Guid.Parse("d8f320fd-106b-4859-a4aa-421e4decad89"), //ShareData.UserId.ToString()
+                IsImported = false
             };
 
             // Convert dtProdOfAddPO to dtProdOfPO_UpdateDB

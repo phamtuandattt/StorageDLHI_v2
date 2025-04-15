@@ -60,13 +60,24 @@ namespace StorageDLHI.App.ImportGUI
             UpdateFooterOfPoDetail();
 
             dtProdForImportForUpdateDB = ImportProductDAO.GetImportProductDetailForm();
+
+
+            // When load data PO just show PO do not Import
+            // -> Add column IsImport into Table POS in DB
+            // -> When Imported -> Update IsImport = true;
+
+
+
+
+
+
         }
 
         private void LoadData()
         {
             if (!CacheManager.Exists(CacheKeys.POS_DATATABLE_ALL_PO))
             {
-                dtPos = PoDAO.GetPOs();
+                dtPos = PoDAO.GetPosForImportProduct();
                 CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, dtPos.Copy());
                 dgvPOs.DataSource = dtPos;
             }
@@ -96,7 +107,7 @@ namespace StorageDLHI.App.ImportGUI
 
         private void btnReload_Click(object sender, EventArgs e)
         {
-            CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, PoDAO.GetPOs());
+            CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, PoDAO.GetPosForImportProduct());
             LoadData();
         }
 
@@ -144,7 +155,8 @@ namespace StorageDLHI.App.ImportGUI
 
             if (ImportProductDAO.Insert(import_Products))
             {
-                if (ImportProductDAO.InsertImportProdDetail(dtProdForImportForUpdateDB))
+                if (ImportProductDAO.InsertImportProdDetail(dtProdForImportForUpdateDB) &&
+                    PoDAO.UpdateIsImportedForPO(true, Guid.Parse(dgvPOs.Rows[dgvPOs.CurrentRow.Index].Cells[0].Value.ToString())))
                 {
                     MessageBoxHelper.ShowInfo("Successfully imported goods to warehouses");
                 }
@@ -167,6 +179,10 @@ namespace StorageDLHI.App.ImportGUI
             UpdateFooter();
             UpdateFooterOfPoDetail();
             dgvPOs.Enabled = true;
+
+            dtPos = PoDAO.GetPosForImportProduct();
+            CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, dtPos.Copy());
+            dgvPOs.DataSource = dtPos;
         }
 
         private void btnAddAllProdToImport_Click(object sender, EventArgs e)

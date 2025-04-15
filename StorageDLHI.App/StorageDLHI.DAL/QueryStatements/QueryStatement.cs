@@ -109,7 +109,7 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_MPR_DETAIL_BY_ID = "EXEC GET_MPR_DETAIL '{0}'";
 
         // PO
-        public const string INSERT_PO = "SET DATEFORMAT DMY INSERT INTO POS VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', N'{5}', '{6}', '{7}', N'{8}', N'{9}', N'{10}', N'{11}', N'{12}', N'{13}', {14}, '{15}', '{16}', '{17}', '{18}')  ";
+        public const string INSERT_PO = "SET DATEFORMAT DMY INSERT INTO POS VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', N'{5}', '{6}', '{7}', N'{8}', N'{9}', N'{10}', N'{11}', N'{12}', N'{13}', {14}, '{15}', '{16}', '{17}', '{18}', {19})  ";
         public const string GET_PO_DETAIL_FORM = "SELECT *FROM PO_DETAIL WHERE ID = '00000000-0000-0000-0000-000000000000'";
         public const string GET_PO_DETAILS = "SELECT *FROM PO_DETAIL";
         public const string DELETE_PO_BY_ID = "DELETE FROM POS WHERE ID = '{0}'";
@@ -129,6 +129,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_PO_PAYMENT_TERM = "PO_PAYMENT_TERM";
         public const string PROPERTY_PO_DISPATCH_BOX = "PO_PLACE_OF_CONTRY";
         public const string PROPERTY_PO_TOTAL_AMOUNT = "PO_TOTAL_AMOUNT";
+        public const string GET_POS_FOR_IMPORT_PRODUCT = "GET_POS_FOR_IMPORT_PRODUCT";
+        public const string UPDATE_PO_IS_IMPORTED = "UPDATE POS SET IS_IMPORTED = '{0}' WHERE ID = '{1}'";
 
         // Warehouse
         public const string INSERT_WAREHOUSE = "INSERT INTO WAREHOUSES VALUES ('{0}', '{1}', N'{2}', N'{3}')";

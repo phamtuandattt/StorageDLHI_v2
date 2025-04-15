@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,6 +24,7 @@ namespace StorageDLHI.DAL.Models
         public string Po_Payment_Term { get; set; }
         public string Po_Dispatch_Box { get; set; }
         public Int64 Po_Total_Amount { get; set; }
+        public bool IsImported { get; set; }
         
         public Guid CostId { get; set; }
         public Guid TaxId { get; set; }
