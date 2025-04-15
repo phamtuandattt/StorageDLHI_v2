@@ -145,6 +145,7 @@ namespace StorageDLHI.App.PoGUI
             dtProdsOfAddPO.Clear();
             prodsAdded.Clear();
             dgvProdOfPO.Refresh();
+
             UpdateFooter();
         }
 

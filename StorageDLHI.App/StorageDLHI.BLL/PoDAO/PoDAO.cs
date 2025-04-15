@@ -22,7 +22,7 @@ namespace StorageDLHI.BLL.PoDAO
         public static DataTable GetPODetailById(Guid poId)
         {
             string sqlQuery = string.Format(QueryStatement.GET_PO_DETAIL_BY_PO_ID, poId);
-            return data.GetData(sqlQuery, "PO_DETAILS");
+            return data.GetData(sqlQuery, $"PO_DETAILS.{poId}");
         }
 
         public static bool InsertPO(Pos pos)

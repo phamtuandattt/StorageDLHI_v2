@@ -33,5 +33,10 @@ namespace StorageDLHI.App.MprGUI
             Qty = 0;
             this.Close();
         }
+
+        private void frmGetQty_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

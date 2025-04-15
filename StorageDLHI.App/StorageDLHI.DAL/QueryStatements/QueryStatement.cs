@@ -134,6 +134,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string INSERT_WAREHOUSE = "INSERT INTO WAREHOUSES VALUES ('{0}', '{1}', N'{2}', N'{3}')";
         public const string PROPERTY_WAREHOUSE_DETAIL_ID = "WAREHOUSE_ID";
         public const string PROPERTY_WAREHOUSE_NAME = "WAREHOUSE_NAME";
+        public const string PROPERTY_WAREHOUSE_ID = "ID";
+        public const string GET_WAREHOUSE_FOR_CBO = "SELECT  ID, WAREHOUSE_NAME FROM WAREHOUSES";
 
         // Import 
         public const string PROPERTY_IMPORT_ID = "";
