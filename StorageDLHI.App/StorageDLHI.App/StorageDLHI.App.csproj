@@ -85,6 +85,12 @@
     <Compile Include="Common\CommonGUI\LoadingForm.Designer.cs">
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\CommonGUI\ucPanelNoData.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\CommonGUI\ucPanelNoData.Designer.cs">
+      <DependentUpon>ucPanelNoData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\MessageBoxHelper.cs" />
     <Compile Include="Common\NotificationManager.cs" />
     <Compile Include="Common\ShowDialogManager.cs" />
@@ -209,6 +215,9 @@
     <EmbeddedResource Include="Common\CommonGUI\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Common\CommonGUI\ucPanelNoData.resx">
+      <DependentUpon>ucPanelNoData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConnectSystem.resx">
       <DependentUpon>frmConnectSystem.cs</DependentUpon>
     </EmbeddedResource>
@@ -310,6 +319,7 @@
     <Content Include="Palette\Palette.xml" />
     <Content Include="Resources\add.png" />
     <Content Include="Resources\bin.png" />
+    <Content Include="Resources\clean.png" />
     <Content Include="Resources\dollar-symbol.png" />
     <Content Include="Resources\Dual Ring%401x-1.0s-200px-200px.gif" />
     <Content Include="Resources\export.png" />

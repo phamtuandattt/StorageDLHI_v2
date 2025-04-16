@@ -55,12 +55,10 @@
             this.Column53 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column54 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.tlsReloadImportList = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.txtSearchImportList = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tlsSearchDate = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.lblDateTimeSeacrh = new System.Windows.Forms.ToolStripLabel();
             this.pageAddPO = new ComponentFactory.Krypton.Navigator.KryptonPage();
@@ -130,13 +128,16 @@
             this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvFooter = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tlsPONo = new System.Windows.Forms.ToolStripLabel();
+            this.tlsReloadImportList = new System.Windows.Forms.ToolStripButton();
+            this.tlsSearchDateForImports = new System.Windows.Forms.ToolStripButton();
+            this.tlsClearSeacrhDate = new System.Windows.Forms.ToolStripButton();
             this.btnClearProdsOfImport = new System.Windows.Forms.ToolStripButton();
             this.btnAddImport = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.btnReload = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAddAllProdToImport = new System.Windows.Forms.ToolStripButton();
-            this.tlsPONo = new System.Windows.Forms.ToolStripLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pagePOs)).BeginInit();
@@ -493,9 +494,10 @@
             this.toolStripLabel1,
             this.txtSearchImportList,
             this.toolStripSeparator3,
-            this.tlsSearchDate,
+            this.tlsSearchDateForImports,
             this.toolStripSeparator4,
-            this.lblDateTimeSeacrh});
+            this.lblDateTimeSeacrh,
+            this.tlsClearSeacrhDate});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -503,25 +505,15 @@
             this.toolStrip2.TabIndex = 5;
             this.toolStrip2.Text = "toolStrip2";
             // 
-            // tlsReloadImportList
-            // 
-            this.tlsReloadImportList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsReloadImportList.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.tlsReloadImportList.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsReloadImportList.Name = "tlsReloadImportList";
-            this.tlsReloadImportList.Size = new System.Drawing.Size(29, 24);
-            this.tlsReloadImportList.Text = "Refresh";
-            this.tlsReloadImportList.Click += new System.EventHandler(this.tlsReloadImportList_Click);
-            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(56, 24);
+            this.toolStripLabel1.Size = new System.Drawing.Size(56, 28);
             this.toolStripLabel1.Text = "Search:";
             // 
             // txtSearchImportList
@@ -535,27 +527,17 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
-            // 
-            // tlsSearchDate
-            // 
-            this.tlsSearchDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsSearchDate.Image = global::StorageDLHI.App.Properties.Resources.search;
-            this.tlsSearchDate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsSearchDate.Name = "tlsSearchDate";
-            this.tlsSearchDate.Size = new System.Drawing.Size(29, 24);
-            this.tlsSearchDate.Text = "Seacrch date";
-            this.tlsSearchDate.Click += new System.EventHandler(this.tlsSearchDate_Click);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 31);
             // 
             // lblDateTimeSeacrh
             // 
             this.lblDateTimeSeacrh.Name = "lblDateTimeSeacrh";
-            this.lblDateTimeSeacrh.Size = new System.Drawing.Size(0, 24);
+            this.lblDateTimeSeacrh.Size = new System.Drawing.Size(0, 28);
             // 
             // pageAddPO
             // 
@@ -594,11 +576,11 @@
             // 
             this.kryptonPanel5.Controls.Add(this.tableLayoutPanel2);
             this.kryptonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel5.Location = new System.Drawing.Point(0, 27);
+            this.kryptonPanel5.Location = new System.Drawing.Point(0, 31);
             this.kryptonPanel5.Name = "kryptonPanel5";
             this.kryptonPanel5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonPanel5.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundCustom1;
-            this.kryptonPanel5.Size = new System.Drawing.Size(1353, 690);
+            this.kryptonPanel5.Size = new System.Drawing.Size(1353, 686);
             this.kryptonPanel5.TabIndex = 6;
             // 
             // tableLayoutPanel2
@@ -613,7 +595,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1353, 690);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1353, 686);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -628,7 +610,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1347, 339);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1347, 337);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // kryptonGroupBox3
@@ -641,7 +623,7 @@
             // kryptonGroupBox3.Panel
             // 
             this.kryptonGroupBox3.Panel.Controls.Add(this.dgvPOs);
-            this.kryptonGroupBox3.Size = new System.Drawing.Size(419, 333);
+            this.kryptonGroupBox3.Size = new System.Drawing.Size(419, 331);
             this.kryptonGroupBox3.TabIndex = 3;
             this.kryptonGroupBox3.Values.Heading = "POs";
             // 
@@ -678,7 +660,7 @@
             this.dgvPOs.RowHeadersWidth = 51;
             this.dgvPOs.RowTemplate.Height = 30;
             this.dgvPOs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPOs.Size = new System.Drawing.Size(415, 305);
+            this.dgvPOs.Size = new System.Drawing.Size(415, 303);
             this.dgvPOs.TabIndex = 3;
             this.dgvPOs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPOs_CellClick);
             this.dgvPOs.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvPOs_RowPostPaint);
@@ -851,7 +833,7 @@
             // 
             this.kryptonGroupBox5.Panel.Controls.Add(this.dgvFooterOfPODetail);
             this.kryptonGroupBox5.Panel.Controls.Add(this.dgvPO_Detail);
-            this.kryptonGroupBox5.Size = new System.Drawing.Size(916, 333);
+            this.kryptonGroupBox5.Size = new System.Drawing.Size(916, 331);
             this.kryptonGroupBox5.TabIndex = 2;
             this.kryptonGroupBox5.Values.Heading = "PO Detail";
             // 
@@ -859,7 +841,7 @@
             // 
             this.dgvFooterOfPODetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFooterOfPODetail.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvFooterOfPODetail.Location = new System.Drawing.Point(0, 245);
+            this.dgvFooterOfPODetail.Location = new System.Drawing.Point(0, 243);
             this.dgvFooterOfPODetail.Name = "dgvFooterOfPODetail";
             this.dgvFooterOfPODetail.ReadOnly = true;
             this.dgvFooterOfPODetail.RowHeadersWidth = 51;
@@ -899,7 +881,7 @@
             this.dgvPO_Detail.RowHeadersWidth = 51;
             this.dgvPO_Detail.RowTemplate.Height = 30;
             this.dgvPO_Detail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPO_Detail.Size = new System.Drawing.Size(912, 305);
+            this.dgvPO_Detail.Size = new System.Drawing.Size(912, 303);
             this.dgvPO_Detail.TabIndex = 4;
             this.dgvPO_Detail.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPO_Detail_CellDoubleClick);
             this.dgvPO_Detail.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvPO_Detail_ColumnWidthChanged);
@@ -1059,9 +1041,9 @@
             this.kryptonPanel1.Controls.Add(this.kryptonPanel2);
             this.kryptonPanel1.Controls.Add(this.toolStrip1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel1.Location = new System.Drawing.Point(3, 348);
+            this.kryptonPanel1.Location = new System.Drawing.Point(3, 346);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(1347, 339);
+            this.kryptonPanel1.Size = new System.Drawing.Size(1347, 337);
             this.kryptonPanel1.TabIndex = 4;
             // 
             // kryptonPanel2
@@ -1071,7 +1053,7 @@
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 27);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel2.Size = new System.Drawing.Size(1347, 312);
+            this.kryptonPanel2.Size = new System.Drawing.Size(1347, 310);
             this.kryptonPanel2.TabIndex = 7;
             // 
             // kryptonGroupBox1
@@ -1085,7 +1067,7 @@
             // 
             this.kryptonGroupBox1.Panel.Controls.Add(this.kryptonPanel6);
             this.kryptonGroupBox1.Panel.Controls.Add(this.dgvFooter);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(1347, 312);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(1347, 310);
             this.kryptonGroupBox1.TabIndex = 5;
             this.kryptonGroupBox1.Values.Heading = "List of imported products";
             // 
@@ -1096,7 +1078,7 @@
             this.kryptonPanel6.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel6.Name = "kryptonPanel6";
             this.kryptonPanel6.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel6.Size = new System.Drawing.Size(1343, 248);
+            this.kryptonPanel6.Size = new System.Drawing.Size(1343, 246);
             this.kryptonPanel6.TabIndex = 5;
             // 
             // dgvProdForImport
@@ -1129,7 +1111,7 @@
             this.dgvProdForImport.RowHeadersWidth = 51;
             this.dgvProdForImport.RowTemplate.Height = 30;
             this.dgvProdForImport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdForImport.Size = new System.Drawing.Size(1343, 248);
+            this.dgvProdForImport.Size = new System.Drawing.Size(1343, 246);
             this.dgvProdForImport.TabIndex = 3;
             this.dgvProdForImport.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvProdForImport_ColumnWidthChanged);
             this.dgvProdForImport.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvProdForImport_DataBindingComplete);
@@ -1262,7 +1244,7 @@
             this.dgvFooter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFooter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvFooter.Location = new System.Drawing.Point(0, 248);
+            this.dgvFooter.Location = new System.Drawing.Point(0, 246);
             this.dgvFooter.Name = "dgvFooter";
             this.dgvFooter.ReadOnly = true;
             this.dgvFooter.RowHeadersWidth = 51;
@@ -1285,6 +1267,65 @@
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
+            // toolStrip3
+            // 
+            this.toolStrip3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnReload,
+            this.toolStripSeparator1,
+            this.btnAddAllProdToImport,
+            this.tlsPONo});
+            this.toolStrip3.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip3.Name = "toolStrip3";
+            this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip3.Size = new System.Drawing.Size(1353, 31);
+            this.toolStrip3.TabIndex = 5;
+            this.toolStrip3.Text = "toolStrip3";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            // 
+            // tlsPONo
+            // 
+            this.tlsPONo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tlsPONo.Name = "tlsPONo";
+            this.tlsPONo.Size = new System.Drawing.Size(18, 28);
+            this.tlsPONo.Text = "...";
+            // 
+            // tlsReloadImportList
+            // 
+            this.tlsReloadImportList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsReloadImportList.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.tlsReloadImportList.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsReloadImportList.Name = "tlsReloadImportList";
+            this.tlsReloadImportList.Size = new System.Drawing.Size(29, 28);
+            this.tlsReloadImportList.Text = "Refresh";
+            this.tlsReloadImportList.Click += new System.EventHandler(this.tlsReloadImportList_Click);
+            // 
+            // tlsSearchDateForImports
+            // 
+            this.tlsSearchDateForImports.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsSearchDateForImports.Image = global::StorageDLHI.App.Properties.Resources.search;
+            this.tlsSearchDateForImports.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsSearchDateForImports.Name = "tlsSearchDateForImports";
+            this.tlsSearchDateForImports.Size = new System.Drawing.Size(29, 28);
+            this.tlsSearchDateForImports.Text = "Seacrch date";
+            this.tlsSearchDateForImports.Click += new System.EventHandler(this.tlsSearchDateForImports_Click);
+            // 
+            // tlsClearSeacrhDate
+            // 
+            this.tlsClearSeacrhDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsClearSeacrhDate.Image = global::StorageDLHI.App.Properties.Resources.clean;
+            this.tlsClearSeacrhDate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsClearSeacrhDate.Name = "tlsClearSeacrhDate";
+            this.tlsClearSeacrhDate.Size = new System.Drawing.Size(29, 28);
+            this.tlsClearSeacrhDate.Text = "Clear";
+            this.tlsClearSeacrhDate.Visible = false;
+            this.tlsClearSeacrhDate.Click += new System.EventHandler(this.tlsClearSeacrhDate_Click);
+            // 
             // btnClearProdsOfImport
             // 
             this.btnClearProdsOfImport.Image = global::StorageDLHI.App.Properties.Resources.bin;
@@ -1303,36 +1344,15 @@
             this.btnAddImport.Text = "Confirm";
             this.btnAddImport.Click += new System.EventHandler(this.btnAddImport_Click);
             // 
-            // toolStrip3
-            // 
-            this.toolStrip3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnReload,
-            this.toolStripSeparator1,
-            this.btnAddAllProdToImport,
-            this.tlsPONo});
-            this.toolStrip3.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip3.Size = new System.Drawing.Size(1353, 27);
-            this.toolStrip3.TabIndex = 5;
-            this.toolStrip3.Text = "toolStrip3";
-            // 
             // btnReload
             // 
             this.btnReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnReload.Image = global::StorageDLHI.App.Properties.Resources.refresh;
             this.btnReload.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(29, 24);
+            this.btnReload.Size = new System.Drawing.Size(29, 28);
             this.btnReload.Text = "Refresh";
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // btnAddAllProdToImport
             // 
@@ -1340,17 +1360,10 @@
             this.btnAddAllProdToImport.Image = global::StorageDLHI.App.Properties.Resources.mark;
             this.btnAddAllProdToImport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAddAllProdToImport.Name = "btnAddAllProdToImport";
-            this.btnAddAllProdToImport.Size = new System.Drawing.Size(223, 24);
+            this.btnAddAllProdToImport.Size = new System.Drawing.Size(223, 28);
             this.btnAddAllProdToImport.Text = "Add all product to create PO";
             this.btnAddAllProdToImport.Visible = false;
             this.btnAddAllProdToImport.Click += new System.EventHandler(this.btnAddAllProdToImport_Click);
-            // 
-            // tlsPONo
-            // 
-            this.tlsPONo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tlsPONo.Name = "tlsPONo";
-            this.tlsPONo.Size = new System.Drawing.Size(18, 24);
-            this.tlsPONo.Text = "...";
             // 
             // ucImportProd
             // 
@@ -1515,7 +1528,7 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripTextBox txtSearchImportList;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton tlsSearchDate;
+        private System.Windows.Forms.ToolStripButton tlsSearchDateForImports;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripLabel lblDateTimeSeacrh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
@@ -1535,5 +1548,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn QTY_PRODUCT_IMPORT;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column53;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column54;
+        private System.Windows.Forms.ToolStripButton tlsClearSeacrhDate;
     }
 }

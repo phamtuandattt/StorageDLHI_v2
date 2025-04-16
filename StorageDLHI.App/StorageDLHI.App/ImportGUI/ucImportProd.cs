@@ -1,4 +1,5 @@
 ﻿using StorageDLHI.App.Common;
+using StorageDLHI.App.Common.CommonGUI;
 using StorageDLHI.App.PoGUI;
 using StorageDLHI.BLL.ImportDAO;
 using StorageDLHI.BLL.MprDAO;
@@ -30,6 +31,10 @@ namespace StorageDLHI.App.ImportGUI
         private DataTable dtProdForImportForUpdateDB = new DataTable();
         private DataTable dtImportProducts = new DataTable();
         private DataTable dtImportProductDetailById = new DataTable();
+
+        // -----------------------------------------------------
+        Panel pnlNoDataImport = new Panel();
+        Panel pnlNoDataImportDetail = new Panel();
 
         private bool isSyncingScroll = false;
         private int rslOld;
@@ -64,6 +69,14 @@ namespace StorageDLHI.App.ImportGUI
             UpdateFooterOfPoDetail();
 
             dtProdForImportForUpdateDB = ImportProductDAO.GetImportProductDetailForm();
+
+            // -----------------------------------------------------
+            var ucF = new ucPanelNoData();
+            pnlNoDataImport = ucF.pnlNoData;
+            this.dgvImports.Controls.Add(pnlNoDataImport);
+            var ucS = new ucPanelNoData();
+            pnlNoDataImportDetail = ucS.pnlNoData;
+            this.dgvImportDetail.Controls.Add(pnlNoDataImportDetail);// Or add to the same container as dgvImports
         }
 
         private void LoadData()
@@ -598,15 +611,27 @@ namespace StorageDLHI.App.ImportGUI
                 QueryStatement.PROPERTY_IMPORT_PRODUCT_STAFF_NAME
             };
 
-            dgvImports.DataSource = Common.Common.Search(txtSearchImportList.Text.Trim(), dtImportProducts, lstProperty);
+            dgvImports.DataSource = Common.Common.Search(txtSearchImportList.Text.Trim(), dtImportProducts.Copy(), lstProperty);
+
+            if (dgvImports.Rows.Count <= 0)
+            {
+                Common.Common.ShowNoDataPanel(dgvImports, pnlNoDataImport);
+                Common.Common.ShowNoDataPanel(dgvImportDetail, pnlNoDataImportDetail);
+            }
+            else
+            {
+                Common.Common.HideNoDataPanel(pnlNoDataImport);
+                Common.Common.HideNoDataPanel(pnlNoDataImportDetail);
+            }
         }
 
-        private void tlsSearchDate_Click(object sender, EventArgs e)
+        private void tlsSearchDateForImports_Click(object sender, EventArgs e)
         {
             if (dgvImports.Rows.Count <= 0)
             {
                 return;
             }
+            tlsClearSeacrhDate.Visible = true;
             frmSeacrhPOFromDate frmSeacrhPOFromDate = new frmSeacrhPOFromDate();
             frmSeacrhPOFromDate.ShowDialog();
 
@@ -616,16 +641,31 @@ namespace StorageDLHI.App.ImportGUI
                 return;
             }
 
-            var lstProperty = new List<string>()
-            {
-                QueryStatement.PROPERTY_IMPORT_PRODUCT_IMPORT_DATE,
-            };
-
             DateTime fDate = frmSeacrhPOFromDate.FromDate;
-            DateTime tDate = frmSeacrhPOFromDate.ToDate;
 
-            lblDateTimeSeacrh.Text = $"From: {fDate.ToString("dd/MM/yyyy")} To: {tDate.ToString("dd/MM/yyyy")}";
-            dgvImports.DataSource = Common.Common.SearchDate(fDate, tDate, dtImportProducts, lstProperty);
+            lblDateTimeSeacrh.Text = $"From: {fDate.ToString("dd/MM/yyyy")}";
+
+            DataView dvFilter = Common.Common.SearchDateFrom(fDate, dtImportProducts.Copy(), QueryStatement.PROPERTY_IMPORT_PRODUCT_IMPORT_DATE);
+
+            dgvImports.DataSource = dvFilter;
+
+            if (dgvImports.Rows.Count <= 0)
+            {
+                // Hide all row in dgvImportDetail
+                Common.Common.ShowNoDataPanel(dgvImports, pnlNoDataImport);
+                Common.Common.ShowNoDataPanel(dgvImportDetail, pnlNoDataImportDetail);
+            }
+        }
+
+        private void tlsClearSeacrhDate_Click(object sender, EventArgs e)
+        {
+            lblDateTimeSeacrh.Text = "";
+            dgvImports.Refresh();
+            dgvImports.DataSource = CacheManager.Get<DataTable>(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL).Copy();
+            tlsClearSeacrhDate.Visible = false;
+            dgvImports.Visible = true;
+            Common.Common.HideNoDataPanel(pnlNoDataImport);
+            Common.Common.HideNoDataPanel(pnlNoDataImportDetail);
         }
     }
 }

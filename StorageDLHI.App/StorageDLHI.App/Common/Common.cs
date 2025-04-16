@@ -17,6 +17,35 @@ namespace StorageDLHI.App.Common
 {
     public static class Common
     {
+        public static void ShowNoDataPanel(DataGridView dgvMain, Panel pnlNoData)
+        {
+            int headerHeight = dgvMain.ColumnHeadersHeight;
+            int gridTop = dgvMain.Top;
+            int gridLeft = dgvMain.Left;
+
+            pnlNoData.SetBounds(
+                gridLeft,
+                gridTop + headerHeight,
+                dgvMain.Width,
+                dgvMain.Height - headerHeight
+            );
+
+            pnlNoData.BringToFront();
+            pnlNoData.Visible = true;
+        }
+
+        public static void HideNoDataPanel(Panel pnlNoData)
+        {
+            pnlNoData.Visible = false;
+        }
+
+        public static DataView SearchDateFrom(DateTime fDate, DataTable dtSource, string property)
+        {
+            DataView dv = dtSource.DefaultView;
+            dv.RowFilter = $"{property} >= '{fDate:dd/MM/yyyy}' ";
+
+            return dv;
+        }
         public static DataView SearchDate(DateTime FromDate, DateTime ToDate, DataTable dtSource, List<string> lstProperties)
         {
             DataView dv = dtSource.DefaultView;
