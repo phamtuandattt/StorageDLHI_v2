@@ -15,6 +15,11 @@ namespace StorageDLHI.BLL.MprDAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
+        public static bool UpdateMprIsMakePO(Guid mprID)
+        {
+            return data.Update(string.Format(QueryStatement.UPDATE_MPRS_IS_MAKE_PO, true, mprID)) > 0;
+        }
+
         public static bool InsertMpr(Mprs mprs)
         {
             string sqlQuery = string.Format(QueryStatement.ADD_MPR, mprs.Id, mprs.Mpr_No, mprs.Mpr_Wo_No, mprs.Mpr_Project_Name_Code, mprs.Mpr_Rev_Total,
@@ -41,6 +46,11 @@ namespace StorageDLHI.BLL.MprDAO
         public static DataTable GetMprs()
         {
             return data.GetData(QueryStatement.GET_MPRs, "MPRs");
+        }
+
+        public static DataTable GetMprsForMakePO()
+        {
+            return data.GetData(QueryStatement.GET_MPRS_FOR_MAKE_PO, "MPRS_FOR_MPO");
         }
 
         public static bool UpdateMprInfo(Mprs mprs)

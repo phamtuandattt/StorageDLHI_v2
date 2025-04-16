@@ -25,6 +25,8 @@ namespace StorageDLHI.Infrastructor.Caches
 
         public const string MPRS_DATATABLE_ALL_MPRS = "Mprs.DataTable.AllMprs";
         public const string MPR_DETAIL_BY_ID = "Mprs.Detail.Mpr.ID.{0}";
+        public const string MPRS_DATATABLE_ALL_MPRS_FOR_POS = "Mprs.DataTable.AllMprs.Po";
+        public const string MPR_DETAIL_BY_ID_FOR_POS = "Mprs.Detail.Mpr.Po.ID.{0}";
 
         public const string POS_DATATABLE_ALL_PO = "Po.DataTable.AllPos";
         public const string PO_DETAL_BY_ID = "Po.Detail.Po.ID.{0}";

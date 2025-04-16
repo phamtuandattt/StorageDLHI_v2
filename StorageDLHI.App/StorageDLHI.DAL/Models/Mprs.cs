@@ -18,6 +18,7 @@ namespace StorageDLHI.DAL.Models
         public string Mpr_Prepared {  get; set; }
         public string Mpr_Reviewed { get; set; }
         public string Mpr_Approved { get; set; }
+        public bool IsMakePO { get; set; }
 
         public Guid Staff_Id { get; set; }
     }

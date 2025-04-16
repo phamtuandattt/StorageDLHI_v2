@@ -1,5 +1,6 @@
 ﻿using log4net.Appender;
 using StorageDLHI.App.Common;
+using StorageDLHI.App.Common.CommonGUI;
 using StorageDLHI.App.Enums;
 using StorageDLHI.BLL.MprDAO;
 using StorageDLHI.BLL.PoDAO;
@@ -27,16 +28,20 @@ namespace StorageDLHI.App.PoGUI
         private List<Guid> prodsAdded = new List<Guid>();
         private DataTable dtMprs = new DataTable();
         private DataTable dtMprDetailById = new DataTable();
-
         private DataTable dtProds = new DataTable();
         private DataTable dtProdsOfAddPO = new DataTable();
+        private DataTable dtPos = new DataTable();
+        private DataTable dtPoById = new DataTable();
+
+        private Panel pnNoDataMprs = new Panel();
+        private Panel pnNoDataMprsDetail = new Panel();
+        private Panel pnNoDataPOs = new Panel();
+        private Panel pnNoDataPODetail = new Panel();
 
         private int rslOld;
         private int previousRowIndex = -1;
         private Int32 totalAmount = 0;
 
-        private DataTable dtPos = new DataTable();
-        private DataTable dtPoById = new DataTable();
 
 
         public ucPOMain()
@@ -66,6 +71,22 @@ namespace StorageDLHI.App.PoGUI
             dgvProdOfPO.DataSource = dtProdsOfAddPO;
 
             Common.Common.InitializeFooterGrid(dgvProdOfPO, dgvFooter);
+
+            ucPanelNoData ucNoDataMPRs = new ucPanelNoData("All MPR have been Make PO");
+            pnNoDataMprs = ucNoDataMPRs.pnlNoData;
+            dgvMPRs.Controls.Add(pnNoDataMprs);
+
+            ucPanelNoData ucNoDataMPRDetail = new ucPanelNoData("No records found");
+            pnNoDataMprsDetail = ucNoDataMPRDetail.pnlNoData;
+            dgvMPRDetail.Controls.Add(pnNoDataMprsDetail);
+
+            ucPanelNoData ucNoDataPOs = new ucPanelNoData("No records found");
+            pnNoDataPOs = ucNoDataPOs.pnlNoData;
+            dgvPOList.Controls.Add(pnNoDataPOs);
+
+            ucPanelNoData ucNoDataPODetail = new ucPanelNoData("No records found");
+            pnNoDataPODetail = ucNoDataPODetail.pnlNoData;
+            dgvPODetail.Controls.Add(pnNoDataPODetail);
         }
 
         private void LoadData()
@@ -99,36 +120,47 @@ namespace StorageDLHI.App.PoGUI
             }
 
 
-            if (!CacheManager.Exists(CacheKeys.MPRS_DATATABLE_ALL_MPRS))
+            if (!CacheManager.Exists(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS))
             {
-                dtMprs = MprDAO.GetMprs();
-                CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, dtMprs);
+                dtMprs = MprDAO.GetMprsForMakePO();
+                CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, dtMprs);
                 dgvMPRs.DataSource = dtMprs;
             }
             else
             {
-                dgvMPRs.DataSource = CacheManager.Get<DataTable>(CacheKeys.MPRS_DATATABLE_ALL_MPRS);
+                dgvMPRs.DataSource = CacheManager.Get<DataTable>(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS);
             }
 
             if (dtMprs.Rows.Count > 0 && dtMprs != null)
             {
                 var mprId = Guid.Parse(dgvMPRs.Rows[0].Cells[0].Value.ToString());
-                if (!CacheManager.Exists(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId)))
+                if (!CacheManager.Exists(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId)))
                 {
                     dtMprDetailById = MprDAO.GetMprDetailByMpr(mprId);
-                    CacheManager.Add(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId), dtMprDetailById);
+                    CacheManager.Add(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId), dtMprDetailById);
                     dgvMPRDetail.DataSource = dtMprDetailById;
                 }
                 else
                 {
-                    dgvMPRDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId));
+                    dgvMPRDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId));
                 }
             }
         }
 
         private void btnReload_Click(object sender, EventArgs e)
         {
-
+            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, MprDAO.GetMprsForMakePO());
+            LoadData();
+            if (dgvMPRs.Rows.Count <= 0)
+            {
+                Common.Common.ShowNoDataPanel(dgvMPRs, pnNoDataMprs);
+                Common.Common.ShowNoDataPanel(dgvMPRDetail, pnNoDataMprsDetail);
+            }
+            else
+            {
+                Common.Common.HideNoDataPanel(pnNoDataMprs);
+                Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
+            }
         }
 
         private void btnClearProdsOfPO_Click(object sender, EventArgs e)
@@ -145,7 +177,7 @@ namespace StorageDLHI.App.PoGUI
             dtProdsOfAddPO.Clear();
             prodsAdded.Clear();
             dgvProdOfPO.Refresh();
-
+            dgvMPRs.Enabled = true;
             UpdateFooter();
         }
 
@@ -174,15 +206,15 @@ namespace StorageDLHI.App.PoGUI
             }
             
             var mprId = Guid.Parse(dgvMPRs.Rows[rsl].Cells[0].Value.ToString());
-            if (!CacheManager.Exists(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId)))
+            if (!CacheManager.Exists(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId)))
             {
                 dtMprDetailById = MprDAO.GetMprDetailByMpr(mprId);
-                CacheManager.Add(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId), dtMprDetailById);
+                CacheManager.Add(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId), dtMprDetailById);
                 dgvMPRDetail.DataSource = dtMprDetailById;
             }
             else
             {
-                dgvMPRDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId));
+                dgvMPRDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId));
             }
             UpdateFooter();
         }
@@ -196,6 +228,8 @@ namespace StorageDLHI.App.PoGUI
             frmAddPriceForProdPO.ShowDialog();
             
             if (frmAddPriceForProdPO.Price == 0) { return; }
+
+
 
             tlsMPRNo.Text = $"MPR No: [{dgvMPRs.Rows[this.previousRowIndex].Cells[1].Value.ToString().Trim()}]\t";
 
@@ -231,6 +265,7 @@ namespace StorageDLHI.App.PoGUI
             prodsAdded.Add(prodId);
             dgvProdOfPO.Rows[0].Selected = true;
             UpdateFooter();
+            dgvMPRs.Enabled = false;
         }
 
         private Int32 CheckOrReturnNumber(string numberString)
@@ -360,7 +395,7 @@ namespace StorageDLHI.App.PoGUI
             }
 
             dgvProdOfPO.Rows[0].Selected = true;
-
+            dgvMPRs.Enabled = false;
             UpdateFooter();
         }
 
@@ -436,10 +471,12 @@ namespace StorageDLHI.App.PoGUI
                 Po_Project_Name = dgvMPRs.Rows[this.previousRowIndex].Cells[3].Value.ToString().Trim(),
             };
 
-            frmCustomInfoPO frmCustomInfoPO = new frmCustomInfoPO(TitleManager.PO_ADD, true, mPO, dtProdsOfAddPO, totalAmount);
+            Guid mprID = Guid.Parse(dgvMPRs.Rows[this.previousRowIndex].Cells[0].Value.ToString().Trim());
+
+            frmCustomInfoPO frmCustomInfoPO = new frmCustomInfoPO(TitleManager.PO_ADD, true, mPO, dtProdsOfAddPO, totalAmount, mprID);
             frmCustomInfoPO.ShowDialog();
 
-            if (!frmCustomInfoPO.completed)
+            if (!frmCustomInfoPO.completed && !frmCustomInfoPO.isHandle)
             {
                 return;
             }
@@ -450,11 +487,10 @@ namespace StorageDLHI.App.PoGUI
             dgvProdOfPO.Refresh();
             totalAmount = 0;
             UpdateFooter();
-
+            dgvMPRs.Enabled = true;
             // Update data in cache
-            dtPos = PoDAO.GetPOs();
-            CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, dtPos);
-
+            CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, PoDAO.GetPOs());
+            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, MprDAO.GetMprsForMakePO());
             LoadData();
         }
 
@@ -585,6 +621,16 @@ namespace StorageDLHI.App.PoGUI
             CacheManager.Remove(CacheKeys.POS_DATATABLE_ALL_PO);
             lblDateTimeSeacrh.Text = "";
             LoadData();
+            if (dgvPOList.Rows.Count <= 0)
+            {
+                Common.Common.ShowNoDataPanel(dgvPOList, pnNoDataPOs);
+                Common.Common.ShowNoDataPanel(dgvPODetail, pnNoDataPODetail);
+            }
+            else
+            {
+                Common.Common.HideNoDataPanel(pnNoDataPOs);
+                Common.Common.HideNoDataPanel(pnNoDataPODetail);
+            }
         }
 
         private void txtSearchPO_KeyUp(object sender, KeyEventArgs e)
@@ -608,6 +654,17 @@ namespace StorageDLHI.App.PoGUI
             };
 
             dgvPOList.DataSource = Common.Common.Search(txtSearchPO.Text.Trim(), dtPos, lstProperty);
+
+            if (dgvPOList.Rows.Count <= 0)
+            {
+                Common.Common.ShowNoDataPanel(dgvPOList, pnNoDataPOs);
+                Common.Common.ShowNoDataPanel(dgvPODetail, pnNoDataPODetail);
+            }
+            else
+            {
+                Common.Common.HideNoDataPanel(pnNoDataPOs);
+                Common.Common.HideNoDataPanel(pnNoDataPODetail);
+            }
         }
 
 
@@ -637,6 +694,37 @@ namespace StorageDLHI.App.PoGUI
 
             lblDateTimeSeacrh.Text = $"From: {fDate.ToString("dd/MM/yyyy")} To: {tDate.ToString("dd/MM/yyyy")}";
             dgvPOList.DataSource = Common.Common.SearchDate(fDate, tDate, dtPos, lstProperty);
+            tlsClearSearchDate.Visible = true;
+
+            if (dgvPOList.Rows.Count <= 0)
+            {
+                Common.Common.ShowNoDataPanel(dgvPOList, pnNoDataPOs);
+                Common.Common.ShowNoDataPanel(dgvPODetail, pnNoDataPODetail);
+            }
+            else
+            {
+                Common.Common.HideNoDataPanel(pnNoDataPOs);
+                Common.Common.HideNoDataPanel(pnNoDataPODetail);
+            }
+        }
+
+        private void tlsClearSearchDate_Click(object sender, EventArgs e)
+        {
+            lblDateTimeSeacrh.Text = "";
+            dgvPOList.Refresh();
+            dgvPOList.DataSource = CacheManager.Get<DataTable>(CacheKeys.POS_DATATABLE_ALL_PO).Copy();
+
+            if (dgvPOList.Rows.Count <= 0)
+            {
+                Common.Common.ShowNoDataPanel(dgvPOList, pnNoDataPOs);
+                Common.Common.ShowNoDataPanel(dgvPODetail, pnNoDataPODetail);
+            }
+            else
+            {
+                Common.Common.HideNoDataPanel(pnNoDataPOs);
+                Common.Common.HideNoDataPanel(pnNoDataPODetail);
+            }
+            tlsClearSearchDate.Visible = false;
         }
     }
 }

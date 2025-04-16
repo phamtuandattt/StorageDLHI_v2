@@ -1,6 +1,7 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using StorageDLHI.App.Common;
 using StorageDLHI.BLL.MaterialDAO;
+using StorageDLHI.BLL.MprDAO;
 using StorageDLHI.BLL.PoDAO;
 using StorageDLHI.BLL.SupplierDAO;
 using StorageDLHI.DAL.Models;
@@ -23,10 +24,12 @@ namespace StorageDLHI.App.PoGUI
     {
         private Pos mPO = new Pos();
         private DataTable dtPODetail = new DataTable();
-        public bool completed = true;
+        public bool completed { get; set; } = true;
+        public bool isHandle { get; set; } = false;
 
         private DataTable dtProdOfPO_UpdateDB = PoDAO.GetPODetailForm();
         private Int32 totalAmount = 0;
+        private Guid mprID = Guid.Empty;
 
         public frmCustomInfoPO()
         {
@@ -34,7 +37,7 @@ namespace StorageDLHI.App.PoGUI
             LoadData();
         }
 
-        public frmCustomInfoPO(string title, bool status, Pos mPO, DataTable dtPODetail, Int32 totalAmount)
+        public frmCustomInfoPO(string title, bool status, Pos mPO, DataTable dtPODetail, Int32 totalAmount, Guid mprID)
         {
             InitializeComponent();
             LoadData();
@@ -42,6 +45,7 @@ namespace StorageDLHI.App.PoGUI
             this.mPO = mPO;
             this.dtPODetail = dtPODetail;
             this.totalAmount = totalAmount;
+            this.mprID = mprID;
 
             txtMPRNo.Text = this.mPO.Po_Mpr_No;
             txtWoNo.Text = this.mPO.Po_Wo_No;
@@ -218,9 +222,12 @@ namespace StorageDLHI.App.PoGUI
 
             if (PoDAO.InsertPO(pos))
             {
-                if (PoDAO.InsertPODetail(dtProdOfPO_UpdateDB))
+                if (PoDAO.InsertPODetail(dtProdOfPO_UpdateDB) && MprDAO.UpdateMprIsMakePO(this.mprID))
                 {
+                    // Update IsMakePO in table MPR
                     MessageBoxHelper.ShowInfo("Add PO success !");
+                    this.completed = true;
+                    this.isHandle = true;
                     this.Close();
                 }
                 else
