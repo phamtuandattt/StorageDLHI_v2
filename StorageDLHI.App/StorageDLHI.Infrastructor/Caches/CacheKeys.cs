@@ -28,6 +28,8 @@ namespace StorageDLHI.Infrastructor.Caches
 
         public const string POS_DATATABLE_ALL_PO = "Po.DataTable.AllPos";
         public const string PO_DETAL_BY_ID = "Po.Detail.Po.ID.{0}";
+        public const string POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD = "Po.DataTable.AllPos.ImoprtProd";
+        public const string PO_DETAIL_BY_ID_FOR_IMPORT_PROD = "Po.Detail.Po.ImportProd.ID.{0}";
 
         public const string IMPORT_PRODUCT_DATATABLE_ALL = "ImportProduct.DataTable.AllImportProduct";
         public const string IMPORT_PRODUCT_DETIAL_BY_ID = "ImportProduct.Detail.ImportProduct.ID.{0}";

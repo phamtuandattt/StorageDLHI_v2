@@ -35,6 +35,7 @@ namespace StorageDLHI.App.ImportGUI
         // -----------------------------------------------------
         Panel pnlNoDataImport = new Panel();
         Panel pnlNoDataImportDetail = new Panel();
+        Panel pnlNoDataPOList = new Panel();
 
         private bool isSyncingScroll = false;
         private int rslOld;
@@ -71,12 +72,12 @@ namespace StorageDLHI.App.ImportGUI
             dtProdForImportForUpdateDB = ImportProductDAO.GetImportProductDetailForm();
 
             // -----------------------------------------------------
-            var ucF = new ucPanelNoData();
+            var ucF = new ucPanelNoData("No records found");
             pnlNoDataImport = ucF.pnlNoData;
             this.dgvImports.Controls.Add(pnlNoDataImport);
-            var ucS = new ucPanelNoData();
+            var ucS = new ucPanelNoData("No records found");
             pnlNoDataImportDetail = ucS.pnlNoData;
-            this.dgvImportDetail.Controls.Add(pnlNoDataImportDetail);// Or add to the same container as dgvImports
+            this.dgvImportDetail.Controls.Add(pnlNoDataImportDetail);
         }
 
         private void LoadData()
@@ -111,39 +112,46 @@ namespace StorageDLHI.App.ImportGUI
             }
 
             // Load data for Import
-            if (!CacheManager.Exists(CacheKeys.POS_DATATABLE_ALL_PO))
+            if (!CacheManager.Exists(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD))
             {
                 dtPos = PoDAO.GetPosForImportProduct();
-                CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, dtPos.Copy());
+                CacheManager.Add(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD, dtPos.Copy());
                 dgvPOs.DataSource = dtPos;
             }
             else
             {
-                dtPos = CacheManager.Get<DataTable>(CacheKeys.POS_DATATABLE_ALL_PO);
-                dgvPOs.DataSource = CacheManager.Get<DataTable>(CacheKeys.POS_DATATABLE_ALL_PO);
+                dtPos = CacheManager.Get<DataTable>(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD);
+                dgvPOs.DataSource = CacheManager.Get<DataTable>(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD);
             }
 
             if (dtPos != null && dgvPOs.Rows.Count > 0)
             {
                 Guid poId = Guid.Parse(dgvPOs.Rows[0].Cells[0].Value.ToString());
-                if (!CacheManager.Exists(string.Format(CacheKeys.PO_DETAL_BY_ID, poId)))
+                if (!CacheManager.Exists(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId)))
                 {
                     dtPoById = PoDAO.GetPODetailById(poId);
-                    CacheManager.Add(string.Format(CacheKeys.PO_DETAL_BY_ID, poId), dtPoById.Copy());
+                    CacheManager.Add(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId), dtPoById.Copy());
                     dgvPO_Detail.DataSource = dtPoById;
                 }
                 else
                 {
-                    dtPoById = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAL_BY_ID, poId));
-                    dgvPO_Detail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAL_BY_ID, poId));
+                    dtPoById = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId));
+                    dgvPO_Detail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId));
                 }
                 dgvPOs.Rows[0].Selected = true;
+            }
+            else
+            {
+                var ucP = new ucPanelNoData("All goods imported");
+                pnlNoDataPOList = ucP.pnlNoData;
+                this.dgvPOs.Controls.Add(pnlNoDataPOList);
+                Common.Common.ShowNoDataPanel(dgvPOs, pnlNoDataPOList);
             }
         }
 
         private void btnReload_Click(object sender, EventArgs e)
         {
-            CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, PoDAO.GetPosForImportProduct());
+            CacheManager.Add(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD, PoDAO.GetPosForImportProduct());
             LoadData();
         }
 
@@ -218,7 +226,7 @@ namespace StorageDLHI.App.ImportGUI
             dgvPOs.Enabled = true;
 
             dtPos = PoDAO.GetPosForImportProduct();
-            CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, dtPos.Copy());
+            CacheManager.Add(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD, dtPos.Copy());
             dgvPOs.DataSource = dtPos;
 
             CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, ImportProductDAO.GetImportProducts());
@@ -267,13 +275,13 @@ namespace StorageDLHI.App.ImportGUI
 
             // Get data from cache before delete dtPoById
             Guid poId = Guid.Parse(dgvPOs.Rows[dgvPOs.CurrentRow.Index].Cells[0].Value.ToString());
-            var dtPoById_new = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAL_BY_ID, poId)).Copy();
+            var dtPoById_new = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId)).Copy();
 
             // Remove all dgvPODetail
             dtPoById.Rows.Clear();
 
             // Set data for cache after delete dtPoById
-            CacheManager.Add(string.Format(CacheKeys.PO_DETAL_BY_ID, poId), dtPoById_new);
+            CacheManager.Add(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId), dtPoById_new);
             UpdateFooterOfPoDetail();
         }
 
@@ -385,7 +393,7 @@ namespace StorageDLHI.App.ImportGUI
             }
 
             Guid poId = Guid.Parse(dgvPOs.Rows[dgvPOs.CurrentRow.Index].Cells[0].Value.ToString());
-            dtPoById = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAL_BY_ID, poId));
+            dtPoById = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId));
             dgvPO_Detail.DataSource = dtPoById;
 
             dtProdForImport.Rows.Clear();
@@ -410,16 +418,16 @@ namespace StorageDLHI.App.ImportGUI
             if (dtPos != null && dgvPOs.Rows.Count > 0)
             {
                 Guid poId = Guid.Parse(dgvPOs.Rows[currentRowIndex].Cells[0].Value.ToString());
-                if (!CacheManager.Exists(string.Format(CacheKeys.PO_DETAL_BY_ID, poId)))
+                if (!CacheManager.Exists(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId)))
                 {
                     dtPoById = PoDAO.GetPODetailById(poId);
-                    CacheManager.Add(string.Format(CacheKeys.PO_DETAL_BY_ID, poId), dtPoById);
+                    CacheManager.Add(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId), dtPoById);
                     dgvPO_Detail.DataSource = dtPoById;
                 }
                 else
                 {
-                    dtPoById = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAL_BY_ID, poId));
-                    dgvPO_Detail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAL_BY_ID, poId));
+                    dtPoById = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId));
+                    dgvPO_Detail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId));
                 }
             }
             UpdateFooterOfPoDetail();
@@ -494,7 +502,7 @@ namespace StorageDLHI.App.ImportGUI
                     if (item.Cells[0].Value.ToString().Trim().Equals(prodId.ToString()) &&
                         item.Cells[14].Value.ToString().Trim().Equals(wModel.Id.ToString()))
                     {
-                        item.Cells[12].Value = frmImportForWarehouse.Qty;
+                        item.Cells[12].Value = Int32.Parse(item.Cells[12].Value.ToString().Trim()) + frmImportForWarehouse.Qty;
                         UpdateFooterOfPoDetail();
                         break;
                     }
@@ -504,10 +512,10 @@ namespace StorageDLHI.App.ImportGUI
             {
                 // Get data from cache before delete Prod of PO Detail
                 Guid poId = Guid.Parse(dgvPOs.Rows[dgvPOs.CurrentRow.Index].Cells[0].Value.ToString());
-                var dtPoById_new = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAL_BY_ID, poId)).Copy();
+                var dtPoById_new = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId)).Copy();
                 // Update Qty for Prod of PO Detail
                 dgvPO_Detail.Rows[rsl].Cells[13].Value = Int32.Parse(dgvPO_Detail.Rows[rsl].Cells[13].Value.ToString()) - frmImportForWarehouse.Qty;
-                CacheManager.Add(string.Format(CacheKeys.PO_DETAL_BY_ID, poId), dtPoById_new);
+                CacheManager.Add(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId), dtPoById_new);
 
                 DataRow dataRow = dtProdForImport.NewRow();
                 dataRow[0] = prodId;
@@ -540,12 +548,12 @@ namespace StorageDLHI.App.ImportGUI
             {
                 // Get data from cache before delete Prod of PO Detail
                 Guid poId = Guid.Parse(dgvPOs.Rows[dgvPOs.CurrentRow.Index].Cells[0].Value.ToString());
-                var dtPoById_new = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAL_BY_ID, poId)).Copy();
+                var dtPoById_new = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId)).Copy();
 
                 dgvPO_Detail.Rows.RemoveAt(rsl);
 
                 // Set data for cache after delete dtPoById
-                CacheManager.Add(string.Format(CacheKeys.PO_DETAL_BY_ID, poId), dtPoById_new);
+                CacheManager.Add(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId), dtPoById_new);
                 UpdateFooterOfPoDetail();
             }
         }
