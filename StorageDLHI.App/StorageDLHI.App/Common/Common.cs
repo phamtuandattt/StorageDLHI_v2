@@ -1,6 +1,13 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
+using StorageDLHI.BLL.ImportDAO;
+using StorageDLHI.BLL.MaterialDAO;
+using StorageDLHI.BLL.MprDAO;
+using StorageDLHI.BLL.PoDAO;
+using StorageDLHI.BLL.ProductDAO;
+using StorageDLHI.BLL.SupplierDAO;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
+using StorageDLHI.Infrastructor.Caches;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +24,24 @@ namespace StorageDLHI.App.Common
 {
     public static class Common
     {
+        public static void ReloadAllCache()
+        {
+            CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, ImportProductDAO.GetImportProducts());
+            CacheManager.Add(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD, PoDAO.GetPosForImportProduct());
+            CacheManager.Add(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD, PoDAO.GetPosForImportProduct());
+            CacheManager.Add(CacheKeys.ORIGIN_DATATABLE_ALLORIGIN, MaterialDAO.GetOrigins());   
+            CacheManager.Add(CacheKeys.MATERIAL_TYPE_DATATABLE_ALLTYPE, MaterialDAO.GetMaterialTypes());
+            CacheManager.Add(CacheKeys.STANDARD_DATATABLE_ALLSTANDARD, MaterialDAO.GetMaterialStandards());
+            CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX, MaterialDAO.GetTaxs());
+            CacheManager.Add(CacheKeys.UNIT_DATATABLE_ALLUNIT, MaterialDAO.GetUnits());
+            CacheManager.Add(CacheKeys.COST_DATATABLE_ALLCOST, MaterialDAO.GetCosts());
+            CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, ProductDAO.GetProductsForCreateMPR());
+            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, MprDAO.GetMprs());
+            CacheManager.Add(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER, SupplierDAO.GetSuppliers());
+            CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, PoDAO.GetPOs());
+            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, MprDAO.GetMprsForMakePO());
+            
+        }
         public static void ShowNoDataPanel(DataGridView dgvMain, Panel pnlNoData)
         {
             int headerHeight = dgvMain.ColumnHeadersHeight;

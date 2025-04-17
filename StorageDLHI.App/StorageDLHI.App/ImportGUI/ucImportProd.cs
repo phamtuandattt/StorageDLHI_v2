@@ -104,7 +104,7 @@ namespace StorageDLHI.App.ImportGUI
             if (!CacheManager.Exists(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL))
             {
                 dtImportProducts = ImportProductDAO.GetImportProducts();
-                CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, dtImportProducts);
+                CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, ImportProductDAO.GetImportProducts());
                 dgvImports.DataSource = dtImportProducts;
             }
             else

@@ -81,6 +81,7 @@
             this.tlsSearchDate = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.lblDateTimeSeacrh = new System.Windows.Forms.ToolStripLabel();
+            this.tlsClearSearchDate = new System.Windows.Forms.ToolStripButton();
             this.pageAddPO = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -89,6 +90,18 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonGroupBox3 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.dgvMPRs = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kryptonGroupBox5 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.dgvMPRDetail = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.Column33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -141,19 +154,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAddAllProdIntoPO = new System.Windows.Forms.ToolStripButton();
             this.tlsMPRNo = new System.Windows.Forms.ToolStripLabel();
-            this.tlsClearSearchDate = new System.Windows.Forms.ToolStripButton();
-            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pagePOs)).BeginInit();
@@ -221,7 +221,7 @@
             this.kryptonNavigator1.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
             this.pagePOs,
             this.pageAddPO});
-            this.kryptonNavigator1.SelectedIndex = 1;
+            this.kryptonNavigator1.SelectedIndex = 0;
             this.kryptonNavigator1.Size = new System.Drawing.Size(1559, 741);
             this.kryptonNavigator1.StateCommon.Panel.Color1 = System.Drawing.Color.White;
             this.kryptonNavigator1.StateCommon.Panel.Color2 = System.Drawing.Color.White;
@@ -681,19 +681,19 @@
             this.tlsReloadPOs.Image = global::StorageDLHI.App.Properties.Resources.refresh;
             this.tlsReloadPOs.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsReloadPOs.Name = "tlsReloadPOs";
-            this.tlsReloadPOs.Size = new System.Drawing.Size(29, 28);
+            this.tlsReloadPOs.Size = new System.Drawing.Size(29, 24);
             this.tlsReloadPOs.Text = "Refresh";
             this.tlsReloadPOs.Click += new System.EventHandler(this.tlsReloadPOs_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(56, 28);
+            this.toolStripLabel1.Size = new System.Drawing.Size(56, 24);
             this.toolStripLabel1.Text = "Search:";
             // 
             // txtSearchPO
@@ -707,7 +707,7 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
             // 
             // tlsSearchDate
             // 
@@ -715,19 +715,30 @@
             this.tlsSearchDate.Image = global::StorageDLHI.App.Properties.Resources.search;
             this.tlsSearchDate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsSearchDate.Name = "tlsSearchDate";
-            this.tlsSearchDate.Size = new System.Drawing.Size(29, 28);
+            this.tlsSearchDate.Size = new System.Drawing.Size(29, 24);
             this.tlsSearchDate.Text = "Seacrch date";
             this.tlsSearchDate.Click += new System.EventHandler(this.tlsSearchDate_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
             // 
             // lblDateTimeSeacrh
             // 
             this.lblDateTimeSeacrh.Name = "lblDateTimeSeacrh";
-            this.lblDateTimeSeacrh.Size = new System.Drawing.Size(0, 28);
+            this.lblDateTimeSeacrh.Size = new System.Drawing.Size(0, 24);
+            // 
+            // tlsClearSearchDate
+            // 
+            this.tlsClearSearchDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsClearSearchDate.Image = global::StorageDLHI.App.Properties.Resources.clean;
+            this.tlsClearSearchDate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsClearSearchDate.Name = "tlsClearSearchDate";
+            this.tlsClearSearchDate.Size = new System.Drawing.Size(29, 24);
+            this.tlsClearSearchDate.Text = "Clear";
+            this.tlsClearSearchDate.Visible = false;
+            this.tlsClearSearchDate.Click += new System.EventHandler(this.tlsClearSearchDate_Click);
             // 
             // pageAddPO
             // 
@@ -849,6 +860,110 @@
             this.dgvMPRs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMPRs_CellClick);
             this.dgvMPRs.CurrentCellChanged += new System.EventHandler(this.dgvMPRs_CurrentCellChanged);
             this.dgvMPRs.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvMPRs_RowPostPaint);
+            // 
+            // Column22
+            // 
+            this.Column22.DataPropertyName = "ID";
+            this.Column22.HeaderText = "ID";
+            this.Column22.MinimumWidth = 6;
+            this.Column22.Name = "Column22";
+            this.Column22.ReadOnly = true;
+            this.Column22.Visible = false;
+            // 
+            // Column23
+            // 
+            this.Column23.DataPropertyName = "MPR_NO";
+            this.Column23.HeaderText = "MPR No";
+            this.Column23.MinimumWidth = 6;
+            this.Column23.Name = "Column23";
+            this.Column23.ReadOnly = true;
+            // 
+            // Column24
+            // 
+            this.Column24.DataPropertyName = "MPR_WO_NO";
+            this.Column24.HeaderText = "WO No";
+            this.Column24.MinimumWidth = 6;
+            this.Column24.Name = "Column24";
+            this.Column24.ReadOnly = true;
+            // 
+            // Column25
+            // 
+            this.Column25.DataPropertyName = "MPR_PROJECT_NAME";
+            this.Column25.HeaderText = "Project name";
+            this.Column25.MinimumWidth = 6;
+            this.Column25.Name = "Column25";
+            this.Column25.ReadOnly = true;
+            // 
+            // Column26
+            // 
+            this.Column26.DataPropertyName = "MPR_REV_TOTAL";
+            this.Column26.HeaderText = "Rev total";
+            this.Column26.MinimumWidth = 6;
+            this.Column26.Name = "Column26";
+            this.Column26.ReadOnly = true;
+            this.Column26.Visible = false;
+            // 
+            // Column27
+            // 
+            this.Column27.DataPropertyName = "MPR_CREATE_DATE";
+            this.Column27.HeaderText = "Create date";
+            this.Column27.MinimumWidth = 6;
+            this.Column27.Name = "Column27";
+            this.Column27.ReadOnly = true;
+            // 
+            // Column28
+            // 
+            this.Column28.DataPropertyName = "MPR_EXPECTED_DELIVERY_DATE";
+            this.Column28.HeaderText = "Expected delivery date";
+            this.Column28.MinimumWidth = 6;
+            this.Column28.Name = "Column28";
+            this.Column28.ReadOnly = true;
+            this.Column28.Visible = false;
+            // 
+            // Column29
+            // 
+            this.Column29.DataPropertyName = "MPR_PREPARED";
+            this.Column29.HeaderText = "Prepared";
+            this.Column29.MinimumWidth = 6;
+            this.Column29.Name = "Column29";
+            this.Column29.ReadOnly = true;
+            this.Column29.Visible = false;
+            // 
+            // Column30
+            // 
+            this.Column30.DataPropertyName = "MPR_REVIEWED";
+            this.Column30.HeaderText = "Reviewed";
+            this.Column30.MinimumWidth = 6;
+            this.Column30.Name = "Column30";
+            this.Column30.ReadOnly = true;
+            this.Column30.Visible = false;
+            // 
+            // Column31
+            // 
+            this.Column31.DataPropertyName = "MPR_APPROVED";
+            this.Column31.HeaderText = "Approved";
+            this.Column31.MinimumWidth = 6;
+            this.Column31.Name = "Column31";
+            this.Column31.ReadOnly = true;
+            this.Column31.Visible = false;
+            // 
+            // Column32
+            // 
+            this.Column32.DataPropertyName = "STAFF_ID";
+            this.Column32.HeaderText = "Staff";
+            this.Column32.MinimumWidth = 6;
+            this.Column32.Name = "Column32";
+            this.Column32.ReadOnly = true;
+            this.Column32.Visible = false;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "IS_MAKE_PO";
+            this.Column11.HeaderText = "IS_MAKE_PO";
+            this.Column11.MinimumWidth = 6;
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Visible = false;
             // 
             // kryptonGroupBox5
             // 
@@ -1373,121 +1488,6 @@
             this.tlsMPRNo.Name = "tlsMPRNo";
             this.tlsMPRNo.Size = new System.Drawing.Size(18, 24);
             this.tlsMPRNo.Text = "...";
-            // 
-            // tlsClearSearchDate
-            // 
-            this.tlsClearSearchDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsClearSearchDate.Image = global::StorageDLHI.App.Properties.Resources.clean;
-            this.tlsClearSearchDate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsClearSearchDate.Name = "tlsClearSearchDate";
-            this.tlsClearSearchDate.Size = new System.Drawing.Size(29, 28);
-            this.tlsClearSearchDate.Text = "Clear";
-            this.tlsClearSearchDate.Visible = false;
-            this.tlsClearSearchDate.Click += new System.EventHandler(this.tlsClearSearchDate_Click);
-            // 
-            // Column22
-            // 
-            this.Column22.DataPropertyName = "ID";
-            this.Column22.HeaderText = "ID";
-            this.Column22.MinimumWidth = 6;
-            this.Column22.Name = "Column22";
-            this.Column22.ReadOnly = true;
-            this.Column22.Visible = false;
-            // 
-            // Column23
-            // 
-            this.Column23.DataPropertyName = "MPR_NO";
-            this.Column23.HeaderText = "MPR No";
-            this.Column23.MinimumWidth = 6;
-            this.Column23.Name = "Column23";
-            this.Column23.ReadOnly = true;
-            // 
-            // Column24
-            // 
-            this.Column24.DataPropertyName = "MPR_WO_NO";
-            this.Column24.HeaderText = "WO No";
-            this.Column24.MinimumWidth = 6;
-            this.Column24.Name = "Column24";
-            this.Column24.ReadOnly = true;
-            // 
-            // Column25
-            // 
-            this.Column25.DataPropertyName = "MPR_PROJECT_NAME";
-            this.Column25.HeaderText = "Project name";
-            this.Column25.MinimumWidth = 6;
-            this.Column25.Name = "Column25";
-            this.Column25.ReadOnly = true;
-            // 
-            // Column26
-            // 
-            this.Column26.DataPropertyName = "MPR_REV_TOTAL";
-            this.Column26.HeaderText = "Rev total";
-            this.Column26.MinimumWidth = 6;
-            this.Column26.Name = "Column26";
-            this.Column26.ReadOnly = true;
-            this.Column26.Visible = false;
-            // 
-            // Column27
-            // 
-            this.Column27.DataPropertyName = "MPR_CREATE_DATE";
-            this.Column27.HeaderText = "Create date";
-            this.Column27.MinimumWidth = 6;
-            this.Column27.Name = "Column27";
-            this.Column27.ReadOnly = true;
-            // 
-            // Column28
-            // 
-            this.Column28.DataPropertyName = "MPR_EXPECTED_DELIVERY_DATE";
-            this.Column28.HeaderText = "Expected delivery date";
-            this.Column28.MinimumWidth = 6;
-            this.Column28.Name = "Column28";
-            this.Column28.ReadOnly = true;
-            this.Column28.Visible = false;
-            // 
-            // Column29
-            // 
-            this.Column29.DataPropertyName = "MPR_PREPARED";
-            this.Column29.HeaderText = "Prepared";
-            this.Column29.MinimumWidth = 6;
-            this.Column29.Name = "Column29";
-            this.Column29.ReadOnly = true;
-            this.Column29.Visible = false;
-            // 
-            // Column30
-            // 
-            this.Column30.DataPropertyName = "MPR_REVIEWED";
-            this.Column30.HeaderText = "Reviewed";
-            this.Column30.MinimumWidth = 6;
-            this.Column30.Name = "Column30";
-            this.Column30.ReadOnly = true;
-            this.Column30.Visible = false;
-            // 
-            // Column31
-            // 
-            this.Column31.DataPropertyName = "MPR_APPROVED";
-            this.Column31.HeaderText = "Approved";
-            this.Column31.MinimumWidth = 6;
-            this.Column31.Name = "Column31";
-            this.Column31.ReadOnly = true;
-            this.Column31.Visible = false;
-            // 
-            // Column32
-            // 
-            this.Column32.DataPropertyName = "STAFF_ID";
-            this.Column32.HeaderText = "Staff";
-            this.Column32.MinimumWidth = 6;
-            this.Column32.Name = "Column32";
-            this.Column32.ReadOnly = true;
-            this.Column32.Visible = false;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "IS_MAKE_PO";
-            this.Column11.HeaderText = "IS_MAKE_PO";
-            this.Column11.MinimumWidth = 6;
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.Visible = false;
             // 
             // ucPOMain
             // 
