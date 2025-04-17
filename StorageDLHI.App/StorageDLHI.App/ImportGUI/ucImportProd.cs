@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
+using System.Data.Entity.Infrastructure;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
@@ -32,10 +33,14 @@ namespace StorageDLHI.App.ImportGUI
         private DataTable dtImportProducts = new DataTable();
         private DataTable dtImportProductDetailById = new DataTable();
 
+        private DataTable dtPoDetailCoppy = new DataTable();
+        private DataGridViewRow rowClonePODetail = new DataGridViewRow();
+
         // -----------------------------------------------------
         Panel pnlNoDataImport = new Panel();
         Panel pnlNoDataImportDetail = new Panel();
         Panel pnlNoDataPOList = new Panel();
+        Panel pnlNoDataPODetail = new Panel();
 
         private bool isSyncingScroll = false;
         private int rslOld;
@@ -70,15 +75,28 @@ namespace StorageDLHI.App.ImportGUI
             UpdateFooterOfPoDetail();
 
             dtProdForImportForUpdateDB = ImportProductDAO.GetImportProductDetailForm();
+            
 
             // -----------------------------------------------------
             var ucF = new ucPanelNoData("No records found");
             pnlNoDataImport = ucF.pnlNoData;
             this.dgvImports.Controls.Add(pnlNoDataImport);
+
             var ucS = new ucPanelNoData("No records found");
             pnlNoDataImportDetail = ucS.pnlNoData;
             this.dgvImportDetail.Controls.Add(pnlNoDataImportDetail);
+
+            var ucP = new ucPanelNoData("No records found");
+            pnlNoDataPOList = ucP.pnlNoData;
+            this.dgvPOs.Controls.Add(pnlNoDataPOList);
+
+            var ucPdetail = new ucPanelNoData("No records found");
+            pnlNoDataPODetail = ucPdetail.pnlNoData;
+            this.dgvPO_Detail.Controls.Add(pnlNoDataPODetail);
+
+             rowClonePODetail = (DataGridViewRow)dgvPO_Detail.Rows[0].Clone();
         }
+
 
         private void LoadData()
         {
@@ -142,17 +160,24 @@ namespace StorageDLHI.App.ImportGUI
             }
             else
             {
-                var ucP = new ucPanelNoData("All goods imported");
-                pnlNoDataPOList = ucP.pnlNoData;
-                this.dgvPOs.Controls.Add(pnlNoDataPOList);
                 Common.Common.ShowNoDataPanel(dgvPOs, pnlNoDataPOList);
             }
         }
 
         private void btnReload_Click(object sender, EventArgs e)
         {
-            CacheManager.Add(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD, PoDAO.GetPosForImportProduct());
+            //CacheManager.Add(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD, PoDAO.GetPosForImportProduct());
             LoadData();
+            if (dgvPOs.Rows.Count <= 0)
+            {
+                Common.Common.ShowNoDataPanel(dgvPOs, pnlNoDataPOList);
+                Common.Common.ShowNoDataPanel(dgvPO_Detail, pnlNoDataPODetail);
+            }
+            else
+            {
+                Common.Common.HideNoDataPanel(pnlNoDataPOList);
+                Common.Common.HideNoDataPanel(pnlNoDataPODetail);
+            }
         }
 
         private void btnAddImport_Click(object sender, EventArgs e)
@@ -431,6 +456,8 @@ namespace StorageDLHI.App.ImportGUI
                 }
             }
             UpdateFooterOfPoDetail();
+            dtPoDetailCoppy.Clear();
+            dtPoDetailCoppy = dtPoById.Copy();
         }
 
         private void dgvPO_Detail_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
@@ -674,6 +701,98 @@ namespace StorageDLHI.App.ImportGUI
             dgvImports.Visible = true;
             Common.Common.HideNoDataPanel(pnlNoDataImport);
             Common.Common.HideNoDataPanel(pnlNoDataImportDetail);
+        }
+
+        private void tlsSearchPOs_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (dgvPOs.Rows.Count <= 0) return;
+            var lstProperty = new List<string>()
+            {
+                QueryStatement.PROPERTY_PO_NO,
+                QueryStatement.PROPERTY_PO_MPR_NO,
+                QueryStatement.PROPERTY_PO_WO_NO,
+                QueryStatement.PROPERTY_PO_PROJECT_NAME,
+            };
+
+            dgvPOs.DataSource = Common.Common.Search(tlsSearchPOs.Text.Trim(), dtPos.Copy(), lstProperty);
+
+            if (dgvPOs.Rows.Count <= 0)
+            {
+                Common.Common.ShowNoDataPanel(dgvPOs, pnlNoDataPOList);
+                Common.Common.ShowNoDataPanel(dgvPO_Detail, pnlNoDataPODetail);
+            }
+            else
+            {
+                Common.Common.HideNoDataPanel(pnlNoDataPOList);
+                Common.Common.HideNoDataPanel(pnlNoDataPODetail);
+            }
+        }
+
+        private void modifyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvProdForImport.Rows.Count <= 0) return;
+            int rsl = dgvProdForImport.CurrentRow.Index;
+
+            Guid prodId_OfdgvProdForImport = Guid.Parse(dgvProdForImport.Rows[rsl].Cells[0].Value.ToString());
+            Int32 qtyOfModify = Int32.Parse(dgvProdForImport.Rows[rsl].Cells[12].Value.ToString());
+            string prodName = dgvProdForImport.Rows[rsl].Cells[1].Value.ToString();
+
+            frmUpdateImportedProduct frmUpdateImportedProduct = new frmUpdateImportedProduct(prodId_OfdgvProdForImport, qtyOfModify, prodName);
+            frmUpdateImportedProduct.ShowDialog();
+
+            if (!frmUpdateImportedProduct.IsUpdated)
+            {
+                return;
+            }
+            foreach (var item in frmUpdateImportedProduct.ListUpdateImportProd)
+            {
+                var pArr = item.Split('|');
+                DataRow dataRow = dtProdForImport.NewRow();
+                dataRow[0] = Guid.Parse(pArr[0]);// ProdID
+                dataRow[1] = dgvProdForImport.Rows[rsl].Cells[1].Value.ToString().Trim();
+                dataRow[2] = dgvProdForImport.Rows[rsl].Cells[2].Value.ToString().Trim().ToUpper();
+                dataRow[3] = "";
+                dataRow[4] = dgvProdForImport.Rows[rsl].Cells[4].Value.ToString().Trim().ToUpper();
+                dataRow[5] = dgvProdForImport.Rows[rsl].Cells[5].Value.ToString().Trim();
+                dataRow[6] = (dgvProdForImport.Rows[rsl].Cells[6].Value.ToString().Trim());
+                dataRow[7] = (dgvProdForImport.Rows[rsl].Cells[7].Value.ToString().Trim());
+                dataRow[8] = (dgvProdForImport.Rows[rsl].Cells[8].Value.ToString().Trim());
+                dataRow[9] = (dgvProdForImport.Rows[rsl].Cells[9].Value.ToString().Trim());
+                dataRow[10] = (dgvProdForImport.Rows[rsl].Cells[10].Value.ToString().Trim());
+                dataRow[11] = (dgvProdForImport.Rows[rsl].Cells[11].Value.ToString().Trim());
+                dataRow[12] = Int32.Parse(pArr[1]);// Qty
+                dataRow[13] = pArr[2]; // 
+                dataRow[14] = Guid.Parse(pArr[3]); // Warehouse Id
+
+                dtProdForImport.Rows.Add(dataRow);
+            }
+
+            dgvProdForImport.Rows.RemoveAt(rsl);
+
+            UpdateFooter();
+            UpdateFooterOfPoDetail();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvProdForImport_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dgvProdForImport.Rows.Count <= 0)
+            {
+                return;
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                int rowSelected = e.RowIndex;
+                if (e.RowIndex != -1)
+                {
+                    this.dgvProdForImport.ClearSelection();
+                    this.dgvProdForImport.Rows[rowSelected].Selected = true;
+                }
+            }
         }
     }
 }

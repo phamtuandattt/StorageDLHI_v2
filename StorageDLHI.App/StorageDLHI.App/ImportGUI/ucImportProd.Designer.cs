@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.kryptonNavigator1 = new ComponentFactory.Krypton.Navigator.KryptonNavigator();
             this.pagePOs = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.kryptonPanel7 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -55,12 +56,15 @@
             this.Column53 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column54 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.tlsReloadImportList = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.txtSearchImportList = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tlsSearchDateForImports = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.lblDateTimeSeacrh = new System.Windows.Forms.ToolStripLabel();
+            this.tlsClearSeacrhDate = new System.Windows.Forms.ToolStripButton();
             this.pageAddPO = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -126,18 +130,20 @@
             this.QTY_PROD_FOR_IMPORT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ctmUpdateProductImport = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvFooter = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tlsPONo = new System.Windows.Forms.ToolStripLabel();
-            this.tlsReloadImportList = new System.Windows.Forms.ToolStripButton();
-            this.tlsSearchDateForImports = new System.Windows.Forms.ToolStripButton();
-            this.tlsClearSeacrhDate = new System.Windows.Forms.ToolStripButton();
             this.btnClearProdsOfImport = new System.Windows.Forms.ToolStripButton();
             this.btnAddImport = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.btnReload = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAddAllProdToImport = new System.Windows.Forms.ToolStripButton();
+            this.tlsPONo = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.tlsSearchPOs = new System.Windows.Forms.ToolStripTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pagePOs)).BeginInit();
@@ -190,6 +196,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel6)).BeginInit();
             this.kryptonPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdForImport)).BeginInit();
+            this.ctmUpdateProductImport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFooter)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.toolStrip3.SuspendLayout();
@@ -205,7 +212,7 @@
             this.kryptonNavigator1.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
             this.pagePOs,
             this.pageAddPO});
-            this.kryptonNavigator1.SelectedIndex = 0;
+            this.kryptonNavigator1.SelectedIndex = 1;
             this.kryptonNavigator1.Size = new System.Drawing.Size(1355, 748);
             this.kryptonNavigator1.StateCommon.Panel.Color1 = System.Drawing.Color.White;
             this.kryptonNavigator1.StateCommon.Panel.Color2 = System.Drawing.Color.White;
@@ -505,6 +512,16 @@
             this.toolStrip2.TabIndex = 5;
             this.toolStrip2.Text = "toolStrip2";
             // 
+            // tlsReloadImportList
+            // 
+            this.tlsReloadImportList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsReloadImportList.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.tlsReloadImportList.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsReloadImportList.Name = "tlsReloadImportList";
+            this.tlsReloadImportList.Size = new System.Drawing.Size(29, 24);
+            this.tlsReloadImportList.Text = "Refresh";
+            this.tlsReloadImportList.Click += new System.EventHandler(this.tlsReloadImportList_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -529,6 +546,16 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
             // 
+            // tlsSearchDateForImports
+            // 
+            this.tlsSearchDateForImports.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsSearchDateForImports.Image = global::StorageDLHI.App.Properties.Resources.search;
+            this.tlsSearchDateForImports.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsSearchDateForImports.Name = "tlsSearchDateForImports";
+            this.tlsSearchDateForImports.Size = new System.Drawing.Size(29, 24);
+            this.tlsSearchDateForImports.Text = "Seacrch date";
+            this.tlsSearchDateForImports.Click += new System.EventHandler(this.tlsSearchDateForImports_Click);
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
@@ -538,6 +565,17 @@
             // 
             this.lblDateTimeSeacrh.Name = "lblDateTimeSeacrh";
             this.lblDateTimeSeacrh.Size = new System.Drawing.Size(0, 24);
+            // 
+            // tlsClearSeacrhDate
+            // 
+            this.tlsClearSeacrhDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsClearSeacrhDate.Image = global::StorageDLHI.App.Properties.Resources.clean;
+            this.tlsClearSeacrhDate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsClearSeacrhDate.Name = "tlsClearSeacrhDate";
+            this.tlsClearSeacrhDate.Size = new System.Drawing.Size(29, 24);
+            this.tlsClearSeacrhDate.Text = "Clear";
+            this.tlsClearSeacrhDate.Visible = false;
+            this.tlsClearSeacrhDate.Click += new System.EventHandler(this.tlsClearSeacrhDate_Click);
             // 
             // pageAddPO
             // 
@@ -1103,6 +1141,7 @@
             this.QTY_PROD_FOR_IMPORT,
             this.Column2,
             this.Column29});
+            this.dgvProdForImport.ContextMenuStrip = this.ctmUpdateProductImport;
             this.dgvProdForImport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProdForImport.Location = new System.Drawing.Point(0, 0);
             this.dgvProdForImport.Name = "dgvProdForImport";
@@ -1113,6 +1152,7 @@
             this.dgvProdForImport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProdForImport.Size = new System.Drawing.Size(1343, 248);
             this.dgvProdForImport.TabIndex = 3;
+            this.dgvProdForImport.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProdForImport_CellMouseDown);
             this.dgvProdForImport.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvProdForImport_ColumnWidthChanged);
             this.dgvProdForImport.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvProdForImport_DataBindingComplete);
             this.dgvProdForImport.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvProdForImport_RowPostPaint);
@@ -1239,6 +1279,30 @@
             this.Column29.Name = "Column29";
             this.Column29.ReadOnly = true;
             // 
+            // ctmUpdateProductImport
+            // 
+            this.ctmUpdateProductImport.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ctmUpdateProductImport.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.ctmUpdateProductImport.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modifyToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.ctmUpdateProductImport.Name = "ctmUpdateProductImport";
+            this.ctmUpdateProductImport.Size = new System.Drawing.Size(126, 52);
+            // 
+            // modifyToolStripMenuItem
+            // 
+            this.modifyToolStripMenuItem.Name = "modifyToolStripMenuItem";
+            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(125, 24);
+            this.modifyToolStripMenuItem.Text = "Modify";
+            this.modifyToolStripMenuItem.Click += new System.EventHandler(this.modifyToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(125, 24);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
             // dgvFooter
             // 
             this.dgvFooter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -1267,71 +1331,12 @@
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
-            // toolStrip3
-            // 
-            this.toolStrip3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnReload,
-            this.toolStripSeparator1,
-            this.btnAddAllProdToImport,
-            this.tlsPONo});
-            this.toolStrip3.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip3.Size = new System.Drawing.Size(1353, 27);
-            this.toolStrip3.TabIndex = 5;
-            this.toolStrip3.Text = "toolStrip3";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
-            // 
-            // tlsPONo
-            // 
-            this.tlsPONo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tlsPONo.Name = "tlsPONo";
-            this.tlsPONo.Size = new System.Drawing.Size(18, 28);
-            this.tlsPONo.Text = "...";
-            // 
-            // tlsReloadImportList
-            // 
-            this.tlsReloadImportList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsReloadImportList.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.tlsReloadImportList.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsReloadImportList.Name = "tlsReloadImportList";
-            this.tlsReloadImportList.Size = new System.Drawing.Size(29, 24);
-            this.tlsReloadImportList.Text = "Refresh";
-            this.tlsReloadImportList.Click += new System.EventHandler(this.tlsReloadImportList_Click);
-            // 
-            // tlsSearchDateForImports
-            // 
-            this.tlsSearchDateForImports.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsSearchDateForImports.Image = global::StorageDLHI.App.Properties.Resources.search;
-            this.tlsSearchDateForImports.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsSearchDateForImports.Name = "tlsSearchDateForImports";
-            this.tlsSearchDateForImports.Size = new System.Drawing.Size(29, 24);
-            this.tlsSearchDateForImports.Text = "Seacrch date";
-            this.tlsSearchDateForImports.Click += new System.EventHandler(this.tlsSearchDateForImports_Click);
-            // 
-            // tlsClearSeacrhDate
-            // 
-            this.tlsClearSeacrhDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsClearSeacrhDate.Image = global::StorageDLHI.App.Properties.Resources.clean;
-            this.tlsClearSeacrhDate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsClearSeacrhDate.Name = "tlsClearSeacrhDate";
-            this.tlsClearSeacrhDate.Size = new System.Drawing.Size(29, 24);
-            this.tlsClearSeacrhDate.Text = "Clear";
-            this.tlsClearSeacrhDate.Visible = false;
-            this.tlsClearSeacrhDate.Click += new System.EventHandler(this.tlsClearSeacrhDate_Click);
-            // 
             // btnClearProdsOfImport
             // 
             this.btnClearProdsOfImport.Image = global::StorageDLHI.App.Properties.Resources.bin;
             this.btnClearProdsOfImport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnClearProdsOfImport.Name = "btnClearProdsOfImport";
-            this.btnClearProdsOfImport.Size = new System.Drawing.Size(87, 28);
+            this.btnClearProdsOfImport.Size = new System.Drawing.Size(87, 24);
             this.btnClearProdsOfImport.Text = "Clear all";
             this.btnClearProdsOfImport.Click += new System.EventHandler(this.btnClearProdsOfImport_Click);
             // 
@@ -1340,9 +1345,27 @@
             this.btnAddImport.Image = global::StorageDLHI.App.Properties.Resources.right;
             this.btnAddImport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAddImport.Name = "btnAddImport";
-            this.btnAddImport.Size = new System.Drawing.Size(86, 28);
+            this.btnAddImport.Size = new System.Drawing.Size(86, 24);
             this.btnAddImport.Text = "Confirm";
             this.btnAddImport.Click += new System.EventHandler(this.btnAddImport_Click);
+            // 
+            // toolStrip3
+            // 
+            this.toolStrip3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnReload,
+            this.toolStripSeparator1,
+            this.btnAddAllProdToImport,
+            this.tlsPONo,
+            this.toolStripLabel2,
+            this.tlsSearchPOs});
+            this.toolStrip3.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip3.Name = "toolStrip3";
+            this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip3.Size = new System.Drawing.Size(1353, 27);
+            this.toolStrip3.TabIndex = 5;
+            this.toolStrip3.Text = "toolStrip3";
             // 
             // btnReload
             // 
@@ -1350,9 +1373,14 @@
             this.btnReload.Image = global::StorageDLHI.App.Properties.Resources.refresh;
             this.btnReload.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(29, 28);
+            this.btnReload.Size = new System.Drawing.Size(29, 24);
             this.btnReload.Text = "Refresh";
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // btnAddAllProdToImport
             // 
@@ -1360,10 +1388,30 @@
             this.btnAddAllProdToImport.Image = global::StorageDLHI.App.Properties.Resources.mark;
             this.btnAddAllProdToImport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAddAllProdToImport.Name = "btnAddAllProdToImport";
-            this.btnAddAllProdToImport.Size = new System.Drawing.Size(223, 28);
+            this.btnAddAllProdToImport.Size = new System.Drawing.Size(223, 24);
             this.btnAddAllProdToImport.Text = "Add all product to create PO";
             this.btnAddAllProdToImport.Visible = false;
             this.btnAddAllProdToImport.Click += new System.EventHandler(this.btnAddAllProdToImport_Click);
+            // 
+            // tlsPONo
+            // 
+            this.tlsPONo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tlsPONo.Name = "tlsPONo";
+            this.tlsPONo.Size = new System.Drawing.Size(18, 24);
+            this.tlsPONo.Text = "...";
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(56, 24);
+            this.toolStripLabel2.Text = "Search:";
+            // 
+            // tlsSearchPOs
+            // 
+            this.tlsSearchPOs.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tlsSearchPOs.Name = "tlsSearchPOs";
+            this.tlsSearchPOs.Size = new System.Drawing.Size(200, 27);
+            this.tlsSearchPOs.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tlsSearchPOs_KeyUp);
             // 
             // ucImportProd
             // 
@@ -1428,6 +1476,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel6)).EndInit();
             this.kryptonPanel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdForImport)).EndInit();
+            this.ctmUpdateProductImport.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFooter)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -1549,5 +1598,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column53;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column54;
         private System.Windows.Forms.ToolStripButton tlsClearSeacrhDate;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripTextBox tlsSearchPOs;
+        private System.Windows.Forms.ContextMenuStrip ctmUpdateProductImport;
+        private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }

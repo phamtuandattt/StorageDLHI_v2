@@ -108,6 +108,18 @@
     <Compile Include="ImportGUI\frmImportForWarehouse.Designer.cs">
       <DependentUpon>frmImportForWarehouse.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImportGUI\frmUpdateImportedProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportGUI\frmUpdateImportedProduct.Designer.cs">
+      <DependentUpon>frmUpdateImportedProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportGUI\frmUpdateQtyImportForWarehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportGUI\frmUpdateQtyImportForWarehouse.Designer.cs">
+      <DependentUpon>frmUpdateQtyImportForWarehouse.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImportGUI\ucImportProd.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -223,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ImportGUI\frmImportForWarehouse.resx">
       <DependentUpon>frmImportForWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportGUI\frmUpdateImportedProduct.resx">
+      <DependentUpon>frmUpdateImportedProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImportGUI\ucImportProd.resx">
       <DependentUpon>ucImportProd.cs</DependentUpon>
