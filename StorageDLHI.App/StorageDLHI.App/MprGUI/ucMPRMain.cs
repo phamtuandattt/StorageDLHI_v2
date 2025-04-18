@@ -52,7 +52,7 @@ namespace StorageDLHI.App.MprGUI
             dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_F);
             dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_G);
             dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_UNIT_CODE);
-            dtProdsOfMprs.Columns.Add("QTY");
+            dtProdsOfMprs.Columns.Add("QTY", typeof(Int32));
             dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_USAGE);
 
             dgvProdExistMpr.DataSource = dtProdsOfMprs;
@@ -544,6 +544,16 @@ namespace StorageDLHI.App.MprGUI
 
                 e.Handled = true;
             }
+        }
+
+        private void dgvProdExistMpr_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvProdExistMpr.Columns["QTY_PROD_OF_MPRS"].DefaultCellStyle.Format = "N0";
+        }
+
+        private void dgvMPRDetail_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvMPRDetail.Columns["MPR_QTY"].DefaultCellStyle.Format = "N0";
         }
     }
 }

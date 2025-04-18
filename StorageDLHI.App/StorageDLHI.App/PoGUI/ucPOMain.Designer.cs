@@ -323,7 +323,6 @@
             this.dgvPODetail.ReadOnly = true;
             this.dgvPODetail.RowHeadersWidth = 51;
             this.dgvPODetail.RowTemplate.Height = 30;
-            this.dgvPODetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPODetail.Size = new System.Drawing.Size(1547, 359);
             this.dgvPODetail.TabIndex = 3;
             this.dgvPODetail.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvPODetail_DataBindingComplete);
@@ -503,7 +502,6 @@
             this.dgvPOList.ReadOnly = true;
             this.dgvPOList.RowHeadersWidth = 51;
             this.dgvPOList.RowTemplate.Height = 30;
-            this.dgvPOList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPOList.Size = new System.Drawing.Size(1547, 256);
             this.dgvPOList.TabIndex = 2;
             this.dgvPOList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPOList_CellClick);
@@ -854,7 +852,6 @@
             this.dgvMPRs.ReadOnly = true;
             this.dgvMPRs.RowHeadersWidth = 51;
             this.dgvMPRs.RowTemplate.Height = 30;
-            this.dgvMPRs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMPRs.Size = new System.Drawing.Size(567, 301);
             this.dgvMPRs.TabIndex = 2;
             this.dgvMPRs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMPRs_CellClick);
@@ -1010,7 +1007,6 @@
             this.dgvMPRDetail.ReadOnly = true;
             this.dgvMPRDetail.RowHeadersWidth = 51;
             this.dgvMPRDetail.RowTemplate.Height = 30;
-            this.dgvMPRDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMPRDetail.Size = new System.Drawing.Size(964, 301);
             this.dgvMPRDetail.TabIndex = 3;
             this.dgvMPRDetail.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMPRDetail_CellDoubleClick);
@@ -1233,7 +1229,6 @@
             this.dgvProdOfPO.ReadOnly = true;
             this.dgvProdOfPO.RowHeadersWidth = 51;
             this.dgvProdOfPO.RowTemplate.Height = 30;
-            this.dgvProdOfPO.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProdOfPO.Size = new System.Drawing.Size(1547, 245);
             this.dgvProdOfPO.TabIndex = 3;
             this.dgvProdOfPO.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProdOfPO_CellMouseDown);

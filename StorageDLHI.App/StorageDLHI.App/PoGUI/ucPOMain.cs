@@ -157,7 +157,13 @@ namespace StorageDLHI.App.PoGUI
                 {
                     dgvMPRDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId));
                 }
-
+                Common.Common.HideNoDataPanel(pnNoDataMprs);
+                Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
+            }
+            else
+            {
+                Common.Common.ShowNoDataPanel(dgvMPRs, pnNoDataMprs);
+                Common.Common.ShowNoDataPanel(dgvMPRDetail, pnNoDataMprsDetail);
             }
         }
 

@@ -206,6 +206,7 @@
             this.dgvWarehose.Size = new System.Drawing.Size(405, 683);
             this.dgvWarehose.TabIndex = 2;
             this.dgvWarehose.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWarehose_CellClick);
+            this.dgvWarehose.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvWarehose_RowPostPaint);
             // 
             // kryptonGroupBox2
             // 
@@ -253,6 +254,8 @@
             this.dgvRemaningGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRemaningGoods.Size = new System.Drawing.Size(960, 683);
             this.dgvRemaningGoods.TabIndex = 3;
+            this.dgvRemaningGoods.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvRemaningGoods_DataBindingComplete);
+            this.dgvRemaningGoods.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvRemaningGoods_RowPostPaint);
             // 
             // toolStrip2
             // 

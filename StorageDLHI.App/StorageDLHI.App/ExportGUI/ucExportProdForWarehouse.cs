@@ -61,7 +61,7 @@ namespace StorageDLHI.App.ExportGUI
 
         private void tlsReload_Click(object sender, EventArgs e)
         {
-
+            LoadData();
         }
 
         private void dgvWarehose_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -69,6 +69,21 @@ namespace StorageDLHI.App.ExportGUI
             if (dgvWarehose.Rows.Count <= 0) { return; }
             int rsl = dgvWarehose.CurrentRow.Index;
             LoadDetailByWId(rsl);
+        }
+
+        private void dgvWarehose_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Common.Common.RenderNumbering(sender, e, this.Font);
+        }
+
+        private void dgvRemaningGoods_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Common.Common.RenderNumbering(sender, e, this.Font);
+        }
+
+        private void dgvRemaningGoods_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvRemaningGoods.Columns["PRODUCT_IN_STOCK"].DefaultCellStyle.Format = "N0";
         }
     }
 }
