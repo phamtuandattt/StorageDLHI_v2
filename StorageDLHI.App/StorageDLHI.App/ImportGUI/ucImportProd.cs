@@ -4,6 +4,7 @@ using StorageDLHI.App.PoGUI;
 using StorageDLHI.BLL.ImportDAO;
 using StorageDLHI.BLL.MprDAO;
 using StorageDLHI.BLL.PoDAO;
+using StorageDLHI.BLL.WarehouseDAO;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
 using StorageDLHI.Infrastructor.Caches;
@@ -32,6 +33,9 @@ namespace StorageDLHI.App.ImportGUI
         private DataTable dtProdForImportForUpdateDB = new DataTable();
         private DataTable dtImportProducts = new DataTable();
         private DataTable dtImportProductDetailById = new DataTable();
+        private DataTable dtWarehouseDetail = new DataTable();
+        //DataTable dtWarehouseDetail = new DataTable();
+
 
         private DataTable dtPoDetailCoppy = new DataTable();
         private DataGridViewRow rowClonePODetail = new DataGridViewRow();
@@ -50,6 +54,23 @@ namespace StorageDLHI.App.ImportGUI
         public ucImportProd()
         {
             InitializeComponent();
+            // -----------------------------------------------------
+            var ucF = new ucPanelNoData("No records found");
+            pnlNoDataImport = ucF.pnlNoData;
+            this.dgvImports.Controls.Add(pnlNoDataImport);
+
+            var ucS = new ucPanelNoData("No records found");
+            pnlNoDataImportDetail = ucS.pnlNoData;
+            this.dgvImportDetail.Controls.Add(pnlNoDataImportDetail);
+
+            var ucP = new ucPanelNoData("No records found");
+            pnlNoDataPOList = ucP.pnlNoData;
+            this.dgvPOs.Controls.Add(pnlNoDataPOList);
+
+            var ucPdetail = new ucPanelNoData("No records found");
+            pnlNoDataPODetail = ucPdetail.pnlNoData;
+            this.dgvPO_Detail.Controls.Add(pnlNoDataPODetail);
+
             LoadData();
 
             // Create columns DataTable ProdForImport
@@ -75,26 +96,16 @@ namespace StorageDLHI.App.ImportGUI
             UpdateFooterOfPoDetail();
 
             dtProdForImportForUpdateDB = ImportProductDAO.GetImportProductDetailForm();
-            
+            //dtWarehouseDetail = WarehouseDAO.GetWarehouseDetailForm();
+            dtWarehouseDetail.Columns.Add("ID", typeof(Guid));
+            dtWarehouseDetail.Columns.Add("WAREHOUSE_ID", typeof(Guid));
+            dtWarehouseDetail.Columns.Add("PRODUCT_ID", typeof(Guid));
+            dtWarehouseDetail.Columns.Add("PRODUCT_IN_STOCK", typeof(int));
 
-            // -----------------------------------------------------
-            var ucF = new ucPanelNoData("No records found");
-            pnlNoDataImport = ucF.pnlNoData;
-            this.dgvImports.Controls.Add(pnlNoDataImport);
-
-            var ucS = new ucPanelNoData("No records found");
-            pnlNoDataImportDetail = ucS.pnlNoData;
-            this.dgvImportDetail.Controls.Add(pnlNoDataImportDetail);
-
-            var ucP = new ucPanelNoData("No records found");
-            pnlNoDataPOList = ucP.pnlNoData;
-            this.dgvPOs.Controls.Add(pnlNoDataPOList);
-
-            var ucPdetail = new ucPanelNoData("No records found");
-            pnlNoDataPODetail = ucPdetail.pnlNoData;
-            this.dgvPO_Detail.Controls.Add(pnlNoDataPODetail);
-
-             rowClonePODetail = (DataGridViewRow)dgvPO_Detail.Rows[0].Clone();
+            if (dgvPO_Detail.Rows.Count > 0)
+            {
+                rowClonePODetail = (DataGridViewRow)dgvPO_Detail.Rows[0].Clone();
+            }   
         }
 
 
@@ -161,6 +172,7 @@ namespace StorageDLHI.App.ImportGUI
             else
             {
                 Common.Common.ShowNoDataPanel(dgvPOs, pnlNoDataPOList);
+                Common.Common.ShowNoDataPanel(dgvPO_Detail, pnlNoDataPODetail);
             }
         }
 
@@ -223,10 +235,23 @@ namespace StorageDLHI.App.ImportGUI
                 dtProdForImportForUpdateDB.Rows.Add(newRow);
             }
 
+            // Import prod into warehouse
+            foreach (DataRow item in dtProdForImport.Rows)
+            {
+                DataRow dataRow = dtWarehouseDetail.NewRow();
+                dataRow[0] = Guid.NewGuid();
+                dataRow[1] = item[14];
+                dataRow[2] = item[0];
+                dataRow[3] = item[12];
+
+                dtWarehouseDetail.Rows.Add(dataRow);
+            }
+
             if (ImportProductDAO.Insert(import_Products))
             {
-                if (ImportProductDAO.InsertImportProdDetail(dtProdForImportForUpdateDB) &&
-                    PoDAO.UpdateIsImportedForPO(true, Guid.Parse(dgvPOs.Rows[dgvPOs.CurrentRow.Index].Cells[0].Value.ToString())))
+                if (ImportProductDAO.InsertImportProdDetail(dtProdForImportForUpdateDB) 
+                    && WarehouseDAO.InsertProdIntoWarehouseDetail(dtWarehouseDetail)
+                    && PoDAO.UpdateIsImportedForPO(true, Guid.Parse(dgvPOs.Rows[dgvPOs.CurrentRow.Index].Cells[0].Value.ToString())))
                 {
                     MessageBoxHelper.ShowInfo("Successfully imported goods to warehouses");
                 }
@@ -255,6 +280,7 @@ namespace StorageDLHI.App.ImportGUI
             dgvPOs.DataSource = dtPos;
 
             CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, ImportProductDAO.GetImportProducts());
+            CacheManager.Add(CacheKeys.WAREHOUSE_DATATABLE_ALL, WarehouseDAO.GetWarehouses());
             LoadData();
         }
 

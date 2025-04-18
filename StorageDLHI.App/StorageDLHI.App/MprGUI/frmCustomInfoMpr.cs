@@ -3,12 +3,14 @@ using StorageDLHI.App.Common;
 using StorageDLHI.BLL.MprDAO;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
+using StorageDLHI.Infrastructor.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -74,6 +76,8 @@ namespace StorageDLHI.App.MprGUI
                     Mpr_Prepared = txtPrepared.Text.Trim(),
                     Mpr_Reviewed = txtReviewed.Text.Trim(),
                     Mpr_Approved = txtApproved.Text.Trim(),
+                    Staff_Id = ShareData.UserId,
+                    IsMakePO = false,
                 };
 
                 foreach (DataRow dr in dtProdOfMpr.Rows)

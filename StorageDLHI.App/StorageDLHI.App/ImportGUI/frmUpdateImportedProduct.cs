@@ -95,8 +95,8 @@ namespace StorageDLHI.App.ImportGUI
                 }
             }
             prodAdded.Add(prodString);
-            this.dgvImportFor.Rows.Add(this.prodId, txtProdName.Text.Trim(), txtQtyImport.Text.Trim(), 
-                    cboWarehouse.Text.Trim(), cboWarehouse.SelectedValue.ToString());
+            this.dgvImportFor.Rows.Add(this.prodId, txtProdName.Text.Trim(), Int32.Parse(txtQtyImport.Value.ToString().Trim()), 
+                    cboWarehouse.Text.Trim(), Guid.Parse(cboWarehouse.SelectedValue.ToString()));
             UpdateQtyRemaining(true, 0);
         }
 
@@ -109,8 +109,8 @@ namespace StorageDLHI.App.ImportGUI
             }
             foreach (DataGridViewRow item in dgvImportFor.Rows)
             {
-                var prodInfo = this.prodId + "|" + item.Cells[2].Value.ToString() +
-                    "|" + item.Cells[3].Value.ToString() + "|" + item.Cells[4].Value.ToString();
+                var prodInfo = this.prodId + "|" + Int32.Parse(item.Cells[2].Value.ToString()) +
+                    "|" + item.Cells[3].Value.ToString() + "|" + Guid.Parse(item.Cells[4].Value.ToString());
                 ListUpdateImportProd.Add(prodInfo);
             }
 

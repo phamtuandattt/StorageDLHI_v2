@@ -70,6 +70,34 @@ namespace StorageDLHI.DAL.DataProvider
             }
         }
 
+        public int UpdateRowExistOfTabl(string procName, string parameterString, string typeName, DataTable tableUpdate, string resultCode)
+        {
+            using (var cmd = new SqlCommand(procName, _connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                var paramTable = new SqlParameter($"@{parameterString}", SqlDbType.Structured)
+                {
+                    TypeName = $"dbo.{typeName}",
+                    Value = tableUpdate
+                };
+
+                var paramResultCode = new SqlParameter($"@{resultCode}", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+
+                cmd.Parameters.Add(paramTable);
+                cmd.Parameters.Add(paramResultCode);
+
+                _connection.Open();
+                cmd.ExecuteNonQuery();
+                _connection.Close();
+                // ✅ Return the result value from SQL
+                return (int)paramResultCode.Value;
+            }
+        }
+
         public int Insert(string sqlQuery)
         {
             try

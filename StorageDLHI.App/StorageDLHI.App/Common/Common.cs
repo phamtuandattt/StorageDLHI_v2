@@ -5,6 +5,7 @@ using StorageDLHI.BLL.MprDAO;
 using StorageDLHI.BLL.PoDAO;
 using StorageDLHI.BLL.ProductDAO;
 using StorageDLHI.BLL.SupplierDAO;
+using StorageDLHI.BLL.WarehouseDAO;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
 using StorageDLHI.Infrastructor.Caches;
@@ -40,7 +41,8 @@ namespace StorageDLHI.App.Common
             CacheManager.Add(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER, SupplierDAO.GetSuppliers());
             CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, PoDAO.GetPOs());
             CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, MprDAO.GetMprsForMakePO());
-            
+            CacheManager.Add(CacheKeys.WAREHOUSE_DATATABLE_ALL, WarehouseDAO.GetWarehouses());
+
         }
         public static void ShowNoDataPanel(DataGridView dgvMain, Panel pnlNoData)
         {

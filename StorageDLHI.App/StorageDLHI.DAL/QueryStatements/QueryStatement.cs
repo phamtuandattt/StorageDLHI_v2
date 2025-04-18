@@ -100,7 +100,7 @@ namespace StorageDLHI.DAL.QueryStatements
         // MPRs
         public const string GET_MPR_DETAILs = "SELECT *FROM MPR_DETAIL";
         //public const string GET_MPR_DETAIL_BY_MPR_ID = "SELECT *FROM MPR_DETAIL WHERE MPR_ID = '{0}'";
-        public const string ADD_MPR = "SET DATEFORMAT DMY INSERT INTO MPRS (ID, MPR_NO, MPR_WO_NO, MPR_PROJECT_NAME, MPR_REV_TOTAL, \r\nMPR_CREATE_DATE, MPR_EXPECTED_DELIVERY_DATE, MPR_PREPARED, MPR_REVIEWED, MPR_APPROVED)\r\nVALUES ('{0}', '{1}', '{2}', '{3}', N'{4}', N'{5}', N'{6}', N'{7}', '{8}', '{9}')";
+        public const string ADD_MPR = "SET DATEFORMAT DMY INSERT INTO MPRS (ID, MPR_NO, MPR_WO_NO, MPR_PROJECT_NAME, MPR_REV_TOTAL, \r\nMPR_CREATE_DATE, MPR_EXPECTED_DELIVERY_DATE, MPR_PREPARED, MPR_REVIEWED, MPR_APPROVED, STAFF_ID, IS_MAKE_PO)\r\nVALUES ('{0}', '{1}', '{2}', '{3}', N'{4}', N'{5}', N'{6}', N'{7}', '{8}', '{9}', '{10}', '{11}')";
         public const string ADD_MPR_DETAIL = "";
         public const string DELETE_MPR = "DELETE FROM MPRS WHERE ID = '{0}'";
         public const string GET_MPR_DETAIL_FORM = "SELECT *FROM MPR_DETAIL WHERE ID = '00000000-0000-0000-0000-000000000000'";
@@ -144,6 +144,17 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_WAREHOUSE_NAME = "WAREHOUSE_NAME";
         public const string PROPERTY_WAREHOUSE_ID = "ID";
         public const string GET_WAREHOUSE_FOR_CBO = "SELECT  ID, WAREHOUSE_NAME FROM WAREHOUSES";
+        public const string GET_WAREHOUSE_DETAIL_FORM = "SELECT *FROM WAREHOUSE_DETAIL WHERE ID = '00000000-0000-0000-0000-000000000000'";
+        public const string GET_WAREHOUSE_DETAILS = "SELECT *FROM WAREHOUSE_DETAIL";
+        public const string GET_WAREHOUSE_DETAIL_BY_WAREHOUSE_ID = "EXEC GET_WAREHOUSE_DETAILBY_ID '{0}'";
+        public const string GET_WAREHOUSES = "SELECT *FROM WAREHOUSES";
+        public const string UPDATE_OR_ADD_PRODUCT_EXIST_WAREHOUES = "UpdateWarehouseStock";
+        public const string WAREHOUSE_TABLE_TYPE = "WarehouseImportType";
+
+
+        public const string INPUT_FOR_PROC = "Items";
+        public const string OUTPUT_FOR_PROC = "ResultCode";
+
 
         // Import 
         public const string PROPERTY_IMPORT_ID = "";

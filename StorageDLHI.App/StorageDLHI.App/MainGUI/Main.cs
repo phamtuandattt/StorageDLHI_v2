@@ -1,6 +1,7 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using StorageDLHI.App.Common;
 using StorageDLHI.App.Common.CommonGUI;
+using StorageDLHI.App.ExportGUI;
 using StorageDLHI.App.ImportGUI;
 using StorageDLHI.App.MenuGUI.MenuControl;
 using StorageDLHI.App.MprGUI;
@@ -67,7 +68,10 @@ namespace StorageDLHI.App.MainGUI
 
         private void tlsExport_Click(object sender, EventArgs e)
         {
-
+            ucExportProdForWarehouse ucExport = new ucExportProdForWarehouse();
+            ucExport.Dock = DockStyle.Fill;
+            pnMain.Controls.Add(ucExport);
+            ucExport.BringToFront();
         }
 
         private void tlsInventory_Click(object sender, EventArgs e)
@@ -104,6 +108,11 @@ namespace StorageDLHI.App.MainGUI
         {
             frmCustomWarehouse frmCustomWarehouse = new frmCustomWarehouse(TitleManager.WAREHOUSE_ADD, true, new DAL.Models.Warehouses());
             frmCustomWarehouse.ShowDialog();
+        }
+
+        private void reloadCacheToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Common.Common.ReloadAllCache();
         }
     }
 }

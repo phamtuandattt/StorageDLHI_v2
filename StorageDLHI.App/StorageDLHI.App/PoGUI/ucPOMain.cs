@@ -2,6 +2,7 @@
 using StorageDLHI.App.Common;
 using StorageDLHI.App.Common.CommonGUI;
 using StorageDLHI.App.Enums;
+using StorageDLHI.BLL.ImportDAO;
 using StorageDLHI.BLL.MprDAO;
 using StorageDLHI.BLL.PoDAO;
 using StorageDLHI.BLL.ProductDAO;
@@ -47,6 +48,23 @@ namespace StorageDLHI.App.PoGUI
         public ucPOMain()
         {
             InitializeComponent();
+
+            ucPanelNoData ucNoDataMPRs = new ucPanelNoData("All MPR have been Make PO");
+            pnNoDataMprs = ucNoDataMPRs.pnlNoData;
+            dgvMPRs.Controls.Add(pnNoDataMprs);
+
+            ucPanelNoData ucNoDataMPRDetail = new ucPanelNoData("No records found");
+            pnNoDataMprsDetail = ucNoDataMPRDetail.pnlNoData;
+            dgvMPRDetail.Controls.Add(pnNoDataMprsDetail);
+
+            ucPanelNoData ucNoDataPOs = new ucPanelNoData("No records found");
+            pnNoDataPOs = ucNoDataPOs.pnlNoData;
+            dgvPOList.Controls.Add(pnNoDataPOs);
+
+            ucPanelNoData ucNoDataPODetail = new ucPanelNoData("No records found");
+            pnNoDataPODetail = ucNoDataPODetail.pnlNoData;
+            dgvPODetail.Controls.Add(pnNoDataPODetail);
+
             LoadData();
 
             // Create columns DataTable ProdsOfAddPO
@@ -70,23 +88,18 @@ namespace StorageDLHI.App.PoGUI
 
             dgvProdOfPO.DataSource = dtProdsOfAddPO;
 
-            Common.Common.InitializeFooterGrid(dgvProdOfPO, dgvFooter);
+            Common.Common.InitializeFooterGrid(dgvProdOfPO, dgvFooter); 
 
-            ucPanelNoData ucNoDataMPRs = new ucPanelNoData("All MPR have been Make PO");
-            pnNoDataMprs = ucNoDataMPRs.pnlNoData;
-            dgvMPRs.Controls.Add(pnNoDataMprs);
-
-            ucPanelNoData ucNoDataMPRDetail = new ucPanelNoData("No records found");
-            pnNoDataMprsDetail = ucNoDataMPRDetail.pnlNoData;
-            dgvMPRDetail.Controls.Add(pnNoDataMprsDetail);
-
-            ucPanelNoData ucNoDataPOs = new ucPanelNoData("No records found");
-            pnNoDataPOs = ucNoDataPOs.pnlNoData;
-            dgvPOList.Controls.Add(pnNoDataPOs);
-
-            ucPanelNoData ucNoDataPODetail = new ucPanelNoData("No records found");
-            pnNoDataPODetail = ucNoDataPODetail.pnlNoData;
-            dgvPODetail.Controls.Add(pnNoDataPODetail);
+            if (dgvMPRs.Rows.Count <= 0)
+            {
+                Common.Common.ShowNoDataPanel(dgvMPRs, pnNoDataMprs);
+                Common.Common.ShowNoDataPanel(dgvMPRDetail, pnNoDataMprsDetail);
+            }
+            else
+            {
+                Common.Common.HideNoDataPanel(pnNoDataMprs);
+                Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
+            }
         }
 
         private void LoadData()
@@ -131,7 +144,7 @@ namespace StorageDLHI.App.PoGUI
                 dgvMPRs.DataSource = CacheManager.Get<DataTable>(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS);
             }
 
-            if (dtMprs.Rows.Count > 0 && dtMprs != null)
+            if (dtMprs.Rows.Count > 0 && dtMprs != null && dgvMPRs.Rows.Count > 0)
             {
                 var mprId = Guid.Parse(dgvMPRs.Rows[0].Cells[0].Value.ToString());
                 if (!CacheManager.Exists(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId)))
@@ -144,6 +157,7 @@ namespace StorageDLHI.App.PoGUI
                 {
                     dgvMPRDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId));
                 }
+
             }
         }
 
@@ -491,6 +505,8 @@ namespace StorageDLHI.App.PoGUI
             // Update data in cache
             CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, PoDAO.GetPOs());
             CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, MprDAO.GetMprsForMakePO());
+            CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, ImportProductDAO.GetImportProducts());
+
             LoadData();
         }
 

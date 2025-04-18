@@ -35,5 +35,8 @@ namespace StorageDLHI.Infrastructor.Caches
 
         public const string IMPORT_PRODUCT_DATATABLE_ALL = "ImportProduct.DataTable.AllImportProduct";
         public const string IMPORT_PRODUCT_DETIAL_BY_ID = "ImportProduct.Detail.ImportProduct.ID.{0}";
+
+        public const string WAREHOUSE_DATATABLE_ALL = "Warehouse.DataTable.AllWarehouse";
+        public const string WAREHOUSE_DETAIL_BY_ID = "Warehouse.Detail.WarehouseDetail.ID.{0}";
     }
 }
