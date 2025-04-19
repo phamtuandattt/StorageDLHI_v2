@@ -70,7 +70,7 @@ namespace StorageDLHI.DAL.DataProvider
             }
         }
 
-        public int UpdateRowExistOfTabl(string procName, string parameterString, string typeName, DataTable tableUpdate, string resultCode)
+        public int UpdateRowExistOfTable(string procName, string parameterString, string typeName, DataTable tableUpdate, string resultCode)
         {
             using (var cmd = new SqlCommand(procName, _connection))
             {

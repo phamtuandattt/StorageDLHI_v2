@@ -1,4 +1,7 @@
-﻿using StorageDLHI.BLL.WarehouseDAO;
+﻿using StorageDLHI.BLL.ExportDAO;
+using StorageDLHI.BLL.WarehouseDAO;
+using StorageDLHI.DAL.Models;
+using StorageDLHI.DAL.QueryStatements;
 using StorageDLHI.Infrastructor.Caches;
 using System;
 using System.Collections.Generic;
@@ -17,6 +20,8 @@ namespace StorageDLHI.App.ExportGUI
     {
         private DataTable dtWarehouses = new DataTable();
         private DataTable dtWarehouseDetail = new DataTable();
+        private DataTable dtProdExport =  new DataTable();
+        private DataTable dtProdExportUpdateDB = new DataTable();
 
         public ucExportProdForWarehouse()
         {
@@ -24,6 +29,25 @@ namespace StorageDLHI.App.ExportGUI
             LoadData();
 
             Common.Common.InitializeFooterGrid(dgvProdOfExport, dgvFooter);
+
+            dtProdExport.Columns.Add(QueryStatement.PROPERTY_PROD_ID);
+            dtProdExport.Columns.Add(QueryStatement.PROPERTY_PROD_NAME);
+            dtProdExport.Columns.Add(QueryStatement.PROPERTY_PROD_DES_2);
+            dtProdExport.Columns.Add(QueryStatement.PROPERTY_PROD_CODE);
+            dtProdExport.Columns.Add(QueryStatement.PROPERTY_PROD_MATERIAL_CODE);
+            dtProdExport.Columns.Add(QueryStatement.PROPERTY_PROD_A);
+            dtProdExport.Columns.Add(QueryStatement.PROPERTY_PROD_B);
+            dtProdExport.Columns.Add(QueryStatement.PROPERTY_PROD_C);
+            dtProdExport.Columns.Add(QueryStatement.PROPERTY_PROD_D);
+            dtProdExport.Columns.Add(QueryStatement.PROPERTY_PROD_E);
+            dtProdExport.Columns.Add(QueryStatement.PROPERTY_PROD_F);
+            dtProdExport.Columns.Add(QueryStatement.PROPERTY_PROD_G);
+            dtProdExport.Columns.Add("QTY_PROD_FOR_IMPORT", typeof(Int32)); // 12
+            dtProdExport.Columns.Add(QueryStatement.PROPERTY_WAREHOUSE_NAME); // 13
+            dtProdExport.Columns.Add(QueryStatement.PROPERTY_WAREHOUSE_DETAIL_ID); // 14
+            dgvProdOfExport.DataSource = dtProdExport;
+
+            dtProdExportUpdateDB = ExportProductDAO.GetDeliveryDetailForm();
         }
 
         private void LoadData()
@@ -144,17 +168,25 @@ namespace StorageDLHI.App.ExportGUI
             if (dgvRemaningGoods.Rows.Count < 0) { return; }
             int rsl = dgvRemaningGoods.CurrentRow.Index;
 
-            Guid prodId = Guid.Parse(dgvRemaningGoods.Rows[rsl].Cells[1].Value.ToString());
-            string prodName = dgvRemaningGoods.Rows[rsl].Cells[4].Value.ToString();
+            Guid prodId = Guid.Parse(dgvRemaningGoods.Rows[rsl].Cells[2].Value.ToString());
+            string prodName = dgvRemaningGoods.Rows[rsl].Cells[3].Value.ToString();
             Int32 qty = Int32.Parse(dgvRemaningGoods.Rows[rsl].Cells[14].Value.ToString());
 
-            frmExportProduct frmExportProduct = new frmExportProduct(prodId, qty, prodName);
+            var whModel = new Warehouses()
+            {
+                Id = Guid.Parse(dgvWarehose.Rows[dgvWarehose.CurrentRow.Index].Cells[0].Value.ToString()),
+                Warehouse_Name = dgvWarehose.Rows[dgvWarehose.CurrentRow.Index].Cells[2].Value.ToString()
+            };
+
+            frmExportProduct frmExportProduct = new frmExportProduct(prodId, qty, prodName, whModel);
             frmExportProduct.ShowDialog();
 
             if (!frmExportProduct.IsExported)
             {
                 return;
             }
+
+            LoadData();
         }
     }
 }

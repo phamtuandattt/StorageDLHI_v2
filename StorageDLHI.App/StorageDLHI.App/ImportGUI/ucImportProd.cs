@@ -100,7 +100,7 @@ namespace StorageDLHI.App.ImportGUI
             dtWarehouseDetail.Columns.Add("ID", typeof(Guid));
             dtWarehouseDetail.Columns.Add("WAREHOUSE_ID", typeof(Guid));
             dtWarehouseDetail.Columns.Add("PRODUCT_ID", typeof(Guid));
-            dtWarehouseDetail.Columns.Add("PRODUCT_IN_STOCK", typeof(int));
+            dtWarehouseDetail.Columns.Add("PRODUCT_IN_STOCK", typeof(Int32));
 
             if (dgvPO_Detail.Rows.Count > 0)
             {
@@ -250,7 +250,7 @@ namespace StorageDLHI.App.ImportGUI
             if (ImportProductDAO.Insert(import_Products))
             {
                 if (ImportProductDAO.InsertImportProdDetail(dtProdForImportForUpdateDB) 
-                    && WarehouseDAO.InsertProdIntoWarehouseDetail(dtWarehouseDetail)
+                    && WarehouseDAO.UpdateQtyProdOfWarehouse(dtWarehouseDetail)
                     && PoDAO.UpdateIsImportedForPO(true, Guid.Parse(dgvPOs.Rows[dgvPOs.CurrentRow.Index].Cells[0].Value.ToString())))
                 {
                     MessageBoxHelper.ShowInfo("Successfully imported goods to warehouses");

@@ -41,21 +41,6 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kryptonGroupBox2 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.dgvRemaningGoods = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PRODUCT_IN_STOCK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -86,6 +71,21 @@
             this.QTY_PROD_FOR_EXPORT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODE_PROD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.A_THINH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRODUCT_IN_STOCK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pagePOs)).BeginInit();
@@ -162,26 +162,26 @@
             // 
             this.kryptonPanel8.Controls.Add(this.tableLayoutPanel3);
             this.kryptonPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel8.Location = new System.Drawing.Point(0, 31);
+            this.kryptonPanel8.Location = new System.Drawing.Point(0, 27);
             this.kryptonPanel8.Name = "kryptonPanel8";
             this.kryptonPanel8.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonPanel8.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundCustom1;
-            this.kryptonPanel8.Size = new System.Drawing.Size(1385, 713);
+            this.kryptonPanel8.Size = new System.Drawing.Size(1385, 717);
             this.kryptonPanel8.TabIndex = 6;
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.kryptonGroupBox1, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1385, 713);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1385, 717);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // kryptonGroupBox4
@@ -194,7 +194,7 @@
             // kryptonGroupBox4.Panel
             // 
             this.kryptonGroupBox4.Panel.Controls.Add(this.dgvWarehose);
-            this.kryptonGroupBox4.Size = new System.Drawing.Size(407, 344);
+            this.kryptonGroupBox4.Size = new System.Drawing.Size(407, 705);
             this.kryptonGroupBox4.TabIndex = 0;
             this.kryptonGroupBox4.Values.Heading = "Warehouse";
             // 
@@ -217,7 +217,7 @@
             this.dgvWarehose.RowHeadersWidth = 51;
             this.dgvWarehose.RowTemplate.Height = 30;
             this.dgvWarehose.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvWarehose.Size = new System.Drawing.Size(403, 316);
+            this.dgvWarehose.Size = new System.Drawing.Size(403, 677);
             this.dgvWarehose.TabIndex = 2;
             this.dgvWarehose.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWarehose_CellClick);
             this.dgvWarehose.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvWarehose_RowPostPaint);
@@ -264,7 +264,7 @@
             // kryptonGroupBox2.Panel
             // 
             this.kryptonGroupBox2.Panel.Controls.Add(this.dgvRemaningGoods);
-            this.kryptonGroupBox2.Size = new System.Drawing.Size(960, 344);
+            this.kryptonGroupBox2.Size = new System.Drawing.Size(960, 705);
             this.kryptonGroupBox2.TabIndex = 2;
             this.kryptonGroupBox2.Values.Heading = "Remaining goods";
             // 
@@ -279,16 +279,16 @@
             this.Column6,
             this.Column7,
             this.Column8,
+            this.CODE_PROD,
             this.Column9,
             this.Column10,
-            this.Column18,
+            this.A_THINH,
             this.Column11,
             this.Column12,
             this.Column13,
             this.Column14,
             this.Column15,
             this.Column16,
-            this.Column17,
             this.PRODUCT_IN_STOCK});
             this.dgvRemaningGoods.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRemaningGoods.Location = new System.Drawing.Point(0, 0);
@@ -298,132 +298,12 @@
             this.dgvRemaningGoods.RowHeadersWidth = 51;
             this.dgvRemaningGoods.RowTemplate.Height = 30;
             this.dgvRemaningGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRemaningGoods.Size = new System.Drawing.Size(956, 316);
+            this.dgvRemaningGoods.Size = new System.Drawing.Size(956, 677);
             this.dgvRemaningGoods.TabIndex = 3;
             this.dgvRemaningGoods.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRemaningGoods_CellClick);
             this.dgvRemaningGoods.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRemaningGoods_CellDoubleClick);
             this.dgvRemaningGoods.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvRemaningGoods_DataBindingComplete);
             this.dgvRemaningGoods.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvRemaningGoods_RowPostPaint);
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "ID";
-            this.Column5.HeaderText = "ID";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "WAREHOUSE_ID";
-            this.Column6.HeaderText = "WAREHOUSE_ID";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "PRODUCT_ID";
-            this.Column7.HeaderText = "PRODUCT_ID";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "PRODUCT_NAME";
-            this.Column8.HeaderText = "Name";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "PRODUCT_CODE";
-            this.Column9.HeaderText = "Code";
-            this.Column9.MinimumWidth = 6;
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "PRODUCT_DES_2";
-            this.Column10.HeaderText = "Description 2";
-            this.Column10.MinimumWidth = 6;
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // Column18
-            // 
-            this.Column18.DataPropertyName = "PRODUCT_MATERIAL_CODE";
-            this.Column18.HeaderText = "Material";
-            this.Column18.MinimumWidth = 6;
-            this.Column18.Name = "Column18";
-            this.Column18.ReadOnly = true;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "A_THINHNESS";
-            this.Column11.HeaderText = "A_Thinh";
-            this.Column11.MinimumWidth = 6;
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "B_DEPTH";
-            this.Column12.HeaderText = "B_Depth";
-            this.Column12.MinimumWidth = 6;
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            // 
-            // Column13
-            // 
-            this.Column13.DataPropertyName = "C_WIDTH";
-            this.Column13.HeaderText = "C_Width";
-            this.Column13.MinimumWidth = 6;
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            // 
-            // Column14
-            // 
-            this.Column14.DataPropertyName = "D_WEB";
-            this.Column14.HeaderText = "D_Web";
-            this.Column14.MinimumWidth = 6;
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            // 
-            // Column15
-            // 
-            this.Column15.DataPropertyName = "E_FLAG";
-            this.Column15.HeaderText = "E_Flag";
-            this.Column15.MinimumWidth = 6;
-            this.Column15.Name = "Column15";
-            this.Column15.ReadOnly = true;
-            // 
-            // Column16
-            // 
-            this.Column16.DataPropertyName = "F_LENGTH";
-            this.Column16.HeaderText = "F_Length";
-            this.Column16.MinimumWidth = 6;
-            this.Column16.Name = "Column16";
-            this.Column16.ReadOnly = true;
-            // 
-            // Column17
-            // 
-            this.Column17.DataPropertyName = "G_WEIGHT";
-            this.Column17.HeaderText = "G_Weight";
-            this.Column17.MinimumWidth = 6;
-            this.Column17.Name = "Column17";
-            this.Column17.ReadOnly = true;
-            // 
-            // PRODUCT_IN_STOCK
-            // 
-            this.PRODUCT_IN_STOCK.DataPropertyName = "PRODUCT_IN_STOCK";
-            this.PRODUCT_IN_STOCK.HeaderText = "Qty";
-            this.PRODUCT_IN_STOCK.MinimumWidth = 6;
-            this.PRODUCT_IN_STOCK.Name = "PRODUCT_IN_STOCK";
-            this.PRODUCT_IN_STOCK.ReadOnly = true;
             // 
             // toolStrip2
             // 
@@ -442,7 +322,7 @@
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip2.Size = new System.Drawing.Size(1385, 31);
+            this.toolStrip2.Size = new System.Drawing.Size(1385, 27);
             this.toolStrip2.TabIndex = 5;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -532,13 +412,13 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1379, 350);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1379, 711);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // kryptonGroupBox1
             // 
             this.kryptonGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox1.Location = new System.Drawing.Point(3, 359);
+            this.kryptonGroupBox1.Location = new System.Drawing.Point(3, 720);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             this.kryptonGroupBox1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             // 
@@ -546,7 +426,7 @@
             // 
             this.kryptonGroupBox1.Panel.Controls.Add(this.dgvFooter);
             this.kryptonGroupBox1.Panel.Controls.Add(this.dgvProdOfExport);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(1379, 351);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(1379, 1);
             this.kryptonGroupBox1.TabIndex = 4;
             this.kryptonGroupBox1.Values.Heading = "Export list";
             // 
@@ -580,7 +460,7 @@
             this.dgvProdOfExport.RowHeadersWidth = 51;
             this.dgvProdOfExport.RowTemplate.Height = 30;
             this.dgvProdOfExport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdOfExport.Size = new System.Drawing.Size(1375, 323);
+            this.dgvProdOfExport.Size = new System.Drawing.Size(1375, 0);
             this.dgvProdOfExport.TabIndex = 4;
             this.dgvProdOfExport.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvProdOfExport_ColumnWidthChanged);
             this.dgvProdOfExport.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvProdOfExport_DataBindingComplete);
@@ -592,7 +472,7 @@
             this.dgvFooter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFooter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvFooter.Location = new System.Drawing.Point(0, 287);
+            this.dgvFooter.Location = new System.Drawing.Point(0, -36);
             this.dgvFooter.Name = "dgvFooter";
             this.dgvFooter.ReadOnly = true;
             this.dgvFooter.RowHeadersWidth = 51;
@@ -721,6 +601,126 @@
             this.Column29.Name = "Column29";
             this.Column29.ReadOnly = true;
             // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "ID";
+            this.Column5.HeaderText = "ID";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "WAREHOUSE_ID";
+            this.Column6.HeaderText = "WAREHOUSE_ID";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "PRODUCT_ID";
+            this.Column7.HeaderText = "PRODUCT_ID";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "PRODUCT_NAME";
+            this.Column8.HeaderText = "Name";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // CODE_PROD
+            // 
+            this.CODE_PROD.DataPropertyName = "PRODUCT_CODE";
+            this.CODE_PROD.HeaderText = "Code";
+            this.CODE_PROD.MinimumWidth = 6;
+            this.CODE_PROD.Name = "CODE_PROD";
+            this.CODE_PROD.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "PRODUCT_DES_2";
+            this.Column9.HeaderText = "Description 2";
+            this.Column9.MinimumWidth = 6;
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "PRODUCT_MATERIAL_CODE";
+            this.Column10.HeaderText = "Material";
+            this.Column10.MinimumWidth = 6;
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
+            // A_THINH
+            // 
+            this.A_THINH.DataPropertyName = "A_THINHNESS";
+            this.A_THINH.HeaderText = "A_Thinh";
+            this.A_THINH.MinimumWidth = 6;
+            this.A_THINH.Name = "A_THINH";
+            this.A_THINH.ReadOnly = true;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "B_DEPTH";
+            this.Column11.HeaderText = "B_Depth";
+            this.Column11.MinimumWidth = 6;
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "C_WIDTH";
+            this.Column12.HeaderText = "C_Width";
+            this.Column12.MinimumWidth = 6;
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "D_WEB";
+            this.Column13.HeaderText = "D_Web";
+            this.Column13.MinimumWidth = 6;
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "E_FLAG";
+            this.Column14.HeaderText = "E_Flag";
+            this.Column14.MinimumWidth = 6;
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            // 
+            // Column15
+            // 
+            this.Column15.DataPropertyName = "F_LENGTH";
+            this.Column15.HeaderText = "F_Length";
+            this.Column15.MinimumWidth = 6;
+            this.Column15.Name = "Column15";
+            this.Column15.ReadOnly = true;
+            // 
+            // Column16
+            // 
+            this.Column16.DataPropertyName = "G_WEIGHT";
+            this.Column16.HeaderText = "G_Weight";
+            this.Column16.MinimumWidth = 6;
+            this.Column16.Name = "Column16";
+            this.Column16.ReadOnly = true;
+            // 
+            // PRODUCT_IN_STOCK
+            // 
+            this.PRODUCT_IN_STOCK.DataPropertyName = "PRODUCT_IN_STOCK";
+            this.PRODUCT_IN_STOCK.HeaderText = "Qty";
+            this.PRODUCT_IN_STOCK.MinimumWidth = 6;
+            this.PRODUCT_IN_STOCK.Name = "PRODUCT_IN_STOCK";
+            this.PRODUCT_IN_STOCK.ReadOnly = true;
+            // 
             // ucExportProdForWarehouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -789,21 +789,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PRODUCT_IN_STOCK;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox1;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvProdOfExport;
@@ -823,5 +808,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn QTY_PROD_FOR_EXPORT;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CODE_PROD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn A_THINH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PRODUCT_IN_STOCK;
     }
 }

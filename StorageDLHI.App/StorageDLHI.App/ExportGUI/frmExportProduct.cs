@@ -1,6 +1,7 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using StorageDLHI.App.Common;
 using StorageDLHI.BLL.WarehouseDAO;
+using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
 using System;
 using System.Collections.Generic;
@@ -18,21 +19,33 @@ namespace StorageDLHI.App.ExportGUI
     {
         private Guid prodId = Guid.Empty;
         private List<string> prodAdded = new List<string>();
+        private Warehouses warehouse = new Warehouses();
+        private DataTable dtWarehouseDetail = new DataTable();
 
         public bool IsExported { get; set; } = true;
+        
+        public List<string> ListProductExport { get; set; } = new List<string>();
 
         public frmExportProduct()
         {
             InitializeComponent();
         }
 
-        public frmExportProduct(Guid prodId, Int32 qty, string prodName)
+        public frmExportProduct(Guid prodId, Int32 qty, string prodName, Warehouses warehouse)
         {
             InitializeComponent();
             this.prodId = prodId;
             this.Text = "Export product";
+            this.warehouse = warehouse;
+
+            dtWarehouseDetail.Columns.Add("ID", typeof(Guid));
+            dtWarehouseDetail.Columns.Add("WAREHOUSE_ID", typeof(Guid));
+            dtWarehouseDetail.Columns.Add("PRODUCT_ID", typeof(Guid));
+            dtWarehouseDetail.Columns.Add("PRODUCT_IN_STOCK", typeof(Int32));
+
+            lblWarehouse.Text = $"Q'ty of {this.warehouse.Warehouse_Name}:";
             
-            cboWarehouse.DataSource = WarehouseDAO.GetWarehosueForCbo();
+            cboWarehouse.DataSource = WarehouseDAO.GetWarehouseForCboOfExportProd(this.warehouse.Id);
             cboWarehouse.DisplayMember = QueryStatement.PROPERTY_WAREHOUSE_NAME;
             cboWarehouse.ValueMember = QueryStatement.PROPERTY_WAREHOUSE_ID;
 
@@ -86,7 +99,46 @@ namespace StorageDLHI.App.ExportGUI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (dgvExportForWarehouse.Rows.Count <= 0)
+            {
+                MessageBoxHelper.ShowWarning("You have not updated the quantity for Import product. Please update quantity !");
+                return;
+            }
 
+            Int32 totalExport = 0;
+            foreach (DataGridViewRow item in dgvExportForWarehouse.Rows)
+            {
+                DataRow dataRow = dtWarehouseDetail.NewRow();
+                dataRow[0] = Guid.NewGuid();
+                dataRow[1] = Guid.Parse(item.Cells[4].Value.ToString());
+                dataRow[2] = Guid.Parse(item.Cells[0].Value.ToString());
+                dataRow[3] = Int32.Parse(item.Cells[2].Value.ToString());
+                totalExport += Int32.Parse(item.Cells[2].Value.ToString());
+                dtWarehouseDetail.Rows.Add(dataRow);
+            }
+
+            if (dtWarehouseDetail.Rows.Count <= 0)
+            {
+                MessageBoxHelper.ShowWarning("Please add product need to export !");
+                return;
+            }
+
+            var whDetailModel = new Warehouse_Detail()
+            {
+                Warehosue_Id = this.warehouse.Id,
+                ProductId = this.prodId,
+                Product_In_Stock = totalExport
+            };
+
+            if (WarehouseDAO.UpdateQtyProdOfWarehouse(dtWarehouseDetail, whDetailModel))
+            {
+                MessageBoxHelper.ShowInfo("Updated quantity product success !");
+                this.Close();
+            }
+            else
+            {
+                MessageBoxHelper.ShowWarning("Updated quantity product fail !");
+            }
         }
 
         private void UpdateQtyRemaining(bool IsAdd, int rsl)

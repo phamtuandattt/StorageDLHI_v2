@@ -150,7 +150,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_WAREHOUSES = "SELECT *FROM WAREHOUSES";
         public const string UPDATE_OR_ADD_PRODUCT_EXIST_WAREHOUES = "UpdateWarehouseStock";
         public const string WAREHOUSE_TABLE_TYPE = "WarehouseImportType";
-
+        public const string GET_WAREHOUSE_FOR_COMBOBOX_EXPORT_PROD = "SELECT *FROM WAREHOUSES WHERE ID != '{0}'";
+        public const string UPDATE_QTY_OF_PROD_AFTER_EXPORTED = "UPDATE WAREHOUSE_DETAIL SET PRODUCT_IN_STOCK = PRODUCT_IN_STOCK - {0} WHERE WAREHOUSE_ID = '{1}' AND PRODUCT_ID = '{2}'";
 
         public const string INPUT_FOR_PROC = "Items";
         public const string OUTPUT_FOR_PROC = "ResultCode";
@@ -167,5 +168,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_IMPORT_PRODUCT_FROM_PO_NO = "FROM_PO_NO";
         public const string PROPERTY_IMPORT_PRODUCT_IMPORT_DATE = "IMPORT_DATE";
         public const string PROPERTY_IMPORT_PRODUCT_STAFF_NAME = "STAFF_NAME";
+
+        // Export
+        public const string GET_DELIVERY_DETAIL_FORM = "SELECT *FROM DELIVERY_PRODUCT_DETAIL WHERE ID = '00000000-0000-0000-0000-000000000000'";
     }
 }
