@@ -96,6 +96,12 @@
     <Compile Include="Common\ShowDialogManager.cs" />
     <Compile Include="Common\TitleManager.cs" />
     <Compile Include="Enums\En.cs" />
+    <Compile Include="ExportGUI\frmExportProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportGUI\frmExportProduct.Designer.cs">
+      <DependentUpon>frmExportProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExportGUI\ucExportProdForWarehouse.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Common\CommonGUI\ucPanelNoData.resx">
       <DependentUpon>ucPanelNoData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportGUI\frmExportProduct.resx">
+      <DependentUpon>frmExportProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportGUI\ucExportProdForWarehouse.resx">
       <DependentUpon>ucExportProdForWarehouse.cs</DependentUpon>
