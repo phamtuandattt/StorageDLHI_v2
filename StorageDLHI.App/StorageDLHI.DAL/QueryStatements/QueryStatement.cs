@@ -171,5 +171,13 @@ namespace StorageDLHI.DAL.QueryStatements
 
         // Export
         public const string GET_DELIVERY_DETAIL_FORM = "SELECT *FROM DELIVERY_PRODUCT_DETAIL WHERE ID = '00000000-0000-0000-0000-000000000000'";
+        public const string PROPERTY_DELIVERY_DETAIL_ID = "ID";
+        public const string PROPERTY_DELIVERY_DETAIL_PRODUCT_ID = "DELIVERY_PRODUCT_ID";
+        public const string PROPERTY_DELIVERY_DETAIL_PRODUCT_PRODUCT_ID = "PRODUCT_ID";
+        public const string PROPERTY_DELIVERY_DETAIL_FROM_WAREHOUSE_ID = "TO_WAREHOUSE_ID";
+        public const string PROPERTY_DELIVERY_DETAIL_QTY = "QTY";
+        public const string ADD_DELIVERY_PRODUCTS = "SET DATEFORMAT DMY INSERT INTO DELIVERY_PRODUCTS VALUES ('{0}', '{1}', {2}, {3}, {4}, {5}, '{6}', '{7}')";
+        public const string DELETE_DELIVERY_PRODUCTS = "DELETE FROM DELIVERY_PRODUCTS WHERE ID = '{0}'";
+        public const string GET_DELIVERY_PRODUCT_DETAIL = "SELECT *FROM DELIVERY_PRODUCT_DETAIL";
     }
 }

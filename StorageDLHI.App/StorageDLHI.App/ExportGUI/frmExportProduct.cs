@@ -1,8 +1,10 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using StorageDLHI.App.Common;
+using StorageDLHI.BLL.ExportDAO;
 using StorageDLHI.BLL.WarehouseDAO;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
+using StorageDLHI.Infrastructor.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +23,7 @@ namespace StorageDLHI.App.ExportGUI
         private List<string> prodAdded = new List<string>();
         private Warehouses warehouse = new Warehouses();
         private DataTable dtWarehouseDetail = new DataTable();
+        private DataTable dtDeliveryProd = new DataTable();
 
         public bool IsExported { get; set; } = true;
         
@@ -42,6 +45,12 @@ namespace StorageDLHI.App.ExportGUI
             dtWarehouseDetail.Columns.Add("WAREHOUSE_ID", typeof(Guid));
             dtWarehouseDetail.Columns.Add("PRODUCT_ID", typeof(Guid));
             dtWarehouseDetail.Columns.Add("PRODUCT_IN_STOCK", typeof(Int32));
+
+            dtDeliveryProd.Columns.Add(QueryStatement.PROPERTY_DELIVERY_DETAIL_ID, typeof(Guid));
+            dtDeliveryProd.Columns.Add(QueryStatement.PROPERTY_DELIVERY_DETAIL_PRODUCT_ID, typeof(Guid));
+            dtDeliveryProd.Columns.Add(QueryStatement.PROPERTY_DELIVERY_DETAIL_PRODUCT_PRODUCT_ID, typeof(Guid));
+            dtDeliveryProd.Columns.Add(QueryStatement.PROPERTY_DELIVERY_DETAIL_FROM_WAREHOUSE_ID, typeof(Guid));
+            dtDeliveryProd.Columns.Add(QueryStatement.PROPERTY_DELIVERY_DETAIL_QTY, typeof(Int32));
 
             lblWarehouse.Text = $"Q'ty of {this.warehouse.Warehouse_Name}:";
             
@@ -106,6 +115,7 @@ namespace StorageDLHI.App.ExportGUI
             }
 
             Int32 totalExport = 0;
+            // Create model to update qty prod
             foreach (DataGridViewRow item in dgvExportForWarehouse.Rows)
             {
                 DataRow dataRow = dtWarehouseDetail.NewRow();
@@ -116,13 +126,6 @@ namespace StorageDLHI.App.ExportGUI
                 totalExport += Int32.Parse(item.Cells[2].Value.ToString());
                 dtWarehouseDetail.Rows.Add(dataRow);
             }
-
-            if (dtWarehouseDetail.Rows.Count <= 0)
-            {
-                MessageBoxHelper.ShowWarning("Please add product need to export !");
-                return;
-            }
-
             var whDetailModel = new Warehouse_Detail()
             {
                 Warehosue_Id = this.warehouse.Id,
@@ -130,7 +133,37 @@ namespace StorageDLHI.App.ExportGUI
                 Product_In_Stock = totalExport
             };
 
-            if (WarehouseDAO.UpdateQtyProdOfWarehouse(dtWarehouseDetail, whDetailModel))
+            if (dtWarehouseDetail.Rows.Count <= 0)
+            {
+                MessageBoxHelper.ShowWarning("Please add product need to export !");
+                return;
+            }
+
+            // create model insert Delivery
+            var exportM = new Delivery_Products()
+            {
+                Id = Guid.NewGuid(),
+                DeliveryDate = DateTime.Now,
+                DeliveryDay = DateTime.Now.Day,
+                DeliveryMonth = DateTime.Now.Month,
+                DeliveryYear = DateTime.Now.Year,
+                Delivery_Total_Qty = totalExport,
+                From_Warehouse_Id = this.warehouse.Id,
+                Staff_Id = ShareData.UserId,
+            };
+            foreach (DataGridViewRow item in dgvExportForWarehouse.Rows)
+            {
+                DataRow dataRow = dtDeliveryProd.NewRow();
+                dataRow[0] = Guid.NewGuid();
+                dataRow[1] = exportM.Id;
+                dataRow[2] = Guid.Parse(item.Cells[0].Value.ToString());
+                dataRow[3] = Guid.Parse(item.Cells[4].Value.ToString());
+                dataRow[4]= Int32.Parse(item.Cells[2].Value.ToString());
+                dtDeliveryProd.Rows.Add(dataRow);
+            }
+
+            if (WarehouseDAO.UpdateQtyProdOfWarehouse(dtWarehouseDetail, whDetailModel)
+                && ExportProductDAO.InsertDelivery(exportM, dtDeliveryProd))
             {
                 MessageBoxHelper.ShowInfo("Updated quantity product success !");
                 this.Close();

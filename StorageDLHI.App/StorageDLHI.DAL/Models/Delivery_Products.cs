@@ -15,6 +15,7 @@ namespace StorageDLHI.DAL.Models
         public int DeliveryYear { get; set; }
         public int Delivery_Total_Qty { get; set; }
         public Guid Staff_Id { get; set; }
+        public Guid From_Warehouse_Id { get; set; }
     }
 
     public class Delivery_Product_Detail
@@ -22,7 +23,7 @@ namespace StorageDLHI.DAL.Models
         public Guid Id { get; set; }
         public Guid Delivery_Product_Id { get; set; }
         public Guid ProductId { get; set; }
-        public Guid WarehosueId { get; set; }
+        public Guid ToWarehosueId { get; set; }
         public int Qty { get; set; }
     }
 }
