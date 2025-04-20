@@ -251,7 +251,7 @@ namespace StorageDLHI.App.ImportGUI
             {
                 if (ImportProductDAO.InsertImportProdDetail(dtProdForImportForUpdateDB) 
                     && WarehouseDAO.UpdateQtyProdOfWarehouse(dtWarehouseDetail)
-                    && PoDAO.UpdateIsImportedForPO(true, Guid.Parse(dgvPOs.Rows[dgvPOs.CurrentRow.Index].Cells[0].Value.ToString())))
+                    && await ShowDialogManager.WithLoader(() => PoDAO.UpdateIsImportedForPO(true, Guid.Parse(dgvPOs.Rows[dgvPOs.CurrentRow.Index].Cells[0].Value.ToString()))))
                 {
                     MessageBoxHelper.ShowInfo("Successfully imported goods to warehouses");
                 }

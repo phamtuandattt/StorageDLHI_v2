@@ -21,10 +21,10 @@ namespace StorageDLHI.BLL.MaterialDAO
             return await data.Insert(sqlQuery) > 0;
         }
 
-        public static bool UpdateOrigin(Origins origin)
+        public static async Task<bool> UpdateOrigin(Origins origin)
         {
             string sqlQuery = string.Format(QueryStatement.UPDATE_ORIGIN, origin.Origin_Code, origin.Origin_Des, origin.Id);
-            return data.Update(sqlQuery) > 0;
+            return await data.Update(sqlQuery) > 0;
         }
 
         public static async Task<bool> InsertMaterialType(Material_Types type)
@@ -33,10 +33,10 @@ namespace StorageDLHI.BLL.MaterialDAO
             return await data.Insert(sqlQuery) > 0;
         }
 
-        public static bool UpdateMaterialType(Material_Types type)
+        public static async Task<bool> UpdateMaterialType(Material_Types type)
         {
             string sqlQuery = string.Format(QueryStatement.UPDATE_MATERIAL_TYPE, type.Type_Code, type.Type_Des, type.Id);
-            return data.Update(sqlQuery) > 0;
+            return await data.Update(sqlQuery) > 0;
         }
 
         public static async Task<bool> InsertMaterialStandards(Material_Standards standards)
@@ -45,10 +45,10 @@ namespace StorageDLHI.BLL.MaterialDAO
             return await data.Insert(sqlQuery) > 0;
         }
 
-        public static bool UpdateMaterialStandard(Material_Standards standards)
+        public static async Task<bool> UpdateMaterialStandard(Material_Standards standards)
         {
             string sqlQuery = string.Format(QueryStatement.UPDATE_MATERIAL_STANDARD, standards.Standard_Code, standards.Standard_Des, standards.Id);
-            return data.Update(sqlQuery) > 0;
+            return await data.Update(sqlQuery) > 0;
         }
 
         public static async Task<DataTable> GetOriginForCombobox()

@@ -133,7 +133,7 @@ namespace StorageDLHI.App.MprGUI
                     Mpr_Approved = txtApproved.Text.Trim(),
                 };
 
-                if (MprDAO.UpdateMprInfo(mprs))
+                if (await MprDAO.UpdateMprInfo(mprs))
                 {
                     MessageBoxHelper.ShowInfo("Update MPRs info success !");
                     this.Close();

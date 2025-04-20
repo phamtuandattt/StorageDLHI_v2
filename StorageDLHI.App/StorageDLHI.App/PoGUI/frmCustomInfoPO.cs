@@ -223,7 +223,7 @@ namespace StorageDLHI.App.PoGUI
 
             if (await PoDAO.InsertPO(pos))
             {
-                if (PoDAO.InsertPODetail(dtProdOfPO_UpdateDB) && MprDAO.UpdateMprIsMakePO(this.mprID))
+                if (PoDAO.InsertPODetail(dtProdOfPO_UpdateDB) && await MprDAO.UpdateMprIsMakePO(this.mprID))
                 {
                     // Update IsMakePO in table MPR
                     MessageBoxHelper.ShowInfo("Add PO success !");

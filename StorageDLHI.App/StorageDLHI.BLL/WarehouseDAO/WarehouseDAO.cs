@@ -48,14 +48,14 @@ namespace StorageDLHI.BLL.WarehouseDAO
                 QueryStatement.OUTPUT_FOR_PROC) > 0;
         }
 
-        public static bool UpdateQtyProdOfWarehouse(DataTable dtWarehouseDetail, Warehouse_Detail warehousesDetail)
+        public static async Task<bool> UpdateQtyProdOfWarehouse(DataTable dtWarehouseDetail, Warehouse_Detail warehousesDetail)
         {
             var isSuc = data.UpdateRowExistOfTable(QueryStatement.UPDATE_OR_ADD_PRODUCT_EXIST_WAREHOUES,
                     QueryStatement.INPUT_FOR_PROC, QueryStatement.WAREHOUSE_TABLE_TYPE, dtWarehouseDetail,
                     QueryStatement.OUTPUT_FOR_PROC) > 0;
             if (isSuc)
             {
-                return data.Update(string.Format(QueryStatement.UPDATE_QTY_OF_PROD_AFTER_EXPORTED, warehousesDetail.Product_In_Stock, 
+                return await data.Update(string.Format(QueryStatement.UPDATE_QTY_OF_PROD_AFTER_EXPORTED, warehousesDetail.Product_In_Stock, 
                     warehousesDetail.Warehosue_Id, warehousesDetail.ProductId)) > 0;
             }
             return false;

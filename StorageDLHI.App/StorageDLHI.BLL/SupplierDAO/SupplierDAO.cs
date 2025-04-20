@@ -38,19 +38,19 @@ namespace StorageDLHI.BLL.SupplierDAO
             return data.UpdateDatabase(QueryStatement.GET_SUPPLIER_BANKS, supplier_Bank_DataTable);
         }
 
-        public static bool UpdateSupplier(Suppliers supplier)
+        public static async Task<bool> UpdateSupplier(Suppliers supplier)
         {
             string sqlQuery = string.Format(QueryStatement.UPDATE_SUPPLIER, supplier.Name, supplier.Cert, supplier.Email, supplier.Phone, supplier.Viettat, supplier.Address, supplier.Id);
-            return data.Update(sqlQuery) > 0;    
+            return await data.Update(sqlQuery) > 0;    
         }
 
-        public static bool UpdateSupplierBank(DataTable supplier_Bank_DataTable_Update, DataTable banks_Add)
+        public static async Task<bool> UpdateSupplierBank(DataTable supplier_Bank_DataTable_Update, DataTable banks_Add)
         {
             int rs = 0;
             foreach (DataRow row in supplier_Bank_DataTable_Update.Rows)
             {
                 string sqlQuery = string.Format(QueryStatement.UPDATE_BANK, row[2].ToString(), row[3].ToString(), row[4].ToString(), row[0].ToString());
-                rs = data.Update(sqlQuery);
+                rs = await data.Update(sqlQuery);
             }
             if (rs >= 0 && InsertBankOfSup(banks_Add))
             {

@@ -15,9 +15,9 @@ namespace StorageDLHI.BLL.MprDAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static bool UpdateMprIsMakePO(Guid mprID)
+        public static async Task<bool> UpdateMprIsMakePO(Guid mprID)
         {
-            return data.Update(string.Format(QueryStatement.UPDATE_MPRS_IS_MAKE_PO, true, mprID)) > 0;
+            return await data.Update(string.Format(QueryStatement.UPDATE_MPRS_IS_MAKE_PO, true, mprID)) > 0;
         }
 
         public static async Task<bool> InsertMpr(Mprs mprs)
@@ -53,11 +53,11 @@ namespace StorageDLHI.BLL.MprDAO
             return await data.GetDataAsync(QueryStatement.GET_MPRS_FOR_MAKE_PO, "MPRS_FOR_MPO");
         }
 
-        public static bool UpdateMprInfo(Mprs mprs)
+        public static async Task<bool> UpdateMprInfo(Mprs mprs)
         {
             string sqlQuery = string.Format(QueryStatement.UPDATE_MPR_INFO, mprs.Expected_Delivery_Date, mprs.Mpr_Prepared, mprs.Mpr_Reviewed,
                 mprs.Mpr_Approved, mprs.Id);
-            return data.Update(sqlQuery) > 0;
+            return await data.Update(sqlQuery) > 0;
         }
 
         public static async Task<DataTable> GetMprDetailByMpr(Guid mprId)

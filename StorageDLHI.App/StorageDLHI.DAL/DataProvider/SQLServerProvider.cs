@@ -130,20 +130,20 @@ namespace StorageDLHI.DAL.DataProvider
             }
         }
 
-        public int Update(string sqlQeuery)
+        public async Task<int> Update(string sqlQeuery)
         {
             try
             {
-                if (_connection.State == ConnectionState.Closed)
+                using (SqlConnection conn = new SqlConnection(_connString))
+                using (SqlCommand cmd = new SqlCommand(sqlQeuery, conn))
                 {
-                    _connection.Open();
-                }    
-                SqlCommand cmd = new SqlCommand(sqlQeuery, _connection);
-                int rs = cmd.ExecuteNonQuery();
-                _connection.Close();
-                LoggerConfig.Logger.Info($"Update record \"{sqlQeuery}\" by {ShareData.UserName}");
-
-                return rs;
+                    // Add parameters
+                    await conn.OpenAsync();
+                    int rs = await cmd.ExecuteNonQueryAsync();
+                    _connection.Close();
+                    LoggerConfig.Logger.Info($"Update record \"{sqlQeuery}\" by {ShareData.UserName}");
+                    return rs; // return number of rows affected
+                }
             }
             catch (SqlException ex)
             {

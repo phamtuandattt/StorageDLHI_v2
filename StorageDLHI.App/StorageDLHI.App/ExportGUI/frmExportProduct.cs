@@ -162,8 +162,8 @@ namespace StorageDLHI.App.ExportGUI
                 dtDeliveryProd.Rows.Add(dataRow);
             }
 
-            if (WarehouseDAO.UpdateQtyProdOfWarehouse(dtWarehouseDetail, whDetailModel)
-                && await ExportProductDAO.InsertDelivery(exportM, dtDeliveryProd))
+            if (await WarehouseDAO.UpdateQtyProdOfWarehouse(dtWarehouseDetail, whDetailModel)
+                && await ShowDialogManager.WithLoader(() => ExportProductDAO.InsertDelivery(exportM, dtDeliveryProd)))
             {
                 MessageBoxHelper.ShowInfo("Updated quantity product success !");
                 this.Close();

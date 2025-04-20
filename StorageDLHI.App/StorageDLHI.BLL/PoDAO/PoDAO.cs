@@ -24,9 +24,9 @@ namespace StorageDLHI.BLL.PoDAO
             return await data.GetDataAsync(QueryStatement.GET_POS_FOR_IMPORT_PRODUCT, "PO_FOR_IMRPOT_PROD");
         }
 
-        public static bool UpdateIsImportedForPO(bool isImported, Guid id)
+        public static async Task<bool> UpdateIsImportedForPO(bool isImported, Guid id)
         {
-            return data.Update(string.Format(QueryStatement.UPDATE_PO_IS_IMPORTED, isImported, id)) > 0;
+            return await data.Update(string.Format(QueryStatement.UPDATE_PO_IS_IMPORTED, isImported, id)) > 0;
         } 
 
         public static async Task<DataTable> GetPODetailById(Guid poId)

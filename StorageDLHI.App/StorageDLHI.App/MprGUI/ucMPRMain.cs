@@ -99,13 +99,13 @@ namespace StorageDLHI.App.MprGUI
             }
         }
 
-        private void btnAddProd_Click(object sender, EventArgs e)
+        private async void btnAddProd_Click(object sender, EventArgs e)
         {
             frmCustomProd frmCustomProd = new frmCustomProd(TitleManager.PROD_ADD_TITLE, true, null);
             frmCustomProd.ShowDialog();
 
             // Overwrite cache Products
-            CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, ProductDAO.GetProductsForCreateMPR());
+            CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, await ProductDAO.GetProductsForCreateMPR());
             LoadData();
         }
 
@@ -431,7 +431,7 @@ namespace StorageDLHI.App.MprGUI
             RenderNumbering(sender, e);
         }
 
-        private void editMPRInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void editMPRInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgvMPRs.Rows.Count <= 0) { return; }
             int rsl = dgvMPRs.CurrentRow.Index;
@@ -453,7 +453,7 @@ namespace StorageDLHI.App.MprGUI
             frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_UPDATE_INFO, false, mprs);
             frmCustomInfoMpr.ShowDialog();
 
-            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, MprDAO.GetMprs());
+            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs());
             LoadData();
         }
 

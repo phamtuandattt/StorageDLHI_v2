@@ -149,7 +149,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                             Origin_Code = txtCode.Text.Trim().ToUpper(),
                             Origin_Des = txtDes.Text.Trim(),
                         };
-                        if (MaterialDAO.UpdateOrigin(model))
+                        if (await MaterialDAO.UpdateOrigin(model))
                         {
                             KryptonMessageBox.Show("Update Origins success!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoggerConfig.Logger.Info($"Update Origins by {ShareData.UserName} success!");
@@ -170,7 +170,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                             Type_Code = txtCode.Text.Trim().ToUpper(),
                             Type_Des = txtDes.Text.Trim(),
                         };
-                        if (MaterialDAO.UpdateMaterialType(typeModel))
+                        if (await MaterialDAO.UpdateMaterialType(typeModel))
                         {
                             KryptonMessageBox.Show("Update Types success!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoggerConfig.Logger.Info($"Update Material Types by {ShareData.UserName} success!");
@@ -190,7 +190,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                             Standard_Code = txtCode.Text.Trim().ToUpper(),
                             Standard_Des = txtDes.Text.Trim(),
                         };
-                        if (MaterialDAO.UpdateMaterialStandard(standModel))
+                        if (await MaterialDAO.UpdateMaterialStandard(standModel))
                         {
                             KryptonMessageBox.Show("Update Standard success!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoggerConfig.Logger.Info($"Update Material Standard by {ShareData.UserName} success!");

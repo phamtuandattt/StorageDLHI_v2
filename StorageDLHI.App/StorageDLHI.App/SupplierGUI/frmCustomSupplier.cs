@@ -163,9 +163,9 @@ namespace StorageDLHI.App.SupplierGUI
                     }
                 }
 
-                if (SupplierDAO.UpdateSupplier(sup))
+                if (await  SupplierDAO.UpdateSupplier(sup))
                 {
-                    if (SupplierDAO.UpdateSupplierBank(dtFormUp, dtFormAdd))
+                    if (await ShowDialogManager.WithLoader(() => SupplierDAO.UpdateSupplierBank(dtFormUp, dtFormAdd)))
                     {
                         MessageBoxHelper.ShowInfo("Update Supplier and Bank account success !");
                         this.Close();

@@ -268,7 +268,7 @@ namespace StorageDLHI.App.ProductGUI
 
                 if (!string.IsNullOrEmpty(path))
                 {
-                    if (ProductDAO.Update(prod))
+                    if (await ShowDialogManager.WithLoader(() => ProductDAO.Update(prod)))
                     {
                         MessageBoxHelper.ShowInfo("Update product success !");
                         this.Close();

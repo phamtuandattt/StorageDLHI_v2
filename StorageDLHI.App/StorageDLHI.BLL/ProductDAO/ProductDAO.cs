@@ -40,14 +40,14 @@ namespace StorageDLHI.BLL.ProductDAO
             return await data.Insert(sqlQuery) > 0;
         }
 
-        public static bool Update(Products product)
+        public static async Task<bool> Update(Products product)
         {
             string sqlQuery = string.Format(QueryStatement.UPDATE_PROD, product.Product_Name, product.Product_Des_2, product.Product_Code,
                 product.Product_Material_Code, product.PictureLink, product.Picture, product.A_Thinhness, product.B_Depth, product.C_Witdh,
                 product.D_Web, product.E_Flag, product.F_Length, product.G_Weight, product.Used_Note, product.UnitId, product.Origin_Id,
                 product.M_Type_Id, product.Stand_Id, product.Id);
 
-            return data.Update(sqlQuery) > 0;
+            return await data.Update(sqlQuery) > 0;
         }
 
         public static async Task<Products> GetProduct(Guid prodId)
