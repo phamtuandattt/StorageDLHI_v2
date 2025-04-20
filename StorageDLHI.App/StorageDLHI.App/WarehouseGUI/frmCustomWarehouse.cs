@@ -32,7 +32,7 @@ namespace StorageDLHI.App.WarehouseGUI
             this._warehouse = warehouses;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             if (_isAdd)
             {
@@ -44,7 +44,7 @@ namespace StorageDLHI.App.WarehouseGUI
                     Warehouse_Address = txtAddress.Text.Trim(),
                 };
                 
-                if (WarehouseDAO.Insert(model))
+                if (await WarehouseDAO.Insert(model))
                 {
                     MessageBoxHelper.ShowInfo("Add Warehouse success !");
                     this.Close();

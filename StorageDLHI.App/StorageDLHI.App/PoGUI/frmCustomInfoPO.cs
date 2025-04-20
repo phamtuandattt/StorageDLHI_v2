@@ -221,7 +221,7 @@ namespace StorageDLHI.App.PoGUI
                 dtProdOfPO_UpdateDB.Rows.Add(dataRow);
             }
 
-            if (PoDAO.InsertPO(pos))
+            if (await PoDAO.InsertPO(pos))
             {
                 if (PoDAO.InsertPODetail(dtProdOfPO_UpdateDB) && MprDAO.UpdateMprIsMakePO(this.mprID))
                 {

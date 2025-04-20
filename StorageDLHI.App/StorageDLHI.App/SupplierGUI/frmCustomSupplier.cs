@@ -85,7 +85,7 @@ namespace StorageDLHI.App.SupplierGUI
                     dtForm.Rows.Add(r_new);
                 }
 
-                if (SupplierDAO.InsertSupplier(sup))
+                if (await ShowDialogManager.WithLoader(() => SupplierDAO.InsertSupplier(sup)))
                 {
                     if (SupplierDAO.InsertBankOfSup(dtForm))
                     {

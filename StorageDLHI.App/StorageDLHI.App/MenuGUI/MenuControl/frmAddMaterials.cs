@@ -73,7 +73,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
             this.Close();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             if (status)
             {
@@ -86,7 +86,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                             Origin_Code = txtCode.Text.Trim().ToUpper(),
                             Origin_Des = txtDes.Text.Trim(),
                         };
-                        if (MaterialDAO.InsertOrigin(model))
+                        if (await MaterialDAO.InsertOrigin(model))
                         {
                             MessageBoxHelper.ShowInfo("Add Origins success!");
                             this.Close();
@@ -106,7 +106,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                             Type_Code = txtCode.Text.Trim().ToUpper(),
                             Type_Des = txtDes.Text.Trim(),
                         };
-                        if (MaterialDAO.InsertMaterialType(typeModel))
+                        if (await MaterialDAO.InsertMaterialType(typeModel))
                         {
                             KryptonMessageBox.Show("Add Types success!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.Close();
@@ -125,7 +125,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                             Standard_Code = txtCode.Text.Trim().ToUpper(),
                             Standard_Des = txtDes.Text.Trim(),
                         };
-                        if (MaterialDAO.InsertMaterialStandards(standModel))
+                        if (await MaterialDAO.InsertMaterialStandards(standModel))
                         {
                             KryptonMessageBox.Show("Add Standard success!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.Close();

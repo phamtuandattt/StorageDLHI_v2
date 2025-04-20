@@ -72,7 +72,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             if (status)
             {
@@ -80,7 +80,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                 {
                     case 1:
                         Taxs taxs = new Taxs() { Id = Guid.NewGuid(), Tax_Percent = txtName.Text.Trim() };
-                        if (MaterialDAO.InsertTax(taxs))
+                        if (await MaterialDAO.InsertTax(taxs))
                         {
                             MessageBoxHelper.ShowInfo("Add Tax success!");
                             LoggerConfig.Logger.Info($"Add Tax success by {ShareData.UserName}");
@@ -94,7 +94,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         break;
                     case 2:
                         Units unit = new Units() { Id = Guid.NewGuid(), Unit_Code = txtName.Text.Trim() };
-                        if (MaterialDAO.InsertUnit(unit))
+                        if (await MaterialDAO.InsertUnit(unit))
                         {
                             MessageBoxHelper.ShowInfo("Add Unit success!");
                             LoggerConfig.Logger.Info($"Add Unit success by {ShareData.UserName}");
@@ -108,7 +108,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         break;
                     case 3:
                         Costs cost = new Costs() { Id = Guid.NewGuid(), Cost_Name = txtName.Text.Trim() };
-                        if (MaterialDAO.InsertCost(cost))
+                        if (await MaterialDAO.InsertCost(cost))
                         {
                             MessageBoxHelper.ShowInfo("Add Cost success!");
                             LoggerConfig.Logger.Info($"Add Cost success by {ShareData.UserName}");
@@ -128,7 +128,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                 {
                     case 1:
                         Taxs taxs = new Taxs() { Id = this.models.Taxs.Id, Tax_Percent = txtName.Text.Trim() };
-                        if (MaterialDAO.UpdateTax(taxs))
+                        if (await MaterialDAO.UpdateTax(taxs))
                         {
                             MessageBoxHelper.ShowInfo("Update Tax success!");
                             LoggerConfig.Logger.Info($"Update Tax success by {ShareData.UserName}");
@@ -142,7 +142,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         break;
                     case 2:
                         Units unit = new Units() { Id = this.models.Units.Id, Unit_Code = txtName.Text.Trim() };
-                        if (MaterialDAO.UpdateUnit(unit))
+                        if (await MaterialDAO.UpdateUnit(unit))
                         {
                             MessageBoxHelper.ShowInfo("Update Unit success!");
                             LoggerConfig.Logger.Info($"Update Unit success by {ShareData.UserName}");
@@ -156,7 +156,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         break;
                     case 3:
                         Costs cost = new Costs() { Id = this.models.Costs.Id, Cost_Name = txtName.Text.Trim() };
-                        if (MaterialDAO.UpdateCost(cost))
+                        if (await MaterialDAO.UpdateCost(cost))
                         {
                             MessageBoxHelper.ShowInfo("Update Cost success!");
                             LoggerConfig.Logger.Info($"Update Cost success by {ShareData.UserName}");

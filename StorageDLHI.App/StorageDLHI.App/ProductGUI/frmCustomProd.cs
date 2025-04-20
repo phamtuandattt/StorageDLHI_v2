@@ -181,7 +181,7 @@ namespace StorageDLHI.App.ProductGUI
             this.Close();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             if (status)
             {
@@ -214,7 +214,7 @@ namespace StorageDLHI.App.ProductGUI
 
                 if (!string.IsNullOrEmpty(path))
                 {
-                    if (ProductDAO.Insert(prod))
+                    if (await ShowDialogManager.WithLoader(() => ProductDAO.Insert(prod)))
                     {
                         MessageBoxHelper.ShowInfo("Add product success !");
                         this.Close();
@@ -226,7 +226,7 @@ namespace StorageDLHI.App.ProductGUI
                 }
                 else
                 {
-                    if (ProductDAO.InsertNoImage(prod))
+                    if (await ShowDialogManager.WithLoader(() => ProductDAO.InsertNoImage(prod)))
                     {
                         MessageBoxHelper.ShowInfo("Add product success !");
                         this.Close();
@@ -280,7 +280,7 @@ namespace StorageDLHI.App.ProductGUI
                 }
                 else
                 {
-                    if (ProductDAO.InsertNoImage(prod))
+                    if (await ShowDialogManager.WithLoader(() => ProductDAO.InsertNoImage(prod)))
                     {
                         MessageBoxHelper.ShowInfo("Update product success !");
                         this.Close();

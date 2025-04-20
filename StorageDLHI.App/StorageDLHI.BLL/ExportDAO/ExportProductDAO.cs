@@ -19,13 +19,13 @@ namespace StorageDLHI.BLL.ExportDAO
             return await data.GetDataAsync(QueryStatement.GET_DELIVERY_DETAIL_FORM, "DELIVERY_DETAIL_FORM");
         }
 
-        public static bool InsertDelivery(Delivery_Products delivery_Products, DataTable dtDeliveryDetail)
+        public static async Task<bool> InsertDelivery(Delivery_Products delivery_Products, DataTable dtDeliveryDetail)
         {
             string sqlQuery = string.Format(QueryStatement.ADD_DELIVERY_PRODUCTS, delivery_Products.Id, delivery_Products.DeliveryDate,
                 delivery_Products.DeliveryDay, delivery_Products.DeliveryMonth, delivery_Products.DeliveryYear,
                 delivery_Products.Delivery_Total_Qty, delivery_Products.From_Warehouse_Id, delivery_Products.Staff_Id);
 
-            if (data.Insert(sqlQuery) > 0
+            if (await data.Insert(sqlQuery) > 0
                 && data.UpdateDatabase(QueryStatement.GET_DELIVERY_PRODUCT_DETAIL, dtDeliveryDetail))
             {
                 return true;

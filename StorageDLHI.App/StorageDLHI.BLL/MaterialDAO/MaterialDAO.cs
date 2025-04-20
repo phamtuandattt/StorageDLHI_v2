@@ -15,10 +15,10 @@ namespace StorageDLHI.BLL.MaterialDAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static bool InsertOrigin(Origins origin)
+        public static async Task<bool> InsertOrigin(Origins origin)
         {
             string sqlQuery = string.Format(QueryStatement.INSERT_ORIGIN, origin.Id, origin.Origin_Code, origin.Origin_Des);
-            return data.Insert(sqlQuery) > 0;
+            return await data.Insert(sqlQuery) > 0;
         }
 
         public static bool UpdateOrigin(Origins origin)
@@ -27,10 +27,10 @@ namespace StorageDLHI.BLL.MaterialDAO
             return data.Update(sqlQuery) > 0;
         }
 
-        public static bool InsertMaterialType(Material_Types type)
+        public static async Task<bool> InsertMaterialType(Material_Types type)
         {
             string sqlQuery = string.Format(QueryStatement.INSERT_MATERIAL_TYPE, type.Id, type.Type_Code, type.Type_Des);
-            return data.Insert(sqlQuery) > 0;
+            return await data.Insert(sqlQuery) > 0;
         }
 
         public static bool UpdateMaterialType(Material_Types type)
@@ -39,10 +39,10 @@ namespace StorageDLHI.BLL.MaterialDAO
             return data.Update(sqlQuery) > 0;
         }
 
-        public static bool InsertMaterialStandards(Material_Standards standards)
+        public static async Task<bool> InsertMaterialStandards(Material_Standards standards)
         {
             string sqlQuery = string.Format(QueryStatement.INSERT_MATEIAL_STANDARD, standards.Id, standards.Standard_Code, standards.Standard_Des);
-            return data.Insert(sqlQuery) > 0;
+            return await data.Insert(sqlQuery) > 0;
         }
 
         public static bool UpdateMaterialStandard(Material_Standards standards)
@@ -99,40 +99,40 @@ namespace StorageDLHI.BLL.MaterialDAO
             return await data.GetDataAsync(QueryStatement.GET_MATERIAL_STANDARDS, "Standards");
         }
 
-        public static bool InsertTax(Taxs taxs)
+        public static async Task<bool> InsertTax(Taxs taxs)
         {
             string sqlQuery = string.Format(QueryStatement.INSERT_TAX, taxs.Id, taxs.Tax_Percent);
-            return data.Insert(sqlQuery) > 0;
+            return await data.Insert(sqlQuery) > 0;
         }
 
-        public static bool InsertUnit(Units units)
+        public static async Task<bool> InsertUnit(Units units)
         {
             string sqlQuery = string.Format(QueryStatement.INSERT_UNIT, units.Id, units.Unit_Code);
-            return data.Insert(sqlQuery) > 0;
+            return await data.Insert(sqlQuery) > 0;
         }
 
-        public static bool InsertCost(Costs costs)
+        public static async Task<bool> InsertCost(Costs costs)
         {
             string sqlQuery = string.Format(QueryStatement.INSERT_COST, costs.Id, costs.Cost_Name);
-            return data.Insert(sqlQuery) > 0;
+            return await data.Insert(sqlQuery) > 0;
         }
 
-        public static bool UpdateTax(Taxs taxs)
+        public static async Task<bool> UpdateTax(Taxs taxs)
         {
             string sqlQuery = string.Format(QueryStatement.UPDATE_TAX, taxs.Tax_Percent, taxs.Id);
-            return data.Insert(sqlQuery) > 0;
+            return await data.Insert(sqlQuery) > 0;
         }
 
-        public static bool UpdateUnit(Units units)
+        public static async Task<bool> UpdateUnit(Units units)
         {
             string sqlQuery = string.Format(QueryStatement.UPDATE_UNIT, units.Unit_Code, units.Id);
-            return data.Insert(sqlQuery) > 0;
+            return await data.Insert(sqlQuery) > 0;
         }
 
-        public static bool UpdateCost(Costs costs)
+        public static async Task<bool> UpdateCost(Costs costs)
         {
             string sqlQuery = string.Format(QueryStatement.UPDATE_COST, costs.Cost_Name, costs.Id);
-            return data.Insert(sqlQuery) > 0;
+            return await data.Insert(sqlQuery) > 0;
         }
 
         public static async Task<DataTable> GetTaxs()

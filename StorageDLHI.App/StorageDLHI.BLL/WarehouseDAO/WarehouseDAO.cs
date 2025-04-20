@@ -14,11 +14,11 @@ namespace StorageDLHI.BLL.WarehouseDAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static bool Insert(Warehouses warehouses)
+        public static async Task<bool> Insert(Warehouses warehouses)
         {
             string sqlQuery = string.Format(QueryStatement.INSERT_WAREHOUSE, warehouses.Id, warehouses.Warehouse_Code,
                                     warehouses.Warehouse_Name, warehouses.Warehouse_Address);
-            return data.Insert(sqlQuery) > 0;
+            return await data.Insert(sqlQuery) > 0;
         }
 
         public static async Task<DataTable> GetWarehouses()

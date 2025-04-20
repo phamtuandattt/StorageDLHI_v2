@@ -100,7 +100,7 @@ namespace StorageDLHI.App.MprGUI
                     dtProdOfMprAdd.Rows.Add(new_r);
                 }
 
-                if (MprDAO.InsertMpr(mprs))
+                if (await MprDAO.InsertMpr(mprs))
                 {
                     if (MprDAO.InsertMprDetail(this.dtProdOfMprAdd))
                     {

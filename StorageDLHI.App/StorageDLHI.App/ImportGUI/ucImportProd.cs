@@ -247,7 +247,7 @@ namespace StorageDLHI.App.ImportGUI
                 dtWarehouseDetail.Rows.Add(dataRow);
             }
 
-            if (ImportProductDAO.Insert(import_Products))
+            if (await ImportProductDAO.Insert(import_Products))
             {
                 if (ImportProductDAO.InsertImportProdDetail(dtProdForImportForUpdateDB) 
                     && WarehouseDAO.UpdateQtyProdOfWarehouse(dtWarehouseDetail)

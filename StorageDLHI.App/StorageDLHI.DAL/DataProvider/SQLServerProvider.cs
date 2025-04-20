@@ -106,16 +106,16 @@ namespace StorageDLHI.DAL.DataProvider
             }
         }
 
-        public int Insert(string sqlQuery)
+        public async Task<int> Insert(string sqlQuery)
         {
             try
             {
                 if (_connection.State == ConnectionState.Closed)
                 {
-                    _connection.Open();
+                    await _connection.OpenAsync();
                 }    
                 SqlCommand cmd = new SqlCommand(sqlQuery, _connection);
-                int rs = cmd.ExecuteNonQuery();
+                int rs = await cmd.ExecuteNonQueryAsync();
                 _connection.Close();
                 LoggerConfig.Logger.Info($"Insert database \"{sqlQuery}\" by {ShareData.UserName}");
 

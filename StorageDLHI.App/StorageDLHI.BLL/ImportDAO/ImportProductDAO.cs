@@ -29,12 +29,12 @@ namespace StorageDLHI.BLL.ImportDAO
             return await data.GetDataAsync(QueryStatement.GET_IMPORT_DETAIL_FORM, "IMPORT_DETAIL_FORM");
         }
 
-        public static bool Insert(Import_Products import_Products)
+        public static async Task<bool> Insert(Import_Products import_Products)
         {
             string sqlQuery = string.Format(QueryStatement.ADD_IMPORT_PRODUCT, import_Products.Id, import_Products.ImportDate,
                 import_Products.ImportDay, import_Products.ImportMonth, import_Products.ImportYear, import_Products.Import_Total_Qty, 
                 import_Products.Staff_Id, import_Products.FromPONo);
-            return data.Insert(sqlQuery) > 0;
+            return await data.Insert(sqlQuery) > 0;
         }
 
         public static bool DeleteImportProduct(Guid guid)

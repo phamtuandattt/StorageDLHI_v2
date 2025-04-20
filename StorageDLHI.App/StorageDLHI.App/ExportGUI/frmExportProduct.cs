@@ -106,7 +106,7 @@ namespace StorageDLHI.App.ExportGUI
             UpdateQtyRemaining(true, 0);
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             if (dgvExportForWarehouse.Rows.Count <= 0)
             {
@@ -163,7 +163,7 @@ namespace StorageDLHI.App.ExportGUI
             }
 
             if (WarehouseDAO.UpdateQtyProdOfWarehouse(dtWarehouseDetail, whDetailModel)
-                && ExportProductDAO.InsertDelivery(exportM, dtDeliveryProd))
+                && await ExportProductDAO.InsertDelivery(exportM, dtDeliveryProd))
             {
                 MessageBoxHelper.ShowInfo("Updated quantity product success !");
                 this.Close();

@@ -20,24 +20,24 @@ namespace StorageDLHI.BLL.ProductDAO
             return await data.GetDataAsync(QueryStatement.GET_PRODUCTS_FOR_CREATE_MPR, "PROs_FOR_MPR");
         }
 
-        public static bool Insert(Products product)
+        public static async Task<bool> Insert(Products product)
         {
             string sqlQuery = string.Format(QueryStatement.ADD_PROD, product.Id, product.Product_Name, product.Product_Des_2, product.Product_Code,
                 product.Product_Material_Code, product.PictureLink, product.Picture, product.A_Thinhness, product.B_Depth, product.C_Witdh,
                 product.D_Web, product.E_Flag, product.F_Length, product.G_Weight, product.Used_Note, product.UnitId, product.Origin_Id,
                 product.M_Type_Id, product.Stand_Id);
 
-            return data.Insert(sqlQuery) > 0;
+            return await data.Insert(sqlQuery) > 0;
         }
 
-        public static bool InsertNoImage(Products product)
+        public static async Task<bool> InsertNoImage(Products product)
         {
             string sqlQuery = string.Format(QueryStatement.ADD_PROD_NO_IMAGE, product.Id, product.Product_Name, product.Product_Des_2, product.Product_Code,
                 product.Product_Material_Code, product.A_Thinhness, product.B_Depth, product.C_Witdh,
                 product.D_Web, product.E_Flag, product.F_Length, product.G_Weight, product.Used_Note, product.UnitId, product.Origin_Id,
                 product.M_Type_Id, product.Stand_Id);
 
-            return data.Insert(sqlQuery) > 0;
+            return await data.Insert(sqlQuery) > 0;
         }
 
         public static bool Update(Products product)

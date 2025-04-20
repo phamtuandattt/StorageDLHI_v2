@@ -22,11 +22,11 @@ namespace StorageDLHI.App.SupplierGUI
             LoadData();
         }
 
-        private void LoadData()
+        private async void LoadData()
         {
             if (!CacheManager.Exists(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER))
             {
-                var dtSp = SupplierDAO.GetSuppliers();
+                var dtSp = await ShowDialogManager.WithLoader(() => SupplierDAO.GetSuppliers());
                 CacheManager.Add(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER, dtSp);
                 dgvSuppliers.DataSource = dtSp;
             }
@@ -41,11 +41,11 @@ namespace StorageDLHI.App.SupplierGUI
 
         }
 
-        private void LoadBankBySupplier(Guid supplierId)
+        private async void LoadBankBySupplier(Guid supplierId)
         {
             if (!CacheManager.Exists(string.Format(CacheKeys.BANK_DETAIL_SUPPLIER_ID, supplierId)))
             {
-                var dtBankBySup = SupplierDAO.GetBankBySupplier(supplierId);
+                var dtBankBySup = await SupplierDAO.GetBankBySupplier(supplierId);
                 CacheManager.Add(string.Format(CacheKeys.BANK_DETAIL_SUPPLIER_ID, supplierId), dtBankBySup);
                 dgvBanks.DataSource = dtBankBySup;
             }
@@ -55,12 +55,12 @@ namespace StorageDLHI.App.SupplierGUI
             }
         }
 
-        private void btnAddSupplier_Click(object sender, EventArgs e)
+        private async void btnAddSupplier_Click(object sender, EventArgs e)
         {
             frmCustomSupplier frmCustomSupplier = new frmCustomSupplier(TitleManager.SUPPLIER_ADD_TITLE, true, null, null);
             frmCustomSupplier.ShowDialog();
 
-            var dtSp = SupplierDAO.GetSuppliers();
+            var dtSp = await SupplierDAO.GetSuppliers();
             CacheManager.Add(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER, dtSp);
             LoadData();
         }
