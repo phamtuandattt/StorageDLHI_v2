@@ -2,6 +2,7 @@
 using StorageDLHI.App.Common;
 using StorageDLHI.BLL.SupplierDAO;
 using StorageDLHI.DAL.Models;
+using StorageDLHI.DAL.QueryStatements;
 using StorageDLHI.Infrastructor.Caches;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,10 @@ namespace StorageDLHI.App.SupplierGUI
     public partial class frmCustomSupplier : KryptonForm
     {
         private bool status = true;
-        private DataTable dtBanks = null;
+        private DataTable dtBanks = new DataTable();
         private Suppliers spModel = null;
+
+        public bool IsCompleted { get; set; } = true;
 
         public frmCustomSupplier()
         {
@@ -31,7 +34,15 @@ namespace StorageDLHI.App.SupplierGUI
             InitializeComponent();
             this.Text = title;
             this.status = status;
+
+            this.dtBanks.Columns.Add(QueryStatement.PROPERTY_SUPPLIER_BANK_ID); // 0
+            this.dtBanks.Columns.Add(QueryStatement.PROPERTY_SUPPLIER_BANK_SUPPLIER_ID); // 1
+            this.dtBanks.Columns.Add(QueryStatement.PROPERTY_SUPPLIER_BANK_BANK_ACCOUNT); // 2
+            this.dtBanks.Columns.Add(QueryStatement.PROPERTY_SUPPLIER_BANK_NAME); // 3
+            this.dtBanks.Columns.Add(QueryStatement.PROPERTY_SUPPLIER_BANK_BENEFICIAL); // 4
+            this.dtBanks.Columns.Add("IS_ADD", typeof(bool)); // 5
             
+
             if (!status)
             {
                 // Load exist banks
@@ -124,8 +135,9 @@ namespace StorageDLHI.App.SupplierGUI
 
                 foreach (DataGridViewRow row in dgvBankOfSup.Rows)
                 {
-                    if (string.IsNullOrEmpty(row.Cells[0].Value.ToString()) 
-                        && string.IsNullOrEmpty(row.Cells[1].Value.ToString()))
+                    //if (string.IsNullOrEmpty(row.Cells[0].Value.ToString()) 
+                    //    && string.IsNullOrEmpty(row.Cells[1].Value.ToString()))
+                    if (bool.Parse(row.Cells[5].Value.ToString()) == true)
                     {
                         // Add new record
                         DataRow r_new_add = dtFormAdd.NewRow();
@@ -161,13 +173,11 @@ namespace StorageDLHI.App.SupplierGUI
                     else
                     {
                         MessageBoxHelper.ShowWarning("Update Supplier and Bank account fail !");
-                        this.Close();
                     }
                 }
                 else
                 {
                     MessageBoxHelper.ShowWarning("Update Supplier and Bank account fail !");
-                    this.Close();
                 }
             }
             
@@ -175,21 +185,27 @@ namespace StorageDLHI.App.SupplierGUI
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            IsCompleted = false;
             this.Close();
         }
 
-        private async void tlsAddBank_Click(object sender, EventArgs e)
+        private void tlsAddBank_Click(object sender, EventArgs e)
         {
-            if (this.dtBanks is null)
+            if (this.dtBanks.Rows.Count <= 0)
             {
-                this.dtBanks = await SupplierDAO.GetSupplierBanksForms();
                 DataRow r_new = this.dtBanks.NewRow();
+                r_new[0] = Guid.NewGuid();
+                r_new[1] = Guid.Parse(this.spModel.Id.ToString());
+                r_new[5] = true;
                 this.dtBanks.Rows.Add(r_new);
                 dgvBankOfSup.DataSource = this.dtBanks;
             }
             else
             {
                 DataRow r_new = this.dtBanks.NewRow();
+                r_new[0] = Guid.NewGuid();
+                r_new[1] = Guid.Parse(this.spModel.Id.ToString());
+                r_new[5] = true;
                 this.dtBanks.Rows.Add(r_new);
             }
         }
@@ -222,6 +238,11 @@ namespace StorageDLHI.App.SupplierGUI
             {
                 MessageBoxHelper.ShowWarning("Delete uncompleted !");
             }
+        }
+
+        private void dgvBankOfSup_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Common.Common.RenderNumbering(sender, e, this.Font);
         }
     }
 }

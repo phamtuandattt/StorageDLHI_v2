@@ -143,8 +143,13 @@ namespace StorageDLHI.App.SupplierGUI
             frmCustomSupplier frmCustomSupplier = new frmCustomSupplier(TitleManager.SUPPLIER_UPDATE_TITLE, false, dtBanks, spM);
             frmCustomSupplier.ShowDialog();
 
-            CacheManager.Add(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER, SupplierDAO.GetSuppliers());
-            CacheManager.Add(string.Format(CacheKeys.BANK_DETAIL_SUPPLIER_ID, supplierId), SupplierDAO.GetBankBySupplier(supplierId));
+            if (!frmCustomSupplier.IsCompleted)
+            {
+                return;
+            }
+
+            CacheManager.Add(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER, await SupplierDAO.GetSuppliers());
+            CacheManager.Add(string.Format(CacheKeys.BANK_DETAIL_SUPPLIER_ID, supplierId), await SupplierDAO.GetBankBySupplier(supplierId));
 
             LoadData();
         }

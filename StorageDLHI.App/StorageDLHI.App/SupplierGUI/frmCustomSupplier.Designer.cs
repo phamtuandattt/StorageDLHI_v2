@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomSupplier));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -66,14 +67,15 @@
             this.kryptonPanel14 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonGroupBox2 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.dgvBankOfSup = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tlsAddBank = new System.Windows.Forms.ToolStripButton();
+            this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tlsAddBank = new System.Windows.Forms.ToolStripButton();
-            this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.Column6 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewCheckBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
@@ -587,7 +589,8 @@
             this.Column2,
             this.Column3,
             this.Column4,
-            this.Column5});
+            this.Column5,
+            this.Column6});
             this.dgvBankOfSup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBankOfSup.Location = new System.Drawing.Point(0, 0);
             this.dgvBankOfSup.Name = "dgvBankOfSup";
@@ -596,6 +599,41 @@
             this.dgvBankOfSup.RowTemplate.Height = 24;
             this.dgvBankOfSup.Size = new System.Drawing.Size(1019, 351);
             this.dgvBankOfSup.TabIndex = 0;
+            this.dgvBankOfSup.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvBankOfSup_RowPostPaint);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlsAddBank,
+            this.btnDelete});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip1.Size = new System.Drawing.Size(1023, 27);
+            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tlsAddBank
+            // 
+            this.tlsAddBank.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsAddBank.Image = global::StorageDLHI.App.Properties.Resources.pencial;
+            this.tlsAddBank.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsAddBank.Name = "tlsAddBank";
+            this.tlsAddBank.Size = new System.Drawing.Size(29, 24);
+            this.tlsAddBank.Text = "Add";
+            this.tlsAddBank.Click += new System.EventHandler(this.tlsAddBank_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnDelete.Image = global::StorageDLHI.App.Properties.Resources.bin;
+            this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(29, 24);
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // Column1
             // 
@@ -632,39 +670,20 @@
             this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
             // 
-            // toolStrip1
+            // Column6
             // 
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlsAddBank,
-            this.btnDelete});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(1023, 27);
-            this.toolStrip1.TabIndex = 2;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // tlsAddBank
-            // 
-            this.tlsAddBank.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsAddBank.Image = global::StorageDLHI.App.Properties.Resources.pencial;
-            this.tlsAddBank.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsAddBank.Name = "tlsAddBank";
-            this.tlsAddBank.Size = new System.Drawing.Size(29, 28);
-            this.tlsAddBank.Text = "Add";
-            this.tlsAddBank.Click += new System.EventHandler(this.tlsAddBank_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDelete.Image = global::StorageDLHI.App.Properties.Resources.bin;
-            this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(29, 28);
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.Column6.DataPropertyName = "IS_ADD";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.NullValue = false;
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Column6.FalseValue = null;
+            this.Column6.HeaderText = "IsAdd";
+            this.Column6.IndeterminateValue = null;
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.TrueValue = null;
+            this.Column6.Visible = false;
             // 
             // frmCustomSupplier
             // 
@@ -776,13 +795,14 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox2;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvBankOfSup;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel14;
+        private System.Windows.Forms.ToolStripButton tlsAddBank;
+        private System.Windows.Forms.ToolStripButton btnDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel14;
-        private System.Windows.Forms.ToolStripButton tlsAddBank;
-        private System.Windows.Forms.ToolStripButton btnDelete;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewCheckBoxColumn Column6;
     }
 }

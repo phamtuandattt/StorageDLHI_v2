@@ -61,7 +61,30 @@ namespace StorageDLHI.BLL.SupplierDAO
 
         public static async Task<DataTable> GetBankBySupplier(Guid supId)
         {
-            return await data.GetDataAsync(string.Format(QueryStatement.GET_BANK_BY_SUPPLIER, supId), "BANK");
+            var dtBanks = new DataTable();
+            dtBanks.Columns.Add(QueryStatement.PROPERTY_SUPPLIER_BANK_ID); // 0
+            dtBanks.Columns.Add(QueryStatement.PROPERTY_SUPPLIER_BANK_SUPPLIER_ID); // 1
+            dtBanks.Columns.Add(QueryStatement.PROPERTY_SUPPLIER_BANK_BANK_ACCOUNT); // 2
+            dtBanks.Columns.Add(QueryStatement.PROPERTY_SUPPLIER_BANK_NAME); // 3
+            dtBanks.Columns.Add(QueryStatement.PROPERTY_SUPPLIER_BANK_BENEFICIAL); // 4
+            dtBanks.Columns.Add("IS_ADD", typeof(bool)); // 5
+
+            var dt = await data.GetDataAsync(string.Format(QueryStatement.GET_BANK_BY_SUPPLIER, supId), "BANK");
+
+            foreach (DataRow row in dt.Rows)
+            {
+                DataRow dataRow = dtBanks.NewRow();
+                dataRow[0] = row[0];
+                dataRow[1] = row[1];
+                dataRow[2] = row[2];
+                dataRow[3] = row[3];
+                dataRow[4] = row[4];
+                dataRow[5] = false;
+
+                dtBanks.Rows.Add(dataRow);
+            }
+
+            return dtBanks;
         }
 
         public static bool DeleteBank(Guid BankId)

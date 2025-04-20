@@ -19,6 +19,11 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string DELETE_SUPPLIER = "DELETE SUPPLIERS WHERE ID = '{0}'";
         public const string PROPERTY_SUPPLIER_ID = "ID";
         public const string PROPERTY_SUPPLIER_NAME = "NAME";
+        public const string PROPERTY_SUPPLIER_CERT = "CERT";
+        public const string PROPERTY_SUPPLIER_EMAIL = "EMAIL";
+        public const string PROPERTY_SUPPLIER_PHONE = "PHONE";
+        public const string PROPERTY_SUPPLIER_VIETTAT = "VIETTAT";
+        public const string PROPERTY_SUPPLIER_ADDRESS = "ADDRESS";
 
         // Supplier banks
         public const string GET_SUPPLIER_BANKS = "SELECT *FROM SUPPLIER_BANKS";
@@ -26,6 +31,12 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_BANK_BY_SUPPLIER = "SELECT *FROM SUPPLIER_BANKS WHERE SUPPLIER_ID = '{0}'";
         public const string UPDATE_BANK = "UPDATE SUPPLIER_BANKS SET BANK_ACCOUNT = '{0}', BANK_NAME = N'{1}', BANK_BENEFICIAL = N'{2}' WHERE ID = '{3}'";
         public const string DELETE_BANK = "DELETE SUPPLIER_BANKS WHERE ID = '{0}'";
+        public const string PROPERTY_SUPPLIER_BANK_ID = "ID";
+        public const string PROPERTY_SUPPLIER_BANK_SUPPLIER_ID = "SUPPLIER_ID";
+        public const string PROPERTY_SUPPLIER_BANK_BANK_ACCOUNT = "BANK_ACCOUNT";
+        public const string PROPERTY_SUPPLIER_BANK_NAME = "BANK_NAME";
+        public const string PROPERTY_SUPPLIER_BANK_BENEFICIAL = "BANK_BENEFICIAL";
+
 
         // Material Origins
         public const string GET_ORIGINS = "SELECT *FROM ORIGINS";

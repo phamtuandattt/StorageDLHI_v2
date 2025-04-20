@@ -14,10 +14,12 @@ namespace StorageDLHI.DAL.DataProvider
     public class SQLServerProvider
     {
         private SqlConnection _connection = null;
+        private string _connString = "";
 
         public SQLServerProvider()
         {
-            _connection = new SqlConnection("server=DESKTOP-KD2BPDJ;database=DLHI_v2;Integrated Security = true;uid=sa;pwd=Aa123456@;MultipleActiveResultSets=True;");
+            _connString = "server=DESKTOP-KD2BPDJ;database=DLHI_v2;Integrated Security = true;uid=sa;pwd=Aa123456@;MultipleActiveResultSets=True;";
+            _connection = new SqlConnection(_connString);
         }
 
         public bool CheckConnection (string connectionString)
@@ -40,15 +42,15 @@ namespace StorageDLHI.DAL.DataProvider
             //GetDataAsync
             try
             {
-                using (SqlCommand cmd = new SqlCommand(sqlQuery, _connection))
+                using (SqlConnection conn = new SqlConnection(_connString)) // NOT _connection
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
                 {
-                    if (_connection.State != ConnectionState.Open)
-                        await _connection.OpenAsync();
+                    await conn.OpenAsync();
 
                     using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                     {
                         DataTable dt = new DataTable();
-                        dt.Load(reader); // this is synchronous but fast
+                        dt.Load(reader); // synchronous, but OK here
                         return dt;
                     }
                 }
@@ -110,16 +112,15 @@ namespace StorageDLHI.DAL.DataProvider
         {
             try
             {
-                if (_connection.State == ConnectionState.Closed)
+                using (SqlConnection conn = new SqlConnection(_connString))
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
                 {
-                    await _connection.OpenAsync();
-                }    
-                SqlCommand cmd = new SqlCommand(sqlQuery, _connection);
-                int rs = await cmd.ExecuteNonQueryAsync();
-                _connection.Close();
-                LoggerConfig.Logger.Info($"Insert database \"{sqlQuery}\" by {ShareData.UserName}");
-
-                return rs;
+                    await conn.OpenAsync();
+                    int rs = await cmd.ExecuteNonQueryAsync();
+                    _connection.Close();
+                    LoggerConfig.Logger.Info($"Insert database \"{sqlQuery}\" by {ShareData.UserName}");
+                    return rs;
+                }
             }
             catch (SqlException ex)
             {
@@ -166,6 +167,14 @@ namespace StorageDLHI.DAL.DataProvider
                 LoggerConfig.Logger.Info($"Delete \"{sqlQuery}\" by {ShareData.UserName}");
 
                 return rs;
+                //using (SqlConnection conn = new SqlConnection(_connStr))
+                //using (SqlCommand cmd = new SqlCommand("DELETE FROM Employees WHERE ID = @id", conn))
+                //{
+                //    cmd.Parameters.AddWithValue("@id", empId);
+                //    await conn.OpenAsync();
+                //    int rows = await cmd.ExecuteNonQueryAsync();
+                //    return rows > 0;
+                //}
             }
             catch (SqlException ex)
             {

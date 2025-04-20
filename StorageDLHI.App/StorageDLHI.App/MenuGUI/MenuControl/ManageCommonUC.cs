@@ -35,11 +35,11 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
             LoadCosts();
         }
 
-        private void LoadOrigins ()
+        private async void LoadOrigins ()
         {
             if (!CacheManager.Exists(CacheKeys.ORIGIN_DATATABLE_ALLORIGIN))
             {
-                var dtOr = MaterialDAO.GetOrigins();
+                var dtOr = await MaterialDAO.GetOrigins();
                 CacheManager.Add(CacheKeys.ORIGIN_DATATABLE_ALLORIGIN, dtOr);
                 dgvOrigins.DataSource = dtOr;
             }
@@ -49,11 +49,11 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
             }
         }
 
-        private void LoadMaterialTypes ()
+        private async void LoadMaterialTypes ()
         {
             if (!CacheManager.Exists(CacheKeys.MATERIAL_TYPE_DATATABLE_ALLTYPE))
             {
-                var dtType = MaterialDAO.GetMaterialTypes();
+                var dtType = await MaterialDAO.GetMaterialTypes();
                 CacheManager.Add(CacheKeys.MATERIAL_TYPE_DATATABLE_ALLTYPE, dtType);
                 dgvMaterialTypes.DataSource = dtType;
             }
@@ -63,11 +63,11 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
             }
         }
 
-        private void LoadStandards()
+        private async void LoadStandards()
         {
             if (!CacheManager.Exists(CacheKeys.STANDARD_DATATABLE_ALLSTANDARD))
             {
-                var dtSt = MaterialDAO.GetMaterialStandards();
+                var dtSt = await MaterialDAO.GetMaterialStandards();
                 CacheManager.Add(CacheKeys.STANDARD_DATATABLE_ALLSTANDARD, dtSt);
                 dgvStandards.DataSource = dtSt;
             }
@@ -77,11 +77,11 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
             }
         }
 
-        private void LoadTaxs()
+        private async void LoadTaxs()
         {
             if (!CacheManager.Exists(CacheKeys.TAX_DATATABLE_ALLTAX))
             {
-                var dtTax = MaterialDAO.GetTaxs();
+                var dtTax = await MaterialDAO.GetTaxs();
                 CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX, dtTax);
                 dgvTax.DataSource = dtTax;
             }
@@ -91,11 +91,11 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
             }
         }
 
-        private void LoadUnits()
+        private async void LoadUnits()
         {
             if (!CacheManager.Exists(CacheKeys.UNIT_DATATABLE_ALLUNIT))
             {
-                var dtUnit = MaterialDAO.GetUnits();
+                var dtUnit = await MaterialDAO.GetUnits();
                 CacheManager.Add(CacheKeys.UNIT_DATATABLE_ALLUNIT, dtUnit);
                 dgvUnits.DataSource = dtUnit;
             }
@@ -105,11 +105,11 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
             }
         }
 
-        private void LoadCosts()
+        private async void LoadCosts()
         {
             if (!CacheManager.Exists(CacheKeys.COST_DATATABLE_ALLCOST))
             {
-                var dtCost = MaterialDAO.GetCosts();
+                var dtCost = await ShowDialogManager.WithLoader(() => MaterialDAO.GetCosts());
                 CacheManager.Add(CacheKeys.COST_DATATABLE_ALLCOST, dtCost);
                 dgvCost.DataSource = dtCost;
             }
@@ -119,57 +119,57 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
             }
         }
 
-        private void btnAddOrigins_Click(object sender, EventArgs e)
+        private async void btnAddOrigins_Click(object sender, EventArgs e)
         {
             frmAddMaterials frmAdd = new frmAddMaterials(TitleManager.ORIGIN_ADD_TITLE, Enums.Materials.Origins, true, null);
             frmAdd.ShowDialog();
 
             // Overwrite cache after add item
-            CacheManager.Add(CacheKeys.ORIGIN_DATATABLE_ALLORIGIN, MaterialDAO.GetOrigins());
+            CacheManager.Add(CacheKeys.ORIGIN_DATATABLE_ALLORIGIN, await MaterialDAO.GetOrigins());
 
             LoadData();
         }
 
-        private void tlsAddMaterialTypes_Click(object sender, EventArgs e)
+        private async void tlsAddMaterialTypes_Click(object sender, EventArgs e)
         {
             frmAddMaterials frmAdd = new frmAddMaterials(TitleManager.MATERIAL_TYPE_ADD_TITLE, Enums.Materials.Types, true, null);
             frmAdd.ShowDialog();
             // Overwrite cache after add item
-            CacheManager.Add(CacheKeys.MATERIAL_TYPE_DATATABLE_ALLTYPE, MaterialDAO.GetMaterialTypes());
+            CacheManager.Add(CacheKeys.MATERIAL_TYPE_DATATABLE_ALLTYPE, await MaterialDAO.GetMaterialTypes());
             LoadData();
         }
 
-        private void tlsAddStandard_Click(object sender, EventArgs e)
+        private async void tlsAddStandard_Click(object sender, EventArgs e)
         {
             frmAddMaterials frmAdd = new frmAddMaterials(TitleManager.STANDARD_ADD_TITLE, Enums.Materials.Standards, true, null);
             frmAdd.ShowDialog();
             // Overwrite cache after add item
-            CacheManager.Add(CacheKeys.STANDARD_DATATABLE_ALLSTANDARD, MaterialDAO.GetMaterialStandards());
+            CacheManager.Add(CacheKeys.STANDARD_DATATABLE_ALLSTANDARD, await MaterialDAO.GetMaterialStandards());
             LoadData();
         }
 
-        private void tlsAddTax_Click(object sender, EventArgs e)
+        private async void tlsAddTax_Click(object sender, EventArgs e)
         {
             frmTaxUnitCost frm = new frmTaxUnitCost(TitleManager.TAX_ADD_TITLE, Enums.TaxUnitCost.Tax, true, null);
             frm.ShowDialog();
-            CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX, MaterialDAO.GetTaxs());
+            CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX, await MaterialDAO.GetTaxs());
             LoadData();
 
         }
 
-        private void tlsAddCost_Click(object sender, EventArgs e)
+        private async void tlsAddCost_Click(object sender, EventArgs e)
         {
             frmTaxUnitCost frm = new frmTaxUnitCost(TitleManager.COST_ADD_TITLE, Enums.TaxUnitCost.Cost, true, null);
             frm.ShowDialog();
-            CacheManager.Add(CacheKeys.COST_DATATABLE_ALLCOST, MaterialDAO.GetCosts());
+            CacheManager.Add(CacheKeys.COST_DATATABLE_ALLCOST, await MaterialDAO.GetCosts());
             LoadData();
         }
 
-        private void tlsAddUnits_Click(object sender, EventArgs e)
+        private async void tlsAddUnits_Click(object sender, EventArgs e)
         {
             frmTaxUnitCost frm = new frmTaxUnitCost(TitleManager.UNIT_ADD_TITLE, Enums.TaxUnitCost.Unit, true, null);
             frm.ShowDialog();
-            CacheManager.Add(CacheKeys.UNIT_DATATABLE_ALLUNIT, MaterialDAO.GetUnits());
+            CacheManager.Add(CacheKeys.UNIT_DATATABLE_ALLUNIT, await MaterialDAO.GetUnits());
             LoadData();
         }
 
@@ -234,7 +234,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
             LoadData();
         }
 
-        private void dgvOrigins_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvOrigins_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvOrigins.Rows.Count <= 0) return;
             int rsl = dgvOrigins.CurrentRow.Index;
@@ -253,11 +253,11 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
 
             frmAddMaterials frmAdd = new frmAddMaterials(TitleManager.ORIGIN_UPDATE_TITLE, Enums.Materials.Origins, false, dtos);
             frmAdd.ShowDialog();
-            CacheManager.Add(CacheKeys.ORIGIN_DATATABLE_ALLORIGIN, MaterialDAO.GetOrigins());
+            CacheManager.Add(CacheKeys.ORIGIN_DATATABLE_ALLORIGIN,await MaterialDAO.GetOrigins());
             LoadData();
         }
 
-        private void dgvStandards_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvStandards_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvStandards.Rows.Count <= 0) return;
             int rsl = dgvStandards.CurrentRow.Index;
@@ -276,11 +276,11 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
 
             frmAddMaterials frmAdd = new frmAddMaterials(TitleManager.MATERIAL_TYPE_UPDATE_TITLE, Enums.Materials.Standards, false, dtos);
             frmAdd.ShowDialog();
-            CacheManager.Add(CacheKeys.STANDARD_DATATABLE_ALLSTANDARD, MaterialDAO.GetMaterialStandards());
+            CacheManager.Add(CacheKeys.STANDARD_DATATABLE_ALLSTANDARD, await MaterialDAO.GetMaterialStandards());
             LoadData();
         }
 
-        private void dgvMaterialTypes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvMaterialTypes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvMaterialTypes.Rows.Count <= 0) return;
             int rsl = dgvMaterialTypes.CurrentRow.Index;
@@ -299,11 +299,11 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
 
             frmAddMaterials frmAdd = new frmAddMaterials(TitleManager.STANDARD_UPDATE_TITLE, Enums.Materials.Types, false, dtos);
             frmAdd.ShowDialog();
-            CacheManager.Add(CacheKeys.MATERIAL_TYPE_DATATABLE_ALLTYPE, MaterialDAO.GetMaterialTypes());
+            CacheManager.Add(CacheKeys.MATERIAL_TYPE_DATATABLE_ALLTYPE, await MaterialDAO.GetMaterialTypes());
             LoadData();
         }
 
-        private void dgvTax_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvTax_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvTax.Rows.Count <= 0) return;
             int rsl = dgvTax.CurrentRow.Index;
@@ -321,11 +321,11 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
 
             frmTaxUnitCost frm = new frmTaxUnitCost(TitleManager.TAX_UPDATE_TITLE, TaxUnitCost.Tax, false, dtos);
             frm.ShowDialog();
-            CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX, MaterialDAO.GetTaxs());
+            CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX, await MaterialDAO.GetTaxs());
             LoadData();
         }
 
-        private void dgvCost_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvCost_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvCost.Rows.Count <= 0) return;
             int rsl = dgvCost.CurrentRow.Index;
@@ -343,11 +343,11 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
 
             frmTaxUnitCost frm = new frmTaxUnitCost(TitleManager.COST_UPDATE_TITLE, TaxUnitCost.Cost, false, dtos);
             frm.ShowDialog();
-            CacheManager.Add(CacheKeys.COST_DATATABLE_ALLCOST, MaterialDAO.GetCosts());
+            CacheManager.Add(CacheKeys.COST_DATATABLE_ALLCOST, await MaterialDAO.GetCosts());
             LoadData();
         }
 
-        private void dgvUnits_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvUnits_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvUnits.Rows.Count <= 0) return;
             int rsl = dgvUnits.CurrentRow.Index;
@@ -365,7 +365,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
 
             frmTaxUnitCost frm = new frmTaxUnitCost(TitleManager.UNIT_ADD_TITLE, TaxUnitCost.Unit, false, dtos);
             frm.ShowDialog();
-            CacheManager.Add(CacheKeys.UNIT_DATATABLE_ALLUNIT, MaterialDAO.GetUnits());
+            CacheManager.Add(CacheKeys.UNIT_DATATABLE_ALLUNIT, await MaterialDAO.GetUnits());
             LoadData();
         }
     }
