@@ -102,11 +102,11 @@ namespace StorageDLHI.App.PoGUI
             }
         }
 
-        private void LoadData()
+        private async void LoadData()
         {
             if (!CacheManager.Exists(CacheKeys.POS_DATATABLE_ALL_PO))
             {
-                dtPos = PoDAO.GetPOs();
+                dtPos = await PoDAO.GetPOs();
                 CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, dtPos);
                 dgvPOList.DataSource = dtPos;
             }
@@ -121,7 +121,7 @@ namespace StorageDLHI.App.PoGUI
                 Guid poId = Guid.Parse(dgvPOList.Rows[0].Cells[0].Value.ToString());
                 if (!CacheManager.Exists(string.Format(CacheKeys.PO_DETAL_BY_ID, poId)))
                 {
-                    dtPoById = PoDAO.GetPODetailById(poId);
+                    dtPoById = await PoDAO.GetPODetailById(poId);
                     CacheManager.Add(string.Format(CacheKeys.PO_DETAL_BY_ID, poId), dtPoById);
                     dgvPODetail.DataSource = dtPoById;
                 }
@@ -135,7 +135,7 @@ namespace StorageDLHI.App.PoGUI
 
             if (!CacheManager.Exists(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS))
             {
-                dtMprs = MprDAO.GetMprsForMakePO();
+                dtMprs = await MprDAO.GetMprsForMakePO();
                 CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, dtMprs);
                 dgvMPRs.DataSource = dtMprs;
             }
@@ -149,7 +149,7 @@ namespace StorageDLHI.App.PoGUI
                 var mprId = Guid.Parse(dgvMPRs.Rows[0].Cells[0].Value.ToString());
                 if (!CacheManager.Exists(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId)))
                 {
-                    dtMprDetailById = MprDAO.GetMprDetailByMpr(mprId);
+                    dtMprDetailById = await MprDAO.GetMprDetailByMpr(mprId);
                     CacheManager.Add(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId), dtMprDetailById);
                     dgvMPRDetail.DataSource = dtMprDetailById;
                 }
@@ -201,7 +201,7 @@ namespace StorageDLHI.App.PoGUI
             UpdateFooter();
         }
 
-        private void dgvMPRs_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvMPRs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvMPRs.Rows.Count <= 0) { return; }
             int rsl = dgvMPRs.CurrentRow.Index;
@@ -228,7 +228,7 @@ namespace StorageDLHI.App.PoGUI
             var mprId = Guid.Parse(dgvMPRs.Rows[rsl].Cells[0].Value.ToString());
             if (!CacheManager.Exists(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId)))
             {
-                dtMprDetailById = MprDAO.GetMprDetailByMpr(mprId);
+                dtMprDetailById = await MprDAO.GetMprDetailByMpr(mprId);
                 CacheManager.Add(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId), dtMprDetailById);
                 dgvMPRDetail.DataSource = dtMprDetailById;
             }
@@ -616,7 +616,7 @@ namespace StorageDLHI.App.PoGUI
             Common.Common.RenderNumbering(sender, e, this.Font);
         }
 
-        private void dgvPOList_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvPOList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvPOList.CurrentCell == null) return;
             int currentRowIndex = dgvPOList.CurrentCell.RowIndex;
@@ -626,7 +626,7 @@ namespace StorageDLHI.App.PoGUI
                 Guid poId = Guid.Parse(dgvPOList.Rows[currentRowIndex].Cells[0].Value.ToString());
                 if (!CacheManager.Exists(string.Format(CacheKeys.PO_DETAL_BY_ID, poId)))
                 {
-                    dtPoById = PoDAO.GetPODetailById(poId);
+                    dtPoById = await PoDAO.GetPODetailById(poId);
                     CacheManager.Add(string.Format(CacheKeys.PO_DETAL_BY_ID, poId), dtPoById);
                     dgvPODetail.DataSource = dtPoById;
                 }

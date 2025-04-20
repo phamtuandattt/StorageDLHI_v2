@@ -14,9 +14,9 @@ namespace StorageDLHI.BLL.ExportDAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable GetDeliveryDetailForm()
+        public static async Task<DataTable> GetDeliveryDetailForm()
         {
-            return data.GetData(QueryStatement.GET_DELIVERY_DETAIL_FORM, "DELIVERY_DETAIL_FORM");
+            return await data.GetDataAsync(QueryStatement.GET_DELIVERY_DETAIL_FORM, "DELIVERY_DETAIL_FORM");
         }
 
         public static bool InsertDelivery(Delivery_Products delivery_Products, DataTable dtDeliveryDetail)

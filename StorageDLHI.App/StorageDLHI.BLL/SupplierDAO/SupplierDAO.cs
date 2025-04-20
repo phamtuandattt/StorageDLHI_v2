@@ -14,9 +14,9 @@ namespace StorageDLHI.BLL.SupplierDAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable GetSuppliers()
+        public static async Task<DataTable> GetSuppliers()
         {
-            var supls = data.GetData(QueryStatement.GET_SUPPLIERS, "SUPPLIERS");
+            var supls = await data.GetDataAsync(QueryStatement.GET_SUPPLIERS, "SUPPLIERS");
             return supls;
         }
 
@@ -59,9 +59,9 @@ namespace StorageDLHI.BLL.SupplierDAO
             return false;
         }
 
-        public static DataTable GetBankBySupplier(Guid supId)
+        public static async Task<DataTable> GetBankBySupplier(Guid supId)
         {
-            return data.GetData(string.Format(QueryStatement.GET_BANK_BY_SUPPLIER, supId), "BANK");
+            return await data.GetDataAsync(string.Format(QueryStatement.GET_BANK_BY_SUPPLIER, supId), "BANK");
         }
 
         public static bool DeleteBank(Guid BankId)
@@ -69,9 +69,9 @@ namespace StorageDLHI.BLL.SupplierDAO
             return data.Delete(string.Format(QueryStatement.DELETE_BANK, BankId)) > 0;
         }
 
-        public static DataTable GetSupplierBanksForms()
+        public static async Task<DataTable> GetSupplierBanksForms()
         {
-            var supls = data.GetData(QueryStatement.GET_SUPPLIER_BANKS_FORM, "SUPPLIER_BANKS");
+            var supls = await data.GetDataAsync(QueryStatement.GET_SUPPLIER_BANKS_FORM, "SUPPLIER_BANKS");
             return supls;
         }
     }

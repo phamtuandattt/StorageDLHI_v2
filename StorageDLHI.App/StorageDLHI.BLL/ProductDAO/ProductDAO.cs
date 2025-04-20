@@ -15,9 +15,9 @@ namespace StorageDLHI.BLL.ProductDAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable GetProductsForCreateMPR()
+        public static async Task<DataTable> GetProductsForCreateMPR()
         {
-            return data.GetData(QueryStatement.GET_PRODUCTS_FOR_CREATE_MPR, "PROs_FOR_MPR");
+            return await data.GetDataAsync(QueryStatement.GET_PRODUCTS_FOR_CREATE_MPR, "PROs_FOR_MPR");
         }
 
         public static bool Insert(Products product)
@@ -50,9 +50,9 @@ namespace StorageDLHI.BLL.ProductDAO
             return data.Update(sqlQuery) > 0;
         }
 
-        public static Products GetProduct(Guid prodId)
+        public static async Task<Products> GetProduct(Guid prodId)
         {
-            var dt = data.GetData(string.Format(QueryStatement.GET_PROD, prodId), "PRODUCT_BY_ID");
+            var dt = await data.GetDataAsync(string.Format(QueryStatement.GET_PROD, prodId), "PRODUCT_BY_ID");
             var row = dt.Rows[0];
             Products prod = new Products()
             {

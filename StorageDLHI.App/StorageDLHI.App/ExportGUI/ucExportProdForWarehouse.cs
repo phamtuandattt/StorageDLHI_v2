@@ -46,16 +46,14 @@ namespace StorageDLHI.App.ExportGUI
             dtProdExport.Columns.Add(QueryStatement.PROPERTY_WAREHOUSE_NAME); // 13
             dtProdExport.Columns.Add(QueryStatement.PROPERTY_WAREHOUSE_DETAIL_ID); // 14
             dgvProdOfExport.DataSource = dtProdExport;
-
-            dtProdExportUpdateDB = ExportProductDAO.GetDeliveryDetailForm();
         }
 
-        private void LoadData()
+        private async void LoadData()
         {
             if (!CacheManager.Exists(CacheKeys.WAREHOUSE_DATATABLE_ALL))
             {
-                dtWarehouses = WarehouseDAO.GetWarehouses();
-                CacheManager.Add(CacheKeys.WAREHOUSE_DATATABLE_ALL, WarehouseDAO.GetWarehouses());
+                dtWarehouses = await WarehouseDAO.GetWarehouses();
+                CacheManager.Add(CacheKeys.WAREHOUSE_DATATABLE_ALL, await WarehouseDAO.GetWarehouses());
                 dgvWarehose.DataSource = dtWarehouses;
             }
             else
@@ -67,15 +65,16 @@ namespace StorageDLHI.App.ExportGUI
             {
                 LoadDetailByWId(0);
             }
+            dtProdExportUpdateDB = await ExportProductDAO.GetDeliveryDetailForm();
         }
 
-        private void LoadDetailByWId(int rsl)
+        private async void LoadDetailByWId(int rsl)
         {
             Guid wId = Guid.Parse(dgvWarehose.Rows[rsl].Cells[0].Value.ToString());
             if (!CacheManager.Exists(string.Format(CacheKeys.WAREHOUSE_DETAIL_BY_ID, wId)))
             {
-                dtWarehouseDetail = WarehouseDAO.GetWarehouseDetailByWarehouseId(wId);
-                CacheManager.Add(string.Format(CacheKeys.WAREHOUSE_DETAIL_BY_ID, wId), WarehouseDAO.GetWarehouseDetailByWarehouseId(wId));
+                dtWarehouseDetail = await WarehouseDAO.GetWarehouseDetailByWarehouseId(wId);
+                CacheManager.Add(string.Format(CacheKeys.WAREHOUSE_DETAIL_BY_ID, wId), await WarehouseDAO.GetWarehouseDetailByWarehouseId(wId));
                 dgvRemaningGoods.DataSource = dtWarehouseDetail;
             }
             else

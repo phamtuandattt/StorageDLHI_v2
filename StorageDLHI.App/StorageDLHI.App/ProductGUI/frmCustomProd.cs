@@ -31,25 +31,25 @@ namespace StorageDLHI.App.ProductGUI
             LoadData();
 
 
-            this.pModel = ProductDAO.GetProduct(Guid.Parse("1730930D-FD63-46C5-9B63-698B2AF63C22"));
+            //this.pModel = await ProductDAO.GetProduct(Guid.Parse("1730930D-FD63-46C5-9B63-698B2AF63C22"));
 
-            txtProdCode.Text = this.pModel.Product_Code.Trim();
-            txtDes2.Text = this.pModel.Product_Des_2.Trim();
-            txtProdName.Text = this.pModel.Product_Name.Trim();
-            cboOrigin.SelectedValue = this.pModel.Origin_Id;
-            cboType.SelectedValue = this.pModel.M_Type_Id;
-            cboStandard.SelectedValue = this.pModel.Stand_Id;
-            txtThinh.Text = this.pModel.A_Thinhness.Trim();
-            txtDep.Text = this.pModel.B_Depth.Trim();
-            txtWidth.Text = this.pModel.C_Witdh.Trim();
-            txtWeb.Text = this.pModel.D_Web.Trim();
-            txtFlag.Text = this.pModel.E_Flag.Trim();
-            txtLength.Text = this.pModel.F_Length.Trim();
-            txtWeigth.Text = this.pModel.G_Weight.Trim();
-            txtUsageNote.Text = this.pModel.Used_Note.Trim();
-            cboUnit.SelectedValue = this.pModel.UnitId;
-            picItem.Image = this.pModel.Image.Length == 100 ? picItem.InitialImage : Image.FromStream(new MemoryStream(this.pModel.Image));
-            path = this.pModel.PictureLink;
+            //txtProdCode.Text = this.pModel.Product_Code.Trim();
+            //txtDes2.Text = this.pModel.Product_Des_2.Trim();
+            //txtProdName.Text = this.pModel.Product_Name.Trim();
+            //cboOrigin.SelectedValue = this.pModel.Origin_Id;
+            //cboType.SelectedValue = this.pModel.M_Type_Id;
+            //cboStandard.SelectedValue = this.pModel.Stand_Id;
+            //txtThinh.Text = this.pModel.A_Thinhness.Trim();
+            //txtDep.Text = this.pModel.B_Depth.Trim();
+            //txtWidth.Text = this.pModel.C_Witdh.Trim();
+            //txtWeb.Text = this.pModel.D_Web.Trim();
+            //txtFlag.Text = this.pModel.E_Flag.Trim();
+            //txtLength.Text = this.pModel.F_Length.Trim();
+            //txtWeigth.Text = this.pModel.G_Weight.Trim();
+            //txtUsageNote.Text = this.pModel.Used_Note.Trim();
+            //cboUnit.SelectedValue = this.pModel.UnitId;
+            //picItem.Image = this.pModel.Image.Length == 100 ? picItem.InitialImage : Image.FromStream(new MemoryStream(this.pModel.Image));
+            //path = this.pModel.PictureLink;
         }
 
         public frmCustomProd(string title, bool status, Products pModel) // true is ADD || UPDATE
@@ -81,17 +81,17 @@ namespace StorageDLHI.App.ProductGUI
             }
         }
 
-        private void LoadData()
+        private async void LoadData()
         {
             txtProdCode.Focus();
 
-            var dtOrigins = MaterialDAO.GetOriginForCombobox();
+            var dtOrigins = await MaterialDAO.GetOriginForCombobox();
             LoadDataCombox(cboOrigin, dtOrigins);
 
-            var dtMTypes = MaterialDAO.GetMTypeForCombobox();
+            var dtMTypes = await MaterialDAO.GetMTypeForCombobox();
             LoadDataCombox(cboType, dtMTypes);
 
-            var dtStand = MaterialDAO.GetStandForCombobox();
+            var dtStand = await MaterialDAO.GetStandForCombobox();
             LoadDataCombox(cboStandard, dtStand);
 
             var dtUnits = MaterialDAO.GetUnits();

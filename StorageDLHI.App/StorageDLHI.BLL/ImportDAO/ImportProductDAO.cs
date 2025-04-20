@@ -14,19 +14,19 @@ namespace StorageDLHI.BLL.ImportDAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable GetImportProducts()
+        public static async Task<DataTable> GetImportProducts()
         {
-            return data.GetData(QueryStatement.GET_IMPORTS, "IMPORTS");
+            return await data.GetDataAsync(QueryStatement.GET_IMPORTS, "IMPORTS");
         }
 
-        public static DataTable GetImportProductDetailByID(Guid guid)
+        public static async Task<DataTable> GetImportProductDetailByID(Guid guid)
         {
-            return data.GetData(string.Format(QueryStatement.GET_IMPORT_DETAIL_BY_ID, guid), $"IMPORT_DETAIL_BY_ID_{guid}");
+            return await data.GetDataAsync(string.Format(QueryStatement.GET_IMPORT_DETAIL_BY_ID, guid), $"IMPORT_DETAIL_BY_ID_{guid}");
         }
 
-        public static DataTable GetImportProductDetailForm()
+        public static async Task<DataTable> GetImportProductDetailForm()
         {
-            return data.GetData(QueryStatement.GET_IMPORT_DETAIL_FORM, "IMPORT_DETAIL_FORM");
+            return await data.GetDataAsync(QueryStatement.GET_IMPORT_DETAIL_FORM, "IMPORT_DETAIL_FORM");
         }
 
         public static bool Insert(Import_Products import_Products)

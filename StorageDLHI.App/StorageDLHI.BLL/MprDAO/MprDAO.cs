@@ -38,19 +38,19 @@ namespace StorageDLHI.BLL.MprDAO
             return data.Delete(string.Format(QueryStatement.DELETE_MPR, mprId)) > 0;
         }
 
-        public static DataTable GetMprDetailForm()
+        public static async Task<DataTable> GetMprDetailForm()
         {
-            return data.GetData(QueryStatement.GET_MPR_DETAIL_FORM, "MPR_DETAIL_FORM");
+            return await data.GetDataAsync(QueryStatement.GET_MPR_DETAIL_FORM, "MPR_DETAIL_FORM");
         }
 
-        public static DataTable GetMprs()
+        public static async Task<DataTable> GetMprs()
         {
-            return data.GetData(QueryStatement.GET_MPRs, "MPRs");
+            return await data.GetDataAsync(QueryStatement.GET_MPRs, "MPRs");
         }
 
-        public static DataTable GetMprsForMakePO()
+        public static async Task<DataTable> GetMprsForMakePO()
         {
-            return data.GetData(QueryStatement.GET_MPRS_FOR_MAKE_PO, "MPRS_FOR_MPO");
+            return await data.GetDataAsync(QueryStatement.GET_MPRS_FOR_MAKE_PO, "MPRS_FOR_MPO");
         }
 
         public static bool UpdateMprInfo(Mprs mprs)
@@ -60,10 +60,10 @@ namespace StorageDLHI.BLL.MprDAO
             return data.Update(sqlQuery) > 0;
         }
 
-        public static DataTable GetMprDetailByMpr(Guid mprId)
+        public static async Task<DataTable> GetMprDetailByMpr(Guid mprId)
         {
             string sqlQuery = string.Format(QueryStatement.GET_MPR_DETAIL_BY_ID, mprId);
-            var dtMprDetail = data.GetData(sqlQuery, "MPR_DETAIL_BY_MPR_ID");
+            var dtMprDetail = await data.GetDataAsync(sqlQuery, "MPR_DETAIL_BY_MPR_ID");
             foreach (DataRow row in dtMprDetail.Rows)
             {
                 row[7] = Common.CheckOrReturnNumber((row[7].ToString()));

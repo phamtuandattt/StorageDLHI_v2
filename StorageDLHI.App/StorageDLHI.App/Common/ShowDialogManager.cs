@@ -20,5 +20,21 @@ namespace StorageDLHI.App.Common
             await Task.Delay(3000); // simulate task
             frm.Close();
         }
+
+        public static async Task<T> WithLoader<T>(Func<Task<T>> operation)
+        {
+            LoadingForm loader = new LoadingForm();
+            Task show = Task.Run(() => loader.ShowDialog());
+
+            try
+            {
+                return await operation();
+            }
+            finally
+            {
+                await Task.Delay(200); // Allow UI to "breathe"
+                loader.Invoke((MethodInvoker)(() => loader.Close()));
+            }
+        }
     }
 }

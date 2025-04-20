@@ -111,7 +111,7 @@ namespace StorageDLHI.App.SupplierGUI
             RenderNumbering(sender, e);
         }
 
-        private void dgvSuppliers_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvSuppliers_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvSuppliers.Rows.Count <= 0) return;
             int rsl = dgvSuppliers.CurrentRow.Index;
@@ -131,7 +131,7 @@ namespace StorageDLHI.App.SupplierGUI
             var dtBanks = new DataTable();
             if (!CacheManager.Exists(string.Format(CacheKeys.BANK_DETAIL_SUPPLIER_ID, supplierId)))
             {
-                var dtBankBySup = SupplierDAO.GetBankBySupplier(supplierId);
+                var dtBankBySup = await SupplierDAO.GetBankBySupplier(supplierId);
                 CacheManager.Add(string.Format(CacheKeys.BANK_DETAIL_SUPPLIER_ID, supplierId), dtBankBySup);
                 dtBanks = dtBankBySup;
             }

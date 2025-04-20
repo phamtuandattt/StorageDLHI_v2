@@ -27,7 +27,7 @@ namespace StorageDLHI.App.PoGUI
         public bool completed { get; set; } = true;
         public bool isHandle { get; set; } = false;
 
-        private DataTable dtProdOfPO_UpdateDB = PoDAO.GetPODetailForm();
+        private DataTable dtProdOfPO_UpdateDB = new DataTable();
         private Int32 totalAmount = 0;
         private Guid mprID = Guid.Empty;
 
@@ -112,11 +112,11 @@ namespace StorageDLHI.App.PoGUI
             this.MinimumSize = this.Size;
         }
 
-        private void LoadData()
+        private async void LoadData()
         {
             if (!CacheManager.Exists(CacheKeys.COST_DATATABLE_ALLCOST))
             {
-                var dtCost = MaterialDAO.GetCosts();
+                var dtCost = await MaterialDAO.GetCosts();
                 LoadDataCombox(cboCost, dtCost, QueryStatement.PROPERTY_COST_NAME, QueryStatement.PROPERTY_COST_ID);
                 CacheManager.Add(CacheKeys.COST_DATATABLE_ALLCOST, dtCost);
             }
@@ -128,7 +128,7 @@ namespace StorageDLHI.App.PoGUI
 
             if (!CacheManager.Exists(CacheKeys.TAX_DATATABLE_ALLTAX))
             {
-                var dtTax = MaterialDAO.GetTaxs();
+                var dtTax = await MaterialDAO.GetTaxs();
                 LoadDataCombox(cboTax, dtTax, QueryStatement.PROPERTY_TAX_PERCENT, QueryStatement.PROPERTY_TAX_ID);
                 CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX, dtTax);
             }
@@ -140,7 +140,7 @@ namespace StorageDLHI.App.PoGUI
 
             if (!CacheManager.Exists(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER))
             {
-                var dtSupp = SupplierDAO.GetSuppliers();
+                var dtSupp = await SupplierDAO.GetSuppliers();
                 LoadDataCombox(cboSuppplier, dtSupp, QueryStatement.PROPERTY_SUPPLIER_NAME, QueryStatement.PROPERTY_SUPPLIER_ID);
                 CacheManager.Add(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER, dtSupp);
             }
@@ -163,7 +163,7 @@ namespace StorageDLHI.App.PoGUI
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             var paymentTerm = "";
             if (radOption1.Checked)
@@ -204,6 +204,7 @@ namespace StorageDLHI.App.PoGUI
             };
 
             // Convert dtProdOfAddPO to dtProdOfPO_UpdateDB
+            dtProdOfPO_UpdateDB = await PoDAO.GetPODetailForm();
             foreach (DataRow item in this.dtPODetail.Rows)
             {
                 DataRow dataRow = dtProdOfPO_UpdateDB.NewRow();

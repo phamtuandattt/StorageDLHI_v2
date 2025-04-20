@@ -21,7 +21,7 @@ namespace StorageDLHI.App.MprGUI
     {
         private bool status = true;
         private DataTable dtProdOfMpr = new DataTable();
-        private DataTable dtProdOfMprAdd = MprDAO.GetMprDetailForm();
+        private DataTable dtProdOfMprAdd = new DataTable(); 
         private Mprs dtMPRDetail = new Mprs();
         public bool CanelOrConfirm { get; set; } = true; // true is confirm || cancel
 
@@ -38,6 +38,7 @@ namespace StorageDLHI.App.MprGUI
             this.Text = title;
             this.status = status;
             this.dtMPRDetail = dtMPRDetail;
+
             txtMPRNo.Text = this.dtMPRDetail.Mpr_No.Trim();
             txtWoNo.Text = this.dtMPRDetail.Mpr_Wo_No.Trim();
             txtProjectName.Text = this.dtMPRDetail.Mpr_Project_Name_Code.Trim();
@@ -61,8 +62,9 @@ namespace StorageDLHI.App.MprGUI
             this.dtPickerCreate.MinDate = DateTime.Now;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
+            this.dtProdOfMprAdd = await MprDAO.GetMprDetailForm();
             if (status)
             {
                 Mprs mprs = new Mprs()

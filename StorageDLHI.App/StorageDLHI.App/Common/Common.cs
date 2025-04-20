@@ -25,23 +25,23 @@ namespace StorageDLHI.App.Common
 {
     public static class Common
     {
-        public static void ReloadAllCache()
+        public static async void ReloadAllCache()
         {
-            CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, ImportProductDAO.GetImportProducts());
-            CacheManager.Add(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD, PoDAO.GetPosForImportProduct());
-            CacheManager.Add(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD, PoDAO.GetPosForImportProduct());
-            CacheManager.Add(CacheKeys.ORIGIN_DATATABLE_ALLORIGIN, MaterialDAO.GetOrigins());   
-            CacheManager.Add(CacheKeys.MATERIAL_TYPE_DATATABLE_ALLTYPE, MaterialDAO.GetMaterialTypes());
-            CacheManager.Add(CacheKeys.STANDARD_DATATABLE_ALLSTANDARD, MaterialDAO.GetMaterialStandards());
-            CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX, MaterialDAO.GetTaxs());
-            CacheManager.Add(CacheKeys.UNIT_DATATABLE_ALLUNIT, MaterialDAO.GetUnits());
-            CacheManager.Add(CacheKeys.COST_DATATABLE_ALLCOST, MaterialDAO.GetCosts());
-            CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, ProductDAO.GetProductsForCreateMPR());
-            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, MprDAO.GetMprs());
-            CacheManager.Add(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER, SupplierDAO.GetSuppliers());
-            CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, PoDAO.GetPOs());
-            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, MprDAO.GetMprsForMakePO());
-            CacheManager.Add(CacheKeys.WAREHOUSE_DATATABLE_ALL, WarehouseDAO.GetWarehouses());
+            CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, await ImportProductDAO.GetImportProducts());
+            CacheManager.Add(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD, await PoDAO.GetPosForImportProduct());
+            CacheManager.Add(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD, await PoDAO.GetPosForImportProduct());
+            CacheManager.Add(CacheKeys.ORIGIN_DATATABLE_ALLORIGIN, await MaterialDAO.GetOrigins());   
+            CacheManager.Add(CacheKeys.MATERIAL_TYPE_DATATABLE_ALLTYPE, await MaterialDAO.GetMaterialTypes());
+            CacheManager.Add(CacheKeys.STANDARD_DATATABLE_ALLSTANDARD, await MaterialDAO.GetMaterialStandards());
+            CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX, await MaterialDAO.GetTaxs());
+            CacheManager.Add(CacheKeys.UNIT_DATATABLE_ALLUNIT, await MaterialDAO.GetUnits());
+            CacheManager.Add(CacheKeys.COST_DATATABLE_ALLCOST, await MaterialDAO.GetCosts());
+            CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, await ProductDAO.GetProductsForCreateMPR());
+            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs());
+            CacheManager.Add(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER, await SupplierDAO.GetSuppliers());
+            CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, await PoDAO.GetPOs());
+            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, await MprDAO.GetMprsForMakePO());
+            CacheManager.Add(CacheKeys.WAREHOUSE_DATATABLE_ALL, await ShowDialogManager.WithLoader(() => WarehouseDAO.GetWarehouses()));
 
         }
         public static void ShowNoDataPanel(DataGridView dgvMain, Panel pnlNoData)

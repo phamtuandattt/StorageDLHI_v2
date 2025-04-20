@@ -21,24 +21,24 @@ namespace StorageDLHI.BLL.WarehouseDAO
             return data.Insert(sqlQuery) > 0;
         }
 
-        public static DataTable GetWarehouses()
+        public static async Task<DataTable> GetWarehouses()
         {
-            return data.GetData(QueryStatement.GET_WAREHOUSES, "WAREHOUSES");
+            return await data.GetDataAsync(QueryStatement.GET_WAREHOUSES, "WAREHOUSES");
         } 
 
-        public static DataTable GetWarehosueForCbo()
+        public static async Task<DataTable> GetWarehosueForCbo()
         {
-            return data.GetData(QueryStatement.GET_WAREHOUSE_FOR_CBO, "WAREHOUSE_FOR_CBO");
+            return await data.GetDataAsync(QueryStatement.GET_WAREHOUSE_FOR_CBO, "WAREHOUSE_FOR_CBO");
         }
 
-        public static DataTable GetWarehouseForCboOfExportProd(Guid whId)
+        public static async Task<DataTable> GetWarehouseForCboOfExportProd(Guid whId)
         {
-            return data.GetData(string.Format(QueryStatement.GET_WAREHOUSE_FOR_COMBOBOX_EXPORT_PROD, whId), $"FOR_CBO_WAREHOUS_{whId}");
+            return await data.GetDataAsync(string.Format(QueryStatement.GET_WAREHOUSE_FOR_COMBOBOX_EXPORT_PROD, whId), $"FOR_CBO_WAREHOUS_{whId}");
         }
 
-        public static DataTable GetWarehouseDetailForm()
+        public static async Task<DataTable> GetWarehouseDetailForm()
         {
-            return data.GetData(QueryStatement.GET_WAREHOUSE_DETAIL_FORM, "WAREHOUSE_DETAIL_FORM");
+            return await data.GetDataAsync(QueryStatement.GET_WAREHOUSE_DETAIL_FORM, "WAREHOUSE_DETAIL_FORM");
         }
 
         public static bool UpdateQtyProdOfWarehouse(DataTable dtWarehouseDetail)
@@ -61,9 +61,9 @@ namespace StorageDLHI.BLL.WarehouseDAO
             return false;
         }
 
-        public static DataTable GetWarehouseDetailByWarehouseId(Guid warehouseId)
+        public static async Task<DataTable> GetWarehouseDetailByWarehouseId(Guid warehouseId)
         {
-            return data.GetData(string.Format(QueryStatement.GET_WAREHOUSE_DETAIL_BY_WAREHOUSE_ID, warehouseId), $"WAREHOUES_DETAIL_{warehouseId}");
+            return await data.GetDataAsync(string.Format(QueryStatement.GET_WAREHOUSE_DETAIL_BY_WAREHOUSE_ID, warehouseId), $"WAREHOUES_DETAIL_{warehouseId}");
         }
     }
 }

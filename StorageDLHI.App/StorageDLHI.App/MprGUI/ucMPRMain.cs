@@ -58,11 +58,11 @@ namespace StorageDLHI.App.MprGUI
             dgvProdExistMpr.DataSource = dtProdsOfMprs;
         }
 
-        private void LoadData()
+        private async void LoadData()
         {
             if (!CacheManager.Exists(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR))
             {
-                dtProds = ProductDAO.GetProductsForCreateMPR();
+                dtProds = await ShowDialogManager.WithLoader(() => ProductDAO.GetProductsForCreateMPR());
                 CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, dtProds);
                 dgvProds.DataSource = dtProds;
             }
@@ -74,7 +74,7 @@ namespace StorageDLHI.App.MprGUI
 
             if (!CacheManager.Exists(CacheKeys.MPRS_DATATABLE_ALL_MPRS))
             {
-                dtMprs = MprDAO.GetMprs();
+                dtMprs = await MprDAO.GetMprs();
                 CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, dtMprs);
                 dgvMPRs.DataSource = dtMprs;
             }
@@ -88,7 +88,7 @@ namespace StorageDLHI.App.MprGUI
                 var mprId = Guid.Parse(dgvMPRs.Rows[0].Cells[0].Value.ToString());
                 if (!CacheManager.Exists(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId)))
                 {
-                    dtMprDetailById = MprDAO.GetMprDetailByMpr(mprId);
+                    dtMprDetailById = await MprDAO.GetMprDetailByMpr(mprId);
                     CacheManager.Add(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId), dtMprDetailById);
                     dgvMPRDetail.DataSource = dtMprDetailById;
                 }
@@ -421,7 +421,7 @@ namespace StorageDLHI.App.MprGUI
 
         private void btnReload_Click(object sender, EventArgs e)
         {
-            ShowDialogManager.ShowDialogHelp();
+            //ShowDialogManager.ShowDialogHelp();
 
             LoadData();
         }
@@ -474,7 +474,7 @@ namespace StorageDLHI.App.MprGUI
             }
         }
 
-        private void dgvMPRs_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvMPRs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvMPRs.Rows.Count <= 0) { return; }
             int rsl = dgvMPRs.CurrentRow.Index;
@@ -482,7 +482,7 @@ namespace StorageDLHI.App.MprGUI
             var mprId = Guid.Parse(dgvMPRs.Rows[rsl].Cells[0].Value.ToString());
             if (!CacheManager.Exists(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId)))
             {
-                dtMprDetailById = MprDAO.GetMprDetailByMpr(mprId);
+                dtMprDetailById = await MprDAO.GetMprDetailByMpr(mprId);
                 CacheManager.Add(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId), dtMprDetailById);
                 dgvMPRDetail.DataSource = dtMprDetailById;
             }

@@ -14,14 +14,14 @@ namespace StorageDLHI.BLL.PoDAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable GetPOs()
+        public static async Task<DataTable> GetPOs()
         {
-            return data.GetData(QueryStatement.GET_POS, "POS");
+            return await data.GetDataAsync(QueryStatement.GET_POS, "POS");
         }
 
-        public static DataTable GetPosForImportProduct()
+        public static async Task<DataTable> GetPosForImportProduct()
         {
-            return data.GetData(QueryStatement.GET_POS_FOR_IMPORT_PRODUCT, "PO_FOR_IMRPOT_PROD");
+            return await data.GetDataAsync(QueryStatement.GET_POS_FOR_IMPORT_PRODUCT, "PO_FOR_IMRPOT_PROD");
         }
 
         public static bool UpdateIsImportedForPO(bool isImported, Guid id)
@@ -29,10 +29,10 @@ namespace StorageDLHI.BLL.PoDAO
             return data.Update(string.Format(QueryStatement.UPDATE_PO_IS_IMPORTED, isImported, id)) > 0;
         } 
 
-        public static DataTable GetPODetailById(Guid poId)
+        public static async Task<DataTable> GetPODetailById(Guid poId)
         {
             string sqlQuery = string.Format(QueryStatement.GET_PO_DETAIL_BY_PO_ID, poId);
-            return data.GetData(sqlQuery, $"PO_DETAILS.{poId}");
+            return await data.GetDataAsync(sqlQuery, $"PO_DETAILS.{poId}");
         }
 
         public static bool InsertPO(Pos pos)
@@ -49,9 +49,9 @@ namespace StorageDLHI.BLL.PoDAO
             return data.UpdateDatabase(QueryStatement.GET_PO_DETAILS, dtPODetail);
         }
 
-        public static DataTable GetPODetailForm()
+        public static async Task<DataTable> GetPODetailForm()
         {
-            return data.GetData(QueryStatement.GET_PO_DETAIL_FORM, "PO_DETAIL_FORM");
+            return await data.GetDataAsync(QueryStatement.GET_PO_DETAIL_FORM, "PO_DETAIL_FORM");
         }
 
         public static bool DeletePO(Guid id)

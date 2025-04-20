@@ -51,24 +51,24 @@ namespace StorageDLHI.BLL.MaterialDAO
             return data.Update(sqlQuery) > 0;
         }
 
-        public static DataTable GetOriginForCombobox()
+        public static async Task<DataTable> GetOriginForCombobox()
         {
-            return GetDataForCombobox(QueryStatement.GET_ORIGINS, "OrginForCob");
+            return await GetDataForCombobox(QueryStatement.GET_ORIGINS, "OrginForCob");
         }
 
-        public static DataTable GetMTypeForCombobox()
+        public static async Task<DataTable> GetMTypeForCombobox()
         {
-            return GetDataForCombobox(QueryStatement.GET_MATERIAL_TYPES, "MTypeForCob");
+            return await GetDataForCombobox(QueryStatement.GET_MATERIAL_TYPES, "MTypeForCob");
         }
 
-        public static DataTable GetStandForCombobox()
+        public static async Task<DataTable> GetStandForCombobox()
         {
-            return GetDataForCombobox(QueryStatement.GET_MATERIAL_STANDARDS, "StandForCob");
+            return await GetDataForCombobox(QueryStatement.GET_MATERIAL_STANDARDS, "StandForCob");
         }
 
-        public static DataTable GetDataForCombobox(string sqlQuery, string tableName)
+        public static async Task<DataTable> GetDataForCombobox(string sqlQuery, string tableName)
         {
-            var dt = data.GetData(sqlQuery, tableName);
+            var dt = await data.GetDataAsync(sqlQuery, tableName);
             var dtForCbo = new DataTable();
             dtForCbo.Columns.Add(QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_VALUE);
             dtForCbo.Columns.Add(QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_DISPLAY);
@@ -84,19 +84,19 @@ namespace StorageDLHI.BLL.MaterialDAO
             return dtForCbo;
         }
 
-        public static DataTable GetOrigins()
+        public static async Task<DataTable> GetOrigins()
         {
-            return data.GetData(QueryStatement.GET_ORIGINS, "Origins");
+            return await data.GetDataAsync(QueryStatement.GET_ORIGINS, "Origins");
         }
 
-        public static DataTable GetMaterialTypes() 
+        public static async Task<DataTable> GetMaterialTypes() 
         {
-            return data.GetData(QueryStatement.GET_MATERIAL_TYPES, "Types");
+            return await data.GetDataAsync(QueryStatement.GET_MATERIAL_TYPES, "Types");
         }
 
-        public static DataTable GetMaterialStandards()
+        public static async Task<DataTable> GetMaterialStandards()
         {
-            return data.GetData(QueryStatement.GET_MATERIAL_STANDARDS, "Standards");
+            return await data.GetDataAsync(QueryStatement.GET_MATERIAL_STANDARDS, "Standards");
         }
 
         public static bool InsertTax(Taxs taxs)
@@ -135,19 +135,19 @@ namespace StorageDLHI.BLL.MaterialDAO
             return data.Insert(sqlQuery) > 0;
         }
 
-        public static DataTable GetTaxs()
+        public static async Task<DataTable> GetTaxs()
         {
-            return data.GetData(QueryStatement.GET_TAXS, "TAXS");
+            return  await data.GetDataAsync(QueryStatement.GET_TAXS, "TAXS");
         }
 
-        public static DataTable GetUnits()
+        public static async Task<DataTable> GetUnits()
         {
-            return data.GetData(QueryStatement.GET_UNIT, "UNITS");
+            return await data.GetDataAsync(QueryStatement.GET_UNIT, "UNITS");
         }
 
-        public static DataTable GetCosts()
+        public static async Task<DataTable> GetCosts()
         {
-            return data.GetData(QueryStatement.GET_COST, "COSTS");
+            return await data.GetDataAsync(QueryStatement.GET_COST, "COSTS");
         }
     }
 }

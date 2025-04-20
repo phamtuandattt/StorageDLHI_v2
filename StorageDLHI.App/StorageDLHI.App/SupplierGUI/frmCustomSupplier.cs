@@ -57,7 +57,7 @@ namespace StorageDLHI.App.SupplierGUI
 
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             if (status)
             {
@@ -72,7 +72,7 @@ namespace StorageDLHI.App.SupplierGUI
                     Address = txtAddress.Text.Trim(),
                 };
 
-                DataTable dtForm = SupplierDAO.GetSupplierBanksForms();
+                DataTable dtForm = await SupplierDAO.GetSupplierBanksForms();
                 foreach (DataGridViewRow row in dgvBankOfSup.Rows)
                 {
                     DataRow r_new = dtForm.NewRow();
@@ -119,8 +119,8 @@ namespace StorageDLHI.App.SupplierGUI
                     Address = txtAddress.Text.Trim(),
                 };
 
-                DataTable dtFormUp = SupplierDAO.GetSupplierBanksForms();
-                DataTable dtFormAdd = SupplierDAO.GetSupplierBanksForms();
+                DataTable dtFormUp = await SupplierDAO.GetSupplierBanksForms();
+                DataTable dtFormAdd = await SupplierDAO.GetSupplierBanksForms();
 
                 foreach (DataGridViewRow row in dgvBankOfSup.Rows)
                 {
@@ -178,11 +178,11 @@ namespace StorageDLHI.App.SupplierGUI
             this.Close();
         }
 
-        private void tlsAddBank_Click(object sender, EventArgs e)
+        private async void tlsAddBank_Click(object sender, EventArgs e)
         {
             if (this.dtBanks is null)
             {
-                this.dtBanks = SupplierDAO.GetSupplierBanksForms();
+                this.dtBanks = await SupplierDAO.GetSupplierBanksForms();
                 DataRow r_new = this.dtBanks.NewRow();
                 this.dtBanks.Rows.Add(r_new);
                 dgvBankOfSup.DataSource = this.dtBanks;

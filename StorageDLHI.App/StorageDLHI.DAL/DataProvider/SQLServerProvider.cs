@@ -17,7 +17,7 @@ namespace StorageDLHI.DAL.DataProvider
 
         public SQLServerProvider()
         {
-            _connection = new SqlConnection("server=DESKTOP-KD2BPDJ;database=DLHI_v2;Integrated Security = true;uid=sa;pwd=Aa123456@");
+            _connection = new SqlConnection("server=DESKTOP-KD2BPDJ;database=DLHI_v2;Integrated Security = true;uid=sa;pwd=Aa123456@;MultipleActiveResultSets=True;");
         }
 
         public bool CheckConnection (string connectionString)
@@ -35,20 +35,28 @@ namespace StorageDLHI.DAL.DataProvider
             }
         }
 
-        public DataTable GetData(string sqlQuery, string tableName)
+        public async Task<DataTable> GetDataAsync(string sqlQuery, string tableName)
         {
+            //GetDataAsync
             try
             {
-                DataSet ds = new DataSet();
-                SqlDataAdapter da = new SqlDataAdapter(sqlQuery, _connection);
-                da.Fill(ds, tableName);
-                return ds.Tables[tableName];
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, _connection))
+                {
+                    if (_connection.State != ConnectionState.Open)
+                        await _connection.OpenAsync();
+
+                    using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
+                    {
+                        DataTable dt = new DataTable();
+                        dt.Load(reader); // this is synchronous but fast
+                        return dt;
+                    }
+                }
             }
             catch (SqlException ex)
             {
                 LoggerConfig.Logger.Error($"{ex.Message} by {ShareData.UserName}");
                 return null;
-                throw new Exception(ex.Message);
             }
         }
 
