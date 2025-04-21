@@ -167,9 +167,9 @@ namespace StorageDLHI.App.PoGUI
             }
         }
 
-        private void btnReload_Click(object sender, EventArgs e)
+        private async void btnReload_Click(object sender, EventArgs e)
         {
-            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, MprDAO.GetMprsForMakePO());
+            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, await MprDAO.GetMprsForMakePO());
             LoadData();
             if (dgvMPRs.Rows.Count <= 0)
             {
@@ -465,7 +465,7 @@ namespace StorageDLHI.App.PoGUI
             }
         }
 
-        private void btnAddPO_Click(object sender, EventArgs e)
+        private async void btnAddPO_Click(object sender, EventArgs e)
         {
             if (dgvProdOfPO.Rows.Count <= 0) 
             {
@@ -509,9 +509,9 @@ namespace StorageDLHI.App.PoGUI
             UpdateFooter();
             dgvMPRs.Enabled = true;
             // Update data in cache
-            CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, PoDAO.GetPOs());
-            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, MprDAO.GetMprsForMakePO());
-            CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, ImportProductDAO.GetImportProducts());
+            CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, await PoDAO.GetPOs());
+            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, await MprDAO.GetMprsForMakePO());
+            CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, await ImportProductDAO.GetImportProducts());
 
             LoadData();
         }

@@ -94,7 +94,7 @@ namespace StorageDLHI.App.ProductGUI
             var dtStand = await MaterialDAO.GetStandForCombobox();
             LoadDataCombox(cboStandard, dtStand);
 
-            var dtUnits = MaterialDAO.GetUnits();
+            var dtUnits = await MaterialDAO.GetUnits();
             cboUnit.DataSource = dtUnits;
             cboUnit.DisplayMember = QueryStatement.PROPERTY_UNIT_CODE;
             cboUnit.ValueMember = QueryStatement.PROPERTY_UNIT_ID;

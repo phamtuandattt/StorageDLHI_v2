@@ -212,7 +212,7 @@
             this.kryptonNavigator1.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
             this.pagePOs,
             this.pageAddPO});
-            this.kryptonNavigator1.SelectedIndex = 0;
+            this.kryptonNavigator1.SelectedIndex = 1;
             this.kryptonNavigator1.Size = new System.Drawing.Size(1355, 748);
             this.kryptonNavigator1.StateCommon.Panel.Color1 = System.Drawing.Color.White;
             this.kryptonNavigator1.StateCommon.Panel.Color2 = System.Drawing.Color.White;
@@ -518,19 +518,19 @@
             this.tlsReloadImportList.Image = global::StorageDLHI.App.Properties.Resources.refresh;
             this.tlsReloadImportList.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsReloadImportList.Name = "tlsReloadImportList";
-            this.tlsReloadImportList.Size = new System.Drawing.Size(29, 28);
+            this.tlsReloadImportList.Size = new System.Drawing.Size(29, 24);
             this.tlsReloadImportList.Text = "Refresh";
             this.tlsReloadImportList.Click += new System.EventHandler(this.tlsReloadImportList_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(56, 28);
+            this.toolStripLabel1.Size = new System.Drawing.Size(56, 24);
             this.toolStripLabel1.Text = "Search:";
             // 
             // txtSearchImportList
@@ -544,7 +544,7 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
             // 
             // tlsSearchDateForImports
             // 
@@ -552,19 +552,19 @@
             this.tlsSearchDateForImports.Image = global::StorageDLHI.App.Properties.Resources.search;
             this.tlsSearchDateForImports.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsSearchDateForImports.Name = "tlsSearchDateForImports";
-            this.tlsSearchDateForImports.Size = new System.Drawing.Size(29, 28);
+            this.tlsSearchDateForImports.Size = new System.Drawing.Size(29, 24);
             this.tlsSearchDateForImports.Text = "Seacrch date";
             this.tlsSearchDateForImports.Click += new System.EventHandler(this.tlsSearchDateForImports_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
             // 
             // lblDateTimeSeacrh
             // 
             this.lblDateTimeSeacrh.Name = "lblDateTimeSeacrh";
-            this.lblDateTimeSeacrh.Size = new System.Drawing.Size(0, 28);
+            this.lblDateTimeSeacrh.Size = new System.Drawing.Size(0, 24);
             // 
             // tlsClearSeacrhDate
             // 
@@ -1152,6 +1152,7 @@
             this.dgvProdForImport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProdForImport.Size = new System.Drawing.Size(1343, 248);
             this.dgvProdForImport.TabIndex = 3;
+            this.dgvProdForImport.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProdForImport_CellMouseDoubleClick);
             this.dgvProdForImport.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProdForImport_CellMouseDown);
             this.dgvProdForImport.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvProdForImport_ColumnWidthChanged);
             this.dgvProdForImport.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvProdForImport_DataBindingComplete);
@@ -1373,14 +1374,14 @@
             this.btnReload.Image = global::StorageDLHI.App.Properties.Resources.refresh;
             this.btnReload.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(29, 28);
+            this.btnReload.Size = new System.Drawing.Size(29, 24);
             this.btnReload.Text = "Refresh";
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // btnAddAllProdToImport
             // 
@@ -1397,20 +1398,20 @@
             // 
             this.tlsPONo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tlsPONo.Name = "tlsPONo";
-            this.tlsPONo.Size = new System.Drawing.Size(18, 28);
+            this.tlsPONo.Size = new System.Drawing.Size(18, 24);
             this.tlsPONo.Text = "...";
             // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(56, 28);
+            this.toolStripLabel2.Size = new System.Drawing.Size(56, 24);
             this.toolStripLabel2.Text = "Search:";
             // 
             // tlsSearchPOs
             // 
             this.tlsSearchPOs.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tlsSearchPOs.Name = "tlsSearchPOs";
-            this.tlsSearchPOs.Size = new System.Drawing.Size(200, 31);
+            this.tlsSearchPOs.Size = new System.Drawing.Size(200, 27);
             this.tlsSearchPOs.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tlsSearchPOs_KeyUp);
             // 
             // ucImportProd

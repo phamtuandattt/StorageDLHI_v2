@@ -16,27 +16,33 @@ namespace StorageDLHI.App.ImportGUI
 {
     public partial class frmUpdateImportedProduct : KryptonForm
     {
-        private Guid prodId = Guid.Empty;
+        public Guid ProdId { get; set; } = Guid.Empty;
         private List<string> prodAdded = new List<string>();
 
 
         public List<string> ListUpdateImportProd { get; set; } = new List<string>();
         public bool IsUpdated { get; set; } = true;
+        public bool IsDeleted { get; set; }
 
         public frmUpdateImportedProduct(Guid prodId, Int32 qty, string prodName)
         {
             InitializeComponent();
 
-            this.prodId = prodId;
+            this.ProdId = prodId;
 
-            cboWarehouse.DataSource = WarehouseDAO.GetWarehosueForCbo();
-            cboWarehouse.DisplayMember = QueryStatement.PROPERTY_WAREHOUSE_NAME;
-            cboWarehouse.ValueMember = QueryStatement.PROPERTY_WAREHOUSE_ID;
+            LoadDataForCombobox();
 
             txtProdName.Text = prodName.Trim();
             txtRemainingQty.Text = qty.ToString();
 
             txtQtyImport.Maximum = qty;
+        }
+
+        private async void LoadDataForCombobox()
+        {
+            cboWarehouse.DataSource = await WarehouseDAO.GetWarehosueForCbo();
+            cboWarehouse.DisplayMember = QueryStatement.PROPERTY_WAREHOUSE_NAME;
+            cboWarehouse.ValueMember = QueryStatement.PROPERTY_WAREHOUSE_ID;
         }
 
         private void UpdateQtyRemaining(bool IsAdd, int rsl)
@@ -68,7 +74,7 @@ namespace StorageDLHI.App.ImportGUI
         {
             if (dgvImportFor.Rows.Count <= 0) return;
             int rsl = dgvImportFor.CurrentRow.Index;
-            var prodString = this.prodId + "|" + dgvImportFor.Rows[rsl].Cells[4].Value.ToString().Trim();
+            var prodString = this.ProdId + "|" + dgvImportFor.Rows[rsl].Cells[4].Value.ToString().Trim();
             prodAdded.Remove(prodString);
             UpdateQtyRemaining(false, rsl);
             dgvImportFor.Rows.RemoveAt(rsl);
@@ -76,7 +82,7 @@ namespace StorageDLHI.App.ImportGUI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var prodString = this.prodId + "|" + cboWarehouse.SelectedValue.ToString();
+            var prodString = this.ProdId + "|" + cboWarehouse.SelectedValue.ToString();
             if (prodAdded.Contains(prodString))
             {
                 if (!MessageBoxHelper.Confirm($"You imported {txtProdName.Text.Trim()} into warehouse {cboWarehouse.Text.Trim()}." +
@@ -95,13 +101,18 @@ namespace StorageDLHI.App.ImportGUI
                 }
             }
             prodAdded.Add(prodString);
-            this.dgvImportFor.Rows.Add(this.prodId, txtProdName.Text.Trim(), Int32.Parse(txtQtyImport.Value.ToString().Trim()), 
+            this.dgvImportFor.Rows.Add(this.ProdId, txtProdName.Text.Trim(), Int32.Parse(txtQtyImport.Value.ToString().Trim()), 
                     cboWarehouse.Text.Trim(), Guid.Parse(cboWarehouse.SelectedValue.ToString()));
             UpdateQtyRemaining(true, 0);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (Int32.Parse(txtRemainingQty.Text.Trim()) > 0)
+            {
+                MessageBoxHelper.ShowWarning("Please enter all products !");
+                return;
+            }    
             if (dgvImportFor.Rows.Count <= 0 )
             {
                 MessageBoxHelper.ShowWarning("You have not updated the quantity for Import product. Please update quantity !");
@@ -109,7 +120,7 @@ namespace StorageDLHI.App.ImportGUI
             }
             foreach (DataGridViewRow item in dgvImportFor.Rows)
             {
-                var prodInfo = this.prodId + "|" + Int32.Parse(item.Cells[2].Value.ToString()) +
+                var prodInfo = this.ProdId + "|" + Int32.Parse(item.Cells[2].Value.ToString()) +
                     "|" + item.Cells[3].Value.ToString() + "|" + Guid.Parse(item.Cells[4].Value.ToString());
                 ListUpdateImportProd.Add(prodInfo);
             }

@@ -36,5 +36,7 @@ namespace StorageDLHI.App.Common
 
         public const string WAREHOUSE_ADD = "Add Warehouse";
         public const string WAREHOUSE_UPDATE = "Update Warehouse";
+
+        public const string IMPORT_ADD_QUANTITY_IMPORT = "Add quantity import";
     }
 }

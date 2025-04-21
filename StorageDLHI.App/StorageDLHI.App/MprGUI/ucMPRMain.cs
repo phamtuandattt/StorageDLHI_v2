@@ -193,7 +193,7 @@ namespace StorageDLHI.App.MprGUI
             RenderNumbering(sender, e);
         }
 
-        private void updateProductToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void updateProductToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgvProds.Rows.Count <= 0) return;
             int rsl = dgvProds.CurrentRow.Index;
@@ -229,7 +229,7 @@ namespace StorageDLHI.App.MprGUI
             frmCustomProd.ShowDialog();
 
             // Overwrite cache Products
-            CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, ProductDAO.GetProductsForCreateMPR());
+            CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, await ProductDAO.GetProductsForCreateMPR());
             LoadData();
         }
 

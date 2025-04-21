@@ -20,13 +20,19 @@ namespace StorageDLHI.App.ImportGUI
         public Int32 Qty { get; set; } = 0;
         public Warehouses Warehouse { get; set; } = new Warehouses();
 
-        public frmImportForWarehouse(Int32 maxQty)
+        public frmImportForWarehouse(string title, Int32 maxQty)
         {
             InitializeComponent();
-            cboWarehosue.DataSource = WarehouseDAO.GetWarehosueForCbo();
+            LoadDataForCombobox();
+            this.Text = title;
+            txtQtyProd.Maximum = maxQty;
+        }
+
+        private async void LoadDataForCombobox()
+        {
+            cboWarehosue.DataSource = await WarehouseDAO.GetWarehosueForCbo();
             cboWarehosue.DisplayMember = QueryStatement.PROPERTY_WAREHOUSE_NAME;
             cboWarehosue.ValueMember = QueryStatement.PROPERTY_WAREHOUSE_ID;
-            txtQtyProd.Maximum = maxQty;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
