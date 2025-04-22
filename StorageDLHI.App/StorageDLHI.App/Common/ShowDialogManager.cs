@@ -13,11 +13,11 @@ namespace StorageDLHI.App.Common
 {
     public static class ShowDialogManager
     {
-        public static async void ShowDialogHelp()
+        public static async void ShowDialogHelp(int delay)
         {
             var frm = new LoadingForm();
             frm.Show();
-            await Task.Delay(3000); // simulate task
+            await Task.Delay(delay); // simulate task
             frm.Close();
         }
 

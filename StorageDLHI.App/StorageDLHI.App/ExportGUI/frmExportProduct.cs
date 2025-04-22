@@ -53,15 +53,20 @@ namespace StorageDLHI.App.ExportGUI
             dtDeliveryProd.Columns.Add(QueryStatement.PROPERTY_DELIVERY_DETAIL_QTY, typeof(Int32));
 
             lblWarehouse.Text = $"Q'ty of {this.warehouse.Warehouse_Name}:";
-            
-            cboWarehouse.DataSource = WarehouseDAO.GetWarehouseForCboOfExportProd(this.warehouse.Id);
-            cboWarehouse.DisplayMember = QueryStatement.PROPERTY_WAREHOUSE_NAME;
-            cboWarehouse.ValueMember = QueryStatement.PROPERTY_WAREHOUSE_ID;
+
+            LoadDataComboxBox();
 
             txtProdName.Text = prodName;
             txtRemainingQty.Text = qty.ToString("N0").Trim();
 
             txtQtyExport.Maximum = qty;
+        }
+
+        private async void LoadDataComboxBox()
+        {
+            cboWarehouse.DataSource = await WarehouseDAO.GetWarehouseForCboOfExportProd(this.warehouse.Id);
+            cboWarehouse.DisplayMember = QueryStatement.PROPERTY_WAREHOUSE_NAME;
+            cboWarehouse.ValueMember = QueryStatement.PROPERTY_WAREHOUSE_ID;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

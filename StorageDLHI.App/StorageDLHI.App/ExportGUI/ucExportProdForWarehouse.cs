@@ -1,4 +1,7 @@
-﻿using StorageDLHI.BLL.ExportDAO;
+﻿using ComponentFactory.Krypton.Toolkit;
+using StorageDLHI.App.Common;
+using StorageDLHI.App.Common.CommonGUI;
+using StorageDLHI.BLL.ExportDAO;
 using StorageDLHI.BLL.WarehouseDAO;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
@@ -10,6 +13,7 @@ using System.Data;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +26,7 @@ namespace StorageDLHI.App.ExportGUI
         private DataTable dtWarehouseDetail = new DataTable();
         private DataTable dtProdExport =  new DataTable();
         private DataTable dtProdExportUpdateDB = new DataTable();
+        private List<Guid> wIds = new List<Guid>();
 
         public ucExportProdForWarehouse()
         {
@@ -29,6 +34,7 @@ namespace StorageDLHI.App.ExportGUI
             LoadData();
 
             Common.Common.InitializeFooterGrid(dgvProdOfExport, dgvFooter);
+            Common.Common.InitializeFooterGrid(dgvRemaningGoods, dgvFooterOfRemaining);
 
             dtProdExport.Columns.Add(QueryStatement.PROPERTY_PROD_ID);
             dtProdExport.Columns.Add(QueryStatement.PROPERTY_PROD_NAME);
@@ -46,6 +52,9 @@ namespace StorageDLHI.App.ExportGUI
             dtProdExport.Columns.Add(QueryStatement.PROPERTY_WAREHOUSE_NAME); // 13
             dtProdExport.Columns.Add(QueryStatement.PROPERTY_WAREHOUSE_DETAIL_ID); // 14
             dgvProdOfExport.DataSource = dtProdExport;
+
+
+            UpdateFooterOfRemaining();
         }
 
         private async void LoadData()
@@ -71,6 +80,12 @@ namespace StorageDLHI.App.ExportGUI
         private async void LoadDetailByWId(int rsl)
         {
             Guid wId = Guid.Parse(dgvWarehose.Rows[rsl].Cells[0].Value.ToString());
+            
+            if (!wIds.Contains(wId))
+            {
+                wIds.Add(wId);
+            }
+
             if (!CacheManager.Exists(string.Format(CacheKeys.WAREHOUSE_DETAIL_BY_ID, wId)))
             {
                 dtWarehouseDetail = await WarehouseDAO.GetWarehouseDetailByWarehouseId(wId);
@@ -84,8 +99,24 @@ namespace StorageDLHI.App.ExportGUI
             }
         }
 
+        private async void ReloadCacheWareHouseDetail()
+        {
+            if (!wIds.Any())
+            {
+                return;
+            }
+
+            foreach (var itemId in wIds.Distinct())
+            {
+                CacheManager.Add(string.Format(CacheKeys.WAREHOUSE_DETAIL_BY_ID, itemId), await WarehouseDAO.GetWarehouseDetailByWarehouseId(itemId));
+            }
+            UpdateFooterOfRemaining();
+        }
+
         private void tlsReload_Click(object sender, EventArgs e)
         {
+            ReloadCacheWareHouseDetail();
+            ShowDialogManager.ShowDialogHelp(2000);
             LoadData();
         }
 
@@ -162,6 +193,25 @@ namespace StorageDLHI.App.ExportGUI
             Common.Common.StyleFooterCell(dgvFooter.Rows[0].Cells[12]);
         }
 
+        private void UpdateFooterOfRemaining()
+        {
+            Int32 totalQty = 0;
+
+            foreach (DataGridViewRow row in dgvRemaningGoods.Rows)
+            {
+                if (Int32.TryParse(row.Cells[14].Value?.ToString(), out Int32 qty))
+                {
+                    totalQty += qty;
+                }
+            }
+
+            dgvFooterOfRemaining.Rows[0].Cells[2].Value = "TOTAL";
+            dgvFooterOfRemaining.Rows[0].Cells[14].Value = totalQty.ToString("N0");
+
+            dgvFooterOfRemaining.Rows[0].Cells[2].Style.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            Common.Common.StyleFooterCell(dgvFooterOfRemaining.Rows[0].Cells[14]);
+        }
+
         private void dgvRemaningGoods_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvRemaningGoods.Rows.Count < 0) { return; }
@@ -184,8 +234,25 @@ namespace StorageDLHI.App.ExportGUI
             {
                 return;
             }
-
+            UpdateFooterOfRemaining();
             LoadData();
+        }
+
+        private void dgvRemaningGoods_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+            // Apply the changed width to the corresponding column in the footer
+            if (e.Column.Index < dgvFooter.Columns.Count)
+            {
+                dgvFooter.Columns[e.Column.Index].Width = e.Column.Width;
+            }
+
+            // Resize for DataGridViewMain and DataGridViewFooter the same
+            Common.Common.AdjustFooterScrollbar(dgvRemaningGoods, dgvFooter);
+        }
+
+        private void dgvRemaningGoods_Scroll(object sender, ScrollEventArgs e)
+        {
+            dgvFooter.HorizontalScrollingOffset = dgvRemaningGoods.HorizontalScrollingOffset;
         }
     }
 }

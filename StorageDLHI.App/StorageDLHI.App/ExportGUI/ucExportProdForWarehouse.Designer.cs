@@ -33,29 +33,9 @@
             this.kryptonPanel7 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel8 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.kryptonGroupBox4 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
-            this.dgvWarehose = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kryptonGroupBox2 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
-            this.dgvRemaningGoods = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.txtSearchWarehouse = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.lblDateTimeSeacrh = new System.Windows.Forms.ToolStripLabel();
-            this.pageAddPO = new ComponentFactory.Krypton.Navigator.KryptonPage();
-            this.tlsReload = new System.Windows.Forms.ToolStripButton();
-            this.tlsSearchDate = new System.Windows.Forms.ToolStripButton();
-            this.tlsClearSeacrhDate = new System.Windows.Forms.ToolStripButton();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
-            this.dgvProdOfExport = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.dgvFooter = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.dgvProdOfExport = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +51,15 @@
             this.QTY_PROD_FOR_EXPORT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.kryptonGroupBox4 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.dgvWarehose = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kryptonGroupBox2 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.dgvRemaningGoods = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,6 +75,18 @@
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PRODUCT_IN_STOCK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.tlsReload = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.txtSearchWarehouse = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tlsSearchDate = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.lblDateTimeSeacrh = new System.Windows.Forms.ToolStripLabel();
+            this.tlsClearSeacrhDate = new System.Windows.Forms.ToolStripButton();
+            this.pageAddPO = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.dgvFooterOfRemaining = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pagePOs)).BeginInit();
@@ -95,6 +96,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel8)).BeginInit();
             this.kryptonPanel8.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
+            this.kryptonGroupBox1.Panel.SuspendLayout();
+            this.kryptonGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFooter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProdOfExport)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).BeginInit();
             this.kryptonGroupBox4.Panel.SuspendLayout();
@@ -107,13 +115,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvRemaningGoods)).BeginInit();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pageAddPO)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
-            this.kryptonGroupBox1.Panel.SuspendLayout();
-            this.kryptonGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProdOfExport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFooter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFooterOfRemaining)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonNavigator1
@@ -184,237 +186,6 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1385, 717);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
-            // kryptonGroupBox4
-            // 
-            this.kryptonGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox4.Location = new System.Drawing.Point(3, 3);
-            this.kryptonGroupBox4.Name = "kryptonGroupBox4";
-            this.kryptonGroupBox4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            // 
-            // kryptonGroupBox4.Panel
-            // 
-            this.kryptonGroupBox4.Panel.Controls.Add(this.dgvWarehose);
-            this.kryptonGroupBox4.Size = new System.Drawing.Size(407, 705);
-            this.kryptonGroupBox4.TabIndex = 0;
-            this.kryptonGroupBox4.Values.Heading = "Warehouse";
-            // 
-            // dgvWarehose
-            // 
-            this.dgvWarehose.AllowUserToAddRows = false;
-            this.dgvWarehose.AllowUserToDeleteRows = false;
-            this.dgvWarehose.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvWarehose.ColumnHeadersHeight = 30;
-            this.dgvWarehose.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4});
-            this.dgvWarehose.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvWarehose.Location = new System.Drawing.Point(0, 0);
-            this.dgvWarehose.Name = "dgvWarehose";
-            this.dgvWarehose.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.dgvWarehose.ReadOnly = true;
-            this.dgvWarehose.RowHeadersWidth = 51;
-            this.dgvWarehose.RowTemplate.Height = 30;
-            this.dgvWarehose.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvWarehose.Size = new System.Drawing.Size(403, 677);
-            this.dgvWarehose.TabIndex = 2;
-            this.dgvWarehose.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWarehose_CellClick);
-            this.dgvWarehose.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvWarehose_RowPostPaint);
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "ID";
-            this.Column1.HeaderText = "ID";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "WAREHOUSE_CODE";
-            this.Column2.HeaderText = "Code";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "WAREHOUSE_NAME";
-            this.Column3.HeaderText = "Name";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "WAREHOUSE_ADDRESS";
-            this.Column4.HeaderText = "Address";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // kryptonGroupBox2
-            // 
-            this.kryptonGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox2.Location = new System.Drawing.Point(416, 3);
-            this.kryptonGroupBox2.Name = "kryptonGroupBox2";
-            this.kryptonGroupBox2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            // 
-            // kryptonGroupBox2.Panel
-            // 
-            this.kryptonGroupBox2.Panel.Controls.Add(this.dgvRemaningGoods);
-            this.kryptonGroupBox2.Size = new System.Drawing.Size(960, 705);
-            this.kryptonGroupBox2.TabIndex = 2;
-            this.kryptonGroupBox2.Values.Heading = "Remaining goods";
-            // 
-            // dgvRemaningGoods
-            // 
-            this.dgvRemaningGoods.AllowUserToAddRows = false;
-            this.dgvRemaningGoods.AllowUserToDeleteRows = false;
-            this.dgvRemaningGoods.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvRemaningGoods.ColumnHeadersHeight = 30;
-            this.dgvRemaningGoods.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8,
-            this.CODE_PROD,
-            this.Column9,
-            this.Column10,
-            this.A_THINH,
-            this.Column11,
-            this.Column12,
-            this.Column13,
-            this.Column14,
-            this.Column15,
-            this.Column16,
-            this.PRODUCT_IN_STOCK});
-            this.dgvRemaningGoods.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvRemaningGoods.Location = new System.Drawing.Point(0, 0);
-            this.dgvRemaningGoods.Name = "dgvRemaningGoods";
-            this.dgvRemaningGoods.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.dgvRemaningGoods.ReadOnly = true;
-            this.dgvRemaningGoods.RowHeadersWidth = 51;
-            this.dgvRemaningGoods.RowTemplate.Height = 30;
-            this.dgvRemaningGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRemaningGoods.Size = new System.Drawing.Size(956, 677);
-            this.dgvRemaningGoods.TabIndex = 3;
-            this.dgvRemaningGoods.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRemaningGoods_CellClick);
-            this.dgvRemaningGoods.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRemaningGoods_CellDoubleClick);
-            this.dgvRemaningGoods.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvRemaningGoods_DataBindingComplete);
-            this.dgvRemaningGoods.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvRemaningGoods_RowPostPaint);
-            // 
-            // toolStrip2
-            // 
-            this.toolStrip2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlsReload,
-            this.toolStripSeparator2,
-            this.toolStripLabel1,
-            this.txtSearchWarehouse,
-            this.toolStripSeparator3,
-            this.tlsSearchDate,
-            this.toolStripSeparator4,
-            this.lblDateTimeSeacrh,
-            this.tlsClearSeacrhDate});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip2.Size = new System.Drawing.Size(1385, 27);
-            this.toolStrip2.TabIndex = 5;
-            this.toolStrip2.Text = "toolStrip2";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(56, 28);
-            this.toolStripLabel1.Text = "Search:";
-            // 
-            // txtSearchWarehouse
-            // 
-            this.txtSearchWarehouse.AutoSize = false;
-            this.txtSearchWarehouse.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtSearchWarehouse.Name = "txtSearchWarehouse";
-            this.txtSearchWarehouse.Size = new System.Drawing.Size(200, 27);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 31);
-            // 
-            // lblDateTimeSeacrh
-            // 
-            this.lblDateTimeSeacrh.Name = "lblDateTimeSeacrh";
-            this.lblDateTimeSeacrh.Size = new System.Drawing.Size(0, 28);
-            // 
-            // pageAddPO
-            // 
-            this.pageAddPO.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.pageAddPO.Flags = 65534;
-            this.pageAddPO.LastVisibleSet = true;
-            this.pageAddPO.MinimumSize = new System.Drawing.Size(50, 50);
-            this.pageAddPO.Name = "pageAddPO";
-            this.pageAddPO.Size = new System.Drawing.Size(1091, 627);
-            this.pageAddPO.Text = "Import";
-            this.pageAddPO.ToolTipTitle = "Add PO";
-            this.pageAddPO.UniqueName = "C1CDCFEA77D34F9CC58428E5EF444C03";
-            // 
-            // tlsReload
-            // 
-            this.tlsReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsReload.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.tlsReload.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsReload.Name = "tlsReload";
-            this.tlsReload.Size = new System.Drawing.Size(29, 28);
-            this.tlsReload.Text = "Refresh";
-            this.tlsReload.Click += new System.EventHandler(this.tlsReload_Click);
-            // 
-            // tlsSearchDate
-            // 
-            this.tlsSearchDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsSearchDate.Image = global::StorageDLHI.App.Properties.Resources.search;
-            this.tlsSearchDate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsSearchDate.Name = "tlsSearchDate";
-            this.tlsSearchDate.Size = new System.Drawing.Size(29, 28);
-            this.tlsSearchDate.Text = "Seacrch date";
-            // 
-            // tlsClearSeacrhDate
-            // 
-            this.tlsClearSeacrhDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsClearSeacrhDate.Image = global::StorageDLHI.App.Properties.Resources.clean;
-            this.tlsClearSeacrhDate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsClearSeacrhDate.Name = "tlsClearSeacrhDate";
-            this.tlsClearSeacrhDate.Size = new System.Drawing.Size(29, 28);
-            this.tlsClearSeacrhDate.Text = "Clear";
-            this.tlsClearSeacrhDate.Visible = false;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.Controls.Add(this.kryptonGroupBox4, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.kryptonGroupBox2, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1379, 711);
-            this.tableLayoutPanel1.TabIndex = 3;
-            // 
             // kryptonGroupBox1
             // 
             this.kryptonGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -429,6 +200,19 @@
             this.kryptonGroupBox1.Size = new System.Drawing.Size(1379, 1);
             this.kryptonGroupBox1.TabIndex = 4;
             this.kryptonGroupBox1.Values.Heading = "Export list";
+            // 
+            // dgvFooter
+            // 
+            this.dgvFooter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvFooter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvFooter.Location = new System.Drawing.Point(0, -36);
+            this.dgvFooter.Name = "dgvFooter";
+            this.dgvFooter.ReadOnly = true;
+            this.dgvFooter.RowHeadersWidth = 51;
+            this.dgvFooter.RowTemplate.Height = 30;
+            this.dgvFooter.Size = new System.Drawing.Size(1375, 36);
+            this.dgvFooter.TabIndex = 5;
             // 
             // dgvProdOfExport
             // 
@@ -466,19 +250,6 @@
             this.dgvProdOfExport.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvProdOfExport_DataBindingComplete);
             this.dgvProdOfExport.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvProdOfExport_RowPostPaint);
             this.dgvProdOfExport.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvProdOfExport_Scroll);
-            // 
-            // dgvFooter
-            // 
-            this.dgvFooter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvFooter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvFooter.Location = new System.Drawing.Point(0, -36);
-            this.dgvFooter.Name = "dgvFooter";
-            this.dgvFooter.ReadOnly = true;
-            this.dgvFooter.RowHeadersWidth = 51;
-            this.dgvFooter.RowTemplate.Height = 30;
-            this.dgvFooter.Size = new System.Drawing.Size(1375, 36);
-            this.dgvFooter.TabIndex = 5;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -601,6 +372,145 @@
             this.Column29.Name = "Column29";
             this.Column29.ReadOnly = true;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel1.Controls.Add(this.kryptonGroupBox4, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.kryptonGroupBox2, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1379, 711);
+            this.tableLayoutPanel1.TabIndex = 3;
+            // 
+            // kryptonGroupBox4
+            // 
+            this.kryptonGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonGroupBox4.Location = new System.Drawing.Point(3, 3);
+            this.kryptonGroupBox4.Name = "kryptonGroupBox4";
+            this.kryptonGroupBox4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            // 
+            // kryptonGroupBox4.Panel
+            // 
+            this.kryptonGroupBox4.Panel.Controls.Add(this.dgvWarehose);
+            this.kryptonGroupBox4.Size = new System.Drawing.Size(407, 705);
+            this.kryptonGroupBox4.TabIndex = 0;
+            this.kryptonGroupBox4.Values.Heading = "Warehouse";
+            // 
+            // dgvWarehose
+            // 
+            this.dgvWarehose.AllowUserToAddRows = false;
+            this.dgvWarehose.AllowUserToDeleteRows = false;
+            this.dgvWarehose.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvWarehose.ColumnHeadersHeight = 30;
+            this.dgvWarehose.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
+            this.dgvWarehose.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvWarehose.Location = new System.Drawing.Point(0, 0);
+            this.dgvWarehose.Name = "dgvWarehose";
+            this.dgvWarehose.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.dgvWarehose.ReadOnly = true;
+            this.dgvWarehose.RowHeadersWidth = 51;
+            this.dgvWarehose.RowTemplate.Height = 30;
+            this.dgvWarehose.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvWarehose.Size = new System.Drawing.Size(403, 677);
+            this.dgvWarehose.TabIndex = 2;
+            this.dgvWarehose.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWarehose_CellClick);
+            this.dgvWarehose.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvWarehose_RowPostPaint);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "ID";
+            this.Column1.HeaderText = "ID";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "WAREHOUSE_CODE";
+            this.Column2.HeaderText = "Code";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "WAREHOUSE_NAME";
+            this.Column3.HeaderText = "Name";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "WAREHOUSE_ADDRESS";
+            this.Column4.HeaderText = "Address";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // kryptonGroupBox2
+            // 
+            this.kryptonGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonGroupBox2.Location = new System.Drawing.Point(416, 3);
+            this.kryptonGroupBox2.Name = "kryptonGroupBox2";
+            this.kryptonGroupBox2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            // 
+            // kryptonGroupBox2.Panel
+            // 
+            this.kryptonGroupBox2.Panel.Controls.Add(this.dgvFooterOfRemaining);
+            this.kryptonGroupBox2.Panel.Controls.Add(this.dgvRemaningGoods);
+            this.kryptonGroupBox2.Size = new System.Drawing.Size(960, 705);
+            this.kryptonGroupBox2.TabIndex = 2;
+            this.kryptonGroupBox2.Values.Heading = "Remaining goods";
+            // 
+            // dgvRemaningGoods
+            // 
+            this.dgvRemaningGoods.AllowUserToAddRows = false;
+            this.dgvRemaningGoods.AllowUserToDeleteRows = false;
+            this.dgvRemaningGoods.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRemaningGoods.ColumnHeadersHeight = 30;
+            this.dgvRemaningGoods.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.CODE_PROD,
+            this.Column9,
+            this.Column10,
+            this.A_THINH,
+            this.Column11,
+            this.Column12,
+            this.Column13,
+            this.Column14,
+            this.Column15,
+            this.Column16,
+            this.PRODUCT_IN_STOCK});
+            this.dgvRemaningGoods.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvRemaningGoods.Location = new System.Drawing.Point(0, 0);
+            this.dgvRemaningGoods.Name = "dgvRemaningGoods";
+            this.dgvRemaningGoods.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.dgvRemaningGoods.ReadOnly = true;
+            this.dgvRemaningGoods.RowHeadersWidth = 51;
+            this.dgvRemaningGoods.RowTemplate.Height = 30;
+            this.dgvRemaningGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRemaningGoods.Size = new System.Drawing.Size(956, 677);
+            this.dgvRemaningGoods.TabIndex = 3;
+            this.dgvRemaningGoods.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRemaningGoods_CellClick);
+            this.dgvRemaningGoods.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRemaningGoods_CellDoubleClick);
+            this.dgvRemaningGoods.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvRemaningGoods_ColumnWidthChanged);
+            this.dgvRemaningGoods.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvRemaningGoods_DataBindingComplete);
+            this.dgvRemaningGoods.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvRemaningGoods_RowPostPaint);
+            this.dgvRemaningGoods.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvRemaningGoods_Scroll);
+            // 
             // Column5
             // 
             this.Column5.DataPropertyName = "ID";
@@ -721,6 +631,114 @@
             this.PRODUCT_IN_STOCK.Name = "PRODUCT_IN_STOCK";
             this.PRODUCT_IN_STOCK.ReadOnly = true;
             // 
+            // toolStrip2
+            // 
+            this.toolStrip2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlsReload,
+            this.toolStripSeparator2,
+            this.toolStripLabel1,
+            this.txtSearchWarehouse,
+            this.toolStripSeparator3,
+            this.tlsSearchDate,
+            this.toolStripSeparator4,
+            this.lblDateTimeSeacrh,
+            this.tlsClearSeacrhDate});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip2.Size = new System.Drawing.Size(1385, 27);
+            this.toolStrip2.TabIndex = 5;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // tlsReload
+            // 
+            this.tlsReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsReload.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.tlsReload.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsReload.Name = "tlsReload";
+            this.tlsReload.Size = new System.Drawing.Size(29, 24);
+            this.tlsReload.Text = "Refresh";
+            this.tlsReload.Click += new System.EventHandler(this.tlsReload_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(56, 24);
+            this.toolStripLabel1.Text = "Search:";
+            // 
+            // txtSearchWarehouse
+            // 
+            this.txtSearchWarehouse.AutoSize = false;
+            this.txtSearchWarehouse.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSearchWarehouse.Name = "txtSearchWarehouse";
+            this.txtSearchWarehouse.Size = new System.Drawing.Size(200, 27);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            // 
+            // tlsSearchDate
+            // 
+            this.tlsSearchDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsSearchDate.Image = global::StorageDLHI.App.Properties.Resources.search;
+            this.tlsSearchDate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsSearchDate.Name = "tlsSearchDate";
+            this.tlsSearchDate.Size = new System.Drawing.Size(29, 24);
+            this.tlsSearchDate.Text = "Seacrch date";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
+            // 
+            // lblDateTimeSeacrh
+            // 
+            this.lblDateTimeSeacrh.Name = "lblDateTimeSeacrh";
+            this.lblDateTimeSeacrh.Size = new System.Drawing.Size(0, 24);
+            // 
+            // tlsClearSeacrhDate
+            // 
+            this.tlsClearSeacrhDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsClearSeacrhDate.Image = global::StorageDLHI.App.Properties.Resources.clean;
+            this.tlsClearSeacrhDate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsClearSeacrhDate.Name = "tlsClearSeacrhDate";
+            this.tlsClearSeacrhDate.Size = new System.Drawing.Size(29, 24);
+            this.tlsClearSeacrhDate.Text = "Clear";
+            this.tlsClearSeacrhDate.Visible = false;
+            // 
+            // pageAddPO
+            // 
+            this.pageAddPO.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.pageAddPO.Flags = 65534;
+            this.pageAddPO.LastVisibleSet = true;
+            this.pageAddPO.MinimumSize = new System.Drawing.Size(50, 50);
+            this.pageAddPO.Name = "pageAddPO";
+            this.pageAddPO.Size = new System.Drawing.Size(1385, 744);
+            this.pageAddPO.Text = "Import";
+            this.pageAddPO.ToolTipTitle = "Add PO";
+            this.pageAddPO.UniqueName = "C1CDCFEA77D34F9CC58428E5EF444C03";
+            // 
+            // dgvFooterOfRemaining
+            // 
+            this.dgvFooterOfRemaining.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvFooterOfRemaining.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFooterOfRemaining.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvFooterOfRemaining.Location = new System.Drawing.Point(0, 641);
+            this.dgvFooterOfRemaining.Name = "dgvFooterOfRemaining";
+            this.dgvFooterOfRemaining.ReadOnly = true;
+            this.dgvFooterOfRemaining.RowHeadersWidth = 51;
+            this.dgvFooterOfRemaining.RowTemplate.Height = 30;
+            this.dgvFooterOfRemaining.Size = new System.Drawing.Size(956, 36);
+            this.dgvFooterOfRemaining.TabIndex = 5;
+            // 
             // ucExportProdForWarehouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -739,6 +757,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel8)).EndInit();
             this.kryptonPanel8.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
+            this.kryptonGroupBox1.Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
+            this.kryptonGroupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFooter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProdOfExport)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).EndInit();
             this.kryptonGroupBox4.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).EndInit();
@@ -752,13 +777,7 @@
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pageAddPO)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
-            this.kryptonGroupBox1.Panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
-            this.kryptonGroupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProdOfExport)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFooter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFooterOfRemaining)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -823,5 +842,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         private System.Windows.Forms.DataGridViewTextBoxColumn PRODUCT_IN_STOCK;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvFooterOfRemaining;
     }
 }
