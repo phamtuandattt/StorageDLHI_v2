@@ -592,6 +592,7 @@
             this.dgvExportForWarehouse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvExportForWarehouse.Size = new System.Drawing.Size(1021, 179);
             this.dgvExportForWarehouse.TabIndex = 4;
+            this.dgvExportForWarehouse.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvExportForWarehouse_RowPostPaint);
             // 
             // PRODUCT_ID
             // 
@@ -635,7 +636,7 @@
             this.ClientSize = new System.Drawing.Size(1031, 393);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            //this.Name = "frmExportProduct";
+            this.Name = "frmExportProduct";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
             this.Text = "Update quantity in warehouse";

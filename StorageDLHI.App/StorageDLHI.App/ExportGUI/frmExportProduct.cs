@@ -203,5 +203,10 @@ namespace StorageDLHI.App.ExportGUI
                 }
             }
         }
+
+        private void dgvExportForWarehouse_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Common.Common.RenderNumbering(sender, e, this.Font);
+        }
     }
 }

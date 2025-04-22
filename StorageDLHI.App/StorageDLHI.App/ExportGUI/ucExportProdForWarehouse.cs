@@ -52,9 +52,6 @@ namespace StorageDLHI.App.ExportGUI
             dtProdExport.Columns.Add(QueryStatement.PROPERTY_WAREHOUSE_NAME); // 13
             dtProdExport.Columns.Add(QueryStatement.PROPERTY_WAREHOUSE_DETAIL_ID); // 14
             dgvProdOfExport.DataSource = dtProdExport;
-
-
-            UpdateFooterOfRemaining();
         }
 
         private async void LoadData()
@@ -110,7 +107,7 @@ namespace StorageDLHI.App.ExportGUI
             {
                 CacheManager.Add(string.Format(CacheKeys.WAREHOUSE_DETAIL_BY_ID, itemId), await WarehouseDAO.GetWarehouseDetailByWarehouseId(itemId));
             }
-            UpdateFooterOfRemaining();
+            //UpdateFooterOfRemaining();
         }
 
         private void tlsReload_Click(object sender, EventArgs e)
@@ -125,6 +122,7 @@ namespace StorageDLHI.App.ExportGUI
             if (dgvWarehose.Rows.Count <= 0) { return; }
             int rsl = dgvWarehose.CurrentRow.Index;
             LoadDetailByWId(rsl);
+            UpdateFooterOfRemaining();
         }
 
         private void dgvWarehose_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -140,6 +138,7 @@ namespace StorageDLHI.App.ExportGUI
         private void dgvRemaningGoods_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             dgvRemaningGoods.Columns["PRODUCT_IN_STOCK"].DefaultCellStyle.Format = "N0";
+            UpdateFooterOfRemaining();
         }
 
         private void dgvRemaningGoods_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -205,10 +204,10 @@ namespace StorageDLHI.App.ExportGUI
                 }
             }
 
-            dgvFooterOfRemaining.Rows[0].Cells[2].Value = "TOTAL";
+            dgvFooterOfRemaining.Rows[0].Cells[4].Value = "TOTAL";
             dgvFooterOfRemaining.Rows[0].Cells[14].Value = totalQty.ToString("N0");
 
-            dgvFooterOfRemaining.Rows[0].Cells[2].Style.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            dgvFooterOfRemaining.Rows[0].Cells[4].Style.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             Common.Common.StyleFooterCell(dgvFooterOfRemaining.Rows[0].Cells[14]);
         }
 
@@ -234,25 +233,25 @@ namespace StorageDLHI.App.ExportGUI
             {
                 return;
             }
-            UpdateFooterOfRemaining();
             LoadData();
+            //UpdateFooterOfRemaining();
         }
 
         private void dgvRemaningGoods_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
             // Apply the changed width to the corresponding column in the footer
-            if (e.Column.Index < dgvFooter.Columns.Count)
+            if (e.Column.Index < dgvFooterOfRemaining.Columns.Count)
             {
-                dgvFooter.Columns[e.Column.Index].Width = e.Column.Width;
+                dgvFooterOfRemaining.Columns[e.Column.Index].Width = e.Column.Width;
             }
 
             // Resize for DataGridViewMain and DataGridViewFooter the same
-            Common.Common.AdjustFooterScrollbar(dgvRemaningGoods, dgvFooter);
+            Common.Common.AdjustFooterScrollbar(dgvRemaningGoods, dgvFooterOfRemaining);
         }
 
         private void dgvRemaningGoods_Scroll(object sender, ScrollEventArgs e)
         {
-            dgvFooter.HorizontalScrollingOffset = dgvRemaningGoods.HorizontalScrollingOffset;
+            dgvFooterOfRemaining.HorizontalScrollingOffset = dgvRemaningGoods.HorizontalScrollingOffset;
         }
     }
 }
