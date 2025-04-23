@@ -122,6 +122,7 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_MPR_MPR_EXPECTED_DELIVERY_DATE = "MPR_EXPECTED_DELIVERY_DATE";
         public const string UPDATE_MPRS_IS_MAKE_PO = "UPDATE MPRS SET IS_MAKE_PO = '{0}' WHERE ID = '{1}'";
         public const string GET_MPRS_FOR_MAKE_PO = "SELECT *FROM MPRS WHERE IS_MAKE_PO = 'FALSE'";
+        public const string GET_MPR_FOR_EXPORT = "EXEC GET_MPR_FOR_EXPORT '{0}'";
 
         // PO
         public const string INSERT_PO = "SET DATEFORMAT DMY INSERT INTO POS VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', N'{5}', '{6}', '{7}', N'{8}', N'{9}', N'{10}', N'{11}', N'{12}', N'{13}', {14}, '{15}', '{16}', '{17}', '{18}', '{19}')  ";

@@ -1,4 +1,6 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
+using OfficeOpenXml;
+using StorageDLHI.App.Enums;
 using StorageDLHI.BLL.ImportDAO;
 using StorageDLHI.BLL.MaterialDAO;
 using StorageDLHI.BLL.MprDAO;
@@ -8,21 +10,51 @@ using StorageDLHI.BLL.SupplierDAO;
 using StorageDLHI.BLL.WarehouseDAO;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
+using StorageDLHI.Infrastructor;
 using StorageDLHI.Infrastructor.Caches;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
+using System.Diagnostics.Contracts;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Permissions;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StorageDLHI.App.Common
 {
+    public static class DictionaryKey
+    {
+        public const string MPR_NO = "<<MPR_NO>>";
+        public const string PO_NO = "<<PO_NO>>";
+        public const string WO_NO = "<<WO_NO>>";
+        public const string PROJECT_NAME = "<<PROJECT_NAME>>";
+        public const string DATE_EXPORT = "<<DATE_EXPORT>>";
+        public const string PREPARED = "<<PREPARED>>";
+        public const string REVIEWED = "<<REVIEWED>>";
+        public const string BUYER = "<<BUYER>>";
+        public const string SUPPLIER_NAME = "<<SUPPLIER_NAME>>";
+        public const string SUPPLIER_TEL = "<<SUPPLIER_TEL>>";
+        public const string PAYMENT_TERM = "<<PAYMENT_TERM>>";
+        public const string AGREEMENT = "<<AGGREMENT>>";
+        public const string APPROVED = "<<APPROVED>>";
+        public const string ROW_START = "<<ROWS_STAR>>";
+    }
+
+    public static class PathManager
+    {
+        public const string MPR_TEMPLATE_PATH = "C:\\Users\\TUAN DAT\\Desktop\\Template\\mpr_temp.xlsx";
+        public const string PO_TEMAPLATE_PATH = "";
+
+    }
+
     public static class Common
     {
         public static async void ReloadAllCache()
@@ -30,7 +62,7 @@ namespace StorageDLHI.App.Common
             CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, await ImportProductDAO.GetImportProducts());
             CacheManager.Add(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD, await PoDAO.GetPosForImportProduct());
             CacheManager.Add(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD, await PoDAO.GetPosForImportProduct());
-            CacheManager.Add(CacheKeys.ORIGIN_DATATABLE_ALLORIGIN, await MaterialDAO.GetOrigins());   
+            CacheManager.Add(CacheKeys.ORIGIN_DATATABLE_ALLORIGIN, await MaterialDAO.GetOrigins());
             CacheManager.Add(CacheKeys.MATERIAL_TYPE_DATATABLE_ALLTYPE, await MaterialDAO.GetMaterialTypes());
             CacheManager.Add(CacheKeys.STANDARD_DATATABLE_ALLSTANDARD, await MaterialDAO.GetMaterialStandards());
             CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX, await MaterialDAO.GetTaxs());
@@ -73,6 +105,7 @@ namespace StorageDLHI.App.Common
 
             return dv;
         }
+
         public static DataView SearchDate(DateTime FromDate, DateTime ToDate, DataTable dtSource, List<string> lstProperties)
         {
             DataView dv = dtSource.DefaultView;
@@ -88,7 +121,7 @@ namespace StorageDLHI.App.Common
                     filter += $"AND {item} <= '{ToDate:dd/MM/yyyy}' ";
                 }
             }
-    
+
             dv.RowFilter = filter;
 
             return dv;
@@ -135,6 +168,7 @@ namespace StorageDLHI.App.Common
                 cb.SelectedIndex = 0; // Default if no match
             }
         }
+
         public static void StyleFooterCell(DataGridViewCell cellCustom)
         {
             var cell = cellCustom;
@@ -245,6 +279,143 @@ namespace StorageDLHI.App.Common
                 // Hide the column if all values are 0
                 col.Visible = !allZeros;
             }
+        }
+
+        public static async void ExportToExcelTemplate(string templatePath, string outputPath,
+            DataTable dtExport, Dictionary<string, string> placeholders, ExportToExcel exportToExcel)
+        {
+            ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial; 
+
+            using (var package = new ExcelPackage(new FileInfo(templatePath)))
+            {
+                var ws = package.Workbook.Worksheets[0];
+
+                foreach (var cell in ws.Cells[ws.Dimension.Address])
+                {
+                    if (cell.Value != null && cell.Value is string text)
+                    {
+                        foreach (var key in placeholders.Keys)
+                        {
+                            if (text.Contains(key))
+                            {
+                                text = text.Replace(key, placeholders[key]);
+                                cell.Value = text;
+                            }
+                        }
+                    }
+                }
+
+                int markerRow = FindMarkerRow(ws, DictionaryKey.ROW_START);
+
+                switch((int)exportToExcel)
+                {
+                    case 1: InsertProductDataMPRs(ws, markerRow, dtExport); break;
+                    case 2: InsertProductDataPOs(ws, markerRow, dtExport); break;
+                }
+
+                await ShowDialogManager.WithLoader(() => package.SaveAsAsync(new FileInfo(outputPath)));
+
+                if (File.Exists(outputPath))
+                {
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = outputPath,
+                        UseShellExecute = true // Required for .xlsx files to open with default app (Excel)
+                    });
+                }
+            }
+        }
+
+        private static void InsertProductDataMPRs(ExcelWorksheet ws, int startRow, DataTable dataTable)
+        {
+            int sampleRowIndex = startRow + 1; // The sample data row with formatting
+            int footerStartRow = sampleRowIndex + 1;
+
+            // Insert rows to make room for data
+            if (dataTable.Rows.Count > 1)
+            {
+                ws.InsertRow(footerStartRow, dataTable.Rows.Count, sampleRowIndex);
+            }
+
+            // Fill in product data
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                int row = startRow + 1 + i;
+                var item = dataTable.Rows[i];
+
+                ws.Cells[row, 1].Value = i + 1;
+                ws.Cells[row, 2].Value = item[3]; // Name
+                ws.Cells[row, 3].Value = item[4]; // Des 2
+                ws.Cells[row, 4].Value = item[5]; // Material
+                ws.Cells[row, 5].Value = item[6]; // A
+                ws.Cells[row, 6].Value = item[7]; // B
+                ws.Cells[row, 7].Value = item[8];
+                ws.Cells[row, 8].Value = item[9];
+                ws.Cells[row, 9].Value = item[10];
+                ws.Cells[row, 10].Value = item[11]; // F
+                ws.Cells[row, 11].Value = item[12]; // Usage
+                ws.Cells[row, 12].Value = item[13]; // MPS
+                ws.Cells[row, 13].Value = item[14]; // Rev
+                ws.Cells[row, 14].Value = item[15]; // Dwg
+                ws.Cells[row, 15].Value = item[16]; // Issue
+                ws.Cells[row, 16].Value = item[17]; // Unit
+                ws.Cells[row, 17].Value = item[18]; // Qty
+                ws.Cells[row, 18].Value = item[19]; // G_Weight
+                ws.Cells[row, 19].Value = item[20]; // Remarks
+            }
+
+            // remove the start row tag row
+            ws.DeleteRow(startRow);
+        }
+
+        private static void InsertProductDataPOs(ExcelWorksheet ws, int startRow, DataTable dataTable)
+        {
+            int sampleRowIndex = startRow + 1; // The sample data row with formatting
+            int footerStartRow = sampleRowIndex + 1;
+
+            // Insert rows to make room for data
+            if (dataTable.Rows.Count > 1)
+            {
+                ws.InsertRow(footerStartRow, dataTable.Rows.Count, sampleRowIndex);
+            }
+
+            // Fill in product data
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                int row = startRow + 1 + i;
+                var item = dataTable.Rows[i];
+
+                ws.Cells[row, 1].Value = i + 1;
+                ws.Cells[row, 2].Value = item[3]; // Name
+                ws.Cells[row, 3].Value = item[4]; // Des 2
+                ws.Cells[row, 4].Value = item[5]; // Material
+                ws.Cells[row, 5].Value = item[6]; // A
+                ws.Cells[row, 6].Value = item[7]; // B
+                ws.Cells[row, 7].Value = item[8];
+                ws.Cells[row, 8].Value = item[9];
+                ws.Cells[row, 9].Value = item[10];
+                ws.Cells[row, 10].Value = item[11];
+                ws.Cells[row, 11].Value = item[12]; // G
+                ws.Cells[row, 12].Value = item[13]; // Qty
+                ws.Cells[row, 13].Value = item[14]; // Usage
+                ws.Cells[row, 14].Value = item[15]; // Issue
+            }
+
+            // remove the <PRODUCTS_START> tag row
+            ws.DeleteRow(startRow);
+        }
+
+        private static int FindMarkerRow(ExcelWorksheet ws, string marker)
+        {
+            foreach (var cell in ws.Cells[ws.Dimension.Address])
+            {
+                if (cell.Value?.ToString().Trim() == marker)
+                {
+                    return cell.Start.Row;
+                }
+            }
+            LoggerConfig.Logger.Info($"Marker '{marker}' not found in sheet.");
+            throw new Exception($"Marker '{marker}' not found in sheet.");
         }
     }
 }

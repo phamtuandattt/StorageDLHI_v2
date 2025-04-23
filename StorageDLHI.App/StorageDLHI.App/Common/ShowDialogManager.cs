@@ -36,5 +36,27 @@ namespace StorageDLHI.App.Common
                 loader.Invoke((MethodInvoker)(() => loader.Close()));
             }
         }
+
+        public static async Task WithLoader(Func<Task> operation)
+        {
+            LoadingForm loader = new LoadingForm();
+            Task showTask = Task.Run(() => loader.ShowDialog());
+
+            try
+            {
+                await operation();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                loader.Invoke(new Action(() =>
+                {
+                    loader.Close();
+                }));
+            }
+        }
     }
 }

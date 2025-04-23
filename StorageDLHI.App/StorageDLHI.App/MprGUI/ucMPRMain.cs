@@ -403,7 +403,7 @@ namespace StorageDLHI.App.MprGUI
             if (dtProdsOfMprs.Rows.Count <= 0 && dgvProdExistMpr.Rows.Count <= 0)
             {
                 MessageBoxHelper.ShowWarning("Please add product to create MPRs !");
-                return; 
+                return;
             }
 
             frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_ADD_INFO, true, dtProdsOfMprs);
@@ -559,91 +559,41 @@ namespace StorageDLHI.App.MprGUI
             dgvMPRDetail.Columns["MPR_QTY"].DefaultCellStyle.Format = "N0";
         }
 
-        private void tlsExportExcelMpr_Click(object sender, EventArgs e)
+        private async void tlsExportExcelMpr_Click(object sender, EventArgs e)
         {
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            if (dgvMPRs.Rows.Count <= 0) { return; }
+            int rsl = dgvMPRs.CurrentRow.Index;
+            Guid mprId = Guid.Parse(dgvMPRs.Rows[rsl].Cells[0].Value.ToString().Trim());
+            string mpr_no = dgvMPRs.Rows[rsl].Cells[1].Value.ToString().Trim();
+            string wo_no = dgvMPRs.Rows[rsl].Cells[2].Value.ToString().Trim();
+            string project_name = dgvMPRs.Rows[rsl].Cells[3].Value.ToString().Trim();
 
-            using (var package = new ExcelPackage(new FileInfo("C:\\Users\\TUAN DAT\\Desktop\\Template\\mpr_temp.xlsx")))
+            var placeholders = new Dictionary<string, string>
             {
-                var ws = package.Workbook.Worksheets[0];
+                { Common.DictionaryKey.MPR_NO, mpr_no },
+                { Common.DictionaryKey.WO_NO, wo_no },
+                { Common.DictionaryKey.PROJECT_NAME, project_name }
+            };
 
-                var placeholders = new Dictionary<string, string>
-                {
-                    { "<<MPR_NO>>", "DV-SUP-231654987" },
-                    { "<<WO_NO>>", "WO-2024-9988" },
-                    { "<<PROJECT_NAME>>", "PJ-001-2204" }
-                };
+            string templatePath = Common.PathManager.MPR_TEMPLATE_PATH;
 
-                int markerRow = FindMarkerRow(ws, "<<ROWS_STAR>>");
-
-                foreach (var cell in ws.Cells[ws.Dimension.Address])
-                {
-                    if (cell.Value != null && cell.Value is string text)
-                    {
-                        foreach (var key in placeholders.Keys)
-                        {
-                            if (text.Contains(key))
-                            {
-                                text = text.Replace(key, placeholders[key]);
-                                cell.Value = text;
-                            }
-                        }
-                    }
-                }
-
-                InsertProductData(ws, markerRow, dtMprDetailById);
-
-                package.SaveAs(new FileInfo("D:\\Exported\\Example.xlsx"));
-            }
-        }
-
-        private void InsertProductData(ExcelWorksheet ws, int startRow, DataTable dataTable)
-        {
-            int sampleRowIndex = startRow + 1; // The sample data row with formatting
-            int footerStartRow = sampleRowIndex + 1;
-
-            // Insert rows to make room for data
-            if (dataTable.Rows.Count > 1)
+            SaveFileDialog saveFileDialog = new SaveFileDialog
             {
-                ws.InsertRow(footerStartRow, dataTable.Rows.Count, sampleRowIndex);
-            }
+                Title = "Save Excel File",
+                Filter = "Excel Files|*.xlsx",
+                FileName = $"Report_{mpr_no}_{DateTime.Now.ToString("dd.MM.yyyy")}.xlsx",
+                DefaultExt = "xlsx",
+                AddExtension = true
+            };
 
-            // Fill in product data
-            for (int i = 0; i < dataTable.Rows.Count; i++)
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                int row = startRow + 1 + i;
-                var item = dtMprDetailById.Rows[i];
+                string outputPath = saveFileDialog.FileName;
 
-                ws.Cells[row, 1].Value = i + 1;
-                ws.Cells[row, 2].Value = item[3]; // Name
-                ws.Cells[row, 3].Value = item[4]; // Des 2
-                ws.Cells[row, 4].Value = item[5]; // Material
-                ws.Cells[row, 5].Value = item[6]; // A
-                ws.Cells[row, 6].Value = item[7]; // B
-                ws.Cells[row, 7].Value = item[8];
-                ws.Cells[row, 8].Value = item[9];
-                ws.Cells[row, 9].Value = item[10];
-                ws.Cells[row, 10].Value = item[11];
-                ws.Cells[row, 11].Value = item[12]; // G
-                ws.Cells[row, 12].Value = item[13]; // Qty
-                ws.Cells[row, 13].Value = item[14]; // Usage
-                ws.Cells[row, 14].Value = item[15]; // Issue
+                var dtExport = await MprDAO.GetDataForExportAsync(mprId);
+                
+                Common.Common.ExportToExcelTemplate(templatePath, outputPath, dtExport, placeholders, Enums.ExportToExcel.MPRs);
             }
-
-            // remove the <PRODUCTS_START> tag row
-            ws.DeleteRow(startRow);
-        }
-
-        private int FindMarkerRow(ExcelWorksheet ws, string marker)
-        {
-            foreach (var cell in ws.Cells[ws.Dimension.Address])
-            {
-                if (cell.Value?.ToString().Trim() == marker)
-                {
-                    return cell.Start.Row;
-                }
-            }
-            throw new Exception($"Marker '{marker}' not found in sheet.");
         }
     }
 }

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +15,11 @@ namespace StorageDLHI.BLL.MprDAO
     public static class MprDAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
+
+        public static async Task<DataTable> GetDataForExportAsync(Guid mprId)
+        {
+            return await data.GetDataAsync(string.Format(QueryStatement.GET_MPR_FOR_EXPORT, mprId), $"DATA_EXPORT_FOR_{mprId}");
+        }
 
         public static async Task<bool> UpdateMprIsMakePO(Guid mprID)
         {

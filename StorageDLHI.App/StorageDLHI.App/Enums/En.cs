@@ -21,6 +21,12 @@ namespace StorageDLHI.App.Enums
         Cost = 3,
     }
 
+    public enum ExportToExcel : int
+    {
+        MPRs = 1,
+        PO = 2
+    }
+
     public class En
     {
 
