@@ -398,7 +398,7 @@ namespace StorageDLHI.App.MprGUI
             dgvProdExistMpr.DataSource = dv;
         }
 
-        private void btnConfirm_Click(object sender, EventArgs e)
+        private async void btnConfirm_Click(object sender, EventArgs e)
         {
             if (dtProdsOfMprs.Rows.Count <= 0 && dgvProdExistMpr.Rows.Count <= 0)
             {
@@ -414,7 +414,7 @@ namespace StorageDLHI.App.MprGUI
                 return;
             }
 
-            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, MprDAO.GetMprs());
+            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs());
             LoadData();
 
             prodsAdded.Clear();
@@ -563,37 +563,55 @@ namespace StorageDLHI.App.MprGUI
         {
             if (dgvMPRs.Rows.Count <= 0) { return; }
             int rsl = dgvMPRs.CurrentRow.Index;
-            Guid mprId = Guid.Parse(dgvMPRs.Rows[rsl].Cells[0].Value.ToString().Trim());
-            string mpr_no = dgvMPRs.Rows[rsl].Cells[1].Value.ToString().Trim();
-            string wo_no = dgvMPRs.Rows[rsl].Cells[2].Value.ToString().Trim();
-            string project_name = dgvMPRs.Rows[rsl].Cells[3].Value.ToString().Trim();
 
-            var placeholders = new Dictionary<string, string>
+            Mprs mprs = new Mprs()
             {
-                { Common.DictionaryKey.MPR_NO, mpr_no },
-                { Common.DictionaryKey.WO_NO, wo_no },
-                { Common.DictionaryKey.PROJECT_NAME, project_name }
+                Id = Guid.Parse(dgvMPRs.Rows[rsl].Cells[0].Value.ToString().Trim()),
+                Mpr_No = dgvMPRs.Rows[rsl].Cells[1].Value.ToString().Trim(),
+                Mpr_Wo_No = dgvMPRs.Rows[rsl].Cells[2].Value.ToString().Trim(),
+                Mpr_Project_Name_Code = dgvMPRs.Rows[rsl].Cells[3].Value.ToString().Trim(),
+                Mpr_Rev_Total = dgvMPRs.Rows[rsl].Cells[4].Value.ToString().Trim(),
+                CreateDate = DateTime.Parse(dgvMPRs.Rows[rsl].Cells[5].Value.ToString().Trim()),
+                Expected_Delivery_Date = DateTime.Parse(dgvMPRs.Rows[rsl].Cells[6].Value.ToString().Trim()),
+                Mpr_Prepared = dgvMPRs.Rows[rsl].Cells[7].Value.ToString().Trim(),
+                Mpr_Reviewed = dgvMPRs.Rows[rsl].Cells[8].Value.ToString().Trim(),
+                Mpr_Approved = dgvMPRs.Rows[rsl].Cells[9].Value.ToString().Trim(),
             };
 
-            string templatePath = Common.PathManager.MPR_TEMPLATE_PATH;
+            frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_UPDATE_INFO, false, mprs);
+            frmCustomInfoMpr.ShowDialog();
 
-            SaveFileDialog saveFileDialog = new SaveFileDialog
-            {
-                Title = "Save Excel File",
-                Filter = "Excel Files|*.xlsx",
-                FileName = $"Report_{mpr_no}_{DateTime.Now.ToString("dd.MM.yyyy")}.xlsx",
-                DefaultExt = "xlsx",
-                AddExtension = true
-            };
+            //Guid mprId = Guid.Parse(dgvMPRs.Rows[rsl].Cells[0].Value.ToString().Trim());
+            //string mpr_no = dgvMPRs.Rows[rsl].Cells[1].Value.ToString().Trim();
+            //string wo_no = dgvMPRs.Rows[rsl].Cells[2].Value.ToString().Trim();
+            //string project_name = dgvMPRs.Rows[rsl].Cells[3].Value.ToString().Trim();
 
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string outputPath = saveFileDialog.FileName;
+            //var placeholders = new Dictionary<string, string>
+            //{
+            //    { Common.DictionaryKey.MPR_NO, mpr_no },
+            //    { Common.DictionaryKey.WO_NO, wo_no },
+            //    { Common.DictionaryKey.PROJECT_NAME, project_name }
+            //};
 
-                var dtExport = await MprDAO.GetDataForExportAsync(mprId);
+            //string templatePath = Common.PathManager.MPR_TEMPLATE_PATH;
+
+            //SaveFileDialog saveFileDialog = new SaveFileDialog
+            //{
+            //    Title = "Save Excel File",
+            //    Filter = "Excel Files|*.xlsx",
+            //    FileName = $"Report_{mpr_no}_{DateTime.Now.ToString("dd.MM.yyyy")}.xlsx",
+            //    DefaultExt = "xlsx",
+            //    AddExtension = true
+            //};
+
+            //if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    string outputPath = saveFileDialog.FileName;
+
+            //    var dtExport = await MprDAO.GetDataForExportAsync(mprId);
                 
-                Common.Common.ExportToExcelTemplate(templatePath, outputPath, dtExport, placeholders, Enums.ExportToExcel.MPRs);
-            }
+            //    Common.Common.ExportToExcelTemplate(templatePath, outputPath, dtExport, placeholders, Enums.ExportToExcel.MPRs);
+            //}
         }
     }
 }

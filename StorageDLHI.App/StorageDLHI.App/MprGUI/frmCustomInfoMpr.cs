@@ -52,6 +52,13 @@ namespace StorageDLHI.App.MprGUI
             txtWoNo.ReadOnly = true;
             txtProjectName.ReadOnly = true;
             dtPickerCreate.Enabled = false;
+
+            if (!status)
+            {
+                ShowSecondRow(1);
+                btnSave.Text = "PRINT";
+                ResizeFormToFitTable();
+            }
         }
 
         public frmCustomInfoMpr(string title, bool status, DataTable dtProdOfMpr)
@@ -60,7 +67,63 @@ namespace StorageDLHI.App.MprGUI
             this.Text = title;
             this.dtProdOfMpr = dtProdOfMpr;
             this.dtPickerCreate.MinDate = DateTime.Now;
+
+            if (status)
+            {
+                HideRow(1);
+                ResizeFormToFitTable();
+            }
         }
+
+        private void HideRow(int rowIndex)
+        {
+            //876, 260
+            // Optionally hide controls in that column
+            foreach (Control c in tblLayoutMain.Controls)
+            {
+                if (tblLayoutMain.GetRow(c) == rowIndex)
+                {
+                    c.Visible = false;
+                }
+            }
+            tblLayoutMain.RowStyles[rowIndex].SizeType = SizeType.Absolute;
+            tblLayoutMain.RowStyles[rowIndex].Height = 0;
+        }
+
+        private void ShowSecondRow(int rowToShow, int height = 250)
+        {
+            // 906, 586
+            foreach (Control ctrl in tblLayoutMain.Controls)
+            {
+                if (tblLayoutMain.GetRow(ctrl) == rowToShow)
+                {
+                    ctrl.Visible = true;
+                }
+            }
+
+            tblLayoutMain.RowStyles[rowToShow].SizeType = SizeType.Absolute;
+            tblLayoutMain.RowStyles[rowToShow].Height = height;
+
+            tblLayoutMain.Dock = DockStyle.Fill;
+            this.Size = new Size(906, 586); // Restore size
+        }
+
+        private void ResizeFormToFitTable()
+        {
+            // Turn off Dock temporarily so the table can shrink to its real size
+            tblLayoutMain.Dock = DockStyle.None;
+
+            // Let layout recalculate
+            tblLayoutMain.PerformLayout();
+
+            // Resize the form to match the new size of the TableLayoutPanel
+            this.ClientSize = tblLayoutMain.PreferredSize;
+
+            // (Optional) Prevent resizing beyond this size
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
+        }
+
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
@@ -149,6 +212,11 @@ namespace StorageDLHI.App.MprGUI
         {
             this.CanelOrConfirm = false;
             this.Close();
+        }
+
+        private void tblLayoutCustom_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
