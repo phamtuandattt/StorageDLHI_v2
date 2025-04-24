@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataProvider\SQLServerProvider.cs" />
+    <Compile Include="MappingProfile.cs" />
     <Compile Include="Models\Company_Infos.cs" />
     <Compile Include="Models\Costs.cs" />
     <Compile Include="Models\Delivery_Products.cs" />

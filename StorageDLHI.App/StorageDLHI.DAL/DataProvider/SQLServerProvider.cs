@@ -22,7 +22,7 @@ namespace StorageDLHI.DAL.DataProvider
             _connection = new SqlConnection(_connString);
         }
 
-        public bool CheckConnection (string connectionString)
+        public bool CheckConnection(string connectionString)
         {
             try
             {
@@ -35,6 +35,24 @@ namespace StorageDLHI.DAL.DataProvider
             {
                 return false;
             }
+        }
+
+        public async Task<T> GetEntityByIdAsync<T>(string sqlQuery, Func<SqlDataReader, T> mapFunc)
+        {
+            using (SqlConnection conn = new SqlConnection(_connString))
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
+            {
+                await conn.OpenAsync();
+
+                using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
+                {
+                    if (await reader.ReadAsync())
+                    {
+                        return mapFunc(reader);
+                    }
+                }
+            }
+            return default;
         }
 
         public async Task<DataTable> GetDataAsync(string sqlQuery, string tableName)
@@ -160,7 +178,7 @@ namespace StorageDLHI.DAL.DataProvider
                 if (_connection.State == ConnectionState.Closed)
                 {
                     _connection.Open();
-                }    
+                }
                 SqlCommand cmd = new SqlCommand(sqlQuery, _connection);
                 int rs = cmd.ExecuteNonQuery();
                 _connection.Close();
@@ -183,5 +201,7 @@ namespace StorageDLHI.DAL.DataProvider
                 throw new Exception(ex.Message);
             }
         }
+
+
     }
 }

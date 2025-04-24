@@ -24,6 +24,7 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_SUPPLIER_PHONE = "PHONE";
         public const string PROPERTY_SUPPLIER_VIETTAT = "VIETTAT";
         public const string PROPERTY_SUPPLIER_ADDRESS = "ADDRESS";
+        public const string GET_SUPPLIER = "SELECT *FROM SUPPLIERS WHERE ID = '{0}'";
 
         // Supplier banks
         public const string GET_SUPPLIER_BANKS = "SELECT *FROM SUPPLIER_BANKS";

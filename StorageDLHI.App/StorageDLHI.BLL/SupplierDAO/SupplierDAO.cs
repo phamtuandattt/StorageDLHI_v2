@@ -1,4 +1,5 @@
-﻿using StorageDLHI.DAL.DataProvider;
+﻿using StorageDLHI.DAL;
+using StorageDLHI.DAL.DataProvider;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
 using System;
@@ -96,6 +97,11 @@ namespace StorageDLHI.BLL.SupplierDAO
         {
             var supls = await data.GetDataAsync(QueryStatement.GET_SUPPLIER_BANKS_FORM, "SUPPLIER_BANKS");
             return supls;
+        }
+
+        public static async Task<Suppliers> GetSupplier(Guid supId)
+        {
+            return await data.GetEntityByIdAsync(string.Format(QueryStatement.GET_SUPPLIER, supId), MappingProfile.MapSupplier);
         }
     }
 }

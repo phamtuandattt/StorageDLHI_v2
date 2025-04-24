@@ -689,7 +689,6 @@ namespace StorageDLHI.App.PoGUI
             }
         }
 
-
         private void tlsSearchDate_Click(object sender, EventArgs e)
         {
             if (dgvPOList.Rows.Count <= 0)
@@ -747,6 +746,78 @@ namespace StorageDLHI.App.PoGUI
                 Common.Common.HideNoDataPanel(pnNoDataPODetail);
             }
             tlsClearSearchDate.Visible = false;
+        }
+
+        private void tlsExportPO_Click(object sender, EventArgs e)
+        {
+            if (dgvPOList.Rows.Count <= 0) { return; }
+            int rsl = dgvPOList.CurrentRow.Index;
+
+            Pos mPO = new Pos()
+            {
+                Id = Guid.Parse(dgvPOList.Rows[rsl].Cells[0].Value.ToString().Trim()),
+                Po_No = dgvPOList.Rows[rsl].Cells[1].Value.ToString().Trim(),
+                Po_Mpr_No = dgvPOList.Rows[rsl].Cells[2].Value.ToString().Trim(),
+                Po_Wo_No = dgvPOList.Rows[rsl].Cells[3].Value.ToString().Trim(),
+                Po_Project_Name = dgvPOList.Rows[rsl].Cells[4].Value.ToString().Trim(),
+
+                Po_CreateDate = DateTime.Parse(dgvPOList.Rows[rsl].Cells[6].Value.ToString().Trim()),
+                Po_Expected_Delivery_Date = DateTime.Parse(dgvPOList.Rows[rsl].Cells[7].Value.ToString().Trim()),
+                Po_Prepared = dgvPOList.Rows[rsl].Cells[8].Value.ToString().Trim(),
+                Po_Reviewed = dgvPOList.Rows[rsl].Cells[9].Value.ToString().Trim(),
+                Po_Agrement = dgvPOList.Rows[rsl].Cells[10].Value.ToString().Trim(),
+                Po_Approved = dgvPOList.Rows[rsl].Cells[11].Value.ToString().Trim(),
+                Po_Payment_Term = dgvPOList.Rows[rsl].Cells[12].Value.ToString().Trim(),
+
+                SupplierId = Guid.Parse(dgvPOList.Rows[rsl].Cells[18].Value.ToString().Trim())
+            };
+
+            DataTable dtForExport = new DataTable();
+            dtForExport.Columns.Add("PROD_NAME"); // 0
+            dtForExport.Columns.Add("MATERIAL"); // 1
+            dtForExport.Columns.Add("A"); // 2
+            dtForExport.Columns.Add("B");
+            dtForExport.Columns.Add("C");
+            dtForExport.Columns.Add("QTY"); // 5
+            dtForExport.Columns.Add("UNIT"); // 6
+            dtForExport.Columns.Add("G"); // 7
+            dtForExport.Columns.Add("MPR_NO_REV");
+            dtForExport.Columns.Add("REQ_DATE");
+            dtForExport.Columns.Add("PLACE_OF_ENTRY");
+            dtForExport.Columns.Add("PRICE"); // 11
+            dtForExport.Columns.Add("AMOUNT"); // 12
+            dtForExport.Columns.Add("RECEIVE");
+            dtForExport.Columns.Add("REMARKS");
+
+            foreach (DataGridViewRow item in dgvPODetail.Rows)
+            {
+                DataRow dataRow = dtForExport.NewRow();
+                dataRow[0] = item.Cells[3].Value.ToString().Trim();
+                dataRow[1] = item.Cells[5].Value.ToString().Trim();
+                dataRow[2] = item.Cells[6].Value.ToString().Trim();
+                dataRow[3] = item.Cells[7].Value.ToString().Trim();
+                dataRow[4] = item.Cells[8].Value.ToString().Trim();
+                dataRow[5] = item.Cells[13].Value.ToString().Trim(); //
+                dataRow[6] = item.Cells[16].Value.ToString().Trim();
+                dataRow[7] = item.Cells[12].Value.ToString().Trim();
+                dataRow[8] = "";
+                dataRow[9] = "";
+                dataRow[10] = "";
+                dataRow[11] = item.Cells[14].Value.ToString().Trim();
+                dataRow[12] = item.Cells[15].Value.ToString().Trim();
+                dataRow[13] = "";
+                dataRow[14] = "";
+
+                dtForExport.Rows.Add(dataRow);
+            }
+            
+            frmCustomPrintPO print = new frmCustomPrintPO(mPO, dtForExport);
+            print.ShowDialog();
+
+            if (!print.IsPrinted)
+            {
+                return;
+            }
         }
     }
 }

@@ -225,6 +225,12 @@
     <Compile Include="PoGUI\frmCustomInfoPO.Designer.cs">
       <DependentUpon>frmCustomInfoPO.cs</DependentUpon>
     </Compile>
+    <Compile Include="PoGUI\frmCustomPrintPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PoGUI\frmCustomPrintPO.Designer.cs">
+      <DependentUpon>frmCustomPrintPO.cs</DependentUpon>
+    </Compile>
     <Compile Include="PoGUI\frmSeacrhPOFromDate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -319,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PoGUI\frmCustomInfoPO.resx">
       <DependentUpon>frmCustomInfoPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PoGUI\frmCustomPrintPO.resx">
+      <DependentUpon>frmCustomPrintPO.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PoGUI\frmSeacrhPOFromDate.resx">
       <DependentUpon>frmSeacrhPOFromDate.cs</DependentUpon>

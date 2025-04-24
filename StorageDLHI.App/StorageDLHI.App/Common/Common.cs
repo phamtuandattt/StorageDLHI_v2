@@ -46,12 +46,14 @@ namespace StorageDLHI.App.Common
         public const string AGREEMENT = "<<AGGREMENT>>";
         public const string APPROVED = "<<APPROVED>>";
         public const string ROW_START = "<<ROWS_STAR>>";
+        public const string SUPPLIER_EMAIL = "<<SUPPLIER_EMAIL>>";
+        public const string SUPPLIER_CERT = "<<SUPPLIER_CERT>>";
     }
 
     public static class PathManager
     {
         public const string MPR_TEMPLATE_PATH = "C:\\Users\\TUAN DAT\\Desktop\\Template\\mpr_temp.xlsx";
-        public const string PO_TEMAPLATE_PATH = "";
+        public const string PO_TEMAPLATE_PATH = "C:\\Users\\TUAN DAT\\Desktop\\Template\\po_temp.xlsx";
 
     }
 
@@ -386,22 +388,22 @@ namespace StorageDLHI.App.Common
                 var item = dataTable.Rows[i];
 
                 ws.Cells[row, 1].Value = i + 1;
-                ws.Cells[row, 2].Value = item[3]; // Name
-                ws.Cells[row, 3].Value = item[4]; // Des 2
-                ws.Cells[row, 4].Value = item[5]; // Material
-                ws.Cells[row, 5].Value = item[6]; // A
-                ws.Cells[row, 6].Value = item[7]; // B
-                ws.Cells[row, 7].Value = item[8];
-                ws.Cells[row, 8].Value = item[9];
-                ws.Cells[row, 9].Value = item[10];
-                ws.Cells[row, 10].Value = item[11];
-                ws.Cells[row, 11].Value = item[12]; // G
-                ws.Cells[row, 12].Value = item[13]; // Qty
-                ws.Cells[row, 13].Value = item[14]; // Usage
-                ws.Cells[row, 14].Value = item[15]; // Issue
+                ws.Cells[row, 2].Value = item[0]; // Name
+                ws.Cells[row, 3].Value = item[1]; // Des 2
+                ws.Cells[row, 4].Value = item[2]; // Material
+                ws.Cells[row, 5].Value = item[3]; // A
+                ws.Cells[row, 6].Value = item[4]; // B
+                ws.Cells[row, 7].Value = item[5];
+                ws.Cells[row, 8].Value = item[6];
+                ws.Cells[row, 9].Value = item[7];
+                ws.Cells[row, 10].Value = item[8];
+                ws.Cells[row, 11].Value = item[9]; // G
+                ws.Cells[row, 12].Value = item[10]; // Qty
+                ws.Cells[row, 13].Value = item[11]; // Usage
+                ws.Cells[row, 14].Value = item[12]; // Issue.
+                ws.Cells[row, 15].Value = item[13]; // Issue
+                ws.Cells[row, 16].Value = item[14]; // Issue
             }
-
-            // remove the <PRODUCTS_START> tag row
             ws.DeleteRow(startRow);
         }
 

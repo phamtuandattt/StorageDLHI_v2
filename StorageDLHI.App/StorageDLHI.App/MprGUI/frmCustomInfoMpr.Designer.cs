@@ -292,7 +292,7 @@
             this.tableLayoutPanel2.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 435F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 435F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 441F));
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel20, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel19, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel17, 1, 3);

@@ -168,11 +168,11 @@ namespace StorageDLHI.App.PoGUI
             var paymentTerm = "";
             if (radOption1.Checked)
             {
-                paymentTerm = txtWithIn.Text.Trim();
+                paymentTerm = radOption1.Text.Trim() + " " + txtWithIn.Text.Trim() + " " + lblWithin.Text.Trim();
             }
             if (radOption2.Checked)
             {
-                paymentTerm = txtDepo1.Text.Trim() + " " + txtDepo2.Text.Trim() + " " + txtDepo3.Text.Trim(); 
+                paymentTerm = radOption2.Text.Trim() + " " + txtDepo1.Text.Trim() + ", " + txtDepo2.Text.Trim() + " " + txtDepo3.Text.Trim(); 
             }
             if (radOption3.Checked)
             {
