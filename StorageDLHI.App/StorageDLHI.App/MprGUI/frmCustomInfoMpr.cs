@@ -11,8 +11,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls.Adapters;
 using System.Windows.Forms;
 
 namespace StorageDLHI.App.MprGUI
@@ -20,10 +22,14 @@ namespace StorageDLHI.App.MprGUI
     public partial class frmCustomInfoMpr : KryptonForm
     {
         private bool status = true;
+        private bool isPrint = false;
         private DataTable dtProdOfMpr = new DataTable();
         private DataTable dtProdOfMprAdd = new DataTable(); 
         private Mprs dtMPRDetail = new Mprs();
+        private DataTable dtForPrint = new DataTable();
+
         public bool CanelOrConfirm { get; set; } = true; // true is confirm || cancel
+
 
         public frmCustomInfoMpr()
         {
@@ -52,13 +58,6 @@ namespace StorageDLHI.App.MprGUI
             txtWoNo.ReadOnly = true;
             txtProjectName.ReadOnly = true;
             dtPickerCreate.Enabled = false;
-
-            if (!status)
-            {
-                ShowSecondRow(1);
-                btnSave.Text = "PRINT";
-                ResizeFormToFitTable();
-            }
         }
 
         public frmCustomInfoMpr(string title, bool status, DataTable dtProdOfMpr)
@@ -71,6 +70,37 @@ namespace StorageDLHI.App.MprGUI
             if (status)
             {
                 HideRow(1);
+                ResizeFormToFitTable();
+            }
+        }
+
+        public frmCustomInfoMpr(string title, bool status, bool isPrint, Mprs dtMPRDetail, DataTable dtForPrint) // status = false; isPrint = true
+        {
+            InitializeComponent();
+            this.Text = title;
+            this.dtForPrint = dtForPrint;
+            this.isPrint = isPrint;
+            this.dtMPRDetail = dtMPRDetail;
+
+            txtMPRNo.Text = this.dtMPRDetail.Mpr_No.Trim();
+            txtWoNo.Text = this.dtMPRDetail.Mpr_Wo_No.Trim();
+            txtProjectName.Text = this.dtMPRDetail.Mpr_Project_Name_Code.Trim();
+            txtPrepared.Text = this.dtMPRDetail.Mpr_Prepared.Trim();
+            txtReviewed.Text = this.dtMPRDetail.Mpr_Reviewed.Trim();
+            txtApproved.Text = this.dtMPRDetail.Mpr_Approved.Trim();
+            dtPickerCreate.Value = this.dtMPRDetail.CreateDate;
+            dtPickerDelivery.Value = this.dtMPRDetail.Expected_Delivery_Date;
+
+            txtMPRNo.ReadOnly = true;
+            txtWoNo.ReadOnly = true;
+            txtProjectName.ReadOnly = true;
+            dtPickerCreate.Enabled = false;
+
+            if (!status && isPrint)
+            {
+                //ShowSecondRow(1);
+                HideRow(1);
+                btnSave.Text = "PRINT";
                 ResizeFormToFitTable();
             }
         }
@@ -124,11 +154,10 @@ namespace StorageDLHI.App.MprGUI
             this.MinimumSize = this.Size;
         }
 
-
         private async void btnSave_Click(object sender, EventArgs e)
         {
             this.dtProdOfMprAdd = await MprDAO.GetMprDetailForm();
-            if (status)
+            if (status && !isPrint)
             {
                 Mprs mprs = new Mprs()
                 {
@@ -181,7 +210,7 @@ namespace StorageDLHI.App.MprGUI
                     MessageBoxHelper.ShowWarning("Create MPRs faild !");
                 }
             }
-            else
+            else if (!status && !isPrint)
             {
                 Mprs mprs = new Mprs()
                 {
@@ -204,6 +233,44 @@ namespace StorageDLHI.App.MprGUI
                 else
                 {
                     MessageBoxHelper.ShowWarning("Update MPRs info faild !");
+                }
+            }
+            else
+            {
+                Guid mprId = dtMPRDetail.Id;
+                string mpr_no = dtMPRDetail.Mpr_No.Trim();
+                string wo_no = dtMPRDetail.Mpr_Wo_No.Trim();
+                string project_name = dtMPRDetail.Mpr_Project_Name_Code.Trim();
+
+                var placeholders = new Dictionary<string, string>
+                {
+                    { Common.DictionaryKey.MPR_NO, mpr_no },
+                    { Common.DictionaryKey.WO_NO, wo_no },
+                    { Common.DictionaryKey.PROJECT_NAME, project_name },
+                    { Common.DictionaryKey.DATE_EXPORT, DateTime.Now.ToString("dd/MM/yyyy") },
+                    { Common.DictionaryKey.PREPARED, dtMPRDetail.Mpr_Prepared },
+                    { Common.DictionaryKey.REVIEWED, dtMPRDetail.Mpr_Reviewed },
+                    { Common.DictionaryKey.APPROVED, dtMPRDetail.Mpr_Approved }
+                };
+
+                string templatePath = Common.PathManager.MPR_TEMPLATE_PATH;
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    Title = "Save Excel File",
+                    Filter = "Excel Files|*.xlsx",
+                    FileName = $"Report_{mpr_no}_{DateTime.Now.ToString("dd.MM.yyyy")}.xlsx",
+                    DefaultExt = "xlsx",
+                    AddExtension = true
+                };
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string outputPath = saveFileDialog.FileName;
+
+                    Common.Common.ExportToExcelTemplate(templatePath, outputPath, dtForPrint, placeholders, Enums.ExportToExcel.MPRs);
+
+                    this.Close();
                 }
             }
         }
