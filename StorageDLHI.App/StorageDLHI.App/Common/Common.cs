@@ -389,19 +389,19 @@ namespace StorageDLHI.App.Common
 
                 ws.Cells[row, 1].Value = i + 1;
                 ws.Cells[row, 2].Value = item[0]; // Name
-                ws.Cells[row, 3].Value = item[1]; // Des 2
-                ws.Cells[row, 4].Value = item[2]; // Material
-                ws.Cells[row, 5].Value = item[3]; // A
-                ws.Cells[row, 6].Value = item[4]; // B
-                ws.Cells[row, 7].Value = item[5];
+                ws.Cells[row, 3].Value = item[1]; // Material
+                ws.Cells[row, 4].Value = item[2]; // A
+                ws.Cells[row, 5].Value = item[3]; // B
+                ws.Cells[row, 6].Value = item[4]; // C
+                ws.Cells[row, 7].Value = Int32.Parse(item[5].ToString()).ToString("N0"); // Qty
                 ws.Cells[row, 8].Value = item[6];
                 ws.Cells[row, 9].Value = item[7];
                 ws.Cells[row, 10].Value = item[8];
-                ws.Cells[row, 11].Value = item[9]; // G
-                ws.Cells[row, 12].Value = item[10]; // Qty
-                ws.Cells[row, 13].Value = item[11]; // Usage
-                ws.Cells[row, 14].Value = item[12]; // Issue.
-                ws.Cells[row, 15].Value = item[13]; // Issue
+                ws.Cells[row, 11].Value = item[9]; // 
+                ws.Cells[row, 12].Value = item[10]; // 
+                ws.Cells[row, 13].Value = Int32.Parse(item[11].ToString()).ToString("N0"); // Price
+                ws.Cells[row, 14].Value = Int32.Parse(item[12].ToString()).ToString("N0"); // Amount
+                ws.Cells[row, 15].Value = item[13]; // 
                 ws.Cells[row, 16].Value = item[14]; // Issue
             }
             ws.DeleteRow(startRow);

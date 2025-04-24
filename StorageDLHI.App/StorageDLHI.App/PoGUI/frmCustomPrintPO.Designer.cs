@@ -238,7 +238,7 @@
             this.tblLayouMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this.tblLayouMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tblLayouMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLayouMain.Size = new System.Drawing.Size(1088, 410);
+            this.tblLayouMain.Size = new System.Drawing.Size(1301, 410);
             this.tblLayouMain.TabIndex = 4;
             // 
             // tableLayoutPanel2
@@ -1085,11 +1085,13 @@
             // 
             // kryptonGroupBox1
             // 
+            this.kryptonGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonGroupBox1.Location = new System.Drawing.Point(896, 3);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             this.kryptonGroupBox1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(150, 150);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(402, 244);
             this.kryptonGroupBox1.TabIndex = 5;
+            this.kryptonGroupBox1.Values.Heading = "Company info";
             // 
             // txtBuyer
             // 
@@ -1117,7 +1119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1088, 410);
+            this.ClientSize = new System.Drawing.Size(1301, 410);
             this.Controls.Add(this.tblLayouMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCustomPrintPO";
