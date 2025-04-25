@@ -467,6 +467,7 @@
             this.txtApproved.Size = new System.Drawing.Size(290, 32);
             this.txtApproved.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtApproved.TabIndex = 16;
+            this.txtApproved.TextChanged += new System.EventHandler(this.txtApproved_TextChanged);
             // 
             // kryptonPanel28
             // 
@@ -523,6 +524,7 @@
             this.txtReviewed.Size = new System.Drawing.Size(285, 32);
             this.txtReviewed.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtReviewed.TabIndex = 13;
+            this.txtReviewed.TextChanged += new System.EventHandler(this.txtReviewed_TextChanged);
             // 
             // kryptonPanel26
             // 
@@ -579,6 +581,7 @@
             this.txtPrepared.Size = new System.Drawing.Size(289, 32);
             this.txtPrepared.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtPrepared.TabIndex = 11;
+            this.txtPrepared.TextChanged += new System.EventHandler(this.txtPrepared_TextChanged);
             // 
             // kryptonPanel22
             // 
@@ -635,6 +638,7 @@
             this.txtProjectName.Size = new System.Drawing.Size(285, 32);
             this.txtProjectName.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtProjectName.TabIndex = 10;
+            this.txtProjectName.TextChanged += new System.EventHandler(this.txtProjectName_TextChanged);
             // 
             // kryptonPanel20
             // 
@@ -691,6 +695,7 @@
             this.txtWoNo.Size = new System.Drawing.Size(289, 32);
             this.txtWoNo.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtWoNo.TabIndex = 8;
+            this.txtWoNo.TextChanged += new System.EventHandler(this.txtWoNo_TextChanged);
             // 
             // kryptonPanel16
             // 
@@ -747,6 +752,7 @@
             this.txtMPRNo.Size = new System.Drawing.Size(285, 32);
             this.txtMPRNo.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtMPRNo.TabIndex = 7;
+            this.txtMPRNo.TextChanged += new System.EventHandler(this.txtMPRNo_TextChanged);
             // 
             // kryptonPanel14
             // 

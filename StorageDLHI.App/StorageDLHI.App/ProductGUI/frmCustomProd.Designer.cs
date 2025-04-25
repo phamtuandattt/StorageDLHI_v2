@@ -398,6 +398,7 @@
             this.txtProdName.Size = new System.Drawing.Size(503, 32);
             this.txtProdName.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtProdName.TabIndex = 3;
+            this.txtProdName.TextChanged += new System.EventHandler(this.txtProdName_TextChanged);
             // 
             // tableLayoutPanel23
             // 
@@ -489,6 +490,7 @@
             this.txtDes2.Size = new System.Drawing.Size(504, 32);
             this.txtDes2.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtDes2.TabIndex = 2;
+            this.txtDes2.TextChanged += new System.EventHandler(this.txtDes2_TextChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -772,11 +774,14 @@
             this.cboUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboUnit.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboUnit.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboUnit.DropDownWidth = 227;
             this.cboUnit.Location = new System.Drawing.Point(4, 7);
             this.cboUnit.Name = "cboUnit";
             this.cboUnit.Size = new System.Drawing.Size(227, 25);
             this.cboUnit.TabIndex = 16;
+            this.cboUnit.Validating += new System.ComponentModel.CancelEventHandler(this.cboUnit_Validating);
             // 
             // kryptonPanel30
             // 
@@ -833,6 +838,7 @@
             this.txtUsageNote.Size = new System.Drawing.Size(228, 32);
             this.txtUsageNote.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtUsageNote.TabIndex = 16;
+            this.txtUsageNote.TextChanged += new System.EventHandler(this.txtUsageNote_TextChanged);
             // 
             // kryptonPanel28
             // 
@@ -889,6 +895,7 @@
             this.txtWeigth.Size = new System.Drawing.Size(227, 32);
             this.txtWeigth.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtWeigth.TabIndex = 13;
+            this.txtWeigth.TextChanged += new System.EventHandler(this.txtWeigth_TextChanged);
             // 
             // kryptonPanel26
             // 
@@ -945,6 +952,7 @@
             this.txtLength.Size = new System.Drawing.Size(228, 32);
             this.txtLength.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtLength.TabIndex = 12;
+            this.txtLength.TextChanged += new System.EventHandler(this.txtLength_TextChanged);
             // 
             // kryptonPanel24
             // 
@@ -1001,6 +1009,7 @@
             this.txtFlag.Size = new System.Drawing.Size(227, 32);
             this.txtFlag.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtFlag.TabIndex = 11;
+            this.txtFlag.TextChanged += new System.EventHandler(this.txtFlag_TextChanged);
             // 
             // kryptonPanel22
             // 
@@ -1057,6 +1066,7 @@
             this.txtWeb.Size = new System.Drawing.Size(227, 32);
             this.txtWeb.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtWeb.TabIndex = 10;
+            this.txtWeb.TextChanged += new System.EventHandler(this.txtWeb_TextChanged);
             // 
             // kryptonPanel20
             // 
@@ -1113,6 +1123,7 @@
             this.txtWidth.Size = new System.Drawing.Size(228, 32);
             this.txtWidth.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtWidth.TabIndex = 9;
+            this.txtWidth.TextChanged += new System.EventHandler(this.txtWidth_TextChanged);
             // 
             // kryptonPanel18
             // 
@@ -1169,6 +1180,7 @@
             this.txtDep.Size = new System.Drawing.Size(227, 32);
             this.txtDep.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtDep.TabIndex = 8;
+            this.txtDep.TextChanged += new System.EventHandler(this.txtDep_TextChanged);
             // 
             // kryptonPanel16
             // 
@@ -1225,6 +1237,7 @@
             this.txtThinh.Size = new System.Drawing.Size(227, 32);
             this.txtThinh.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtThinh.TabIndex = 7;
+            this.txtThinh.TextChanged += new System.EventHandler(this.txtThinh_TextChanged);
             // 
             // kryptonPanel14
             // 
@@ -1276,11 +1289,14 @@
             this.cboStandard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboStandard.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboStandard.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboStandard.DropDownWidth = 227;
             this.cboStandard.Location = new System.Drawing.Point(4, 7);
             this.cboStandard.Name = "cboStandard";
             this.cboStandard.Size = new System.Drawing.Size(227, 25);
             this.cboStandard.TabIndex = 1;
+            this.cboStandard.Validating += new System.ComponentModel.CancelEventHandler(this.cboStandard_Validating);
             // 
             // kryptonPanel6
             // 
@@ -1332,11 +1348,14 @@
             this.cboType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboType.DropDownWidth = 227;
             this.cboType.Location = new System.Drawing.Point(3, 7);
             this.cboType.Name = "cboType";
             this.cboType.Size = new System.Drawing.Size(227, 25);
             this.cboType.TabIndex = 1;
+            this.cboType.Validating += new System.ComponentModel.CancelEventHandler(this.cboType_Validating);
             // 
             // kryptonPanel4
             // 
@@ -1408,11 +1427,14 @@
             this.cboOrigin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboOrigin.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboOrigin.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboOrigin.DropDownWidth = 350;
             this.cboOrigin.Location = new System.Drawing.Point(3, 7);
             this.cboOrigin.Name = "cboOrigin";
             this.cboOrigin.Size = new System.Drawing.Size(227, 25);
             this.cboOrigin.TabIndex = 0;
+            this.cboOrigin.Validating += new System.ComponentModel.CancelEventHandler(this.cboOrigin_Validating);
             // 
             // kryptonPanel37
             // 
@@ -1511,6 +1533,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProdCode.Location = new System.Drawing.Point(3, 3);
             this.txtProdCode.Name = "txtProdCode";
+            this.txtProdCode.ReadOnly = true;
             this.txtProdCode.Size = new System.Drawing.Size(503, 32);
             this.txtProdCode.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtProdCode.TabIndex = 1;

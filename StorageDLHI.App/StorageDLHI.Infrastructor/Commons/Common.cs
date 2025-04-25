@@ -17,6 +17,7 @@ namespace StorageDLHI.Infrastructor.Commons
         public const string REGEX_VALID_EMAIL = @"[^a-zA-Z0-9._%+\-@]";
         public const string REGEX_VALID_DES = @"[^\p{L}0-9\s,./()\-]";
         public const string REGEX_VALID_CODE = @"[^A-Z0-9-]";
+        public const string REGEX_VALID_DIGIT = @"[^0-9]";
 
         public static Int32 CheckOrReturnNumber(string numberString)
         {

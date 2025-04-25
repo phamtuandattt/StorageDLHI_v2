@@ -13,9 +13,11 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls.Adapters;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace StorageDLHI.App.MprGUI
 {
@@ -58,6 +60,11 @@ namespace StorageDLHI.App.MprGUI
             txtWoNo.ReadOnly = true;
             txtProjectName.ReadOnly = true;
             dtPickerCreate.Enabled = false;
+
+
+            HideRow(1);
+            ResizeFormToFitTable();
+            
         }
 
         public frmCustomInfoMpr(string title, bool status, DataTable dtProdOfMpr)
@@ -156,6 +163,14 @@ namespace StorageDLHI.App.MprGUI
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtMPRNo.Text.Trim())
+                || string.IsNullOrEmpty(txtWoNo.Text.Trim())
+                || string.IsNullOrEmpty(txtProjectName.Text.Trim()))
+            {
+                MessageBoxHelper.ShowWarning("Please fill in the information completely !");
+                return;
+            }
+
             this.dtProdOfMprAdd = await MprDAO.GetMprDetailForm();
             if (status && !isPrint)
             {
@@ -284,6 +299,72 @@ namespace StorageDLHI.App.MprGUI
         private void tblLayoutCustom_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void txtMPRNo_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtMPRNo.Text, Infrastructor.Commons.Common.REGEX_VALID_CODE, "");
+            if (txtMPRNo.Text != cleaned)
+            {
+                int pos = txtMPRNo.SelectionStart - 1;
+                txtMPRNo.Text = cleaned;
+                txtMPRNo.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtWoNo_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtWoNo.Text, Infrastructor.Commons.Common.REGEX_VALID_CODE, "");
+            if (txtWoNo.Text != cleaned)
+            {
+                int pos = txtWoNo.SelectionStart - 1;
+                txtWoNo.Text = cleaned;
+                txtWoNo.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtProjectName_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtProjectName.Text, Infrastructor.Commons.Common.REGEX_VALID_CODE, "");
+            if (txtProjectName.Text != cleaned)
+            {
+                int pos = txtProjectName.SelectionStart - 1;
+                txtProjectName.Text = cleaned;
+                txtProjectName.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtPrepared_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtPrepared.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (txtPrepared.Text != cleaned)
+            {
+                int pos = txtPrepared.SelectionStart - 1;
+                txtPrepared.Text = cleaned;
+                txtPrepared.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtReviewed_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtReviewed.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (txtReviewed.Text != cleaned)
+            {
+                int pos = txtReviewed.SelectionStart - 1;
+                txtReviewed.Text = cleaned;
+                txtReviewed.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtApproved_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtApproved.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (txtApproved.Text != cleaned)
+            {
+                int pos = txtApproved.SelectionStart - 1;
+                txtApproved.Text = cleaned;
+                txtApproved.SelectionStart = Math.Max(pos, 0);
+            }
         }
     }
 }

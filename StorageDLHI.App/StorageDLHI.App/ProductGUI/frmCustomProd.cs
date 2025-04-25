@@ -13,6 +13,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -56,6 +57,7 @@ namespace StorageDLHI.App.ProductGUI
         {
             InitializeComponent();
             LoadData();
+            this.Text = title;
             this.pModel = pModel;
             this.status = status;
 
@@ -183,6 +185,12 @@ namespace StorageDLHI.App.ProductGUI
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtProdCode.Text.Trim()))
+            {
+                MessageBoxHelper.ShowWarning("Please fill in the information completely !");
+                return;
+            }
+
             if (status)
             {
                 var oriInfos = cboOrigin.Text.ToString().Split('|');
@@ -307,6 +315,136 @@ namespace StorageDLHI.App.ProductGUI
             txtFlag.Clear();
             txtLength.Clear();
             txtUsageNote.Clear();
+        }
+
+        private void txtDes2_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtDes2.Text, Infrastructor.Commons.Common.REGEX_VALID_CODE, "");
+            if (txtDes2.Text != cleaned)
+            {
+                int pos = txtDes2.SelectionStart - 1;
+                txtDes2.Text = cleaned;
+                txtDes2.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtProdName_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtProdName.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (txtProdName.Text != cleaned)
+            {
+                int pos = txtProdName.SelectionStart - 1;
+                txtProdName.Text = cleaned;
+                txtProdName.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtThinh_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtThinh.Text, Infrastructor.Commons.Common.REGEX_VALID_DIGIT, "");
+            if (txtThinh.Text != cleaned)
+            {
+                int pos = txtThinh.SelectionStart - 1;
+                txtThinh.Text = cleaned;
+                txtThinh.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtDep_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtDep.Text, Infrastructor.Commons.Common.REGEX_VALID_DIGIT, "");
+            if (txtDep.Text != cleaned)
+            {
+                int pos = txtDep.SelectionStart - 1;
+                txtDep.Text = cleaned;
+                txtDep.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtWidth_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtWidth.Text, Infrastructor.Commons.Common.REGEX_VALID_DIGIT, "");
+            if (txtWidth.Text != cleaned)
+            {
+                int pos = txtWidth.SelectionStart - 1;
+                txtWidth.Text = cleaned;
+                txtWidth.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtWeb_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtWeb.Text, Infrastructor.Commons.Common.REGEX_VALID_DIGIT, "");
+            if (txtWeb.Text != cleaned)
+            {
+                int pos = txtWeb.SelectionStart - 1;
+                txtWeb.Text = cleaned;
+                txtWeb.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtFlag_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtFlag.Text, Infrastructor.Commons.Common.REGEX_VALID_DIGIT, "");
+            if (txtFlag.Text != cleaned)
+            {
+                int pos = txtFlag.SelectionStart - 1;
+                txtFlag.Text = cleaned;
+                txtFlag.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtLength_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtLength.Text, Infrastructor.Commons.Common.REGEX_VALID_DIGIT, "");
+            if (txtLength.Text != cleaned)
+            {
+                int pos = txtLength.SelectionStart - 1;
+                txtLength.Text = cleaned;
+                txtLength.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtWeigth_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtWeigth.Text, Infrastructor.Commons.Common.REGEX_VALID_DIGIT, "");
+            if (txtWeigth.Text != cleaned)
+            {
+                int pos = txtWeigth.SelectionStart - 1;
+                txtWeigth.Text = cleaned;
+                txtWeigth.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtUsageNote_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtUsageNote.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (txtUsageNote.Text != cleaned)
+            {
+                int pos = txtUsageNote.SelectionStart - 1;
+                txtUsageNote.Text = cleaned;
+                txtUsageNote.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void cboOrigin_Validating(object sender, CancelEventArgs e)
+        {
+            Common.Common.AutoCompleteComboboxValidating(sender as KryptonComboBox, e);
+        }
+
+        private void cboType_Validating(object sender, CancelEventArgs e)
+        {
+            Common.Common.AutoCompleteComboboxValidating(sender as KryptonComboBox, e);
+        }
+
+        private void cboStandard_Validating(object sender, CancelEventArgs e)
+        {
+            Common.Common.AutoCompleteComboboxValidating(sender as KryptonComboBox, e);
+        }
+
+        private void cboUnit_Validating(object sender, CancelEventArgs e)
+        {
+            Common.Common.AutoCompleteComboboxValidating(sender as KryptonComboBox, e);
         }
     }
 }
