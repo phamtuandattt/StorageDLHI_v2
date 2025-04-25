@@ -135,7 +135,7 @@ namespace StorageDLHI.App.PoGUI
 
             if (!CacheManager.Exists(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS))
             {
-                dtMprs = await MprDAO.GetMprsForMakePO();
+                dtMprs = await ShowDialogManager.WithLoader(() => MprDAO.GetMprsForMakePO());
                 CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, dtMprs);
                 dgvMPRs.DataSource = dtMprs;
             }

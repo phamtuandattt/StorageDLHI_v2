@@ -48,8 +48,20 @@ namespace StorageDLHI.App.SupplierGUI
                 // Load exist banks
                 if (dtBanks.Rows.Count > 0)
                 {
-                    this.dtBanks = dtBanks; 
-                    dgvBankOfSup.DataSource = dtBanks;
+                    foreach (DataRow dr in dtBanks.Rows)
+                    {
+                        DataRow dataRow = this.dtBanks.NewRow();
+                        dataRow[0] = dr[0];
+                        dataRow[1] = dr[1];
+                        dataRow[2] = dr[2];
+                        dataRow[3] = dr[3];
+                        dataRow[4] = dr[4];
+                        dataRow[5] = dr[5];
+
+                        this.dtBanks.Rows.Add(dataRow);
+                    }
+                    
+                    dgvBankOfSup.DataSource = this.dtBanks;
                     dgvBankOfSup.Rows[0].Selected = true;
                 }
 

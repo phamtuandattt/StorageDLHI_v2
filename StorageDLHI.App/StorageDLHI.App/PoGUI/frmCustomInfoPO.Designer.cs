@@ -968,6 +968,8 @@
             this.cboSuppplier.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboSuppplier.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboSuppplier.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboSuppplier.DropDownWidth = 350;
             this.cboSuppplier.Location = new System.Drawing.Point(0, 5);
             this.cboSuppplier.Name = "cboSuppplier";
@@ -1191,6 +1193,8 @@
             this.cboCost.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboCost.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboCost.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboCost.DropDownWidth = 350;
             this.cboCost.Location = new System.Drawing.Point(0, 5);
             this.cboCost.Name = "cboCost";

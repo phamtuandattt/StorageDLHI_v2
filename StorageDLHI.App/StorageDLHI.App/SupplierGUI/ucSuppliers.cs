@@ -65,11 +65,12 @@ namespace StorageDLHI.App.SupplierGUI
             LoadData();
         }
 
-        private void tlsLoadSupplier_Click(object sender, EventArgs e)
+        private async void tlsLoadSupplier_Click(object sender, EventArgs e)
         {
-            var dtSp = SupplierDAO.GetSuppliers();
+            var dtSp = await ShowDialogManager.WithLoader(() => SupplierDAO.GetSuppliers());
             CacheManager.Add(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER, dtSp);
             dgvSuppliers.DataSource = dtSp;
+            LoadData();
         }
 
         private void btnAddBank_Click(object sender, EventArgs e)
@@ -79,7 +80,7 @@ namespace StorageDLHI.App.SupplierGUI
 
         private void btnLoadBank_Click(object sender, EventArgs e)
         {
-
+            LoadData();
         }
 
         private void dgvSuppliers_CellContentClick(object sender, DataGridViewCellEventArgs e)
