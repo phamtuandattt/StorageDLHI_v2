@@ -11,6 +11,7 @@ using System.Data.Entity.Core.Metadata.Edm;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -101,6 +102,61 @@ namespace StorageDLHI.App.PoGUI
 
             IsPrinted = true;
             this.Close();
+        }
+
+        private void txtReviewed_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtReviewed.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (txtReviewed.Text != cleaned)
+            {
+                int pos = txtReviewed.SelectionStart - 1;
+                txtReviewed.Text = cleaned;
+                txtReviewed.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtAggrement_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtAggrement.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (txtAggrement.Text != cleaned)
+            {
+                int pos = txtAggrement.SelectionStart - 1;
+                txtAggrement.Text = cleaned;
+                txtAggrement.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtApproved_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtApproved.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (txtApproved.Text != cleaned)
+            {
+                int pos = txtApproved.SelectionStart - 1;
+                txtApproved.Text = cleaned;
+                txtApproved.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtBuyer_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtBuyer.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (txtBuyer.Text != cleaned)
+            {
+                int pos = txtBuyer.SelectionStart - 1;
+                txtBuyer.Text = cleaned;
+                txtBuyer.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtPaymentTerm_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtPaymentTerm.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (txtPaymentTerm.Text != cleaned)
+            {
+                int pos = txtPaymentTerm.SelectionStart - 1;
+                txtPaymentTerm.Text = cleaned;
+                txtPaymentTerm.SelectionStart = Math.Max(pos, 0);
+            }
         }
     }
 }

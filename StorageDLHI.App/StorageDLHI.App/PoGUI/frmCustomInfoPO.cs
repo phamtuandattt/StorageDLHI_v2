@@ -15,6 +15,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -297,6 +298,92 @@ namespace StorageDLHI.App.PoGUI
         private void frmCustomInfoPO_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.completed = false;
+        }
+
+        private void txtPONo_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtPONo.Text, Infrastructor.Commons.Common.REGEX_VALID_CODE, "");
+            if (txtPONo.Text != cleaned)
+            {
+                int pos = txtPONo.SelectionStart - 1;
+                txtPONo.Text = cleaned;
+                txtPONo.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtPrepared_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtPrepared.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (txtPrepared.Text != cleaned)
+            {
+                int pos = txtPrepared.SelectionStart - 1;
+                txtPrepared.Text = cleaned;
+                txtPrepared.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtReviewed_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtReviewed.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (txtReviewed.Text != cleaned)
+            {
+                int pos = txtReviewed.SelectionStart - 1;
+                txtReviewed.Text = cleaned;
+                txtReviewed.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtAggrement_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtAggrement.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (txtAggrement.Text != cleaned)
+            {
+                int pos = txtAggrement.SelectionStart - 1;
+                txtAggrement.Text = cleaned;
+                txtAggrement.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtApproved_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtApproved.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (txtApproved.Text != cleaned)
+            {
+                int pos = txtApproved.SelectionStart - 1;
+                txtApproved.Text = cleaned;
+                txtApproved.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtWithIn_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtWithIn.Text, Infrastructor.Commons.Common.REGEX_VALID_DIGIT, "");
+            if (txtWithIn.Text != cleaned)
+            {
+                int pos = txtWithIn.SelectionStart - 1;
+                txtWithIn.Text = cleaned;
+                txtWithIn.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtDepo1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDepo2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDepo3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtOther_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -39,12 +39,16 @@
             this.kryptonGroupBox4 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.dgvPOList = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.tlsReloadPOs = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.txtSearchPO = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tlsSearchDate = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.lblDateTimeSeacrh = new System.Windows.Forms.ToolStripLabel();
+            this.tlsClearSearchDate = new System.Windows.Forms.ToolStripButton();
+            this.tlsExportPO = new System.Windows.Forms.ToolStripButton();
             this.pageAddPO = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -110,17 +114,13 @@
             this.updateProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvFooter = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tlsMPRNo = new System.Windows.Forms.ToolStripLabel();
-            this.tlsReloadPOs = new System.Windows.Forms.ToolStripButton();
-            this.tlsSearchDate = new System.Windows.Forms.ToolStripButton();
-            this.tlsClearSearchDate = new System.Windows.Forms.ToolStripButton();
-            this.tlsExportPO = new System.Windows.Forms.ToolStripButton();
             this.btnClearProdsOfPO = new System.Windows.Forms.ToolStripButton();
             this.btnAddPO = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.btnReload = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAddAllProdIntoPO = new System.Windows.Forms.ToolStripButton();
+            this.tlsMPRNo = new System.Windows.Forms.ToolStripLabel();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -224,7 +224,7 @@
             this.kryptonNavigator1.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
             this.pagePOs,
             this.pageAddPO});
-            this.kryptonNavigator1.SelectedIndex = 0;
+            this.kryptonNavigator1.SelectedIndex = 1;
             this.kryptonNavigator1.Size = new System.Drawing.Size(1559, 741);
             this.kryptonNavigator1.StateCommon.Panel.Color1 = System.Drawing.Color.White;
             this.kryptonNavigator1.StateCommon.Panel.Color2 = System.Drawing.Color.White;
@@ -407,15 +407,25 @@
             this.toolStrip2.TabIndex = 5;
             this.toolStrip2.Text = "toolStrip2";
             // 
+            // tlsReloadPOs
+            // 
+            this.tlsReloadPOs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsReloadPOs.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.tlsReloadPOs.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsReloadPOs.Name = "tlsReloadPOs";
+            this.tlsReloadPOs.Size = new System.Drawing.Size(29, 24);
+            this.tlsReloadPOs.Text = "Refresh";
+            this.tlsReloadPOs.Click += new System.EventHandler(this.tlsReloadPOs_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(56, 28);
+            this.toolStripLabel1.Size = new System.Drawing.Size(56, 24);
             this.toolStripLabel1.Text = "Search:";
             // 
             // txtSearchPO
@@ -429,17 +439,48 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            // 
+            // tlsSearchDate
+            // 
+            this.tlsSearchDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsSearchDate.Image = global::StorageDLHI.App.Properties.Resources.search;
+            this.tlsSearchDate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsSearchDate.Name = "tlsSearchDate";
+            this.tlsSearchDate.Size = new System.Drawing.Size(29, 24);
+            this.tlsSearchDate.Text = "Seacrch date";
+            this.tlsSearchDate.Click += new System.EventHandler(this.tlsSearchDate_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
             // 
             // lblDateTimeSeacrh
             // 
             this.lblDateTimeSeacrh.Name = "lblDateTimeSeacrh";
-            this.lblDateTimeSeacrh.Size = new System.Drawing.Size(0, 28);
+            this.lblDateTimeSeacrh.Size = new System.Drawing.Size(0, 24);
+            // 
+            // tlsClearSearchDate
+            // 
+            this.tlsClearSearchDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsClearSearchDate.Image = global::StorageDLHI.App.Properties.Resources.clean;
+            this.tlsClearSearchDate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsClearSearchDate.Name = "tlsClearSearchDate";
+            this.tlsClearSearchDate.Size = new System.Drawing.Size(29, 24);
+            this.tlsClearSearchDate.Text = "Clear";
+            this.tlsClearSearchDate.Visible = false;
+            this.tlsClearSearchDate.Click += new System.EventHandler(this.tlsClearSearchDate_Click);
+            // 
+            // tlsExportPO
+            // 
+            this.tlsExportPO.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsExportPO.Image = global::StorageDLHI.App.Properties.Resources.excel;
+            this.tlsExportPO.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsExportPO.Name = "tlsExportPO";
+            this.tlsExportPO.Size = new System.Drawing.Size(29, 24);
+            this.tlsExportPO.Text = "Export make purchase order";
+            this.tlsExportPO.Click += new System.EventHandler(this.tlsExportPO_Click);
             // 
             // pageAddPO
             // 
@@ -1121,6 +1162,24 @@
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // btnClearProdsOfPO
+            // 
+            this.btnClearProdsOfPO.Image = global::StorageDLHI.App.Properties.Resources.bin;
+            this.btnClearProdsOfPO.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnClearProdsOfPO.Name = "btnClearProdsOfPO";
+            this.btnClearProdsOfPO.Size = new System.Drawing.Size(87, 24);
+            this.btnClearProdsOfPO.Text = "Clear all";
+            this.btnClearProdsOfPO.Click += new System.EventHandler(this.btnClearProdsOfPO_Click);
+            // 
+            // btnAddPO
+            // 
+            this.btnAddPO.Image = global::StorageDLHI.App.Properties.Resources.right;
+            this.btnAddPO.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAddPO.Name = "btnAddPO";
+            this.btnAddPO.Size = new System.Drawing.Size(86, 24);
+            this.btnAddPO.Text = "Confirm";
+            this.btnAddPO.Click += new System.EventHandler(this.btnAddPO_Click);
+            // 
             // toolStrip3
             // 
             this.toolStrip3.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -1137,86 +1196,20 @@
             this.toolStrip3.TabIndex = 5;
             this.toolStrip3.Text = "toolStrip3";
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
-            // 
-            // tlsMPRNo
-            // 
-            this.tlsMPRNo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tlsMPRNo.Name = "tlsMPRNo";
-            this.tlsMPRNo.Size = new System.Drawing.Size(18, 28);
-            this.tlsMPRNo.Text = "...";
-            // 
-            // tlsReloadPOs
-            // 
-            this.tlsReloadPOs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsReloadPOs.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.tlsReloadPOs.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsReloadPOs.Name = "tlsReloadPOs";
-            this.tlsReloadPOs.Size = new System.Drawing.Size(29, 28);
-            this.tlsReloadPOs.Text = "Refresh";
-            this.tlsReloadPOs.Click += new System.EventHandler(this.tlsReloadPOs_Click);
-            // 
-            // tlsSearchDate
-            // 
-            this.tlsSearchDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsSearchDate.Image = global::StorageDLHI.App.Properties.Resources.search;
-            this.tlsSearchDate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsSearchDate.Name = "tlsSearchDate";
-            this.tlsSearchDate.Size = new System.Drawing.Size(29, 28);
-            this.tlsSearchDate.Text = "Seacrch date";
-            this.tlsSearchDate.Click += new System.EventHandler(this.tlsSearchDate_Click);
-            // 
-            // tlsClearSearchDate
-            // 
-            this.tlsClearSearchDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsClearSearchDate.Image = global::StorageDLHI.App.Properties.Resources.clean;
-            this.tlsClearSearchDate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsClearSearchDate.Name = "tlsClearSearchDate";
-            this.tlsClearSearchDate.Size = new System.Drawing.Size(29, 28);
-            this.tlsClearSearchDate.Text = "Clear";
-            this.tlsClearSearchDate.Visible = false;
-            this.tlsClearSearchDate.Click += new System.EventHandler(this.tlsClearSearchDate_Click);
-            // 
-            // tlsExportPO
-            // 
-            this.tlsExportPO.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsExportPO.Image = global::StorageDLHI.App.Properties.Resources.excel;
-            this.tlsExportPO.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsExportPO.Name = "tlsExportPO";
-            this.tlsExportPO.Size = new System.Drawing.Size(29, 28);
-            this.tlsExportPO.Text = "Export make purchase order";
-            this.tlsExportPO.Click += new System.EventHandler(this.tlsExportPO_Click);
-            // 
-            // btnClearProdsOfPO
-            // 
-            this.btnClearProdsOfPO.Image = global::StorageDLHI.App.Properties.Resources.bin;
-            this.btnClearProdsOfPO.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnClearProdsOfPO.Name = "btnClearProdsOfPO";
-            this.btnClearProdsOfPO.Size = new System.Drawing.Size(87, 28);
-            this.btnClearProdsOfPO.Text = "Clear all";
-            this.btnClearProdsOfPO.Click += new System.EventHandler(this.btnClearProdsOfPO_Click);
-            // 
-            // btnAddPO
-            // 
-            this.btnAddPO.Image = global::StorageDLHI.App.Properties.Resources.right;
-            this.btnAddPO.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAddPO.Name = "btnAddPO";
-            this.btnAddPO.Size = new System.Drawing.Size(86, 28);
-            this.btnAddPO.Text = "Confirm";
-            this.btnAddPO.Click += new System.EventHandler(this.btnAddPO_Click);
-            // 
             // btnReload
             // 
             this.btnReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnReload.Image = global::StorageDLHI.App.Properties.Resources.refresh;
             this.btnReload.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(29, 28);
+            this.btnReload.Size = new System.Drawing.Size(29, 24);
             this.btnReload.Text = "Refresh";
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // btnAddAllProdIntoPO
             // 
@@ -1224,9 +1217,16 @@
             this.btnAddAllProdIntoPO.Image = global::StorageDLHI.App.Properties.Resources.mark;
             this.btnAddAllProdIntoPO.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAddAllProdIntoPO.Name = "btnAddAllProdIntoPO";
-            this.btnAddAllProdIntoPO.Size = new System.Drawing.Size(223, 28);
+            this.btnAddAllProdIntoPO.Size = new System.Drawing.Size(223, 24);
             this.btnAddAllProdIntoPO.Text = "Add all product to create PO";
             this.btnAddAllProdIntoPO.Click += new System.EventHandler(this.btnAddAllProdIntoPO_Click);
+            // 
+            // tlsMPRNo
+            // 
+            this.tlsMPRNo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tlsMPRNo.Name = "tlsMPRNo";
+            this.tlsMPRNo.Size = new System.Drawing.Size(18, 24);
+            this.tlsMPRNo.Text = "...";
             // 
             // Column6
             // 
@@ -1235,6 +1235,7 @@
             this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
+            this.Column6.Visible = false;
             // 
             // Column7
             // 
@@ -1379,6 +1380,7 @@
             this.Column20.MinimumWidth = 6;
             this.Column20.Name = "Column20";
             this.Column20.ReadOnly = true;
+            this.Column20.Visible = false;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1387,6 +1389,7 @@
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -1395,6 +1398,7 @@
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Visible = false;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -1403,6 +1407,7 @@
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Visible = false;
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -1683,6 +1688,23 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column32;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.ToolStripButton tlsExportPO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column39;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column40;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column41;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column42;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column43;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column44;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column45;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PO_DETAIL_QTY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PO_DETAIL_PRICE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PO_DETAIL_AMOUNT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column46;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
@@ -1702,22 +1724,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column50;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column51;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column39;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column40;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column41;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column42;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column43;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column44;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column45;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PO_DETAIL_QTY;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PO_DETAIL_PRICE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PO_DETAIL_AMOUNT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column46;
     }
 }

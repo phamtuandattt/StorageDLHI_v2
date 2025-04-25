@@ -208,5 +208,10 @@ namespace StorageDLHI.App.ExportGUI
         {
             Common.Common.RenderNumbering(sender, e, this.Font);
         }
+
+        private void cboWarehouse_Validating(object sender, CancelEventArgs e)
+        {
+            Common.Common.AutoCompleteComboboxValidating(sender as KryptonComboBox, e);
+        }
     }
 }

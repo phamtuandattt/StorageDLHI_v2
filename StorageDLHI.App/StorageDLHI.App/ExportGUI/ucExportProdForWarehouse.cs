@@ -31,10 +31,13 @@ namespace StorageDLHI.App.ExportGUI
         public ucExportProdForWarehouse()
         {
             InitializeComponent();
-            LoadData();
-
             Common.Common.InitializeFooterGrid(dgvProdOfExport, dgvFooter);
             Common.Common.InitializeFooterGrid(dgvRemaningGoods, dgvFooterOfRemaining);
+            LoadData();
+
+            dgvFooterOfRemaining.Rows[0].Cells[4].Value = "TOTAL";
+            dgvFooterOfRemaining.Rows[0].Cells[4].Style.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            Common.Common.StyleFooterCell(dgvFooterOfRemaining.Rows[0].Cells[14]);
 
             dtProdExport.Columns.Add(QueryStatement.PROPERTY_PROD_ID);
             dtProdExport.Columns.Add(QueryStatement.PROPERTY_PROD_NAME);
@@ -122,7 +125,7 @@ namespace StorageDLHI.App.ExportGUI
             if (dgvWarehose.Rows.Count <= 0) { return; }
             int rsl = dgvWarehose.CurrentRow.Index;
             LoadDetailByWId(rsl);
-            UpdateFooterOfRemaining();
+            //UpdateFooterOfRemaining();
         }
 
         private void dgvWarehose_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -204,11 +207,7 @@ namespace StorageDLHI.App.ExportGUI
                 }
             }
 
-            dgvFooterOfRemaining.Rows[0].Cells[4].Value = "TOTAL";
             dgvFooterOfRemaining.Rows[0].Cells[14].Value = totalQty.ToString("N0");
-
-            dgvFooterOfRemaining.Rows[0].Cells[4].Style.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-            Common.Common.StyleFooterCell(dgvFooterOfRemaining.Rows[0].Cells[14]);
         }
 
         private void dgvRemaningGoods_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -252,6 +251,11 @@ namespace StorageDLHI.App.ExportGUI
         private void dgvRemaningGoods_Scroll(object sender, ScrollEventArgs e)
         {
             dgvFooterOfRemaining.HorizontalScrollingOffset = dgvRemaningGoods.HorizontalScrollingOffset;
+        }
+
+        private void txtSearchWarehouse_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

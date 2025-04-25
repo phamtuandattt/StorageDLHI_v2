@@ -64,7 +64,6 @@
             this.PRODUCT_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WAREHOUSE_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -320,11 +319,14 @@
             this.cboWarehouse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboWarehouse.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboWarehouse.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboWarehouse.DropDownWidth = 350;
             this.cboWarehouse.Location = new System.Drawing.Point(3, 7);
             this.cboWarehouse.Name = "cboWarehouse";
             this.cboWarehouse.Size = new System.Drawing.Size(323, 25);
             this.cboWarehouse.TabIndex = 2;
+            this.cboWarehouse.Validating += new System.ComponentModel.CancelEventHandler(this.cboWarehouse_Validating);
             // 
             // kryptonPanel6
             // 
@@ -580,7 +582,6 @@
             this.PRODUCT_ID,
             this.Name,
             this.Qty,
-            this.Warehouse,
             this.WAREHOUSE_ID});
             this.dgvExportForWarehouse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvExportForWarehouse.Location = new System.Drawing.Point(0, 0);
@@ -600,6 +601,7 @@
             this.PRODUCT_ID.MinimumWidth = 6;
             this.PRODUCT_ID.Name = "PRODUCT_ID";
             this.PRODUCT_ID.ReadOnly = true;
+            this.PRODUCT_ID.Visible = false;
             // 
             // Name
             // 
@@ -615,19 +617,13 @@
             this.Qty.Name = "Qty";
             this.Qty.ReadOnly = true;
             // 
-            // Warehouse
-            // 
-            this.Warehouse.HeaderText = "Warehouse";
-            this.Warehouse.MinimumWidth = 6;
-            this.Warehouse.Name = "Warehouse";
-            this.Warehouse.ReadOnly = true;
-            // 
             // WAREHOUSE_ID
             // 
             this.WAREHOUSE_ID.HeaderText = "WAREHOUSE_ID";
             this.WAREHOUSE_ID.MinimumWidth = 6;
             this.WAREHOUSE_ID.Name = "WAREHOUSE_ID";
             this.WAREHOUSE_ID.ReadOnly = true;
+            this.WAREHOUSE_ID.Visible = false;
             // 
             // frmExportProduct
             // 
@@ -636,7 +632,7 @@
             this.ClientSize = new System.Drawing.Size(1031, 393);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            //this.Name = "frmExportProduct";
+            this.Name = "frmExportProduct";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
             this.Text = "Update quantity in warehouse";
@@ -708,15 +704,14 @@
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel6;
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox1;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvExportForWarehouse;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PRODUCT_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Warehouse;
-        private System.Windows.Forms.DataGridViewTextBoxColumn WAREHOUSE_ID;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSave;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnAdd;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnDelete;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PRODUCT_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WAREHOUSE_ID;
     }
 }

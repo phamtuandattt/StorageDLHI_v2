@@ -308,6 +308,7 @@
             this.txtApproved.Size = new System.Drawing.Size(291, 32);
             this.txtApproved.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtApproved.TabIndex = 18;
+            this.txtApproved.TextChanged += new System.EventHandler(this.txtApproved_TextChanged);
             // 
             // kryptonPanel34
             // 
@@ -364,6 +365,7 @@
             this.txtAggrement.Size = new System.Drawing.Size(290, 32);
             this.txtAggrement.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtAggrement.TabIndex = 17;
+            this.txtAggrement.TextChanged += new System.EventHandler(this.txtAggrement_TextChanged);
             // 
             // kryptonPanel32
             // 
@@ -420,6 +422,7 @@
             this.txtReviewed.Size = new System.Drawing.Size(292, 32);
             this.txtReviewed.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtReviewed.TabIndex = 16;
+            this.txtReviewed.TextChanged += new System.EventHandler(this.txtReviewed_TextChanged);
             // 
             // kryptonPanel28
             // 
@@ -478,6 +481,7 @@
             this.txtPrepared.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtPrepared.TabIndex = 13;
             this.txtPrepared.Text = "load name staff";
+            this.txtPrepared.TextChanged += new System.EventHandler(this.txtPrepared_TextChanged);
             // 
             // kryptonPanel26
             // 
@@ -534,6 +538,7 @@
             this.txtPONo.Size = new System.Drawing.Size(291, 32);
             this.txtPONo.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtPONo.TabIndex = 11;
+            this.txtPONo.TextChanged += new System.EventHandler(this.txtPONo_TextChanged);
             // 
             // kryptonPanel22
             // 
@@ -1084,6 +1089,7 @@
             this.txtDepo2.Size = new System.Drawing.Size(165, 32);
             this.txtDepo2.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtDepo2.TabIndex = 21;
+            this.txtDepo2.TextChanged += new System.EventHandler(this.txtDepo2_TextChanged);
             // 
             // txtDepo3
             // 
@@ -1093,6 +1099,7 @@
             this.txtDepo3.Size = new System.Drawing.Size(275, 32);
             this.txtDepo3.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtDepo3.TabIndex = 22;
+            this.txtDepo3.TextChanged += new System.EventHandler(this.txtDepo3_TextChanged);
             // 
             // txtOther
             // 
@@ -1102,6 +1109,7 @@
             this.txtOther.Size = new System.Drawing.Size(617, 32);
             this.txtOther.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtOther.TabIndex = 23;
+            this.txtOther.TextChanged += new System.EventHandler(this.txtOther_TextChanged);
             // 
             // txtDepo1
             // 
@@ -1111,6 +1119,7 @@
             this.txtDepo1.Size = new System.Drawing.Size(165, 32);
             this.txtDepo1.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtDepo1.TabIndex = 20;
+            this.txtDepo1.TextChanged += new System.EventHandler(this.txtDepo1_TextChanged);
             // 
             // radOption2
             // 
@@ -1129,6 +1138,7 @@
             this.txtWithIn.Size = new System.Drawing.Size(165, 32);
             this.txtWithIn.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtWithIn.TabIndex = 19;
+            this.txtWithIn.TextChanged += new System.EventHandler(this.txtWithIn_TextChanged);
             // 
             // radOption1
             // 
