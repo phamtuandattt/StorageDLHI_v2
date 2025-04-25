@@ -523,6 +523,7 @@
             this.txtAddress.Size = new System.Drawing.Size(299, 32);
             this.txtAddress.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtAddress.TabIndex = 10;
+            this.txtAddress.TextChanged += new System.EventHandler(this.txtAddress_TextChanged);
             // 
             // kryptonPanel20
             // 
@@ -579,6 +580,7 @@
             this.txtName.Size = new System.Drawing.Size(300, 32);
             this.txtName.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtName.TabIndex = 8;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // kryptonPanel16
             // 
@@ -635,6 +637,7 @@
             this.txtWarehouseCode.Size = new System.Drawing.Size(299, 32);
             this.txtWarehouseCode.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtWarehouseCode.TabIndex = 7;
+            this.txtWarehouseCode.TextChanged += new System.EventHandler(this.txtWarehouseCode_TextChanged);
             // 
             // kryptonPanel14
             // 

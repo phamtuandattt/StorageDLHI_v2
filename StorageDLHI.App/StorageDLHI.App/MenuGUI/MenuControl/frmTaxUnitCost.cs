@@ -12,8 +12,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace StorageDLHI.App.MenuGUI.MenuControl
 {
@@ -74,6 +76,12 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtName.Text.Trim()))
+            {
+                MessageBoxHelper.ShowWarning("Please fill in the information completely !");
+                return;
+            }
+
             if (status)
             {
                 switch (type)
@@ -175,6 +183,17 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtName.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (txtName.Text != cleaned)
+            {
+                int pos = txtName.SelectionStart - 1;
+                txtName.Text = cleaned;
+                txtName.SelectionStart = Math.Max(pos, 0);
+            }
         }
     }
 }

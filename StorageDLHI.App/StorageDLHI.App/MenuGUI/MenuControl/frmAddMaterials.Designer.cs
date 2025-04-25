@@ -202,6 +202,7 @@
             this.txtCode.Size = new System.Drawing.Size(307, 32);
             this.txtCode.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtCode.TabIndex = 0;
+            this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
             // 
             // kryptonPanel4
             // 
@@ -242,6 +243,7 @@
             this.txtDes.Size = new System.Drawing.Size(307, 32);
             this.txtDes.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtDes.TabIndex = 0;
+            this.txtDes.TextChanged += new System.EventHandler(this.txtDes_TextChanged);
             // 
             // frmAddMaterials
             // 

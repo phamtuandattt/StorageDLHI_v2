@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomSupplier));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -67,15 +67,15 @@
             this.kryptonPanel14 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonGroupBox2 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.dgvBankOfSup = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tlsAddBank = new System.Windows.Forms.ToolStripButton();
-            this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewCheckBoxColumn();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tlsAddBank = new System.Windows.Forms.ToolStripButton();
+            this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
@@ -255,6 +255,8 @@
             this.txtAddress.Size = new System.Drawing.Size(345, 32);
             this.txtAddress.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtAddress.TabIndex = 6;
+            this.txtAddress.TextChanged += new System.EventHandler(this.txtAddress_TextChanged);
+            this.txtAddress.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtAddress_KeyUp);
             // 
             // kryptonPanel12
             // 
@@ -296,6 +298,7 @@
             this.txtViettat.Size = new System.Drawing.Size(345, 32);
             this.txtViettat.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtViettat.TabIndex = 5;
+            this.txtViettat.TextChanged += new System.EventHandler(this.txtViettat_TextChanged);
             // 
             // kryptonPanel10
             // 
@@ -337,6 +340,7 @@
             this.txtPhone.Size = new System.Drawing.Size(345, 32);
             this.txtPhone.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtPhone.TabIndex = 4;
+            this.txtPhone.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
             // 
             // kryptonPanel8
             // 
@@ -378,6 +382,7 @@
             this.txtEmail.Size = new System.Drawing.Size(345, 32);
             this.txtEmail.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtEmail.TabIndex = 3;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // kryptonPanel6
             // 
@@ -419,6 +424,7 @@
             this.txtCert.Size = new System.Drawing.Size(345, 32);
             this.txtCert.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtCert.TabIndex = 2;
+            this.txtCert.TextChanged += new System.EventHandler(this.txtCert_TextChanged);
             // 
             // kryptonPanel4
             // 
@@ -460,6 +466,7 @@
             this.txtName.Size = new System.Drawing.Size(345, 32);
             this.txtName.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtName.TabIndex = 1;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // kryptonPanel2
             // 
@@ -601,40 +608,6 @@
             this.dgvBankOfSup.TabIndex = 0;
             this.dgvBankOfSup.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvBankOfSup_RowPostPaint);
             // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlsAddBank,
-            this.btnDelete});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(1023, 27);
-            this.toolStrip1.TabIndex = 2;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // tlsAddBank
-            // 
-            this.tlsAddBank.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsAddBank.Image = global::StorageDLHI.App.Properties.Resources.pencial;
-            this.tlsAddBank.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsAddBank.Name = "tlsAddBank";
-            this.tlsAddBank.Size = new System.Drawing.Size(29, 24);
-            this.tlsAddBank.Text = "Add";
-            this.tlsAddBank.Click += new System.EventHandler(this.tlsAddBank_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDelete.Image = global::StorageDLHI.App.Properties.Resources.bin;
-            this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(29, 24);
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // Column1
             // 
             this.Column1.DataPropertyName = "ID";
@@ -675,9 +648,9 @@
             // Column6
             // 
             this.Column6.DataPropertyName = "IS_ADD";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.NullValue = false;
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = false;
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle5;
             this.Column6.FalseValue = null;
             this.Column6.HeaderText = "IsAdd";
             this.Column6.IndeterminateValue = null;
@@ -686,6 +659,40 @@
             this.Column6.ReadOnly = true;
             this.Column6.TrueValue = null;
             this.Column6.Visible = false;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlsAddBank,
+            this.btnDelete});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip1.Size = new System.Drawing.Size(1023, 27);
+            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tlsAddBank
+            // 
+            this.tlsAddBank.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsAddBank.Image = global::StorageDLHI.App.Properties.Resources.pencial;
+            this.tlsAddBank.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsAddBank.Name = "tlsAddBank";
+            this.tlsAddBank.Size = new System.Drawing.Size(29, 24);
+            this.tlsAddBank.Text = "Add";
+            this.tlsAddBank.Click += new System.EventHandler(this.tlsAddBank_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnDelete.Image = global::StorageDLHI.App.Properties.Resources.bin;
+            this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(29, 24);
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // frmCustomSupplier
             // 

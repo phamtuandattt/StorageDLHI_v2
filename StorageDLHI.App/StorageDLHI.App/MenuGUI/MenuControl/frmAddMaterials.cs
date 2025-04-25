@@ -12,6 +12,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -75,6 +76,13 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtCode.Text.Trim())
+                || string.IsNullOrEmpty(txtDes.Text.Trim()))
+            {
+                MessageBoxHelper.ShowWarning("Please fill in the information completely !");
+                return;
+            }
+
             if (status)
             {
                 switch (type)
@@ -203,6 +211,28 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         }
                         break;
                 }
+            }
+        }
+
+        private void txtCode_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtCode.Text, Infrastructor.Commons.Common.REGEX_VALID_CODE, "");
+            if (txtCode.Text != cleaned)
+            {
+                int pos = txtCode.SelectionStart - 1;
+                txtCode.Text = cleaned;
+                txtCode.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtDes_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtDes.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (txtDes.Text != cleaned)
+            {
+                int pos = txtDes.SelectionStart - 1;
+                txtDes.Text = cleaned;
+                txtDes.SelectionStart = Math.Max(pos, 0);
             }
         }
     }

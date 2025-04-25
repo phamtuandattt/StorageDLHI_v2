@@ -154,5 +154,10 @@ namespace StorageDLHI.App.SupplierGUI
 
             LoadData();
         }
+
+        private void dgvBanks_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Common.Common.RenderNumbering(sender, e, this.Font);
+        }
     }
 }

@@ -33,6 +33,12 @@
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonGroupBox2 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.dgvBanks = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnAddBank = new System.Windows.Forms.ToolStripButton();
             this.btnLoadBank = new System.Windows.Forms.ToolStripButton();
@@ -49,12 +55,6 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAddSupplier = new System.Windows.Forms.ToolStripButton();
             this.tlsLoadSupplier = new System.Windows.Forms.ToolStripButton();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -151,6 +151,58 @@
             this.dgvBanks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBanks.Size = new System.Drawing.Size(443, 644);
             this.dgvBanks.TabIndex = 2;
+            this.dgvBanks.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvBanks_RowPostPaint);
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "ID";
+            this.Column9.HeaderText = "ID";
+            this.Column9.MinimumWidth = 6;
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Visible = false;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "BANK_ACCOUNT";
+            this.Column10.HeaderText = "Account";
+            this.Column10.MinimumWidth = 6;
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "BANK_NAME";
+            this.Column11.HeaderText = "Name";
+            this.Column11.MinimumWidth = 6;
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "BANK_BENEFICIAL";
+            this.Column12.HeaderText = "Beneficial";
+            this.Column12.MinimumWidth = 6;
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "SUPPLIER_ID";
+            this.Column8.HeaderText = "Supplier_Id";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Visible = false;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "IS_ADD";
+            this.Column13.HeaderText = "IS_ADD";
+            this.Column13.MinimumWidth = 6;
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            this.Column13.Visible = false;
             // 
             // toolStrip2
             // 
@@ -337,57 +389,6 @@
             this.tlsLoadSupplier.Size = new System.Drawing.Size(29, 24);
             this.tlsLoadSupplier.Text = "toolStripButton1";
             this.tlsLoadSupplier.Click += new System.EventHandler(this.tlsLoadSupplier_Click);
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "ID";
-            this.Column9.HeaderText = "ID";
-            this.Column9.MinimumWidth = 6;
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Visible = false;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "BANK_ACCOUNT";
-            this.Column10.HeaderText = "Account";
-            this.Column10.MinimumWidth = 6;
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "BANK_NAME";
-            this.Column11.HeaderText = "Name";
-            this.Column11.MinimumWidth = 6;
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "BANK_BENEFICIAL";
-            this.Column12.HeaderText = "Beneficial";
-            this.Column12.MinimumWidth = 6;
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "SUPPLIER_ID";
-            this.Column8.HeaderText = "Supplier_Id";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Visible = false;
-            // 
-            // Column13
-            // 
-            this.Column13.DataPropertyName = "IS_ADD";
-            this.Column13.HeaderText = "IS_ADD";
-            this.Column13.MinimumWidth = 6;
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            this.Column13.Visible = false;
             // 
             // ucSuppliers
             // 

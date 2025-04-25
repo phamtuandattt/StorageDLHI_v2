@@ -33,14 +33,14 @@
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.lblName = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.lblName = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.txtName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnSave = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -117,37 +117,8 @@
             this.kryptonPanel1.Location = new System.Drawing.Point(3, 3);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel1.Size = new System.Drawing.Size(96, 45);
+            this.kryptonPanel1.Size = new System.Drawing.Size(95, 45);
             this.kryptonPanel1.TabIndex = 0;
-            // 
-            // kryptonPanel2
-            // 
-            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel2.Location = new System.Drawing.Point(3, 54);
-            this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel2.Size = new System.Drawing.Size(96, 45);
-            this.kryptonPanel2.TabIndex = 0;
-            // 
-            // kryptonPanel3
-            // 
-            this.kryptonPanel3.Controls.Add(this.txtName);
-            this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel3.Location = new System.Drawing.Point(105, 3);
-            this.kryptonPanel3.Name = "kryptonPanel3";
-            this.kryptonPanel3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel3.Size = new System.Drawing.Size(367, 45);
-            this.kryptonPanel3.TabIndex = 0;
-            // 
-            // kryptonPanel4
-            // 
-            this.kryptonPanel4.Controls.Add(this.tableLayoutPanel2);
-            this.kryptonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel4.Location = new System.Drawing.Point(105, 54);
-            this.kryptonPanel4.Name = "kryptonPanel4";
-            this.kryptonPanel4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel4.Size = new System.Drawing.Size(367, 45);
-            this.kryptonPanel4.TabIndex = 0;
             // 
             // lblName
             // 
@@ -159,6 +130,25 @@
             this.lblName.TabIndex = 1;
             this.lblName.Values.Text = "Name:";
             // 
+            // kryptonPanel2
+            // 
+            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel2.Location = new System.Drawing.Point(3, 54);
+            this.kryptonPanel2.Name = "kryptonPanel2";
+            this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.kryptonPanel2.Size = new System.Drawing.Size(95, 45);
+            this.kryptonPanel2.TabIndex = 0;
+            // 
+            // kryptonPanel3
+            // 
+            this.kryptonPanel3.Controls.Add(this.txtName);
+            this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel3.Location = new System.Drawing.Point(104, 3);
+            this.kryptonPanel3.Name = "kryptonPanel3";
+            this.kryptonPanel3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.kryptonPanel3.Size = new System.Drawing.Size(368, 45);
+            this.kryptonPanel3.TabIndex = 0;
+            // 
             // txtName
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -166,9 +156,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtName.Location = new System.Drawing.Point(3, 9);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(361, 32);
+            this.txtName.Size = new System.Drawing.Size(362, 32);
             this.txtName.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtName.TabIndex = 1;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+            // 
+            // kryptonPanel4
+            // 
+            this.kryptonPanel4.Controls.Add(this.tableLayoutPanel2);
+            this.kryptonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel4.Location = new System.Drawing.Point(104, 54);
+            this.kryptonPanel4.Name = "kryptonPanel4";
+            this.kryptonPanel4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.kryptonPanel4.Size = new System.Drawing.Size(368, 45);
+            this.kryptonPanel4.TabIndex = 0;
             // 
             // tableLayoutPanel2
             // 
@@ -183,37 +184,13 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(367, 45);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(368, 45);
             this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCancel.Location = new System.Drawing.Point(4, 4);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.btnCancel.Size = new System.Drawing.Size(175, 37);
-            this.btnCancel.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnCancel.StateNormal.Border.Rounding = 15;
-            this.btnCancel.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnCancel.StatePressed.Border.Rounding = 15;
-            this.btnCancel.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnCancel.StateTracking.Border.Rounding = 15;
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Values.Text = "CANCEL";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSave.Location = new System.Drawing.Point(187, 4);
+            this.btnSave.Location = new System.Drawing.Point(188, 4);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
@@ -233,6 +210,30 @@
             this.btnSave.TabIndex = 2;
             this.btnSave.Values.Text = "SAVE";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCancel.Location = new System.Drawing.Point(4, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
+            this.btnCancel.Size = new System.Drawing.Size(176, 37);
+            this.btnCancel.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnCancel.StateNormal.Border.Rounding = 15;
+            this.btnCancel.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnCancel.StatePressed.Border.Rounding = 15;
+            this.btnCancel.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnCancel.StateTracking.Border.Rounding = 15;
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Values.Text = "CANCEL";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // frmTaxUnitCost
             // 

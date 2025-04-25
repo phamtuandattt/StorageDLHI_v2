@@ -4,6 +4,7 @@ using StorageDLHI.BLL.SupplierDAO;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
 using StorageDLHI.Infrastructor.Caches;
+using StorageDLHI.Infrastructor.Commons;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -255,6 +257,77 @@ namespace StorageDLHI.App.SupplierGUI
         private void dgvBankOfSup_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             Common.Common.RenderNumbering(sender, e, this.Font);
+        }
+
+        private void txtAddress_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void txtAddress_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtAddress.Text, Infrastructor.Commons.Common.REGEX_VALID_VIETNAM_ADDRESS, "");
+            if (txtAddress.Text != cleaned)
+            {
+                int pos = txtAddress.SelectionStart - 1;
+                txtAddress.Text = cleaned;
+                txtAddress.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtName.Text, Infrastructor.Commons.Common.REGEX_VALID_NAME, "");
+            if (txtName.Text != cleaned)
+            {
+                int pos = txtName.SelectionStart - 1;
+                txtName.Text = cleaned;
+                txtName.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtEmail.Text, Infrastructor.Commons.Common.REGEX_VALID_EMAIL, "");
+            if (txtEmail.Text != cleaned)
+            {
+                int pos = txtEmail.SelectionStart - 1;
+                txtEmail.Text = cleaned;
+                txtEmail.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtPhone.Text, Infrastructor.Commons.Common.REGEX_VALID_PHONE, "");
+            if (txtPhone.Text != cleaned)
+            {
+                int pos = txtPhone.SelectionStart - 1;
+                txtPhone.Text = cleaned;
+                txtPhone.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtViettat_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtViettat.Text, Infrastructor.Commons.Common.REGEX_VALID_VIETTAT, "");
+            if (txtViettat.Text != cleaned)
+            {
+                int pos = txtViettat.SelectionStart - 1;
+                txtViettat.Text = cleaned;
+                txtViettat.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtCert_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtCert.Text, Infrastructor.Commons.Common.REGEX_VALID_CERT, "");
+            if (txtCert.Text != cleaned)
+            {
+                int pos = txtCert.SelectionStart - 1;
+                txtCert.Text = cleaned;
+                txtCert.SelectionStart = Math.Max(pos, 0);
+            }
         }
     }
 }
