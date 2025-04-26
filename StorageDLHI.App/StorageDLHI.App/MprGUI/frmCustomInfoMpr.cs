@@ -268,7 +268,7 @@ namespace StorageDLHI.App.MprGUI
                     { Common.DictionaryKey.APPROVED, dtMPRDetail.Mpr_Approved }
                 };
 
-                string templatePath = Common.PathManager.MPR_TEMPLATE_PATH;
+                string templatePath = Common.PathManager.GetPathTemplate(Common.PathManager.MPR_TEMPLATE_FILE_NAME);
 
                 SaveFileDialog saveFileDialog = new SaveFileDialog
                 {

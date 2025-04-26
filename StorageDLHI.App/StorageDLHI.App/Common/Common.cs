@@ -12,10 +12,12 @@ using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
 using StorageDLHI.Infrastructor;
 using StorageDLHI.Infrastructor.Caches;
+using StorageDLHI.Infrastructor.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.Drawing;
@@ -53,9 +55,29 @@ namespace StorageDLHI.App.Common
 
     public static class PathManager
     {
-        public const string MPR_TEMPLATE_PATH = "C:\\Users\\TUAN DAT\\Desktop\\Template\\mpr_temp.xlsx";
-        public const string PO_TEMAPLATE_PATH = "C:\\Users\\TUAN DAT\\Desktop\\Template\\po_temp.xlsx";
+        public const string MPR_TEMPLATE_FILE_NAME = "mpr_template.xlsx";
+        public const string PO_TEMPLATE_FILE_NAME = "po_temp.xlsx";
 
+        public static string GetPathTemplate(string templateFile)
+        {
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string templateFileName = templateFile;  // your template file
+            string fullPath = Path.Combine(baseDirectory, "TemplateExport", templateFileName);
+
+            //C: \Users\TUAN DAT\Desktop\StorageDLHI_v2\StorageDLHI.App\StorageDLHI.App\TemplateExport\po_temp.xlsx
+
+            // Check if file exists
+            if (!File.Exists(fullPath))
+            {
+                //MessageBox.Show("Template file not found: " + fullPath);
+                LoggerConfig.Logger.Info($"Template file not found: {fullPath} by {ShareData.UserName}");
+            }
+            else
+            {
+                return fullPath;
+            }
+            return "";
+        }
     }
 
     public static class Common
@@ -325,6 +347,12 @@ namespace StorageDLHI.App.Common
 
                 int markerRow = FindMarkerRow(ws, DictionaryKey.ROW_START);
 
+                if (markerRow == 0)
+                {
+                    MessageBoxHelper.ShowWarning($"Marker '{markerRow}' not found in sheet.");
+                    return;
+                }
+
                 switch((int)exportToExcel)
                 {
                     case 1: InsertProductDataMPRs(ws, markerRow, dtExport); break;
@@ -433,7 +461,7 @@ namespace StorageDLHI.App.Common
                 }
             }
             LoggerConfig.Logger.Info($"Marker '{marker}' not found in sheet.");
-            throw new Exception($"Marker '{marker}' not found in sheet.");
+            return 0;
         }
     }
 }

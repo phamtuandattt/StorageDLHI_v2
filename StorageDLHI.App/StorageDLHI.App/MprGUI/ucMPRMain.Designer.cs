@@ -737,14 +737,14 @@
             // kryptonGroupBox1
             // 
             this.kryptonGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox1.Location = new System.Drawing.Point(0, 27);
+            this.kryptonGroupBox1.Location = new System.Drawing.Point(0, 31);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             this.kryptonGroupBox1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             // 
             // kryptonGroupBox1.Panel
             // 
             this.kryptonGroupBox1.Panel.Controls.Add(this.dgvProds);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(1378, 330);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(1378, 326);
             this.kryptonGroupBox1.TabIndex = 1;
             this.kryptonGroupBox1.Values.Heading = "Product list";
             // 
@@ -783,7 +783,7 @@
             this.dgvProds.ReadOnly = true;
             this.dgvProds.RowHeadersWidth = 51;
             this.dgvProds.RowTemplate.Height = 100;
-            this.dgvProds.Size = new System.Drawing.Size(1374, 302);
+            this.dgvProds.Size = new System.Drawing.Size(1374, 298);
             this.dgvProds.TabIndex = 1;
             this.dgvProds.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProds_CellDoubleClick);
             this.dgvProds.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProds_CellMouseDown);
@@ -985,7 +985,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(1378, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1378, 31);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -1033,14 +1033,14 @@
             // kryptonGroupBox2
             // 
             this.kryptonGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox2.Location = new System.Drawing.Point(0, 27);
+            this.kryptonGroupBox2.Location = new System.Drawing.Point(0, 31);
             this.kryptonGroupBox2.Name = "kryptonGroupBox2";
             this.kryptonGroupBox2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             // 
             // kryptonGroupBox2.Panel
             // 
             this.kryptonGroupBox2.Panel.Controls.Add(this.dgvProdExistMpr);
-            this.kryptonGroupBox2.Size = new System.Drawing.Size(1378, 330);
+            this.kryptonGroupBox2.Size = new System.Drawing.Size(1378, 326);
             this.kryptonGroupBox2.TabIndex = 1;
             this.kryptonGroupBox2.Values.Heading = "Products of MPRs";
             // 
@@ -1074,7 +1074,7 @@
             this.dgvProdExistMpr.ReadOnly = true;
             this.dgvProdExistMpr.RowHeadersWidth = 51;
             this.dgvProdExistMpr.RowTemplate.Height = 50;
-            this.dgvProdExistMpr.Size = new System.Drawing.Size(1374, 302);
+            this.dgvProdExistMpr.Size = new System.Drawing.Size(1374, 298);
             this.dgvProdExistMpr.TabIndex = 2;
             this.dgvProdExistMpr.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProdExistMpr_CellMouseDown);
             this.dgvProdExistMpr.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvProdExistMpr_DataBindingComplete);
@@ -1239,7 +1239,7 @@
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip2.Size = new System.Drawing.Size(1378, 27);
+            this.toolStrip2.Size = new System.Drawing.Size(1378, 31);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 

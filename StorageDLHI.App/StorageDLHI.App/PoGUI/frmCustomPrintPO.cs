@@ -2,18 +2,22 @@
 using StorageDLHI.BLL.MprDAO;
 using StorageDLHI.BLL.SupplierDAO;
 using StorageDLHI.DAL.Models;
+using StorageDLHI.Infrastructor.Shared;
+using StorageDLHI.Infrastructor;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity.Core.Metadata.Edm;
+using System.Data.Entity.Infrastructure;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StorageDLHI.App.Common;
 
 namespace StorageDLHI.App.PoGUI
 {
@@ -80,7 +84,14 @@ namespace StorageDLHI.App.PoGUI
                 { Common.DictionaryKey.APPROVED, txtApproved.Text.Trim() }
             };
 
-            string templatePath = Common.PathManager.PO_TEMAPLATE_PATH;
+            string templatePath = Common.PathManager.GetPathTemplate(Common.PathManager.PO_TEMPLATE_FILE_NAME);
+
+            if (string.IsNullOrEmpty(templatePath))
+            {
+                MessageBoxHelper.ShowWarning($"Template file not found: {templatePath}");
+                LoggerConfig.Logger.Info($"Template file not found: {templatePath} by {ShareData.UserName}");
+                return;
+            }
 
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {

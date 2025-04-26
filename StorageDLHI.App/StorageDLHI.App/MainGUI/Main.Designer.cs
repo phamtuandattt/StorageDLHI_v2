@@ -35,18 +35,18 @@
             this.hệThốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reloadCacheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsMaterial = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsSuppliers = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsWarehouses = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.tlsPO = new System.Windows.Forms.ToolStripButton();
             this.tlsMPR = new System.Windows.Forms.ToolStripButton();
+            this.tlsPO = new System.Windows.Forms.ToolStripButton();
             this.tlsImport = new System.Windows.Forms.ToolStripButton();
             this.tlsExport = new System.Windows.Forms.ToolStripButton();
             this.tlsInventory = new System.Windows.Forms.ToolStripButton();
-            this.reloadCacheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnMain)).BeginInit();
@@ -113,7 +113,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(1397, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1397, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -124,22 +124,29 @@
             this.resetToolStripMenuItem,
             this.reloadCacheToolStripMenuItem});
             this.hệThốngToolStripMenuItem.Name = "hệThốngToolStripMenuItem";
-            this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
+            this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(70, 26);
             this.hệThốngToolStripMenuItem.Text = "System";
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // resetToolStripMenuItem
             // 
             this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.resetToolStripMenuItem.Text = "Reset";
             this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
+            // 
+            // reloadCacheToolStripMenuItem
+            // 
+            this.reloadCacheToolStripMenuItem.Name = "reloadCacheToolStripMenuItem";
+            this.reloadCacheToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.reloadCacheToolStripMenuItem.Text = "Reload cache";
+            this.reloadCacheToolStripMenuItem.Click += new System.EventHandler(this.reloadCacheToolStripMenuItem_Click);
             // 
             // quảnLýToolStripMenuItem
             // 
@@ -148,7 +155,7 @@
             this.tlsSuppliers,
             this.tlsWarehouses});
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
-            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(111, 24);
+            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(111, 26);
             this.quảnLýToolStripMenuItem.Text = "Management";
             // 
             // tlsMaterial
@@ -183,33 +190,12 @@
             this.tlsImport,
             this.tlsExport,
             this.tlsInventory});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 30);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.toolStrip1.Size = new System.Drawing.Size(1397, 97);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // pnMain
-            // 
-            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnMain.Location = new System.Drawing.Point(0, 125);
-            this.pnMain.Name = "pnMain";
-            this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.pnMain.Size = new System.Drawing.Size(1397, 586);
-            this.pnMain.TabIndex = 2;
-            // 
-            // tlsPO
-            // 
-            this.tlsPO.AutoSize = false;
-            this.tlsPO.Image = global::StorageDLHI.App.Properties.Resources.shopping_cart;
-            this.tlsPO.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tlsPO.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsPO.Name = "tlsPO";
-            this.tlsPO.Size = new System.Drawing.Size(113, 94);
-            this.tlsPO.Text = "PO";
-            this.tlsPO.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tlsPO.Click += new System.EventHandler(this.tlsPO_Click);
             // 
             // tlsMPR
             // 
@@ -222,6 +208,18 @@
             this.tlsMPR.Text = "MPR";
             this.tlsMPR.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tlsMPR.Click += new System.EventHandler(this.tlsMPR_Click);
+            // 
+            // tlsPO
+            // 
+            this.tlsPO.AutoSize = false;
+            this.tlsPO.Image = global::StorageDLHI.App.Properties.Resources.shopping_cart;
+            this.tlsPO.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tlsPO.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsPO.Name = "tlsPO";
+            this.tlsPO.Size = new System.Drawing.Size(113, 94);
+            this.tlsPO.Text = "PO";
+            this.tlsPO.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tlsPO.Click += new System.EventHandler(this.tlsPO_Click);
             // 
             // tlsImport
             // 
@@ -259,12 +257,14 @@
             this.tlsInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tlsInventory.Click += new System.EventHandler(this.tlsInventory_Click);
             // 
-            // reloadCacheToolStripMenuItem
+            // pnMain
             // 
-            this.reloadCacheToolStripMenuItem.Name = "reloadCacheToolStripMenuItem";
-            this.reloadCacheToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.reloadCacheToolStripMenuItem.Text = "Reload cache";
-            this.reloadCacheToolStripMenuItem.Click += new System.EventHandler(this.reloadCacheToolStripMenuItem_Click);
+            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnMain.Location = new System.Drawing.Point(0, 127);
+            this.pnMain.Name = "pnMain";
+            this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.pnMain.Size = new System.Drawing.Size(1397, 584);
+            this.pnMain.TabIndex = 2;
             // 
             // Main
             // 
