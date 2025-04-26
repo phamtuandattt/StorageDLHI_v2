@@ -36,8 +36,44 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonGroupBox2 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.dgvPODetail = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column43 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column44 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column45 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PO_DETAIL_QTY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PO_DETAIL_PRICE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PO_DETAIL_AMOUNT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column46 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kryptonGroupBox4 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.dgvPOList = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PO_REV_TOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PO_TOTAL_AMOUNT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tlsReloadPOs = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -71,23 +107,6 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kryptonGroupBox5 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.dgvMPRDetail = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.Column33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.A_THINHNESS_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.B_DEPTH_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_WIDTH_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.D_WEB_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.E_FLAG_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.F_LENGTH_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.G_WEIGHT_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MPR_QTY_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column47 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column48 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
@@ -121,42 +140,24 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAddAllProdIntoPO = new System.Windows.Forms.ToolStripButton();
             this.tlsMPRNo = new System.Windows.Forms.ToolStripLabel();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PO_REV_TOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PO_TOTAL_AMOUNT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column43 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column44 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column45 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PO_DETAIL_QTY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PO_DETAIL_PRICE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PO_DETAIL_AMOUNT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column46 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.removeProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MPR_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRODUCT_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRODUCT_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRODUCT_DES_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRODUCT_MATERIAL_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.A_THINHNESS_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.B_DEPTH_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_WIDTH_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.D_WEB_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.E_FLAG_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.F_LENGTH_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.G_WEIGHT_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MPR_QTY_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.USAGE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ISSUE_DATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MPR_REMARKS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pagePOs)).BeginInit();
@@ -332,6 +333,145 @@
             this.dgvPODetail.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvPODetail_DataBindingComplete);
             this.dgvPODetail.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvPODetail_RowPostPaint);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "PO_ID";
+            this.dataGridViewTextBoxColumn2.HeaderText = "PO_ID";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "PO_PRODUCT_ID";
+            this.dataGridViewTextBoxColumn3.HeaderText = "PO_PRODUCT_ID";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "PRODUCT_NAME";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Product name";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "PRODUCT_DES_2";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Description 2";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "PRODUCT_MATERIAL_CODE";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Material";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // Column39
+            // 
+            this.Column39.DataPropertyName = "A_THINHNESS";
+            this.Column39.HeaderText = "A_Thinh";
+            this.Column39.MinimumWidth = 6;
+            this.Column39.Name = "Column39";
+            this.Column39.ReadOnly = true;
+            // 
+            // Column40
+            // 
+            this.Column40.DataPropertyName = "B_DEPTH";
+            this.Column40.HeaderText = "B_Depth";
+            this.Column40.MinimumWidth = 6;
+            this.Column40.Name = "Column40";
+            this.Column40.ReadOnly = true;
+            // 
+            // Column41
+            // 
+            this.Column41.DataPropertyName = "C_WIDTH";
+            this.Column41.HeaderText = "C_Width";
+            this.Column41.MinimumWidth = 6;
+            this.Column41.Name = "Column41";
+            this.Column41.ReadOnly = true;
+            // 
+            // Column42
+            // 
+            this.Column42.DataPropertyName = "D_WEB";
+            this.Column42.HeaderText = "D_Web";
+            this.Column42.MinimumWidth = 6;
+            this.Column42.Name = "Column42";
+            this.Column42.ReadOnly = true;
+            // 
+            // Column43
+            // 
+            this.Column43.DataPropertyName = "E_FLAG";
+            this.Column43.HeaderText = "E_FLag";
+            this.Column43.MinimumWidth = 6;
+            this.Column43.Name = "Column43";
+            this.Column43.ReadOnly = true;
+            // 
+            // Column44
+            // 
+            this.Column44.DataPropertyName = "F_LENGTH";
+            this.Column44.HeaderText = "F_Length";
+            this.Column44.MinimumWidth = 6;
+            this.Column44.Name = "Column44";
+            this.Column44.ReadOnly = true;
+            // 
+            // Column45
+            // 
+            this.Column45.DataPropertyName = "G_WEIGHT";
+            this.Column45.HeaderText = "G_Weight";
+            this.Column45.MinimumWidth = 6;
+            this.Column45.Name = "Column45";
+            this.Column45.ReadOnly = true;
+            // 
+            // PO_DETAIL_QTY
+            // 
+            this.PO_DETAIL_QTY.DataPropertyName = "PO_DETAIL_QTY";
+            this.PO_DETAIL_QTY.HeaderText = "Q\'ty";
+            this.PO_DETAIL_QTY.MinimumWidth = 6;
+            this.PO_DETAIL_QTY.Name = "PO_DETAIL_QTY";
+            this.PO_DETAIL_QTY.ReadOnly = true;
+            // 
+            // PO_DETAIL_PRICE
+            // 
+            this.PO_DETAIL_PRICE.DataPropertyName = "PO_DETAIL_PRICE";
+            this.PO_DETAIL_PRICE.HeaderText = "Price";
+            this.PO_DETAIL_PRICE.MinimumWidth = 6;
+            this.PO_DETAIL_PRICE.Name = "PO_DETAIL_PRICE";
+            this.PO_DETAIL_PRICE.ReadOnly = true;
+            // 
+            // PO_DETAIL_AMOUNT
+            // 
+            this.PO_DETAIL_AMOUNT.DataPropertyName = "PO_DETAIL_AMOUNT";
+            this.PO_DETAIL_AMOUNT.HeaderText = "Amount";
+            this.PO_DETAIL_AMOUNT.MinimumWidth = 6;
+            this.PO_DETAIL_AMOUNT.Name = "PO_DETAIL_AMOUNT";
+            this.PO_DETAIL_AMOUNT.ReadOnly = true;
+            // 
+            // Column46
+            // 
+            this.Column46.DataPropertyName = "UNIT_CODE";
+            this.Column46.HeaderText = "Unit";
+            this.Column46.MinimumWidth = 6;
+            this.Column46.Name = "Column46";
+            this.Column46.ReadOnly = true;
+            // 
             // kryptonGroupBox4
             // 
             this.kryptonGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -384,6 +524,160 @@
             this.dgvPOList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPOList_CellClick);
             this.dgvPOList.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvPOList_DataBindingComplete);
             this.dgvPOList.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvPOList_RowPostPaint);
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "ID";
+            this.Column6.HeaderText = "ID";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Visible = false;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "PO_NO";
+            this.Column7.HeaderText = "PO No";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "PO_MPR_NO";
+            this.Column8.HeaderText = "MPR No";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "PO_WO_NO";
+            this.Column9.HeaderText = "WO No";
+            this.Column9.MinimumWidth = 6;
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "PO_PROJECT_NAME";
+            this.Column10.HeaderText = "Project name";
+            this.Column10.MinimumWidth = 6;
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
+            // PO_REV_TOTAL
+            // 
+            this.PO_REV_TOTAL.DataPropertyName = "PO_REV_TOTAL";
+            this.PO_REV_TOTAL.HeaderText = "Rev total";
+            this.PO_REV_TOTAL.MinimumWidth = 6;
+            this.PO_REV_TOTAL.Name = "PO_REV_TOTAL";
+            this.PO_REV_TOTAL.ReadOnly = true;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "PO_CREATE_DATE";
+            this.Column12.HeaderText = "Create date";
+            this.Column12.MinimumWidth = 6;
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "PO_EXPECTED_DELIVERY_DATE";
+            this.Column13.HeaderText = "Ex.Delivery date";
+            this.Column13.MinimumWidth = 6;
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "PO_PREPARED";
+            this.Column14.HeaderText = "Prepared";
+            this.Column14.MinimumWidth = 6;
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            // 
+            // Column15
+            // 
+            this.Column15.DataPropertyName = "PO_REVIEWED";
+            this.Column15.HeaderText = "Reviewed";
+            this.Column15.MinimumWidth = 6;
+            this.Column15.Name = "Column15";
+            this.Column15.ReadOnly = true;
+            // 
+            // Column16
+            // 
+            this.Column16.DataPropertyName = "PO_AGREEMENT";
+            this.Column16.HeaderText = "Aggrement";
+            this.Column16.MinimumWidth = 6;
+            this.Column16.Name = "Column16";
+            this.Column16.ReadOnly = true;
+            // 
+            // Column17
+            // 
+            this.Column17.DataPropertyName = "PO_APPROVED";
+            this.Column17.HeaderText = "Approved";
+            this.Column17.MinimumWidth = 6;
+            this.Column17.Name = "Column17";
+            this.Column17.ReadOnly = true;
+            // 
+            // Column18
+            // 
+            this.Column18.DataPropertyName = "PO_PAYMENT_TERM";
+            this.Column18.HeaderText = "Payment term";
+            this.Column18.MinimumWidth = 6;
+            this.Column18.Name = "Column18";
+            this.Column18.ReadOnly = true;
+            // 
+            // Column19
+            // 
+            this.Column19.DataPropertyName = "PO_PLACE_OF_CONTRY";
+            this.Column19.HeaderText = "From country";
+            this.Column19.MinimumWidth = 6;
+            this.Column19.Name = "Column19";
+            this.Column19.ReadOnly = true;
+            // 
+            // PO_TOTAL_AMOUNT
+            // 
+            this.PO_TOTAL_AMOUNT.DataPropertyName = "PO_TOTAL_AMOUNT";
+            this.PO_TOTAL_AMOUNT.HeaderText = "Total amount";
+            this.PO_TOTAL_AMOUNT.MinimumWidth = 6;
+            this.PO_TOTAL_AMOUNT.Name = "PO_TOTAL_AMOUNT";
+            this.PO_TOTAL_AMOUNT.ReadOnly = true;
+            // 
+            // Column21
+            // 
+            this.Column21.DataPropertyName = "COST_NAME";
+            this.Column21.HeaderText = "Cost";
+            this.Column21.MinimumWidth = 6;
+            this.Column21.Name = "Column21";
+            this.Column21.ReadOnly = true;
+            // 
+            // Column50
+            // 
+            this.Column50.DataPropertyName = "TAX_PERCENT";
+            this.Column50.HeaderText = "Tax";
+            this.Column50.MinimumWidth = 6;
+            this.Column50.Name = "Column50";
+            this.Column50.ReadOnly = true;
+            // 
+            // Column51
+            // 
+            this.Column51.DataPropertyName = "NAME";
+            this.Column51.HeaderText = "Supplier";
+            this.Column51.MinimumWidth = 6;
+            this.Column51.Name = "Column51";
+            this.Column51.ReadOnly = true;
+            // 
+            // Column20
+            // 
+            this.Column20.DataPropertyName = "SUPPLIER_ID";
+            this.Column20.HeaderText = "SUPPLIER_ID";
+            this.Column20.MinimumWidth = 6;
+            this.Column20.Name = "Column20";
+            this.Column20.ReadOnly = true;
+            this.Column20.Visible = false;
             // 
             // toolStrip2
             // 
@@ -727,12 +1021,12 @@
             this.dgvMPRDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMPRDetail.ColumnHeadersHeight = 30;
             this.dgvMPRDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column33,
-            this.Column34,
-            this.Column35,
-            this.Column36,
-            this.Column37,
-            this.Column38,
+            this.ID,
+            this.MPR_ID,
+            this.PRODUCT_ID,
+            this.PRODUCT_NAME,
+            this.PRODUCT_DES_2,
+            this.PRODUCT_MATERIAL_CODE,
             this.A_THINHNESS_M,
             this.B_DEPTH_M,
             this.C_WIDTH_M,
@@ -741,9 +1035,9 @@
             this.F_LENGTH_M,
             this.G_WEIGHT_M,
             this.MPR_QTY_M,
-            this.Column47,
-            this.Column48,
-            this.Column49});
+            this.USAGE,
+            this.ISSUE_DATE,
+            this.MPR_REMARKS});
             this.dgvMPRDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMPRDetail.Location = new System.Drawing.Point(0, 0);
             this.dgvMPRDetail.Name = "dgvMPRDetail";
@@ -756,145 +1050,6 @@
             this.dgvMPRDetail.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMPRDetail_CellDoubleClick);
             this.dgvMPRDetail.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvMPRDetail_DataBindingComplete);
             this.dgvMPRDetail.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvMPRDetail_RowPostPaint);
-            // 
-            // Column33
-            // 
-            this.Column33.DataPropertyName = "ID";
-            this.Column33.HeaderText = "ID";
-            this.Column33.MinimumWidth = 6;
-            this.Column33.Name = "Column33";
-            this.Column33.ReadOnly = true;
-            this.Column33.Visible = false;
-            // 
-            // Column34
-            // 
-            this.Column34.DataPropertyName = "MPR_ID";
-            this.Column34.HeaderText = "MPR_ID";
-            this.Column34.MinimumWidth = 6;
-            this.Column34.Name = "Column34";
-            this.Column34.ReadOnly = true;
-            this.Column34.Visible = false;
-            // 
-            // Column35
-            // 
-            this.Column35.DataPropertyName = "PRODUCT_ID";
-            this.Column35.HeaderText = "PRODUCT_ID";
-            this.Column35.MinimumWidth = 6;
-            this.Column35.Name = "Column35";
-            this.Column35.ReadOnly = true;
-            this.Column35.Visible = false;
-            // 
-            // Column36
-            // 
-            this.Column36.DataPropertyName = "PRODUCT_NAME";
-            this.Column36.HeaderText = "Product name";
-            this.Column36.MinimumWidth = 6;
-            this.Column36.Name = "Column36";
-            this.Column36.ReadOnly = true;
-            // 
-            // Column37
-            // 
-            this.Column37.DataPropertyName = "PRODUCT_DES_2";
-            this.Column37.HeaderText = "Description 2";
-            this.Column37.MinimumWidth = 6;
-            this.Column37.Name = "Column37";
-            this.Column37.ReadOnly = true;
-            // 
-            // Column38
-            // 
-            this.Column38.DataPropertyName = "PRODUCT_MATERIAL_CODE";
-            this.Column38.HeaderText = "Material";
-            this.Column38.MinimumWidth = 6;
-            this.Column38.Name = "Column38";
-            this.Column38.ReadOnly = true;
-            // 
-            // A_THINHNESS_M
-            // 
-            this.A_THINHNESS_M.DataPropertyName = "A_THINHNESS";
-            this.A_THINHNESS_M.HeaderText = "A_Thinh";
-            this.A_THINHNESS_M.MinimumWidth = 6;
-            this.A_THINHNESS_M.Name = "A_THINHNESS_M";
-            this.A_THINHNESS_M.ReadOnly = true;
-            // 
-            // B_DEPTH_M
-            // 
-            this.B_DEPTH_M.DataPropertyName = "B_DEPTH";
-            this.B_DEPTH_M.HeaderText = "B_Depth";
-            this.B_DEPTH_M.MinimumWidth = 6;
-            this.B_DEPTH_M.Name = "B_DEPTH_M";
-            this.B_DEPTH_M.ReadOnly = true;
-            // 
-            // C_WIDTH_M
-            // 
-            this.C_WIDTH_M.DataPropertyName = "C_WIDTH";
-            this.C_WIDTH_M.HeaderText = "C_Width";
-            this.C_WIDTH_M.MinimumWidth = 6;
-            this.C_WIDTH_M.Name = "C_WIDTH_M";
-            this.C_WIDTH_M.ReadOnly = true;
-            // 
-            // D_WEB_M
-            // 
-            this.D_WEB_M.DataPropertyName = "D_WEB";
-            this.D_WEB_M.HeaderText = "D_Web";
-            this.D_WEB_M.MinimumWidth = 6;
-            this.D_WEB_M.Name = "D_WEB_M";
-            this.D_WEB_M.ReadOnly = true;
-            // 
-            // E_FLAG_M
-            // 
-            this.E_FLAG_M.DataPropertyName = "E_FLAG";
-            this.E_FLAG_M.HeaderText = "E_FLag";
-            this.E_FLAG_M.MinimumWidth = 6;
-            this.E_FLAG_M.Name = "E_FLAG_M";
-            this.E_FLAG_M.ReadOnly = true;
-            // 
-            // F_LENGTH_M
-            // 
-            this.F_LENGTH_M.DataPropertyName = "F_LENGTH";
-            this.F_LENGTH_M.HeaderText = "F_Length";
-            this.F_LENGTH_M.MinimumWidth = 6;
-            this.F_LENGTH_M.Name = "F_LENGTH_M";
-            this.F_LENGTH_M.ReadOnly = true;
-            // 
-            // G_WEIGHT_M
-            // 
-            this.G_WEIGHT_M.DataPropertyName = "G_WEIGHT";
-            this.G_WEIGHT_M.HeaderText = "G_Weight";
-            this.G_WEIGHT_M.MinimumWidth = 6;
-            this.G_WEIGHT_M.Name = "G_WEIGHT_M";
-            this.G_WEIGHT_M.ReadOnly = true;
-            // 
-            // MPR_QTY_M
-            // 
-            this.MPR_QTY_M.DataPropertyName = "MPR_QTY";
-            this.MPR_QTY_M.HeaderText = "Q\'ty";
-            this.MPR_QTY_M.MinimumWidth = 6;
-            this.MPR_QTY_M.Name = "MPR_QTY_M";
-            this.MPR_QTY_M.ReadOnly = true;
-            // 
-            // Column47
-            // 
-            this.Column47.DataPropertyName = "USAGE";
-            this.Column47.HeaderText = "Usage";
-            this.Column47.MinimumWidth = 6;
-            this.Column47.Name = "Column47";
-            this.Column47.ReadOnly = true;
-            // 
-            // Column48
-            // 
-            this.Column48.DataPropertyName = "ISSUE_DATE";
-            this.Column48.HeaderText = "Issue date";
-            this.Column48.MinimumWidth = 6;
-            this.Column48.Name = "Column48";
-            this.Column48.ReadOnly = true;
-            // 
-            // Column49
-            // 
-            this.Column49.DataPropertyName = "MPR_REMARKS";
-            this.Column49.HeaderText = "Remarks";
-            this.Column49.MinimumWidth = 6;
-            this.Column49.Name = "Column49";
-            this.Column49.ReadOnly = true;
             // 
             // kryptonPanel1
             // 
@@ -1124,14 +1279,15 @@
             this.ctmUpdateProd.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ctmUpdateProd.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.ctmUpdateProd.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.updateProductToolStripMenuItem});
+            this.updateProductToolStripMenuItem,
+            this.removeProductToolStripMenuItem});
             this.ctmUpdateProd.Name = "contextMenuStrip1";
-            this.ctmUpdateProd.Size = new System.Drawing.Size(184, 28);
+            this.ctmUpdateProd.Size = new System.Drawing.Size(188, 52);
             // 
             // updateProductToolStripMenuItem
             // 
             this.updateProductToolStripMenuItem.Name = "updateProductToolStripMenuItem";
-            this.updateProductToolStripMenuItem.Size = new System.Drawing.Size(183, 24);
+            this.updateProductToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.updateProductToolStripMenuItem.Text = "Update product";
             this.updateProductToolStripMenuItem.Click += new System.EventHandler(this.updateProductToolStripMenuItem_Click);
             // 
@@ -1228,298 +1384,151 @@
             this.tlsMPRNo.Size = new System.Drawing.Size(18, 24);
             this.tlsMPRNo.Text = "...";
             // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "ID";
-            this.Column6.HeaderText = "ID";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Visible = false;
+            // removeProductToolStripMenuItem
+            // 
+            this.removeProductToolStripMenuItem.Name = "removeProductToolStripMenuItem";
+            this.removeProductToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.removeProductToolStripMenuItem.Text = "Remove Product";
+            this.removeProductToolStripMenuItem.Click += new System.EventHandler(this.removeProductToolStripMenuItem_Click);
+            // 
+            // ID
             // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "PO_NO";
-            this.Column7.HeaderText = "PO No";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // MPR_ID
+            // 
+            this.MPR_ID.DataPropertyName = "MPR_ID";
+            this.MPR_ID.HeaderText = "MPR_ID";
+            this.MPR_ID.MinimumWidth = 6;
+            this.MPR_ID.Name = "MPR_ID";
+            this.MPR_ID.ReadOnly = true;
+            this.MPR_ID.Visible = false;
             // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "PO_MPR_NO";
-            this.Column8.HeaderText = "MPR No";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "PO_WO_NO";
-            this.Column9.HeaderText = "WO No";
-            this.Column9.MinimumWidth = 6;
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "PO_PROJECT_NAME";
-            this.Column10.HeaderText = "Project name";
-            this.Column10.MinimumWidth = 6;
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // PO_REV_TOTAL
-            // 
-            this.PO_REV_TOTAL.DataPropertyName = "PO_REV_TOTAL";
-            this.PO_REV_TOTAL.HeaderText = "Rev total";
-            this.PO_REV_TOTAL.MinimumWidth = 6;
-            this.PO_REV_TOTAL.Name = "PO_REV_TOTAL";
-            this.PO_REV_TOTAL.ReadOnly = true;
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "PO_CREATE_DATE";
-            this.Column12.HeaderText = "Create date";
-            this.Column12.MinimumWidth = 6;
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            // 
-            // Column13
-            // 
-            this.Column13.DataPropertyName = "PO_EXPECTED_DELIVERY_DATE";
-            this.Column13.HeaderText = "Ex.Delivery date";
-            this.Column13.MinimumWidth = 6;
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            // 
-            // Column14
-            // 
-            this.Column14.DataPropertyName = "PO_PREPARED";
-            this.Column14.HeaderText = "Prepared";
-            this.Column14.MinimumWidth = 6;
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            // 
-            // Column15
-            // 
-            this.Column15.DataPropertyName = "PO_REVIEWED";
-            this.Column15.HeaderText = "Reviewed";
-            this.Column15.MinimumWidth = 6;
-            this.Column15.Name = "Column15";
-            this.Column15.ReadOnly = true;
-            // 
-            // Column16
-            // 
-            this.Column16.DataPropertyName = "PO_AGREEMENT";
-            this.Column16.HeaderText = "Aggrement";
-            this.Column16.MinimumWidth = 6;
-            this.Column16.Name = "Column16";
-            this.Column16.ReadOnly = true;
-            // 
-            // Column17
-            // 
-            this.Column17.DataPropertyName = "PO_APPROVED";
-            this.Column17.HeaderText = "Approved";
-            this.Column17.MinimumWidth = 6;
-            this.Column17.Name = "Column17";
-            this.Column17.ReadOnly = true;
-            // 
-            // Column18
-            // 
-            this.Column18.DataPropertyName = "PO_PAYMENT_TERM";
-            this.Column18.HeaderText = "Payment term";
-            this.Column18.MinimumWidth = 6;
-            this.Column18.Name = "Column18";
-            this.Column18.ReadOnly = true;
-            // 
-            // Column19
-            // 
-            this.Column19.DataPropertyName = "PO_PLACE_OF_CONTRY";
-            this.Column19.HeaderText = "From country";
-            this.Column19.MinimumWidth = 6;
-            this.Column19.Name = "Column19";
-            this.Column19.ReadOnly = true;
-            // 
-            // PO_TOTAL_AMOUNT
-            // 
-            this.PO_TOTAL_AMOUNT.DataPropertyName = "PO_TOTAL_AMOUNT";
-            this.PO_TOTAL_AMOUNT.HeaderText = "Total amount";
-            this.PO_TOTAL_AMOUNT.MinimumWidth = 6;
-            this.PO_TOTAL_AMOUNT.Name = "PO_TOTAL_AMOUNT";
-            this.PO_TOTAL_AMOUNT.ReadOnly = true;
-            // 
-            // Column21
-            // 
-            this.Column21.DataPropertyName = "COST_NAME";
-            this.Column21.HeaderText = "Cost";
-            this.Column21.MinimumWidth = 6;
-            this.Column21.Name = "Column21";
-            this.Column21.ReadOnly = true;
-            // 
-            // Column50
-            // 
-            this.Column50.DataPropertyName = "TAX_PERCENT";
-            this.Column50.HeaderText = "Tax";
-            this.Column50.MinimumWidth = 6;
-            this.Column50.Name = "Column50";
-            this.Column50.ReadOnly = true;
-            // 
-            // Column51
-            // 
-            this.Column51.DataPropertyName = "NAME";
-            this.Column51.HeaderText = "Supplier";
-            this.Column51.MinimumWidth = 6;
-            this.Column51.Name = "Column51";
-            this.Column51.ReadOnly = true;
-            // 
-            // Column20
-            // 
-            this.Column20.DataPropertyName = "SUPPLIER_ID";
-            this.Column20.HeaderText = "SUPPLIER_ID";
-            this.Column20.MinimumWidth = 6;
-            this.Column20.Name = "Column20";
-            this.Column20.ReadOnly = true;
-            this.Column20.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "PO_ID";
-            this.dataGridViewTextBoxColumn2.HeaderText = "PO_ID";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "PO_PRODUCT_ID";
-            this.dataGridViewTextBoxColumn3.HeaderText = "PO_PRODUCT_ID";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "PRODUCT_NAME";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Product name";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "PRODUCT_DES_2";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Description 2";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "PRODUCT_MATERIAL_CODE";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Material";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // Column39
-            // 
-            this.Column39.DataPropertyName = "A_THINHNESS";
-            this.Column39.HeaderText = "A_Thinh";
-            this.Column39.MinimumWidth = 6;
-            this.Column39.Name = "Column39";
-            this.Column39.ReadOnly = true;
-            // 
-            // Column40
-            // 
-            this.Column40.DataPropertyName = "B_DEPTH";
-            this.Column40.HeaderText = "B_Depth";
-            this.Column40.MinimumWidth = 6;
-            this.Column40.Name = "Column40";
-            this.Column40.ReadOnly = true;
-            // 
-            // Column41
-            // 
-            this.Column41.DataPropertyName = "C_WIDTH";
-            this.Column41.HeaderText = "C_Width";
-            this.Column41.MinimumWidth = 6;
-            this.Column41.Name = "Column41";
-            this.Column41.ReadOnly = true;
-            // 
-            // Column42
-            // 
-            this.Column42.DataPropertyName = "D_WEB";
-            this.Column42.HeaderText = "D_Web";
-            this.Column42.MinimumWidth = 6;
-            this.Column42.Name = "Column42";
-            this.Column42.ReadOnly = true;
-            // 
-            // Column43
-            // 
-            this.Column43.DataPropertyName = "E_FLAG";
-            this.Column43.HeaderText = "E_FLag";
-            this.Column43.MinimumWidth = 6;
-            this.Column43.Name = "Column43";
-            this.Column43.ReadOnly = true;
-            // 
-            // Column44
-            // 
-            this.Column44.DataPropertyName = "F_LENGTH";
-            this.Column44.HeaderText = "F_Length";
-            this.Column44.MinimumWidth = 6;
-            this.Column44.Name = "Column44";
-            this.Column44.ReadOnly = true;
-            // 
-            // Column45
-            // 
-            this.Column45.DataPropertyName = "G_WEIGHT";
-            this.Column45.HeaderText = "G_Weight";
-            this.Column45.MinimumWidth = 6;
-            this.Column45.Name = "Column45";
-            this.Column45.ReadOnly = true;
-            // 
-            // PO_DETAIL_QTY
-            // 
-            this.PO_DETAIL_QTY.DataPropertyName = "PO_DETAIL_QTY";
-            this.PO_DETAIL_QTY.HeaderText = "Q\'ty";
-            this.PO_DETAIL_QTY.MinimumWidth = 6;
-            this.PO_DETAIL_QTY.Name = "PO_DETAIL_QTY";
-            this.PO_DETAIL_QTY.ReadOnly = true;
-            // 
-            // PO_DETAIL_PRICE
-            // 
-            this.PO_DETAIL_PRICE.DataPropertyName = "PO_DETAIL_PRICE";
-            this.PO_DETAIL_PRICE.HeaderText = "Price";
-            this.PO_DETAIL_PRICE.MinimumWidth = 6;
-            this.PO_DETAIL_PRICE.Name = "PO_DETAIL_PRICE";
-            this.PO_DETAIL_PRICE.ReadOnly = true;
-            // 
-            // PO_DETAIL_AMOUNT
-            // 
-            this.PO_DETAIL_AMOUNT.DataPropertyName = "PO_DETAIL_AMOUNT";
-            this.PO_DETAIL_AMOUNT.HeaderText = "Amount";
-            this.PO_DETAIL_AMOUNT.MinimumWidth = 6;
-            this.PO_DETAIL_AMOUNT.Name = "PO_DETAIL_AMOUNT";
-            this.PO_DETAIL_AMOUNT.ReadOnly = true;
-            // 
-            // Column46
-            // 
-            this.Column46.DataPropertyName = "UNIT_CODE";
-            this.Column46.HeaderText = "Unit";
-            this.Column46.MinimumWidth = 6;
-            this.Column46.Name = "Column46";
-            this.Column46.ReadOnly = true;
+            // PRODUCT_ID
+            // 
+            this.PRODUCT_ID.DataPropertyName = "PRODUCT_ID";
+            this.PRODUCT_ID.HeaderText = "PRODUCT_ID";
+            this.PRODUCT_ID.MinimumWidth = 6;
+            this.PRODUCT_ID.Name = "PRODUCT_ID";
+            this.PRODUCT_ID.ReadOnly = true;
+            this.PRODUCT_ID.Visible = false;
+            // 
+            // PRODUCT_NAME
+            // 
+            this.PRODUCT_NAME.DataPropertyName = "PRODUCT_NAME";
+            this.PRODUCT_NAME.HeaderText = "Product name";
+            this.PRODUCT_NAME.MinimumWidth = 6;
+            this.PRODUCT_NAME.Name = "PRODUCT_NAME";
+            this.PRODUCT_NAME.ReadOnly = true;
+            // 
+            // PRODUCT_DES_2
+            // 
+            this.PRODUCT_DES_2.DataPropertyName = "PRODUCT_DES_2";
+            this.PRODUCT_DES_2.HeaderText = "Description 2";
+            this.PRODUCT_DES_2.MinimumWidth = 6;
+            this.PRODUCT_DES_2.Name = "PRODUCT_DES_2";
+            this.PRODUCT_DES_2.ReadOnly = true;
+            // 
+            // PRODUCT_MATERIAL_CODE
+            // 
+            this.PRODUCT_MATERIAL_CODE.DataPropertyName = "PRODUCT_MATERIAL_CODE";
+            this.PRODUCT_MATERIAL_CODE.HeaderText = "Material";
+            this.PRODUCT_MATERIAL_CODE.MinimumWidth = 6;
+            this.PRODUCT_MATERIAL_CODE.Name = "PRODUCT_MATERIAL_CODE";
+            this.PRODUCT_MATERIAL_CODE.ReadOnly = true;
+            // 
+            // A_THINHNESS_M
+            // 
+            this.A_THINHNESS_M.DataPropertyName = "A_THINHNESS";
+            this.A_THINHNESS_M.HeaderText = "A_Thinh";
+            this.A_THINHNESS_M.MinimumWidth = 6;
+            this.A_THINHNESS_M.Name = "A_THINHNESS_M";
+            this.A_THINHNESS_M.ReadOnly = true;
+            // 
+            // B_DEPTH_M
+            // 
+            this.B_DEPTH_M.DataPropertyName = "B_DEPTH";
+            this.B_DEPTH_M.HeaderText = "B_Depth";
+            this.B_DEPTH_M.MinimumWidth = 6;
+            this.B_DEPTH_M.Name = "B_DEPTH_M";
+            this.B_DEPTH_M.ReadOnly = true;
+            // 
+            // C_WIDTH_M
+            // 
+            this.C_WIDTH_M.DataPropertyName = "C_WIDTH";
+            this.C_WIDTH_M.HeaderText = "C_Width";
+            this.C_WIDTH_M.MinimumWidth = 6;
+            this.C_WIDTH_M.Name = "C_WIDTH_M";
+            this.C_WIDTH_M.ReadOnly = true;
+            // 
+            // D_WEB_M
+            // 
+            this.D_WEB_M.DataPropertyName = "D_WEB";
+            this.D_WEB_M.HeaderText = "D_Web";
+            this.D_WEB_M.MinimumWidth = 6;
+            this.D_WEB_M.Name = "D_WEB_M";
+            this.D_WEB_M.ReadOnly = true;
+            // 
+            // E_FLAG_M
+            // 
+            this.E_FLAG_M.DataPropertyName = "E_FLAG";
+            this.E_FLAG_M.HeaderText = "E_FLag";
+            this.E_FLAG_M.MinimumWidth = 6;
+            this.E_FLAG_M.Name = "E_FLAG_M";
+            this.E_FLAG_M.ReadOnly = true;
+            // 
+            // F_LENGTH_M
+            // 
+            this.F_LENGTH_M.DataPropertyName = "F_LENGTH";
+            this.F_LENGTH_M.HeaderText = "F_Length";
+            this.F_LENGTH_M.MinimumWidth = 6;
+            this.F_LENGTH_M.Name = "F_LENGTH_M";
+            this.F_LENGTH_M.ReadOnly = true;
+            // 
+            // G_WEIGHT_M
+            // 
+            this.G_WEIGHT_M.DataPropertyName = "G_WEIGHT";
+            this.G_WEIGHT_M.HeaderText = "G_Weight";
+            this.G_WEIGHT_M.MinimumWidth = 6;
+            this.G_WEIGHT_M.Name = "G_WEIGHT_M";
+            this.G_WEIGHT_M.ReadOnly = true;
+            // 
+            // MPR_QTY_M
+            // 
+            this.MPR_QTY_M.DataPropertyName = "MPR_QTY";
+            this.MPR_QTY_M.HeaderText = "Q\'ty";
+            this.MPR_QTY_M.MinimumWidth = 6;
+            this.MPR_QTY_M.Name = "MPR_QTY_M";
+            this.MPR_QTY_M.ReadOnly = true;
+            // 
+            // USAGE
+            // 
+            this.USAGE.DataPropertyName = "USAGE";
+            this.USAGE.HeaderText = "Usage";
+            this.USAGE.MinimumWidth = 6;
+            this.USAGE.Name = "USAGE";
+            this.USAGE.ReadOnly = true;
+            // 
+            // ISSUE_DATE
+            // 
+            this.ISSUE_DATE.DataPropertyName = "ISSUE_DATE";
+            this.ISSUE_DATE.HeaderText = "Issue date";
+            this.ISSUE_DATE.MinimumWidth = 6;
+            this.ISSUE_DATE.Name = "ISSUE_DATE";
+            this.ISSUE_DATE.ReadOnly = true;
+            // 
+            // MPR_REMARKS
+            // 
+            this.MPR_REMARKS.DataPropertyName = "MPR_REMARKS";
+            this.MPR_REMARKS.HeaderText = "Remarks";
+            this.MPR_REMARKS.MinimumWidth = 6;
+            this.MPR_REMARKS.Name = "MPR_REMARKS";
+            this.MPR_REMARKS.ReadOnly = true;
             // 
             // ucPOMain
             // 
@@ -1622,23 +1631,6 @@
         private System.Windows.Forms.ToolStripLabel tlsMPRNo;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnAddPO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column33;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column34;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column35;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column36;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column37;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column38;
-        private System.Windows.Forms.DataGridViewTextBoxColumn A_THINHNESS_M;
-        private System.Windows.Forms.DataGridViewTextBoxColumn B_DEPTH_M;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_WIDTH_M;
-        private System.Windows.Forms.DataGridViewTextBoxColumn D_WEB_M;
-        private System.Windows.Forms.DataGridViewTextBoxColumn E_FLAG_M;
-        private System.Windows.Forms.DataGridViewTextBoxColumn F_LENGTH_M;
-        private System.Windows.Forms.DataGridViewTextBoxColumn G_WEIGHT_M;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MPR_QTY_M;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column47;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column48;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column49;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -1724,5 +1716,23 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column50;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column51;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
+        private System.Windows.Forms.ToolStripMenuItem removeProductToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MPR_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PRODUCT_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PRODUCT_NAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PRODUCT_DES_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PRODUCT_MATERIAL_CODE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn A_THINHNESS_M;
+        private System.Windows.Forms.DataGridViewTextBoxColumn B_DEPTH_M;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_WIDTH_M;
+        private System.Windows.Forms.DataGridViewTextBoxColumn D_WEB_M;
+        private System.Windows.Forms.DataGridViewTextBoxColumn E_FLAG_M;
+        private System.Windows.Forms.DataGridViewTextBoxColumn F_LENGTH_M;
+        private System.Windows.Forms.DataGridViewTextBoxColumn G_WEIGHT_M;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MPR_QTY_M;
+        private System.Windows.Forms.DataGridViewTextBoxColumn USAGE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ISSUE_DATE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MPR_REMARKS;
     }
 }

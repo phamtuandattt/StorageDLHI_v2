@@ -33,6 +33,7 @@ namespace StorageDLHI.App.PoGUI
         private DataTable dtProdsOfAddPO = new DataTable();
         private DataTable dtPos = new DataTable();
         private DataTable dtPoById = new DataTable();
+        private DataTable dtMprDetailByIdTemporary = new DataTable();
 
         private Panel pnNoDataMprs = new Panel();
         private Panel pnNoDataMprsDetail = new Panel();
@@ -67,6 +68,16 @@ namespace StorageDLHI.App.PoGUI
 
             LoadData();
 
+            //// Modify columns name DataTable dtMprDetailTemporary
+            //dtMprDetailByIdTemporary.Columns[QueryStatement.PROPERTY_PROD_A].ColumnName = "A_THINH_M";
+            //dtMprDetailByIdTemporary.Columns[QueryStatement.PROPERTY_PROD_B].ColumnName = "B_DEPTH_M";
+            //dtMprDetailByIdTemporary.Columns[QueryStatement.PROPERTY_PROD_C].ColumnName = "C_WIDTH_M";
+            //dtMprDetailByIdTemporary.Columns[QueryStatement.PROPERTY_PROD_D].ColumnName = "D_WEB_M";
+            //dtMprDetailByIdTemporary.Columns[QueryStatement.PROPERTY_PROD_E].ColumnName = "E_FLAG_M";
+            //dtMprDetailByIdTemporary.Columns[QueryStatement.PROPERTY_PROD_F].ColumnName = "F_LENGTH_M";
+            //dtMprDetailByIdTemporary.Columns[QueryStatement.PROPERTY_PROD_G].ColumnName = "G_WEIGHT_M";
+            //dtMprDetailByIdTemporary.Columns["MPR_QTY"].ColumnName = "MPR_QTY_M";
+
             // Create columns DataTable ProdsOfAddPO
             dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_ID);
             dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_NAME);
@@ -87,6 +98,9 @@ namespace StorageDLHI.App.PoGUI
             dtProdsOfAddPO.Columns.Add("PO_REMARKS");
 
             dgvProdOfPO.DataSource = dtProdsOfAddPO;
+
+            
+            //dtMprDetailByIdTemporary.Clear();
 
             Common.Common.InitializeFooterGrid(dgvProdOfPO, dgvFooter); 
 
@@ -141,6 +155,7 @@ namespace StorageDLHI.App.PoGUI
             }
             else
             {
+                dtMprs = await ShowDialogManager.WithLoader(() => MprDAO.GetMprsForMakePO());
                 dgvMPRs.DataSource = CacheManager.Get<DataTable>(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS);
             }
 
@@ -155,8 +170,13 @@ namespace StorageDLHI.App.PoGUI
                 }
                 else
                 {
+                    dtMprDetailById = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId));
                     dgvMPRDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId));
                 }
+
+                dtMprDetailByIdTemporary = dtMprDetailById.Copy();
+                dtMprDetailByIdTemporary.Clear();
+
                 Common.Common.HideNoDataPanel(pnNoDataMprs);
                 Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
             }
@@ -198,6 +218,8 @@ namespace StorageDLHI.App.PoGUI
             prodsAdded.Clear();
             dgvProdOfPO.Refresh();
             dgvMPRs.Enabled = true;
+            var mprId = Guid.Parse(dgvMPRs.Rows[0].Cells[0].Value.ToString());
+            dtMprDetailById = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId));
             UpdateFooter();
         }
 
@@ -249,8 +271,6 @@ namespace StorageDLHI.App.PoGUI
             
             if (frmAddPriceForProdPO.Price == 0) { return; }
 
-
-
             tlsMPRNo.Text = $"MPR No: [{dgvMPRs.Rows[this.previousRowIndex].Cells[1].Value.ToString().Trim()}]\t";
 
             Guid prodId = Guid.Parse(dgvMPRDetail.Rows[rsl].Cells[2].Value.ToString());
@@ -260,6 +280,24 @@ namespace StorageDLHI.App.PoGUI
                 MessageBoxHelper.ShowWarning($"You added product [{dgvMPRDetail.Rows[rsl].Cells[3].Value.ToString()}] into PO. ");
                 return;
             }
+
+            //// Add current row in dtMPRDetailTemporary
+            //foreach (DataGridViewCell cell in dgvMPRDetail.CurrentRow.Cells)
+            //{
+            //    if (dtMprDetailByIdTemporary.Columns.Contains(cell.OwningColumn.Name))
+            //    {
+            //        rowCopy[cell.OwningColumn.Name] = cell.Value ?? DBNull.Value;
+            //    }
+            //}
+            //dtMprDetailByIdTemporary.Rows.Add(rowCopy);
+
+            DataRow rowCopy = dtMprDetailByIdTemporary.NewRow();
+            for (int i = 0; i < dgvMPRDetail.ColumnCount; i++)
+            {
+                rowCopy[i] = dgvMPRDetail.CurrentRow.Cells[i].Value;
+            }
+            dtMprDetailByIdTemporary.Rows.Add(rowCopy);
+
 
             DataRow dataRow = dtProdsOfAddPO.NewRow();
             dataRow[0] = prodId;
@@ -286,6 +324,13 @@ namespace StorageDLHI.App.PoGUI
             dgvProdOfPO.Rows[0].Selected = true;
             UpdateFooter();
             dgvMPRs.Enabled = false;
+
+            // Get Cache before delete row in dgvMPRDetail
+            var mprId = Guid.Parse(dgvMPRs.Rows[0].Cells[0].Value.ToString());
+            var dtMprDetailCoppy = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId)).Copy();
+            dgvMPRDetail.Rows.RemoveAt(rsl);
+            // Set data for cache after delete 
+            CacheManager.Add(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, mprId), dtMprDetailCoppy);
         }
 
         private Int32 CheckOrReturnNumber(string numberString)
@@ -818,6 +863,41 @@ namespace StorageDLHI.App.PoGUI
             {
                 return;
             }
+        }
+
+        private void removeProductToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvProdOfPO.Rows.Count <= 0) { return; }
+            int rsl = dgvProdOfPO.CurrentRow.Index;
+            Guid prodId = new Guid(dgvProdOfPO.Rows[rsl].Cells[0].Value.ToString()); // ProdId
+
+            // Add again prod into dgvMprDetail
+            foreach (DataRow item in dtMprDetailByIdTemporary.Rows)
+            {
+                if (item[2].ToString().Equals(prodId.ToString()))
+                {
+                    dtMprDetailById.ImportRow(item);
+                    break;
+                }
+            }
+
+            // Remove row in dgvProOfPO
+            dtProdsOfAddPO.Rows.RemoveAt(rsl);
+
+            if (dtProdsOfAddPO.Rows.Count == 0)
+            {
+                tlsMPRNo.Text = "...";
+                dtProdsOfAddPO.Clear();
+                prodsAdded.Clear();
+                dgvProdOfPO.Refresh();
+                dgvMPRs.Enabled = true;
+                var mprId = Guid.Parse(dgvMPRs.Rows[0].Cells[0].Value.ToString());
+                dtMprDetailById = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId));
+                UpdateFooter();
+            }
+
+            prodsAdded.Remove(prodId);
+            UpdateFooter();
         }
     }
 }
