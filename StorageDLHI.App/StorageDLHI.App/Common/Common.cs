@@ -25,6 +25,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Permissions;
 using System.Security.Policy;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -151,23 +152,38 @@ namespace StorageDLHI.App.Common
 
         public static void AutoCompleteComboboxValidating(KryptonComboBox sender, CancelEventArgs e)
         {
-            KryptonComboBox cb = sender as KryptonComboBox;
-            string typed = cb.Text;
+            var cb = sender as KryptonComboBox;
+            string typedText = cb.Text?.Trim();
 
-            bool match = false;
-            foreach (object item in cb.Items)
+            if (string.IsNullOrEmpty(typedText))
             {
-                if (item.ToString().Equals(typed, StringComparison.OrdinalIgnoreCase))
+                cb.SelectedIndex = 0;
+                return;
+            }
+
+            bool matched = false;
+            string displayMember = cb.DisplayMember;
+
+            foreach (var item in cb.Items)
+            {
+                if (item is DataRowView drv)
                 {
-                    cb.SelectedItem = item;
-                    match = true;
-                    break;
+                    string value = drv[displayMember]?.ToString();
+
+                    if (value != null && value.Equals(typedText, StringComparison.OrdinalIgnoreCase))
+                    {
+                        cb.SelectedItem = item;
+                        matched = true;
+                        break;
+                    }
                 }
             }
 
-            if (!match)
+            if (!matched &&
+                cb.SelectedItem is DataRowView selected &&
+                selected[displayMember]?.ToString() != typedText)
             {
-                cb.SelectedIndex = 0; // Default if no match
+                cb.SelectedIndex = 0;
             }
         }
 

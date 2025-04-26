@@ -64,6 +64,7 @@
             this.PRODUCT_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WarehouseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WAREHOUSE_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -582,6 +583,7 @@
             this.PRODUCT_ID,
             this.Name,
             this.Qty,
+            this.WarehouseName,
             this.WAREHOUSE_ID});
             this.dgvExportForWarehouse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvExportForWarehouse.Location = new System.Drawing.Point(0, 0);
@@ -617,6 +619,13 @@
             this.Qty.Name = "Qty";
             this.Qty.ReadOnly = true;
             // 
+            // WarehouseName
+            // 
+            this.WarehouseName.HeaderText = "Warehouse";
+            this.WarehouseName.MinimumWidth = 6;
+            this.WarehouseName.Name = "WarehouseName";
+            this.WarehouseName.ReadOnly = true;
+            // 
             // WAREHOUSE_ID
             // 
             this.WAREHOUSE_ID.HeaderText = "WAREHOUSE_ID";
@@ -632,7 +641,7 @@
             this.ClientSize = new System.Drawing.Size(1031, 393);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmExportProduct";
+            //this.Name = "frmExportProduct";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
             this.Text = "Update quantity in warehouse";
@@ -712,6 +721,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PRODUCT_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WarehouseName;
         private System.Windows.Forms.DataGridViewTextBoxColumn WAREHOUSE_ID;
     }
 }

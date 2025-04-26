@@ -156,6 +156,7 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_WAREHOUSE_DETAIL_ID = "WAREHOUSE_ID";
         public const string PROPERTY_WAREHOUSE_NAME = "WAREHOUSE_NAME";
         public const string PROPERTY_WAREHOUSE_ID = "ID";
+        public const string PROPERTY_WAREHOUSE_CODE = "WAREHOUSE_CODE";
         public const string GET_WAREHOUSE_FOR_CBO = "SELECT  ID, WAREHOUSE_NAME FROM WAREHOUSES";
         public const string GET_WAREHOUSE_DETAIL_FORM = "SELECT *FROM WAREHOUSE_DETAIL WHERE ID = '00000000-0000-0000-0000-000000000000'";
         public const string GET_WAREHOUSE_DETAILS = "SELECT *FROM WAREHOUSE_DETAIL";
@@ -165,6 +166,7 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string WAREHOUSE_TABLE_TYPE = "WarehouseImportType";
         public const string GET_WAREHOUSE_FOR_COMBOBOX_EXPORT_PROD = "SELECT *FROM WAREHOUSES WHERE ID != '{0}'";
         public const string UPDATE_QTY_OF_PROD_AFTER_EXPORTED = "UPDATE WAREHOUSE_DETAIL SET PRODUCT_IN_STOCK = PRODUCT_IN_STOCK - {0} WHERE WAREHOUSE_ID = '{1}' AND PRODUCT_ID = '{2}'";
+
 
         public const string INPUT_FOR_PROC = "Items";
         public const string OUTPUT_FOR_PROC = "ResultCode";

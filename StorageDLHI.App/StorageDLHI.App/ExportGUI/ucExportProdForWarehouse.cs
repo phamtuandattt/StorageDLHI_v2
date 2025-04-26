@@ -28,11 +28,23 @@ namespace StorageDLHI.App.ExportGUI
         private DataTable dtProdExportUpdateDB = new DataTable();
         private List<Guid> wIds = new List<Guid>();
 
+        private Panel pnNoDataWarehouse = new Panel();
+        private Panel pnNoDataWarehouseDetail = new Panel();
+
         public ucExportProdForWarehouse()
         {
             InitializeComponent();
             Common.Common.InitializeFooterGrid(dgvProdOfExport, dgvFooter);
             Common.Common.InitializeFooterGrid(dgvRemaningGoods, dgvFooterOfRemaining);
+
+            ucPanelNoData ucNoDataWarehouse = new ucPanelNoData("No records found !");
+            pnNoDataWarehouse = ucNoDataWarehouse.pnlNoData;
+            dgvWarehose.Controls.Add(pnNoDataWarehouse);
+
+            ucPanelNoData ucNoDataWarehouseDetail = new ucPanelNoData("No records found !");
+            pnNoDataWarehouseDetail = ucNoDataWarehouseDetail.pnlNoData;
+            dgvRemaningGoods.Controls.Add(pnNoDataWarehouseDetail);
+
             LoadData();
 
             dgvFooterOfRemaining.Rows[0].Cells[4].Value = "TOTAL";
@@ -88,7 +100,7 @@ namespace StorageDLHI.App.ExportGUI
 
             if (!CacheManager.Exists(string.Format(CacheKeys.WAREHOUSE_DETAIL_BY_ID, wId)))
             {
-                dtWarehouseDetail = await WarehouseDAO.GetWarehouseDetailByWarehouseId(wId);
+                dtWarehouseDetail = await ShowDialogManager.WithLoader(() => WarehouseDAO.GetWarehouseDetailByWarehouseId(wId));
                 CacheManager.Add(string.Format(CacheKeys.WAREHOUSE_DETAIL_BY_ID, wId), await WarehouseDAO.GetWarehouseDetailByWarehouseId(wId));
                 dgvRemaningGoods.DataSource = dtWarehouseDetail;
             }
@@ -255,7 +267,28 @@ namespace StorageDLHI.App.ExportGUI
 
         private void txtSearchWarehouse_TextChanged(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtSearchWarehouse.Text))
+            {
+                dgvWarehose.Refresh();
+            }
+            var lstProperty = new List<string>()
+            {
+                QueryStatement.PROPERTY_WAREHOUSE_NAME,
+                QueryStatement.PROPERTY_WAREHOUSE_CODE,
+            };
 
+            dgvWarehose.DataSource = Common.Common.Search(txtSearchWarehouse.Text.Trim(), dtWarehouses, lstProperty);
+
+            if (dgvWarehose.Rows.Count <= 0)
+            {
+                Common.Common.ShowNoDataPanel(dgvWarehose, pnNoDataWarehouse);
+                Common.Common.ShowNoDataPanel(dgvRemaningGoods, pnNoDataWarehouseDetail);
+            }
+            else
+            {
+                Common.Common.HideNoDataPanel(pnNoDataWarehouse);
+                Common.Common.HideNoDataPanel(pnNoDataWarehouseDetail);
+            }
         }
     }
 }
