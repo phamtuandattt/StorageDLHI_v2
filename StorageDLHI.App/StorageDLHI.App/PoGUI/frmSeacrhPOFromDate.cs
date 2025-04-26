@@ -21,6 +21,7 @@ namespace StorageDLHI.App.PoGUI
         public frmSeacrhPOFromDate()
         {
             InitializeComponent();
+            this.dtpTo.MinDate = dtpFrom.Value;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -39,6 +40,11 @@ namespace StorageDLHI.App.PoGUI
         private void frmSeacrhPOFromDate_FormClosing(object sender, FormClosingEventArgs e)
         {
 
+        }
+
+        private void dtpFrom_ValueChanged(object sender, EventArgs e)
+        {
+            this.dtpTo.MinDate = dtpFrom.Value;
         }
     }
 }

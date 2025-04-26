@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -119,11 +120,17 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_MPRs = "SELECT *FROM MPRS";
         public const string UPDATE_MPR_INFO = "SET DATEFORMAT DMY UPDATE MPRS SET MPR_EXPECTED_DELIVERY_DATE = '{0}', MPR_PREPARED = N'{1}', MPR_REVIEWED = N'{2}', MPR_APPROVED = N'{3}' WHERE ID = '{4}'";
         public const string GET_MPR_DETAIL_BY_ID = "EXEC GET_MPR_DETAIL '{0}'";
-        public const string PROPERTY_MPR_MPR_CREATE_DATE = "MPR_CREATE_DATE";
-        public const string PROPERTY_MPR_MPR_EXPECTED_DELIVERY_DATE = "MPR_EXPECTED_DELIVERY_DATE";
         public const string UPDATE_MPRS_IS_MAKE_PO = "UPDATE MPRS SET IS_MAKE_PO = '{0}' WHERE ID = '{1}'";
         public const string GET_MPRS_FOR_MAKE_PO = "SELECT *FROM MPRS WHERE IS_MAKE_PO = 'FALSE'";
         public const string GET_MPR_FOR_EXPORT = "EXEC GET_MPR_FOR_EXPORT '{0}'";
+        public const string PROPERTY_MPR_MPR_CREATE_DATE = "MPR_CREATE_DATE";
+        public const string PROPERTY_MPR_MPR_EXPECTED_DELIVERY_DATE = "MPR_EXPECTED_DELIVERY_DATE";
+        public const string PROPERTY_MPR_MPR_NO = "MPR_NO";
+        public const string PROPERTY_MPR_MPR_WO_NO = "MPR_WO_NO";
+        public const string PROPERTY_MPR_MPR_PROJECT_NAME = "MPR_PROJECT_NAME";
+        public const string PROPERTY_MPR_MPR_PREPARED = "MPR_PREPARED";
+        public const string PROPERTY_MPR_MPR_REVIEWED = "MPR_REVIEWED";
+        public const string PROPERTY_MPR_MPR_APPROVED = "MPR_APPROVED";
 
         // PO
         public const string INSERT_PO = "SET DATEFORMAT DMY INSERT INTO POS VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', N'{5}', '{6}', '{7}', N'{8}', N'{9}', N'{10}', N'{11}', N'{12}', N'{13}', {14}, '{15}', '{16}', '{17}', '{18}', '{19}')  ";

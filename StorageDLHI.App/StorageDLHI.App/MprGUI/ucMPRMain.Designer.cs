@@ -71,7 +71,14 @@
             this.editMPRInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.btnReload = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.txtSearchMPR = new System.Windows.Forms.ToolStripTextBox();
             this.tlsExportExcelMpr = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tlsSearchDateCreateMPR = new System.Windows.Forms.ToolStripButton();
+            this.lblTime = new System.Windows.Forms.ToolStripLabel();
+            this.tlsClearSearchDate = new System.Windows.Forms.ToolStripButton();
             this.pageAddMPR = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -188,7 +195,7 @@
             this.kryptonNavigator1.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
             this.pageMPRs,
             this.pageAddMPR});
-            this.kryptonNavigator1.SelectedIndex = 1;
+            this.kryptonNavigator1.SelectedIndex = 0;
             this.kryptonNavigator1.Size = new System.Drawing.Size(1386, 757);
             this.kryptonNavigator1.StateCommon.Panel.Color1 = System.Drawing.Color.White;
             this.kryptonNavigator1.StateCommon.Panel.Color2 = System.Drawing.Color.White;
@@ -604,7 +611,14 @@
             this.toolStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnReload,
-            this.tlsExportExcelMpr});
+            this.toolStripSeparator3,
+            this.toolStripLabel3,
+            this.txtSearchMPR,
+            this.tlsExportExcelMpr,
+            this.toolStripSeparator4,
+            this.tlsSearchDateCreateMPR,
+            this.lblTime,
+            this.tlsClearSearchDate});
             this.toolStrip3.Location = new System.Drawing.Point(0, 0);
             this.toolStrip3.Name = "toolStrip3";
             this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -622,6 +636,24 @@
             this.btnReload.Text = "Refresh";
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripLabel3
+            // 
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(56, 24);
+            this.toolStripLabel3.Text = "Search:";
+            // 
+            // txtSearchMPR
+            // 
+            this.txtSearchMPR.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSearchMPR.Name = "txtSearchMPR";
+            this.txtSearchMPR.Size = new System.Drawing.Size(200, 27);
+            this.txtSearchMPR.TextChanged += new System.EventHandler(this.txtSearchMPR_TextChanged);
+            // 
             // tlsExportExcelMpr
             // 
             this.tlsExportExcelMpr.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -631,6 +663,37 @@
             this.tlsExportExcelMpr.Size = new System.Drawing.Size(29, 24);
             this.tlsExportExcelMpr.Text = "Export";
             this.tlsExportExcelMpr.Click += new System.EventHandler(this.tlsExportExcelMpr_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
+            // 
+            // tlsSearchDateCreateMPR
+            // 
+            this.tlsSearchDateCreateMPR.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsSearchDateCreateMPR.Image = global::StorageDLHI.App.Properties.Resources.search;
+            this.tlsSearchDateCreateMPR.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsSearchDateCreateMPR.Name = "tlsSearchDateCreateMPR";
+            this.tlsSearchDateCreateMPR.Size = new System.Drawing.Size(29, 24);
+            this.tlsSearchDateCreateMPR.Text = "Search date";
+            this.tlsSearchDateCreateMPR.Click += new System.EventHandler(this.tlsSearchDateCreateMPR_Click);
+            // 
+            // lblTime
+            // 
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(0, 24);
+            // 
+            // tlsClearSearchDate
+            // 
+            this.tlsClearSearchDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsClearSearchDate.Image = global::StorageDLHI.App.Properties.Resources.clean;
+            this.tlsClearSearchDate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsClearSearchDate.Name = "tlsClearSearchDate";
+            this.tlsClearSearchDate.Size = new System.Drawing.Size(29, 24);
+            this.tlsClearSearchDate.Text = "Clear";
+            this.tlsClearSearchDate.Visible = false;
+            this.tlsClearSearchDate.Click += new System.EventHandler(this.tlsClearSearchDate_Click);
             // 
             // pageAddMPR
             // 
@@ -954,6 +1017,7 @@
             this.txtSearchProd.Name = "txtSearchProd";
             this.txtSearchProd.Size = new System.Drawing.Size(150, 27);
             this.txtSearchProd.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchProd_KeyUp);
+            this.txtSearchProd.TextChanged += new System.EventHandler(this.txtSearchProd_TextChanged);
             // 
             // kryptonPanel2
             // 
@@ -1206,6 +1270,7 @@
             this.txtSearchProdExistMPR.Name = "txtSearchProdExistMPR";
             this.txtSearchProdExistMPR.Size = new System.Drawing.Size(150, 27);
             this.txtSearchProdExistMPR.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchProdExistMPR_KeyUp);
+            this.txtSearchProdExistMPR.TextChanged += new System.EventHandler(this.txtSearchProdExistMPR_TextChanged);
             // 
             // btnConfirm
             // 
@@ -1391,5 +1456,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column31;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column32;
         private System.Windows.Forms.ToolStripButton tlsExportExcelMpr;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
+        private System.Windows.Forms.ToolStripTextBox txtSearchMPR;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton tlsSearchDateCreateMPR;
+        private System.Windows.Forms.ToolStripLabel lblTime;
+        private System.Windows.Forms.ToolStripButton tlsClearSearchDate;
     }
 }

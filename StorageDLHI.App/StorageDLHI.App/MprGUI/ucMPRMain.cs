@@ -25,6 +25,10 @@ using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
+using System.Text.RegularExpressions;
+using Panel = System.Windows.Forms.Panel;
+using StorageDLHI.App.PoGUI;
+using System.Windows;
 
 namespace StorageDLHI.App.MprGUI
 {
@@ -37,9 +41,21 @@ namespace StorageDLHI.App.MprGUI
         private DataTable dtMprs = new DataTable();
         private DataTable dtMprDetailById = new DataTable();
 
+        private Panel pnNoDataMprs = new Panel();
+        private Panel pnNoDataMprsDetail = new Panel();
+
         public ucMPRMain()
         {
             InitializeComponent();
+
+            ucPanelNoData ucNoDataMPRs = new ucPanelNoData("No records found !");
+            pnNoDataMprs = ucNoDataMPRs.pnlNoData;
+            dgvMPRs.Controls.Add(pnNoDataMprs);
+
+            ucPanelNoData ucNoDataMPRDetail = new ucPanelNoData("No records found !");
+            pnNoDataMprsDetail = ucNoDataMPRDetail.pnlNoData;
+            dgvMPRDetail.Controls.Add(pnNoDataMprsDetail);
+
             LoadData();
 
             dtProdsOfMprs.Columns.Add(QueryStatement.PROPERTY_PROD_ID);
@@ -168,6 +184,21 @@ namespace StorageDLHI.App.MprGUI
             dtProdsOfMprs.Rows.Add(dataRow);
             prodsAdded.Add(Guid.Parse(dgvProds.Rows[rsl].Cells[0].Value.ToString()));
             dgvProdExistMpr.Rows[0].Selected = true;
+            UpdateTotalAdd();
+        }
+
+        private void UpdateTotalAdd()
+        {
+            Int32 totalAdd = 0;
+            foreach (DataGridViewRow row in dgvProdExistMpr.Rows)
+            {
+                if (Int32.TryParse(row.Cells[13].Value?.ToString(), out Int32 qty))
+                {
+                    totalAdd += qty;
+                }
+            }
+
+            tlsLabalQtyProd.Text = $"Total: {totalAdd.ToString("N0")}";
         }
 
         private void RenderNumbering(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -236,8 +267,6 @@ namespace StorageDLHI.App.MprGUI
             LoadData();
         }
 
-
-        // Selected row when right click
         private void dgvProds_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (dgvProds.Rows.Count <= 0)
@@ -279,6 +308,7 @@ namespace StorageDLHI.App.MprGUI
 
             dgvProdExistMpr.Rows[rsl].Cells[13].Value = frmGetQty.Qty;
             dgvProdExistMpr.Rows[rsl].Cells[14].Value = frmGetQty.UsageNote;
+            UpdateTotalAdd();
         }
 
         private void dgvProdExistMpr_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -311,6 +341,7 @@ namespace StorageDLHI.App.MprGUI
             }
 
             DeleteProdOfMprs(rsl);
+            UpdateTotalAdd();
         }
 
         private void tlsDeleteProdExist_Click(object sender, EventArgs e)
@@ -335,6 +366,9 @@ namespace StorageDLHI.App.MprGUI
         {
             // Get the Guid of the product from the selected row
             Guid prodId = Guid.Parse(dgvProdExistMpr.Rows[rsl].Cells[0].Value.ToString());
+            var qty = Int32.Parse(dgvProdExistMpr.Rows[rsl].Cells[13].Value.ToString());
+
+            UpdateTotalAdd();
 
             if (prodsAdded.Contains(prodId))
             {
@@ -582,6 +616,118 @@ namespace StorageDLHI.App.MprGUI
             frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_EXPORT_EXCEL, false, true, mprs, dtExport);
             frmCustomInfoMpr.ShowDialog();
 
+        }
+
+        private void txtSearchProd_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtSearchProd.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (txtSearchProd.Text != cleaned)
+            {
+                int pos = txtSearchProd.SelectionStart - 1;
+                txtSearchProd.Text = cleaned;
+                txtSearchProd.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtSearchProdExistMPR_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(txtSearchProdExistMPR.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (txtSearchProdExistMPR.Text != cleaned)
+            {
+                int pos = txtSearchProdExistMPR.SelectionStart - 1;
+                txtSearchProdExistMPR.Text = cleaned;
+                txtSearchProdExistMPR.SelectionStart = Math.Max(pos, 0);
+            }
+        }
+
+        private void txtSearchMPR_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtSearchMPR.Text))
+            {
+                dgvMPRs.Refresh();
+            }
+            var lstProperty = new List<string>()
+            {
+                QueryStatement.PROPERTY_MPR_MPR_NO,
+                QueryStatement.PROPERTY_MPR_MPR_WO_NO,
+                QueryStatement.PROPERTY_MPR_MPR_PROJECT_NAME,
+                QueryStatement.PROPERTY_MPR_MPR_PREPARED,
+                QueryStatement.PROPERTY_MPR_MPR_REVIEWED,
+                QueryStatement.PROPERTY_MPR_MPR_APPROVED,
+            };
+
+            dgvMPRs.DataSource = Common.Common.Search(txtSearchMPR.Text.Trim(), dtMprs, lstProperty);
+
+            if (dgvMPRs.Rows.Count <= 0)
+            {
+                Common.Common.ShowNoDataPanel(dgvMPRs, pnNoDataMprs);
+                Common.Common.ShowNoDataPanel(dgvMPRDetail, pnNoDataMprsDetail);
+            }
+            else
+            {
+                Common.Common.HideNoDataPanel(pnNoDataMprs);
+                Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
+            }
+        }
+
+        private void tlsSearchDateCreateMPR_Click(object sender, EventArgs e)
+        {
+            if (dgvMPRs.Rows.Count <= 0)
+            {
+                return;
+            }
+            frmSeacrhPOFromDate frmSeacrhPOFromDate = new frmSeacrhPOFromDate();
+            frmSeacrhPOFromDate.ShowDialog();
+
+            if (!frmSeacrhPOFromDate.IsSearch)
+            {
+                dgvMPRs.Refresh();
+                return;
+            }
+
+            var lstProperty = new List<string>()
+            {
+                QueryStatement.PROPERTY_MPR_MPR_CREATE_DATE,
+                QueryStatement.PROPERTY_MPR_MPR_EXPECTED_DELIVERY_DATE
+            };
+
+            DateTime fDate = frmSeacrhPOFromDate.FromDate;
+            DateTime tDate = frmSeacrhPOFromDate.ToDate;
+
+            lblTime.Text = $"From: {fDate.ToString("dd/MM/yyyy")} To: {tDate.ToString("dd/MM/yyyy")}";
+            dgvMPRs.DataSource = Common.Common.SearchDate(fDate, tDate, dtMprs, lstProperty);
+            tlsClearSearchDate.Visible = true;
+
+            if (dgvMPRs.Rows.Count <= 0)
+            {
+                Common.Common.ShowNoDataPanel(dgvMPRs, pnNoDataMprs);
+                Common.Common.ShowNoDataPanel(dgvMPRDetail, pnNoDataMprsDetail);
+            }
+            else
+            {
+                Common.Common.HideNoDataPanel(pnNoDataMprs);
+                Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
+            }
+        }
+
+        private void tlsClearSearchDate_Click(object sender, EventArgs e)
+        {
+            lblTime.Text = "";
+            dgvMPRs.Refresh();
+            dgvMPRs.DataSource = CacheManager.Get<DataTable>(CacheKeys.MPRS_DATATABLE_ALL_MPRS).Copy();
+
+            if (dgvMPRs.Rows.Count <= 0)
+            {
+                Common.Common.ShowNoDataPanel(dgvMPRs, pnNoDataMprs);
+                Common.Common.ShowNoDataPanel(dgvMPRDetail, pnNoDataMprsDetail);
+            }
+            else
+            {
+                Common.Common.HideNoDataPanel(pnNoDataMprs);
+                Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
+            }
+
+            tlsClearSearchDate.Visible = false;
         }
     }
 }

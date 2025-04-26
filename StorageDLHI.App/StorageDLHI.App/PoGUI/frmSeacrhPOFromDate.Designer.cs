@@ -199,7 +199,7 @@
             // 
             this.kryptonPanel4.Controls.Add(this.kryptonLabel1);
             this.kryptonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel4.Location = new System.Drawing.Point(323, 3);
+            this.kryptonPanel4.Location = new System.Drawing.Point(322, 3);
             this.kryptonPanel4.Name = "kryptonPanel4";
             this.kryptonPanel4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonPanel4.Size = new System.Drawing.Size(56, 38);
@@ -239,10 +239,10 @@
             // 
             this.kryptonPanel1.Controls.Add(this.dtpTo);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel1.Location = new System.Drawing.Point(385, 3);
+            this.kryptonPanel1.Location = new System.Drawing.Point(384, 3);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel1.Size = new System.Drawing.Size(254, 38);
+            this.kryptonPanel1.Size = new System.Drawing.Size(255, 38);
             this.kryptonPanel1.TabIndex = 6;
             // 
             // dtpTo
@@ -263,7 +263,7 @@
             this.kryptonPanel3.Location = new System.Drawing.Point(73, 3);
             this.kryptonPanel3.Name = "kryptonPanel3";
             this.kryptonPanel3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel3.Size = new System.Drawing.Size(244, 38);
+            this.kryptonPanel3.Size = new System.Drawing.Size(243, 38);
             this.kryptonPanel3.TabIndex = 4;
             // 
             // dtpFrom
@@ -276,6 +276,7 @@
             this.dtpFrom.Size = new System.Drawing.Size(238, 30);
             this.dtpFrom.StateDisabled.Back.Color1 = System.Drawing.Color.White;
             this.dtpFrom.TabIndex = 0;
+            this.dtpFrom.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
             // 
             // frmSeacrhPOFromDate
             // 
