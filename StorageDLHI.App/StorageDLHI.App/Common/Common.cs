@@ -55,7 +55,7 @@ namespace StorageDLHI.App.Common
 
     public static class PathManager
     {
-        public const string MPR_TEMPLATE_FILE_NAME = "mpr_template.xlsx";
+        public const string MPR_TEMPLATE_FILE_NAME = "mpr_template_v2.xlsx";
         public const string PO_TEMPLATE_FILE_NAME = "po_temp.xlsx";
 
         public static string GetPathTemplate(string templateFile)
@@ -390,24 +390,24 @@ namespace StorageDLHI.App.Common
                 var item = dataTable.Rows[i];
 
                 ws.Cells[row, 1].Value = i + 1;
-                ws.Cells[row, 2].Value = item[3]; // Name
-                ws.Cells[row, 3].Value = item[4]; // Des 2
-                ws.Cells[row, 4].Value = item[5]; // Material
-                ws.Cells[row, 5].Value = item[6]; // A
-                ws.Cells[row, 6].Value = item[7]; // B
-                ws.Cells[row, 7].Value = item[8];
-                ws.Cells[row, 8].Value = item[9];
-                ws.Cells[row, 9].Value = item[10];
-                ws.Cells[row, 10].Value = item[11]; // F
-                ws.Cells[row, 11].Value = item[12]; // Usage
-                ws.Cells[row, 12].Value = item[13]; // MPS
-                ws.Cells[row, 13].Value = item[14]; // Rev
-                ws.Cells[row, 14].Value = item[15]; // Dwg
-                ws.Cells[row, 15].Value = item[16]; // Issue
-                ws.Cells[row, 16].Value = item[17]; // Unit
-                ws.Cells[row, 17].Value = item[18]; // Qty
-                ws.Cells[row, 18].Value = item[19]; // G_Weight
-                ws.Cells[row, 19].Value = item[20]; // Remarks
+                ws.Cells[row, 2].Value = item[3].ToString().Trim(); // Name
+                ws.Cells[row, 3].Value = item[4].ToString().Trim(); // Des 2
+                ws.Cells[row, 4].Value = item[5].ToString().Trim(); // Material
+                ws.Cells[row, 5].Value = item[6].ToString().Trim(); // A
+                ws.Cells[row, 6].Value = item[7].ToString().Trim(); // B
+                ws.Cells[row, 7].Value = item[8].ToString().Trim();
+                ws.Cells[row, 8].Value = item[9].ToString().Trim();
+                ws.Cells[row, 9].Value = item[10].ToString().Trim();
+                ws.Cells[row, 10].Value = item[11].ToString().Trim(); // F
+                ws.Cells[row, 11].Value = item[12].ToString().Trim(); // Usage
+                ws.Cells[row, 12].Value = item[13].ToString().Trim(); // MPS
+                ws.Cells[row, 13].Value = item[14].ToString().Trim(); // Rev
+                ws.Cells[row, 14].Value = item[15].ToString().Trim(); // Dwg
+                ws.Cells[row, 15].Value = item[16].ToString().Trim(); // Issue
+                ws.Cells[row, 16].Value = item[17].ToString().Trim(); // Unit
+                ws.Cells[row, 17].Value = Int32.Parse(item[18].ToString().Trim()).ToString("N0"); // Qty
+                ws.Cells[row, 18].Value = item[19].ToString().Trim(); // G_Weight
+                ws.Cells[row, 19].Value = item[20].ToString().Trim(); // Remarks
             }
 
             // remove the start row tag row
@@ -432,21 +432,21 @@ namespace StorageDLHI.App.Common
                 var item = dataTable.Rows[i];
 
                 ws.Cells[row, 1].Value = i + 1;
-                ws.Cells[row, 2].Value = item[0]; // Name
-                ws.Cells[row, 3].Value = item[1]; // Material
-                ws.Cells[row, 4].Value = item[2]; // A
-                ws.Cells[row, 5].Value = item[3]; // B
-                ws.Cells[row, 6].Value = item[4]; // C
-                ws.Cells[row, 7].Value = Int32.Parse(item[5].ToString()).ToString("N0"); // Qty
-                ws.Cells[row, 8].Value = item[6];
-                ws.Cells[row, 9].Value = item[7];
-                ws.Cells[row, 10].Value = item[8];
-                ws.Cells[row, 11].Value = item[9]; // 
-                ws.Cells[row, 12].Value = item[10]; // 
-                ws.Cells[row, 13].Value = Int32.Parse(item[11].ToString()).ToString("N0"); // Price
-                ws.Cells[row, 14].Value = Int32.Parse(item[12].ToString()).ToString("N0"); // Amount
-                ws.Cells[row, 15].Value = item[13]; // 
-                ws.Cells[row, 16].Value = item[14]; // Issue
+                ws.Cells[row, 2].Value = item[0].ToString().Trim(); // Name
+                ws.Cells[row, 3].Value = item[1].ToString().Trim(); // Material
+                ws.Cells[row, 4].Value = item[2].ToString().Trim(); // A
+                ws.Cells[row, 5].Value = item[3].ToString().Trim(); // B
+                ws.Cells[row, 6].Value = item[4].ToString().Trim(); // C
+                ws.Cells[row, 7].Value = Int32.Parse(item[5].ToString().Trim()).ToString("N0"); // Qty
+                ws.Cells[row, 8].Value = item[6].ToString().Trim();
+                ws.Cells[row, 9].Value = item[7].ToString().Trim();
+                ws.Cells[row, 10].Value = item[8].ToString().Trim();
+                ws.Cells[row, 11].Value = item[9].ToString().Trim(); // 
+                ws.Cells[row, 12].Value = item[10].ToString().Trim(); // 
+                ws.Cells[row, 13].Value = Int32.Parse(item[11].ToString().Trim()).ToString("N0"); // Price
+                ws.Cells[row, 14].Value = Int32.Parse(item[12].ToString().Trim()).ToString("N0"); // Amount
+                ws.Cells[row, 15].Value = item[13].ToString().Trim(); // 
+                ws.Cells[row, 16].Value = item[14].ToString().Trim(); // Issue
             }
             ws.DeleteRow(startRow);
         }
