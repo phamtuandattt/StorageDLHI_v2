@@ -40,7 +40,7 @@
             this.tlsMaterial = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsSuppliers = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsWarehouses = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tlsMenuButton = new System.Windows.Forms.ToolStrip();
             this.tlsMPR = new System.Windows.Forms.ToolStripButton();
             this.tlsPO = new System.Windows.Forms.ToolStripButton();
             this.tlsImport = new System.Windows.Forms.ToolStripButton();
@@ -48,7 +48,7 @@
             this.tlsInventory = new System.Windows.Forms.ToolStripButton();
             this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.menuStrip1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.tlsMenuButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,7 +113,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(1397, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1397, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -124,7 +124,7 @@
             this.resetToolStripMenuItem,
             this.reloadCacheToolStripMenuItem});
             this.hệThốngToolStripMenuItem.Name = "hệThốngToolStripMenuItem";
-            this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(70, 26);
+            this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
             this.hệThốngToolStripMenuItem.Text = "System";
             // 
             // logoutToolStripMenuItem
@@ -155,7 +155,7 @@
             this.tlsSuppliers,
             this.tlsWarehouses});
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
-            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(111, 26);
+            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(111, 24);
             this.quảnLýToolStripMenuItem.Text = "Management";
             // 
             // tlsMaterial
@@ -179,23 +179,23 @@
             this.tlsWarehouses.Text = "Warehouses";
             this.tlsWarehouses.Click += new System.EventHandler(this.tlsWarehouses_Click);
             // 
-            // toolStrip1
+            // tlsMenuButton
             // 
-            this.toolStrip1.BackColor = System.Drawing.Color.White;
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlsMenuButton.BackColor = System.Drawing.Color.White;
+            this.tlsMenuButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tlsMenuButton.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.tlsMenuButton.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tlsMPR,
             this.tlsPO,
             this.tlsImport,
             this.tlsExport,
             this.tlsInventory});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 30);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(1397, 97);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
+            this.tlsMenuButton.Location = new System.Drawing.Point(0, 28);
+            this.tlsMenuButton.Name = "tlsMenuButton";
+            this.tlsMenuButton.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.tlsMenuButton.Size = new System.Drawing.Size(1397, 97);
+            this.tlsMenuButton.TabIndex = 1;
+            this.tlsMenuButton.Text = "toolStrip1";
             // 
             // tlsMPR
             // 
@@ -260,10 +260,10 @@
             // pnMain
             // 
             this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnMain.Location = new System.Drawing.Point(0, 127);
+            this.pnMain.Location = new System.Drawing.Point(0, 125);
             this.pnMain.Name = "pnMain";
             this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.pnMain.Size = new System.Drawing.Size(1397, 584);
+            this.pnMain.Size = new System.Drawing.Size(1397, 586);
             this.pnMain.TabIndex = 2;
             // 
             // Main
@@ -272,7 +272,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1397, 711);
             this.Controls.Add(this.pnMain);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.tlsMenuButton);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -282,10 +282,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Main_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.tlsMenuButton.ResumeLayout(false);
+            this.tlsMenuButton.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnMain)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -299,7 +300,7 @@
         private System.Windows.Forms.ToolStripMenuItem hệThốngToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip tlsMenuButton;
         private System.Windows.Forms.ToolStripButton tlsPO;
         private System.Windows.Forms.ToolStripButton tlsMPR;
         private System.Windows.Forms.ToolStripButton tlsImport;

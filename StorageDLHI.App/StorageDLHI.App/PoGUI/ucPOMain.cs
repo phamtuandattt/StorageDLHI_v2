@@ -17,6 +17,7 @@ using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Data.Entity.Infrastructure.Design.Executor;
@@ -898,6 +899,42 @@ namespace StorageDLHI.App.PoGUI
 
             prodsAdded.Remove(prodId);
             UpdateFooter();
+        }
+
+        private void tlsSearchMprForMakePO_TextChanged(object sender, EventArgs e)
+        {
+            string cleaned = Regex.Replace(tlsSearchMprForMakePO.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            if (tlsSearchMprForMakePO.Text != cleaned)
+            {
+                int pos = tlsSearchMprForMakePO.SelectionStart - 1;
+                tlsSearchMprForMakePO.Text = cleaned;
+                tlsSearchMprForMakePO.SelectionStart = Math.Max(pos, 0);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(tlsSearchMprForMakePO.Text))
+            {
+                dgvMPRs.Refresh();
+            }
+            var lstProperty = new List<string>()
+            {
+                QueryStatement.PROPERTY_MPR_MPR_NO,
+                QueryStatement.PROPERTY_MPR_MPR_WO_NO,
+                QueryStatement.PROPERTY_MPR_MPR_PROJECT_NAME
+            };
+
+            dgvMPRs.DataSource = Common.Common.Search(tlsSearchMprForMakePO.Text.Trim(), dtMprs.Copy(), lstProperty);
+
+            if (dgvMPRs.Rows.Count <= 0)
+            {
+                Common.Common.ShowNoDataPanel(dgvMPRs, pnNoDataMprs);
+                Common.Common.ShowNoDataPanel(dgvMPRDetail, pnNoDataMprsDetail);
+            }
+            else
+            {
+                Common.Common.HideNoDataPanel(pnNoDataMprs);
+                Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
+            }
         }
     }
 }

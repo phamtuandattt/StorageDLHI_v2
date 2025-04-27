@@ -158,7 +158,7 @@ namespace StorageDLHI.App.ImportGUI
                 Guid poId = Guid.Parse(dgvPOs.Rows[0].Cells[0].Value.ToString());
                 if (!CacheManager.Exists(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId)))
                 {
-                    dtPoById = await PoDAO.GetPODetailById(poId);
+                    dtPoById = await ShowDialogManager.WithLoader(() => PoDAO.GetPODetailById(poId));
                     CacheManager.Add(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId), dtPoById.Copy());
                     dgvPO_Detail.DataSource = dtPoById;
                 }

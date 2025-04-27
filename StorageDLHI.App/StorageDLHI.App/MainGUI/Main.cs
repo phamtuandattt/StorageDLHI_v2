@@ -24,12 +24,51 @@ namespace StorageDLHI.App.MainGUI
 {
     public partial class Main : KryptonForm
     {
+        private CustomToolStripRenderer _renderer;
+
         public Main()
         {
             InitializeComponent();
 
+            _renderer = new CustomToolStripRenderer();
+            tlsMenuButton.RenderMode = ToolStripRenderMode.ManagerRenderMode;
+            tlsMenuButton.Renderer = _renderer;
+
+            //_renderer.ActiveButton = tlsMenuButton.Items[0] as ToolStripButton;
+            //tlsMenuButton.Invalidate();
+
+
+            foreach (ToolStripItem item in tlsMenuButton.Items)
+            {
+                if (item is ToolStripButton btn)
+                {
+                    btn.MouseEnter += ToolStripButton_MouseEnter;
+                    btn.MouseLeave += ToolStripButton_MouseLeave;
+                }
+            }
+
+
             ShareData.UserName = "David Hoang";
             ShareData.UserId = Guid.Parse("D8F320FD-106B-4859-A4AA-421E4DECAD89");
+        }
+
+        private void ToolStripButton_MouseLeave(object sender, EventArgs e)
+        {
+            if (_renderer.HoveredButton != null)
+            {
+                _renderer.HoveredButton = null;
+                tlsMenuButton.Invalidate();
+            }
+        }
+
+        private void ToolStripButton_MouseEnter(object sender, EventArgs e)
+        {
+            var btn = sender as ToolStripButton;
+            if (_renderer.HoveredButton != btn)
+            {
+                _renderer.HoveredButton = btn;
+                tlsMenuButton.Invalidate();
+            }
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -44,6 +83,11 @@ namespace StorageDLHI.App.MainGUI
 
         private void tlsPO_Click(object sender, EventArgs e)
         {
+            //SetActiveButton(tlsPO);
+            var btn = sender as ToolStripButton;
+            _renderer.ActiveButton = btn;
+            tlsMenuButton.Invalidate();
+
             ucPOMain ucPOMain = new ucPOMain();
             ucPOMain.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucPOMain);
@@ -52,6 +96,11 @@ namespace StorageDLHI.App.MainGUI
 
         private void tlsMPR_Click(object sender, EventArgs e)
         {
+            //SetActiveButton(tlsMPR);
+            var btn = sender as ToolStripButton;
+            _renderer.ActiveButton = btn;
+            tlsMenuButton.Invalidate();
+
             ucMPRMain ucMPRMain = new ucMPRMain();
             ucMPRMain.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucMPRMain);
@@ -60,6 +109,11 @@ namespace StorageDLHI.App.MainGUI
 
         private void tlsImport_Click(object sender, EventArgs e)
         {
+            //SetActiveButton(tlsImport);
+            var btn = sender as ToolStripButton;
+            _renderer.ActiveButton = btn;
+            tlsMenuButton.Invalidate();
+
             ucImportProd ucImportProd = new ucImportProd();
             ucImportProd.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucImportProd);
@@ -68,6 +122,11 @@ namespace StorageDLHI.App.MainGUI
 
         private void tlsExport_Click(object sender, EventArgs e)
         {
+            //SetActiveButton(tlsExport);
+            var btn = sender as ToolStripButton;
+            _renderer.ActiveButton = btn;
+            tlsMenuButton.Invalidate();
+
             ucExportProdForWarehouse ucExport = new ucExportProdForWarehouse();
             ucExport.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucExport);
@@ -76,7 +135,10 @@ namespace StorageDLHI.App.MainGUI
 
         private void tlsInventory_Click(object sender, EventArgs e)
         {
-
+            //SetActiveButton(tlsInventory);
+            var btn = sender as ToolStripButton;
+            _renderer.ActiveButton = btn;
+            tlsMenuButton.Invalidate();
         }
 
         private void ResetConnectionString(object sender, EventArgs e)
@@ -113,6 +175,38 @@ namespace StorageDLHI.App.MainGUI
         private void reloadCacheToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Common.Common.ReloadAllCache();
+        }
+
+
+        private void SetActiveButton(ToolStripButton activeButton)
+        {
+            foreach (ToolStripItem item in tlsMenuButton.Items)
+            {
+                if (item is ToolStripButton btn)
+                {
+                    if (btn == activeButton)
+                    {
+                        //// Apply "active" style
+                        //btn.BackColor = Color.FromArgb(179, 215, 243);
+                        ////btn.ForeColor = Color.White;
+                        //btn.Font = new Font(btn.Font, FontStyle.Bold);
+                        _renderer.ActiveButton = activeButton;
+                        tlsMenuButton.Invalidate();
+                    }
+                    else
+                    {
+                        // Reset to normal style
+                        btn.BackColor = Color.White;
+                        btn.ForeColor = SystemColors.ControlText;
+                        btn.Font = new Font(btn.Font, FontStyle.Regular);
+                    }
+                }
+            }
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

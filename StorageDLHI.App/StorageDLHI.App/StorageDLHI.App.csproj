@@ -124,6 +124,7 @@
     <Compile Include="Common\CommonGUI\ucPanelNoData.Designer.cs">
       <DependentUpon>ucPanelNoData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\CustomToolStripRenderer.cs" />
     <Compile Include="Common\MessageBoxHelper.cs" />
     <Compile Include="Common\NotificationManager.cs" />
     <Compile Include="Common\ShowDialogManager.cs" />
