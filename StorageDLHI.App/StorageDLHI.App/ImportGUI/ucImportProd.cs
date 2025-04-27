@@ -785,7 +785,7 @@ namespace StorageDLHI.App.ImportGUI
             frmUpdateImportedProduct frmUpdateImportedProduct = new frmUpdateImportedProduct(prodId_OfdgvProdForImport, qtyOfModify, prodName);
             frmUpdateImportedProduct.ShowDialog();
 
-            if (!frmUpdateImportedProduct.IsUpdated)
+            if (!frmUpdateImportedProduct.IsUpdated || !frmUpdateImportedProduct.IsCompleted)
             {
                 return;
             }

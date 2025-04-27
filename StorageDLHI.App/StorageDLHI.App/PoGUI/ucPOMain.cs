@@ -214,13 +214,23 @@ namespace StorageDLHI.App.PoGUI
                 return;
             }
 
+            // Add again prod into dgvMprDetail
+            foreach (DataRow item in dtMprDetailByIdTemporary.Rows)
+            {
+                dtMprDetailById.ImportRow(item);
+            }
+
             tlsMPRNo.Text = "...";
             dtProdsOfAddPO.Clear();
             prodsAdded.Clear();
             dgvProdOfPO.Refresh();
             dgvMPRs.Enabled = true;
+
             var mprId = Guid.Parse(dgvMPRs.Rows[0].Cells[0].Value.ToString());
             dtMprDetailById = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId));
+            //dgvMPRDetail.DataSource = dtMprDetailById;
+            //dgvMPRDetail.Refresh();
+
             UpdateFooter();
         }
 
@@ -327,7 +337,7 @@ namespace StorageDLHI.App.PoGUI
             dgvMPRs.Enabled = false;
 
             // Get Cache before delete row in dgvMPRDetail
-            var mprId = Guid.Parse(dgvMPRs.Rows[0].Cells[0].Value.ToString());
+            var mprId = Guid.Parse(dgvMPRs.CurrentRow.Cells[0].Value.ToString());
             var dtMprDetailCoppy = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId)).Copy();
             dgvMPRDetail.Rows.RemoveAt(rsl);
             // Set data for cache after delete 
@@ -437,6 +447,11 @@ namespace StorageDLHI.App.PoGUI
             prodsAdded.Clear();
             dgvProdOfPO.Refresh();
 
+            // Get Cache 
+            var mprId = Guid.Parse(dgvMPRs.CurrentRow.Cells[0].Value.ToString());
+            var dtMprDetailCoppy = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId)).Copy();
+
+
             for (int i = 0; i < dgvMPRDetail.Rows.Count; i++)
             {
                 Guid prodId = Guid.Parse(dgvMPRDetail.Rows[i].Cells[2].Value.ToString());
@@ -458,7 +473,20 @@ namespace StorageDLHI.App.PoGUI
                 dtProdsOfAddPO.Rows.Add(dataRow);
                 prodsAdded.Add(prodId);
                 totalAmount += CheckOrReturnNumber(dgvMPRDetail.Rows[i].Cells[13].Value.ToString().Trim());
+
+                DataRow rowCopy = dtMprDetailByIdTemporary.NewRow();
+                for (int j = 0; j < dgvMPRDetail.ColumnCount; j++)
+                {
+                    rowCopy[j] = dgvMPRDetail.Rows[i].Cells[j].Value;
+                }
+                dtMprDetailByIdTemporary.Rows.Add(rowCopy);
+
+                dgvMPRDetail.Rows.RemoveAt(i);
             }
+
+            // Set data for cache after delete 
+            
+            CacheManager.Add(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, mprId), dtMprDetailCoppy);
 
             dgvProdOfPO.Rows[0].Selected = true;
             dgvMPRs.Enabled = false;
@@ -892,6 +920,7 @@ namespace StorageDLHI.App.PoGUI
                 prodsAdded.Clear();
                 dgvProdOfPO.Refresh();
                 dgvMPRs.Enabled = true;
+                
                 var mprId = Guid.Parse(dgvMPRs.Rows[0].Cells[0].Value.ToString());
                 dtMprDetailById = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId));
                 UpdateFooter();

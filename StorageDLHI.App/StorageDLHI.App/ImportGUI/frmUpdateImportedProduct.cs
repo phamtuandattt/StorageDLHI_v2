@@ -23,6 +23,7 @@ namespace StorageDLHI.App.ImportGUI
         public List<string> ListUpdateImportProd { get; set; } = new List<string>();
         public bool IsUpdated { get; set; } = true;
         public bool IsDeleted { get; set; }
+        public bool IsCompleted { get; set; } = false;
 
         public frmUpdateImportedProduct(Guid prodId, Int32 qty, string prodName)
         {
@@ -125,6 +126,7 @@ namespace StorageDLHI.App.ImportGUI
                 ListUpdateImportProd.Add(prodInfo);
             }
 
+            IsCompleted = true;
             this.Close();
         }
 
@@ -132,6 +134,11 @@ namespace StorageDLHI.App.ImportGUI
         {
             IsUpdated = false;
             this.Close();
+        }
+
+        private void dgvImportFor_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Common.Common.RenderNumbering(sender, e, this.Font);
         }
     }
 }

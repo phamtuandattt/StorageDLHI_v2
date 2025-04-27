@@ -45,6 +45,7 @@
             this.kryptonLabel3 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.txtQtyImport = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -65,7 +66,6 @@
             this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WAREHOUSE_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtQtyImport = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -371,6 +371,41 @@
             this.kryptonPanel3.Size = new System.Drawing.Size(272, 42);
             this.kryptonPanel3.TabIndex = 3;
             // 
+            // txtQtyImport
+            // 
+            this.txtQtyImport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtQtyImport.Location = new System.Drawing.Point(3, 5);
+            this.txtQtyImport.Maximum = new decimal(new int[] {
+            -727379968,
+            232,
+            0,
+            0});
+            this.txtQtyImport.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtQtyImport.Name = "txtQtyImport";
+            this.txtQtyImport.Size = new System.Drawing.Size(266, 28);
+            this.txtQtyImport.StateActive.Content.Padding = new System.Windows.Forms.Padding(5);
+            this.txtQtyImport.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.txtQtyImport.StateCommon.Border.Width = 2;
+            this.txtQtyImport.StateCommon.Content.Padding = new System.Windows.Forms.Padding(1);
+            this.txtQtyImport.StateNormal.Content.Padding = new System.Windows.Forms.Padding(5);
+            this.txtQtyImport.TabIndex = 2;
+            this.txtQtyImport.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtQtyImport.ThousandsSeparator = true;
+            this.txtQtyImport.UpDownButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Alternate;
+            this.txtQtyImport.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // kryptonPanel4
             // 
             this.kryptonPanel4.Controls.Add(this.kryptonLabel2);
@@ -557,6 +592,7 @@
             this.dgvImportFor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvImportFor.Size = new System.Drawing.Size(813, 164);
             this.dgvImportFor.TabIndex = 4;
+            this.dgvImportFor.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvImportFor_RowPostPaint);
             // 
             // PRODUCT_ID
             // 
@@ -564,6 +600,7 @@
             this.PRODUCT_ID.MinimumWidth = 6;
             this.PRODUCT_ID.Name = "PRODUCT_ID";
             this.PRODUCT_ID.ReadOnly = true;
+            this.PRODUCT_ID.Visible = false;
             // 
             // Name
             // 
@@ -592,41 +629,7 @@
             this.WAREHOUSE_ID.MinimumWidth = 6;
             this.WAREHOUSE_ID.Name = "WAREHOUSE_ID";
             this.WAREHOUSE_ID.ReadOnly = true;
-            // 
-            // txtQtyImport
-            // 
-            this.txtQtyImport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtQtyImport.Location = new System.Drawing.Point(3, 5);
-            this.txtQtyImport.Maximum = new decimal(new int[] {
-            -727379968,
-            232,
-            0,
-            0});
-            this.txtQtyImport.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtQtyImport.Name = "txtQtyImport";
-            this.txtQtyImport.Size = new System.Drawing.Size(266, 28);
-            this.txtQtyImport.StateActive.Content.Padding = new System.Windows.Forms.Padding(5);
-            this.txtQtyImport.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.txtQtyImport.StateCommon.Border.Width = 2;
-            this.txtQtyImport.StateCommon.Content.Padding = new System.Windows.Forms.Padding(1);
-            this.txtQtyImport.StateNormal.Content.Padding = new System.Windows.Forms.Padding(5);
-            this.txtQtyImport.TabIndex = 2;
-            this.txtQtyImport.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtQtyImport.ThousandsSeparator = true;
-            this.txtQtyImport.UpDownButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Alternate;
-            this.txtQtyImport.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.WAREHOUSE_ID.Visible = false;
             // 
             // frmUpdateImportedProduct
             // 
@@ -638,6 +641,7 @@
             //this.Name = "frmUpdateImportedProduct";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.Text = "Update quanty for Product";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -710,11 +714,11 @@
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel6;
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox1;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvImportFor;
+        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown txtQtyImport;
         private System.Windows.Forms.DataGridViewTextBoxColumn PRODUCT_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn Warehouse;
         private System.Windows.Forms.DataGridViewTextBoxColumn WAREHOUSE_ID;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown txtQtyImport;
     }
 }

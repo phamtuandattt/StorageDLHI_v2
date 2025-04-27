@@ -227,7 +227,7 @@
             this.kryptonNavigator1.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
             this.pagePOs,
             this.pageAddPO});
-            this.kryptonNavigator1.SelectedIndex = 1;
+            this.kryptonNavigator1.SelectedIndex = 0;
             this.kryptonNavigator1.Size = new System.Drawing.Size(1559, 741);
             this.kryptonNavigator1.StateCommon.Panel.Color1 = System.Drawing.Color.White;
             this.kryptonNavigator1.StateCommon.Panel.Color2 = System.Drawing.Color.White;
@@ -1523,8 +1523,9 @@
             this.btnAddAllProdIntoPO.Image = global::StorageDLHI.App.Properties.Resources.mark;
             this.btnAddAllProdIntoPO.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAddAllProdIntoPO.Name = "btnAddAllProdIntoPO";
-            this.btnAddAllProdIntoPO.Size = new System.Drawing.Size(223, 28);
+            this.btnAddAllProdIntoPO.Size = new System.Drawing.Size(223, 24);
             this.btnAddAllProdIntoPO.Text = "Add all product to create PO";
+            this.btnAddAllProdIntoPO.Visible = false;
             this.btnAddAllProdIntoPO.Click += new System.EventHandler(this.btnAddAllProdIntoPO_Click);
             // 
             // tlsMPRNo

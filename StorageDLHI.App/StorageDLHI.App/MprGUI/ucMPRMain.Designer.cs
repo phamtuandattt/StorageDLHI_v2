@@ -632,26 +632,26 @@
             this.btnReload.Image = global::StorageDLHI.App.Properties.Resources.refresh;
             this.btnReload.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(29, 24);
+            this.btnReload.Size = new System.Drawing.Size(29, 28);
             this.btnReload.Text = "Refresh";
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripLabel3
             // 
             this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(56, 24);
+            this.toolStripLabel3.Size = new System.Drawing.Size(56, 28);
             this.toolStripLabel3.Text = "Search:";
             // 
             // txtSearchMPR
             // 
             this.txtSearchMPR.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSearchMPR.Name = "txtSearchMPR";
-            this.txtSearchMPR.Size = new System.Drawing.Size(200, 27);
+            this.txtSearchMPR.Size = new System.Drawing.Size(200, 31);
             this.txtSearchMPR.TextChanged += new System.EventHandler(this.txtSearchMPR_TextChanged);
             // 
             // tlsExportExcelMpr
@@ -660,14 +660,14 @@
             this.tlsExportExcelMpr.Image = global::StorageDLHI.App.Properties.Resources.excel;
             this.tlsExportExcelMpr.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsExportExcelMpr.Name = "tlsExportExcelMpr";
-            this.tlsExportExcelMpr.Size = new System.Drawing.Size(29, 24);
+            this.tlsExportExcelMpr.Size = new System.Drawing.Size(29, 28);
             this.tlsExportExcelMpr.Text = "Export";
             this.tlsExportExcelMpr.Click += new System.EventHandler(this.tlsExportExcelMpr_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 31);
             // 
             // tlsSearchDateCreateMPR
             // 
@@ -675,14 +675,14 @@
             this.tlsSearchDateCreateMPR.Image = global::StorageDLHI.App.Properties.Resources.search;
             this.tlsSearchDateCreateMPR.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsSearchDateCreateMPR.Name = "tlsSearchDateCreateMPR";
-            this.tlsSearchDateCreateMPR.Size = new System.Drawing.Size(29, 24);
+            this.tlsSearchDateCreateMPR.Size = new System.Drawing.Size(29, 28);
             this.tlsSearchDateCreateMPR.Text = "Search date";
             this.tlsSearchDateCreateMPR.Click += new System.EventHandler(this.tlsSearchDateCreateMPR_Click);
             // 
             // lblTime
             // 
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(0, 24);
+            this.lblTime.Size = new System.Drawing.Size(0, 28);
             // 
             // tlsClearSearchDate
             // 
@@ -737,14 +737,14 @@
             // kryptonGroupBox1
             // 
             this.kryptonGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox1.Location = new System.Drawing.Point(0, 31);
+            this.kryptonGroupBox1.Location = new System.Drawing.Point(0, 27);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             this.kryptonGroupBox1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             // 
             // kryptonGroupBox1.Panel
             // 
             this.kryptonGroupBox1.Panel.Controls.Add(this.dgvProds);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(1378, 326);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(1378, 330);
             this.kryptonGroupBox1.TabIndex = 1;
             this.kryptonGroupBox1.Values.Heading = "Product list";
             // 
@@ -783,7 +783,7 @@
             this.dgvProds.ReadOnly = true;
             this.dgvProds.RowHeadersWidth = 51;
             this.dgvProds.RowTemplate.Height = 100;
-            this.dgvProds.Size = new System.Drawing.Size(1374, 298);
+            this.dgvProds.Size = new System.Drawing.Size(1374, 302);
             this.dgvProds.TabIndex = 1;
             this.dgvProds.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProds_CellDoubleClick);
             this.dgvProds.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProds_CellMouseDown);
@@ -985,7 +985,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(1378, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1378, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -995,19 +995,19 @@
             this.btnAddProd.Image = global::StorageDLHI.App.Properties.Resources.add;
             this.btnAddProd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAddProd.Name = "btnAddProd";
-            this.btnAddProd.Size = new System.Drawing.Size(29, 24);
+            this.btnAddProd.Size = new System.Drawing.Size(29, 28);
             this.btnAddProd.Text = "Add new product for create MPR";
             this.btnAddProd.Click += new System.EventHandler(this.btnAddProd_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(56, 24);
+            this.toolStripLabel1.Size = new System.Drawing.Size(56, 28);
             this.toolStripLabel1.Text = "Search:";
             // 
             // txtSearchProd
@@ -1033,14 +1033,14 @@
             // kryptonGroupBox2
             // 
             this.kryptonGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox2.Location = new System.Drawing.Point(0, 31);
+            this.kryptonGroupBox2.Location = new System.Drawing.Point(0, 27);
             this.kryptonGroupBox2.Name = "kryptonGroupBox2";
             this.kryptonGroupBox2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             // 
             // kryptonGroupBox2.Panel
             // 
             this.kryptonGroupBox2.Panel.Controls.Add(this.dgvProdExistMpr);
-            this.kryptonGroupBox2.Size = new System.Drawing.Size(1378, 326);
+            this.kryptonGroupBox2.Size = new System.Drawing.Size(1378, 330);
             this.kryptonGroupBox2.TabIndex = 1;
             this.kryptonGroupBox2.Values.Heading = "Products of MPRs";
             // 
@@ -1074,7 +1074,7 @@
             this.dgvProdExistMpr.ReadOnly = true;
             this.dgvProdExistMpr.RowHeadersWidth = 51;
             this.dgvProdExistMpr.RowTemplate.Height = 50;
-            this.dgvProdExistMpr.Size = new System.Drawing.Size(1374, 298);
+            this.dgvProdExistMpr.Size = new System.Drawing.Size(1374, 302);
             this.dgvProdExistMpr.TabIndex = 2;
             this.dgvProdExistMpr.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProdExistMpr_CellMouseDown);
             this.dgvProdExistMpr.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvProdExistMpr_DataBindingComplete);
@@ -1239,7 +1239,7 @@
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip2.Size = new System.Drawing.Size(1378, 31);
+            this.toolStrip2.Size = new System.Drawing.Size(1378, 27);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -1248,19 +1248,19 @@
             this.tlsDeleteProdExist.Image = global::StorageDLHI.App.Properties.Resources.bin;
             this.tlsDeleteProdExist.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsDeleteProdExist.Name = "tlsDeleteProdExist";
-            this.tlsDeleteProdExist.Size = new System.Drawing.Size(87, 24);
+            this.tlsDeleteProdExist.Size = new System.Drawing.Size(87, 28);
             this.tlsDeleteProdExist.Text = "Clear all";
             this.tlsDeleteProdExist.Click += new System.EventHandler(this.tlsDeleteProdExist_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(56, 24);
+            this.toolStripLabel2.Size = new System.Drawing.Size(56, 28);
             this.toolStripLabel2.Text = "Search:";
             // 
             // txtSearchProdExistMPR
@@ -1277,7 +1277,7 @@
             this.btnConfirm.Image = global::StorageDLHI.App.Properties.Resources.right;
             this.btnConfirm.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(91, 24);
+            this.btnConfirm.Size = new System.Drawing.Size(91, 28);
             this.btnConfirm.Text = "Comfirm";
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
@@ -1285,7 +1285,7 @@
             // 
             this.tlsLabalQtyProd.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tlsLabalQtyProd.Name = "tlsLabalQtyProd";
-            this.tlsLabalQtyProd.Size = new System.Drawing.Size(27, 24);
+            this.tlsLabalQtyProd.Size = new System.Drawing.Size(27, 28);
             this.tlsLabalQtyProd.Text = "(0)";
             this.tlsLabalQtyProd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 

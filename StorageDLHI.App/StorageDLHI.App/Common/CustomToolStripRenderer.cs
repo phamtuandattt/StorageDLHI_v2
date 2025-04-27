@@ -30,7 +30,7 @@ namespace StorageDLHI.App.Common
             // Determine color
             Color fillColor;
             if (button == ActiveButton)
-                fillColor = Color.FromArgb(120, 180, 255); // Active: blue
+                fillColor = Color.FromArgb(183, 219, 255); // Active: 
             else if (button == HoveredButton)
                 fillColor = Color.FromArgb(220, 240, 255); // Hover: light blue
             else
