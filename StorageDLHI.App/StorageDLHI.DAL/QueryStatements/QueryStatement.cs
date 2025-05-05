@@ -13,11 +13,14 @@ namespace StorageDLHI.DAL.QueryStatements
         // Display combobox property
         public const string PROPERTY_FOR_ORI_TYPE_STAND_VALUE = "ValueMember";
         public const string PROPERTY_FOR_ORI_TYPE_STAND_DISPLAY = "DisplayMember";
+
         // Supplier
-        public const string GET_SUPPLIERS = "SELECT *FROM SUPPLIERS";
-        public const string INSERT_SUPPLIERS = "INSERT INTO SUPPLIERS VALUES ('{0}', N'{1}', '{2}', N'{3}', '{4}', N'{5}', N'{6}')";
-        public const string UPDATE_SUPPLIER = "UPDATE SUPPLIERS SET NAME = N'{0}', CERT = '{1}', EMAIL = N'{2}', PHONE = '{3}', VIETTAT = N'{4}', ADDRESS = N'{5}' WHERE ID = '{6}'";
-        public const string DELETE_SUPPLIER = "DELETE SUPPLIERS WHERE ID = '{0}'";
+        public const string GET_SUPPLIERS = "EXEC GET_SUPPLIERS";
+        public const string INSERT_SUPPLIERS = "EXEC INSERT_SUPPLIER '{0}', N'{1}', '{2}', N'{3}', '{4}', N'{5}', N'{6}'";
+        //public const string UPDATE_SUPPLIER = "UPDATE SUPPLIERS SET NAME = N'{0}', CERT = '{1}', EMAIL = N'{2}', PHONE = '{3}', VIETTAT = N'{4}', ADDRESS = N'{5}' WHERE ID = '{6}'";
+        public const string UPDATE_SUPPLIER = "EXEC UPDATE_SUPPLIER '{6}', N'{0}', '{1}', N'{2}', '{3}', N'{4}', N'{5}'";
+        //public const string DELETE_SUPPLIER = "DELETE SUPPLIERS WHERE ID = '{0}'";
+        public const string DELETE_SUPPLIER = "EXEC DELETE_SUPPLIER '{0}'";
         public const string PROPERTY_SUPPLIER_ID = "ID";
         public const string PROPERTY_SUPPLIER_NAME = "NAME";
         public const string PROPERTY_SUPPLIER_CERT = "CERT";
@@ -25,7 +28,7 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_SUPPLIER_PHONE = "PHONE";
         public const string PROPERTY_SUPPLIER_VIETTAT = "VIETTAT";
         public const string PROPERTY_SUPPLIER_ADDRESS = "ADDRESS";
-        public const string GET_SUPPLIER = "SELECT *FROM SUPPLIERS WHERE ID = '{0}'";
+        public const string GET_SUPPLIER = "EXEC GET_SUPPLIER_BY_ID '{0}'";
 
         // Supplier banks
         public const string GET_SUPPLIER_BANKS = "SELECT *FROM SUPPLIER_BANKS";
