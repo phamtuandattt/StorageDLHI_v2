@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageDLHI.BLL", "StorageD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageDLHI.Infrastructor", "StorageDLHI.Infrastructor\StorageDLHI.Infrastructor.csproj", "{2026E5F3-B21F-4C73-8C72-5B33A4A79BEB}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DLHI_Installer_v2", "DLHI_Installer_v2\DLHI_Installer_v2.vdproj", "{B82F686E-A642-4687-BE24-71AEE94A29C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,8 @@ Global
 		{2026E5F3-B21F-4C73-8C72-5B33A4A79BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2026E5F3-B21F-4C73-8C72-5B33A4A79BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2026E5F3-B21F-4C73-8C72-5B33A4A79BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B82F686E-A642-4687-BE24-71AEE94A29C1}.Debug|Any CPU.ActiveCfg = Debug
+		{B82F686E-A642-4687-BE24-71AEE94A29C1}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
