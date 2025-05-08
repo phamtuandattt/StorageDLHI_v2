@@ -64,12 +64,9 @@ namespace StorageDLHI.App.Common
             string templateFileName = templateFile;  // your template file
             string fullPath = Path.Combine(baseDirectory, "TemplateExport", templateFileName);
 
-            //C: \Users\TUAN DAT\Desktop\StorageDLHI_v2\StorageDLHI.App\StorageDLHI.App\TemplateExport\po_temp.xlsx
-
             // Check if file exists
             if (!File.Exists(fullPath))
             {
-                //MessageBox.Show("Template file not found: " + fullPath);
                 LoggerConfig.Logger.Info($"Template file not found: {fullPath} by {ShareData.UserName}");
             }
             else

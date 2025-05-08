@@ -31,11 +31,11 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_SUPPLIER = "EXEC GET_SUPPLIER_BY_ID '{0}'";
 
         // Supplier banks
-        public const string GET_SUPPLIER_BANKS = "SELECT *FROM SUPPLIER_BANKS";
-        public const string GET_SUPPLIER_BANKS_FORM = "SELECT *FROM SUPPLIER_BANKS WHERE ID = '00000000-0000-0000-0000-000000000000'";
-        public const string GET_BANK_BY_SUPPLIER = "SELECT *FROM SUPPLIER_BANKS WHERE SUPPLIER_ID = '{0}'";
-        public const string UPDATE_BANK = "UPDATE SUPPLIER_BANKS SET BANK_ACCOUNT = '{0}', BANK_NAME = N'{1}', BANK_BENEFICIAL = N'{2}' WHERE ID = '{3}'";
-        public const string DELETE_BANK = "DELETE SUPPLIER_BANKS WHERE ID = '{0}'";
+        public const string GET_SUPPLIER_BANKS = "EXEC GET_SUPPLIER_BANK";
+        public const string GET_SUPPLIER_BANKS_FORM = "EXEC GET_SUPPLIER_BANK_FORM";
+        public const string GET_BANK_BY_SUPPLIER = "EXEC GET_SUPPLIER_BANK_BY_ID '{0}'";
+        public const string UPDATE_BANK = "EXEC UPDATE_SUPPLIER_BANK '{3}', '{0}', N'{1}', N'{2}'";
+        public const string DELETE_BANK = "EXEC DELETE_SUPPLIER_BANK '{0}'";
         public const string PROPERTY_SUPPLIER_BANK_ID = "ID";
         public const string PROPERTY_SUPPLIER_BANK_SUPPLIER_ID = "SUPPLIER_ID";
         public const string PROPERTY_SUPPLIER_BANK_BANK_ACCOUNT = "BANK_ACCOUNT";
@@ -44,9 +44,9 @@ namespace StorageDLHI.DAL.QueryStatements
 
 
         // Material Origins
-        public const string GET_ORIGINS = "SELECT *FROM ORIGINS";
-        public const string INSERT_ORIGIN = "INSERT INTO ORIGINS VALUES ('{0}', '{1}', N'{2}')";
-        public const string UPDATE_ORIGIN = "UPDATE ORIGINS SET ORIGIN_CODE = '{0}', ORIGIN_NAME = N'{1}' WHERE ID = '{2}'";
+        public const string GET_ORIGINS = "EXEC GET_ORIGINS";
+        public const string INSERT_ORIGIN = "EXEC INSERT_ORIGIN '{0}', '{1}', N'{2}'";
+        public const string UPDATE_ORIGIN = "EXEC UPDATE_ORIGIN '{2}', '{0}', N'{1}'";
         public const string PROPERTY_ORIGIN_CODE = "ORIGIN_CODE";
         public const string PROPERTY_ORIGIN_NAME = "ORIGIN_NAME";
 

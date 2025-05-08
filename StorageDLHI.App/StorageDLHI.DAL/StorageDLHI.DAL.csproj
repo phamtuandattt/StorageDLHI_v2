@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataProvider\AppSettings.cs" />
     <Compile Include="DataProvider\SQLServerProvider.cs" />
     <Compile Include="MappingProfile.cs" />
     <Compile Include="Models\Company_Infos.cs" />

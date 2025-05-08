@@ -15,10 +15,12 @@ namespace StorageDLHI.DAL.DataProvider
     {
         private SqlConnection _connection = null;
         private string _connString = "";
+        private AppSettings AppSettings = new AppSettings();
 
         public SQLServerProvider()
         {
-            _connString = "server=DESKTOP-KD2BPDJ;database=DLHI_v2;Integrated Security = true;uid=sa;pwd=Aa123456@;MultipleActiveResultSets=True;";
+            //_connString = "server=DESKTOP-KD2BPDJ;database=DLHI_v2;Integrated Security = true;uid=sa;pwd=Aa123456@;MultipleActiveResultSets=True;";
+            _connString = AppSettings.GetConnectionString("StorageDLHI");
             _connection = new SqlConnection(_connString);
         }
 

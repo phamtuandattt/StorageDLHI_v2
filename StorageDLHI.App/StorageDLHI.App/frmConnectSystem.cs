@@ -18,6 +18,7 @@ namespace StorageDLHI.App
     public partial class frmConnectSystem : KryptonForm
     {
         private SQLServerProvider _services = new SQLServerProvider();
+        private AppSettings _settings = new AppSettings();
         public string ConnectionString {  get; set; }
 
 
@@ -65,6 +66,8 @@ namespace StorageDLHI.App
                     // Save connection string to settings
                     Properties.Settings.Default.DbConnectionString = ConnectionString;
                     Properties.Settings.Default.Save();
+
+                    _settings.SetConnectionString("StorageDLHI", ConnectionString);
 
                     KryptonMessageBox.Show("Connection saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
