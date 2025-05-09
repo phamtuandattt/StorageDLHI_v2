@@ -329,5 +329,10 @@ namespace StorageDLHI.App.SupplierGUI
                 txtCert.SelectionStart = Math.Max(pos, 0);
             }
         }
+
+        private void txtViettat_TextAlignChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
