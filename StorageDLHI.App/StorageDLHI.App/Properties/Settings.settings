@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="DbConnectionString" Type="System.String" Scope="User">
-      <Value Profile="(Default)">""</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="RememberLogin" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

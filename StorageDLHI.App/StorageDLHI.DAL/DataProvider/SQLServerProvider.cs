@@ -96,20 +96,30 @@ namespace StorageDLHI.DAL.DataProvider
 
         public async Task<T> GetEntityByIdAsync<T>(string sqlQuery, Func<SqlDataReader, T> mapFunc)
         {
-            using (SqlConnection conn = new SqlConnection(_connString))
-            using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
+            try
             {
-                await conn.OpenAsync();
-
-                using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
+                using (SqlConnection conn = new SqlConnection(_connString))
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
                 {
-                    if (await reader.ReadAsync())
+                    await conn.OpenAsync();
+
+                    using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                     {
-                        return mapFunc(reader);
+                        if (await reader.ReadAsync())
+                        {
+                            return mapFunc(reader);
+                        }
                     }
                 }
+                LoggerConfig.Logger.Info($"Get data \"{mapFunc}\" by {ShareData.UserName}");
+                return default;
             }
-            return default;
+            catch (SqlException ex)
+            {
+                LoggerConfig.Logger.Error($"{ex.Message} by {ShareData.UserName}");
+                return default;
+            }
+            
         }
 
         public async Task<DataTable> GetDataAsync(string sqlQuery, string tableName)
