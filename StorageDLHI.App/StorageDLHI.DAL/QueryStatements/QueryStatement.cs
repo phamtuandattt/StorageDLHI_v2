@@ -204,5 +204,12 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string ADD_DELIVERY_PRODUCTS = "SET DATEFORMAT DMY INSERT INTO DELIVERY_PRODUCTS VALUES ('{0}', '{1}', {2}, {3}, {4}, {5}, '{6}', '{7}')";
         public const string DELETE_DELIVERY_PRODUCTS = "DELETE FROM DELIVERY_PRODUCTS WHERE ID = '{0}'";
         public const string GET_DELIVERY_PRODUCT_DETAIL = "SELECT *FROM DELIVERY_PRODUCT_DETAIL";
+
+        // Staff
+        public const string PROPERTY_STAFF_ID = "ID";
+        public const string PROPERTY_STAFF_CODE = "STAFF_CODE";
+        public const string PROPERTY_STAFF_NAME = "STAFF_NAME";
+        public const string PROPERTY_STAFF_DEVICE_NAME = "STAFF_DEVICE_NAME";
+        public const string GET_STAFF_BY_DEVICE = "SELECT *FROM STAFFS WHERE STAFF_DEVICE_NAME = '{0}'";
     }
 }

@@ -8,6 +8,7 @@ using StorageDLHI.App.MprGUI;
 using StorageDLHI.App.PoGUI;
 using StorageDLHI.App.SupplierGUI;
 using StorageDLHI.App.WarehouseGUI;
+using StorageDLHI.Infrastructor;
 using StorageDLHI.Infrastructor.Shared;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,13 @@ namespace StorageDLHI.App.MainGUI
         public Main()
         {
             InitializeComponent();
+
+            var infos = Properties.Settings.Default.RememberLogin.Split('|');
+            ShareData.UserId = Guid.Parse(infos[0]);
+            ShareData.UserName = infos[1];
+
+            LoggerConfig.Logger.Info($"Login by: {infos[1]} - {infos[2]} - {infos[0]}");
+
 
             _renderer = new CustomToolStripRenderer();
             tlsMenuButton.RenderMode = ToolStripRenderMode.ManagerRenderMode;

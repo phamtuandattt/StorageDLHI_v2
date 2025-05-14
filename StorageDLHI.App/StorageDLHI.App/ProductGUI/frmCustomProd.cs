@@ -100,7 +100,7 @@ namespace StorageDLHI.App.ProductGUI
             cboUnit.DataSource = dtUnits;
             cboUnit.DisplayMember = QueryStatement.PROPERTY_UNIT_CODE;
             cboUnit.ValueMember = QueryStatement.PROPERTY_UNIT_ID;
-            if (dtUnits != null)
+            if (dtUnits.Rows.Count > 0)
             {
                 cboUnit.SelectedIndex = 0;
             }
@@ -111,7 +111,7 @@ namespace StorageDLHI.App.ProductGUI
             comboBox.DataSource = dataTable;
             comboBox.DisplayMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_DISPLAY;
             comboBox.ValueMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_VALUE;
-            if (dataTable != null)
+            if (dataTable.Rows.Count > 0)
             {
               comboBox.SelectedIndex = 0;
             }

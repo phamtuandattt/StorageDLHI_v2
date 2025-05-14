@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 
 namespace StorageDLHI.DAL.DataProvider
 {
@@ -36,6 +37,60 @@ namespace StorageDLHI.DAL.DataProvider
             catch (Exception)
             {
                 return false;
+            }
+        }
+
+        public bool CreateAndGrantPermissionForUser(string databaseName, string loginName, string loginPassword)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(_connString))
+                {
+                    conn.Open();
+
+                    // 1. Create SQL Login
+                    string createLoginQuery = $@"
+                            IF NOT EXISTS (SELECT name FROM sys.server_principals WHERE name = '{loginName}')
+                            BEGIN
+                                CREATE LOGIN [{loginName}] WITH PASSWORD = '{loginPassword}';
+                            END";
+
+                    ExecuteNonQuery(conn, createLoginQuery);
+
+                    // 2. Create user in your database
+                    string createUserQuery = $@"
+                            USE [{databaseName}];
+                            IF NOT EXISTS (SELECT name FROM sys.database_principals WHERE name = '{loginName}')
+                            BEGIN
+                                CREATE USER [{loginName}] FOR LOGIN [{loginName}];
+                            END";
+
+                    ExecuteNonQuery(conn, createUserQuery);
+
+                    // 3. Grant SELECT permission on all tables in schema dbo
+                    string grantPermissionQuery = $@"
+                                USE [{databaseName}];
+                                GRANT SELECT ON SCHEMA::dbo TO [{loginName}];
+                                GRANT EXECUTE TO [{loginName}];";
+
+                    ExecuteNonQuery(conn, grantPermissionQuery);
+
+                    LoggerConfig.Logger.Info("User and permissions created successfully!");
+                    return true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                LoggerConfig.Logger.Error($"{ex.Message} by {ShareData.UserName}");
+                return false;
+            }
+        }
+
+        private void ExecuteNonQuery(SqlConnection connection, string sql)
+        {
+            using (SqlCommand cmd = new SqlCommand(sql, connection))
+            {
+                cmd.ExecuteNonQuery();
             }
         }
 

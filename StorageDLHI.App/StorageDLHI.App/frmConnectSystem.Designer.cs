@@ -220,7 +220,7 @@
             this.txtDatabase.StateCommon.Border.Rounding = 15;
             this.txtDatabase.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             this.txtDatabase.TabIndex = 2;
-            this.txtDatabase.Text = "STORAGE_DLHI";
+            this.txtDatabase.Text = "DLHI_TEST";
             // 
             // kryptonLabel9
             // 
@@ -331,6 +331,7 @@
             // 
             // btnConnect
             // 
+            this.btnConnect.Enabled = false;
             this.btnConnect.Location = new System.Drawing.Point(320, 2);
             this.btnConnect.Margin = new System.Windows.Forms.Padding(4);
             this.btnConnect.Name = "btnConnect";

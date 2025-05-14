@@ -12,6 +12,7 @@ namespace StorageDLHI.DAL.Models
         public string Staff_Code { get; set; }
         public string Staff_Pwd { get; set; }
         public string Name { get; set; }
+        public string DeviceName { get; set; }
         public Guid DepartmentId { get; set; }
         public Guid Staff_RoleId { get; set; }
 

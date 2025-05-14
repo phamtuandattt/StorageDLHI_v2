@@ -1,5 +1,7 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
+using StorageDLHI.App.Common;
 using StorageDLHI.App.MainGUI;
+using StorageDLHI.BLL.StaffDAO;
 using StorageDLHI.DAL.DataProvider;
 using System;
 using System.Collections.Generic;
@@ -19,19 +21,39 @@ namespace StorageDLHI.App
     {
         private SQLServerProvider _services = new SQLServerProvider();
         private AppSettings _settings = new AppSettings();
+        private string _computer_name = "";
+
         public string ConnectionString {  get; set; }
 
 
         public frmConnectSystem()
         {
             InitializeComponent();
+
+            _computer_name = System.Environment.MachineName;
+
+            if (_computer_name.ToUpper().Equals("DESKTOP-KD2BPDJ")
+                || _computer_name.ToUpper().Equals("DAVIDHOANG"))
+            {
+                txtUser.Text = "sa";
+            }
+            else
+            {
+                FillInfo();
+            }
+        }
+
+        private async void FillInfo()
+        {
+            var mStaff = await StaffDAO.GetStaff(_computer_name);
+            txtUser.Text = mStaff.Name;
         }
 
         private void btnTestConnect_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtServerName.Text) || string.IsNullOrEmpty(txtDatabase.Text))
             {
-                KryptonMessageBox.Show("Please fill in all information !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBoxHelper.ShowWarning("Please fill in all information !");
                 return;
             }
 
@@ -47,15 +69,17 @@ namespace StorageDLHI.App
 
             if (_services.CheckConnection(ConnectionString))
             {
-                KryptonMessageBox.Show("Connected successfully !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBoxHelper.ShowInfo("Connected successfully !\nHope you have an enjoyable experience.");
+                btnConnect.Enabled = true;
             }
             else
             {
-                KryptonMessageBox.Show("Connected unsuccessfully !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBoxHelper.ShowWarning("Connected unsuccessfully !\nPlease check with your admin !");
+                return;
             }
         }
 
-        private void btnConnect_Click(object sender, EventArgs e)
+        private async void btnConnect_Click(object sender, EventArgs e)
         {
             // Test connection before saving
             using (SqlConnection conn = new SqlConnection(ConnectionString))
@@ -68,6 +92,16 @@ namespace StorageDLHI.App
                     Properties.Settings.Default.Save();
 
                     _settings.SetConnectionString("StorageDLHI", ConnectionString);
+
+                    // Get and Save ID Staff for remember LOGIN
+                    var mStaff = await StaffDAO.GetStaff(_computer_name);
+                    
+                    string userId = mStaff.Id.ToString().Trim();
+                    string userName = mStaff.Name.Trim().ToUpper();
+                    string device = mStaff.DeviceName.Trim().ToUpper();
+
+                    Properties.Settings.Default.RememberLogin = $"{userId}|{userName}|{device}";
+                    Properties.Settings.Default.Save();
 
                     KryptonMessageBox.Show("Connection saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -92,6 +126,7 @@ namespace StorageDLHI.App
         private void ResetConnectionString(object sender, EventArgs e)
         {
             Properties.Settings.Default.DbConnectionString = "";
+            Properties.Settings.Default.RememberLogin = "";
             Properties.Settings.Default.Save();
 
             KryptonMessageBox.Show("Connection settings reset. Please restart the application.", "Reset", MessageBoxButtons.OK, MessageBoxIcon.Information);

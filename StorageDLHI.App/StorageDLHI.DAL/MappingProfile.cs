@@ -25,5 +25,16 @@ namespace StorageDLHI.DAL
                 Bank_Id = reader.GetGuid(reader.GetOrdinal(QueryStatement.PROPERTY_SUPPLIER_BANK_ID)),
             };
         }
+
+        public static Staffs MapSaff(SqlDataReader reader)
+        {
+            return new Staffs
+            {
+                Id = reader.GetGuid(reader.GetOrdinal(QueryStatement.PROPERTY_STAFF_ID)),
+                Staff_Code = reader.GetString(reader.GetOrdinal(QueryStatement.PROPERTY_STAFF_CODE)),
+                Name = reader.GetString(reader.GetOrdinal(QueryStatement.PROPERTY_STAFF_NAME)),
+                DeviceName = reader.GetString(reader.GetOrdinal(QueryStatement.PROPERTY_STAFF_DEVICE_NAME)),
+            };
+        }
     }
 }
