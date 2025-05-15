@@ -158,7 +158,7 @@ namespace StorageDLHI.App.PoGUI
             comboBox.DataSource = dataTable;
             comboBox.DisplayMember = displayMember;
             comboBox.ValueMember = valueMemeber;
-            if (dataTable != null)
+            if (dataTable.Rows.Count > 0)
             {
                 comboBox.SelectedIndex = 0;
             }

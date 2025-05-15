@@ -847,40 +847,42 @@ namespace StorageDLHI.App.PoGUI
             };
 
             DataTable dtForExport = new DataTable();
-            dtForExport.Columns.Add("PROD_NAME"); // 0
-            dtForExport.Columns.Add("MATERIAL"); // 1
-            dtForExport.Columns.Add("A"); // 2
+            dtForExport.Columns.Add("PROD_CODE"); // new code - 0
+            dtForExport.Columns.Add("PROD_NAME"); // 1
+            dtForExport.Columns.Add("MATERIAL"); // 2
+            dtForExport.Columns.Add("A"); // 3
             dtForExport.Columns.Add("B");
             dtForExport.Columns.Add("C");
-            dtForExport.Columns.Add("QTY"); // 5
-            dtForExport.Columns.Add("UNIT"); // 6
-            dtForExport.Columns.Add("G"); // 7
-            dtForExport.Columns.Add("MPR_NO_REV");
-            dtForExport.Columns.Add("REQ_DATE");
-            dtForExport.Columns.Add("PLACE_OF_ENTRY");
-            dtForExport.Columns.Add("PRICE"); // 11
-            dtForExport.Columns.Add("AMOUNT"); // 12
+            dtForExport.Columns.Add("QTY"); // 6
+            dtForExport.Columns.Add("UNIT"); // 7
+            dtForExport.Columns.Add("G"); // 8
+            dtForExport.Columns.Add("MPR_NO_REV"); // 9
+            dtForExport.Columns.Add("REQ_DATE"); // 10
+            dtForExport.Columns.Add("PLACE_OF_ENTRY"); // 11
+            dtForExport.Columns.Add("PRICE"); // 12
+            dtForExport.Columns.Add("AMOUNT"); // 13
             dtForExport.Columns.Add("RECEIVE");
             dtForExport.Columns.Add("REMARKS");
 
             foreach (DataGridViewRow item in dgvPODetail.Rows)
             {
                 DataRow dataRow = dtForExport.NewRow();
-                dataRow[0] = item.Cells[3].Value.ToString().Trim();
-                dataRow[1] = item.Cells[5].Value.ToString().Trim();
-                dataRow[2] = item.Cells[6].Value.ToString().Trim();
-                dataRow[3] = item.Cells[7].Value.ToString().Trim();
-                dataRow[4] = item.Cells[8].Value.ToString().Trim();
-                dataRow[5] = item.Cells[13].Value.ToString().Trim(); //
-                dataRow[6] = item.Cells[16].Value.ToString().Trim();
-                dataRow[7] = item.Cells[12].Value.ToString().Trim();
-                dataRow[8] = "";
+                dataRow[0] = item.Cells[17].Value.ToString().Trim();
+                dataRow[1] = item.Cells[3].Value.ToString().Trim();
+                dataRow[2] = item.Cells[5].Value.ToString().Trim();
+                dataRow[3] = item.Cells[6].Value.ToString().Trim();
+                dataRow[4] = item.Cells[7].Value.ToString().Trim();
+                dataRow[5] = item.Cells[8].Value.ToString().Trim();
+                dataRow[6] = item.Cells[13].Value.ToString().Trim(); //
+                dataRow[7] = item.Cells[16].Value.ToString().Trim();
+                dataRow[8] = item.Cells[12].Value.ToString().Trim();
                 dataRow[9] = "";
                 dataRow[10] = "";
-                dataRow[11] = item.Cells[14].Value.ToString().Trim();
-                dataRow[12] = item.Cells[15].Value.ToString().Trim();
-                dataRow[13] = "";
+                dataRow[11] = "";
+                dataRow[12] = item.Cells[14].Value.ToString().Trim();
+                dataRow[13] = item.Cells[15].Value.ToString().Trim();
                 dataRow[14] = "";
+                dataRow[15] = "";
 
                 dtForExport.Rows.Add(dataRow);
             }
