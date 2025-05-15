@@ -200,7 +200,7 @@ namespace StorageDLHI.App.PoGUI
                 CostId = Guid.Parse(cboCost.SelectedValue.ToString()),
                 TaxId = Guid.Parse(cboTax.SelectedValue.ToString()),
                 SupplierId = Guid.Parse(cboSuppplier.SelectedValue.ToString()),
-                Staff_Id = Guid.Parse("d8f320fd-106b-4859-a4aa-421e4decad89"), //ShareData.UserId.ToString()
+                Staff_Id = ShareData.UserId,
                 IsImported = false
             };
 

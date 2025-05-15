@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StorageDLHI.Infrastructor;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -26,6 +27,8 @@ namespace StorageDLHI.DAL.DataProvider
             Configuration.ConnectionStrings.ConnectionStrings[name].ConnectionString = value;
             Configuration.ConnectionStrings.ConnectionStrings[name].ProviderName = "System.Data.SqlClient";
             Configuration.Save(ConfigurationSaveMode.Modified);
+
+            LoggerConfig.Logger.Info($"Set connection string: {value}");
         }
     }
 }
