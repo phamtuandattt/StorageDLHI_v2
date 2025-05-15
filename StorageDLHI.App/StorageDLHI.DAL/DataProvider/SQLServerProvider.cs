@@ -32,10 +32,12 @@ namespace StorageDLHI.DAL.DataProvider
                 _connection = new SqlConnection(connectionString);
                 _connection.Open();
                 _connection.Close();
+                LoggerConfig.Logger.Info($"Connection string: {connectionString} - Success !");
                 return true;
             }
             catch (Exception)
             {
+                LoggerConfig.Logger.Error($"Connection string: {connectionString} - Failed !");
                 return false;
             }
         }

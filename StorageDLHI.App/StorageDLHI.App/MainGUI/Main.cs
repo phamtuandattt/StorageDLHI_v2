@@ -54,10 +54,6 @@ namespace StorageDLHI.App.MainGUI
                     btn.MouseLeave += ToolStripButton_MouseLeave;
                 }
             }
-
-
-            ShareData.UserName = "David Hoang";
-            ShareData.UserId = Guid.Parse("D8F320FD-106B-4859-A4AA-421E4DECAD89");
         }
 
         private void ToolStripButton_MouseLeave(object sender, EventArgs e)

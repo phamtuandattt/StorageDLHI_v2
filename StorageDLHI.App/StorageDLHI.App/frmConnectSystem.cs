@@ -88,9 +88,6 @@ namespace StorageDLHI.App
                 {
                     conn.Open();
                     // Save connection string to settings
-                    Properties.Settings.Default.DbConnectionString = ConnectionString;
-                    Properties.Settings.Default.Save();
-
                     _settings.SetConnectionString("StorageDLHI", ConnectionString);
 
                     // Get and Save ID Staff for remember LOGIN
@@ -100,6 +97,7 @@ namespace StorageDLHI.App
                     string userName = mStaff.Name.Trim().ToUpper();
                     string device = mStaff.DeviceName.Trim().ToUpper();
 
+                    Properties.Settings.Default.DbConnectionString = ConnectionString;
                     Properties.Settings.Default.RememberLogin = $"{userId}|{userName}|{device}";
                     Properties.Settings.Default.Save();
 
