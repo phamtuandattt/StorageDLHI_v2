@@ -101,7 +101,7 @@ namespace StorageDLHI.BLL.MaterialDAO
 
         public static async Task<bool> InsertTax(Taxs taxs)
         {
-            string sqlQuery = string.Format(QueryStatement.INSERT_TAX, taxs.Id, taxs.Tax_Percent);
+            string sqlQuery = string.Format(QueryStatement.INSERT_TAX, taxs.Id, taxs.Tax_Percent, taxs.Tax_Value);
             return await data.Insert(sqlQuery) > 0;
         }
 
@@ -119,7 +119,7 @@ namespace StorageDLHI.BLL.MaterialDAO
 
         public static async Task<bool> UpdateTax(Taxs taxs)
         {
-            string sqlQuery = string.Format(QueryStatement.UPDATE_TAX, taxs.Tax_Percent, taxs.Id);
+            string sqlQuery = string.Format(QueryStatement.UPDATE_TAX, taxs.Tax_Percent, taxs.Tax_Value, taxs.Id);
             return await data.Insert(sqlQuery) > 0;
         }
 

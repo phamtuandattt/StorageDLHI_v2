@@ -10,5 +10,6 @@ namespace StorageDLHI.DAL.Models
     {
         public Guid Id { get; set; }
         public string Tax_Percent { get; set; }
+        public float Tax_Value { get; set; }
     }
 }

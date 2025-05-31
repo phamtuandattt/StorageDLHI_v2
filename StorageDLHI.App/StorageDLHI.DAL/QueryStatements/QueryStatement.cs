@@ -67,8 +67,8 @@ namespace StorageDLHI.DAL.QueryStatements
 
         // Tax
         public const string GET_TAXS = "SELECT *FROM TAX";
-        public const string INSERT_TAX = "INSERT INTO TAX VALUES ('{0}', N'{1}')";
-        public const string UPDATE_TAX = "UPDATE TAX SET TAX_PERCENT = N'{0}' WHERE ID = '{1}'";
+        public const string INSERT_TAX = "INSERT INTO TAX VALUES ('{0}', N'{1}', {2})";
+        public const string UPDATE_TAX = "UPDATE TAX SET TAX_PERCENT = N'{0}', TAX_VALUE = {1} WHERE ID = '{2}'";
         public const string PROPERTY_TAX_ID = "ID";
         public const string PROPERTY_TAX_PERCENT = "TAX_PERCENT";
 

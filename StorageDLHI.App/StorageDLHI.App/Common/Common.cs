@@ -81,6 +81,7 @@ namespace StorageDLHI.App.Common
     {
         public static async void ReloadAllCache()
         {
+            CacheManager.ClearCache();
             CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, await ImportProductDAO.GetImportProducts());
             CacheManager.Add(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD, await PoDAO.GetPosForImportProduct());
             CacheManager.Add(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD, await PoDAO.GetPosForImportProduct());

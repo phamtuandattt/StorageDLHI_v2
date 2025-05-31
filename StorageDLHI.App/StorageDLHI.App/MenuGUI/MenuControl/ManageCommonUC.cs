@@ -303,28 +303,6 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
             LoadData();
         }
 
-        private async void dgvTax_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvTax.Rows.Count <= 0) return;
-            int rsl = dgvTax.CurrentRow.Index;
-
-            Taxs taxs = new Taxs()
-            {
-                Id = Guid.Parse(dgvTax.Rows[rsl].Cells[0].Value.ToString()),
-                Tax_Percent = dgvTax.Rows[rsl].Cells[1].Value.ToString()
-            };
-
-            TaxUnitCostDto dtos = new TaxUnitCostDto()
-            {
-                Taxs = taxs,
-            };
-
-            frmTaxUnitCost frm = new frmTaxUnitCost(TitleManager.TAX_UPDATE_TITLE, TaxUnitCost.Tax, false, dtos);
-            frm.ShowDialog();
-            CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX, await MaterialDAO.GetTaxs());
-            LoadData();
-        }
-
         private async void dgvCost_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvCost.Rows.Count <= 0) return;
@@ -366,6 +344,29 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
             frmTaxUnitCost frm = new frmTaxUnitCost(TitleManager.UNIT_ADD_TITLE, TaxUnitCost.Unit, false, dtos);
             frm.ShowDialog();
             CacheManager.Add(CacheKeys.UNIT_DATATABLE_ALLUNIT, await MaterialDAO.GetUnits());
+            LoadData();
+        }
+
+        private async void dgvTax_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvTax.Rows.Count <= 0) return;
+            int rsl = dgvTax.CurrentRow.Index;
+
+            Taxs taxs = new Taxs()
+            {
+                Id = Guid.Parse(dgvTax.Rows[rsl].Cells[0].Value.ToString()),
+                Tax_Percent = dgvTax.Rows[rsl].Cells[1].Value.ToString(),
+                Tax_Value = float.Parse(dgvTax.Rows[rsl].Cells[2].Value.ToString())
+            };
+
+            TaxUnitCostDto dtos = new TaxUnitCostDto()
+            {
+                Taxs = taxs,
+            };
+
+            frmTaxUnitCost frm = new frmTaxUnitCost(TitleManager.TAX_UPDATE_TITLE, TaxUnitCost.Tax, false, dtos);
+            frm.ShowDialog();
+            CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX, await MaterialDAO.GetTaxs());
             LoadData();
         }
     }

@@ -58,6 +58,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                     case 1:
                         txtName.Focus();
                         txtName.Text = this.models.Taxs.Tax_Percent;
+                        txtValue.Text = this.models.Taxs.Tax_Value.ToString();
                         lblName.Text = "Tax percent:"; 
                         break;
                     case 2:
@@ -87,7 +88,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                 switch (type)
                 {
                     case 1:
-                        Taxs taxs = new Taxs() { Id = Guid.NewGuid(), Tax_Percent = txtName.Text.Trim() };
+                        Taxs taxs = new Taxs() { Id = Guid.NewGuid(), Tax_Percent = txtName.Text.Trim(), Tax_Value = float.Parse(txtValue.Text.Trim()) };
                         if (await MaterialDAO.InsertTax(taxs))
                         {
                             MessageBoxHelper.ShowInfo("Add Tax success!");
@@ -135,7 +136,7 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                 switch (type)
                 {
                     case 1:
-                        Taxs taxs = new Taxs() { Id = this.models.Taxs.Id, Tax_Percent = txtName.Text.Trim() };
+                        Taxs taxs = new Taxs() { Id = this.models.Taxs.Id, Tax_Percent = txtName.Text.Trim(), Tax_Value = float.Parse(txtValue.Text.Trim()) };
                         if (await MaterialDAO.UpdateTax(taxs))
                         {
                             MessageBoxHelper.ShowInfo("Update Tax success!");

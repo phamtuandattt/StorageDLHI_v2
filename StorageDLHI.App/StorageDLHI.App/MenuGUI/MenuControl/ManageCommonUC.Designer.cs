@@ -36,6 +36,9 @@
             this.kryptonGroupBox2 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonPanel9 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.dgvMaterialTypes = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tlsAddMaterialTypes = new System.Windows.Forms.ToolStripButton();
             this.tlsLoadTypes = new System.Windows.Forms.ToolStripButton();
@@ -43,6 +46,9 @@
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonPanel8 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.dgvOrigins = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORIGIN_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORIGIN_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAddOrigins = new System.Windows.Forms.ToolStripButton();
             this.tlsLoadOrigins = new System.Windows.Forms.ToolStripButton();
@@ -57,6 +63,8 @@
             this.kryptonGroupBox5 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonPanel12 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.dgvCost = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip5 = new System.Windows.Forms.ToolStrip();
             this.tlsAddCost = new System.Windows.Forms.ToolStripButton();
             this.tlsLoadCost = new System.Windows.Forms.ToolStripButton();
@@ -64,6 +72,8 @@
             this.kryptonGroupBox4 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.pnUnit = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.dgvUnits = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip4 = new System.Windows.Forms.ToolStrip();
             this.tlsAddUnits = new System.Windows.Forms.ToolStripButton();
             this.tlsLoadUnits = new System.Windows.Forms.ToolStripButton();
@@ -71,25 +81,16 @@
             this.kryptonGroupBox3 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonPanel10 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.dgvStandards = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.tlsAddStandard = new System.Windows.Forms.ToolStripButton();
             this.tlsLoadStandard = new System.Windows.Forms.ToolStripButton();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ORIGIN_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ORIGIN_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TAX_VALUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -247,6 +248,31 @@
             this.dgvMaterialTypes.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaterialTypes_CellContentDoubleClick);
             this.dgvMaterialTypes.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvMaterialTypes_RowPostPaint);
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "ID";
+            this.Column1.HeaderText = "ID";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "TYPE_CODE";
+            this.Column2.HeaderText = "Code";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "TYPE_DES";
+            this.Column3.HeaderText = "Description";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
             // toolStrip2
             // 
             this.toolStrip2.BackColor = System.Drawing.Color.White;
@@ -343,6 +369,31 @@
             this.dgvOrigins.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrigins_CellContentDoubleClick);
             this.dgvOrigins.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvOrigins_RowPostPaint);
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // ORIGIN_CODE
+            // 
+            this.ORIGIN_CODE.DataPropertyName = "ORIGIN_CODE";
+            this.ORIGIN_CODE.HeaderText = "Code";
+            this.ORIGIN_CODE.MinimumWidth = 6;
+            this.ORIGIN_CODE.Name = "ORIGIN_CODE";
+            this.ORIGIN_CODE.ReadOnly = true;
+            // 
+            // ORIGIN_NAME
+            // 
+            this.ORIGIN_NAME.DataPropertyName = "ORIGIN_NAME";
+            this.ORIGIN_NAME.HeaderText = "Description";
+            this.ORIGIN_NAME.MinimumWidth = 6;
+            this.ORIGIN_NAME.Name = "ORIGIN_NAME";
+            this.ORIGIN_NAME.ReadOnly = true;
+            // 
             // toolStrip1
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.White;
@@ -423,7 +474,8 @@
             this.dgvTax.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTax.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column7,
-            this.Column8});
+            this.Column8,
+            this.TAX_VALUE});
             this.dgvTax.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTax.Location = new System.Drawing.Point(0, 27);
             this.dgvTax.MultiSelect = false;
@@ -435,7 +487,7 @@
             this.dgvTax.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTax.Size = new System.Drawing.Size(454, 328);
             this.dgvTax.TabIndex = 1;
-            this.dgvTax.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTax_CellContentDoubleClick);
+            this.dgvTax.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTax_CellContentClick);
             this.dgvTax.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvTax_RowPostPaint);
             // 
             // toolStrip6
@@ -532,6 +584,23 @@
             this.dgvCost.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCost_CellContentDoubleClick);
             this.dgvCost.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvCost_RowPostPaint);
             // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "ID";
+            this.Column9.HeaderText = "ID";
+            this.Column9.MinimumWidth = 6;
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Visible = false;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "COST_NAME";
+            this.Column10.HeaderText = "Cost name";
+            this.Column10.MinimumWidth = 6;
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
             // toolStrip5
             // 
             this.toolStrip5.BackColor = System.Drawing.Color.White;
@@ -625,6 +694,23 @@
             this.dgvUnits.TabIndex = 1;
             this.dgvUnits.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUnits_CellContentDoubleClick);
             this.dgvUnits.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvUnits_RowPostPaint);
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "ID";
+            this.Column11.HeaderText = "ID";
+            this.Column11.MinimumWidth = 6;
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Visible = false;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "UNIT_CODE";
+            this.Column12.HeaderText = "Unit name";
+            this.Column12.MinimumWidth = 6;
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
             // 
             // toolStrip4
             // 
@@ -721,6 +807,31 @@
             this.dgvStandards.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStandards_CellContentDoubleClick);
             this.dgvStandards.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvStandards_RowPostPaint);
             // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "ID";
+            this.Column4.HeaderText = "ID";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Visible = false;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "STANDARD_CODE";
+            this.Column5.HeaderText = "Code";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "STANDARD_DES";
+            this.Column6.HeaderText = "Description";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
             // toolStrip3
             // 
             this.toolStrip3.BackColor = System.Drawing.Color.White;
@@ -801,115 +912,6 @@
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, 5, -1);
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // ORIGIN_CODE
-            // 
-            this.ORIGIN_CODE.DataPropertyName = "ORIGIN_CODE";
-            this.ORIGIN_CODE.HeaderText = "Code";
-            this.ORIGIN_CODE.MinimumWidth = 6;
-            this.ORIGIN_CODE.Name = "ORIGIN_CODE";
-            this.ORIGIN_CODE.ReadOnly = true;
-            // 
-            // ORIGIN_NAME
-            // 
-            this.ORIGIN_NAME.DataPropertyName = "ORIGIN_NAME";
-            this.ORIGIN_NAME.HeaderText = "Description";
-            this.ORIGIN_NAME.MinimumWidth = 6;
-            this.ORIGIN_NAME.Name = "ORIGIN_NAME";
-            this.ORIGIN_NAME.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "ID";
-            this.Column1.HeaderText = "ID";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "TYPE_CODE";
-            this.Column2.HeaderText = "Code";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "TYPE_DES";
-            this.Column3.HeaderText = "Description";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "ID";
-            this.Column4.HeaderText = "ID";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Visible = false;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "STANDARD_CODE";
-            this.Column5.HeaderText = "Code";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "STANDARD_DES";
-            this.Column6.HeaderText = "Description";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "ID";
-            this.Column11.HeaderText = "ID";
-            this.Column11.MinimumWidth = 6;
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.Visible = false;
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "UNIT_CODE";
-            this.Column12.HeaderText = "Unit name";
-            this.Column12.MinimumWidth = 6;
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "ID";
-            this.Column9.HeaderText = "ID";
-            this.Column9.MinimumWidth = 6;
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Visible = false;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "COST_NAME";
-            this.Column10.HeaderText = "Cost name";
-            this.Column10.MinimumWidth = 6;
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
             // Column7
             // 
             this.Column7.DataPropertyName = "ID";
@@ -926,6 +928,14 @@
             this.Column8.MinimumWidth = 6;
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
+            // 
+            // TAX_VALUE
+            // 
+            this.TAX_VALUE.DataPropertyName = "TAX_VALUE";
+            this.TAX_VALUE.HeaderText = "Value";
+            this.TAX_VALUE.MinimumWidth = 6;
+            this.TAX_VALUE.Name = "TAX_VALUE";
+            this.TAX_VALUE.ReadOnly = true;
             // 
             // ManageCommonUC
             // 
@@ -1066,8 +1076,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ORIGIN_CODE;
         private System.Windows.Forms.DataGridViewTextBoxColumn ORIGIN_NAME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
@@ -1075,5 +1083,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TAX_VALUE;
     }
 }
