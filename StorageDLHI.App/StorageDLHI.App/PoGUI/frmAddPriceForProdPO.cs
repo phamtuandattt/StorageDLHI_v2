@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -31,6 +32,7 @@ namespace StorageDLHI.App.PoGUI
         private Products product = new Products();
         private DataTable dtProdInfo = new DataTable();
         private string QtyProd = "";
+        private bool IsAdd = true;
 
 
         public frmAddPriceForProdPO()
@@ -40,7 +42,7 @@ namespace StorageDLHI.App.PoGUI
             // Get Dictionary when click product
         }
 
-        public frmAddPriceForProdPO(Dictionary<string, string> variables, Products product)
+        public frmAddPriceForProdPO(Dictionary<string, string> variables, Products product, bool IsAdd)
         {
             InitializeComponent();
 
@@ -69,25 +71,61 @@ namespace StorageDLHI.App.PoGUI
 
             dgvProdInfo.DataSource = dtProdInfo;
 
+            if (IsAdd)
+            {
+                DataRow dataRow = dtProdInfo.NewRow();
+                dataRow[0] = this.product.Id;
+                dataRow[1] = this.product.Product_Name;
+                dataRow[2] = this.product.Product_Des_2;
+                dataRow[3] = this.product.Product_Material_Code;
+                dataRow[4] = this.product.A_Thinhness;
+                dataRow[5] = this.product.B_Depth;
+                dataRow[6] = this.product.C_Witdh;
+                dataRow[7] = this.product.D_Web;
+                dataRow[8] = this.product.E_Flag;
+                dataRow[9] = this.product.F_Length;
+                dataRow[10] = this.product.G_Weight;
+                dataRow[11] = QtyProd;
+                dataRow[12] = 0;
+                dataRow[13] = 0;
+                dataRow[14] = 0;
 
-            DataRow dataRow = dtProdInfo.NewRow();
-            dataRow[0] = this.product.Id;
-            dataRow[1] = this.product.Product_Name;
-            dataRow[2] = this.product.Product_Des_2;
-            dataRow[3] = this.product.Product_Material_Code;
-            dataRow[4] = this.product.A_Thinhness;
-            dataRow[5] = this.product.B_Depth;
-            dataRow[6] = this.product.C_Witdh;
-            dataRow[7] = this.product.D_Web;
-            dataRow[8] = this.product.E_Flag;
-            dataRow[9] = this.product.F_Length;
-            dataRow[10] = this.product.G_Weight;
-            dataRow[11] = QtyProd;
-            dataRow[12] = 0;
-            dataRow[13] = 0;
-            dataRow[14] = 0;
+                dtProdInfo.Rows.Add(dataRow);
+            }
+            else
+            {
+                this.variables.TryGetValue(QueryStatement.PRICE_PARA, out string  price);
+                this.variables.TryGetValue(QueryStatement.PROPERTY_TAX_CUSTOM_VALUE, out string taxValue);
+                this.variables.TryGetValue(QueryStatement.NETCASH_PARA, out string netCash);
 
-            dtProdInfo.Rows.Add(dataRow);
+                this.variables.TryGetValue(QueryStatement.PROPERTY_PO_DETAIL_RECEVIE, out string recevie);
+                this.variables.TryGetValue(QueryStatement.PROPERTY_PO_DETAIL_REMARKS, out string remark);
+                
+                cboTax.SelectedText = taxValue;
+                txtPrice.Value = Int32.Parse(price);
+                txtRecevie.Text = recevie;
+                txtRemark.Text = remark;
+
+                DataRow dataRow = dtProdInfo.NewRow();
+                dataRow[0] = this.product.Id;
+                dataRow[1] = this.product.Product_Name;
+                dataRow[2] = this.product.Product_Des_2;
+                dataRow[3] = this.product.Product_Material_Code;
+                dataRow[4] = this.product.A_Thinhness;
+                dataRow[5] = this.product.B_Depth;
+                dataRow[6] = this.product.C_Witdh;
+                dataRow[7] = this.product.D_Web;
+                dataRow[8] = this.product.E_Flag;
+                dataRow[9] = this.product.F_Length;
+                dataRow[10] = this.product.G_Weight;
+                dataRow[11] = QtyProd;
+                dataRow[12] = price;
+                dataRow[13] = taxValue;
+                dataRow[14] = netCash;
+
+                dtProdInfo.Rows.Add(dataRow);
+            }
+
         }
 
 
@@ -137,7 +175,7 @@ namespace StorageDLHI.App.PoGUI
         private void btnAddProdIntoMpr_Click(object sender, EventArgs e)
         {
             this.Price = (Int32)txtPrice.Value;
-            this.Recevie = txtQty.Text.Trim();
+            this.Recevie = txtRecevie.Text.Trim();
             this.Remark = txtRemark.Text.Trim();
 
             this.Close();
@@ -191,7 +229,7 @@ namespace StorageDLHI.App.PoGUI
 
             dgvProdInfo.Rows[0].Cells[11].Value = QtyProd;
             dgvProdInfo.Rows[0].Cells[12].Value = txtPrice.Value;
-            dgvProdInfo.Rows[0].Cells[13].Value = cboTax.Text.Trim().Split('~')[0];
+            dgvProdInfo.Rows[0].Cells[13].Value = cboTax.Text.Trim();
             dgvProdInfo.Rows[0].Cells[14].Value = NetCash;
 
         }

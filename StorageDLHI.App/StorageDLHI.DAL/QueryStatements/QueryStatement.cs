@@ -83,6 +83,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_FORMULA_PARAS = "FORMULA_PARAS";
         public const string PRICE_PARA = "PRICE";
         public const string QTY_PARA = "QTY";
+        public const string NETCASH_PARA = "NET_CASH";
+        public const string TAXVALUE_PARA = "TAX";
 
         // Unit
         public const string GET_UNIT = "SELECT *FROM UNITS";
@@ -172,6 +174,9 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_PO_PO_CREATE_DATE = "PO_CREATE_DATE";
         public const string PROPERTY_PO_PO_EXPECTED_DELIVERY_DATE = "PO_EXPECTED_DELIVERY_DATE";
         public const string UPDATE_PO_IS_IMPORTED = "UPDATE POS SET IS_IMPORTED = '{0}' WHERE ID = '{1}'";
+
+        public const string PROPERTY_PO_DETAIL_REMARKS = "PO_REMARKS";
+        public const string PROPERTY_PO_DETAIL_RECEVIE = "PO_RECEVIE";
 
         // Warehouse
         public const string INSERT_WAREHOUSE = "INSERT INTO WAREHOUSES VALUES ('{0}', '{1}', N'{2}', N'{3}')";

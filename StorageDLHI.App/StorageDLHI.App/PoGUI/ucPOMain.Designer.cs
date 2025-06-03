@@ -161,6 +161,7 @@
             this.tlsMPRNo = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.tlsSearchMprForMakePO = new System.Windows.Forms.ToolStripTextBox();
+            this.updateAmountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pagePOs)).BeginInit();
@@ -1431,21 +1432,22 @@
             this.ctmUpdateProd.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.ctmUpdateProd.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.updateProductToolStripMenuItem,
-            this.removeProductToolStripMenuItem});
+            this.removeProductToolStripMenuItem,
+            this.updateAmountToolStripMenuItem});
             this.ctmUpdateProd.Name = "contextMenuStrip1";
-            this.ctmUpdateProd.Size = new System.Drawing.Size(188, 52);
+            this.ctmUpdateProd.Size = new System.Drawing.Size(211, 104);
             // 
             // updateProductToolStripMenuItem
             // 
             this.updateProductToolStripMenuItem.Name = "updateProductToolStripMenuItem";
-            this.updateProductToolStripMenuItem.Size = new System.Drawing.Size(187, 24);
+            this.updateProductToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.updateProductToolStripMenuItem.Text = "Update product";
             this.updateProductToolStripMenuItem.Click += new System.EventHandler(this.updateProductToolStripMenuItem_Click);
             // 
             // removeProductToolStripMenuItem
             // 
             this.removeProductToolStripMenuItem.Name = "removeProductToolStripMenuItem";
-            this.removeProductToolStripMenuItem.Size = new System.Drawing.Size(187, 24);
+            this.removeProductToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.removeProductToolStripMenuItem.Text = "Remove Product";
             this.removeProductToolStripMenuItem.Click += new System.EventHandler(this.removeProductToolStripMenuItem_Click);
             // 
@@ -1557,6 +1559,13 @@
             this.tlsSearchMprForMakePO.Name = "tlsSearchMprForMakePO";
             this.tlsSearchMprForMakePO.Size = new System.Drawing.Size(200, 27);
             this.tlsSearchMprForMakePO.TextChanged += new System.EventHandler(this.tlsSearchMprForMakePO_TextChanged);
+            // 
+            // updateAmountToolStripMenuItem
+            // 
+            this.updateAmountToolStripMenuItem.Name = "updateAmountToolStripMenuItem";
+            this.updateAmountToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.updateAmountToolStripMenuItem.Text = "Update amount";
+            this.updateAmountToolStripMenuItem.Click += new System.EventHandler(this.updateAmountToolStripMenuItem_Click);
             // 
             // ucPOMain
             // 
@@ -1765,5 +1774,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PO_DETAIL_AMOUNT;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column46;
         private System.Windows.Forms.DataGridViewTextBoxColumn PROD_CODE;
+        private System.Windows.Forms.ToolStripMenuItem updateAmountToolStripMenuItem;
     }
 }

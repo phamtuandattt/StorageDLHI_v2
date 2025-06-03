@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
@@ -21,6 +22,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Data.Entity.Infrastructure.Design.Executor;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace StorageDLHI.App.PoGUI
 {
@@ -94,7 +96,7 @@ namespace StorageDLHI.App.PoGUI
             dtProdsOfAddPO.Columns.Add(QueryStatement.PROPERTY_PROD_G, typeof(Int32));
             dtProdsOfAddPO.Columns.Add("QTY", typeof(Int32));
             dtProdsOfAddPO.Columns.Add("PO_PRICE", typeof(Int32));
-            dtProdsOfAddPO.Columns.Add("PO_AMOUNT", typeof(Int32));
+            dtProdsOfAddPO.Columns.Add("PO_AMOUNT", typeof(double));
             dtProdsOfAddPO.Columns.Add("PO_RECEVIE");
             dtProdsOfAddPO.Columns.Add("PO_REMARKS");
 
@@ -305,7 +307,7 @@ namespace StorageDLHI.App.PoGUI
                 G_Weight = dgvMPRDetail.Rows[rsl].Cells[12].Value.ToString().Trim(),
             };
 
-            frmAddPriceForProdPO frmAddPriceForProdPO = new frmAddPriceForProdPO(variable, prod);
+            frmAddPriceForProdPO frmAddPriceForProdPO = new frmAddPriceForProdPO(variable, prod, true);
             frmAddPriceForProdPO.ShowDialog();
             
             if (frmAddPriceForProdPO.Price == 0 || frmAddPriceForProdPO.NetCash == 0) { return; }
@@ -620,23 +622,23 @@ namespace StorageDLHI.App.PoGUI
 
         private void UpdateFooter()
         {
-            Int32 totalQty = 0;
-            Int32 totalPrice = 0;
-            Int32 totalAmount = 0;
+            double totalQty = 0;
+            double totalPrice = 0;
+            double totalAmount = 0;
 
             foreach (DataGridViewRow row in dgvProdOfPO.Rows)
             {
-                if (Int32.TryParse(row.Cells[12].Value?.ToString(), out Int32 qty))
+                if (double.TryParse(row.Cells[12].Value?.ToString(), out double qty))
                 {
                     totalQty += qty;
                 }
 
-                if (Int32.TryParse(row.Cells[13].Value?.ToString(), out Int32 price))
+                if (double.TryParse(row.Cells[13].Value?.ToString(), out double price))
                 {
                     totalPrice += price;
                 }
 
-                if (Int32.TryParse(row.Cells[14].Value?.ToString(), out Int32 amount))
+                if (double.TryParse(row.Cells[14].Value?.ToString(), out double amount))
                 {
                     totalAmount += amount;
                 }
@@ -994,6 +996,54 @@ namespace StorageDLHI.App.PoGUI
                 Common.Common.HideNoDataPanel(pnNoDataMprs);
                 Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
             }
+        }
+
+        private void updateAmountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvProdOfPO.Rows.Count <= 0) return;
+            int rsl = dgvProdOfPO.CurrentRow.Index;
+
+            int qty = CheckOrReturnNumber(dgvProdOfPO.Rows[rsl].Cells[12].Value.ToString()) > 0 
+                        ? CheckOrReturnNumber(dgvProdOfPO.Rows[rsl].Cells[12].Value.ToString()) : 1;
+
+            // Dictionary info prod
+            var variable = new Dictionary<string, string>
+            {
+                {QueryStatement.PROPERTY_PROD_A, dgvProdOfPO.Rows[rsl].Cells[5].Value.ToString().Trim()},
+                {QueryStatement.PROPERTY_PROD_B, dgvProdOfPO.Rows[rsl].Cells[6].Value.ToString().Trim()},
+                {QueryStatement.PROPERTY_PROD_C, dgvProdOfPO.Rows[rsl].Cells[7].Value.ToString().Trim()},
+                {QueryStatement.PROPERTY_PROD_D, dgvProdOfPO.Rows[rsl].Cells[8].Value.ToString().Trim()},
+                {QueryStatement.PROPERTY_PROD_E, dgvProdOfPO.Rows[rsl].Cells[9].Value.ToString().Trim()},
+                {QueryStatement.PROPERTY_PROD_F, dgvProdOfPO.Rows[rsl].Cells[10].Value.ToString().Trim()},
+                {QueryStatement.PROPERTY_PROD_G, dgvProdOfPO.Rows[rsl].Cells[11].Value.ToString().Trim()},
+
+                {QueryStatement.QTY_PARA, dgvProdOfPO.Rows[rsl].Cells[12].Value.ToString().Trim()},
+                {QueryStatement.PRICE_PARA,  qty.ToString()},
+                {QueryStatement.NETCASH_PARA, dgvProdOfPO.Rows[rsl].Cells[14].Value.ToString().Trim()},
+                {QueryStatement.PROPERTY_FORMULA_TEXT, ""}, // Tax value
+                {QueryStatement.TAXVALUE_PARA, "" }, // Formula
+
+                {QueryStatement.PROPERTY_PO_DETAIL_RECEVIE, dgvProdOfPO.Rows[rsl].Cells[15].Value.ToString().Trim()},
+                {QueryStatement.PROPERTY_PO_DETAIL_REMARKS, dgvProdOfPO.Rows[rsl].Cells[16].Value.ToString().Trim()},
+            };
+
+            var prod = new Products()
+            {
+                Id = Guid.Parse(dgvProdOfPO.Rows[rsl].Cells[0].Value.ToString().Trim()),
+                Product_Name = dgvProdOfPO.Rows[rsl].Cells[1].Value.ToString().Trim(),
+                Product_Des_2 = dgvProdOfPO.Rows[rsl].Cells[2].Value.ToString().Trim(),
+                Product_Material_Code = dgvProdOfPO.Rows[rsl].Cells[4].Value.ToString().Trim(),
+                A_Thinhness = dgvProdOfPO.Rows[rsl].Cells[6].Value.ToString().Trim(),
+                B_Depth = dgvProdOfPO.Rows[rsl].Cells[6].Value.ToString().Trim(),
+                C_Witdh = dgvProdOfPO.Rows[rsl].Cells[7].Value.ToString().Trim(),
+                D_Web = dgvProdOfPO.Rows[rsl].Cells[8].Value.ToString().Trim(),
+                E_Flag = dgvProdOfPO.Rows[rsl].Cells[9].Value.ToString().Trim(),
+                F_Length = dgvProdOfPO.Rows[rsl].Cells[10].Value.ToString().Trim(),
+                G_Weight = dgvProdOfPO.Rows[rsl].Cells[11].Value.ToString().Trim(),
+            };
+
+            frmAddPriceForProdPO frmAddPriceForProdPO = new frmAddPriceForProdPO(variable, prod, false);
+            frmAddPriceForProdPO.ShowDialog();
         }
     }
 }

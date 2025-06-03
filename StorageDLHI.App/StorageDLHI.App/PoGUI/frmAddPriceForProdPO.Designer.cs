@@ -393,6 +393,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtQty.Location = new System.Drawing.Point(3, 6);
             this.txtQty.Name = "txtQty";
+            this.txtQty.ReadOnly = true;
             this.txtQty.Size = new System.Drawing.Size(473, 32);
             this.txtQty.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtQty.TabIndex = 8;
@@ -681,7 +682,7 @@
             this.dgvProdInfo.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.dgvProdInfo.ReadOnly = true;
             this.dgvProdInfo.RowHeadersWidth = 51;
-            this.dgvProdInfo.RowTemplate.Height = 100;
+            this.dgvProdInfo.RowTemplate.Height = 50;
             this.dgvProdInfo.Size = new System.Drawing.Size(1170, 304);
             this.dgvProdInfo.TabIndex = 2;
             this.dgvProdInfo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvProdInfo_RowPostPaint);
