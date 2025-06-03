@@ -140,6 +140,21 @@ namespace StorageDLHI.BLL.MaterialDAO
             return  await data.GetDataAsync(QueryStatement.GET_TAXS, "TAXS");
         }
 
+        public static async Task<DataTable> GetTaxCustoms()
+        {
+            return await data.GetDataAsync(QueryStatement.GET_TAX_CUSTOM, "TAX_CUS");
+        }
+
+        public static async Task<DataTable> GetFormulas()
+        {
+            return await data.GetDataAsync(QueryStatement.GET_FORMULAR_CAL, "FORMULAS");
+        }
+        
+        public static async Task<DataTable> GetFormulaParas()
+        {
+            return await data.GetDataAsync(QueryStatement.GET_FORMUAL_PARA, "PARAS");
+        }
+
         public static async Task<DataTable> GetUnits()
         {
             return await data.GetDataAsync(QueryStatement.GET_UNIT, "UNITS");

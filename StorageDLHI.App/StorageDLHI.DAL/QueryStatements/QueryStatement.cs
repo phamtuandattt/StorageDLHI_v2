@@ -71,6 +71,18 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string UPDATE_TAX = "UPDATE TAX SET TAX_PERCENT = N'{0}', TAX_VALUE = {1} WHERE ID = '{2}'";
         public const string PROPERTY_TAX_ID = "ID";
         public const string PROPERTY_TAX_PERCENT = "TAX_PERCENT";
+        public const string GET_TAX_CUSTOM = "SELECT ID, CONCAT(TAX_PERCENT, N' ~ ', TAX_VALUE) AS VALUE FROM TAX";
+        public const string PROPERTY_TAX_CUSTOM_VALUE = "VALUE";
+
+        // Formula
+        public const string GET_FORMULAR_CAL = "SELECT ID, FORMULA_TEXT FROM MONEY_CALCULATE_FORMULA";
+        public const string GET_FORMUAL_PARA = "SELECT FORMULA_TEXT, FORMULA_PARAS FROM MONEY_CALCULATE_FORMULA";
+        public const string PROPERTY_FORMULA_ID = "ID";
+        public const string PROPERTY_FORMULA_TEXT = "FORMULA_TEXT";
+        public const string PROPERTY_FORMULA_CAL = "FORMULA_CALCULATE";
+        public const string PROPERTY_FORMULA_PARAS = "FORMULA_PARAS";
+        public const string PRICE_PARA = "PRICE";
+        public const string QTY_PARA = "QTY";
 
         // Unit
         public const string GET_UNIT = "SELECT *FROM UNITS";

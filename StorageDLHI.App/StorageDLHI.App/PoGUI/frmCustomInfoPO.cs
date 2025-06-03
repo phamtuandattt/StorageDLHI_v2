@@ -29,7 +29,7 @@ namespace StorageDLHI.App.PoGUI
         public bool isHandle { get; set; } = false;
 
         private DataTable dtProdOfPO_UpdateDB = new DataTable();
-        private Int32 totalAmount = 0;
+        private double totalAmount = 0;
         private Guid mprID = Guid.Empty;
 
         public frmCustomInfoPO()
@@ -38,7 +38,7 @@ namespace StorageDLHI.App.PoGUI
             LoadData();
         }
 
-        public frmCustomInfoPO(string title, bool status, Pos mPO, DataTable dtPODetail, Int32 totalAmount, Guid mprID)
+        public frmCustomInfoPO(string title, bool status, Pos mPO, DataTable dtPODetail, double totalAmount, Guid mprID)
         {
             InitializeComponent();
             LoadData();

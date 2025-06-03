@@ -99,6 +99,23 @@ namespace StorageDLHI.App.Common
             CacheManager.Add(CacheKeys.WAREHOUSE_DATATABLE_ALL, await ShowDialogManager.WithLoader(() => WarehouseDAO.GetWarehouses()));
 
         }
+
+        public static double EvaluateExpression(string expression, Dictionary<string, double> variables)
+        {
+            string evaluableExpression = expression;
+
+            // Replace variables with their values
+            foreach (var variable in variables)
+            {
+                evaluableExpression = evaluableExpression.Replace(variable.Key, variable.Value.ToString());
+            }
+
+            // Use DataTable.Compute to evaluate
+            DataTable table = new DataTable();
+            var result = table.Compute(evaluableExpression, null);
+            return Convert.ToDouble(result);
+        }
+
         public static void ShowNoDataPanel(DataGridView dgvMain, Panel pnlNoData)
         {
             int headerHeight = dgvMain.ColumnHeadersHeight;

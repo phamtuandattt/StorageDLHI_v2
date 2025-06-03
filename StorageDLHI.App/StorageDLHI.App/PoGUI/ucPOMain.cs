@@ -43,7 +43,7 @@ namespace StorageDLHI.App.PoGUI
 
         private int rslOld;
         private int previousRowIndex = -1;
-        private Int32 totalAmount = 0;
+        private double totalAmount = 0;
 
 
 
@@ -277,10 +277,38 @@ namespace StorageDLHI.App.PoGUI
             if (dgvMPRDetail.Rows.Count <= 0) return;
             int rsl = dgvMPRDetail.CurrentRow.Index;
 
-            frmAddPriceForProdPO frmAddPriceForProdPO = new frmAddPriceForProdPO();
+            // Dictionary info prod
+            var variable = new Dictionary<string, string>
+            {
+                {QueryStatement.PROPERTY_PROD_A, dgvMPRDetail.Rows[rsl].Cells[6].Value.ToString().Trim()},
+                {QueryStatement.PROPERTY_PROD_B, dgvMPRDetail.Rows[rsl].Cells[7].Value.ToString().Trim()},
+                {QueryStatement.PROPERTY_PROD_C, dgvMPRDetail.Rows[rsl].Cells[8].Value.ToString().Trim()},
+                {QueryStatement.PROPERTY_PROD_D, dgvMPRDetail.Rows[rsl].Cells[9].Value.ToString().Trim()},
+                {QueryStatement.PROPERTY_PROD_E, dgvMPRDetail.Rows[rsl].Cells[10].Value.ToString().Trim()},
+                {QueryStatement.PROPERTY_PROD_F, dgvMPRDetail.Rows[rsl].Cells[11].Value.ToString().Trim()},
+                {QueryStatement.PROPERTY_PROD_G, dgvMPRDetail.Rows[rsl].Cells[12].Value.ToString().Trim()},
+                {QueryStatement.QTY_PARA, dgvMPRDetail.Rows[rsl].Cells[13].Value.ToString().Trim()},
+            };
+
+            var prod = new Products()
+            {
+                Id = Guid.Parse(dgvMPRDetail.Rows[rsl].Cells[2].Value.ToString().Trim()),
+                Product_Name = dgvMPRDetail.Rows[rsl].Cells[3].Value.ToString().Trim(),
+                Product_Des_2 = dgvMPRDetail.Rows[rsl].Cells[3].Value.ToString().Trim(),
+                Product_Material_Code = dgvMPRDetail.Rows[rsl].Cells[4].Value.ToString().Trim(),
+                A_Thinhness = dgvMPRDetail.Rows[rsl].Cells[6].Value.ToString().Trim(),
+                B_Depth = dgvMPRDetail.Rows[rsl].Cells[7].Value.ToString().Trim(),
+                C_Witdh = dgvMPRDetail.Rows[rsl].Cells[8].Value.ToString().Trim(),
+                D_Web = dgvMPRDetail.Rows[rsl].Cells[9].Value.ToString().Trim(),
+                E_Flag = dgvMPRDetail.Rows[rsl].Cells[10].Value.ToString().Trim(),
+                F_Length = dgvMPRDetail.Rows[rsl].Cells[11].Value.ToString().Trim(),
+                G_Weight = dgvMPRDetail.Rows[rsl].Cells[12].Value.ToString().Trim(),
+            };
+
+            frmAddPriceForProdPO frmAddPriceForProdPO = new frmAddPriceForProdPO(variable, prod);
             frmAddPriceForProdPO.ShowDialog();
             
-            if (frmAddPriceForProdPO.Price == 0) { return; }
+            if (frmAddPriceForProdPO.Price == 0 || frmAddPriceForProdPO.NetCash == 0) { return; }
 
             tlsMPRNo.Text = $"MPR No: [{dgvMPRs.Rows[this.previousRowIndex].Cells[1].Value.ToString().Trim()}]\t";
 
@@ -325,11 +353,11 @@ namespace StorageDLHI.App.PoGUI
             dataRow[11] = (dgvMPRDetail.Rows[rsl].Cells[12].Value.ToString().Trim());
             dataRow[12] = CheckOrReturnNumber(dgvMPRDetail.Rows[rsl].Cells[13].Value.ToString().Trim()); // Qty
             dataRow[13] = CheckOrReturnNumber(frmAddPriceForProdPO.Price.ToString()); // Price
-            dataRow[14] = CheckOrReturnNumber(dgvMPRDetail.Rows[rsl].Cells[13].Value.ToString().Trim()) * frmAddPriceForProdPO.Price; // Amount
+            dataRow[14] = frmAddPriceForProdPO.NetCash.ToString().Trim(); // Amount
             dataRow[15] = frmAddPriceForProdPO.Recevie;
             dataRow[16] = frmAddPriceForProdPO.Remark;
 
-            totalAmount += Int32.Parse(dgvMPRDetail.Rows[rsl].Cells[13].Value.ToString().Trim()) * frmAddPriceForProdPO.Price; // Amount
+            totalAmount += frmAddPriceForProdPO.NetCash; // Amount
             dtProdsOfAddPO.Rows.Add(dataRow);
             prodsAdded.Add(prodId);
             dgvProdOfPO.Rows[0].Selected = true;
