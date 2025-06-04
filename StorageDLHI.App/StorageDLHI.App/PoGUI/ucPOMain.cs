@@ -102,6 +102,7 @@ namespace StorageDLHI.App.PoGUI
 
             dtProdsOfAddPO.Columns.Add("TAX_VALUE");
             dtProdsOfAddPO.Columns.Add("FORMULA");
+            dtProdsOfAddPO.Columns.Add("CURRENCY");
 
             dgvProdOfPO.DataSource = dtProdsOfAddPO;
 
@@ -363,8 +364,9 @@ namespace StorageDLHI.App.PoGUI
             dataRow[16] = frmAddPriceForProdPO.Remark;
             dataRow[17] = frmAddPriceForProdPO.TaxValue; // TAX_VALUE
             dataRow[18] = frmAddPriceForProdPO.Formula; // FORMULA
+            dataRow[19] = frmAddPriceForProdPO.CurrencyOption; // CURRENCY
 
-            totalAmount += frmAddPriceForProdPO.NetCash; // Amount
+            totalAmount += double.Parse(frmAddPriceForProdPO.NetCash.ToString()); // Amount
             dtProdsOfAddPO.Rows.Add(dataRow);
             prodsAdded.Add(prodId);
             dgvProdOfPO.Rows[0].Selected = true;
@@ -651,8 +653,8 @@ namespace StorageDLHI.App.PoGUI
 
             dgvFooter.Rows[0].Cells[1].Value = "TOTAL";
             dgvFooter.Rows[0].Cells[12].Value = totalQty;
-            dgvFooter.Rows[0].Cells[13].Value = totalPrice.ToString("N0");
-            dgvFooter.Rows[0].Cells[14].Value = totalAmount.ToString("N0");
+            dgvFooter.Rows[0].Cells[13].Value = totalPrice.ToString("N2");
+            dgvFooter.Rows[0].Cells[14].Value = totalAmount.ToString("N2");
 
             dgvFooter.Rows[0].Cells[1].Style.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             Common.Common.StyleFooterCell(dgvFooter.Rows[0].Cells[12]);
@@ -669,9 +671,9 @@ namespace StorageDLHI.App.PoGUI
             dgvProdOfPO.Columns["E_FLAG"].DefaultCellStyle.Format = "N0";
             dgvProdOfPO.Columns["F_LENGTH"].DefaultCellStyle.Format = "N0";
             dgvProdOfPO.Columns["G_WEIGHT"].DefaultCellStyle.Format = "N0";
-            dgvProdOfPO.Columns["QTY"].DefaultCellStyle.Format = "N0";
-            dgvProdOfPO.Columns["PO_PRICE"].DefaultCellStyle.Format = "N0";
-            dgvProdOfPO.Columns["PO_AMOUNT"].DefaultCellStyle.Format = "N0";
+            dgvProdOfPO.Columns["QTY"].DefaultCellStyle.Format = "N2";
+            dgvProdOfPO.Columns["PO_PRICE"].DefaultCellStyle.Format = "N2";
+            dgvProdOfPO.Columns["PO_AMOUNT"].DefaultCellStyle.Format = "N2";
         }
 
         private void dgvMPRDetail_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -1027,6 +1029,8 @@ namespace StorageDLHI.App.PoGUI
                 {QueryStatement.NETCASH_PARA, dgvProdOfPO.Rows[rsl].Cells[14].Value.ToString().Trim()}, // Netcash
                 {QueryStatement.TAXVALUE_PARA, dgvProdOfPO.Rows[rsl].Cells[17].Value.ToString().Trim()}, // Tax value
                 {QueryStatement.PROPERTY_FORMULA_TEXT, dgvProdOfPO.Rows[rsl].Cells[18].Value.ToString().Trim() }, // Formula
+                {QueryStatement.PROPERTY_COST_ID, dgvProdOfPO.Rows[rsl].Cells[19].Value.ToString().Trim() }, // CurrencyID
+
 
                 {QueryStatement.PROPERTY_PO_DETAIL_RECEVIE, dgvProdOfPO.Rows[rsl].Cells[15].Value.ToString().Trim()}, // Recevie
                 {QueryStatement.PROPERTY_PO_DETAIL_REMARKS, dgvProdOfPO.Rows[rsl].Cells[16].Value.ToString().Trim()}, // Remark

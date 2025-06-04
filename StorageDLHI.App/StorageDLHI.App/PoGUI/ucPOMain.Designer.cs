@@ -164,6 +164,7 @@
             this.PO_REMARKS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TAX_VALUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FORMULA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CURRENCY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pagePOs)).BeginInit();
@@ -1275,7 +1276,8 @@
             this.PO_RECEVIE,
             this.PO_REMARKS,
             this.TAX_VALUE,
-            this.FORMULA});
+            this.FORMULA,
+            this.CURRENCY});
             this.dgvProdOfPO.ContextMenuStrip = this.ctmUpdateProd;
             this.dgvProdOfPO.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProdOfPO.Location = new System.Drawing.Point(0, 0);
@@ -1587,6 +1589,14 @@
             this.FORMULA.Name = "FORMULA";
             this.FORMULA.ReadOnly = true;
             // 
+            // CURRENCY
+            // 
+            this.CURRENCY.DataPropertyName = "CURRENCY";
+            this.CURRENCY.HeaderText = "CURRENCY";
+            this.CURRENCY.MinimumWidth = 6;
+            this.CURRENCY.Name = "CURRENCY";
+            this.CURRENCY.ReadOnly = true;
+            // 
             // ucPOMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1797,5 +1807,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PO_REMARKS;
         private System.Windows.Forms.DataGridViewTextBoxColumn TAX_VALUE;
         private System.Windows.Forms.DataGridViewTextBoxColumn FORMULA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CURRENCY;
     }
 }

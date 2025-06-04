@@ -15,20 +15,25 @@ using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace StorageDLHI.App.PoGUI
 {
     public partial class frmAddPriceForProdPO : KryptonForm
     {
         public Int32 Price { get; set; }
-        public double NetCash { get; set; }
+        public decimal NetCash { get; set; }
         public string Recevie {  get; set; }
         public string Remark { get; set; }
         public string TaxValue { get; set; }
         public string Formula {  get; set; }
+        public decimal ExchangeRate {  get; set; }
+        public string Currency { get; set; }
+        public string CurrencyOption  { get; set; }
         
         private DataTable dtFormula = new DataTable();
         private DataTable dtFormulaPara = new DataTable();
+        private DataTable dtCost = new DataTable();
         private string paraString = string.Empty;
         private Dictionary<string, string> variables = new Dictionary<string, string>();
         private Products product = new Products();
@@ -36,6 +41,8 @@ namespace StorageDLHI.App.PoGUI
         private string QtyProd = "";
         private bool IsAdd = true;
 
+        private Dictionary<Guid, string> cboCostDataSrouce = new Dictionary<Guid, string>();
+        private Dictionary<string, string> exchangeRate = new Dictionary<string, string>();
 
         public frmAddPriceForProdPO()
         {
@@ -80,6 +87,7 @@ namespace StorageDLHI.App.PoGUI
         {
             await LoadTaxs();
             await LoadFormula();
+            await LoadCost();
 
             if (this.IsAdd)
             {
@@ -108,11 +116,14 @@ namespace StorageDLHI.App.PoGUI
                 this.variables.TryGetValue(QueryStatement.TAXVALUE_PARA, out string taxValue);
                 this.variables.TryGetValue(QueryStatement.PROPERTY_FORMULA_TEXT, out string formula);
                 this.variables.TryGetValue(QueryStatement.NETCASH_PARA, out string netCash);
+                this.variables.TryGetValue(QueryStatement.PROPERTY_COST_ID, out string costOption);
                 this.variables.TryGetValue(QueryStatement.PROPERTY_PO_DETAIL_RECEVIE, out string recevie);
                 this.variables.TryGetValue(QueryStatement.PROPERTY_PO_DETAIL_REMARKS, out string remark);
 
                 cboTax.SelectedIndex = cboTax.FindStringExact(taxValue);
                 cboFormula.SelectedIndex = cboFormula.FindStringExact(formula);
+                //cboCost.SelectedValue = costId;
+                cboCost.SelectedIndex = cboCost.FindStringExact(costOption);
 
                 txtPrice.Value = Int32.Parse(price);
                 txtRecevie.Text = recevie;
@@ -176,6 +187,33 @@ namespace StorageDLHI.App.PoGUI
             cboFormula.DataSource = dtFormula;
         }
 
+        public async Task LoadCost()
+        {
+            if (!CacheManager.Exists(CacheKeys.COST_DATATABLE_ALLCOST))
+            {
+                dtCost = await MaterialDAO.GetCosts();
+                CacheManager.Add(CacheKeys.COST_DATATABLE_ALLCOST, dtCost);
+
+            }
+            else
+            {
+                dtCost = CacheManager.Get<DataTable>(CacheKeys.COST_DATATABLE_ALLCOST);
+            }
+
+            // Create Dictionary For display combobox
+            foreach (DataRow row in dtCost.Rows)
+            {
+                cboCostDataSrouce.Add(Guid.Parse(row[QueryStatement.PROPERTY_COST_ID].ToString()), row[QueryStatement.PROPERTY_COST_NAME].ToString());
+                var display = row[QueryStatement.PROPERTY_CURRENCY] + " - " + row[QueryStatement.PROPERTY_CURRENCY_CODE] + " - " + row[QueryStatement.PROPERTY_CURRENCY_VALUE];
+                var member = row[QueryStatement.PROPERTY_COST_ID].ToString();
+                exchangeRate.Add(member, display);
+            }
+
+            cboCost.DataSource = new BindingSource(cboCostDataSrouce, null);
+            cboCost.DisplayMember = "Value";
+            cboCost.ValueMember = "Key";
+        }
+
         private void btnAddProdIntoMpr_Click(object sender, EventArgs e)
         {
             this.Price = (Int32)txtPrice.Value;
@@ -183,6 +221,11 @@ namespace StorageDLHI.App.PoGUI
             this.Remark = txtRemark.Text.Trim();
             this.TaxValue = cboTax.Text.Trim();
             this.Formula = cboFormula.Text.Trim();
+
+            var key = ((KeyValuePair<Guid, string>)cboCost.SelectedItem).Value.ToString();
+            this.CurrencyOption = key;
+            this.ExchangeRate = decimal.Parse(txtExchangeRate.Text.Trim());
+            this.Currency = txtCurrencyCode.Text.Trim();
 
             this.Close();
         }
@@ -231,7 +274,15 @@ namespace StorageDLHI.App.PoGUI
 
             var taxArr = cboTax.Text.Trim().Split('~');
 
-            NetCash = amount * float.Parse(taxArr[1]);
+
+            if (txtCurrencyCode.Text.Trim().Equals("VND"))
+            {
+                NetCash = decimal.Parse(amount.ToString()) * decimal.Parse(taxArr[1]);
+            }
+            else
+            {
+                NetCash = ConvertVNDToExchangeRate(decimal.Parse(amount.ToString()), decimal.Parse(txtExchangeRate.Text.Trim()));
+            }
 
             dgvProdInfo.Rows[0].Cells[11].Value = QtyProd;
             dgvProdInfo.Rows[0].Cells[12].Value = txtPrice.Value;
@@ -249,7 +300,24 @@ namespace StorageDLHI.App.PoGUI
         {
             dgvProdInfo.Columns["QTY"].DefaultCellStyle.Format = "N0";
             dgvProdInfo.Columns["PRICE"].DefaultCellStyle.Format = "N0";
-            dgvProdInfo.Columns["NET_CASH"].DefaultCellStyle.Format = "N3";
+            dgvProdInfo.Columns["NET_CASH"].DefaultCellStyle.Format = "N2";
+        }
+
+        private void cboCost_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboCost.Items.Count < 0) return;
+            var key = ((KeyValuePair<Guid, string>)cboCost.SelectedItem).Key.ToString();
+            this.exchangeRate.TryGetValue(key, out string currency);
+
+            var currencyArr = currency.Split('-');
+            txtCurrencyCode.Text = currencyArr[1];
+            txtExchangeRate.Text = decimal.Parse(currencyArr[2].ToString()).ToString("N2");
+        }
+
+        private decimal ConvertVNDToExchangeRate(decimal amountVND, decimal amountExRate)
+        {
+            decimal convertedAmount = amountVND / amountExRate;
+            return convertedAmount; // Return the converted amount
         }
     }
 }

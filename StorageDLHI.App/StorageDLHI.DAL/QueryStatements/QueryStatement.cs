@@ -99,6 +99,9 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string UPDATE_COST = "UPDATE COST SET COST_NAME = N'{0}' WHERE ID = '{1}'";
         public const string PROPERTY_COST_ID = "ID";
         public const string PROPERTY_COST_NAME = "COST_NAME";
+        public const string PROPERTY_CURRENCY = "CURRENCY";
+        public const string PROPERTY_CURRENCY_CODE = "CURRENCY_CODE";
+        public const string PROPERTY_CURRENCY_VALUE = "CURRENCY_VALUE";
 
         // Product
         public const string ADD_PROD = "INSERT INTO PRODUCTS \r\n(ID, \r\nPRODUCT_NAME, \r\nPRODUCT_DES_2, \r\nPRODUCT_CODE, \r\nPRODUCT_MATERIAL_CODE, \r\nPICTURE_LINK, \r\nPICTURE, \r\nA_THINHNESS, \r\nB_DEPTH, \r\nC_WIDTH, \r\nD_WEB,\r\nE_FLAG, \r\nF_LENGTH, \r\nG_WEIGHT, \r\nUSED_NOTE,\r\nUNIT_ID,\r\nORIGIN_ID,\r\nM_TYPE_ID,\r\nSTANDARD_ID) \r\nVALUES \r\n('{0}',\r\nN'{1}', \r\n'{2}', \r\n'{3}',\r\n'{4}',\r\nN'{5}',\r\n(SELECT *FROM OPENROWSET(BULK N'{6}', SINGLE_BLOB) AS IMAGE), \r\n'{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}', N'{15}', '{16}', '{17}', '{18}')";
