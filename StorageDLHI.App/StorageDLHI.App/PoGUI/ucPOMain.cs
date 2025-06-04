@@ -713,14 +713,14 @@ namespace StorageDLHI.App.PoGUI
 
         private void dgvPOList_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            dgvPOList.Columns["PO_TOTAL_AMOUNT"].DefaultCellStyle.Format = "N0";
+            dgvPOList.Columns["PO_TOTAL_AMOUNT"].DefaultCellStyle.Format = "N2";
         }
 
         private void dgvPODetail_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            dgvPODetail.Columns["PO_DETAIL_QTY"].DefaultCellStyle.Format = "N0";
-            dgvPODetail.Columns["PO_DETAIL_PRICE"].DefaultCellStyle.Format = "N0";
-            dgvPODetail.Columns["PO_DETAIL_AMOUNT"].DefaultCellStyle.Format = "N0";
+            dgvPODetail.Columns["PO_DETAIL_QTY"].DefaultCellStyle.Format = "N2";
+            dgvPODetail.Columns["PO_DETAIL_PRICE"].DefaultCellStyle.Format = "N2";
+            dgvPODetail.Columns["PO_DETAIL_AMOUNT"].DefaultCellStyle.Format = "N2";
         }
 
         private void dgvPOList_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -886,7 +886,7 @@ namespace StorageDLHI.App.PoGUI
                 Po_Approved = dgvPOList.Rows[rsl].Cells[11].Value.ToString().Trim(),
                 Po_Payment_Term = dgvPOList.Rows[rsl].Cells[12].Value.ToString().Trim(),
 
-                SupplierId = Guid.Parse(dgvPOList.Rows[rsl].Cells[18].Value.ToString().Trim())
+                SupplierId = Guid.Parse(dgvPOList.Rows[rsl].Cells[15].Value.ToString().Trim())
             };
 
             DataTable dtForExport = new DataTable();
@@ -910,14 +910,14 @@ namespace StorageDLHI.App.PoGUI
             foreach (DataGridViewRow item in dgvPODetail.Rows)
             {
                 DataRow dataRow = dtForExport.NewRow();
-                dataRow[0] = item.Cells[17].Value.ToString().Trim();
+                dataRow[0] = item.Cells[19].Value.ToString().Trim();
                 dataRow[1] = item.Cells[3].Value.ToString().Trim();
                 dataRow[2] = item.Cells[5].Value.ToString().Trim();
                 dataRow[3] = item.Cells[6].Value.ToString().Trim();
                 dataRow[4] = item.Cells[7].Value.ToString().Trim();
                 dataRow[5] = item.Cells[8].Value.ToString().Trim();
                 dataRow[6] = item.Cells[13].Value.ToString().Trim(); //
-                dataRow[7] = item.Cells[16].Value.ToString().Trim();
+                dataRow[7] = item.Cells[18].Value.ToString().Trim();
                 dataRow[8] = item.Cells[12].Value.ToString().Trim();
                 dataRow[9] = "";
                 dataRow[10] = "";
