@@ -153,7 +153,10 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_MPR_MPR_APPROVED = "MPR_APPROVED";
 
         // PO
-        public const string INSERT_PO = "SET DATEFORMAT DMY INSERT INTO POS VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', N'{5}', '{6}', '{7}', N'{8}', N'{9}', N'{10}', N'{11}', N'{12}', N'{13}', {14}, '{15}', '{16}', '{17}', '{18}', '{19}')  ";
+        public const string INSERT_PO = "SET DATEFORMAT DMY " +
+            "INSERT INTO POS VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', N'{5}', '{6}', '{7}', N'{8}', N'{9}', N'{10}', N'{11}', N'{12}', N'{13}', {14}, " +
+            //"'{15}', '{16}', " +
+            "'{15}', '{16}', '{17}')  ";
         public const string GET_PO_DETAIL_FORM = "SELECT *FROM PO_DETAIL WHERE ID = '00000000-0000-0000-0000-000000000000'";
         public const string GET_PO_DETAILS = "SELECT *FROM PO_DETAIL";
         public const string DELETE_PO_BY_ID = "DELETE FROM POS WHERE ID = '{0}'";

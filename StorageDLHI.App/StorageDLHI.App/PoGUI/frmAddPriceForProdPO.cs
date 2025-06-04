@@ -30,6 +30,8 @@ namespace StorageDLHI.App.PoGUI
         public decimal ExchangeRate {  get; set; }
         public string Currency { get; set; }
         public string CurrencyOption  { get; set; }
+        public Guid CostID { get; set; }
+        public Guid TaxID { get; set; }
         
         private DataTable dtFormula = new DataTable();
         private DataTable dtFormulaPara = new DataTable();
@@ -222,8 +224,11 @@ namespace StorageDLHI.App.PoGUI
             this.TaxValue = cboTax.Text.Trim();
             this.Formula = cboFormula.Text.Trim();
 
-            var key = ((KeyValuePair<Guid, string>)cboCost.SelectedItem).Value.ToString();
-            this.CurrencyOption = key;
+            var costValue = ((KeyValuePair<Guid, string>)cboCost.SelectedItem).Value.ToString();
+            var costID = ((KeyValuePair<Guid, string>)cboCost.SelectedItem).Key.ToString();
+            this.CurrencyOption = costValue;
+            this.CostID = Guid.Parse(costID);
+            this.TaxID = Guid.Parse(cboTax.SelectedValue.ToString());
             this.ExchangeRate = decimal.Parse(txtExchangeRate.Text.Trim());
             this.Currency = txtCurrencyCode.Text.Trim();
 

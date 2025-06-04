@@ -104,6 +104,9 @@ namespace StorageDLHI.App.PoGUI
             dtProdsOfAddPO.Columns.Add("FORMULA");
             dtProdsOfAddPO.Columns.Add("CURRENCY");
 
+            dtProdsOfAddPO.Columns.Add("COST_ID");
+            dtProdsOfAddPO.Columns.Add("TAX_ID");
+
             dgvProdOfPO.DataSource = dtProdsOfAddPO;
 
             
@@ -365,6 +368,9 @@ namespace StorageDLHI.App.PoGUI
             dataRow[17] = frmAddPriceForProdPO.TaxValue; // TAX_VALUE
             dataRow[18] = frmAddPriceForProdPO.Formula; // FORMULA
             dataRow[19] = frmAddPriceForProdPO.CurrencyOption; // CURRENCY
+
+            dataRow[20] = frmAddPriceForProdPO.CostID;
+            dataRow[21] = frmAddPriceForProdPO.TaxID;
 
             totalAmount += double.Parse(frmAddPriceForProdPO.NetCash.ToString()); // Amount
             dtProdsOfAddPO.Rows.Add(dataRow);
@@ -1062,6 +1068,8 @@ namespace StorageDLHI.App.PoGUI
             dgvProdOfPO.Rows[rsl].Cells[16].Value = frmAddPriceForProdPO.Remark;
             dgvProdOfPO.Rows[rsl].Cells[17].Value = frmAddPriceForProdPO.TaxValue;
             dgvProdOfPO.Rows[rsl].Cells[18].Value = frmAddPriceForProdPO.Formula;
+            dgvProdOfPO.Rows[rsl].Cells[19].Value = frmAddPriceForProdPO.CostID;
+            dgvProdOfPO.Rows[rsl].Cells[20].Value = frmAddPriceForProdPO.TaxID;
 
             UpdateFooter();
         }

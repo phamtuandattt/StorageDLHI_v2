@@ -39,7 +39,9 @@ namespace StorageDLHI.BLL.PoDAO
         {
             string sqlQuery = string.Format(QueryStatement.INSERT_PO, pos.Id, pos.Po_No, pos.Po_Mpr_No, pos.Po_Wo_No, pos.Po_Project_Name,
                 pos.Po_Rev_Total, pos.Po_CreateDate, pos.Po_Expected_Delivery_Date, pos.Po_Prepared, pos.Po_Reviewed, pos.Po_Agrement,
-                pos.Po_Approved, pos.Po_Payment_Term, pos.Po_Dispatch_Box, pos.Po_Total_Amount, pos.CostId, pos.TaxId, pos.SupplierId, pos.Staff_Id, pos.IsImported);
+                pos.Po_Approved, pos.Po_Payment_Term, pos.Po_Dispatch_Box, pos.Po_Total_Amount,
+                 //pos.CostId, pos.TaxId, 
+                 pos.IsImported, pos.SupplierId, pos.Staff_Id);
 
             return await data.Insert(sqlQuery) > 0;
         }

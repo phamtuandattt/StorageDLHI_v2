@@ -115,30 +115,6 @@ namespace StorageDLHI.App.PoGUI
 
         private async void LoadData()
         {
-            if (!CacheManager.Exists(CacheKeys.COST_DATATABLE_ALLCOST))
-            {
-                var dtCost = await MaterialDAO.GetCosts();
-                LoadDataCombox(cboCost, dtCost, QueryStatement.PROPERTY_COST_NAME, QueryStatement.PROPERTY_COST_ID);
-                CacheManager.Add(CacheKeys.COST_DATATABLE_ALLCOST, dtCost);
-            }
-            else
-            {
-                var dtCostFromCache = CacheManager.Get<DataTable>(CacheKeys.COST_DATATABLE_ALLCOST);
-                LoadDataCombox(cboCost, dtCostFromCache, QueryStatement.PROPERTY_COST_NAME, QueryStatement.PROPERTY_COST_ID);
-            }
-
-            if (!CacheManager.Exists(CacheKeys.TAX_DATATABLE_ALLTAX))
-            {
-                var dtTax = await MaterialDAO.GetTaxs();
-                LoadDataCombox(cboTax, dtTax, QueryStatement.PROPERTY_TAX_PERCENT, QueryStatement.PROPERTY_TAX_ID);
-                CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX, dtTax);
-            }
-            else
-            {
-                var dtTaxFromCache = CacheManager.Get<DataTable>(CacheKeys.TAX_DATATABLE_ALLTAX);
-                LoadDataCombox(cboTax, dtTaxFromCache, QueryStatement.PROPERTY_TAX_PERCENT, QueryStatement.PROPERTY_TAX_ID);
-            }
-
             if (!CacheManager.Exists(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER))
             {
                 var dtSupp = await SupplierDAO.GetSuppliers();
@@ -197,8 +173,8 @@ namespace StorageDLHI.App.PoGUI
                 Po_Payment_Term = paymentTerm,
                 Po_Dispatch_Box = "",
                 Po_Total_Amount = totalAmount,
-                CostId = Guid.Parse(cboCost.SelectedValue.ToString()),
-                TaxId = Guid.Parse(cboTax.SelectedValue.ToString()),
+                //CostId = Guid.Parse(cboCost.SelectedValue.ToString()),
+                //TaxId = Guid.Parse(cboTax.SelectedValue.ToString()),
                 SupplierId = Guid.Parse(cboSuppplier.SelectedValue.ToString()),
                 Staff_Id = ShareData.UserId,
                 IsImported = false
@@ -214,10 +190,12 @@ namespace StorageDLHI.App.PoGUI
                 dataRow[2] = Guid.Parse(item[0].ToString());
                 dataRow[3] = Int32.Parse(item[12].ToString());
                 dataRow[4] = Int32.Parse(item[13].ToString());
-                dataRow[5] = Int32.Parse(item[14].ToString());
+                dataRow[5] = decimal.Parse(item[14].ToString());
                 dataRow[6] = DateTime.Now.ToString("dd/MM/yyyy");
                 dataRow[7] = item[15].ToString();
                 dataRow[8] = item[16].ToString();
+                dataRow[9] = item[20].ToString();
+                dataRow[10] = item[21].ToString();
 
                 dtProdOfPO_UpdateDB.Rows.Add(dataRow);
             }

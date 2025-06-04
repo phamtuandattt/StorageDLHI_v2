@@ -26,8 +26,7 @@ namespace StorageDLHI.DAL.Models
         public double Po_Total_Amount { get; set; }
         public bool IsImported { get; set; }
         
-        public Guid CostId { get; set; }
-        public Guid TaxId { get; set; }
+
         public Guid SupplierId { get; set; }
         public Guid Staff_Id { get; set; }
     }
@@ -43,5 +42,8 @@ namespace StorageDLHI.DAL.Models
         public DateTime Req_Date { get; set; }
         public string Po_Recevie { get; set; }
         public string Po_Remarks { get; set; }
+
+        public Guid CostId { get; set; }
+        public Guid TaxId { get; set; }
     }
 }

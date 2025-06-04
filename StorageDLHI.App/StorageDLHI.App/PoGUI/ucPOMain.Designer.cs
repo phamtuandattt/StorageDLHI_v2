@@ -165,6 +165,8 @@
             this.TAX_VALUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FORMULA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CURRENCY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.COST_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TAX_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pagePOs)).BeginInit();
@@ -232,7 +234,7 @@
             this.kryptonNavigator1.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
             this.pagePOs,
             this.pageAddPO});
-            this.kryptonNavigator1.SelectedIndex = 1;
+            this.kryptonNavigator1.SelectedIndex = 0;
             this.kryptonNavigator1.Size = new System.Drawing.Size(1559, 741);
             this.kryptonNavigator1.StateCommon.Panel.Color1 = System.Drawing.Color.White;
             this.kryptonNavigator1.StateCommon.Panel.Color2 = System.Drawing.Color.White;
@@ -1277,7 +1279,9 @@
             this.PO_REMARKS,
             this.TAX_VALUE,
             this.FORMULA,
-            this.CURRENCY});
+            this.CURRENCY,
+            this.COST_ID,
+            this.TAX_ID});
             this.dgvProdOfPO.ContextMenuStrip = this.ctmUpdateProd;
             this.dgvProdOfPO.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProdOfPO.Location = new System.Drawing.Point(0, 0);
@@ -1580,6 +1584,7 @@
             this.TAX_VALUE.MinimumWidth = 6;
             this.TAX_VALUE.Name = "TAX_VALUE";
             this.TAX_VALUE.ReadOnly = true;
+            this.TAX_VALUE.Visible = false;
             // 
             // FORMULA
             // 
@@ -1588,6 +1593,7 @@
             this.FORMULA.MinimumWidth = 6;
             this.FORMULA.Name = "FORMULA";
             this.FORMULA.ReadOnly = true;
+            this.FORMULA.Visible = false;
             // 
             // CURRENCY
             // 
@@ -1596,6 +1602,23 @@
             this.CURRENCY.MinimumWidth = 6;
             this.CURRENCY.Name = "CURRENCY";
             this.CURRENCY.ReadOnly = true;
+            this.CURRENCY.Visible = false;
+            // 
+            // COST_ID
+            // 
+            this.COST_ID.HeaderText = "COST_ID";
+            this.COST_ID.MinimumWidth = 6;
+            this.COST_ID.Name = "COST_ID";
+            this.COST_ID.ReadOnly = true;
+            this.COST_ID.Visible = false;
+            // 
+            // TAX_ID
+            // 
+            this.TAX_ID.HeaderText = "TAX_ID";
+            this.TAX_ID.MinimumWidth = 6;
+            this.TAX_ID.Name = "TAX_ID";
+            this.TAX_ID.ReadOnly = true;
+            this.TAX_ID.Visible = false;
             // 
             // ucPOMain
             // 
@@ -1808,5 +1831,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TAX_VALUE;
         private System.Windows.Forms.DataGridViewTextBoxColumn FORMULA;
         private System.Windows.Forms.DataGridViewTextBoxColumn CURRENCY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn COST_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TAX_ID;
     }
 }
