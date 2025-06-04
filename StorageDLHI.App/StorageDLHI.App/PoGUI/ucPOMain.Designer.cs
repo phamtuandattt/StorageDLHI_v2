@@ -130,6 +130,21 @@
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonPanel6 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.dgvProdOfPO = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.ctmUpdateProd = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.updateProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateAmountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgvFooter = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnClearProdsOfPO = new System.Windows.Forms.ToolStripButton();
+            this.btnAddPO = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.btnReload = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnAddAllProdIntoPO = new System.Windows.Forms.ToolStripButton();
+            this.tlsMPRNo = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.tlsSearchMprForMakePO = new System.Windows.Forms.ToolStripTextBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -147,21 +162,8 @@
             this.PO_AMOUNT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PO_RECEVIE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PO_REMARKS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ctmUpdateProd = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.updateProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dgvFooter = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnClearProdsOfPO = new System.Windows.Forms.ToolStripButton();
-            this.btnAddPO = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
-            this.btnReload = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnAddAllProdIntoPO = new System.Windows.Forms.ToolStripButton();
-            this.tlsMPRNo = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.tlsSearchMprForMakePO = new System.Windows.Forms.ToolStripTextBox();
-            this.updateAmountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TAX_VALUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FORMULA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pagePOs)).BeginInit();
@@ -1271,7 +1273,9 @@
             this.PO_PRICE,
             this.PO_AMOUNT,
             this.PO_RECEVIE,
-            this.PO_REMARKS});
+            this.PO_REMARKS,
+            this.TAX_VALUE,
+            this.FORMULA});
             this.dgvProdOfPO.ContextMenuStrip = this.ctmUpdateProd;
             this.dgvProdOfPO.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProdOfPO.Location = new System.Drawing.Point(0, 0);
@@ -1287,6 +1291,147 @@
             this.dgvProdOfPO.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvProdOfPO_DataBindingComplete);
             this.dgvProdOfPO.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvProdOfPO_RowPostPaint);
             this.dgvProdOfPO.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvProdOfPO_Scroll);
+            // 
+            // ctmUpdateProd
+            // 
+            this.ctmUpdateProd.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ctmUpdateProd.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.ctmUpdateProd.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.updateProductToolStripMenuItem,
+            this.removeProductToolStripMenuItem,
+            this.updateAmountToolStripMenuItem});
+            this.ctmUpdateProd.Name = "contextMenuStrip1";
+            this.ctmUpdateProd.Size = new System.Drawing.Size(188, 76);
+            // 
+            // updateProductToolStripMenuItem
+            // 
+            this.updateProductToolStripMenuItem.Name = "updateProductToolStripMenuItem";
+            this.updateProductToolStripMenuItem.Size = new System.Drawing.Size(187, 24);
+            this.updateProductToolStripMenuItem.Text = "Update product";
+            this.updateProductToolStripMenuItem.Click += new System.EventHandler(this.updateProductToolStripMenuItem_Click);
+            // 
+            // removeProductToolStripMenuItem
+            // 
+            this.removeProductToolStripMenuItem.Name = "removeProductToolStripMenuItem";
+            this.removeProductToolStripMenuItem.Size = new System.Drawing.Size(187, 24);
+            this.removeProductToolStripMenuItem.Text = "Remove Product";
+            this.removeProductToolStripMenuItem.Click += new System.EventHandler(this.removeProductToolStripMenuItem_Click);
+            // 
+            // updateAmountToolStripMenuItem
+            // 
+            this.updateAmountToolStripMenuItem.Name = "updateAmountToolStripMenuItem";
+            this.updateAmountToolStripMenuItem.Size = new System.Drawing.Size(187, 24);
+            this.updateAmountToolStripMenuItem.Text = "Update amount";
+            this.updateAmountToolStripMenuItem.Click += new System.EventHandler(this.updateAmountToolStripMenuItem_Click);
+            // 
+            // dgvFooter
+            // 
+            this.dgvFooter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvFooter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvFooter.Location = new System.Drawing.Point(0, 245);
+            this.dgvFooter.Name = "dgvFooter";
+            this.dgvFooter.ReadOnly = true;
+            this.dgvFooter.RowHeadersWidth = 51;
+            this.dgvFooter.RowTemplate.Height = 30;
+            this.dgvFooter.Size = new System.Drawing.Size(1547, 36);
+            this.dgvFooter.TabIndex = 4;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnClearProdsOfPO,
+            this.btnAddPO});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip1.Size = new System.Drawing.Size(1551, 27);
+            this.toolStrip1.TabIndex = 6;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnClearProdsOfPO
+            // 
+            this.btnClearProdsOfPO.Image = global::StorageDLHI.App.Properties.Resources.bin;
+            this.btnClearProdsOfPO.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnClearProdsOfPO.Name = "btnClearProdsOfPO";
+            this.btnClearProdsOfPO.Size = new System.Drawing.Size(87, 24);
+            this.btnClearProdsOfPO.Text = "Clear all";
+            this.btnClearProdsOfPO.Click += new System.EventHandler(this.btnClearProdsOfPO_Click);
+            // 
+            // btnAddPO
+            // 
+            this.btnAddPO.Image = global::StorageDLHI.App.Properties.Resources.right;
+            this.btnAddPO.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAddPO.Name = "btnAddPO";
+            this.btnAddPO.Size = new System.Drawing.Size(86, 24);
+            this.btnAddPO.Text = "Confirm";
+            this.btnAddPO.Click += new System.EventHandler(this.btnAddPO_Click);
+            // 
+            // toolStrip3
+            // 
+            this.toolStrip3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnReload,
+            this.toolStripSeparator1,
+            this.btnAddAllProdIntoPO,
+            this.tlsMPRNo,
+            this.toolStripLabel2,
+            this.tlsSearchMprForMakePO});
+            this.toolStrip3.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip3.Name = "toolStrip3";
+            this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip3.Size = new System.Drawing.Size(1557, 27);
+            this.toolStrip3.TabIndex = 5;
+            this.toolStrip3.Text = "toolStrip3";
+            // 
+            // btnReload
+            // 
+            this.btnReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnReload.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.btnReload.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(29, 24);
+            this.btnReload.Text = "Refresh";
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            // 
+            // btnAddAllProdIntoPO
+            // 
+            this.btnAddAllProdIntoPO.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnAddAllProdIntoPO.Image = global::StorageDLHI.App.Properties.Resources.mark;
+            this.btnAddAllProdIntoPO.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAddAllProdIntoPO.Name = "btnAddAllProdIntoPO";
+            this.btnAddAllProdIntoPO.Size = new System.Drawing.Size(223, 24);
+            this.btnAddAllProdIntoPO.Text = "Add all product to create PO";
+            this.btnAddAllProdIntoPO.Visible = false;
+            this.btnAddAllProdIntoPO.Click += new System.EventHandler(this.btnAddAllProdIntoPO_Click);
+            // 
+            // tlsMPRNo
+            // 
+            this.tlsMPRNo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tlsMPRNo.Name = "tlsMPRNo";
+            this.tlsMPRNo.Size = new System.Drawing.Size(18, 24);
+            this.tlsMPRNo.Text = "...";
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(56, 24);
+            this.toolStripLabel2.Text = "Search:";
+            // 
+            // tlsSearchMprForMakePO
+            // 
+            this.tlsSearchMprForMakePO.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tlsSearchMprForMakePO.Name = "tlsSearchMprForMakePO";
+            this.tlsSearchMprForMakePO.Size = new System.Drawing.Size(200, 27);
+            this.tlsSearchMprForMakePO.TextChanged += new System.EventHandler(this.tlsSearchMprForMakePO_TextChanged);
             // 
             // Column1
             // 
@@ -1426,146 +1571,21 @@
             this.PO_REMARKS.Name = "PO_REMARKS";
             this.PO_REMARKS.ReadOnly = true;
             // 
-            // ctmUpdateProd
+            // TAX_VALUE
             // 
-            this.ctmUpdateProd.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ctmUpdateProd.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.ctmUpdateProd.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.updateProductToolStripMenuItem,
-            this.removeProductToolStripMenuItem,
-            this.updateAmountToolStripMenuItem});
-            this.ctmUpdateProd.Name = "contextMenuStrip1";
-            this.ctmUpdateProd.Size = new System.Drawing.Size(211, 104);
+            this.TAX_VALUE.DataPropertyName = "TAX_VALUE";
+            this.TAX_VALUE.HeaderText = "Tax";
+            this.TAX_VALUE.MinimumWidth = 6;
+            this.TAX_VALUE.Name = "TAX_VALUE";
+            this.TAX_VALUE.ReadOnly = true;
             // 
-            // updateProductToolStripMenuItem
+            // FORMULA
             // 
-            this.updateProductToolStripMenuItem.Name = "updateProductToolStripMenuItem";
-            this.updateProductToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.updateProductToolStripMenuItem.Text = "Update product";
-            this.updateProductToolStripMenuItem.Click += new System.EventHandler(this.updateProductToolStripMenuItem_Click);
-            // 
-            // removeProductToolStripMenuItem
-            // 
-            this.removeProductToolStripMenuItem.Name = "removeProductToolStripMenuItem";
-            this.removeProductToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.removeProductToolStripMenuItem.Text = "Remove Product";
-            this.removeProductToolStripMenuItem.Click += new System.EventHandler(this.removeProductToolStripMenuItem_Click);
-            // 
-            // dgvFooter
-            // 
-            this.dgvFooter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvFooter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvFooter.Location = new System.Drawing.Point(0, 245);
-            this.dgvFooter.Name = "dgvFooter";
-            this.dgvFooter.ReadOnly = true;
-            this.dgvFooter.RowHeadersWidth = 51;
-            this.dgvFooter.RowTemplate.Height = 30;
-            this.dgvFooter.Size = new System.Drawing.Size(1547, 36);
-            this.dgvFooter.TabIndex = 4;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnClearProdsOfPO,
-            this.btnAddPO});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(1551, 27);
-            this.toolStrip1.TabIndex = 6;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // btnClearProdsOfPO
-            // 
-            this.btnClearProdsOfPO.Image = global::StorageDLHI.App.Properties.Resources.bin;
-            this.btnClearProdsOfPO.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnClearProdsOfPO.Name = "btnClearProdsOfPO";
-            this.btnClearProdsOfPO.Size = new System.Drawing.Size(87, 24);
-            this.btnClearProdsOfPO.Text = "Clear all";
-            this.btnClearProdsOfPO.Click += new System.EventHandler(this.btnClearProdsOfPO_Click);
-            // 
-            // btnAddPO
-            // 
-            this.btnAddPO.Image = global::StorageDLHI.App.Properties.Resources.right;
-            this.btnAddPO.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAddPO.Name = "btnAddPO";
-            this.btnAddPO.Size = new System.Drawing.Size(86, 24);
-            this.btnAddPO.Text = "Confirm";
-            this.btnAddPO.Click += new System.EventHandler(this.btnAddPO_Click);
-            // 
-            // toolStrip3
-            // 
-            this.toolStrip3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnReload,
-            this.toolStripSeparator1,
-            this.btnAddAllProdIntoPO,
-            this.tlsMPRNo,
-            this.toolStripLabel2,
-            this.tlsSearchMprForMakePO});
-            this.toolStrip3.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip3.Size = new System.Drawing.Size(1557, 27);
-            this.toolStrip3.TabIndex = 5;
-            this.toolStrip3.Text = "toolStrip3";
-            // 
-            // btnReload
-            // 
-            this.btnReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnReload.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.btnReload.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(29, 24);
-            this.btnReload.Text = "Refresh";
-            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
-            // 
-            // btnAddAllProdIntoPO
-            // 
-            this.btnAddAllProdIntoPO.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnAddAllProdIntoPO.Image = global::StorageDLHI.App.Properties.Resources.mark;
-            this.btnAddAllProdIntoPO.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAddAllProdIntoPO.Name = "btnAddAllProdIntoPO";
-            this.btnAddAllProdIntoPO.Size = new System.Drawing.Size(223, 24);
-            this.btnAddAllProdIntoPO.Text = "Add all product to create PO";
-            this.btnAddAllProdIntoPO.Visible = false;
-            this.btnAddAllProdIntoPO.Click += new System.EventHandler(this.btnAddAllProdIntoPO_Click);
-            // 
-            // tlsMPRNo
-            // 
-            this.tlsMPRNo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tlsMPRNo.Name = "tlsMPRNo";
-            this.tlsMPRNo.Size = new System.Drawing.Size(18, 24);
-            this.tlsMPRNo.Text = "...";
-            // 
-            // toolStripLabel2
-            // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(56, 24);
-            this.toolStripLabel2.Text = "Search:";
-            // 
-            // tlsSearchMprForMakePO
-            // 
-            this.tlsSearchMprForMakePO.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tlsSearchMprForMakePO.Name = "tlsSearchMprForMakePO";
-            this.tlsSearchMprForMakePO.Size = new System.Drawing.Size(200, 27);
-            this.tlsSearchMprForMakePO.TextChanged += new System.EventHandler(this.tlsSearchMprForMakePO_TextChanged);
-            // 
-            // updateAmountToolStripMenuItem
-            // 
-            this.updateAmountToolStripMenuItem.Name = "updateAmountToolStripMenuItem";
-            this.updateAmountToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.updateAmountToolStripMenuItem.Text = "Update amount";
-            this.updateAmountToolStripMenuItem.Click += new System.EventHandler(this.updateAmountToolStripMenuItem_Click);
+            this.FORMULA.DataPropertyName = "FORMULA";
+            this.FORMULA.HeaderText = "FORMULA";
+            this.FORMULA.MinimumWidth = 6;
+            this.FORMULA.Name = "FORMULA";
+            this.FORMULA.ReadOnly = true;
             // 
             // ucPOMain
             // 
@@ -1668,23 +1688,6 @@
         private System.Windows.Forms.ToolStripLabel tlsMPRNo;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnAddPO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn A_THINHNESS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn B_DEPTH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_WIDTH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn D_WEB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn E_FLAG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn F_LENGTH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn G_WEIGHT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QTY;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PO_PRICE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PO_AMOUNT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PO_RECEVIE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PO_REMARKS;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvFooter;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel6;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel7;
@@ -1775,5 +1778,24 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column46;
         private System.Windows.Forms.DataGridViewTextBoxColumn PROD_CODE;
         private System.Windows.Forms.ToolStripMenuItem updateAmountToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn A_THINHNESS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn B_DEPTH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_WIDTH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn D_WEB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn E_FLAG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn F_LENGTH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn G_WEIGHT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QTY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PO_PRICE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PO_AMOUNT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PO_RECEVIE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PO_REMARKS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TAX_VALUE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FORMULA;
     }
 }

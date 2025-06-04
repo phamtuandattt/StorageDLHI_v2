@@ -24,6 +24,8 @@ namespace StorageDLHI.App.PoGUI
         public double NetCash { get; set; }
         public string Recevie {  get; set; }
         public string Remark { get; set; }
+        public string TaxValue { get; set; }
+        public string Formula {  get; set; }
         
         private DataTable dtFormula = new DataTable();
         private DataTable dtFormulaPara = new DataTable();
@@ -49,9 +51,10 @@ namespace StorageDLHI.App.PoGUI
             // Get Dictionary when click product
             this.variables = variables;
             this.product = product;
+            this.IsAdd = IsAdd;
 
             this.variables.TryGetValue(QueryStatement.QTY_PARA, out QtyProd);
-            txtQty.Text = QtyProd;
+            txtQty.Text = int.Parse(QtyProd).ToString("N0");
 
             dtProdInfo.Columns.Add(QueryStatement.PROPERTY_PROD_ID);
             dtProdInfo.Columns.Add(QueryStatement.PROPERTY_PROD_NAME);
@@ -70,8 +73,15 @@ namespace StorageDLHI.App.PoGUI
             dtProdInfo.Columns.Add("NET_CASH", typeof(double));
 
             dgvProdInfo.DataSource = dtProdInfo;
+        }
 
-            if (IsAdd)
+
+        private async void frmAddPriceForProdPO_Load(object sender, EventArgs e)
+        {
+            await LoadTaxs();
+            await LoadFormula();
+
+            if (this.IsAdd)
             {
                 DataRow dataRow = dtProdInfo.NewRow();
                 dataRow[0] = this.product.Id;
@@ -94,14 +104,16 @@ namespace StorageDLHI.App.PoGUI
             }
             else
             {
-                this.variables.TryGetValue(QueryStatement.PRICE_PARA, out string  price);
-                this.variables.TryGetValue(QueryStatement.PROPERTY_TAX_CUSTOM_VALUE, out string taxValue);
+                this.variables.TryGetValue(QueryStatement.PRICE_PARA, out string price);
+                this.variables.TryGetValue(QueryStatement.TAXVALUE_PARA, out string taxValue);
+                this.variables.TryGetValue(QueryStatement.PROPERTY_FORMULA_TEXT, out string formula);
                 this.variables.TryGetValue(QueryStatement.NETCASH_PARA, out string netCash);
-
                 this.variables.TryGetValue(QueryStatement.PROPERTY_PO_DETAIL_RECEVIE, out string recevie);
                 this.variables.TryGetValue(QueryStatement.PROPERTY_PO_DETAIL_REMARKS, out string remark);
-                
-                cboTax.SelectedText = taxValue;
+
+                cboTax.SelectedIndex = cboTax.FindStringExact(taxValue);
+                cboFormula.SelectedIndex = cboFormula.FindStringExact(formula);
+
                 txtPrice.Value = Int32.Parse(price);
                 txtRecevie.Text = recevie;
                 txtRemark.Text = remark;
@@ -125,14 +137,6 @@ namespace StorageDLHI.App.PoGUI
 
                 dtProdInfo.Rows.Add(dataRow);
             }
-
-        }
-
-
-        private async void frmAddPriceForProdPO_Load(object sender, EventArgs e)
-        {
-            await LoadTaxs();
-            await LoadFormula();
         }
 
         public async Task LoadTaxs()
@@ -177,6 +181,8 @@ namespace StorageDLHI.App.PoGUI
             this.Price = (Int32)txtPrice.Value;
             this.Recevie = txtRecevie.Text.Trim();
             this.Remark = txtRemark.Text.Trim();
+            this.TaxValue = cboTax.Text.Trim();
+            this.Formula = cboFormula.Text.Trim();
 
             this.Close();
         }
@@ -237,6 +243,13 @@ namespace StorageDLHI.App.PoGUI
         private void dgvProdInfo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             Common.Common.RenderNumbering(sender, e, this.Font);
+        }
+
+        private void dgvProdInfo_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvProdInfo.Columns["QTY"].DefaultCellStyle.Format = "N0";
+            dgvProdInfo.Columns["PRICE"].DefaultCellStyle.Format = "N0";
+            dgvProdInfo.Columns["NET_CASH"].DefaultCellStyle.Format = "N3";
         }
     }
 }

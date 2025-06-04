@@ -100,6 +100,9 @@ namespace StorageDLHI.App.PoGUI
             dtProdsOfAddPO.Columns.Add("PO_RECEVIE");
             dtProdsOfAddPO.Columns.Add("PO_REMARKS");
 
+            dtProdsOfAddPO.Columns.Add("TAX_VALUE");
+            dtProdsOfAddPO.Columns.Add("FORMULA");
+
             dgvProdOfPO.DataSource = dtProdsOfAddPO;
 
             
@@ -358,6 +361,8 @@ namespace StorageDLHI.App.PoGUI
             dataRow[14] = frmAddPriceForProdPO.NetCash.ToString().Trim(); // Amount
             dataRow[15] = frmAddPriceForProdPO.Recevie;
             dataRow[16] = frmAddPriceForProdPO.Remark;
+            dataRow[17] = frmAddPriceForProdPO.TaxValue; // TAX_VALUE
+            dataRow[18] = frmAddPriceForProdPO.Formula; // FORMULA
 
             totalAmount += frmAddPriceForProdPO.NetCash; // Amount
             dtProdsOfAddPO.Rows.Add(dataRow);
@@ -1017,14 +1022,14 @@ namespace StorageDLHI.App.PoGUI
                 {QueryStatement.PROPERTY_PROD_F, dgvProdOfPO.Rows[rsl].Cells[10].Value.ToString().Trim()},
                 {QueryStatement.PROPERTY_PROD_G, dgvProdOfPO.Rows[rsl].Cells[11].Value.ToString().Trim()},
 
-                {QueryStatement.QTY_PARA, dgvProdOfPO.Rows[rsl].Cells[12].Value.ToString().Trim()},
-                {QueryStatement.PRICE_PARA,  qty.ToString()},
-                {QueryStatement.NETCASH_PARA, dgvProdOfPO.Rows[rsl].Cells[14].Value.ToString().Trim()},
-                {QueryStatement.PROPERTY_FORMULA_TEXT, ""}, // Tax value
-                {QueryStatement.TAXVALUE_PARA, "" }, // Formula
+                {QueryStatement.QTY_PARA, qty.ToString() },
+                {QueryStatement.PRICE_PARA,  dgvProdOfPO.Rows[rsl].Cells[13].Value.ToString().Trim()}, // Price
+                {QueryStatement.NETCASH_PARA, dgvProdOfPO.Rows[rsl].Cells[14].Value.ToString().Trim()}, // Netcash
+                {QueryStatement.TAXVALUE_PARA, dgvProdOfPO.Rows[rsl].Cells[17].Value.ToString().Trim()}, // Tax value
+                {QueryStatement.PROPERTY_FORMULA_TEXT, dgvProdOfPO.Rows[rsl].Cells[18].Value.ToString().Trim() }, // Formula
 
-                {QueryStatement.PROPERTY_PO_DETAIL_RECEVIE, dgvProdOfPO.Rows[rsl].Cells[15].Value.ToString().Trim()},
-                {QueryStatement.PROPERTY_PO_DETAIL_REMARKS, dgvProdOfPO.Rows[rsl].Cells[16].Value.ToString().Trim()},
+                {QueryStatement.PROPERTY_PO_DETAIL_RECEVIE, dgvProdOfPO.Rows[rsl].Cells[15].Value.ToString().Trim()}, // Recevie
+                {QueryStatement.PROPERTY_PO_DETAIL_REMARKS, dgvProdOfPO.Rows[rsl].Cells[16].Value.ToString().Trim()}, // Remark
             };
 
             var prod = new Products()
@@ -1044,6 +1049,17 @@ namespace StorageDLHI.App.PoGUI
 
             frmAddPriceForProdPO frmAddPriceForProdPO = new frmAddPriceForProdPO(variable, prod, false);
             frmAddPriceForProdPO.ShowDialog();
+
+            if (frmAddPriceForProdPO.Price == 0 || frmAddPriceForProdPO.NetCash == 0) { return; }
+
+            dgvProdOfPO.Rows[rsl].Cells[13].Value = frmAddPriceForProdPO.Price;
+            dgvProdOfPO.Rows[rsl].Cells[14].Value = frmAddPriceForProdPO.NetCash;
+            dgvProdOfPO.Rows[rsl].Cells[15].Value = frmAddPriceForProdPO.Recevie;
+            dgvProdOfPO.Rows[rsl].Cells[16].Value = frmAddPriceForProdPO.Remark;
+            dgvProdOfPO.Rows[rsl].Cells[17].Value = frmAddPriceForProdPO.TaxValue;
+            dgvProdOfPO.Rows[rsl].Cells[18].Value = frmAddPriceForProdPO.Formula;
+
+            UpdateFooter();
         }
     }
 }
