@@ -13,6 +13,7 @@ namespace StorageDLHI.Infrastructor.Caches
         public const string STANDARD_DATATABLE_ALLSTANDARD = "Standard.DataTable.AllStandard";
 
         public const string TAX_DATATABLE_ALLTAX = "Tax.DataTable.AllTax";
+        public const string TAX_DATATABLE_ALLTAX_CUSTOM = "Tax.DataTable.AllTaxCustom";
         public const string UNIT_DATATABLE_ALLUNIT = "Unit.DataTable.AllUnit";
         public const string COST_DATATABLE_ALLCOST = "Cost.DataTable.AllCost";
         public const string FORMULA_DATATABLE_ALLFORMULA = "Formula.DataTable.AllFormula";

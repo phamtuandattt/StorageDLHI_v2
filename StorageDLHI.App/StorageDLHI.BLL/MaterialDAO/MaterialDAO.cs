@@ -113,7 +113,7 @@ namespace StorageDLHI.BLL.MaterialDAO
 
         public static async Task<bool> InsertCost(Costs costs)
         {
-            string sqlQuery = string.Format(QueryStatement.INSERT_COST, costs.Id, costs.Cost_Name);
+            string sqlQuery = string.Format(QueryStatement.INSERT_COST, costs.Id, costs.Cost_Name, costs.Currency_code, costs.Currency_Value, costs.Currency);
             return await data.Insert(sqlQuery) > 0;
         }
 
@@ -131,7 +131,7 @@ namespace StorageDLHI.BLL.MaterialDAO
 
         public static async Task<bool> UpdateCost(Costs costs)
         {
-            string sqlQuery = string.Format(QueryStatement.UPDATE_COST, costs.Cost_Name, costs.Id);
+            string sqlQuery = string.Format(QueryStatement.UPDATE_COST, costs.Cost_Name, costs.Id, costs.Currency_code, costs.Currency_Value, costs.Currency);
             return await data.Insert(sqlQuery) > 0;
         }
 

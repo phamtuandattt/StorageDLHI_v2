@@ -163,15 +163,15 @@ namespace StorageDLHI.App.PoGUI
         public async Task LoadTaxs()
         {
             var dtTax = new DataTable();
-            if (!CacheManager.Exists(CacheKeys.TAX_DATATABLE_ALLTAX))
+            if (!CacheManager.Exists(CacheKeys.TAX_DATATABLE_ALLTAX_CUSTOM))
             {
                 dtTax = await MaterialDAO.GetTaxCustoms();
-                CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX, dtTax);
+                CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX_CUSTOM, dtTax);
 
             }
             else
             {
-                dtTax = CacheManager.Get<DataTable>(CacheKeys.TAX_DATATABLE_ALLTAX);
+                dtTax = CacheManager.Get<DataTable>(CacheKeys.TAX_DATATABLE_ALLTAX_CUSTOM);
             }
             
             cboTax.DataSource = dtTax;

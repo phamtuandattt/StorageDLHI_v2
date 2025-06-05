@@ -40,8 +40,6 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.tlsAddMaterialTypes = new System.Windows.Forms.ToolStripButton();
-            this.tlsLoadTypes = new System.Windows.Forms.ToolStripButton();
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonPanel8 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -50,24 +48,19 @@
             this.ORIGIN_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ORIGIN_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnAddOrigins = new System.Windows.Forms.ToolStripButton();
-            this.tlsLoadOrigins = new System.Windows.Forms.ToolStripButton();
             this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonGroupBox6 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonPanel13 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.dgvTax = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TAX_VALUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip6 = new System.Windows.Forms.ToolStrip();
-            this.tlsAddTax = new System.Windows.Forms.ToolStripButton();
-            this.tlsLoadTax = new System.Windows.Forms.ToolStripButton();
             this.kryptonPanel5 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonGroupBox5 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonPanel12 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.dgvCost = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip5 = new System.Windows.Forms.ToolStrip();
-            this.tlsAddCost = new System.Windows.Forms.ToolStripButton();
-            this.tlsLoadCost = new System.Windows.Forms.ToolStripButton();
             this.kryptonPanel6 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonGroupBox4 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.pnUnit = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -75,8 +68,6 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip4 = new System.Windows.Forms.ToolStrip();
-            this.tlsAddUnits = new System.Windows.Forms.ToolStripButton();
-            this.tlsLoadUnits = new System.Windows.Forms.ToolStripButton();
             this.kryptonPanel7 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonGroupBox3 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonPanel10 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -85,12 +76,24 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CURRENCY_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CURRENCY_VALUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CURRENCY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tlsAddMaterialTypes = new System.Windows.Forms.ToolStripButton();
+            this.tlsLoadTypes = new System.Windows.Forms.ToolStripButton();
+            this.btnAddOrigins = new System.Windows.Forms.ToolStripButton();
+            this.tlsLoadOrigins = new System.Windows.Forms.ToolStripButton();
+            this.tlsAddTax = new System.Windows.Forms.ToolStripButton();
+            this.tlsLoadTax = new System.Windows.Forms.ToolStripButton();
+            this.tlsAddCost = new System.Windows.Forms.ToolStripButton();
+            this.tlsLoadCost = new System.Windows.Forms.ToolStripButton();
+            this.tlsAddUnits = new System.Windows.Forms.ToolStripButton();
+            this.tlsLoadUnits = new System.Windows.Forms.ToolStripButton();
             this.tlsAddStandard = new System.Windows.Forms.ToolStripButton();
             this.tlsLoadStandard = new System.Windows.Forms.ToolStripButton();
-            this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TAX_VALUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -235,7 +238,7 @@
             this.Column2,
             this.Column3});
             this.dgvMaterialTypes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMaterialTypes.Location = new System.Drawing.Point(0, 27);
+            this.dgvMaterialTypes.Location = new System.Drawing.Point(0, 31);
             this.dgvMaterialTypes.MultiSelect = false;
             this.dgvMaterialTypes.Name = "dgvMaterialTypes";
             this.dgvMaterialTypes.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
@@ -243,7 +246,7 @@
             this.dgvMaterialTypes.RowHeadersWidth = 51;
             this.dgvMaterialTypes.RowTemplate.Height = 24;
             this.dgvMaterialTypes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMaterialTypes.Size = new System.Drawing.Size(454, 328);
+            this.dgvMaterialTypes.Size = new System.Drawing.Size(454, 324);
             this.dgvMaterialTypes.TabIndex = 1;
             this.dgvMaterialTypes.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaterialTypes_CellContentDoubleClick);
             this.dgvMaterialTypes.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvMaterialTypes_RowPostPaint);
@@ -284,29 +287,9 @@
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip2.Size = new System.Drawing.Size(454, 27);
+            this.toolStrip2.Size = new System.Drawing.Size(454, 31);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip1";
-            // 
-            // tlsAddMaterialTypes
-            // 
-            this.tlsAddMaterialTypes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsAddMaterialTypes.Image = global::StorageDLHI.App.Properties.Resources.add;
-            this.tlsAddMaterialTypes.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsAddMaterialTypes.Name = "tlsAddMaterialTypes";
-            this.tlsAddMaterialTypes.Size = new System.Drawing.Size(29, 24);
-            this.tlsAddMaterialTypes.Text = "Add";
-            this.tlsAddMaterialTypes.Click += new System.EventHandler(this.tlsAddMaterialTypes_Click);
-            // 
-            // tlsLoadTypes
-            // 
-            this.tlsLoadTypes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsLoadTypes.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.tlsLoadTypes.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsLoadTypes.Name = "tlsLoadTypes";
-            this.tlsLoadTypes.Size = new System.Drawing.Size(29, 24);
-            this.tlsLoadTypes.Text = "toolStripButton1";
-            this.tlsLoadTypes.Click += new System.EventHandler(this.tlsLoadTypes_Click);
             // 
             // kryptonPanel3
             // 
@@ -356,7 +339,7 @@
             this.ORIGIN_CODE,
             this.ORIGIN_NAME});
             this.dgvOrigins.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvOrigins.Location = new System.Drawing.Point(0, 27);
+            this.dgvOrigins.Location = new System.Drawing.Point(0, 31);
             this.dgvOrigins.MultiSelect = false;
             this.dgvOrigins.Name = "dgvOrigins";
             this.dgvOrigins.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
@@ -364,7 +347,7 @@
             this.dgvOrigins.RowHeadersWidth = 51;
             this.dgvOrigins.RowTemplate.Height = 24;
             this.dgvOrigins.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOrigins.Size = new System.Drawing.Size(454, 328);
+            this.dgvOrigins.Size = new System.Drawing.Size(454, 324);
             this.dgvOrigins.TabIndex = 1;
             this.dgvOrigins.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrigins_CellContentDoubleClick);
             this.dgvOrigins.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvOrigins_RowPostPaint);
@@ -405,29 +388,9 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(454, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(454, 31);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // btnAddOrigins
-            // 
-            this.btnAddOrigins.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnAddOrigins.Image = global::StorageDLHI.App.Properties.Resources.add;
-            this.btnAddOrigins.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAddOrigins.Name = "btnAddOrigins";
-            this.btnAddOrigins.Size = new System.Drawing.Size(29, 24);
-            this.btnAddOrigins.Text = "Add";
-            this.btnAddOrigins.Click += new System.EventHandler(this.btnAddOrigins_Click);
-            // 
-            // tlsLoadOrigins
-            // 
-            this.tlsLoadOrigins.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsLoadOrigins.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.tlsLoadOrigins.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsLoadOrigins.Name = "tlsLoadOrigins";
-            this.tlsLoadOrigins.Size = new System.Drawing.Size(29, 24);
-            this.tlsLoadOrigins.Text = "toolStripButton1";
-            this.tlsLoadOrigins.Click += new System.EventHandler(this.tlsLoadOrigins_Click);
             // 
             // kryptonPanel4
             // 
@@ -477,7 +440,7 @@
             this.Column8,
             this.TAX_VALUE});
             this.dgvTax.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTax.Location = new System.Drawing.Point(0, 27);
+            this.dgvTax.Location = new System.Drawing.Point(0, 31);
             this.dgvTax.MultiSelect = false;
             this.dgvTax.Name = "dgvTax";
             this.dgvTax.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
@@ -485,10 +448,35 @@
             this.dgvTax.RowHeadersWidth = 51;
             this.dgvTax.RowTemplate.Height = 24;
             this.dgvTax.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTax.Size = new System.Drawing.Size(454, 328);
+            this.dgvTax.Size = new System.Drawing.Size(454, 324);
             this.dgvTax.TabIndex = 1;
             this.dgvTax.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTax_CellContentClick);
             this.dgvTax.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvTax_RowPostPaint);
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "ID";
+            this.Column7.HeaderText = "ID";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Visible = false;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "TAX_PERCENT";
+            this.Column8.HeaderText = "Tax percent";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // TAX_VALUE
+            // 
+            this.TAX_VALUE.DataPropertyName = "TAX_VALUE";
+            this.TAX_VALUE.HeaderText = "Value";
+            this.TAX_VALUE.MinimumWidth = 6;
+            this.TAX_VALUE.Name = "TAX_VALUE";
+            this.TAX_VALUE.ReadOnly = true;
             // 
             // toolStrip6
             // 
@@ -501,28 +489,9 @@
             this.toolStrip6.Location = new System.Drawing.Point(0, 0);
             this.toolStrip6.Name = "toolStrip6";
             this.toolStrip6.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip6.Size = new System.Drawing.Size(454, 27);
+            this.toolStrip6.Size = new System.Drawing.Size(454, 31);
             this.toolStrip6.TabIndex = 0;
             this.toolStrip6.Text = "toolStrip1";
-            // 
-            // tlsAddTax
-            // 
-            this.tlsAddTax.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsAddTax.Image = global::StorageDLHI.App.Properties.Resources.add;
-            this.tlsAddTax.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsAddTax.Name = "tlsAddTax";
-            this.tlsAddTax.Size = new System.Drawing.Size(29, 24);
-            this.tlsAddTax.Text = "Add";
-            this.tlsAddTax.Click += new System.EventHandler(this.tlsAddTax_Click);
-            // 
-            // tlsLoadTax
-            // 
-            this.tlsLoadTax.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsLoadTax.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.tlsLoadTax.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsLoadTax.Name = "tlsLoadTax";
-            this.tlsLoadTax.Size = new System.Drawing.Size(29, 24);
-            this.tlsLoadTax.Text = "toolStripButton1";
             // 
             // kryptonPanel5
             // 
@@ -569,7 +538,10 @@
             this.dgvCost.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCost.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column9,
-            this.Column10});
+            this.Column10,
+            this.CURRENCY_CODE,
+            this.CURRENCY_VALUE,
+            this.CURRENCY});
             this.dgvCost.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCost.Location = new System.Drawing.Point(0, 27);
             this.dgvCost.MultiSelect = false;
@@ -582,24 +554,8 @@
             this.dgvCost.Size = new System.Drawing.Size(454, 328);
             this.dgvCost.TabIndex = 1;
             this.dgvCost.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCost_CellContentDoubleClick);
+            this.dgvCost.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvCost_DataBindingComplete);
             this.dgvCost.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvCost_RowPostPaint);
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "ID";
-            this.Column9.HeaderText = "ID";
-            this.Column9.MinimumWidth = 6;
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Visible = false;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "COST_NAME";
-            this.Column10.HeaderText = "Cost name";
-            this.Column10.MinimumWidth = 6;
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
             // 
             // toolStrip5
             // 
@@ -615,25 +571,6 @@
             this.toolStrip5.Size = new System.Drawing.Size(454, 27);
             this.toolStrip5.TabIndex = 0;
             this.toolStrip5.Text = "toolStrip1";
-            // 
-            // tlsAddCost
-            // 
-            this.tlsAddCost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsAddCost.Image = global::StorageDLHI.App.Properties.Resources.add;
-            this.tlsAddCost.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsAddCost.Name = "tlsAddCost";
-            this.tlsAddCost.Size = new System.Drawing.Size(29, 24);
-            this.tlsAddCost.Text = "Add";
-            this.tlsAddCost.Click += new System.EventHandler(this.tlsAddCost_Click);
-            // 
-            // tlsLoadCost
-            // 
-            this.tlsLoadCost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsLoadCost.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.tlsLoadCost.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsLoadCost.Name = "tlsLoadCost";
-            this.tlsLoadCost.Size = new System.Drawing.Size(29, 24);
-            this.tlsLoadCost.Text = "toolStripButton1";
             // 
             // kryptonPanel6
             // 
@@ -682,7 +619,7 @@
             this.Column11,
             this.Column12});
             this.dgvUnits.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvUnits.Location = new System.Drawing.Point(0, 27);
+            this.dgvUnits.Location = new System.Drawing.Point(0, 31);
             this.dgvUnits.MultiSelect = false;
             this.dgvUnits.Name = "dgvUnits";
             this.dgvUnits.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
@@ -690,7 +627,7 @@
             this.dgvUnits.RowHeadersWidth = 51;
             this.dgvUnits.RowTemplate.Height = 24;
             this.dgvUnits.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUnits.Size = new System.Drawing.Size(455, 328);
+            this.dgvUnits.Size = new System.Drawing.Size(455, 324);
             this.dgvUnits.TabIndex = 1;
             this.dgvUnits.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUnits_CellContentDoubleClick);
             this.dgvUnits.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvUnits_RowPostPaint);
@@ -723,28 +660,9 @@
             this.toolStrip4.Location = new System.Drawing.Point(0, 0);
             this.toolStrip4.Name = "toolStrip4";
             this.toolStrip4.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip4.Size = new System.Drawing.Size(455, 27);
+            this.toolStrip4.Size = new System.Drawing.Size(455, 31);
             this.toolStrip4.TabIndex = 0;
             this.toolStrip4.Text = "toolStrip1";
-            // 
-            // tlsAddUnits
-            // 
-            this.tlsAddUnits.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsAddUnits.Image = global::StorageDLHI.App.Properties.Resources.add;
-            this.tlsAddUnits.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsAddUnits.Name = "tlsAddUnits";
-            this.tlsAddUnits.Size = new System.Drawing.Size(29, 24);
-            this.tlsAddUnits.Text = "Add";
-            this.tlsAddUnits.Click += new System.EventHandler(this.tlsAddUnits_Click);
-            // 
-            // tlsLoadUnits
-            // 
-            this.tlsLoadUnits.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsLoadUnits.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.tlsLoadUnits.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsLoadUnits.Name = "tlsLoadUnits";
-            this.tlsLoadUnits.Size = new System.Drawing.Size(29, 24);
-            this.tlsLoadUnits.Text = "toolStripButton1";
             // 
             // kryptonPanel7
             // 
@@ -794,7 +712,7 @@
             this.Column5,
             this.Column6});
             this.dgvStandards.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvStandards.Location = new System.Drawing.Point(0, 27);
+            this.dgvStandards.Location = new System.Drawing.Point(0, 31);
             this.dgvStandards.MultiSelect = false;
             this.dgvStandards.Name = "dgvStandards";
             this.dgvStandards.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
@@ -802,7 +720,7 @@
             this.dgvStandards.RowHeadersWidth = 51;
             this.dgvStandards.RowTemplate.Height = 24;
             this.dgvStandards.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStandards.Size = new System.Drawing.Size(455, 328);
+            this.dgvStandards.Size = new System.Drawing.Size(455, 324);
             this.dgvStandards.TabIndex = 1;
             this.dgvStandards.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStandards_CellContentDoubleClick);
             this.dgvStandards.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvStandards_RowPostPaint);
@@ -843,29 +761,9 @@
             this.toolStrip3.Location = new System.Drawing.Point(0, 0);
             this.toolStrip3.Name = "toolStrip3";
             this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip3.Size = new System.Drawing.Size(455, 27);
+            this.toolStrip3.Size = new System.Drawing.Size(455, 31);
             this.toolStrip3.TabIndex = 0;
             this.toolStrip3.Text = "toolStrip1";
-            // 
-            // tlsAddStandard
-            // 
-            this.tlsAddStandard.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsAddStandard.Image = global::StorageDLHI.App.Properties.Resources.add;
-            this.tlsAddStandard.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsAddStandard.Name = "tlsAddStandard";
-            this.tlsAddStandard.Size = new System.Drawing.Size(29, 24);
-            this.tlsAddStandard.Text = "Add";
-            this.tlsAddStandard.Click += new System.EventHandler(this.tlsAddStandard_Click);
-            // 
-            // tlsLoadStandard
-            // 
-            this.tlsLoadStandard.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsLoadStandard.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.tlsLoadStandard.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsLoadStandard.Name = "tlsLoadStandard";
-            this.tlsLoadStandard.Size = new System.Drawing.Size(29, 24);
-            this.tlsLoadStandard.Text = "toolStripButton1";
-            this.tlsLoadStandard.Click += new System.EventHandler(this.tlsLoadStandard_Click);
             // 
             // kryptonPalette1
             // 
@@ -912,30 +810,163 @@
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, 5, -1);
             // 
-            // Column7
+            // Column9
             // 
-            this.Column7.DataPropertyName = "ID";
-            this.Column7.HeaderText = "ID";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Visible = false;
+            this.Column9.DataPropertyName = "ID";
+            this.Column9.HeaderText = "ID";
+            this.Column9.MinimumWidth = 6;
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Visible = false;
             // 
-            // Column8
+            // Column10
             // 
-            this.Column8.DataPropertyName = "TAX_PERCENT";
-            this.Column8.HeaderText = "Tax percent";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
+            this.Column10.DataPropertyName = "COST_NAME";
+            this.Column10.HeaderText = "Cost name";
+            this.Column10.MinimumWidth = 6;
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
             // 
-            // TAX_VALUE
+            // CURRENCY_CODE
             // 
-            this.TAX_VALUE.DataPropertyName = "TAX_VALUE";
-            this.TAX_VALUE.HeaderText = "Value";
-            this.TAX_VALUE.MinimumWidth = 6;
-            this.TAX_VALUE.Name = "TAX_VALUE";
-            this.TAX_VALUE.ReadOnly = true;
+            this.CURRENCY_CODE.DataPropertyName = "CURRENCY_CODE";
+            this.CURRENCY_CODE.HeaderText = "Code";
+            this.CURRENCY_CODE.MinimumWidth = 6;
+            this.CURRENCY_CODE.Name = "CURRENCY_CODE";
+            this.CURRENCY_CODE.ReadOnly = true;
+            // 
+            // CURRENCY_VALUE
+            // 
+            this.CURRENCY_VALUE.DataPropertyName = "CURRENCY_VALUE";
+            this.CURRENCY_VALUE.HeaderText = "Exchange rate";
+            this.CURRENCY_VALUE.MinimumWidth = 6;
+            this.CURRENCY_VALUE.Name = "CURRENCY_VALUE";
+            this.CURRENCY_VALUE.ReadOnly = true;
+            // 
+            // CURRENCY
+            // 
+            this.CURRENCY.DataPropertyName = "CURRENCY";
+            this.CURRENCY.HeaderText = "Currency";
+            this.CURRENCY.MinimumWidth = 6;
+            this.CURRENCY.Name = "CURRENCY";
+            this.CURRENCY.ReadOnly = true;
+            // 
+            // tlsAddMaterialTypes
+            // 
+            this.tlsAddMaterialTypes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsAddMaterialTypes.Image = global::StorageDLHI.App.Properties.Resources.add;
+            this.tlsAddMaterialTypes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsAddMaterialTypes.Name = "tlsAddMaterialTypes";
+            this.tlsAddMaterialTypes.Size = new System.Drawing.Size(29, 28);
+            this.tlsAddMaterialTypes.Text = "Add";
+            this.tlsAddMaterialTypes.Click += new System.EventHandler(this.tlsAddMaterialTypes_Click);
+            // 
+            // tlsLoadTypes
+            // 
+            this.tlsLoadTypes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsLoadTypes.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.tlsLoadTypes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsLoadTypes.Name = "tlsLoadTypes";
+            this.tlsLoadTypes.Size = new System.Drawing.Size(29, 28);
+            this.tlsLoadTypes.Text = "toolStripButton1";
+            this.tlsLoadTypes.Click += new System.EventHandler(this.tlsLoadTypes_Click);
+            // 
+            // btnAddOrigins
+            // 
+            this.btnAddOrigins.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAddOrigins.Image = global::StorageDLHI.App.Properties.Resources.add;
+            this.btnAddOrigins.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAddOrigins.Name = "btnAddOrigins";
+            this.btnAddOrigins.Size = new System.Drawing.Size(29, 28);
+            this.btnAddOrigins.Text = "Add";
+            this.btnAddOrigins.Click += new System.EventHandler(this.btnAddOrigins_Click);
+            // 
+            // tlsLoadOrigins
+            // 
+            this.tlsLoadOrigins.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsLoadOrigins.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.tlsLoadOrigins.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsLoadOrigins.Name = "tlsLoadOrigins";
+            this.tlsLoadOrigins.Size = new System.Drawing.Size(29, 28);
+            this.tlsLoadOrigins.Text = "toolStripButton1";
+            this.tlsLoadOrigins.Click += new System.EventHandler(this.tlsLoadOrigins_Click);
+            // 
+            // tlsAddTax
+            // 
+            this.tlsAddTax.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsAddTax.Image = global::StorageDLHI.App.Properties.Resources.add;
+            this.tlsAddTax.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsAddTax.Name = "tlsAddTax";
+            this.tlsAddTax.Size = new System.Drawing.Size(29, 28);
+            this.tlsAddTax.Text = "Add";
+            this.tlsAddTax.Click += new System.EventHandler(this.tlsAddTax_Click);
+            // 
+            // tlsLoadTax
+            // 
+            this.tlsLoadTax.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsLoadTax.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.tlsLoadTax.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsLoadTax.Name = "tlsLoadTax";
+            this.tlsLoadTax.Size = new System.Drawing.Size(29, 28);
+            this.tlsLoadTax.Text = "toolStripButton1";
+            // 
+            // tlsAddCost
+            // 
+            this.tlsAddCost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsAddCost.Image = global::StorageDLHI.App.Properties.Resources.add;
+            this.tlsAddCost.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsAddCost.Name = "tlsAddCost";
+            this.tlsAddCost.Size = new System.Drawing.Size(29, 24);
+            this.tlsAddCost.Text = "Add";
+            this.tlsAddCost.Click += new System.EventHandler(this.tlsAddCost_Click);
+            // 
+            // tlsLoadCost
+            // 
+            this.tlsLoadCost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsLoadCost.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.tlsLoadCost.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsLoadCost.Name = "tlsLoadCost";
+            this.tlsLoadCost.Size = new System.Drawing.Size(29, 24);
+            this.tlsLoadCost.Text = "toolStripButton1";
+            // 
+            // tlsAddUnits
+            // 
+            this.tlsAddUnits.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsAddUnits.Image = global::StorageDLHI.App.Properties.Resources.add;
+            this.tlsAddUnits.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsAddUnits.Name = "tlsAddUnits";
+            this.tlsAddUnits.Size = new System.Drawing.Size(29, 28);
+            this.tlsAddUnits.Text = "Add";
+            this.tlsAddUnits.Click += new System.EventHandler(this.tlsAddUnits_Click);
+            // 
+            // tlsLoadUnits
+            // 
+            this.tlsLoadUnits.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsLoadUnits.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.tlsLoadUnits.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsLoadUnits.Name = "tlsLoadUnits";
+            this.tlsLoadUnits.Size = new System.Drawing.Size(29, 28);
+            this.tlsLoadUnits.Text = "toolStripButton1";
+            // 
+            // tlsAddStandard
+            // 
+            this.tlsAddStandard.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsAddStandard.Image = global::StorageDLHI.App.Properties.Resources.add;
+            this.tlsAddStandard.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsAddStandard.Name = "tlsAddStandard";
+            this.tlsAddStandard.Size = new System.Drawing.Size(29, 28);
+            this.tlsAddStandard.Text = "Add";
+            this.tlsAddStandard.Click += new System.EventHandler(this.tlsAddStandard_Click);
+            // 
+            // tlsLoadStandard
+            // 
+            this.tlsLoadStandard.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsLoadStandard.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.tlsLoadStandard.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsLoadStandard.Name = "tlsLoadStandard";
+            this.tlsLoadStandard.Size = new System.Drawing.Size(29, 28);
+            this.tlsLoadStandard.Text = "toolStripButton1";
+            this.tlsLoadStandard.Click += new System.EventHandler(this.tlsLoadStandard_Click);
             // 
             // ManageCommonUC
             // 
@@ -1076,8 +1107,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ORIGIN_CODE;
         private System.Windows.Forms.DataGridViewTextBoxColumn ORIGIN_NAME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
@@ -1086,5 +1115,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn TAX_VALUE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CURRENCY_CODE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CURRENCY_VALUE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CURRENCY;
     }
 }

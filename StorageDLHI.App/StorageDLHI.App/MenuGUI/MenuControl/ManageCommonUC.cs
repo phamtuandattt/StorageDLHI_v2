@@ -159,8 +159,10 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
 
         private async void tlsAddCost_Click(object sender, EventArgs e)
         {
-            frmTaxUnitCost frm = new frmTaxUnitCost(TitleManager.COST_ADD_TITLE, Enums.TaxUnitCost.Cost, true, null);
-            frm.ShowDialog();
+            //frmTaxUnitCost frm = new frmTaxUnitCost(TitleManager.COST_ADD_TITLE, Enums.TaxUnitCost.Cost, true, null);
+            //frm.ShowDialog();
+            frmAddCost frmAdd = new frmAddCost(TitleManager.COST_ADD_TITLE, Enums.TaxUnitCost.Cost, true, null);
+            frmAdd.ShowDialog();
             CacheManager.Add(CacheKeys.COST_DATATABLE_ALLCOST, await MaterialDAO.GetCosts());
             LoadData();
         }
@@ -311,7 +313,10 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
             Costs costs = new Costs()
             {
                 Id = Guid.Parse(dgvCost.Rows[rsl].Cells[0].Value.ToString()),
-                Cost_Name = dgvCost.Rows[rsl].Cells[1].Value.ToString()
+                Cost_Name = dgvCost.Rows[rsl].Cells[1].Value.ToString(),
+                Currency_code = dgvCost.Rows[rsl].Cells[2].Value.ToString(),
+                Currency_Value = decimal.Parse( dgvCost.Rows[rsl].Cells[3].Value.ToString()),
+                Currency = dgvCost.Rows[rsl].Cells[4].Value.ToString(),
             };
 
             TaxUnitCostDto dtos = new TaxUnitCostDto()
@@ -319,8 +324,10 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                 Costs = costs,
             };
 
-            frmTaxUnitCost frm = new frmTaxUnitCost(TitleManager.COST_UPDATE_TITLE, TaxUnitCost.Cost, false, dtos);
-            frm.ShowDialog();
+            //frmTaxUnitCost frm = new frmTaxUnitCost(TitleManager.COST_UPDATE_TITLE, TaxUnitCost.Cost, false, dtos);
+            //frm.ShowDialog();
+            frmAddCost frmAdd = new frmAddCost(TitleManager.COST_UPDATE_TITLE, Enums.TaxUnitCost.Cost, false, dtos);
+            frmAdd.ShowDialog();
             CacheManager.Add(CacheKeys.COST_DATATABLE_ALLCOST, await MaterialDAO.GetCosts());
             LoadData();
         }
@@ -368,6 +375,11 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
             frm.ShowDialog();
             CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX, await MaterialDAO.GetTaxs());
             LoadData();
+        }
+
+        private void dgvCost_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvCost.Columns["CURRENCY_VALUE"].DefaultCellStyle.Format = "N2";
         }
     }
 }

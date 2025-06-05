@@ -178,6 +178,12 @@
     <Compile Include="MainGUI\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuGUI\MenuControl\frmAddCost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuGUI\MenuControl\frmAddCost.Designer.cs">
+      <DependentUpon>frmAddCost.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuGUI\MenuControl\frmAddMaterials.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -302,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainGUI\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuGUI\MenuControl\frmAddCost.resx">
+      <DependentUpon>frmAddCost.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuGUI\MenuControl\frmAddMaterials.resx">
       <DependentUpon>frmAddMaterials.cs</DependentUpon>
