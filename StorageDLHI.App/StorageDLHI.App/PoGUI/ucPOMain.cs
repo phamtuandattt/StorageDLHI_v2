@@ -46,7 +46,7 @@ namespace StorageDLHI.App.PoGUI
         private int rslOld;
         private int previousRowIndex = -1;
         private double totalAmount = 0;
-
+        private string CurrencyDefault = "";
 
 
         public ucPOMain()
@@ -297,6 +297,8 @@ namespace StorageDLHI.App.PoGUI
                 {QueryStatement.PROPERTY_PROD_F, dgvMPRDetail.Rows[rsl].Cells[11].Value.ToString().Trim()},
                 {QueryStatement.PROPERTY_PROD_G, dgvMPRDetail.Rows[rsl].Cells[12].Value.ToString().Trim()},
                 {QueryStatement.QTY_PARA, dgvMPRDetail.Rows[rsl].Cells[13].Value.ToString().Trim()},
+
+                {QueryStatement.PROPERTY_CURRENCY, this.CurrencyDefault}
             };
 
             var prod = new Products()
@@ -371,6 +373,8 @@ namespace StorageDLHI.App.PoGUI
 
             dataRow[20] = frmAddPriceForProdPO.CostID;
             dataRow[21] = frmAddPriceForProdPO.TaxID;
+
+            this.CurrencyDefault = frmAddPriceForProdPO.CurrencyOption;
 
             totalAmount += double.Parse(frmAddPriceForProdPO.NetCash.ToString()); // Amount
             dtProdsOfAddPO.Rows.Add(dataRow);
@@ -1035,7 +1039,7 @@ namespace StorageDLHI.App.PoGUI
                 {QueryStatement.NETCASH_PARA, dgvProdOfPO.Rows[rsl].Cells[14].Value.ToString().Trim()}, // Netcash
                 {QueryStatement.TAXVALUE_PARA, dgvProdOfPO.Rows[rsl].Cells[17].Value.ToString().Trim()}, // Tax value
                 {QueryStatement.PROPERTY_FORMULA_TEXT, dgvProdOfPO.Rows[rsl].Cells[18].Value.ToString().Trim() }, // Formula
-                {QueryStatement.PROPERTY_COST_ID, dgvProdOfPO.Rows[rsl].Cells[19].Value.ToString().Trim() }, // CurrencyID
+                {QueryStatement.PROPERTY_COST_ID, dgvProdOfPO.Rows[rsl].Cells[19].Value.ToString().Trim() }, // CurrencyOption
 
 
                 {QueryStatement.PROPERTY_PO_DETAIL_RECEVIE, dgvProdOfPO.Rows[rsl].Cells[15].Value.ToString().Trim()}, // Recevie
@@ -1068,8 +1072,11 @@ namespace StorageDLHI.App.PoGUI
             dgvProdOfPO.Rows[rsl].Cells[16].Value = frmAddPriceForProdPO.Remark;
             dgvProdOfPO.Rows[rsl].Cells[17].Value = frmAddPriceForProdPO.TaxValue;
             dgvProdOfPO.Rows[rsl].Cells[18].Value = frmAddPriceForProdPO.Formula;
-            dgvProdOfPO.Rows[rsl].Cells[19].Value = frmAddPriceForProdPO.CostID;
-            dgvProdOfPO.Rows[rsl].Cells[20].Value = frmAddPriceForProdPO.TaxID;
+            dgvProdOfPO.Rows[rsl].Cells[19].Value = frmAddPriceForProdPO.CurrencyOption;
+            dgvProdOfPO.Rows[rsl].Cells[20].Value = frmAddPriceForProdPO.CostID;
+            dgvProdOfPO.Rows[rsl].Cells[21].Value = frmAddPriceForProdPO.TaxID;
+
+            this.CurrencyDefault = frmAddPriceForProdPO.CurrencyOption;
 
             UpdateFooter();
         }

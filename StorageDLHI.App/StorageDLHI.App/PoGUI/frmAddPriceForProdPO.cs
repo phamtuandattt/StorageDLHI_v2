@@ -93,6 +93,12 @@ namespace StorageDLHI.App.PoGUI
 
             if (this.IsAdd)
             {
+                this.variables.TryGetValue(QueryStatement.PROPERTY_CURRENCY, out string currencyHint);
+                if (!string.IsNullOrEmpty(currencyHint))
+                {
+                    cboCost.SelectedIndex = cboCost.FindStringExact(currencyHint);
+                }
+
                 DataRow dataRow = dtProdInfo.NewRow();
                 dataRow[0] = this.product.Id;
                 dataRow[1] = this.product.Product_Name;
@@ -122,9 +128,11 @@ namespace StorageDLHI.App.PoGUI
                 this.variables.TryGetValue(QueryStatement.PROPERTY_PO_DETAIL_RECEVIE, out string recevie);
                 this.variables.TryGetValue(QueryStatement.PROPERTY_PO_DETAIL_REMARKS, out string remark);
 
-                cboTax.SelectedIndex = cboTax.FindStringExact(taxValue);
+                if (!string.IsNullOrEmpty(taxValue))
+                {
+                    cboTax.SelectedIndex = cboTax.FindStringExact(taxValue);
+                }
                 cboFormula.SelectedIndex = cboFormula.FindStringExact(formula);
-                //cboCost.SelectedValue = costId;
                 cboCost.SelectedIndex = cboCost.FindStringExact(costOption);
 
                 txtPrice.Value = Int32.Parse(price);
@@ -221,8 +229,16 @@ namespace StorageDLHI.App.PoGUI
             this.Price = (Int32)txtPrice.Value;
             this.Recevie = txtRecevie.Text.Trim();
             this.Remark = txtRemark.Text.Trim();
-            this.TaxValue = cboTax.Text.Trim();
             this.Formula = cboFormula.Text.Trim();
+
+            if (txtCurrencyCode.Text.Trim().Equals("VND"))
+            {
+                this.TaxValue = cboTax.Text.Trim();
+            }
+            else
+            {
+                this.TaxValue = "";
+            }
 
             var costValue = ((KeyValuePair<Guid, string>)cboCost.SelectedItem).Value.ToString();
             var costID = ((KeyValuePair<Guid, string>)cboCost.SelectedItem).Key.ToString();
@@ -283,17 +299,19 @@ namespace StorageDLHI.App.PoGUI
             if (txtCurrencyCode.Text.Trim().Equals("VND"))
             {
                 NetCash = decimal.Parse(amount.ToString()) * decimal.Parse(taxArr[1]);
+                dgvProdInfo.Rows[0].Cells[13].Value = cboTax.Text.Trim();
             }
             else
             {
                 NetCash = ConvertVNDToExchangeRate(decimal.Parse(amount.ToString()), decimal.Parse(txtExchangeRate.Text.Trim()));
+                dgvProdInfo.Rows[0].Cells[13].Value = "";
             }
 
             dgvProdInfo.Rows[0].Cells[11].Value = QtyProd;
             dgvProdInfo.Rows[0].Cells[12].Value = txtPrice.Value;
-            dgvProdInfo.Rows[0].Cells[13].Value = cboTax.Text.Trim();
             dgvProdInfo.Rows[0].Cells[14].Value = NetCash;
 
+            btnSave.Enabled = true;
         }
 
         private void dgvProdInfo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -323,6 +341,11 @@ namespace StorageDLHI.App.PoGUI
         {
             decimal convertedAmount = amountVND / amountExRate;
             return convertedAmount; // Return the converted amount
+        }
+
+        private void cboTax_Validating(object sender, CancelEventArgs e)
+        {
+            Common.Common.AutoCompleteComboboxValidating(sender as KryptonComboBox, e);
         }
     }
 }

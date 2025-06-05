@@ -216,9 +216,13 @@ namespace StorageDLHI.App.Common
                 }
             }
 
-            if (!matched &&
-                cb.SelectedItem is DataRowView selected &&
-                selected[displayMember]?.ToString() != typedText)
+            //if (!matched &&
+            //    cb.SelectedItem is DataRowView selected &&
+            //    selected[displayMember]?.ToString() != typedText)
+            //{
+            //    cb.SelectedIndex = 0;
+            //}
+            if (!matched)
             {
                 cb.SelectedIndex = 0;
             }
