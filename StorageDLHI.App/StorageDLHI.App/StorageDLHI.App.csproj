@@ -418,6 +418,7 @@
     <Content Include="Resources\green-dot.png" />
     <Content Include="Resources\list.png" />
     <Content Include="Resources\mark.png" />
+    <Content Include="Resources\pen.png" />
     <Content Include="Resources\pencial.png" />
     <Content Include="Resources\photo.png" />
     <Content Include="Resources\picture-bg.jpg" />

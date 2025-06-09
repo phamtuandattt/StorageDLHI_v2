@@ -283,6 +283,7 @@
             this.txtExchangeRate.Size = new System.Drawing.Size(191, 32);
             this.txtExchangeRate.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtExchangeRate.TabIndex = 8;
+            this.txtExchangeRate.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtExchangeRate_MouseClick);
             // 
             // kryptonPanel20
             // 

@@ -97,6 +97,7 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_COST = "SELECT *FROM COST";
         public const string INSERT_COST = "INSERT INTO COST VALUES ('{0}', N'{1}', N'{2}', {3}, N'{4}')";
         public const string UPDATE_COST = "UPDATE COST SET COST_NAME = N'{0}', CURRENCY_CODE = N'{2}', CURRENCY_VALUE = '{3}', CURRENCY = N'{4}' WHERE ID = '{1}'";
+        public const string UPDATE_EXCHANGE_RATE_COST = "UPDATE COST SET CURRENCY_VALUE = {0} WHERE ID = '{1}'";
         public const string PROPERTY_COST_ID = "ID";
         public const string PROPERTY_COST_NAME = "COST_NAME";
         public const string PROPERTY_CURRENCY = "CURRENCY";

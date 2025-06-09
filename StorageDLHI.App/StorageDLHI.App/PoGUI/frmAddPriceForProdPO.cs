@@ -1,5 +1,6 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using StorageDLHI.App.Common;
+using StorageDLHI.App.Enums;
 using StorageDLHI.App.MenuGUI.MenuControl;
 using StorageDLHI.BLL.MaterialDAO;
 using StorageDLHI.DAL.Models;
@@ -12,6 +13,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Security.AccessControl;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -346,6 +348,39 @@ namespace StorageDLHI.App.PoGUI
         private void cboTax_Validating(object sender, CancelEventArgs e)
         {
             Common.Common.AutoCompleteComboboxValidating(sender as KryptonComboBox, e);
+        }
+
+        private async void txtExchangeRate_MouseClick(object sender, MouseEventArgs e)
+        {
+            var costID = ((KeyValuePair<Guid, string>)cboCost.SelectedItem).Key.ToString();
+            var costValue = ((KeyValuePair<Guid, string>)cboCost.SelectedItem).Value.ToString();
+            this.exchangeRate.TryGetValue(costID, out string currency);
+            
+            Costs costs = new Costs()
+            {
+                Id = Guid.Parse(costID),
+                Cost_Name = costValue,
+                Currency_code = currency,
+                Currency_Value = decimal.Parse(txtExchangeRate.Text.Trim())
+            };
+
+            TaxUnitCostDto dtos = new TaxUnitCostDto()
+            {
+                Costs = costs,
+            };
+
+            frmTaxUnitCost frm = new frmTaxUnitCost(TitleManager.COST_UPDATE_TITLE, TaxUnitCost.Cost, false, dtos);
+            frm.ShowDialog();
+
+            if (frm.CostValue > 0)
+            {
+                txtExchangeRate.Text = frm.CostValue.ToString("N2");
+                dtCost = await MaterialDAO.GetCosts();
+                CacheManager.Add(CacheKeys.COST_DATATABLE_ALLCOST, dtCost);
+                this.ExchangeRate = decimal.Parse(txtExchangeRate.Text.Trim());
+                this.Currency = txtCurrencyCode.Text.Trim();
+                this.exchangeRate[costID] = "" + " - " + txtCurrencyCode.Text.Trim() + " - " + frm.CostValue.ToString();
+            }
         }
     }
 }

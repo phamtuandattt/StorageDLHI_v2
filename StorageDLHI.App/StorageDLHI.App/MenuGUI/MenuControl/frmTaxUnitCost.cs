@@ -25,6 +25,8 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
         private bool status = true;
         private TaxUnitCostDto models = null;
 
+        public decimal CostValue { get; set; } = 0;
+
         public frmTaxUnitCost()
         {
             InitializeComponent();
@@ -69,7 +71,9 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                     case 3:
                         txtName.Focus();
                         txtName.Text = this.models.Costs.Cost_Name;
-                        lblName.Text = "Name:"; 
+                        txtValue.Text = this.models.Costs.Currency_Value.ToString("N2");
+                        lblName.Text = "E.Rate:"; 
+                        txtName.ReadOnly = true;
                         break;
                 }
             }
@@ -164,9 +168,10 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                         }
                         break;
                     case 3:
-                        Costs cost = new Costs() { Id = this.models.Costs.Id, Cost_Name = txtName.Text.Trim() };
-                        if (await MaterialDAO.UpdateCost(cost))
+                        Costs cost = new Costs() { Id = this.models.Costs.Id, Currency_Value = decimal.Parse(txtValue.Text.Trim()) };
+                        if (await MaterialDAO.UpdateExchangeRateCost(cost))
                         {
+                            CostValue = cost.Currency_Value;
                             MessageBoxHelper.ShowInfo("Update Cost success!");
                             LoggerConfig.Logger.Info($"Update Cost success by {ShareData.UserName}");
                             this.Close();

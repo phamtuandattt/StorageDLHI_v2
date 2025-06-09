@@ -135,6 +135,12 @@ namespace StorageDLHI.BLL.MaterialDAO
             return await data.Insert(sqlQuery) > 0;
         }
 
+        public static async Task<bool> UpdateExchangeRateCost(Costs costs)
+        {
+            string sqlQuery = string.Format(QueryStatement.UPDATE_EXCHANGE_RATE_COST, costs.Currency_Value, costs.Id);
+            return await data.Insert(sqlQuery) > 0;
+        }
+
         public static async Task<DataTable> GetTaxs()
         {
             return  await data.GetDataAsync(QueryStatement.GET_TAXS, "TAXS");
