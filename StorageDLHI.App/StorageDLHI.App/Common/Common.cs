@@ -100,6 +100,83 @@ namespace StorageDLHI.App.Common
 
         }
 
+        public static void FormatDecimalsInputTextChange(object sender)
+        {
+            KryptonTextBox txt = sender as KryptonTextBox;
+
+            if (string.IsNullOrWhiteSpace(txt.Text)) return;
+
+            // Save cursor position
+            int selectionStart = txt.SelectionStart;
+            int lengthBefore = txt.Text.Length;
+
+            // Remove existing commas
+            string unformatted = txt.Text.Replace(",", "");
+
+            // Validate number
+            if (!decimal.TryParse(unformatted, out decimal number)) return;
+
+            // Count how many decimals were typed (to preserve precision)
+            int decimalPlaces = 0;
+            int indexOfDot = unformatted.IndexOf('.');
+            if (indexOfDot >= 0)
+                decimalPlaces = unformatted.Length - indexOfDot - 1;
+
+            // Format using N* depending on how many decimals user entered
+            string formatString = "N" + decimalPlaces;
+            string formatted = number.ToString(formatString);
+
+            // Update text and cursor position
+            txt.Text = formatted;
+            int lengthAfter = txt.Text.Length;
+            txt.SelectionStart = selectionStart + (lengthAfter - lengthBefore);
+        }
+
+        public static void FormatDecimalsInputKeyPress(object sender, KeyPressEventArgs e)
+        {
+            KryptonTextBox txt = sender as KryptonTextBox;
+
+            // Allow control characters (e.g., backspace)
+            if (char.IsControl(e.KeyChar))
+                return;
+
+            // Allow digits
+            if (char.IsDigit(e.KeyChar))
+                return;
+
+            // Allow one dot (.)
+            if (e.KeyChar == '.' && !txt.Text.Contains("."))
+                return;
+
+            // Block all others
+            e.Handled = true;
+        }
+
+        public static void FormatIntInputsTextChange(object sender, EventArgs e)
+        {
+            KryptonTextBox txt = sender as KryptonTextBox;
+
+            if (string.IsNullOrWhiteSpace(txt.Text)) return;
+
+            // Save cursor position
+            int cursorPos = txt.SelectionStart;
+            int lengthBefore = txt.Text.Length;
+
+            // Remove commas
+            string unformatted = txt.Text.Replace(",", "");
+
+            // If input is not a valid number, skip formatting
+            if (!decimal.TryParse(unformatted, out decimal number)) return;
+
+            // Format with thousands separator (no decimal places)
+            string formatted = string.Format("{0:N0}", number);
+
+            // Reassign text and restore cursor position
+            txt.Text = formatted;
+            int lengthAfter = formatted.Length;
+            txt.SelectionStart = cursorPos + (lengthAfter - lengthBefore);
+        }
+
         public static double EvaluateExpression(string expression, Dictionary<string, double> variables)
         {
             string evaluableExpression = expression;

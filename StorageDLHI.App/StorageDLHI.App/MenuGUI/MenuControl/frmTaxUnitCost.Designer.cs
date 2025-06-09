@@ -287,6 +287,8 @@
             this.txtValue.Size = new System.Drawing.Size(362, 32);
             this.txtValue.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtValue.TabIndex = 1;
+            this.txtValue.TextChanged += new System.EventHandler(this.txtValue_TextChanged);
+            this.txtValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValue_KeyPress);
             // 
             // frmTaxUnitCost
             // 

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -200,6 +201,17 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
                 txtName.Text = cleaned;
                 txtName.SelectionStart = Math.Max(pos, 0);
             }
+        }
+
+        // Handle 2 Event to Auto-adds thousands seperators
+        private void txtValue_TextChanged(object sender, EventArgs e)
+        {
+            Common.Common.FormatDecimalsInputTextChange(sender);
+        }
+
+        private void txtValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Common.Common.FormatDecimalsInputKeyPress(sender, e);
         }
     }
 }
