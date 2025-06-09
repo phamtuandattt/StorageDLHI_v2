@@ -101,6 +101,8 @@ namespace StorageDLHI.App.PoGUI
                     cboCost.SelectedIndex = cboCost.FindStringExact(currencyHint);
                 }
 
+                txtPrice.Text = "1";
+
                 DataRow dataRow = dtProdInfo.NewRow();
                 dataRow[0] = this.product.Id;
                 dataRow[1] = this.product.Product_Name;
@@ -137,7 +139,7 @@ namespace StorageDLHI.App.PoGUI
                 cboFormula.SelectedIndex = cboFormula.FindStringExact(formula);
                 cboCost.SelectedIndex = cboCost.FindStringExact(costOption);
 
-                txtPrice.Value = Int32.Parse(price);
+                txtPrice.Text = price;
                 txtRecevie.Text = recevie;
                 txtRemark.Text = remark;
 
@@ -228,7 +230,7 @@ namespace StorageDLHI.App.PoGUI
 
         private void btnAddProdIntoMpr_Click(object sender, EventArgs e)
         {
-            this.Price = (Int32)txtPrice.Value;
+            this.Price = Int32.Parse(txtPrice.Text.Trim());
             this.Recevie = txtRecevie.Text.Trim();
             this.Remark = txtRemark.Text.Trim();
             this.Formula = cboFormula.Text.Trim();
@@ -281,7 +283,7 @@ namespace StorageDLHI.App.PoGUI
         private void btnCalculate_Click(object sender, EventArgs e)
         {
             // Replace PRICE value
-            variables[QueryStatement.PRICE_PARA] = txtPrice.Value.ToString().Trim();
+            variables[QueryStatement.PRICE_PARA] = !string.IsNullOrEmpty(txtPrice.Text.ToString().Trim()) ? txtPrice.Text.ToString().Trim() : "1";
             
             var formula = cboFormula.SelectedValue.ToString().Split('|');
 
@@ -310,7 +312,7 @@ namespace StorageDLHI.App.PoGUI
             }
 
             dgvProdInfo.Rows[0].Cells[11].Value = QtyProd;
-            dgvProdInfo.Rows[0].Cells[12].Value = txtPrice.Value;
+            dgvProdInfo.Rows[0].Cells[12].Value = !string.IsNullOrEmpty(txtPrice.Text) ? txtPrice.Text : "1";
             dgvProdInfo.Rows[0].Cells[14].Value = NetCash;
 
             btnSave.Enabled = true;
@@ -381,6 +383,16 @@ namespace StorageDLHI.App.PoGUI
                 this.Currency = txtCurrencyCode.Text.Trim();
                 this.exchangeRate[costID] = "" + " - " + txtCurrencyCode.Text.Trim() + " - " + frm.CostValue.ToString();
             }
+        }
+
+        private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+            Common.Common.FormatIntInputsTextChange(sender, e);
+        }
+
+        private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Common.Common.FormatDecimalsInputKeyPress(sender, e);
         }
     }
 }
