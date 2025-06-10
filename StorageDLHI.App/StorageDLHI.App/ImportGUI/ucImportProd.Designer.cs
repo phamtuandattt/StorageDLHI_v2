@@ -36,8 +36,28 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonGroupBox4 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.dgvImports = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kryptonGroupBox2 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.dgvImportDetail = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.Column33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRODUCT_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRODUCT_DES_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRODUCT_MATERIAL_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column46 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column47 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column48 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QTY_PRODUCT_IMPORT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column53 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column54 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tlsReloadImportList = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -56,24 +76,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonGroupBox3 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.dgvPOs = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PO_REV_TOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PO_TOTAL_AMOUNT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kryptonGroupBox5 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.dgvFooterOfPODetail = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.dgvPO_Detail = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
@@ -98,40 +100,6 @@
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonPanel6 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.dgvProdForImport = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.ctmUpdateProductImport = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dgvFooter = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnClearProdsOfImport = new System.Windows.Forms.ToolStripButton();
-            this.btnAddImport = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
-            this.btnReload = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnAddAllProdToImport = new System.Windows.Forms.ToolStripButton();
-            this.tlsPONo = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.tlsSearchPOs = new System.Windows.Forms.ToolStripTextBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PRODUCT_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PRODUCT_DES_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PRODUCT_MATERIAL_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column46 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column47 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column48 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QTY_PRODUCT_IMPORT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column53 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column54 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -147,6 +115,36 @@
             this.QTY_PROD_FOR_IMPORT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ctmUpdateProductImport = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgvFooter = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnClearProdsOfImport = new System.Windows.Forms.ToolStripButton();
+            this.btnAddImport = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.btnReload = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnAddAllProdToImport = new System.Windows.Forms.ToolStripButton();
+            this.tlsPONo = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.tlsSearchPOs = new System.Windows.Forms.ToolStripTextBox();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PO_REV_TOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PO_TOTAL_AMOUNT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pagePOs)).BeginInit();
@@ -215,7 +213,7 @@
             this.kryptonNavigator1.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
             this.pagePOs,
             this.pageAddPO});
-            this.kryptonNavigator1.SelectedIndex = 0;
+            this.kryptonNavigator1.SelectedIndex = 1;
             this.kryptonNavigator1.Size = new System.Drawing.Size(1355, 748);
             this.kryptonNavigator1.StateCommon.Panel.Color1 = System.Drawing.Color.White;
             this.kryptonNavigator1.StateCommon.Panel.Color2 = System.Drawing.Color.White;
@@ -251,11 +249,11 @@
             // 
             this.kryptonPanel8.Controls.Add(this.tableLayoutPanel3);
             this.kryptonPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel8.Location = new System.Drawing.Point(0, 27);
+            this.kryptonPanel8.Location = new System.Drawing.Point(0, 31);
             this.kryptonPanel8.Name = "kryptonPanel8";
             this.kryptonPanel8.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonPanel8.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundCustom1;
-            this.kryptonPanel8.Size = new System.Drawing.Size(1353, 690);
+            this.kryptonPanel8.Size = new System.Drawing.Size(1353, 686);
             this.kryptonPanel8.TabIndex = 6;
             // 
             // tableLayoutPanel3
@@ -270,7 +268,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 99.99999F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1353, 690);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1353, 686);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // kryptonGroupBox4
@@ -283,7 +281,7 @@
             // kryptonGroupBox4.Panel
             // 
             this.kryptonGroupBox4.Panel.Controls.Add(this.dgvImports);
-            this.kryptonGroupBox4.Size = new System.Drawing.Size(399, 684);
+            this.kryptonGroupBox4.Size = new System.Drawing.Size(399, 680);
             this.kryptonGroupBox4.TabIndex = 0;
             this.kryptonGroupBox4.Values.Heading = "Imports";
             // 
@@ -306,10 +304,43 @@
             this.dgvImports.RowHeadersWidth = 51;
             this.dgvImports.RowTemplate.Height = 30;
             this.dgvImports.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvImports.Size = new System.Drawing.Size(395, 656);
+            this.dgvImports.Size = new System.Drawing.Size(395, 652);
             this.dgvImports.TabIndex = 2;
             this.dgvImports.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvImports_CellClick);
             this.dgvImports.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvImports_RowPostPaint);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "ID";
+            this.Column1.HeaderText = "ID";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // Column30
+            // 
+            this.Column30.DataPropertyName = "FROM_PO_NO";
+            this.Column30.HeaderText = "From POs";
+            this.Column30.MinimumWidth = 6;
+            this.Column30.Name = "Column30";
+            this.Column30.ReadOnly = true;
+            // 
+            // Column31
+            // 
+            this.Column31.DataPropertyName = "IMPORT_DATE";
+            this.Column31.HeaderText = "Import date";
+            this.Column31.MinimumWidth = 6;
+            this.Column31.Name = "Column31";
+            this.Column31.ReadOnly = true;
+            // 
+            // Column32
+            // 
+            this.Column32.DataPropertyName = "STAFF_NAME";
+            this.Column32.HeaderText = "By staff";
+            this.Column32.MinimumWidth = 6;
+            this.Column32.Name = "Column32";
+            this.Column32.ReadOnly = true;
             // 
             // kryptonGroupBox2
             // 
@@ -321,7 +352,7 @@
             // kryptonGroupBox2.Panel
             // 
             this.kryptonGroupBox2.Panel.Controls.Add(this.dgvImportDetail);
-            this.kryptonGroupBox2.Size = new System.Drawing.Size(942, 684);
+            this.kryptonGroupBox2.Size = new System.Drawing.Size(942, 680);
             this.kryptonGroupBox2.TabIndex = 2;
             this.kryptonGroupBox2.Values.Heading = "Import detail";
             // 
@@ -356,10 +387,142 @@
             this.dgvImportDetail.RowHeadersWidth = 51;
             this.dgvImportDetail.RowTemplate.Height = 30;
             this.dgvImportDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvImportDetail.Size = new System.Drawing.Size(938, 656);
+            this.dgvImportDetail.Size = new System.Drawing.Size(938, 652);
             this.dgvImportDetail.TabIndex = 3;
             this.dgvImportDetail.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvImportDetail_DataBindingComplete);
             this.dgvImportDetail.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvImportDetail_RowPostPaint);
+            // 
+            // Column33
+            // 
+            this.Column33.DataPropertyName = "ID";
+            this.Column33.HeaderText = "ID";
+            this.Column33.MinimumWidth = 6;
+            this.Column33.Name = "Column33";
+            this.Column33.ReadOnly = true;
+            this.Column33.Visible = false;
+            // 
+            // Column34
+            // 
+            this.Column34.DataPropertyName = "IMPORT_PRODUCT_ID";
+            this.Column34.HeaderText = "IMPORT_PRODUCT_ID";
+            this.Column34.MinimumWidth = 6;
+            this.Column34.Name = "Column34";
+            this.Column34.ReadOnly = true;
+            this.Column34.Visible = false;
+            // 
+            // Column35
+            // 
+            this.Column35.DataPropertyName = "PRODUCT_ID";
+            this.Column35.HeaderText = "PRODUCT_ID";
+            this.Column35.MinimumWidth = 6;
+            this.Column35.Name = "Column35";
+            this.Column35.ReadOnly = true;
+            this.Column35.Visible = false;
+            // 
+            // PRODUCT_NAME
+            // 
+            this.PRODUCT_NAME.DataPropertyName = "PRODUCT_NAME";
+            this.PRODUCT_NAME.HeaderText = "Name";
+            this.PRODUCT_NAME.MinimumWidth = 6;
+            this.PRODUCT_NAME.Name = "PRODUCT_NAME";
+            this.PRODUCT_NAME.ReadOnly = true;
+            // 
+            // PRODUCT_DES_2
+            // 
+            this.PRODUCT_DES_2.DataPropertyName = "PRODUCT_DES_2";
+            this.PRODUCT_DES_2.HeaderText = "Description 2";
+            this.PRODUCT_DES_2.MinimumWidth = 6;
+            this.PRODUCT_DES_2.Name = "PRODUCT_DES_2";
+            this.PRODUCT_DES_2.ReadOnly = true;
+            // 
+            // PRODUCT_MATERIAL_CODE
+            // 
+            this.PRODUCT_MATERIAL_CODE.DataPropertyName = "PRODUCT_MATERIAL_CODE";
+            this.PRODUCT_MATERIAL_CODE.HeaderText = "Material";
+            this.PRODUCT_MATERIAL_CODE.MinimumWidth = 6;
+            this.PRODUCT_MATERIAL_CODE.Name = "PRODUCT_MATERIAL_CODE";
+            this.PRODUCT_MATERIAL_CODE.ReadOnly = true;
+            // 
+            // Column36
+            // 
+            this.Column36.DataPropertyName = "A_THINHNESS";
+            this.Column36.HeaderText = "A_Thinh";
+            this.Column36.MinimumWidth = 6;
+            this.Column36.Name = "Column36";
+            this.Column36.ReadOnly = true;
+            // 
+            // Column37
+            // 
+            this.Column37.DataPropertyName = "B_DEPTH";
+            this.Column37.HeaderText = "B_Depth";
+            this.Column37.MinimumWidth = 6;
+            this.Column37.Name = "Column37";
+            this.Column37.ReadOnly = true;
+            // 
+            // Column38
+            // 
+            this.Column38.DataPropertyName = "C_WIDTH";
+            this.Column38.HeaderText = "C_Width";
+            this.Column38.MinimumWidth = 6;
+            this.Column38.Name = "Column38";
+            this.Column38.ReadOnly = true;
+            // 
+            // Column46
+            // 
+            this.Column46.DataPropertyName = "D_WEB";
+            this.Column46.HeaderText = "D_Web";
+            this.Column46.MinimumWidth = 6;
+            this.Column46.Name = "Column46";
+            this.Column46.ReadOnly = true;
+            // 
+            // Column47
+            // 
+            this.Column47.DataPropertyName = "E_FLAG";
+            this.Column47.HeaderText = "E_Flag";
+            this.Column47.MinimumWidth = 6;
+            this.Column47.Name = "Column47";
+            this.Column47.ReadOnly = true;
+            // 
+            // Column48
+            // 
+            this.Column48.DataPropertyName = "F_LENGTH";
+            this.Column48.HeaderText = "F_Length";
+            this.Column48.MinimumWidth = 6;
+            this.Column48.Name = "Column48";
+            this.Column48.ReadOnly = true;
+            // 
+            // Column49
+            // 
+            this.Column49.DataPropertyName = "G_WEIGHT";
+            this.Column49.HeaderText = "G_Weight";
+            this.Column49.MinimumWidth = 6;
+            this.Column49.Name = "Column49";
+            this.Column49.ReadOnly = true;
+            // 
+            // QTY_PRODUCT_IMPORT
+            // 
+            this.QTY_PRODUCT_IMPORT.DataPropertyName = "QTY";
+            this.QTY_PRODUCT_IMPORT.HeaderText = "Qty";
+            this.QTY_PRODUCT_IMPORT.MinimumWidth = 6;
+            this.QTY_PRODUCT_IMPORT.Name = "QTY_PRODUCT_IMPORT";
+            this.QTY_PRODUCT_IMPORT.ReadOnly = true;
+            // 
+            // Column53
+            // 
+            this.Column53.DataPropertyName = "WAREHOUSE_ID";
+            this.Column53.HeaderText = "Warehouse_Id";
+            this.Column53.MinimumWidth = 6;
+            this.Column53.Name = "Column53";
+            this.Column53.ReadOnly = true;
+            this.Column53.Visible = false;
+            // 
+            // Column54
+            // 
+            this.Column54.DataPropertyName = "WAREHOUSE_NAME";
+            this.Column54.HeaderText = "Warehouse Name";
+            this.Column54.MinimumWidth = 6;
+            this.Column54.Name = "Column54";
+            this.Column54.ReadOnly = true;
             // 
             // toolStrip2
             // 
@@ -378,7 +541,7 @@
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip2.Size = new System.Drawing.Size(1353, 27);
+            this.toolStrip2.Size = new System.Drawing.Size(1353, 31);
             this.toolStrip2.TabIndex = 5;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -484,11 +647,11 @@
             // 
             this.kryptonPanel5.Controls.Add(this.tableLayoutPanel2);
             this.kryptonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel5.Location = new System.Drawing.Point(0, 27);
+            this.kryptonPanel5.Location = new System.Drawing.Point(0, 31);
             this.kryptonPanel5.Name = "kryptonPanel5";
             this.kryptonPanel5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonPanel5.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundCustom1;
-            this.kryptonPanel5.Size = new System.Drawing.Size(1353, 690);
+            this.kryptonPanel5.Size = new System.Drawing.Size(1353, 686);
             this.kryptonPanel5.TabIndex = 6;
             // 
             // tableLayoutPanel2
@@ -503,7 +666,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1353, 690);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1353, 686);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -518,7 +681,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1347, 339);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1347, 337);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // kryptonGroupBox3
@@ -531,7 +694,7 @@
             // kryptonGroupBox3.Panel
             // 
             this.kryptonGroupBox3.Panel.Controls.Add(this.dgvPOs);
-            this.kryptonGroupBox3.Size = new System.Drawing.Size(419, 333);
+            this.kryptonGroupBox3.Size = new System.Drawing.Size(419, 331);
             this.kryptonGroupBox3.TabIndex = 3;
             this.kryptonGroupBox3.Values.Heading = "POs";
             // 
@@ -557,8 +720,6 @@
             this.Column18,
             this.Column19,
             this.PO_TOTAL_AMOUNT,
-            this.Column21,
-            this.Column50,
             this.Column51});
             this.dgvPOs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPOs.Location = new System.Drawing.Point(0, 0);
@@ -568,167 +729,10 @@
             this.dgvPOs.RowHeadersWidth = 51;
             this.dgvPOs.RowTemplate.Height = 30;
             this.dgvPOs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPOs.Size = new System.Drawing.Size(415, 305);
+            this.dgvPOs.Size = new System.Drawing.Size(415, 303);
             this.dgvPOs.TabIndex = 3;
             this.dgvPOs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPOs_CellClick);
             this.dgvPOs.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvPOs_RowPostPaint);
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "ID";
-            this.Column6.HeaderText = "ID";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Visible = false;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "PO_NO";
-            this.Column7.HeaderText = "PO No";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "PO_MPR_NO";
-            this.Column8.HeaderText = "MPR No";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "PO_WO_NO";
-            this.Column9.HeaderText = "WO No";
-            this.Column9.MinimumWidth = 6;
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "PO_PROJECT_NAME";
-            this.Column10.HeaderText = "Project name";
-            this.Column10.MinimumWidth = 6;
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // PO_REV_TOTAL
-            // 
-            this.PO_REV_TOTAL.DataPropertyName = "PO_REV_TOTAL";
-            this.PO_REV_TOTAL.HeaderText = "Rev total";
-            this.PO_REV_TOTAL.MinimumWidth = 6;
-            this.PO_REV_TOTAL.Name = "PO_REV_TOTAL";
-            this.PO_REV_TOTAL.ReadOnly = true;
-            this.PO_REV_TOTAL.Visible = false;
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "PO_CREATE_DATE";
-            this.Column12.HeaderText = "Create date";
-            this.Column12.MinimumWidth = 6;
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            // 
-            // Column13
-            // 
-            this.Column13.DataPropertyName = "PO_EXPECTED_DELIVERY_DATE";
-            this.Column13.HeaderText = "Ex.Delivery date";
-            this.Column13.MinimumWidth = 6;
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            this.Column13.Visible = false;
-            // 
-            // Column14
-            // 
-            this.Column14.DataPropertyName = "PO_PREPARED";
-            this.Column14.HeaderText = "Prepared";
-            this.Column14.MinimumWidth = 6;
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            this.Column14.Visible = false;
-            // 
-            // Column15
-            // 
-            this.Column15.DataPropertyName = "PO_REVIEWED";
-            this.Column15.HeaderText = "Reviewed";
-            this.Column15.MinimumWidth = 6;
-            this.Column15.Name = "Column15";
-            this.Column15.ReadOnly = true;
-            this.Column15.Visible = false;
-            // 
-            // Column16
-            // 
-            this.Column16.DataPropertyName = "PO_AGREEMENT";
-            this.Column16.HeaderText = "Aggrement";
-            this.Column16.MinimumWidth = 6;
-            this.Column16.Name = "Column16";
-            this.Column16.ReadOnly = true;
-            this.Column16.Visible = false;
-            // 
-            // Column17
-            // 
-            this.Column17.DataPropertyName = "PO_APPROVED";
-            this.Column17.HeaderText = "Approved";
-            this.Column17.MinimumWidth = 6;
-            this.Column17.Name = "Column17";
-            this.Column17.ReadOnly = true;
-            this.Column17.Visible = false;
-            // 
-            // Column18
-            // 
-            this.Column18.DataPropertyName = "PO_PAYMENT_TERM";
-            this.Column18.HeaderText = "Payment term";
-            this.Column18.MinimumWidth = 6;
-            this.Column18.Name = "Column18";
-            this.Column18.ReadOnly = true;
-            this.Column18.Visible = false;
-            // 
-            // Column19
-            // 
-            this.Column19.DataPropertyName = "PO_PLACE_OF_CONTRY";
-            this.Column19.HeaderText = "From country";
-            this.Column19.MinimumWidth = 6;
-            this.Column19.Name = "Column19";
-            this.Column19.ReadOnly = true;
-            this.Column19.Visible = false;
-            // 
-            // PO_TOTAL_AMOUNT
-            // 
-            this.PO_TOTAL_AMOUNT.DataPropertyName = "PO_TOTAL_AMOUNT";
-            this.PO_TOTAL_AMOUNT.HeaderText = "Total amount";
-            this.PO_TOTAL_AMOUNT.MinimumWidth = 6;
-            this.PO_TOTAL_AMOUNT.Name = "PO_TOTAL_AMOUNT";
-            this.PO_TOTAL_AMOUNT.ReadOnly = true;
-            this.PO_TOTAL_AMOUNT.Visible = false;
-            // 
-            // Column21
-            // 
-            this.Column21.DataPropertyName = "COST_NAME";
-            this.Column21.HeaderText = "Cost";
-            this.Column21.MinimumWidth = 6;
-            this.Column21.Name = "Column21";
-            this.Column21.ReadOnly = true;
-            this.Column21.Visible = false;
-            // 
-            // Column50
-            // 
-            this.Column50.DataPropertyName = "TAX_PERCENT";
-            this.Column50.HeaderText = "Tax";
-            this.Column50.MinimumWidth = 6;
-            this.Column50.Name = "Column50";
-            this.Column50.ReadOnly = true;
-            this.Column50.Visible = false;
-            // 
-            // Column51
-            // 
-            this.Column51.DataPropertyName = "NAME";
-            this.Column51.HeaderText = "Supplier";
-            this.Column51.MinimumWidth = 6;
-            this.Column51.Name = "Column51";
-            this.Column51.ReadOnly = true;
-            this.Column51.Visible = false;
             // 
             // kryptonGroupBox5
             // 
@@ -741,7 +745,7 @@
             // 
             this.kryptonGroupBox5.Panel.Controls.Add(this.dgvFooterOfPODetail);
             this.kryptonGroupBox5.Panel.Controls.Add(this.dgvPO_Detail);
-            this.kryptonGroupBox5.Size = new System.Drawing.Size(916, 333);
+            this.kryptonGroupBox5.Size = new System.Drawing.Size(916, 331);
             this.kryptonGroupBox5.TabIndex = 2;
             this.kryptonGroupBox5.Values.Heading = "PO Detail";
             // 
@@ -749,7 +753,7 @@
             // 
             this.dgvFooterOfPODetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFooterOfPODetail.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvFooterOfPODetail.Location = new System.Drawing.Point(0, 245);
+            this.dgvFooterOfPODetail.Location = new System.Drawing.Point(0, 243);
             this.dgvFooterOfPODetail.Name = "dgvFooterOfPODetail";
             this.dgvFooterOfPODetail.ReadOnly = true;
             this.dgvFooterOfPODetail.RowHeadersWidth = 51;
@@ -789,7 +793,7 @@
             this.dgvPO_Detail.RowHeadersWidth = 51;
             this.dgvPO_Detail.RowTemplate.Height = 30;
             this.dgvPO_Detail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPO_Detail.Size = new System.Drawing.Size(912, 305);
+            this.dgvPO_Detail.Size = new System.Drawing.Size(912, 303);
             this.dgvPO_Detail.TabIndex = 4;
             this.dgvPO_Detail.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPO_Detail_CellDoubleClick);
             this.dgvPO_Detail.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvPO_Detail_ColumnWidthChanged);
@@ -949,9 +953,9 @@
             this.kryptonPanel1.Controls.Add(this.kryptonPanel2);
             this.kryptonPanel1.Controls.Add(this.toolStrip1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel1.Location = new System.Drawing.Point(3, 348);
+            this.kryptonPanel1.Location = new System.Drawing.Point(3, 346);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(1347, 339);
+            this.kryptonPanel1.Size = new System.Drawing.Size(1347, 337);
             this.kryptonPanel1.TabIndex = 4;
             // 
             // kryptonPanel2
@@ -961,7 +965,7 @@
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 27);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel2.Size = new System.Drawing.Size(1347, 312);
+            this.kryptonPanel2.Size = new System.Drawing.Size(1347, 310);
             this.kryptonPanel2.TabIndex = 7;
             // 
             // kryptonGroupBox1
@@ -975,7 +979,7 @@
             // 
             this.kryptonGroupBox1.Panel.Controls.Add(this.kryptonPanel6);
             this.kryptonGroupBox1.Panel.Controls.Add(this.dgvFooter);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(1347, 312);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(1347, 310);
             this.kryptonGroupBox1.TabIndex = 5;
             this.kryptonGroupBox1.Values.Heading = "List of imported products";
             // 
@@ -986,7 +990,7 @@
             this.kryptonPanel6.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel6.Name = "kryptonPanel6";
             this.kryptonPanel6.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel6.Size = new System.Drawing.Size(1343, 248);
+            this.kryptonPanel6.Size = new System.Drawing.Size(1343, 246);
             this.kryptonPanel6.TabIndex = 5;
             // 
             // dgvProdForImport
@@ -1020,7 +1024,7 @@
             this.dgvProdForImport.RowHeadersWidth = 51;
             this.dgvProdForImport.RowTemplate.Height = 30;
             this.dgvProdForImport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdForImport.Size = new System.Drawing.Size(1343, 248);
+            this.dgvProdForImport.Size = new System.Drawing.Size(1343, 246);
             this.dgvProdForImport.TabIndex = 3;
             this.dgvProdForImport.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProdForImport_CellMouseDoubleClick);
             this.dgvProdForImport.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProdForImport_CellMouseDown);
@@ -1028,305 +1032,6 @@
             this.dgvProdForImport.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvProdForImport_DataBindingComplete);
             this.dgvProdForImport.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvProdForImport_RowPostPaint);
             this.dgvProdForImport.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvProdForImport_Scroll);
-            // 
-            // ctmUpdateProductImport
-            // 
-            this.ctmUpdateProductImport.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ctmUpdateProductImport.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.ctmUpdateProductImport.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.modifyToolStripMenuItem,
-            this.deleteToolStripMenuItem});
-            this.ctmUpdateProductImport.Name = "ctmUpdateProductImport";
-            this.ctmUpdateProductImport.Size = new System.Drawing.Size(126, 52);
-            // 
-            // modifyToolStripMenuItem
-            // 
-            this.modifyToolStripMenuItem.Name = "modifyToolStripMenuItem";
-            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(125, 24);
-            this.modifyToolStripMenuItem.Text = "Modify";
-            this.modifyToolStripMenuItem.Click += new System.EventHandler(this.modifyToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(125, 24);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
-            // dgvFooter
-            // 
-            this.dgvFooter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvFooter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvFooter.Location = new System.Drawing.Point(0, 248);
-            this.dgvFooter.Name = "dgvFooter";
-            this.dgvFooter.ReadOnly = true;
-            this.dgvFooter.RowHeadersWidth = 51;
-            this.dgvFooter.RowTemplate.Height = 30;
-            this.dgvFooter.Size = new System.Drawing.Size(1343, 36);
-            this.dgvFooter.TabIndex = 4;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnClearProdsOfImport,
-            this.btnAddImport});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(1347, 27);
-            this.toolStrip1.TabIndex = 6;
-            this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
-            // 
-            // btnClearProdsOfImport
-            // 
-            this.btnClearProdsOfImport.Image = global::StorageDLHI.App.Properties.Resources.bin;
-            this.btnClearProdsOfImport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnClearProdsOfImport.Name = "btnClearProdsOfImport";
-            this.btnClearProdsOfImport.Size = new System.Drawing.Size(87, 24);
-            this.btnClearProdsOfImport.Text = "Clear all";
-            this.btnClearProdsOfImport.Click += new System.EventHandler(this.btnClearProdsOfImport_Click);
-            // 
-            // btnAddImport
-            // 
-            this.btnAddImport.Image = global::StorageDLHI.App.Properties.Resources.right;
-            this.btnAddImport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAddImport.Name = "btnAddImport";
-            this.btnAddImport.Size = new System.Drawing.Size(86, 24);
-            this.btnAddImport.Text = "Confirm";
-            this.btnAddImport.Click += new System.EventHandler(this.btnAddImport_Click);
-            // 
-            // toolStrip3
-            // 
-            this.toolStrip3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnReload,
-            this.toolStripSeparator1,
-            this.btnAddAllProdToImport,
-            this.tlsPONo,
-            this.toolStripLabel2,
-            this.tlsSearchPOs});
-            this.toolStrip3.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip3.Size = new System.Drawing.Size(1353, 27);
-            this.toolStrip3.TabIndex = 5;
-            this.toolStrip3.Text = "toolStrip3";
-            // 
-            // btnReload
-            // 
-            this.btnReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnReload.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.btnReload.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(29, 24);
-            this.btnReload.Text = "Refresh";
-            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
-            // 
-            // btnAddAllProdToImport
-            // 
-            this.btnAddAllProdToImport.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnAddAllProdToImport.Image = global::StorageDLHI.App.Properties.Resources.mark;
-            this.btnAddAllProdToImport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAddAllProdToImport.Name = "btnAddAllProdToImport";
-            this.btnAddAllProdToImport.Size = new System.Drawing.Size(223, 24);
-            this.btnAddAllProdToImport.Text = "Add all product to create PO";
-            this.btnAddAllProdToImport.Visible = false;
-            this.btnAddAllProdToImport.Click += new System.EventHandler(this.btnAddAllProdToImport_Click);
-            // 
-            // tlsPONo
-            // 
-            this.tlsPONo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tlsPONo.Name = "tlsPONo";
-            this.tlsPONo.Size = new System.Drawing.Size(18, 24);
-            this.tlsPONo.Text = "...";
-            // 
-            // toolStripLabel2
-            // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(56, 24);
-            this.toolStripLabel2.Text = "Search:";
-            // 
-            // tlsSearchPOs
-            // 
-            this.tlsSearchPOs.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tlsSearchPOs.Name = "tlsSearchPOs";
-            this.tlsSearchPOs.Size = new System.Drawing.Size(200, 27);
-            this.tlsSearchPOs.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tlsSearchPOs_KeyUp);
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "ID";
-            this.Column1.HeaderText = "ID";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            // 
-            // Column30
-            // 
-            this.Column30.DataPropertyName = "FROM_PO_NO";
-            this.Column30.HeaderText = "From POs";
-            this.Column30.MinimumWidth = 6;
-            this.Column30.Name = "Column30";
-            this.Column30.ReadOnly = true;
-            // 
-            // Column31
-            // 
-            this.Column31.DataPropertyName = "IMPORT_DATE";
-            this.Column31.HeaderText = "Import date";
-            this.Column31.MinimumWidth = 6;
-            this.Column31.Name = "Column31";
-            this.Column31.ReadOnly = true;
-            // 
-            // Column32
-            // 
-            this.Column32.DataPropertyName = "STAFF_NAME";
-            this.Column32.HeaderText = "By staff";
-            this.Column32.MinimumWidth = 6;
-            this.Column32.Name = "Column32";
-            this.Column32.ReadOnly = true;
-            // 
-            // Column33
-            // 
-            this.Column33.DataPropertyName = "ID";
-            this.Column33.HeaderText = "ID";
-            this.Column33.MinimumWidth = 6;
-            this.Column33.Name = "Column33";
-            this.Column33.ReadOnly = true;
-            this.Column33.Visible = false;
-            // 
-            // Column34
-            // 
-            this.Column34.DataPropertyName = "IMPORT_PRODUCT_ID";
-            this.Column34.HeaderText = "IMPORT_PRODUCT_ID";
-            this.Column34.MinimumWidth = 6;
-            this.Column34.Name = "Column34";
-            this.Column34.ReadOnly = true;
-            this.Column34.Visible = false;
-            // 
-            // Column35
-            // 
-            this.Column35.DataPropertyName = "PRODUCT_ID";
-            this.Column35.HeaderText = "PRODUCT_ID";
-            this.Column35.MinimumWidth = 6;
-            this.Column35.Name = "Column35";
-            this.Column35.ReadOnly = true;
-            this.Column35.Visible = false;
-            // 
-            // PRODUCT_NAME
-            // 
-            this.PRODUCT_NAME.DataPropertyName = "PRODUCT_NAME";
-            this.PRODUCT_NAME.HeaderText = "Name";
-            this.PRODUCT_NAME.MinimumWidth = 6;
-            this.PRODUCT_NAME.Name = "PRODUCT_NAME";
-            this.PRODUCT_NAME.ReadOnly = true;
-            // 
-            // PRODUCT_DES_2
-            // 
-            this.PRODUCT_DES_2.DataPropertyName = "PRODUCT_DES_2";
-            this.PRODUCT_DES_2.HeaderText = "Description 2";
-            this.PRODUCT_DES_2.MinimumWidth = 6;
-            this.PRODUCT_DES_2.Name = "PRODUCT_DES_2";
-            this.PRODUCT_DES_2.ReadOnly = true;
-            // 
-            // PRODUCT_MATERIAL_CODE
-            // 
-            this.PRODUCT_MATERIAL_CODE.DataPropertyName = "PRODUCT_MATERIAL_CODE";
-            this.PRODUCT_MATERIAL_CODE.HeaderText = "Material";
-            this.PRODUCT_MATERIAL_CODE.MinimumWidth = 6;
-            this.PRODUCT_MATERIAL_CODE.Name = "PRODUCT_MATERIAL_CODE";
-            this.PRODUCT_MATERIAL_CODE.ReadOnly = true;
-            // 
-            // Column36
-            // 
-            this.Column36.DataPropertyName = "A_THINHNESS";
-            this.Column36.HeaderText = "A_Thinh";
-            this.Column36.MinimumWidth = 6;
-            this.Column36.Name = "Column36";
-            this.Column36.ReadOnly = true;
-            // 
-            // Column37
-            // 
-            this.Column37.DataPropertyName = "B_DEPTH";
-            this.Column37.HeaderText = "B_Depth";
-            this.Column37.MinimumWidth = 6;
-            this.Column37.Name = "Column37";
-            this.Column37.ReadOnly = true;
-            // 
-            // Column38
-            // 
-            this.Column38.DataPropertyName = "C_WIDTH";
-            this.Column38.HeaderText = "C_Width";
-            this.Column38.MinimumWidth = 6;
-            this.Column38.Name = "Column38";
-            this.Column38.ReadOnly = true;
-            // 
-            // Column46
-            // 
-            this.Column46.DataPropertyName = "D_WEB";
-            this.Column46.HeaderText = "D_Web";
-            this.Column46.MinimumWidth = 6;
-            this.Column46.Name = "Column46";
-            this.Column46.ReadOnly = true;
-            // 
-            // Column47
-            // 
-            this.Column47.DataPropertyName = "E_FLAG";
-            this.Column47.HeaderText = "E_Flag";
-            this.Column47.MinimumWidth = 6;
-            this.Column47.Name = "Column47";
-            this.Column47.ReadOnly = true;
-            // 
-            // Column48
-            // 
-            this.Column48.DataPropertyName = "F_LENGTH";
-            this.Column48.HeaderText = "F_Length";
-            this.Column48.MinimumWidth = 6;
-            this.Column48.Name = "Column48";
-            this.Column48.ReadOnly = true;
-            // 
-            // Column49
-            // 
-            this.Column49.DataPropertyName = "G_WEIGHT";
-            this.Column49.HeaderText = "G_Weight";
-            this.Column49.MinimumWidth = 6;
-            this.Column49.Name = "Column49";
-            this.Column49.ReadOnly = true;
-            // 
-            // QTY_PRODUCT_IMPORT
-            // 
-            this.QTY_PRODUCT_IMPORT.DataPropertyName = "QTY";
-            this.QTY_PRODUCT_IMPORT.HeaderText = "Qty";
-            this.QTY_PRODUCT_IMPORT.MinimumWidth = 6;
-            this.QTY_PRODUCT_IMPORT.Name = "QTY_PRODUCT_IMPORT";
-            this.QTY_PRODUCT_IMPORT.ReadOnly = true;
-            // 
-            // Column53
-            // 
-            this.Column53.DataPropertyName = "WAREHOUSE_ID";
-            this.Column53.HeaderText = "Warehouse_Id";
-            this.Column53.MinimumWidth = 6;
-            this.Column53.Name = "Column53";
-            this.Column53.ReadOnly = true;
-            this.Column53.Visible = false;
-            // 
-            // Column54
-            // 
-            this.Column54.DataPropertyName = "WAREHOUSE_NAME";
-            this.Column54.HeaderText = "Warehouse Name";
-            this.Column54.MinimumWidth = 6;
-            this.Column54.Name = "Column54";
-            this.Column54.ReadOnly = true;
             // 
             // Column3
             // 
@@ -1451,6 +1156,279 @@
             this.Column29.ReadOnly = true;
             this.Column29.Visible = false;
             // 
+            // ctmUpdateProductImport
+            // 
+            this.ctmUpdateProductImport.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ctmUpdateProductImport.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.ctmUpdateProductImport.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modifyToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.ctmUpdateProductImport.Name = "ctmUpdateProductImport";
+            this.ctmUpdateProductImport.Size = new System.Drawing.Size(126, 52);
+            // 
+            // modifyToolStripMenuItem
+            // 
+            this.modifyToolStripMenuItem.Name = "modifyToolStripMenuItem";
+            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(125, 24);
+            this.modifyToolStripMenuItem.Text = "Modify";
+            this.modifyToolStripMenuItem.Click += new System.EventHandler(this.modifyToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(125, 24);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // dgvFooter
+            // 
+            this.dgvFooter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvFooter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvFooter.Location = new System.Drawing.Point(0, 246);
+            this.dgvFooter.Name = "dgvFooter";
+            this.dgvFooter.ReadOnly = true;
+            this.dgvFooter.RowHeadersWidth = 51;
+            this.dgvFooter.RowTemplate.Height = 30;
+            this.dgvFooter.Size = new System.Drawing.Size(1343, 36);
+            this.dgvFooter.TabIndex = 4;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnClearProdsOfImport,
+            this.btnAddImport});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip1.Size = new System.Drawing.Size(1347, 27);
+            this.toolStrip1.TabIndex = 6;
+            this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
+            // 
+            // btnClearProdsOfImport
+            // 
+            this.btnClearProdsOfImport.Image = global::StorageDLHI.App.Properties.Resources.bin;
+            this.btnClearProdsOfImport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnClearProdsOfImport.Name = "btnClearProdsOfImport";
+            this.btnClearProdsOfImport.Size = new System.Drawing.Size(87, 24);
+            this.btnClearProdsOfImport.Text = "Clear all";
+            this.btnClearProdsOfImport.Click += new System.EventHandler(this.btnClearProdsOfImport_Click);
+            // 
+            // btnAddImport
+            // 
+            this.btnAddImport.Image = global::StorageDLHI.App.Properties.Resources.right;
+            this.btnAddImport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAddImport.Name = "btnAddImport";
+            this.btnAddImport.Size = new System.Drawing.Size(86, 24);
+            this.btnAddImport.Text = "Confirm";
+            this.btnAddImport.Click += new System.EventHandler(this.btnAddImport_Click);
+            // 
+            // toolStrip3
+            // 
+            this.toolStrip3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnReload,
+            this.toolStripSeparator1,
+            this.btnAddAllProdToImport,
+            this.tlsPONo,
+            this.toolStripLabel2,
+            this.tlsSearchPOs});
+            this.toolStrip3.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip3.Name = "toolStrip3";
+            this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip3.Size = new System.Drawing.Size(1353, 31);
+            this.toolStrip3.TabIndex = 5;
+            this.toolStrip3.Text = "toolStrip3";
+            // 
+            // btnReload
+            // 
+            this.btnReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnReload.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.btnReload.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(29, 24);
+            this.btnReload.Text = "Refresh";
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            // 
+            // btnAddAllProdToImport
+            // 
+            this.btnAddAllProdToImport.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnAddAllProdToImport.Image = global::StorageDLHI.App.Properties.Resources.mark;
+            this.btnAddAllProdToImport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAddAllProdToImport.Name = "btnAddAllProdToImport";
+            this.btnAddAllProdToImport.Size = new System.Drawing.Size(223, 24);
+            this.btnAddAllProdToImport.Text = "Add all product to create PO";
+            this.btnAddAllProdToImport.Visible = false;
+            this.btnAddAllProdToImport.Click += new System.EventHandler(this.btnAddAllProdToImport_Click);
+            // 
+            // tlsPONo
+            // 
+            this.tlsPONo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tlsPONo.Name = "tlsPONo";
+            this.tlsPONo.Size = new System.Drawing.Size(18, 24);
+            this.tlsPONo.Text = "...";
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(56, 24);
+            this.toolStripLabel2.Text = "Search:";
+            // 
+            // tlsSearchPOs
+            // 
+            this.tlsSearchPOs.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tlsSearchPOs.Name = "tlsSearchPOs";
+            this.tlsSearchPOs.Size = new System.Drawing.Size(200, 27);
+            this.tlsSearchPOs.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tlsSearchPOs_KeyUp);
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "ID";
+            this.Column6.HeaderText = "ID";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Visible = false;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "PO_NO";
+            this.Column7.HeaderText = "PO No";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "PO_MPR_NO";
+            this.Column8.HeaderText = "MPR No";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "PO_WO_NO";
+            this.Column9.HeaderText = "WO No";
+            this.Column9.MinimumWidth = 6;
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "PO_PROJECT_NAME";
+            this.Column10.HeaderText = "Project name";
+            this.Column10.MinimumWidth = 6;
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
+            // PO_REV_TOTAL
+            // 
+            this.PO_REV_TOTAL.DataPropertyName = "PO_REV_TOTAL";
+            this.PO_REV_TOTAL.HeaderText = "Rev total";
+            this.PO_REV_TOTAL.MinimumWidth = 6;
+            this.PO_REV_TOTAL.Name = "PO_REV_TOTAL";
+            this.PO_REV_TOTAL.ReadOnly = true;
+            this.PO_REV_TOTAL.Visible = false;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "PO_CREATE_DATE";
+            this.Column12.HeaderText = "Create date";
+            this.Column12.MinimumWidth = 6;
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "PO_EXPECTED_DELIVERY_DATE";
+            this.Column13.HeaderText = "Ex.Delivery date";
+            this.Column13.MinimumWidth = 6;
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            this.Column13.Visible = false;
+            // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "PO_PREPARED";
+            this.Column14.HeaderText = "Prepared";
+            this.Column14.MinimumWidth = 6;
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            this.Column14.Visible = false;
+            // 
+            // Column15
+            // 
+            this.Column15.DataPropertyName = "PO_REVIEWED";
+            this.Column15.HeaderText = "Reviewed";
+            this.Column15.MinimumWidth = 6;
+            this.Column15.Name = "Column15";
+            this.Column15.ReadOnly = true;
+            this.Column15.Visible = false;
+            // 
+            // Column16
+            // 
+            this.Column16.DataPropertyName = "PO_AGREEMENT";
+            this.Column16.HeaderText = "Aggrement";
+            this.Column16.MinimumWidth = 6;
+            this.Column16.Name = "Column16";
+            this.Column16.ReadOnly = true;
+            this.Column16.Visible = false;
+            // 
+            // Column17
+            // 
+            this.Column17.DataPropertyName = "PO_APPROVED";
+            this.Column17.HeaderText = "Approved";
+            this.Column17.MinimumWidth = 6;
+            this.Column17.Name = "Column17";
+            this.Column17.ReadOnly = true;
+            this.Column17.Visible = false;
+            // 
+            // Column18
+            // 
+            this.Column18.DataPropertyName = "PO_PAYMENT_TERM";
+            this.Column18.HeaderText = "Payment term";
+            this.Column18.MinimumWidth = 6;
+            this.Column18.Name = "Column18";
+            this.Column18.ReadOnly = true;
+            this.Column18.Visible = false;
+            // 
+            // Column19
+            // 
+            this.Column19.DataPropertyName = "PO_PLACE_OF_CONTRY";
+            this.Column19.HeaderText = "From country";
+            this.Column19.MinimumWidth = 6;
+            this.Column19.Name = "Column19";
+            this.Column19.ReadOnly = true;
+            this.Column19.Visible = false;
+            // 
+            // PO_TOTAL_AMOUNT
+            // 
+            this.PO_TOTAL_AMOUNT.DataPropertyName = "PO_TOTAL_AMOUNT";
+            this.PO_TOTAL_AMOUNT.HeaderText = "Total amount";
+            this.PO_TOTAL_AMOUNT.MinimumWidth = 6;
+            this.PO_TOTAL_AMOUNT.Name = "PO_TOTAL_AMOUNT";
+            this.PO_TOTAL_AMOUNT.ReadOnly = true;
+            this.PO_TOTAL_AMOUNT.Visible = false;
+            // 
+            // Column51
+            // 
+            this.Column51.DataPropertyName = "NAME";
+            this.Column51.HeaderText = "Supplier";
+            this.Column51.MinimumWidth = 6;
+            this.Column51.Name = "Column51";
+            this.Column51.ReadOnly = true;
+            this.Column51.Visible = false;
+            // 
             // ucImportProd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1458,6 +1436,7 @@
             this.Controls.Add(this.kryptonNavigator1);
             this.Name = "ucImportProd";
             this.Size = new System.Drawing.Size(1355, 748);
+            this.Load += new System.EventHandler(this.ucImportProd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).EndInit();
             this.kryptonNavigator1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pagePOs)).EndInit();
@@ -1569,24 +1548,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PO_DETAIL_QTY;
         private System.Windows.Forms.DataGridViewTextBoxColumn PO_DETAIL_PRICE;
         private System.Windows.Forms.DataGridViewTextBoxColumn PO_DETAIL_AMOUNT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PO_REV_TOTAL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PO_TOTAL_AMOUNT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column50;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column51;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel7;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -1644,5 +1605,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn QTY_PROD_FOR_IMPORT;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PO_REV_TOTAL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PO_TOTAL_AMOUNT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column51;
     }
 }

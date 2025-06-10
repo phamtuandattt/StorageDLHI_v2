@@ -41,5 +41,6 @@ namespace StorageDLHI.Infrastructor.Caches
 
         public const string WAREHOUSE_DATATABLE_ALL = "Warehouse.DataTable.AllWarehouse";
         public const string WAREHOUSE_DETAIL_BY_ID = "Warehouse.Detail.WarehouseDetail.ID.{0}";
+        public const string WAREHOUSE_DATATABLE_ALL_FOR_COMBOXBOX = "Warehouse.DataTAble.AllWarehouse.For.ComboBox";
     }
 }

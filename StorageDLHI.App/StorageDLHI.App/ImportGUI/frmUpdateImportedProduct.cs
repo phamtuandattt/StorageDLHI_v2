@@ -2,6 +2,7 @@
 using StorageDLHI.App.Common;
 using StorageDLHI.BLL.WarehouseDAO;
 using StorageDLHI.DAL.QueryStatements;
+using StorageDLHI.Infrastructor.Caches;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,9 +17,10 @@ namespace StorageDLHI.App.ImportGUI
 {
     public partial class frmUpdateImportedProduct : KryptonForm
     {
-        public Guid ProdId { get; set; } = Guid.Empty;
         private List<string> prodAdded = new List<string>();
+        private DataTable dtWarehouseForComboBox = new DataTable();
 
+        public Guid ProdId { get; set; } = Guid.Empty;
 
         public List<string> ListUpdateImportProd { get; set; } = new List<string>();
         public bool IsUpdated { get; set; } = true;
@@ -41,9 +43,27 @@ namespace StorageDLHI.App.ImportGUI
 
         private async void LoadDataForCombobox()
         {
-            cboWarehouse.DataSource = await WarehouseDAO.GetWarehosueForCbo();
             cboWarehouse.DisplayMember = QueryStatement.PROPERTY_WAREHOUSE_NAME;
             cboWarehouse.ValueMember = QueryStatement.PROPERTY_WAREHOUSE_ID;
+            if (!CacheManager.Exists(CacheKeys.WAREHOUSE_DATATABLE_ALL_FOR_COMBOXBOX))
+            {
+                dtWarehouseForComboBox = await WarehouseDAO.GetWarehosueForCbo();
+                if (dtWarehouseForComboBox.Rows.Count > 0)
+                {
+                    cboWarehouse.DataSource = dtWarehouseForComboBox;
+                }
+                else
+                {
+                    MessageBoxHelper.ShowWarning("Please add Warehouse before Import products !");
+                    IsUpdated = false;
+                    this.Close();
+                }
+            }
+            else
+            {
+                dtWarehouseForComboBox = CacheManager.Get<DataTable>(CacheKeys.WAREHOUSE_DATATABLE_ALL_FOR_COMBOXBOX);
+                cboWarehouse.DataSource = dtWarehouseForComboBox;
+            }
         }
 
         private void UpdateQtyRemaining(bool IsAdd, int rsl)
