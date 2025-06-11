@@ -93,25 +93,24 @@ namespace StorageDLHI.App.ImportGUI
 
             dgvProdForImport.DataSource = dtProdForImport;
             Common.Common.InitializeFooterGrid(dgvProdForImport, dgvFooter);
-            Common.Common.InitializeFooterGrid(dgvPO_Detail, dgvFooterOfPODetail);
-            UpdateFooterOfPoDetail();
 
             //dtWarehouseDetail = WarehouseDAO.GetWarehouseDetailForm();
             dtWarehouseDetail.Columns.Add("ID", typeof(Guid));
             dtWarehouseDetail.Columns.Add("WAREHOUSE_ID", typeof(Guid));
             dtWarehouseDetail.Columns.Add("PRODUCT_ID", typeof(Guid));
-            dtWarehouseDetail.Columns.Add("PRODUCT_IN_STOCK", typeof(Int32));
-
-            if (dgvPO_Detail.Rows.Count > 0)
-            {
-                rowClonePODetail = (DataGridViewRow)dgvPO_Detail.Rows[0].Clone();
-            }   
+            dtWarehouseDetail.Columns.Add("PRODUCT_IN_STOCK", typeof(Int32));  
         }
 
 
         private async void ucImportProd_Load(object sender, EventArgs e)
         {
             await LoadData();
+            Common.Common.InitializeFooterGrid(dgvPO_Detail, dgvFooterOfPODetail);
+            UpdateFooterOfPoDetail();
+            if (dgvPO_Detail.Rows.Count > 0)
+            {
+                rowClonePODetail = (DataGridViewRow)dgvPO_Detail.Rows[0].Clone();
+            }
         }
 
 
@@ -178,7 +177,7 @@ namespace StorageDLHI.App.ImportGUI
                 Guid poId = Guid.Parse(dgvPOs.Rows[0].Cells[1].Value.ToString());
                 if (!CacheManager.Exists(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId)))
                 {
-                    dtPoById = await ShowDialogManager.WithLoader(() => PoDAO.GetPODetailById(poId));
+                    dtPoById = await ShowDialogManager.WithLoader(() => PoDAO.GetPODetailByIdForImport(poId));
                     CacheManager.Add(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId), dtPoById.Copy());
                     dgvPO_Detail.DataSource = dtPoById;
                 }
@@ -477,6 +476,7 @@ namespace StorageDLHI.App.ImportGUI
 
             UpdateFooter();
             UpdateFooterOfPoDetail();
+            tlsPONo.Text = $"...";
         }
 
         private void dgvPOs_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -494,7 +494,7 @@ namespace StorageDLHI.App.ImportGUI
                 Guid poId = Guid.Parse(dgvPOs.Rows[currentRowIndex].Cells[1].Value.ToString());
                 if (!CacheManager.Exists(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId)))
                 {
-                    dtPoById = await PoDAO.GetPODetailById(poId);
+                    dtPoById = await PoDAO.GetPODetailByIdForImport(poId);
                     CacheManager.Add(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId), dtPoById);
                     dgvPO_Detail.DataSource = dtPoById;
                 }

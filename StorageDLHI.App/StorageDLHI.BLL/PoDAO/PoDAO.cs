@@ -35,6 +35,12 @@ namespace StorageDLHI.BLL.PoDAO
             return await data.GetDataAsync(sqlQuery, $"PO_DETAILS.{poId}");
         }
 
+        public static async Task<DataTable> GetPODetailByIdForImport(Guid poId)
+        {
+            string sqlQuery = string.Format(QueryStatement.GET_PO_DETAIL_BY_PO_ID_FOR_IMPORT, poId);
+            return await data.GetDataAsync(sqlQuery, $"PO_DETAILS_FOR_IMPORT.{poId}");
+        }
+
         public static async Task<bool> InsertPO(Pos pos)
         {
             string sqlQuery = string.Format(QueryStatement.INSERT_PO, pos.Id, pos.Po_No, pos.Po_Mpr_No, pos.Po_Wo_No, pos.Po_Project_Name,
