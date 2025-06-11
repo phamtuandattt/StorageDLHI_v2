@@ -592,6 +592,7 @@
             this.dgvImportFor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvImportFor.Size = new System.Drawing.Size(813, 164);
             this.dgvImportFor.TabIndex = 4;
+            this.dgvImportFor.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvImportFor_DataBindingComplete);
             this.dgvImportFor.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvImportFor_RowPostPaint);
             // 
             // PRODUCT_ID

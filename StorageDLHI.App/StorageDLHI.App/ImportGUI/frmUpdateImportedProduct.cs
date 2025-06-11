@@ -36,7 +36,7 @@ namespace StorageDLHI.App.ImportGUI
             LoadDataForCombobox();
 
             txtProdName.Text = prodName.Trim();
-            txtRemainingQty.Text = qty.ToString();
+            txtRemainingQty.Text = qty.ToString("N0");
 
             txtQtyImport.Maximum = qty;
         }
@@ -70,8 +70,8 @@ namespace StorageDLHI.App.ImportGUI
         {
             if (IsAdd)
             {
-                var qtyNew = (Int32.Parse(txtRemainingQty.Text.Trim()) - (Int32)txtQtyImport.Value);
-                txtRemainingQty.Text = "" + qtyNew;
+                var qtyNew = (Int32.Parse(txtRemainingQty.Text.Trim().Replace(",", "").Replace(".", "")) - (Int32)txtQtyImport.Value);
+                txtRemainingQty.Text = qtyNew.ToString("N0");
                 txtQtyImport.Maximum = qtyNew;
                 if (qtyNew <= 0)
                 {
@@ -80,8 +80,8 @@ namespace StorageDLHI.App.ImportGUI
             }
             else
             {
-                var qtyNew = (Int32.Parse(dgvImportFor.Rows[0].Cells[2].Value.ToString().Trim()) + Int32.Parse(txtRemainingQty.Text.Trim()));
-                txtRemainingQty.Text = "" + qtyNew;
+                var qtyNew = (Int32.Parse(dgvImportFor.Rows[0].Cells[2].Value.ToString().Trim()) + Int32.Parse(txtRemainingQty.Text.Trim().Replace(",", "").Replace(".", "")));
+                txtRemainingQty.Text = qtyNew.ToString("N0");
                 txtQtyImport.Maximum = qtyNew;
                 txtQtyImport.Minimum = 1;
                 if (qtyNew > 0)
@@ -129,7 +129,7 @@ namespace StorageDLHI.App.ImportGUI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (Int32.Parse(txtRemainingQty.Text.Trim()) > 0)
+            if (Int32.Parse(txtRemainingQty.Text.Trim().Replace(",", "").Replace(".", "")) > 0)
             {
                 MessageBoxHelper.ShowWarning("Please enter all products !");
                 return;
@@ -159,6 +159,11 @@ namespace StorageDLHI.App.ImportGUI
         private void dgvImportFor_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             Common.Common.RenderNumbering(sender, e, this.Font);
+        }
+
+        private void dgvImportFor_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvImportFor.Columns["Qty"].DefaultCellStyle.Format = "N0";
         }
     }
 }
