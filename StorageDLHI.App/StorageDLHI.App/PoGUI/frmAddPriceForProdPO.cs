@@ -230,7 +230,7 @@ namespace StorageDLHI.App.PoGUI
 
         private void btnAddProdIntoMpr_Click(object sender, EventArgs e)
         {
-            this.Price = Int32.Parse(txtPrice.Text.Trim());
+            this.Price = Int32.Parse(txtPrice.ToInt().ToString());
             this.Recevie = txtRecevie.Text.Trim();
             this.Remark = txtRemark.Text.Trim();
             this.Formula = cboFormula.Text.Trim();
@@ -312,7 +312,7 @@ namespace StorageDLHI.App.PoGUI
             }
 
             dgvProdInfo.Rows[0].Cells[11].Value = QtyProd;
-            dgvProdInfo.Rows[0].Cells[12].Value = !string.IsNullOrEmpty(txtPrice.Text) ? txtPrice.Text : "1";
+            dgvProdInfo.Rows[0].Cells[12].Value = !string.IsNullOrEmpty(txtPrice.Text) ? txtPrice.ToInt().ToString() : "1";
             dgvProdInfo.Rows[0].Cells[14].Value = NetCash;
 
             btnSave.Enabled = true;

@@ -21,6 +21,7 @@ using System.Data.Entity.Infrastructure;
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -98,6 +99,25 @@ namespace StorageDLHI.App.Common
             CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, await MprDAO.GetMprsForMakePO());
             CacheManager.Add(CacheKeys.WAREHOUSE_DATATABLE_ALL, await ShowDialogManager.WithLoader(() => WarehouseDAO.GetWarehouses()));
 
+        }
+
+        public static int ToInt(this KryptonTextBox textBox)
+        {
+            string raw = CleanInput(textBox.Text);
+            return int.TryParse(raw, out var value) ? value : 0;
+        }
+
+        public static decimal ToDecimal(this KryptonTextBox textBox)
+        {
+            string raw = CleanInput(textBox.Text);
+            return decimal.TryParse(raw, NumberStyles.Number, CultureInfo.InvariantCulture, out var value)
+                ? value
+                : 0;
+        }
+
+        private static string CleanInput(string input)
+        {
+            return input.Replace(",", "").Trim();
         }
 
         public static void FormatDecimalsInputTextChange(object sender)
