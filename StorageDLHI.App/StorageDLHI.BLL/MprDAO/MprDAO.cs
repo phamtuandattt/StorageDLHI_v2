@@ -84,5 +84,11 @@ namespace StorageDLHI.BLL.MprDAO
 
             return dtMprDetail;
         }
+
+        public static async Task<DataTable> GetNumberMprCreated(string projectName)
+        {
+            string sqlQurey = string.Format(QueryStatement.GET_NUMBER_OF_MPR_CREATED, projectName);
+            return await data.GetDataAsync(sqlQurey, "NUMBER_OF_CREATED");
+        }
     }
 }

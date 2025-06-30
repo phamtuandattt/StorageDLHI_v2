@@ -152,6 +152,7 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_MPR_MPR_PREPARED = "MPR_PREPARED";
         public const string PROPERTY_MPR_MPR_REVIEWED = "MPR_REVIEWED";
         public const string PROPERTY_MPR_MPR_APPROVED = "MPR_APPROVED";
+        public const string GET_NUMBER_OF_MPR_CREATED = "EXEC GET_NUMBER_OF_MPR_CREATED '{0}'";
 
         // PO
         public const string INSERT_PO = "SET DATEFORMAT DMY " +
