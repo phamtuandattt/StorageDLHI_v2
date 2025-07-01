@@ -18,5 +18,10 @@ namespace StorageDLHI.BLL.StaffDAO
         {
             return await data.GetEntityByIdAsync(string.Format(QueryStatement.GET_STAFF_BY_DEVICE, deviceName), MappingProfile.MapSaff);
         }
+
+        public static async Task<StaffLogin> GetEmpLogin(Guid staffId)
+        {
+            return await data.GetEntityByIdAsync(string.Format(QueryStatement.GET_STAFF_LOGIN_BY_ID, staffId), MappingProfile.MappStaffLogin);
+        }
     }
 }

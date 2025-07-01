@@ -10,6 +10,7 @@ using StorageDLHI.App.PoGUI;
 using StorageDLHI.App.ProjectGUI;
 using StorageDLHI.App.SupplierGUI;
 using StorageDLHI.App.WarehouseGUI;
+using StorageDLHI.BLL.StaffDAO;
 using StorageDLHI.Infrastructor;
 using StorageDLHI.Infrastructor.Shared;
 using System;
@@ -33,13 +34,6 @@ namespace StorageDLHI.App.MainGUI
         {
             InitializeComponent();
 
-            var infos = Properties.Settings.Default.RememberLogin.Split('|');
-            ShareData.UserId = Guid.Parse(infos[0]);
-            ShareData.UserName = infos[1];
-
-            LoggerConfig.Logger.Info($"Login by: {infos[1]} - {infos[2]} - {infos[0]}");
-
-
             _renderer = new CustomToolStripRenderer();
             tlsMenuButton.RenderMode = ToolStripRenderMode.ManagerRenderMode;
             tlsMenuButton.Renderer = _renderer;
@@ -56,6 +50,23 @@ namespace StorageDLHI.App.MainGUI
                     btn.MouseLeave += ToolStripButton_MouseLeave;
                 }
             }
+        }
+
+        private async void Main_Load(object sender, EventArgs e)
+        {
+            var infos = Properties.Settings.Default.RememberLogin.Split('|');
+            ShareData.UserId = Guid.Parse(infos[0]);
+            ShareData.UserName = infos[1];
+
+            LoggerConfig.Logger.Info($"Login by: {infos[1]} - {infos[2]} - {infos[0]}");
+
+            await GetEmpLogin(Guid.Parse(infos[0]));
+        }
+
+        private async Task GetEmpLogin(Guid empId)
+        {
+            var empLogin = await StaffDAO.GetEmpLogin(empId);
+            ShareData.DepCode = empLogin.DepCode;
         }
 
         private void ToolStripButton_MouseLeave(object sender, EventArgs e)
@@ -210,10 +221,6 @@ namespace StorageDLHI.App.MainGUI
             }
         }
 
-        private void Main_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void projectManageToolStripMenuItem_Click(object sender, EventArgs e)
         {

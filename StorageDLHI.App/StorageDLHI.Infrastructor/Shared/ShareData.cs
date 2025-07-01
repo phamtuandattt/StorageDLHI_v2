@@ -10,5 +10,6 @@ namespace StorageDLHI.Infrastructor.Shared
     {
         public static Guid UserId { get; set; }
         public static string UserName { get; set; }
+        public static string DepCode { get; set; }
     }
 }

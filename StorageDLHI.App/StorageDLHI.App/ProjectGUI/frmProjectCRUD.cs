@@ -2,6 +2,7 @@
 using StorageDLHI.App.CustomerGUI;
 using StorageDLHI.BLL.CustomerDAO;
 using StorageDLHI.DAL.QueryStatements;
+using StorageDLHI.Infrastructor.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,8 @@ namespace StorageDLHI.App.ProjectGUI
         private async void frmProjectCRUD_Load(object sender, EventArgs e)
         {
             await LoadCboCus();
+
+            txtName.Text = ShareData.UserId + " - " + ShareData.DepCode;
         }
 
         private async Task LoadCboCus()

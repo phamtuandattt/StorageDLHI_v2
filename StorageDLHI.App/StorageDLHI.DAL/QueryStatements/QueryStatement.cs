@@ -242,5 +242,9 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_STAFF_NAME = "STAFF_NAME";
         public const string PROPERTY_STAFF_DEVICE_NAME = "STAFF_DEVICE_NAME";
         public const string GET_STAFF_BY_DEVICE = "SELECT *FROM STAFFS WHERE STAFF_DEVICE_NAME = '{0}'";
+        public const string GET_STAFF_LOGIN_BY_ID = "SELECT STAFFS.ID, DEPARMENTS.DEP_CODE FROM STAFFS, DEPARMENTS WHERE STAFFS.DEPARMENT_ID = DEPARMENTS.ID AND STAFFS.ID = '{0}'";
+
+        // Deparment
+        public const string PROPERTY_DEPARTMENT_DEP_CODE = "DEP_CODE";
     }
 }

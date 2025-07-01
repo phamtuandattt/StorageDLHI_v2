@@ -17,4 +17,10 @@ namespace StorageDLHI.DAL.Models
         public Guid Staff_RoleId { get; set; }
 
     }
+
+    public class StaffLogin
+    {
+        public Guid Id { get; set; }
+        public string DepCode { get; set; }
+    }
 }

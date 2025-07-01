@@ -36,5 +36,14 @@ namespace StorageDLHI.DAL
                 DeviceName = reader.GetString(reader.GetOrdinal(QueryStatement.PROPERTY_STAFF_DEVICE_NAME)),
             };
         }
+
+        public static StaffLogin MappStaffLogin(SqlDataReader reader)
+        {
+            return new StaffLogin
+            {
+                Id = reader.GetGuid(reader.GetOrdinal(QueryStatement.PROPERTY_STAFF_ID)),
+                DepCode = reader.GetString(reader.GetOrdinal(QueryStatement.PROPERTY_DEPARTMENT_DEP_CODE)),
+            };
+        }
     }
 }
