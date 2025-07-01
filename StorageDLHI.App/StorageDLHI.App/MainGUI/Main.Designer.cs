@@ -40,6 +40,9 @@
             this.tlsMaterial = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsSuppliers = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsWarehouses = new System.Windows.Forms.ToolStripMenuItem();
+            this.customersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectManageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsMenuButton = new System.Windows.Forms.ToolStrip();
             this.tlsMPR = new System.Windows.Forms.ToolStripButton();
             this.tlsPO = new System.Windows.Forms.ToolStripButton();
@@ -109,7 +112,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.hệThốngToolStripMenuItem,
-            this.quảnLýToolStripMenuItem});
+            this.quảnLýToolStripMenuItem,
+            this.projectsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -153,7 +157,8 @@
             this.quảnLýToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tlsMaterial,
             this.tlsSuppliers,
-            this.tlsWarehouses});
+            this.tlsWarehouses,
+            this.customersToolStripMenuItem});
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
             this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(111, 24);
             this.quảnLýToolStripMenuItem.Text = "Management";
@@ -161,23 +166,45 @@
             // tlsMaterial
             // 
             this.tlsMaterial.Name = "tlsMaterial";
-            this.tlsMaterial.Size = new System.Drawing.Size(171, 26);
+            this.tlsMaterial.Size = new System.Drawing.Size(224, 26);
             this.tlsMaterial.Text = "Materials";
             this.tlsMaterial.Click += new System.EventHandler(this.tlsMaterial_Click);
             // 
             // tlsSuppliers
             // 
             this.tlsSuppliers.Name = "tlsSuppliers";
-            this.tlsSuppliers.Size = new System.Drawing.Size(171, 26);
+            this.tlsSuppliers.Size = new System.Drawing.Size(224, 26);
             this.tlsSuppliers.Text = "Suppliers";
             this.tlsSuppliers.Click += new System.EventHandler(this.tlsSuppliers_Click);
             // 
             // tlsWarehouses
             // 
             this.tlsWarehouses.Name = "tlsWarehouses";
-            this.tlsWarehouses.Size = new System.Drawing.Size(171, 26);
+            this.tlsWarehouses.Size = new System.Drawing.Size(224, 26);
             this.tlsWarehouses.Text = "Warehouses";
             this.tlsWarehouses.Click += new System.EventHandler(this.tlsWarehouses_Click);
+            // 
+            // customersToolStripMenuItem
+            // 
+            this.customersToolStripMenuItem.Name = "customersToolStripMenuItem";
+            this.customersToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.customersToolStripMenuItem.Text = "Customers";
+            this.customersToolStripMenuItem.Click += new System.EventHandler(this.customersToolStripMenuItem_Click);
+            // 
+            // projectsToolStripMenuItem
+            // 
+            this.projectsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.projectManageToolStripMenuItem});
+            this.projectsToolStripMenuItem.Name = "projectsToolStripMenuItem";
+            this.projectsToolStripMenuItem.Size = new System.Drawing.Size(75, 24);
+            this.projectsToolStripMenuItem.Text = "Projects";
+            // 
+            // projectManageToolStripMenuItem
+            // 
+            this.projectManageToolStripMenuItem.Name = "projectManageToolStripMenuItem";
+            this.projectManageToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
+            this.projectManageToolStripMenuItem.Text = "Project Management";
+            this.projectManageToolStripMenuItem.Click += new System.EventHandler(this.projectManageToolStripMenuItem_Click);
             // 
             // tlsMenuButton
             // 
@@ -312,5 +339,8 @@
         private System.Windows.Forms.ToolStripMenuItem tlsSuppliers;
         private System.Windows.Forms.ToolStripMenuItem tlsWarehouses;
         private System.Windows.Forms.ToolStripMenuItem reloadCacheToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem customersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem projectsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem projectManageToolStripMenuItem;
     }
 }

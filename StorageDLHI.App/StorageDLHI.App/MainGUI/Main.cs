@@ -1,11 +1,13 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using StorageDLHI.App.Common;
 using StorageDLHI.App.Common.CommonGUI;
+using StorageDLHI.App.CustomerGUI;
 using StorageDLHI.App.ExportGUI;
 using StorageDLHI.App.ImportGUI;
 using StorageDLHI.App.MenuGUI.MenuControl;
 using StorageDLHI.App.MprGUI;
 using StorageDLHI.App.PoGUI;
+using StorageDLHI.App.ProjectGUI;
 using StorageDLHI.App.SupplierGUI;
 using StorageDLHI.App.WarehouseGUI;
 using StorageDLHI.Infrastructor;
@@ -211,6 +213,18 @@ namespace StorageDLHI.App.MainGUI
         private void Main_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void projectManageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProjectCRUD projectCRUD = new frmProjectCRUD();
+            projectCRUD.ShowDialog();
+        }
+
+        private void customersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCustomerCRUD frmCustomerCRUD = new frmCustomerCRUD(true);
+            frmCustomerCRUD.ShowDialog();
         }
     }
 }

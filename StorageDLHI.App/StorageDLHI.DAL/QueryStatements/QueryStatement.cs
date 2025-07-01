@@ -42,6 +42,11 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_SUPPLIER_BANK_NAME = "BANK_NAME";
         public const string PROPERTY_SUPPLIER_BANK_BENEFICIAL = "BANK_BENEFICIAL";
 
+        // Customer
+        public const string INSERT_CUSTOMER = "INSERT INTO CUSTOMERS (ID, CUSTOMER_NAME, CLIENT_IN_CHARGE, CUSTOMER_PHONE, CUSTOMER_EMAIL) VALUES ('{0}', N'{1}', N'{2}', '{3}', N'{4}')";
+        public const string GET_CUSTOMER_FOR_CBO = "SELECT ID, CUSTOMER_NAME FROM CUSTOMERS";
+        public const string PROPERTY_CUSTOMER_ID = "ID";
+        public const string PROPERTY_CUSTOMER_NAME = "CUSTOMER_NAME";
 
         // Material Origins
         public const string GET_ORIGINS = "EXEC GET_ORIGINS";
