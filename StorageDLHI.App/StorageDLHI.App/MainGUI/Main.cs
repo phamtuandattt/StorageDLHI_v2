@@ -2,6 +2,7 @@
 using StorageDLHI.App.Common;
 using StorageDLHI.App.Common.CommonGUI;
 using StorageDLHI.App.CustomerGUI;
+using StorageDLHI.App.Emp_DepGUI;
 using StorageDLHI.App.ExportGUI;
 using StorageDLHI.App.ImportGUI;
 using StorageDLHI.App.MenuGUI.MenuControl;
@@ -61,6 +62,11 @@ namespace StorageDLHI.App.MainGUI
             LoggerConfig.Logger.Info($"Login by: {infos[1]} - {infos[2]} - {infos[0]}");
 
             await GetEmpLogin(Guid.Parse(infos[0]));
+
+            if (ShareData.DepCode.Trim() == "AD")
+            {
+                empDepToolStripMenuItem.Visible = true;
+            }
         }
 
         private async Task GetEmpLogin(Guid empId)
@@ -232,6 +238,14 @@ namespace StorageDLHI.App.MainGUI
         {
             frmCustomerCRUD frmCustomerCRUD = new frmCustomerCRUD(true);
             frmCustomerCRUD.ShowDialog();
+        }
+
+        private void empDepToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ucEmpDepManage ucEmpDep = new ucEmpDepManage();
+            ucEmpDep.Dock = DockStyle.Fill;
+            pnMain.Controls.Add(ucEmpDep);
+            ucEmpDep.BringToFront();
         }
     }
 }

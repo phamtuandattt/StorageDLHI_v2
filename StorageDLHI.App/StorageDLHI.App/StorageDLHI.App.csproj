@@ -135,6 +135,12 @@
     <Compile Include="CustomerGUI\frmCustomerCRUD.Designer.cs">
       <DependentUpon>frmCustomerCRUD.cs</DependentUpon>
     </Compile>
+    <Compile Include="Emp&amp;DepGUI\ucEmpDepManage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Emp&amp;DepGUI\ucEmpDepManage.Designer.cs">
+      <DependentUpon>ucEmpDepManage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Enums\En.cs" />
     <Compile Include="ExportGUI\frmExportProduct.cs">
       <SubType>Form</SubType>
@@ -302,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomerGUI\frmCustomerCRUD.resx">
       <DependentUpon>frmCustomerCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Emp&amp;DepGUI\ucEmpDepManage.resx">
+      <DependentUpon>ucEmpDepManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportGUI\frmExportProduct.resx">
       <DependentUpon>frmExportProduct.cs</DependentUpon>

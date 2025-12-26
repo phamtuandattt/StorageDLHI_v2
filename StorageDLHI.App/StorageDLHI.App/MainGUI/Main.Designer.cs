@@ -44,12 +44,13 @@
             this.projectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectManageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsMenuButton = new System.Windows.Forms.ToolStrip();
+            this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.empDepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsMPR = new System.Windows.Forms.ToolStripButton();
             this.tlsPO = new System.Windows.Forms.ToolStripButton();
             this.tlsImport = new System.Windows.Forms.ToolStripButton();
             this.tlsExport = new System.Windows.Forms.ToolStripButton();
             this.tlsInventory = new System.Windows.Forms.ToolStripButton();
-            this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.menuStrip1.SuspendLayout();
             this.tlsMenuButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnMain)).BeginInit();
@@ -158,7 +159,8 @@
             this.tlsMaterial,
             this.tlsSuppliers,
             this.tlsWarehouses,
-            this.customersToolStripMenuItem});
+            this.customersToolStripMenuItem,
+            this.empDepToolStripMenuItem});
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
             this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(111, 24);
             this.quảnLýToolStripMenuItem.Text = "Management";
@@ -166,28 +168,28 @@
             // tlsMaterial
             // 
             this.tlsMaterial.Name = "tlsMaterial";
-            this.tlsMaterial.Size = new System.Drawing.Size(224, 26);
+            this.tlsMaterial.Size = new System.Drawing.Size(171, 26);
             this.tlsMaterial.Text = "Materials";
             this.tlsMaterial.Click += new System.EventHandler(this.tlsMaterial_Click);
             // 
             // tlsSuppliers
             // 
             this.tlsSuppliers.Name = "tlsSuppliers";
-            this.tlsSuppliers.Size = new System.Drawing.Size(224, 26);
+            this.tlsSuppliers.Size = new System.Drawing.Size(171, 26);
             this.tlsSuppliers.Text = "Suppliers";
             this.tlsSuppliers.Click += new System.EventHandler(this.tlsSuppliers_Click);
             // 
             // tlsWarehouses
             // 
             this.tlsWarehouses.Name = "tlsWarehouses";
-            this.tlsWarehouses.Size = new System.Drawing.Size(224, 26);
+            this.tlsWarehouses.Size = new System.Drawing.Size(171, 26);
             this.tlsWarehouses.Text = "Warehouses";
             this.tlsWarehouses.Click += new System.EventHandler(this.tlsWarehouses_Click);
             // 
             // customersToolStripMenuItem
             // 
             this.customersToolStripMenuItem.Name = "customersToolStripMenuItem";
-            this.customersToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.customersToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.customersToolStripMenuItem.Text = "Customers";
             this.customersToolStripMenuItem.Click += new System.EventHandler(this.customersToolStripMenuItem_Click);
             // 
@@ -223,6 +225,23 @@
             this.tlsMenuButton.Size = new System.Drawing.Size(1397, 97);
             this.tlsMenuButton.TabIndex = 1;
             this.tlsMenuButton.Text = "toolStrip1";
+            // 
+            // pnMain
+            // 
+            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnMain.Location = new System.Drawing.Point(0, 125);
+            this.pnMain.Name = "pnMain";
+            this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.pnMain.Size = new System.Drawing.Size(1397, 586);
+            this.pnMain.TabIndex = 2;
+            // 
+            // empDepToolStripMenuItem
+            // 
+            this.empDepToolStripMenuItem.Name = "empDepToolStripMenuItem";
+            this.empDepToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
+            this.empDepToolStripMenuItem.Text = "Emp &  Dep";
+            this.empDepToolStripMenuItem.Visible = false;
+            this.empDepToolStripMenuItem.Click += new System.EventHandler(this.empDepToolStripMenuItem_Click);
             // 
             // tlsMPR
             // 
@@ -284,15 +303,6 @@
             this.tlsInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tlsInventory.Click += new System.EventHandler(this.tlsInventory_Click);
             // 
-            // pnMain
-            // 
-            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnMain.Location = new System.Drawing.Point(0, 125);
-            this.pnMain.Name = "pnMain";
-            this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.pnMain.Size = new System.Drawing.Size(1397, 586);
-            this.pnMain.TabIndex = 2;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -342,5 +352,6 @@
         private System.Windows.Forms.ToolStripMenuItem customersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem projectsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem projectManageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem empDepToolStripMenuItem;
     }
 }

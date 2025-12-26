@@ -246,5 +246,9 @@ namespace StorageDLHI.DAL.QueryStatements
 
         // Deparment
         public const string PROPERTY_DEPARTMENT_DEP_CODE = "DEP_CODE";
+        public const string GET_LIST_STAFFS_OF_DEP = "EXEC GET_LIST_STAFFS_OF_DEPARMENT '{0}'";
+        public const string GET_DEPS = "SELECT *FROM DEPARMENTS";
+        public const string PROPERTY_FOR_COMBO_DEP_ID = "DEP_ID";
+        public const string PROPERTY_FOR_COMBO_DEP_NAME_CODE = "DEP_NAME_CODE";
     }
 }
