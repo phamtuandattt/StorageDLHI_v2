@@ -162,6 +162,7 @@
             this.cboWarehosue.Name = "cboWarehosue";
             this.cboWarehosue.Size = new System.Drawing.Size(270, 25);
             this.cboWarehosue.TabIndex = 1;
+            this.cboWarehosue.Validating += new System.ComponentModel.CancelEventHandler(this.cboWarehosue_Validating);
             // 
             // kryptonPanel4
             // 

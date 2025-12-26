@@ -30,6 +30,12 @@ namespace StorageDLHI.App.ImportGUI
             cboWarehosue.DisplayMember = QueryStatement.PROPERTY_WAREHOUSE_NAME;
             cboWarehosue.ValueMember = QueryStatement.PROPERTY_WAREHOUSE_ID;
             LoadDataForCombobox();
+            if (dtWarehouseForComboBox.Rows.Count < 0 )
+            {
+                MessageBoxHelper.ShowWarning("Please add Warehouse before Import products !");
+                IsAdd = false;
+                this.Close();   
+            }
             this.Text = title;
             txtQtyProd.Maximum = maxQty;
         }
@@ -69,6 +75,11 @@ namespace StorageDLHI.App.ImportGUI
         {
             IsAdd = false;
             this.Close();
+        }
+
+        private void cboWarehosue_Validating(object sender, CancelEventArgs e)
+        {
+            Common.Common.AutoCompleteComboboxValidating(sender as KryptonComboBox, e);
         }
     }
 }
