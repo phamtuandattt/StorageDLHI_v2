@@ -145,7 +145,8 @@
             // cboDep
             // 
             this.cboDep.Name = "cboDep";
-            this.cboDep.Size = new System.Drawing.Size(200, 31);
+            this.cboDep.Size = new System.Drawing.Size(200, 28);
+            this.cboDep.SelectedIndexChanged += new System.EventHandler(this.cboDep_SelectedIndexChanged);
             // 
             // kryptonGroupBox3
             // 

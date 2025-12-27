@@ -25,9 +25,9 @@ namespace StorageDLHI.BLL.StaffDAO
             return await data.GetEntityByIdAsync(string.Format(QueryStatement.GET_STAFF_LOGIN_BY_ID, staffId), MappingProfile.MappStaffLogin);
         }
 
-        public static async Task<DataTable> GetStaffsOfDeP(Guid id)
+        public static async Task<DataTable> GetStaffsOfDeP(Guid DepId)
         {
-            return await data.GetDataAsync(string.Format(QueryStatement.GET_LIST_STAFFS_OF_DEP, id), "STAFFS_OF_DEP");
+            return await data.GetDataAsync(string.Format(QueryStatement.GET_LIST_STAFFS_OF_DEP, DepId), "STAFFS_OF_DEP");
         }
 
         public static async Task<DataTable> GetDeps()
