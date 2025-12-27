@@ -330,13 +330,13 @@ namespace StorageDLHI.App.ProductGUI
 
         private void txtProdName_TextChanged(object sender, EventArgs e)
         {
-            string cleaned = Regex.Replace(txtProdName.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
-            if (txtProdName.Text != cleaned)
-            {
-                int pos = txtProdName.SelectionStart - 1;
-                txtProdName.Text = cleaned;
-                txtProdName.SelectionStart = Math.Max(pos, 0);
-            }
+            //string cleaned = Regex.Replace(txtProdName.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            //if (txtProdName.Text != cleaned)
+            //{
+            //    int pos = txtProdName.SelectionStart - 1;
+            //    txtProdName.Text = cleaned;
+            //    txtProdName.SelectionStart = Math.Max(pos, 0);
+            //}
         }
 
         private void txtThinh_TextChanged(object sender, EventArgs e)
