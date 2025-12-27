@@ -77,7 +77,7 @@ namespace StorageDLHI.BLL.MaterialDAO
             {
                 DataRow r = dtForCbo.NewRow();
                 r[0] = row[0].ToString().Trim();
-                r[1] = row[1].ToString().Trim() + "|" + row[2];
+                r[1] = row[2].ToString().Trim() + "|" + row[1].ToString().Trim();
                 dtForCbo.Rows.Add(r);
             }
 

@@ -168,9 +168,9 @@ namespace StorageDLHI.App.ProductGUI
             var mTypeInfo = cboType.Text.ToString().Split('|');
             var standInfo = cboStandard.Text.ToString().Split('|');
 
-            var ori_code = oriInfos[0].Trim();
-            var m_type_code = mTypeInfo[0].Trim();
-            var stand_code = standInfo[0].Trim();
+            var ori_code = oriInfos[1].Trim();
+            var m_type_code = mTypeInfo[1].Trim();
+            var stand_code = standInfo[1].Trim();
             var size = H + B + T1 + T2;
             var length = txtLength.Text.Trim();
 
