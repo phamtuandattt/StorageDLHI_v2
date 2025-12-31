@@ -203,7 +203,7 @@ namespace StorageDLHI.App.ProductGUI
                     Product_Name = txtProdName.Text.Trim(),
                     Product_Des_2 = txtDes2.Text.Trim().ToUpper(),
                     Product_Code = txtProdCode.Text.Trim().ToUpper(),
-                    Product_Material_Code = standInfo[1].Trim(), //cboStandard.Text.Trim(),
+                    Product_Material_Code = standInfo[0].Trim(), //cboStandard.Text.Trim(),
                     PictureLink = path,
                     Picture = path,
                     A_Thinhness = txtThinh.Text.Trim(),
