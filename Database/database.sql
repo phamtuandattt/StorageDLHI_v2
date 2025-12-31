@@ -1,9 +1,9 @@
 ﻿-- Câu lệnh tạo database là: CREATEA DATABASE <DATABASE_NAME>
 -- Từ khóa GO để cho sql hiểu là bắt đầu một phần khác, mà không cần cũng được luôn
-CREATE DATABASE DLHI_V2
+CREATE DATABASE DLHI_V3
 -- Để sử dụng cái database vừa tạo mình có thể sử dụng câu lệnh hoặc chọn vào cái này
 -- Khi tạo xong trong dropdown sẽ có thêm một cái db mình mới tạo
-USE DLHI_V2
+USE DLHI_V3
 
 
 -- Tạo bảng supplier theo phân tích

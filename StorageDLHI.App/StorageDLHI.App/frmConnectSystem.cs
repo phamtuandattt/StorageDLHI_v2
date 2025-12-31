@@ -3,6 +3,7 @@ using StorageDLHI.App.Common;
 using StorageDLHI.App.MainGUI;
 using StorageDLHI.BLL.StaffDAO;
 using StorageDLHI.DAL.DataProvider;
+using StorageDLHI.Infrastructor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -91,8 +92,14 @@ namespace StorageDLHI.App
 
                     _settings.SetConnectionString("StorageDLHI", ConnectionString);
 
-                    // Get and Save ID Staff for remember LOGIN
+                    // Get and Save ID Staff for remember 
                     var mStaff = await StaffDAO.GetStaff(_computer_name);
+                    if (mStaff == null)
+                    {
+                        MessageBoxHelper.ShowError("Unable to connect database");
+                        LoggerConfig.Logger.Error($"Staff is null || Computer name: {_computer_name} invalid");
+                        return;
+                    }
                     
                     string userId = mStaff.Id.ToString().Trim();
                     string userName = mStaff.Name.Trim().ToUpper();
