@@ -1,4 +1,5 @@
-﻿using StorageDLHI.App.Common.CommonGUI;
+﻿using StorageDLHI.App.Common;
+using StorageDLHI.App.Common.CommonGUI;
 using StorageDLHI.BLL.StaffDAO;
 using StorageDLHI.DAL.QueryStatements;
 using System;
@@ -75,6 +76,11 @@ namespace StorageDLHI.App.Emp_DepGUI
                 }
 
             }
+        }
+
+        private void dgvEmpsOfDep_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Common.Common.RenderNumbering(sender, e, this.Font);
         }
     }
 }

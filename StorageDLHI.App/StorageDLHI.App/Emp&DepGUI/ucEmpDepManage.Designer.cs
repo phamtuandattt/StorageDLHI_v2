@@ -29,14 +29,8 @@
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tlsRefresh = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.cboDep = new System.Windows.Forms.ToolStripComboBox();
             this.kryptonGroupBox3 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.dgvEmpsOfDep = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,18 +41,24 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tlsRefresh = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.cboDep = new System.Windows.Forms.ToolStripComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).BeginInit();
             this.kryptonGroupBox3.Panel.SuspendLayout();
             this.kryptonGroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpsOfDep)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -71,31 +71,6 @@
             this.kryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
             this.kryptonPanel1.Size = new System.Drawing.Size(1401, 799);
             this.kryptonPanel1.TabIndex = 0;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlsRefresh,
-            this.toolStripSeparator1,
-            this.toolStripLabel1,
-            this.cboDep});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(1401, 28);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // tlsRefresh
-            // 
-            this.tlsRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsRefresh.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.tlsRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsRefresh.Name = "tlsRefresh";
-            this.tlsRefresh.Size = new System.Drawing.Size(29, 28);
-            this.tlsRefresh.Text = "toolStripButton1";
             // 
             // tableLayoutPanel1
             // 
@@ -121,32 +96,6 @@
             this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonPanel2.Size = new System.Drawing.Size(1395, 757);
             this.kryptonPanel2.TabIndex = 0;
-            // 
-            // kryptonPanel3
-            // 
-            this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel3.Location = new System.Drawing.Point(3, 766);
-            this.kryptonPanel3.Name = "kryptonPanel3";
-            this.kryptonPanel3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonPanel3.Size = new System.Drawing.Size(1395, 2);
-            this.kryptonPanel3.TabIndex = 0;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(117, 28);
-            this.toolStripLabel1.Text = "Deparments:      ";
-            // 
-            // cboDep
-            // 
-            this.cboDep.Name = "cboDep";
-            this.cboDep.Size = new System.Drawing.Size(200, 28);
-            this.cboDep.SelectedIndexChanged += new System.EventHandler(this.cboDep_SelectedIndexChanged);
             // 
             // kryptonGroupBox3
             // 
@@ -187,6 +136,7 @@
             this.dgvEmpsOfDep.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEmpsOfDep.Size = new System.Drawing.Size(1391, 729);
             this.dgvEmpsOfDep.TabIndex = 3;
+            this.dgvEmpsOfDep.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvEmpsOfDep_RowPostPaint);
             // 
             // Column1
             // 
@@ -252,6 +202,57 @@
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             // 
+            // kryptonPanel3
+            // 
+            this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel3.Location = new System.Drawing.Point(3, 766);
+            this.kryptonPanel3.Name = "kryptonPanel3";
+            this.kryptonPanel3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.kryptonPanel3.Size = new System.Drawing.Size(1395, 2);
+            this.kryptonPanel3.TabIndex = 0;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlsRefresh,
+            this.toolStripSeparator1,
+            this.toolStripLabel1,
+            this.cboDep});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip1.Size = new System.Drawing.Size(1401, 28);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tlsRefresh
+            // 
+            this.tlsRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsRefresh.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.tlsRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsRefresh.Name = "tlsRefresh";
+            this.tlsRefresh.Size = new System.Drawing.Size(29, 25);
+            this.tlsRefresh.Text = "toolStripButton1";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(117, 25);
+            this.toolStripLabel1.Text = "Deparments:      ";
+            // 
+            // cboDep
+            // 
+            this.cboDep.Name = "cboDep";
+            this.cboDep.Size = new System.Drawing.Size(200, 28);
+            this.cboDep.SelectedIndexChanged += new System.EventHandler(this.cboDep_SelectedIndexChanged);
+            // 
             // ucEmpDepManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -263,17 +264,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).EndInit();
             this.kryptonGroupBox3.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).EndInit();
             this.kryptonGroupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpsOfDep)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }

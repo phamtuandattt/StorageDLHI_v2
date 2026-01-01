@@ -274,6 +274,12 @@
     <Compile Include="ProductGUI\frmCustomProd.Designer.cs">
       <DependentUpon>frmCustomProd.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProductGUI\ucProducts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProductGUI\ucProducts.Designer.cs">
+      <DependentUpon>ucProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProjectGUI\frmProjectCRUD.cs">
       <SubType>Form</SubType>
@@ -375,6 +381,9 @@
     <EmbeddedResource Include="ProductGUI\frmCustomProd.resx">
       <DependentUpon>frmCustomProd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProductGUI\ucProducts.resx">
+      <DependentUpon>ucProducts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProjectGUI\frmProjectCRUD.resx">
       <DependentUpon>frmProjectCRUD.cs</DependentUpon>
     </EmbeddedResource>
@@ -435,9 +444,11 @@
   <ItemGroup>
     <Content Include="Palette\DatagirdviewPalette.xml" />
     <Content Include="Palette\Palette.xml" />
+    <None Include="Resources\add-product.png" />
     <Content Include="Resources\add.png" />
     <Content Include="Resources\bin.png" />
     <Content Include="Resources\clean.png" />
+    <None Include="Resources\customer.png" />
     <Content Include="Resources\dollar-symbol.png" />
     <Content Include="Resources\Dual Ring%401x-1.0s-200px-200px.gif" />
     <Content Include="Resources\excel.png" />

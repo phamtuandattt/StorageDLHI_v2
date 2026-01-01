@@ -8,6 +8,7 @@ using StorageDLHI.App.ImportGUI;
 using StorageDLHI.App.MenuGUI.MenuControl;
 using StorageDLHI.App.MprGUI;
 using StorageDLHI.App.PoGUI;
+using StorageDLHI.App.ProductGUI;
 using StorageDLHI.App.ProjectGUI;
 using StorageDLHI.App.SupplierGUI;
 using StorageDLHI.App.WarehouseGUI;
@@ -246,6 +247,14 @@ namespace StorageDLHI.App.MainGUI
             ucEmpDep.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucEmpDep);
             ucEmpDep.BringToFront();
+        }
+
+        private void productsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ucProducts ucProducts = new ucProducts();
+            ucProducts.Dock = DockStyle.Fill;
+            pnMain.Controls.Add(ucProducts);
+            ucProducts.BringToFront();
         }
     }
 }

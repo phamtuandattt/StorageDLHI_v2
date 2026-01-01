@@ -73,6 +73,16 @@ namespace StorageDLHI.App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_product {
+            get {
+                object obj = ResourceManager.GetObject("add-product", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bin {
             get {
                 object obj = ResourceManager.GetObject("bin", resourceCulture);
@@ -86,6 +96,16 @@ namespace StorageDLHI.App.Properties {
         internal static System.Drawing.Bitmap clean {
             get {
                 object obj = ResourceManager.GetObject("clean", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap customer {
+            get {
+                object obj = ResourceManager.GetObject("customer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

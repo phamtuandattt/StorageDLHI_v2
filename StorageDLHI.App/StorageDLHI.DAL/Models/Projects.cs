@@ -16,6 +16,6 @@ namespace StorageDLHI.DAL.Models
         public decimal Weight { get; set; }
 
         public Guid CustomerId { get; set; }
-        public Guid AddressId { get; set; }
+        //public Guid AddressId { get; set; }
     }
 }

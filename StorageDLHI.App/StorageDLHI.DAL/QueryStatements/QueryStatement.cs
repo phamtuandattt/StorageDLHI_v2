@@ -250,5 +250,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_DEPS = "SELECT *FROM DEPARMENTS";
         public const string PROPERTY_FOR_COMBO_DEP_ID = "DEP_ID";
         public const string PROPERTY_FOR_COMBO_DEP_NAME_CODE = "DEP_NAME_CODE";
+
+        // Project
+        public const string INSERT_PROJECT = "INSERT INTO PROJECTS VALUES('{0}', N'{1}', N'{2}', N'{3}', N'{4}', {5}, '{6}')";
     }
 }
