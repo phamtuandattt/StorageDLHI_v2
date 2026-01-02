@@ -14,6 +14,7 @@ namespace StorageDLHI.DAL.Models
         public string ProjectNo { get; set; }
         public string ProductInfo { get; set; }
         public decimal Weight { get; set; }
+        public string WorkOrderNo { get; set; }
 
         public Guid CustomerId { get; set; }
         //public Guid AddressId { get; set; }

@@ -16,7 +16,7 @@ namespace StorageDLHI.BLL.ProjectDAO
         public static async Task<bool> Insert(Projects projects)
         {
             string sqlQuery = string.Format(QueryStatement.INSERT_PROJECT, projects.Id, projects.Name, projects.Code, projects.ProjectNo,
-                projects.ProductInfo, projects.Weight, projects.CustomerId);
+                projects.ProductInfo, projects.Weight, projects.WorkOrderNo, projects.CustomerId);
 
             return await data.Insert(sqlQuery) > 0;
         }

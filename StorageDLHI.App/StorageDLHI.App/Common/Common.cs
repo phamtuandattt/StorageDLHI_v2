@@ -100,6 +100,37 @@ namespace StorageDLHI.App.Common
             CacheManager.Add(CacheKeys.WAREHOUSE_DATATABLE_ALL, await ShowDialogManager.WithLoader(() => WarehouseDAO.GetWarehouses()));
 
         }
+        public static void EnableTabStopForInputs(Control parent)
+        {
+            foreach (Control ctrl in parent.Controls)
+            {
+                if ((ctrl is TextBox || ctrl is Button))
+                {
+                    ctrl.TabStop = true;
+                }
+
+                // Recursively apply to child controls like inside Panels
+                if (ctrl.HasChildren)
+                {
+                    EnableTabStopForInputs(ctrl);
+                }
+            }
+        }
+
+        public static void DisableAllTabStops(Control.ControlCollection controls)
+        {
+            foreach (Control control in controls)
+            {
+                // Set the TabStop property to false for all controls
+                control.TabStop = false;
+
+                // Recursively check for controls within containers (e.g., Panels, GroupBoxes)
+                if (control.Controls.Count > 0)
+                {
+                    DisableAllTabStops(control.Controls);
+                }
+            }
+        }
 
         public static int ToInt(this KryptonTextBox textBox)
         {

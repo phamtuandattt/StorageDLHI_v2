@@ -28,6 +28,18 @@ namespace StorageDLHI.App.ProjectGUI
 
         private async void frmProjectCRUD_Load(object sender, EventArgs e)
         {
+            DisableAllTabStops(this.Controls);
+            EnableTabStopForInputs(this);
+            int index = 0;
+            foreach (Control control in this.Controls)
+            {
+                // Only assign index if it should be in the tab order
+                if (control.TabStop)
+                {
+                    control.TabIndex = index++;
+                }
+            }
+
             await LoadCboCus();
 
             txtName.Text = ShareData.UserId + " - " + ShareData.DepCode;
@@ -76,6 +88,7 @@ namespace StorageDLHI.App.ProjectGUI
                 Name = txtName.Text,
                 Code = txtProjectCode.Text,
                 ProjectNo = txtProjectNo.Text,
+                WorkOrderNo = txtWoNo.Text,
                 ProductInfo = txtProjectInfo.Text,
                 Weight = decimal.Parse(txtWeight.Text.Trim()),
                 CustomerId = Guid.Parse(cboCustomer.SelectedValue.ToString().Trim()),
@@ -109,6 +122,38 @@ namespace StorageDLHI.App.ProjectGUI
         private void cboCustomer_Validating(object sender, CancelEventArgs e)
         {
             Common.Common.AutoCompleteComboboxValidating(sender as KryptonComboBox, e);
+        }
+
+        private void EnableTabStopForInputs(Control parent)
+        {
+            foreach (Control ctrl in parent.Controls)
+            {
+                if ((ctrl is TextBox || ctrl is Button))
+                {
+                    ctrl.TabStop = true;
+                }
+
+                // Recursively apply to child controls like inside Panels
+                if (ctrl.HasChildren)
+                {
+                    EnableTabStopForInputs(ctrl);
+                }
+            }
+        }
+
+        private void DisableAllTabStops(Control.ControlCollection controls)
+        {
+            foreach (Control control in controls)
+            {
+                // Set the TabStop property to false for all controls
+                control.TabStop = false;
+
+                // Recursively check for controls within containers (e.g., Panels, GroupBoxes)
+                if (control.Controls.Count > 0)
+                {
+                    DisableAllTabStops(control.Controls);
+                }
+            }
         }
     }
 }
