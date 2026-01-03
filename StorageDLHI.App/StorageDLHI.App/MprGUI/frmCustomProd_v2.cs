@@ -2,6 +2,7 @@
 using OfficeOpenXml.ConditionalFormatting.Contracts;
 using StorageDLHI.App.Common;
 using StorageDLHI.BLL.MaterialDAO;
+using StorageDLHI.BLL.ProductDAO;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
 using StorageDLHI.Infrastructor.Caches;
@@ -88,6 +89,8 @@ namespace StorageDLHI.App.MprGUI
             }
 
             // Type
+            cboType.DisplayMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_DISPLAY;
+            cboType.ValueMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_VALUE;
             var dtTypes = await MaterialDAO.GetMTypeForCombobox();
             
             if (dtTypes.Rows.Count > 0)
@@ -142,7 +145,7 @@ namespace StorageDLHI.App.MprGUI
 
             var filtered = dtMaterialOfType.AsEnumerable()
                 .Where(r => r.Field<Guid>("MATERIAL_TYPES_ID").Equals(typeId));
-            if (filtered.CopyToDataTable().Rows.Count < 0)
+            if (!filtered.Any())
             {
                 return null;
             }
@@ -201,16 +204,46 @@ namespace StorageDLHI.App.MprGUI
 
         private void cboType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboMaterialOfType.Items.Count <= 0)
+            if (cboType.Items.Count <= 0)
             {
                 return;
             }
-            cboMaterialOfType.DataSource = GetDataForComboBoxMaterialType(Guid.Parse(cboType.SelectedValue.ToString()));
+            var typeId = cboType.SelectedValue.ToString();
+            var dtMaterialOfType = GetDataForComboBoxMaterialType(Guid.Parse(cboType.SelectedValue.ToString()));
+            if (dtMaterialOfType != null && dtMaterialOfType.Rows.Count >= 0)
+            {
+                cboMaterialOfType.DataSource = dtMaterialOfType;
+                cboMaterialOfType.Enabled = true;
+            }
+            else
+            {
+                cboMaterialOfType.Enabled = false;
+            }
         }
 
-        private void btnGenerateCode_Click(object sender, EventArgs e)
+        private async void btnGenerateCode_Click(object sender, EventArgs e)
         {
+            var itemNumberOfMaterialType = await ShowDialogManager.WithLoader(() => ProductDAO.GetItemNumberOfMaterialType(Guid.Parse(cboMaterialOfType.SelectedValue.ToString())));
+            
+            var H = !string.IsNullOrEmpty(txtThinh.Text.Trim()) ? txtThinh.Text.Trim() : txtDep.Text.Trim();
+            var B = txtWidth.Text.Trim();
+            var T1 = txtWeb.Text.Trim();
+            var T2 = txtFlag.Text.Trim();
+            
+            var oriInfos = cboOrigin.Text.ToString().Split('|');
+            var materialOfType = cboMaterialOfType.Text.ToString().Trim().Split('|');
+            var standInfo = cboStandard.Text.ToString().Split('|');
 
+            var ori_code = oriInfos[1].Trim();
+            var materialType = materialOfType[1].Trim();
+            var materialCode = materialType + "" + itemNumberOfMaterialType;
+            var stand_code = standInfo[1].Trim();
+            var size = H + B + T1 + T2;
+            var length = txtLength.Text.Trim();
+
+
+            var prod_code = string.Concat(ori_code, materialCode, stand_code, size, "_", length);
+            txtProdCode.Text = prod_code;
         }
     }
 }

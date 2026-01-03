@@ -79,5 +79,17 @@ namespace StorageDLHI.BLL.ProductDAO
 
             return prod ?? new Products();
         }
+
+        public static async Task<string> GetItemNumberOfMaterialType(Guid materialTypeId)
+        {
+            string sqlQuery = string.Format(QueryStatement.GET_ITEM_NUMBER_OF_MATERIAL_TYPE, materialTypeId);
+            var dt = await data.GetDataAsync(sqlQuery, $"ITEM_NUMBER_OF_MATERIAL_TYPE_{materialTypeId}");
+            var itemNumber = "";
+            foreach (DataRow row in dt.Rows)
+            {
+                itemNumber = row[0].ToString().Trim();
+            }
+            return itemNumber;
+        }
     }
 }
