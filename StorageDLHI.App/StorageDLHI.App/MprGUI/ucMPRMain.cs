@@ -255,7 +255,7 @@ namespace StorageDLHI.App.MprGUI
                 PictureLink = dgvProds.Rows[rsl].Cells[15].Value.ToString().Trim(),
                 UnitId = Guid.Parse(dgvProds.Rows[rsl].Cells[16].Value.ToString().Trim()),
                 Origin_Id = Guid.Parse(dgvProds.Rows[rsl].Cells[17].Value.ToString().Trim()),
-                M_Type_Id = Guid.Parse(dgvProds.Rows[rsl].Cells[18].Value.ToString().Trim()),
+                Type_Id = Guid.Parse(dgvProds.Rows[rsl].Cells[18].Value.ToString().Trim()),
                 Stand_Id = Guid.Parse(dgvProds.Rows[rsl].Cells[19].Value.ToString().Trim()),
             };
 
@@ -434,26 +434,28 @@ namespace StorageDLHI.App.MprGUI
 
         private async void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (dtProdsOfMprs.Rows.Count <= 0 && dgvProdExistMpr.Rows.Count <= 0)
-            {
-                MessageBoxHelper.ShowWarning("Please add product to create MPRs !");
-                return;
-            }
+            frmCustomProd_v2 frmCustomProd_V2 = new frmCustomProd_v2();
+            frmCustomProd_V2.ShowDialog();
+            //if (dtProdsOfMprs.Rows.Count <= 0 && dgvProdExistMpr.Rows.Count <= 0)
+            //{
+            //    MessageBoxHelper.ShowWarning("Please add product to create MPRs !");
+            //    return;
+            //}
 
-            frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_ADD_INFO, true, dtProdsOfMprs);
-            frmCustomInfoMpr.ShowDialog();
+            //frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_ADD_INFO, true, dtProdsOfMprs);
+            //frmCustomInfoMpr.ShowDialog();
 
-            if (!frmCustomInfoMpr.CanelOrConfirm)
-            {
-                return;
-            }
+            //if (!frmCustomInfoMpr.CanelOrConfirm)
+            //{
+            //    return;
+            //}
 
-            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs());
-            LoadData();
+            //CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs());
+            //LoadData();
 
-            prodsAdded.Clear();
-            dtProdsOfMprs.Clear();
-            dgvProdExistMpr.Refresh();
+            //prodsAdded.Clear();
+            //dtProdsOfMprs.Clear();
+            //dgvProdExistMpr.Refresh();
         }
 
         private void btnReload_Click(object sender, EventArgs e)

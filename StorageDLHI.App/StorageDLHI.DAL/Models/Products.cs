@@ -31,8 +31,10 @@ namespace StorageDLHI.DAL.Models
         public Guid Product_TypeId { get; set; }
 
         public Guid Origin_Id { get; set; }
-        public Guid M_Type_Id { get; set; }
         public Guid Stand_Id { get; set; }
+        public Guid Type_Id { get; set; }
+        public Guid Materials_Of_Type { get; set; } 
+        public Guid Item_Type { get; set; }
 
     }
 }

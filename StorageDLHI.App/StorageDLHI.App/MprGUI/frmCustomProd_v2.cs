@@ -1,0 +1,207 @@
+﻿using ComponentFactory.Krypton.Toolkit;
+using OfficeOpenXml.ConditionalFormatting.Contracts;
+using StorageDLHI.App.Common;
+using StorageDLHI.BLL.MaterialDAO;
+using StorageDLHI.DAL.Models;
+using StorageDLHI.DAL.QueryStatements;
+using StorageDLHI.Infrastructor.Caches;
+using StorageDLHI.Infrastructor.Commons;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+namespace StorageDLHI.App.MprGUI
+{
+    public partial class frmCustomProd_v2 : KryptonForm
+    {
+        private string path = string.Empty;
+        private bool status = false;
+        private Products pModel = null;
+
+        private DataTable dtMaterialOfType = new DataTable();
+        public frmCustomProd_v2()
+        {
+            InitializeComponent();
+            LoadData();
+        }
+
+        private void frmCustomProd_v2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public frmCustomProd_v2(string title, bool status, Products pModel) // true is ADD || UPDATE
+        {
+            InitializeComponent();
+            LoadData();
+            this.Text = title;
+            this.pModel = pModel;
+            this.status = status;
+
+            if (!status)
+            {
+                txtProdCode.Text = this.pModel.Product_Code.Trim();
+                txtDes2.Text = this.pModel.Product_Des_2.Trim();
+                txtProdName.Text = this.pModel.Product_Name.Trim();
+                cboOrigin.SelectedValue = this.pModel.Origin_Id;
+                cboType.SelectedValue = this.pModel.Type_Id;
+                cboStandard.SelectedValue = this.pModel.Stand_Id;
+                txtThinh.Text = this.pModel.A_Thinhness.Trim();
+                txtDep.Text = this.pModel.B_Depth.Trim();
+                txtWidth.Text = this.pModel.C_Witdh.Trim();
+                txtWeb.Text = this.pModel.D_Web.Trim();
+                txtFlag.Text = this.pModel.E_Flag.Trim();
+                txtLength.Text = this.pModel.F_Length.Trim();
+                txtWeigth.Text = this.pModel.G_Weight.Trim();
+                txtUsageNote.Text = this.pModel.Used_Note.Trim();
+                cboUnit.SelectedValue = this.pModel.UnitId;
+                picItem.Image = this.pModel.Image.Length == 100 ? picItem.InitialImage : Image.FromStream(new MemoryStream(this.pModel.Image));
+                path = this.pModel.PictureLink;
+            }
+        }
+
+        private async void LoadData()
+        {
+            txtProdCode.Focus();
+
+            var dtOrigins = await MaterialDAO.GetOriginForCombobox();
+            LoadDataCombox(cboOrigin, dtOrigins);
+
+            var dtStand = await MaterialDAO.GetStandForCombobox();
+            LoadDataCombox(cboStandard, dtStand);
+
+            cboUnit.DisplayMember = QueryStatement.PROPERTY_UNIT_CODE;
+            cboUnit.ValueMember = QueryStatement.PROPERTY_UNIT_ID;
+            var dtUnits = await MaterialDAO.GetUnits();
+            cboUnit.DataSource = dtUnits;
+            if (dtUnits.Rows.Count > 0)
+            {
+                cboUnit.SelectedIndex = 0;
+            }
+
+            // Type
+            var dtTypes = await MaterialDAO.GetMTypeForCombobox();
+            
+            if (dtTypes.Rows.Count > 0)
+            {
+                LoadDataCombox(cboType, dtTypes);
+            }
+            else
+            {
+                MessageBoxHelper.ShowError("Please check the list of Types !");
+            }
+            
+
+            // --------------------- Material of type
+            if (!CacheManager.Exists(CacheKeys.MATERIAL_OF_TYPES))
+            {
+                dtMaterialOfType = await ShowDialogManager.WithLoader(() => MaterialDAO.GetMaterialOfTypeForCombobox());
+                if (dtMaterialOfType.Rows.Count > 0)
+                {
+                    CacheManager.Add(CacheKeys.MATERIAL_OF_TYPES, dtMaterialOfType);
+                }
+                else
+                {
+                    MessageBoxHelper.ShowError("Please check the list materials of The types !");
+                }
+            }
+            else
+            {
+                dtMaterialOfType = CacheManager.Get<DataTable>(CacheKeys.MATERIAL_OF_TYPES);
+            }
+
+            // Get list material of type by TypeId and Load data for Combobox
+            var dtCombobox = GetDataForComboBoxMaterialType(Guid.Parse(cboType.SelectedValue.ToString()));
+            if (dtCombobox != null && dtCombobox.Rows.Count > 0)
+            {
+                cboMaterialOfType.DisplayMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_DISPLAY;
+                cboMaterialOfType.ValueMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_VALUE;
+                cboMaterialOfType.DataSource = dtCombobox;
+            }
+            else
+            {
+                MessageBoxHelper.ShowError("Please check the list materials of The types !");
+            }
+            //---------------------------------------------
+        }
+
+        private DataTable GetDataForComboBoxMaterialType(Guid typeId)
+        {
+            if (CacheManager.Exists(string.Format(CacheKeys.MATERIAL_OF_TYPE_BY_TYPE_ID, typeId)))
+            {
+                return CacheManager.Get<DataTable>(string.Format(CacheKeys.MATERIAL_OF_TYPE_BY_TYPE_ID, typeId));
+            }
+
+            var filtered = dtMaterialOfType.AsEnumerable()
+                .Where(r => r.Field<Guid>("MATERIAL_TYPES_ID").Equals(typeId));
+
+            var data = new DataTable();
+            data.Columns.Add(QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_VALUE);
+            data.Columns.Add(QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_DISPLAY);
+            foreach (DataRow row in filtered.CopyToDataTable().Rows)
+            {
+                DataRow r = data.NewRow();
+                r[0] = row[0].ToString().Trim();
+                r[1] = row[2].ToString().Trim() + "|" + row[1].ToString().Trim();
+                data.Rows.Add(r);
+            }
+            CacheManager.Add(string.Format(CacheKeys.MATERIAL_OF_TYPE_BY_TYPE_ID, typeId), data);
+            return data;
+        }
+
+
+
+        private void LoadDataCombox(KryptonComboBox comboBox, DataTable dataTable)
+        {
+            comboBox.DataSource = dataTable;
+            comboBox.DisplayMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_DISPLAY;
+            comboBox.ValueMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_VALUE;
+            if (dataTable.Rows.Count > 0)
+            {
+                comboBox.SelectedIndex = 0;
+            }
+        }
+
+        private void cboOrigin_Validating(object sender, CancelEventArgs e)
+        {
+            Common.Common.AutoCompleteComboboxValidating(sender as KryptonComboBox, e);
+        }
+
+        private void cboStandard_Validating(object sender, CancelEventArgs e)
+        {
+            Common.Common.AutoCompleteComboboxValidating(sender as KryptonComboBox, e);
+        }
+
+        private void cboType_Validating(object sender, CancelEventArgs e)
+        {
+            Common.Common.AutoCompleteComboboxValidating(sender as KryptonComboBox, e);
+        }
+
+        private void cboMaterialOfType_Validating(object sender, CancelEventArgs e)
+        {
+            Common.Common.AutoCompleteComboboxValidating(sender as KryptonComboBox, e);
+        }
+
+        private void cboUnit_Validating(object sender, CancelEventArgs e)
+        {
+            Common.Common.AutoCompleteComboboxValidating(sender as KryptonComboBox, e);
+        }
+
+        private void cboType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboMaterialOfType.Items.Count <= 0)
+            {
+                return;
+            }
+            cboMaterialOfType.DataSource = GetDataForComboBoxMaterialType(Guid.Parse(cboType.SelectedValue.ToString()));
+        }
+    }
+}

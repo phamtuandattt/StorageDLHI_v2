@@ -56,9 +56,31 @@ namespace StorageDLHI.BLL.MaterialDAO
             return await GetDataForCombobox(QueryStatement.GET_ORIGINS, "OrginForCob");
         }
 
+        /// <summary>
+        /// Get Types of Product
+        /// </summary>
+        /// <returns></returns>
         public static async Task<DataTable> GetMTypeForCombobox()
         {
-            return await GetDataForCombobox(QueryStatement.GET_MATERIAL_TYPES, "MTypeForCob");
+            return await GetDataForCombobox(QueryStatement.GET_TYPES, "MTypeForCob");
+        }
+
+        /// <summary>
+        /// Get Materials of Type
+        /// </summary>
+        /// <returns></returns>
+        public static async Task<DataTable> GetMaterialOfTypeForCombobox()
+        {
+            return await data.GetDataAsync(QueryStatement.GET_MATERIAL_OF_TYPE, "Material_Of_TypeForCob");
+        }
+
+        /// <summary>
+        /// Get the list item of material type
+        /// </summary>
+        /// <returns></returns>
+        public static async Task<DataTable> GetItemOfMaterialTypeForCombobox()
+        {
+            return await data.GetDataAsync(QueryStatement.GET_ITEMS_OF_MATERIAL_TYPE, "Item_Of_Material_TypeForCob");
         }
 
         public static async Task<DataTable> GetStandForCombobox()
@@ -91,7 +113,7 @@ namespace StorageDLHI.BLL.MaterialDAO
 
         public static async Task<DataTable> GetMaterialTypes() 
         {
-            return await data.GetDataAsync(QueryStatement.GET_MATERIAL_TYPES, "Types");
+            return await data.GetDataAsync(QueryStatement.GET_MATERIAL_OF_TYPE, "Types");
         }
 
         public static async Task<DataTable> GetMaterialStandards()

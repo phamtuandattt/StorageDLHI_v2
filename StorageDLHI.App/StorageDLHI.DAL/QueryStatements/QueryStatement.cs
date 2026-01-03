@@ -57,11 +57,13 @@ namespace StorageDLHI.DAL.QueryStatements
 
 
         // Material Types
-        public const string GET_MATERIAL_TYPES = "SELECT *FROM MATERIAL_TYPES";
         public const string INSERT_MATERIAL_TYPE = "INSERT INTO MATERIAL_TYPES VALUES ('{0}', '{1}', N'{2}')";
         public const string UPDATE_MATERIAL_TYPE = "UPDATE MATERIAL_TYPES SET TYPE_CODE = '{0}', TYPE_DES = N'{1}' WHERE ID = '{2}'";
         public const string PROPERTY_M_TYPE_CODE = "TYPE_CODE";
         public const string PROPERTY_M_TYPE_DES = "TYPE_DES";
+        public const string GET_TYPES = "SELECT *FROM MATERIAL_TYPES";
+        public const string GET_MATERIAL_OF_TYPE = "SELECT *FROM MATERIAL_TYPE_DETAIL";
+        public const string GET_ITEMS_OF_MATERIAL_TYPE = "SELECT *FROM MATERIAL_TYPE_DETAIL_ITEM";
 
         // Material Standards
         public const string GET_MATERIAL_STANDARDS = "SELECT *FROM MATERIAL_STANDARD";

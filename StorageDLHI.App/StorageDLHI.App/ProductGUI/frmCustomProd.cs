@@ -67,7 +67,7 @@ namespace StorageDLHI.App.ProductGUI
                 txtDes2.Text = this.pModel.Product_Des_2.Trim();
                 txtProdName.Text = this.pModel.Product_Name.Trim();
                 cboOrigin.SelectedValue = this.pModel.Origin_Id;
-                cboType.SelectedValue = this.pModel.M_Type_Id;
+                cboType.SelectedValue = this.pModel.Type_Id;
                 cboStandard.SelectedValue = this.pModel.Stand_Id;
                 txtThinh.Text = this.pModel.A_Thinhness.Trim();
                 txtDep.Text = this.pModel.B_Depth.Trim();
@@ -216,7 +216,7 @@ namespace StorageDLHI.App.ProductGUI
                     Used_Note = txtUsageNote.Text.Trim(),
                     UnitId = Guid.Parse(cboUnit.SelectedValue.ToString()),
                     Origin_Id = Guid.Parse(cboOrigin.SelectedValue.ToString()),
-                    M_Type_Id = Guid.Parse(cboType.SelectedValue.ToString()),
+                    Type_Id = Guid.Parse(cboType.SelectedValue.ToString()),
                     Stand_Id = Guid.Parse(cboStandard.SelectedValue.ToString()),
                 };
 
@@ -270,7 +270,7 @@ namespace StorageDLHI.App.ProductGUI
                     Used_Note = txtUsageNote.Text.Trim(),
                     UnitId = Guid.Parse(cboUnit.SelectedValue.ToString()),
                     Origin_Id = Guid.Parse(cboOrigin.SelectedValue.ToString()),
-                    M_Type_Id = Guid.Parse(cboType.SelectedValue.ToString()),
+                    Type_Id = Guid.Parse(cboType.SelectedValue.ToString()),
                     Stand_Id = Guid.Parse(cboStandard.SelectedValue.ToString()),
                 };
 
