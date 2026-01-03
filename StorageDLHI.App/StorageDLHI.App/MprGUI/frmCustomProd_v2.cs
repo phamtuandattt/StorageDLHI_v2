@@ -142,6 +142,10 @@ namespace StorageDLHI.App.MprGUI
 
             var filtered = dtMaterialOfType.AsEnumerable()
                 .Where(r => r.Field<Guid>("MATERIAL_TYPES_ID").Equals(typeId));
+            if (filtered.CopyToDataTable().Rows.Count < 0)
+            {
+                return null;
+            }
 
             var data = new DataTable();
             data.Columns.Add(QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_VALUE);
@@ -202,6 +206,11 @@ namespace StorageDLHI.App.MprGUI
                 return;
             }
             cboMaterialOfType.DataSource = GetDataForComboBoxMaterialType(Guid.Parse(cboType.SelectedValue.ToString()));
+        }
+
+        private void btnGenerateCode_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

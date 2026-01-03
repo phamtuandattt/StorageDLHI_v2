@@ -513,6 +513,7 @@
             this.btnGenerateCode.StateTracking.Border.Rounding = 15;
             this.btnGenerateCode.TabIndex = 21;
             this.btnGenerateCode.Values.Text = "GENERATE CODE";
+            this.btnGenerateCode.Click += new System.EventHandler(this.btnGenerateCode_Click);
             // 
             // tableLayoutPanel4
             // 
