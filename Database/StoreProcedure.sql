@@ -380,22 +380,26 @@ GO
 CREATE PROCEDURE GET_ITEM_NUMBER_OF_MATERIAL_TYPE @ITEM_TYPE_ID UNIQUEIDENTIFIER
 AS
 BEGIN
-	DECLARE @MAX_ITEM_NUMBER NVARCHAR(10)
-    DECLARE @FIRST_ITEM_NUMBER NVARCHAR(10) = '001'
+    DECLARE @MAX_ITEM_NUMBER NVARCHAR(10)
+    DECLARE @NEXT_ITEM_NUMBER NVARCHAR(10)
 
     -- Get the maximum item_number for the given type_id
     SELECT @MAX_ITEM_NUMBER = MAX(ITEM_NUMBER)
     FROM MATERIAL_TYPE_DETAIL_ITEM
     WHERE ITEM_TYPE = @ITEM_TYPE_ID
 
-    -- If no data exists for the type_id, return the first value '001'
+    -- If no data exists for the type_id, set the next value to '001'
     IF @MAX_ITEM_NUMBER IS NULL
     BEGIN
-        SELECT @FIRST_ITEM_NUMBER AS ITEM_NUMBER
+        SET @NEXT_ITEM_NUMBER = '001'
     END
     ELSE
     BEGIN
-        SELECT @MAX_ITEM_NUMBER AS ITEM_NUMBER
+        -- Calculate the next item number by incrementing the max item number
+        SET @NEXT_ITEM_NUMBER = RIGHT('000' + CAST(CAST(@MAX_ITEM_NUMBER AS INT) + 1 AS NVARCHAR), 3)
     END
+
+    -- Return the next item number
+    SELECT @NEXT_ITEM_NUMBER AS NEXT_ITEM_NUMBER
 END
 

@@ -434,7 +434,7 @@ namespace StorageDLHI.App.MprGUI
 
         private async void btnConfirm_Click(object sender, EventArgs e)
         {
-            frmCustomProd_v2 frmCustomProd_V2 = new frmCustomProd_v2();
+            frmCustomProd_v2 frmCustomProd_V2 = new frmCustomProd_v2("Add product", true, null);
             frmCustomProd_V2.ShowDialog();
             //if (dtProdsOfMprs.Rows.Count <= 0 && dgvProdExistMpr.Rows.Count <= 0)
             //{

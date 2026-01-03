@@ -91,5 +91,47 @@ namespace StorageDLHI.BLL.ProductDAO
             }
             return itemNumber;
         }
-    }
+
+        public static async Task<bool> Insert_v2(Products product)
+        {
+            string sqlQuery = string.Format(QueryStatement.ADD_PRODUCT_V2, product.Id, product.Product_Name, product.Product_Des_2, product.Product_Code,
+                product.Product_Material_Code, product.PictureLink, product.Picture, product.A_Thinhness, product.B_Depth, product.C_Witdh,
+                product.D_Web, product.E_Flag, product.F_Length, product.G_Weight, product.Used_Note, product.UnitId,
+                product.Origin_Id, product.Stand_Id, product.Type_Id, product.Materials_Of_Type, product.Item_Type);
+
+            return await data.Insert(sqlQuery) > 0;
+        }
+
+        public static async Task<bool> InsertNoImage_v2(Products product)
+        {
+            string sqlQuery = string.Format(QueryStatement.ADD_PRODUCT_NO_IMAGE_V2, product.Id, product.Product_Name, product.Product_Des_2, product.Product_Code,
+                product.Product_Material_Code, product.A_Thinhness, product.B_Depth, product.C_Witdh,
+                product.D_Web, product.E_Flag, product.F_Length, product.G_Weight, product.Used_Note, product.UnitId,
+                product.Origin_Id, product.Stand_Id, product.Type_Id, product.Materials_Of_Type, product.Item_Type);
+
+            return await data.Insert(sqlQuery) > 0;
+        }
+
+        public static async Task<bool> Update_v2(Products product)
+        {
+            string sqlQuery = string.Format(QueryStatement.UPDATE_PROD, product.Product_Name, product.Product_Des_2, product.Product_Code,
+                product.Product_Material_Code, product.PictureLink, product.Picture, product.A_Thinhness, product.B_Depth, product.C_Witdh,
+                product.D_Web, product.E_Flag, product.F_Length, product.G_Weight, product.Used_Note, product.UnitId, product.Origin_Id,
+                product.Type_Id, product.Stand_Id, product.Id);
+
+            return await data.Update(sqlQuery) > 0;
+        }
+
+        public static async Task<bool> InsertMaterialTypeDetailItem(Material_Type_Detail_Item item)
+        {
+            string sqlQuery = string.Format(QueryStatement.ADD_MATERIAL_TYPE_DETAIL_ITEM, item.Id, item.Item_Number, item.Item_Name, item.Item_Type);
+
+            return await data.Insert(sqlQuery) > 0;
+        }
+
+        public static async Task<bool> DeleteMaterialTypeDetailItem(Material_Type_Detail_Item item)
+        {
+            return data.Delete(string.Format(QueryStatement.DELETE_MATERIAL_TYPE_DETAIL_ITEM, item.Id)) > 0;
+        }
+    }   
 }

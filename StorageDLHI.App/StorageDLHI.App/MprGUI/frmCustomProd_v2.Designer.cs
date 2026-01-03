@@ -574,6 +574,7 @@
             this.btnSave.StateTracking.Border.Rounding = 15;
             this.btnSave.TabIndex = 25;
             this.btnSave.Values.Text = "SAVE";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // tableLayoutPanel17
             // 
@@ -1341,6 +1342,7 @@
             this.btnCancel.StateTracking.Border.Rounding = 15;
             this.btnCancel.TabIndex = 23;
             this.btnCancel.Values.Text = "CANCEL";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // frmCustomProd_v2
             // 
