@@ -303,6 +303,7 @@
             this.picItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picItem.TabIndex = 1;
             this.picItem.TabStop = false;
+            this.picItem.Click += new System.EventHandler(this.picItem_Click);
             // 
             // tableLayoutPanel2
             // 

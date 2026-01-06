@@ -126,6 +126,7 @@ namespace StorageDLHI.App.MprGUI
         {
             dataGridView.AutoGenerateColumns = true;
             dataGridView.DefaultCellStyle.NullValue = "";
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
             foreach (DataGridViewColumn col in dataGridView.Columns)
             {
@@ -182,7 +183,7 @@ namespace StorageDLHI.App.MprGUI
             frmCustomProd.ShowDialog();
 
             // Overwrite cache Products
-            CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, await ProductDAO.GetProductsForCreateMPR());
+            CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, await ProductDAO.GetProductsForCreateMPR_V2());
             LoadData();
         }
 
@@ -290,8 +291,8 @@ namespace StorageDLHI.App.MprGUI
             if (dgvProds.Rows.Count <= 0) return;
             int rsl = dgvProds.CurrentRow.Index;
 
-            var imgArr = dgvProds.Rows[rsl].Cells[5].Value.ToString().Trim().Length > 0 && dgvProds.Rows[rsl].Cells[5].Value.ToString().Trim() != null
-                ? (byte[])dgvProds.Rows[rsl].Cells[5].Value : new byte[100];
+            var imgArr = dgvProds.Rows[rsl].Cells[22].Value.ToString().Trim().Length > 0 && dgvProds.Rows[rsl].Cells[22].Value.ToString().Trim() != null
+                ? (byte[])dgvProds.Rows[rsl].Cells[22].Value : new byte[100];
 
             Products prod = new Products()
             {
@@ -300,21 +301,25 @@ namespace StorageDLHI.App.MprGUI
                 Product_Des_2 = dgvProds.Rows[rsl].Cells[2].Value.ToString().Trim().ToUpper(),
                 Product_Code = dgvProds.Rows[rsl].Cells[3].Value.ToString().Trim().ToUpper(),
                 Product_Material_Code = dgvProds.Rows[rsl].Cells[4].Value.ToString().Trim(),
-                Image = imgArr, //5
-                A_Thinhness = dgvProds.Rows[rsl].Cells[6].Value.ToString().Trim(),
-                B_Depth = dgvProds.Rows[rsl].Cells[7].Value.ToString().Trim(),
-                C_Witdh = dgvProds.Rows[rsl].Cells[8].Value.ToString().Trim(),
-                D_Web = dgvProds.Rows[rsl].Cells[9].Value.ToString().Trim(),
-                E_Flag = dgvProds.Rows[rsl].Cells[10].Value.ToString().Trim(),
-                F_Length = dgvProds.Rows[rsl].Cells[11].Value.ToString().Trim(),
-                G_Weight = dgvProds.Rows[rsl].Cells[12].Value.ToString().Trim(),
-                // Unit Code: 13
-                Used_Note = dgvProds.Rows[rsl].Cells[14].Value.ToString().Trim(),
-                PictureLink = dgvProds.Rows[rsl].Cells[15].Value.ToString().Trim(),
+                A_Thinhness = dgvProds.Rows[rsl].Cells[5].Value.ToString().Trim(),
+                B_Depth = dgvProds.Rows[rsl].Cells[6].Value.ToString().Trim(),
+                C_Witdh = dgvProds.Rows[rsl].Cells[7].Value.ToString().Trim(),
+                D_Web = dgvProds.Rows[rsl].Cells[8].Value.ToString().Trim(),
+                E_Flag = dgvProds.Rows[rsl].Cells[9].Value.ToString().Trim(),
+                F_Length = dgvProds.Rows[rsl].Cells[10].Value.ToString().Trim(),
+                G_Weight = dgvProds.Rows[rsl].Cells[11].Value.ToString().Trim(),
+                // Unit Code: 12
+                // Type Code: 13
+                // Material of Type code: 14
+                Used_Note = dgvProds.Rows[rsl].Cells[15].Value.ToString().Trim(),
                 UnitId = Guid.Parse(dgvProds.Rows[rsl].Cells[16].Value.ToString().Trim()),
                 Origin_Id = Guid.Parse(dgvProds.Rows[rsl].Cells[17].Value.ToString().Trim()),
-                Type_Id = Guid.Parse(dgvProds.Rows[rsl].Cells[18].Value.ToString().Trim()),
-                Stand_Id = Guid.Parse(dgvProds.Rows[rsl].Cells[19].Value.ToString().Trim()),
+                Stand_Id = Guid.Parse(dgvProds.Rows[rsl].Cells[18].Value.ToString().Trim()),
+                Type_Id = Guid.Parse(dgvProds.Rows[rsl].Cells[19].Value.ToString().Trim()),
+                Materials_Of_Type = Guid.Parse(dgvProds.Rows[rsl].Cells[20].Value.ToString().Trim()),
+                Item_Type = Guid.Parse(dgvProds.Rows[rsl].Cells[21].Value.ToString().Trim()),
+                Image = imgArr, //22
+                PictureLink = dgvProds.Rows[rsl].Cells[23].Value.ToString().Trim(),
             };
 
             //frmCustomProd frmCustomProd = new frmCustomProd(TitleManager.PROD_UPDATE_TITLE, false, prod);
@@ -324,7 +329,7 @@ namespace StorageDLHI.App.MprGUI
             frmCustomProd_V2.ShowDialog();
 
             // Overwrite cache Products
-            CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, await ProductDAO.GetProductsForCreateMPR());
+            CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, await ProductDAO.GetProductsForCreateMPR_V2());
             LoadData();
         }
 
@@ -495,28 +500,29 @@ namespace StorageDLHI.App.MprGUI
 
         private async void btnConfirm_Click(object sender, EventArgs e)
         {
-            frmCustomProd_v2 frmCustomProd_V2 = new frmCustomProd_v2("Add product", true, null);
-            frmCustomProd_V2.ShowDialog();
-            //if (dtProdsOfMprs.Rows.Count <= 0 && dgvProdExistMpr.Rows.Count <= 0)
-            //{
-            //    MessageBoxHelper.ShowWarning("Please add product to create MPRs !");
-            //    return;
-            //}
+            //frmCustomProd_v2 frmCustomProd_V2 = new frmCustomProd_v2("Add product", true, null);
+            //frmCustomProd_V2.ShowDialog();
+            if (dtProdsOfMprs.Rows.Count <= 0 && dgvProdExistMpr.Rows.Count <= 0)
+            {
+                MessageBoxHelper.ShowWarning("Please add product to create MPRs !");
+                return;
+            }
 
-            //frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_ADD_INFO, true, dtProdsOfMprs);
-            //frmCustomInfoMpr.ShowDialog();
+            frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_ADD_INFO, true, dtProdsOfMprs);
+            frmCustomInfoMpr.ShowDialog();
 
-            //if (!frmCustomInfoMpr.CanelOrConfirm)
-            //{
-            //    return;
-            //}
+            if (!frmCustomInfoMpr.CanelOrConfirm)
+            {
+                return;
+            }
 
-            //CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs());
-            //LoadData();
+            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs());
+            LoadData();
 
-            //prodsAdded.Clear();
-            //dtProdsOfMprs.Clear();
-            //dgvProdExistMpr.Refresh();
+            prodsAdded.Clear();
+            dtProdsOfMprs.Clear();
+            dgvProdExistMpr.Refresh();
+            tlsLabalQtyProd.Text = "Total: (0)";
         }
 
         private void btnReload_Click(object sender, EventArgs e)

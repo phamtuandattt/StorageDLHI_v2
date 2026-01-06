@@ -221,11 +221,11 @@
             // 
             this.kryptonPanel5.Controls.Add(this.tableLayoutPanel2);
             this.kryptonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel5.Location = new System.Drawing.Point(0, 27);
+            this.kryptonPanel5.Location = new System.Drawing.Point(0, 31);
             this.kryptonPanel5.Name = "kryptonPanel5";
             this.kryptonPanel5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonPanel5.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundCustom1;
-            this.kryptonPanel5.Size = new System.Drawing.Size(1384, 699);
+            this.kryptonPanel5.Size = new System.Drawing.Size(1384, 695);
             this.kryptonPanel5.TabIndex = 6;
             // 
             // tableLayoutPanel2
@@ -240,20 +240,20 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.48927F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.51073F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1384, 699);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1384, 695);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // kryptonGroupBox5
             // 
             this.kryptonGroupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox5.Location = new System.Drawing.Point(3, 300);
+            this.kryptonGroupBox5.Location = new System.Drawing.Point(3, 298);
             this.kryptonGroupBox5.Name = "kryptonGroupBox5";
             this.kryptonGroupBox5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             // 
             // kryptonGroupBox5.Panel
             // 
             this.kryptonGroupBox5.Panel.Controls.Add(this.dgvMPRDetail);
-            this.kryptonGroupBox5.Size = new System.Drawing.Size(1378, 396);
+            this.kryptonGroupBox5.Size = new System.Drawing.Size(1378, 394);
             this.kryptonGroupBox5.TabIndex = 2;
             this.kryptonGroupBox5.Values.Heading = "MPR Detail";
             // 
@@ -288,7 +288,7 @@
             this.dgvMPRDetail.ReadOnly = true;
             this.dgvMPRDetail.RowHeadersWidth = 51;
             this.dgvMPRDetail.RowTemplate.Height = 30;
-            this.dgvMPRDetail.Size = new System.Drawing.Size(1374, 368);
+            this.dgvMPRDetail.Size = new System.Drawing.Size(1374, 366);
             this.dgvMPRDetail.TabIndex = 3;
             this.dgvMPRDetail.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMPRDetail_CellMouseDown_1);
             this.dgvMPRDetail.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvMPRDetail_DataBindingComplete);
@@ -443,7 +443,7 @@
             // kryptonGroupBox3.Panel
             // 
             this.kryptonGroupBox3.Panel.Controls.Add(this.dgvMPRs);
-            this.kryptonGroupBox3.Size = new System.Drawing.Size(1378, 291);
+            this.kryptonGroupBox3.Size = new System.Drawing.Size(1378, 289);
             this.kryptonGroupBox3.TabIndex = 0;
             this.kryptonGroupBox3.Values.Heading = "MPRs";
             // 
@@ -473,7 +473,7 @@
             this.dgvMPRs.ReadOnly = true;
             this.dgvMPRs.RowHeadersWidth = 51;
             this.dgvMPRs.RowTemplate.Height = 30;
-            this.dgvMPRs.Size = new System.Drawing.Size(1374, 263);
+            this.dgvMPRs.Size = new System.Drawing.Size(1374, 261);
             this.dgvMPRs.TabIndex = 2;
             this.dgvMPRs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMPRs_CellClick);
             this.dgvMPRs.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMPRs_CellMouseDown);
@@ -602,7 +602,7 @@
             this.toolStrip3.Location = new System.Drawing.Point(0, 0);
             this.toolStrip3.Name = "toolStrip3";
             this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip3.Size = new System.Drawing.Size(1384, 27);
+            this.toolStrip3.Size = new System.Drawing.Size(1384, 31);
             this.toolStrip3.TabIndex = 5;
             this.toolStrip3.Text = "toolStrip3";
             // 
@@ -717,14 +717,14 @@
             // kryptonGroupBox1
             // 
             this.kryptonGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox1.Location = new System.Drawing.Point(0, 27);
+            this.kryptonGroupBox1.Location = new System.Drawing.Point(0, 31);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             this.kryptonGroupBox1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             // 
             // kryptonGroupBox1.Panel
             // 
             this.kryptonGroupBox1.Panel.Controls.Add(this.dgvProds);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(1378, 330);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(1378, 326);
             this.kryptonGroupBox1.TabIndex = 1;
             this.kryptonGroupBox1.Values.Heading = "Product list";
             // 
@@ -732,16 +732,17 @@
             // 
             this.dgvProds.AllowUserToAddRows = false;
             this.dgvProds.AllowUserToDeleteRows = false;
-            this.dgvProds.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProds.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvProds.ColumnHeadersHeight = 30;
             this.dgvProds.ContextMenuStrip = this.ctmUpdateInfoProd;
             this.dgvProds.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProds.Location = new System.Drawing.Point(0, 0);
             this.dgvProds.Name = "dgvProds";
             this.dgvProds.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.dgvProds.ReadOnly = true;
             this.dgvProds.RowHeadersWidth = 51;
             this.dgvProds.RowTemplate.Height = 50;
-            this.dgvProds.Size = new System.Drawing.Size(1374, 302);
+            this.dgvProds.Size = new System.Drawing.Size(1374, 298);
             this.dgvProds.TabIndex = 1;
             this.dgvProds.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProds_CellDoubleClick);
             this.dgvProds.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProds_CellMouseDown);
@@ -776,7 +777,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(1378, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1378, 31);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -824,14 +825,14 @@
             // kryptonGroupBox2
             // 
             this.kryptonGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox2.Location = new System.Drawing.Point(0, 27);
+            this.kryptonGroupBox2.Location = new System.Drawing.Point(0, 31);
             this.kryptonGroupBox2.Name = "kryptonGroupBox2";
             this.kryptonGroupBox2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             // 
             // kryptonGroupBox2.Panel
             // 
             this.kryptonGroupBox2.Panel.Controls.Add(this.dgvProdExistMpr);
-            this.kryptonGroupBox2.Size = new System.Drawing.Size(1378, 330);
+            this.kryptonGroupBox2.Size = new System.Drawing.Size(1378, 326);
             this.kryptonGroupBox2.TabIndex = 1;
             this.kryptonGroupBox2.Values.Heading = "Products of MPRs";
             // 
@@ -865,7 +866,7 @@
             this.dgvProdExistMpr.ReadOnly = true;
             this.dgvProdExistMpr.RowHeadersWidth = 51;
             this.dgvProdExistMpr.RowTemplate.Height = 50;
-            this.dgvProdExistMpr.Size = new System.Drawing.Size(1374, 302);
+            this.dgvProdExistMpr.Size = new System.Drawing.Size(1374, 298);
             this.dgvProdExistMpr.TabIndex = 2;
             this.dgvProdExistMpr.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProdExistMpr_CellMouseDown);
             this.dgvProdExistMpr.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvProdExistMpr_DataBindingComplete);
@@ -1030,7 +1031,7 @@
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip2.Size = new System.Drawing.Size(1378, 27);
+            this.toolStrip2.Size = new System.Drawing.Size(1378, 31);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 

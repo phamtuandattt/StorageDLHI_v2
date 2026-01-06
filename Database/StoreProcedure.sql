@@ -25,26 +25,26 @@ BEGIN
         (p.PRODUCT_NAME),
         (p.PRODUCT_DES_2) AS PRODUCT_DES_2,
         (p.PRODUCT_CODE) AS PRODUCT_CODE,
-        (p.PRODUCT_MATERIAL_CODE) AS PRODUCT_MATERIAL_CODE,
+        (p.PRODUCT_MATERIAL_CODE) AS PRODUCT_MATERIAL_CODE, --4
         (p.A_THINHNESS) AS A_THINHNESS,
         (p.B_DEPTH) AS B_DEPTH,
         (p.C_WIDTH) AS C_WIDTH,
         (p.D_WEB) AS D_WEB,
         (p.E_FLAG) AS E_FLAG,
         (p.F_LENGTH) AS F_LENGTH,
-        (p.G_WEIGHT) AS G_WEIGHT,
+        (p.G_WEIGHT) AS G_WEIGHT, -- 11
         (u.UNIT_CODE) AS UNIT_CODE,
-        (mt.TYPE_CODE) AS MATERIAL_TYPE_CODE,
-        (mtd.MATERIAL_TYPE_CODE) AS MATERIAL_TYPE_DETAIL_CODE,
-        (p.USED_NOTE) AS PRODUCT_NAME,
-        p.UNIT_ID,
-        p.ORIGIN_ID,
-        p.STANDARD_ID,
-        p.TYPE_ID,
-        p.MATERIAL_OF_TYPE,
-        p.ITEM_TYPE,
-        p.PICTURE,
-        p.PICTURE_LINK
+        (mt.TYPE_CODE) AS MATERIAL_TYPE_CODE, -- 13
+        (mtd.MATERIAL_TYPE_CODE) AS MATERIAL_TYPE_DETAIL_CODE, -- 14
+        (p.USED_NOTE) AS USED_NOTE, --15
+        p.UNIT_ID, --16
+        p.ORIGIN_ID, --17
+        p.STANDARD_ID, -- 18
+        p.TYPE_ID, -- 19
+        p.MATERIAL_OF_TYPE, --20
+        p.ITEM_TYPE, -- 21
+        p.PICTURE, -- 22
+        p.PICTURE_LINK -- 23
     FROM 
         PRODUCTS p
     LEFT JOIN 
@@ -56,7 +56,10 @@ BEGIN
     ORDER BY 
         p.PRODUCT_NAME;
 END
-
+exec GET_PRODUCT_V2
+select *from MATERIAL_TYPES
+select *from MATERIAL_TYPE_DETAIL
+select *from MATERIAL_TYPE_DETAIL_ITEM
 -- Get MPR detail
 GO
 CREATE PROC GET_MPR_DETAIL @MPR_ID UNIQUEIDENTIFIER 

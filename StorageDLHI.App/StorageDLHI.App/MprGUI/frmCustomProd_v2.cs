@@ -58,6 +58,8 @@ namespace StorageDLHI.App.MprGUI
                 cboOrigin.SelectedValue = this.pModel.Origin_Id;
                 cboType.SelectedValue = this.pModel.Type_Id;
                 cboStandard.SelectedValue = this.pModel.Stand_Id;
+                cboMaterialOfType.SelectedValue = this.pModel.Materials_Of_Type;
+                cboUnit.SelectedValue = this.pModel.UnitId;
                 txtThinh.Text = this.pModel.A_Thinhness.Trim();
                 txtDep.Text = this.pModel.B_Depth.Trim();
                 txtWidth.Text = this.pModel.C_Witdh.Trim();
@@ -66,7 +68,6 @@ namespace StorageDLHI.App.MprGUI
                 txtLength.Text = this.pModel.F_Length.Trim();
                 txtWeigth.Text = this.pModel.G_Weight.Trim();
                 txtUsageNote.Text = this.pModel.Used_Note.Trim();
-                cboUnit.SelectedValue = this.pModel.UnitId;
                 picItem.Image = this.pModel.Image.Length == 100 ? picItem.InitialImage : Image.FromStream(new MemoryStream(this.pModel.Image));
                 path = this.pModel.PictureLink;
 
@@ -403,6 +404,17 @@ namespace StorageDLHI.App.MprGUI
             txtFlag.Clear();
             txtLength.Clear();
             txtUsageNote.Clear();
+        }
+
+        private void picItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                picItem.Image = new Bitmap(open.FileName);
+                path = open.FileName;
+            }
         }
     }
 }
