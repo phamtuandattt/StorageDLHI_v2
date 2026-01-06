@@ -142,6 +142,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string ADD_PRODUCT_NO_IMAGE_V2 = "INSERT INTO PRODUCTS \r\n(ID, \r\nPRODUCT_NAME, \r\nPRODUCT_DES_2, \r\nPRODUCT_CODE, \r\nPRODUCT_MATERIAL_CODE,\r\nA_THINHNESS, \r\nB_DEPTH, \r\nC_WIDTH, \r\nD_WEB,\r\nE_FLAG, \r\nF_LENGTH, \r\nG_WEIGHT, \r\nUSED_NOTE,\r\nUNIT_ID,\r\nORIGIN_ID,\r\nSTANDARD_ID,\r\nTYPE_ID,\r\nMATERIAL_OF_TYPE,\r\nITEM_TYPE) \r\nVALUES \r\n('{0}', N'{1}', '{2}', '{3}', '{4}', \r\n'{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', N'{12}', '{13}',\r\n'{14}', '{15}', '{16}', '{17}', '{18}')";
         public const string ADD_MATERIAL_TYPE_DETAIL_ITEM = "INSERT INTO MATERIAL_TYPE_DETAIL_ITEM\r\nVALUES ('{0}', N'{1}', N'{2}', '{3}')";
         public const string DELETE_MATERIAL_TYPE_DETAIL_ITEM = "DELETE FROM MATERIAL_TYPE_DETAIL_ITEM WHERE ID = '{0}'";
+        public const string UPDATE_PRODUCT_V2 = "UPDATE PRODUCTS\r\n  SET PRODUCT_NAME = N'{0}', PRODUCT_DES_2 = N'{1}', PICTURE_LINK = N'{2}', PICTURE = (SELECT *FROM OPENROWSET(BULK N'{3}', SINGLE_BLOB) AS IMAGE), USED_NOTE = N'{4}'\r\n  WHERE ID = '{5}'";
+        public const string UPDATE_PRODUCT_NO_IMAGE_v2 = "    UPDATE PRODUCTS\r\n  SET PRODUCT_NAME = N'{0}', PRODUCT_DES_2 = N'{1}', USED_NOTE = N'{2}'\r\n  WHERE ID = '{3}'";
 
         // MPRs
         public const string GET_MPR_DETAILs = "SELECT *FROM MPR_DETAIL";

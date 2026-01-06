@@ -490,6 +490,7 @@
             this.btnClearContent.StateTracking.Border.Rounding = 15;
             this.btnClearContent.TabIndex = 22;
             this.btnClearContent.Values.Text = "CLEAR";
+            this.btnClearContent.Click += new System.EventHandler(this.btnClearContent_Click);
             // 
             // btnGenerateCode
             // 

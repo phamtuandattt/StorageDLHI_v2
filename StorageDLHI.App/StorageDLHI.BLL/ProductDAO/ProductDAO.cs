@@ -114,10 +114,15 @@ namespace StorageDLHI.BLL.ProductDAO
 
         public static async Task<bool> Update_v2(Products product)
         {
-            string sqlQuery = string.Format(QueryStatement.UPDATE_PROD, product.Product_Name, product.Product_Des_2, product.Product_Code,
-                product.Product_Material_Code, product.PictureLink, product.Picture, product.A_Thinhness, product.B_Depth, product.C_Witdh,
-                product.D_Web, product.E_Flag, product.F_Length, product.G_Weight, product.Used_Note, product.UnitId, product.Origin_Id,
-                product.Type_Id, product.Stand_Id, product.Id);
+            string sqlQuery = string.Format(QueryStatement.UPDATE_PRODUCT_V2, product.Product_Name, product.Product_Des_2, product.PictureLink,
+                product.Picture, product.Used_Note, product.Id);
+
+            return await data.Update(sqlQuery) > 0;
+        }
+
+        public static async Task<bool> UpdateNoImage_v2(Products product)
+        {
+            string sqlQuery = string.Format(QueryStatement.UPDATE_PRODUCT_V2, product.Product_Name, product.Product_Des_2, product.Used_Note, product.Id);
 
             return await data.Update(sqlQuery) > 0;
         }

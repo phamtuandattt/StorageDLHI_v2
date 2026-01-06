@@ -259,8 +259,11 @@ namespace StorageDLHI.App.MprGUI
                 Stand_Id = Guid.Parse(dgvProds.Rows[rsl].Cells[19].Value.ToString().Trim()),
             };
 
-            frmCustomProd frmCustomProd = new frmCustomProd(TitleManager.PROD_UPDATE_TITLE, false, prod);
-            frmCustomProd.ShowDialog();
+            //frmCustomProd frmCustomProd = new frmCustomProd(TitleManager.PROD_UPDATE_TITLE, false, prod);
+            //frmCustomProd.ShowDialog();
+
+            frmCustomProd_v2 frmCustomProd_V2 = new frmCustomProd_v2(TitleManager.PROD_UPDATE_TITLE, false, prod);
+            frmCustomProd_V2.ShowDialog();
 
             // Overwrite cache Products
             CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, await ProductDAO.GetProductsForCreateMPR());

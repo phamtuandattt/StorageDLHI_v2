@@ -16,6 +16,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -68,6 +69,20 @@ namespace StorageDLHI.App.MprGUI
                 cboUnit.SelectedValue = this.pModel.UnitId;
                 picItem.Image = this.pModel.Image.Length == 100 ? picItem.InitialImage : Image.FromStream(new MemoryStream(this.pModel.Image));
                 path = this.pModel.PictureLink;
+
+                txtProdCode.ReadOnly = true;
+                cboOrigin.Enabled = false;
+                cboType.Enabled = false;
+                cboStandard.Enabled = false;
+                txtThinh.ReadOnly = true;
+                txtDep.ReadOnly = true;
+                txtWidth.ReadOnly = true;
+                txtWeb.ReadOnly = true;
+                txtFlag.ReadOnly = true;
+                txtLength.ReadOnly = true;
+                txtWeigth.ReadOnly = true;
+                cboUnit.Enabled = false;
+
             }
         }
 
@@ -336,58 +351,58 @@ namespace StorageDLHI.App.MprGUI
             }
             else
             {
-                //var oriInfos = cboOrigin.Text.ToString().Split('|');
-                //var mTypeInfo = cboType.Text.ToString().Split('|');
-                //var standInfo = cboStandard.Text.ToString().Split('|');
+                Products prod = new Products()
+                {
+                    Id = this.pModel.Id,
+                    Product_Name = txtProdName.Text.Trim(),
+                    Product_Des_2 = txtDes2.Text.Trim().ToUpper(),
 
-                //Products prod = new Products()
-                //{
-                //    Id = this.pModel.Id,
-                //    Product_Name = txtProdName.Text.Trim(),
-                //    Product_Des_2 = txtDes2.Text.Trim().ToUpper(),
-                //    Product_Code = txtProdCode.Text.Trim().ToUpper(),
-                //    Product_Material_Code = standInfo[1].Trim(), // cboStandard.Text.Trim(),
-                //    PictureLink = path,
-                //    Picture = path,
-                //    A_Thinhness = txtThinh.Text.Trim(),
-                //    B_Depth = txtDep.Text.Trim(),
-                //    C_Witdh = txtWidth.Text.Trim(),
-                //    D_Web = txtWeb.Text.Trim(),
-                //    E_Flag = txtFlag.Text.Trim(),
-                //    F_Length = txtLength.Text.Trim(),
-                //    G_Weight = txtWeigth.Text.Trim(),
-                //    Used_Note = txtUsageNote.Text.Trim(),
-                //    UnitId = Guid.Parse(cboUnit.SelectedValue.ToString()),
-                //    Origin_Id = Guid.Parse(cboOrigin.SelectedValue.ToString()),
-                //    Type_Id = Guid.Parse(cboType.SelectedValue.ToString()),
-                //    Stand_Id = Guid.Parse(cboStandard.SelectedValue.ToString()),
-                //};
+                    PictureLink = path,
+                    Picture = path,
 
-                //if (!string.IsNullOrEmpty(path))
-                //{
-                //    if (await ShowDialogManager.WithLoader(() => ProductDAO.Update(prod)))
-                //    {
-                //        MessageBoxHelper.ShowInfo("Update product success !");
-                //        this.Close();
-                //    }
-                //    else
-                //    {
-                //        MessageBoxHelper.ShowWarning("Update product fail !");
-                //    }
-                //}
-                //else
-                //{
-                //    if (await ShowDialogManager.WithLoader(() => ProductDAO.InsertNoImage(prod)))
-                //    {
-                //        MessageBoxHelper.ShowInfo("Update product success !");
-                //        this.Close();
-                //    }
-                //    else
-                //    {
-                //        MessageBoxHelper.ShowWarning("Update product fail !");
-                //    }
-                //}
+                    Used_Note = txtUsageNote.Text.Trim(),
+                };
+
+                if (!string.IsNullOrEmpty(path))
+                {
+                    if (await ShowDialogManager.WithLoader(() => ProductDAO.Update_v2(prod)))
+                    {
+                        MessageBoxHelper.ShowInfo("Update product success !");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBoxHelper.ShowWarning("Update product fail !");
+                    }
+                }
+                else
+                {
+                    if (await ShowDialogManager.WithLoader(() => ProductDAO.UpdateNoImage_v2(prod)))
+                    {
+                        MessageBoxHelper.ShowInfo("Update product success !");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBoxHelper.ShowWarning("Update product fail !");
+                    }
+                }
             }
+        }
+
+        private void btnClearContent_Click(object sender, EventArgs e)
+        {
+            txtProdCode.Clear();
+            txtProdName.Clear();
+            txtDes2.Clear();
+            txtDep.Clear();
+            txtWidth.Clear();
+            txtThinh.Clear();
+            txtWeb.Clear();
+            txtWeigth.Clear();
+            txtFlag.Clear();
+            txtLength.Clear();
+            txtUsageNote.Clear();
         }
     }
 }
