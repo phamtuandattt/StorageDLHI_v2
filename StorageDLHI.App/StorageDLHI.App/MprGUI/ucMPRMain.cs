@@ -179,8 +179,11 @@ namespace StorageDLHI.App.MprGUI
 
         private async void btnAddProd_Click(object sender, EventArgs e)
         {
-            frmCustomProd frmCustomProd = new frmCustomProd(TitleManager.PROD_ADD_TITLE, true, null);
-            frmCustomProd.ShowDialog();
+            //frmCustomProd frmCustomProd = new frmCustomProd(TitleManager.PROD_ADD_TITLE, true, null);
+            //frmCustomProd.ShowDialog();
+
+            frmCustomProd_v2 frmCustomProd_V2 = new frmCustomProd_v2(TitleManager.PROD_ADD_TITLE, true, null);
+            frmCustomProd_V2.ShowDialog();
 
             // Overwrite cache Products
             CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, await ProductDAO.GetProductsForCreateMPR_V2());
@@ -500,8 +503,6 @@ namespace StorageDLHI.App.MprGUI
 
         private async void btnConfirm_Click(object sender, EventArgs e)
         {
-            //frmCustomProd_v2 frmCustomProd_V2 = new frmCustomProd_v2("Add product", true, null);
-            //frmCustomProd_V2.ShowDialog();
             if (dtProdsOfMprs.Rows.Count <= 0 && dgvProdExistMpr.Rows.Count <= 0)
             {
                 MessageBoxHelper.ShowWarning("Please add product to create MPRs !");
@@ -797,6 +798,25 @@ namespace StorageDLHI.App.MprGUI
             }
 
             tlsClearSearchDate.Visible = false;
+        }
+
+        private void dgvProds_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvProds.Rows.Count <= 0) return;
+            int rsl = dgvProds.CurrentRow.Index;
+
+            var imgArr = dgvProds.Rows[rsl].Cells[22].Value.ToString().Trim().Length > 0 && dgvProds.Rows[rsl].Cells[22].Value.ToString().Trim() != null
+                ? (byte[])dgvProds.Rows[rsl].Cells[22].Value : new byte[100];
+            
+            Products pModel = new Products()
+            {
+                Product_Name = dgvProds.Rows[rsl].Cells[1].Value.ToString().Trim(),
+                Image = imgArr,
+                PictureLink = dgvProds.Rows[rsl].Cells[23].Value.ToString().Trim(),
+            };
+
+            frmDisplayImageProd frmDisplayImageProd = new frmDisplayImageProd(pModel);
+            frmDisplayImageProd.ShowDialog();
         }
     }
 }

@@ -280,6 +280,12 @@
     <Compile Include="ProductGUI\frmCustomProd.Designer.cs">
       <DependentUpon>frmCustomProd.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProductGUI\frmDisplayImageProd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductGUI\frmDisplayImageProd.Designer.cs">
+      <DependentUpon>frmDisplayImageProd.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProductGUI\ucProducts.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -389,6 +395,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProductGUI\frmCustomProd.resx">
       <DependentUpon>frmCustomProd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductGUI\frmDisplayImageProd.resx">
+      <DependentUpon>frmDisplayImageProd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductGUI\ucProducts.resx">
       <DependentUpon>ucProducts.cs</DependentUpon>
