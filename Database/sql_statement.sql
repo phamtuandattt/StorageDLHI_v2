@@ -405,3 +405,5 @@ VALUES
 ('e3329c1c-89c1-4109-9559-8a9b1b1d83e1', N'Dây hàn CO2 Chosun CSF - 71T 1.2mm', 'DÂY HÀN CO2 CHOSUN CSF - 71T 1.2MM', 'DOI002001000_', 'Non-standard', 
 '100', '', '', '', '', '', '', N'', '8d6b8b77-7433-459b-a1ef-12e3e1c0d10c',
 '00000000-0000-0000-0000-000000000000', '8d6fd5b0-1bcc-42ac-837d-fd1e20457d5c', '5e7733f8-4362-4220-9a36-1af01bb53176', '9b5ecedf-ba31-4e0f-8cfe-047cbe0d718e', 'd0b739cc-e1e4-460f-b2fb-be8f01537cc1', 'e5c6cc21-ff90-47fb-bb14-375ca08caf88')
+
+EXEC GET_PRODUCTS

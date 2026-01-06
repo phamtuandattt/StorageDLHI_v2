@@ -79,10 +79,12 @@ namespace StorageDLHI.App.MprGUI
 
         private async void LoadData()
         {
+            // ----- LOAD DATA FOR PROD OF CREATE MPR
             if (!CacheManager.Exists(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR))
             {
-                dtProds = await ShowDialogManager.WithLoader(() => ProductDAO.GetProductsForCreateMPR());
+                dtProds = await ShowDialogManager.WithLoader(() => ProductDAO.GetProductsForCreateMPR_V2());
                 CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, dtProds);
+                //SanitizeDataTable(dtProds);
                 dgvProds.DataSource = dtProds;
             }
             else
@@ -90,6 +92,8 @@ namespace StorageDLHI.App.MprGUI
                 dgvProds.DataSource = CacheManager.Get<DataTable>(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR);
                 dtProds = CacheManager.Get<DataTable>(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR);
             }
+            ConfigDataGridView(dtProds, dgvProds, QueryStatement.HiddenColoumnOfProdForMPR.Split(','));
+            //----------------------------------------
 
             if (!CacheManager.Exists(CacheKeys.MPRS_DATATABLE_ALL_MPRS))
             {
@@ -114,6 +118,60 @@ namespace StorageDLHI.App.MprGUI
                 else
                 {
                     dgvMPRDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId));
+                }
+            }
+        }
+
+        private void ConfigDataGridView(DataTable dt, DataGridView dataGridView, string[] hiddenCols)
+        {
+            dataGridView.AutoGenerateColumns = true;
+            dataGridView.DefaultCellStyle.NullValue = "";
+
+            foreach (DataGridViewColumn col in dataGridView.Columns)
+            {
+                // Header text
+                col.HeaderText = col.HeaderText.Replace("_", " ");
+
+                // Auto size
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                // Alignment based on data type
+                if (dt.Columns[col.Name].DataType == typeof(int) ||
+                    dt.Columns[col.Name].DataType == typeof(decimal))
+                {
+                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                }
+
+                // Date formatting
+                if (dt.Columns[col.Name].DataType == typeof(DateTime))
+                {
+                    col.DefaultCellStyle.Format = "dd/MM/yyyy";
+                }
+            }
+
+            foreach (string colName in hiddenCols)
+            {
+                if (dataGridView.Columns.Contains(colName))
+                    dataGridView.Columns[colName].Visible = false;
+            }
+        }
+
+        public static void SanitizeDataTable(DataTable dt)
+        {
+            foreach (DataColumn col in dt.Columns)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (row[col] == DBNull.Value)
+                    {
+                        //row[col] = col.DataType == typeof(string)
+                        //    ? string.Empty
+                        //    : Activator.CreateInstance(col.DataType);
+                    }
+                    else if (col.DataType == typeof(string))
+                    {
+                        row[col] = row[col].ToString().Trim();
+                    }
                 }
             }
         }

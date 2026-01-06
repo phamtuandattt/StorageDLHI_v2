@@ -20,6 +20,11 @@ namespace StorageDLHI.BLL.ProductDAO
             return await data.GetDataAsync(QueryStatement.GET_PRODUCTS_FOR_CREATE_MPR, "PROs_FOR_MPR");
         }
 
+        public static async Task<DataTable> GetProductsForCreateMPR_V2()
+        {
+            return await data.GetDataAsync(QueryStatement.GET_PRODUCTS_FOR_CREATE_MPR_v2, "PROs_FOR_MPR_V2");
+        }
+
         public static async Task<bool> Insert(Products product)
         {
             string sqlQuery = string.Format(QueryStatement.ADD_PROD, product.Id, product.Product_Name, product.Product_Des_2, product.Product_Code,

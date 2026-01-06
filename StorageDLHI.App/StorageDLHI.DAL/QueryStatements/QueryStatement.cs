@@ -144,6 +144,9 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string DELETE_MATERIAL_TYPE_DETAIL_ITEM = "DELETE FROM MATERIAL_TYPE_DETAIL_ITEM WHERE ID = '{0}'";
         public const string UPDATE_PRODUCT_V2 = "UPDATE PRODUCTS\r\n  SET PRODUCT_NAME = N'{0}', PRODUCT_DES_2 = N'{1}', PICTURE_LINK = N'{2}', PICTURE = (SELECT *FROM OPENROWSET(BULK N'{3}', SINGLE_BLOB) AS IMAGE), USED_NOTE = N'{4}'\r\n  WHERE ID = '{5}'";
         public const string UPDATE_PRODUCT_NO_IMAGE_v2 = "    UPDATE PRODUCTS\r\n  SET PRODUCT_NAME = N'{0}', PRODUCT_DES_2 = N'{1}', USED_NOTE = N'{2}'\r\n  WHERE ID = '{3}'";
+        public const string GET_PRODUCTS_FOR_CREATE_MPR_v2 = "EXEC GET_PRODUCT_V2";
+        public const string HiddenColoumnOfProdForMPR = "ID,UNIT_ID,ORIGIN_ID,STANDARD_ID,TYPE_ID,MATERIAL_OF_TYPE,ITEM_TYPE,PICTURE,PICTURE_LINK";
+
 
         // MPRs
         public const string GET_MPR_DETAILs = "SELECT *FROM MPR_DETAIL";

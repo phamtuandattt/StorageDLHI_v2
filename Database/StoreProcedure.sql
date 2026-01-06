@@ -13,6 +13,50 @@ BEGIN
 END
 GO
 
+-- GET PRODUCTS V2
+GO
+CREATE PROCEDURE GET_PRODUCT_V2
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    SELECT 
+        p.ID,
+        (p.PRODUCT_NAME),
+        (p.PRODUCT_DES_2) AS PRODUCT_DES_2,
+        (p.PRODUCT_CODE) AS PRODUCT_CODE,
+        (p.PRODUCT_MATERIAL_CODE) AS PRODUCT_MATERIAL_CODE,
+        (p.A_THINHNESS) AS A_THINHNESS,
+        (p.B_DEPTH) AS B_DEPTH,
+        (p.C_WIDTH) AS C_WIDTH,
+        (p.D_WEB) AS D_WEB,
+        (p.E_FLAG) AS E_FLAG,
+        (p.F_LENGTH) AS F_LENGTH,
+        (p.G_WEIGHT) AS G_WEIGHT,
+        (u.UNIT_CODE) AS UNIT_CODE,
+        (mt.TYPE_CODE) AS MATERIAL_TYPE_CODE,
+        (mtd.MATERIAL_TYPE_CODE) AS MATERIAL_TYPE_DETAIL_CODE,
+        (p.USED_NOTE) AS PRODUCT_NAME,
+        p.UNIT_ID,
+        p.ORIGIN_ID,
+        p.STANDARD_ID,
+        p.TYPE_ID,
+        p.MATERIAL_OF_TYPE,
+        p.ITEM_TYPE,
+        p.PICTURE,
+        p.PICTURE_LINK
+    FROM 
+        PRODUCTS p
+    LEFT JOIN 
+        UNITS u ON p.UNIT_ID = u.ID
+    LEFT JOIN 
+        MATERIAL_TYPES mt ON p.TYPE_ID = mt.ID
+    LEFT JOIN 
+        MATERIAL_TYPE_DETAIL mtd ON p.MATERIAL_OF_TYPE = mtd.ID
+    ORDER BY 
+        p.PRODUCT_NAME;
+END
+
 -- Get MPR detail
 GO
 CREATE PROC GET_MPR_DETAIL @MPR_ID UNIQUEIDENTIFIER 
