@@ -538,27 +538,29 @@ namespace StorageDLHI.App.MprGUI
 
         private async void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (dtProdsOfMprs.Rows.Count <= 0 && dgvProdExistMpr.Rows.Count <= 0)
-            {
-                MessageBoxHelper.ShowWarning("Please add product to create MPRs !");
-                return;
-            }
+            frmCustomInfoMPR_V2 frmCustomInfoMPR_V2 = new frmCustomInfoMPR_V2();
+            frmCustomInfoMPR_V2.ShowDialog();
+            //if (dtProdsOfMprs.Rows.Count <= 0 && dgvProdExistMpr.Rows.Count <= 0)
+            //{
+            //    MessageBoxHelper.ShowWarning("Please add product to create MPRs !");
+            //    return;
+            //}
 
-            frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_ADD_INFO, true, dtProdsOfMprs);
-            frmCustomInfoMpr.ShowDialog();
+            //frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_ADD_INFO, true, dtProdsOfMprs);
+            //frmCustomInfoMpr.ShowDialog();
 
-            if (!frmCustomInfoMpr.CanelOrConfirm)
-            {
-                return;
-            }
+            //if (!frmCustomInfoMpr.CanelOrConfirm)
+            //{
+            //    return;
+            //}
 
-            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs());
-            LoadData();
+            //CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs());
+            //LoadData();
 
-            prodsAdded.Clear();
-            dtProdsOfMprs.Clear();
-            dgvProdExistMpr.Refresh();
-            tlsLabalQtyProd.Text = "Total: (0)";
+            //prodsAdded.Clear();
+            //dtProdsOfMprs.Clear();
+            //dgvProdExistMpr.Refresh();
+            //tlsLabalQtyProd.Text = "Total: (0)";
         }
 
         private void btnReload_Click(object sender, EventArgs e)

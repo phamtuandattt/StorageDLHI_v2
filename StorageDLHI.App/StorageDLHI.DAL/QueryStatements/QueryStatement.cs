@@ -266,5 +266,13 @@ namespace StorageDLHI.DAL.QueryStatements
 
         // Project
         public const string INSERT_PROJECT = "INSERT INTO PROJECTS VALUES('{0}', N'{1}', N'{2}', N'{3}', N'{4}', {5}, N'{6}', '{7}')";
+        public const string GET_PROJECTS = "SELECT *FROM PROJECTS";
+        public const string PROPERTY_PROJECT_ID = "ID";
+        public const string PROPERTY_PROJECT_NAME = "PROJECT_NAME";
+        public const string PROPERTY_PROJECT_CODE = "PROJECT_CODE";
+        public const string PROPERTY_PROJECT_NO = "PROJECT_NO";
+        public const string PROPERTY_PROJECT_INFO = "PRODUCT_INFO";
+        public const string PROPERTY_PROJECT_WEIGTH = "PROJECT_WEIGHT";
+        public const string PROPERTY_PROJECT_WO = "WO_NO";
     }
 }

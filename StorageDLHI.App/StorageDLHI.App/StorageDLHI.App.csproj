@@ -220,6 +220,12 @@
     <Compile Include="MprGUI\frmCustomInfoMpr.Designer.cs">
       <DependentUpon>frmCustomInfoMpr.cs</DependentUpon>
     </Compile>
+    <Compile Include="MprGUI\frmCustomInfoMPR_V2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MprGUI\frmCustomInfoMPR_V2.Designer.cs">
+      <DependentUpon>frmCustomInfoMPR_V2.cs</DependentUpon>
+    </Compile>
     <Compile Include="MprGUI\frmCustomProd_v2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -365,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MprGUI\frmCustomInfoMpr.resx">
       <DependentUpon>frmCustomInfoMpr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MprGUI\frmCustomInfoMPR_V2.resx">
+      <DependentUpon>frmCustomInfoMPR_V2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MprGUI\frmCustomProd_v2.resx">
       <DependentUpon>frmCustomProd_v2.cs</DependentUpon>

@@ -59,7 +59,6 @@
             this.kryptonLabel10 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonPanel19 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.txtProjectName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonPanel20 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonLabel9 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
@@ -138,6 +137,7 @@
             this.kryptonLabel20 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonPanel40 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonDateTimePicker2 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
+            this.txtProjectName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel20.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel33)).BeginInit();
@@ -628,18 +628,6 @@
             this.kryptonPanel19.Size = new System.Drawing.Size(291, 38);
             this.kryptonPanel19.TabIndex = 3;
             // 
-            // txtProjectName
-            // 
-            this.txtProjectName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtProjectName.Location = new System.Drawing.Point(3, 3);
-            this.txtProjectName.Name = "txtProjectName";
-            this.txtProjectName.Size = new System.Drawing.Size(285, 32);
-            this.txtProjectName.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
-            this.txtProjectName.TabIndex = 10;
-            this.txtProjectName.TextChanged += new System.EventHandler(this.txtProjectName_TextChanged);
-            // 
             // kryptonPanel20
             // 
             this.kryptonPanel20.Controls.Add(this.kryptonLabel9);
@@ -937,7 +925,7 @@
             // 
             this.tblLayoutCustom.BackColor = System.Drawing.Color.White;
             this.tblLayoutCustom.ColumnCount = 1;
-            this.tblLayoutCustom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 881F));
+            this.tblLayoutCustom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 889F));
             this.tblLayoutCustom.Controls.Add(this.tblLayoutMain, 0, 0);
             this.tblLayoutCustom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblLayoutCustom.Location = new System.Drawing.Point(0, 0);
@@ -958,22 +946,22 @@
             this.tblLayoutMain.Location = new System.Drawing.Point(3, 3);
             this.tblLayoutMain.Name = "tblLayoutMain";
             this.tblLayoutMain.RowCount = 2;
-            this.tblLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 260F));
+            this.tblLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 270F));
             this.tblLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLayoutMain.Size = new System.Drawing.Size(882, 533);
+            this.tblLayoutMain.Size = new System.Drawing.Size(883, 533);
             this.tblLayoutMain.TabIndex = 3;
             // 
             // kryptonGroupBox2
             // 
             this.kryptonGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox2.Location = new System.Drawing.Point(3, 263);
+            this.kryptonGroupBox2.Location = new System.Drawing.Point(3, 273);
             this.kryptonGroupBox2.Name = "kryptonGroupBox2";
             this.kryptonGroupBox2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             // 
             // kryptonGroupBox2.Panel
             // 
             this.kryptonGroupBox2.Panel.Controls.Add(this.tableLayoutPanel1);
-            this.kryptonGroupBox2.Size = new System.Drawing.Size(876, 267);
+            this.kryptonGroupBox2.Size = new System.Drawing.Size(877, 257);
             this.kryptonGroupBox2.TabIndex = 3;
             this.kryptonGroupBox2.Values.Heading = "Information";
             // 
@@ -982,7 +970,7 @@
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 435F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 435F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 441F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel6, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel7, 1, 3);
@@ -1567,6 +1555,18 @@
             this.kryptonDateTimePicker2.StateDisabled.Back.Color1 = System.Drawing.Color.White;
             this.kryptonDateTimePicker2.TabIndex = 0;
             // 
+            // txtProjectName
+            // 
+            this.txtProjectName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtProjectName.Location = new System.Drawing.Point(3, 3);
+            this.txtProjectName.Name = "txtProjectName";
+            this.txtProjectName.Size = new System.Drawing.Size(285, 32);
+            this.txtProjectName.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
+            this.txtProjectName.TabIndex = 10;
+            this.txtProjectName.TextChanged += new System.EventHandler(this.txtProjectName_TextChanged);
+            // 
             // frmCustomInfoMpr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1758,7 +1758,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel10;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel19;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtProjectName;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel20;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel9;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
@@ -1835,5 +1834,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel20;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel40;
         private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker2;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtProjectName;
     }
 }
