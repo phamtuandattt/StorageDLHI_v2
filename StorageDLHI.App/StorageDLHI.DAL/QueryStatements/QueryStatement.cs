@@ -150,6 +150,7 @@ namespace StorageDLHI.DAL.QueryStatements
 
         // MPRs
         public const string GET_MPR_DETAILs = "SELECT *FROM MPR_DETAIL";
+        public const string GET_MPRS_BY_PROJET = "EXEC GET_MPS_BY_PROJECT '{0}'";
         //public const string GET_MPR_DETAIL_BY_MPR_ID = "SELECT *FROM MPR_DETAIL WHERE MPR_ID = '{0}'";
         public const string ADD_MPR = "SET DATEFORMAT DMY INSERT INTO MPRS (ID, MPR_NO, MPR_WO_NO, MPR_PROJECT_NAME, MPR_REV_TOTAL, \r\nMPR_CREATE_DATE, MPR_EXPECTED_DELIVERY_DATE, MPR_PREPARED, MPR_REVIEWED, MPR_APPROVED, STAFF_ID, IS_MAKE_PO)\r\nVALUES ('{0}', '{1}', '{2}', '{3}', N'{4}', N'{5}', N'{6}', N'{7}', '{8}', '{9}', '{10}', '{11}')";
         public const string ADD_MPR_DETAIL = "";

@@ -48,8 +48,8 @@ namespace StorageDLHI.App.MprGUI
             this.dtMPRDetail = dtMPRDetail;
 
             txtMPRNo.Text = this.dtMPRDetail.Mpr_No.Trim();
-            txtWoNo.Text = this.dtMPRDetail.Mpr_Wo_No.Trim();
-            txtProjectName.Text = this.dtMPRDetail.Mpr_Project_Name_Code.Trim();
+            //txtWoNo.Text = this.dtMPRDetail.Mpr_Wo_No.Trim();
+            //txtProjectName.Text = this.dtMPRDetail.Mpr_Project_Name_Code.Trim();
             txtPrepared.Text = this.dtMPRDetail.Mpr_Prepared.Trim();
             txtReviewed.Text = this.dtMPRDetail.Mpr_Reviewed.Trim();
             txtApproved.Text = this.dtMPRDetail.Mpr_Approved.Trim();
@@ -90,8 +90,8 @@ namespace StorageDLHI.App.MprGUI
             this.dtMPRDetail = dtMPRDetail;
 
             txtMPRNo.Text = this.dtMPRDetail.Mpr_No.Trim();
-            txtWoNo.Text = this.dtMPRDetail.Mpr_Wo_No.Trim();
-            txtProjectName.Text = this.dtMPRDetail.Mpr_Project_Name_Code.Trim();
+            //txtWoNo.Text = this.dtMPRDetail.Mpr_Wo_No.Trim();
+            //txtProjectName.Text = this.dtMPRDetail.Mpr_Project_Name_Code.Trim();
             txtPrepared.Text = this.dtMPRDetail.Mpr_Prepared.Trim();
             txtReviewed.Text = this.dtMPRDetail.Mpr_Reviewed.Trim();
             txtApproved.Text = this.dtMPRDetail.Mpr_Approved.Trim();
@@ -178,8 +178,8 @@ namespace StorageDLHI.App.MprGUI
                 {
                     Id = Guid.NewGuid(),
                     Mpr_No = txtMPRNo.Text.Trim(),
-                    Mpr_Wo_No = txtWoNo.Text.Trim(),
-                    Mpr_Project_Name_Code = txtProjectName.Text.Trim(),
+                    //Mpr_Wo_No = txtWoNo.Text.Trim(),
+                    //Mpr_Project_Name_Code = txtProjectName.Text.Trim(),
                     CreateDate = DateTime.Parse(dtPickerCreate.Value.ToString("dd/MM/yyyy")),
                     Expected_Delivery_Date = DateTime.Parse(dtPickerDelivery.Value.ToString("dd/MM/yyyy")),
                     Mpr_Prepared = txtPrepared.Text.Trim(),
@@ -231,8 +231,8 @@ namespace StorageDLHI.App.MprGUI
                 {
                     Id = this.dtMPRDetail.Id,
                     Mpr_No = txtMPRNo.Text.Trim(),
-                    Mpr_Wo_No = txtWoNo.Text.Trim(),
-                    Mpr_Project_Name_Code = txtProjectName.Text.Trim(),
+                    //Mpr_Wo_No = txtWoNo.Text.Trim(),
+                    //Mpr_Project_Name_Code = txtProjectName.Text.Trim(),
                     CreateDate = DateTime.Parse(dtPickerCreate.Value.ToString("dd/MM/yyyy")),
                     Expected_Delivery_Date = DateTime.Parse(dtPickerDelivery.Value.ToString("dd/MM/yyyy")),
                     Mpr_Prepared = txtPrepared.Text.Trim(),
@@ -254,14 +254,14 @@ namespace StorageDLHI.App.MprGUI
             {
                 Guid mprId = dtMPRDetail.Id;
                 string mpr_no = dtMPRDetail.Mpr_No.Trim();
-                string wo_no = dtMPRDetail.Mpr_Wo_No.Trim();
-                string project_name = dtMPRDetail.Mpr_Project_Name_Code.Trim();
+                //string wo_no = dtMPRDetail.Mpr_Wo_No.Trim();
+                //string project_name = dtMPRDetail.Mpr_Project_Name_Code.Trim();
 
                 var placeholders = new Dictionary<string, string>
                 {
-                    { Common.DictionaryKey.MPR_NO, mpr_no },
-                    { Common.DictionaryKey.WO_NO, wo_no },
-                    { Common.DictionaryKey.PROJECT_NAME, project_name },
+                    //{ Common.DictionaryKey.MPR_NO, mpr_no },
+                    //{ Common.DictionaryKey.WO_NO, wo_no },
+                    //{ Common.DictionaryKey.PROJECT_NAME, project_name },
                     { Common.DictionaryKey.DATE_EXPORT, DateTime.Now.ToString("dd/MM/yyyy") },
                     { Common.DictionaryKey.PREPARED, dtMPRDetail.Mpr_Prepared },
                     { Common.DictionaryKey.REVIEWED, dtMPRDetail.Mpr_Reviewed },

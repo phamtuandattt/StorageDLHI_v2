@@ -100,6 +100,42 @@ namespace StorageDLHI.App.Common
             CacheManager.Add(CacheKeys.WAREHOUSE_DATATABLE_ALL, await ShowDialogManager.WithLoader(() => WarehouseDAO.GetWarehouses()));
 
         }
+
+        public static void ConfigDataGridView(DataTable dt, DataGridView dataGridView, string[] hiddenCols)
+        {
+            dataGridView.AutoGenerateColumns = true;
+            dataGridView.DefaultCellStyle.NullValue = "";
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            foreach (DataGridViewColumn col in dataGridView.Columns)
+            {
+                // Header text
+                col.HeaderText = col.HeaderText.Replace("_", " ");
+
+                // Auto size
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                // Alignment based on data type
+                if (dt.Columns[col.Name].DataType == typeof(int) ||
+                    dt.Columns[col.Name].DataType == typeof(decimal))
+                {
+                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                }
+
+                // Date formatting
+                if (dt.Columns[col.Name].DataType == typeof(DateTime))
+                {
+                    col.DefaultCellStyle.Format = "dd/MM/yyyy";
+                }
+            }
+
+            foreach (string colName in hiddenCols)
+            {
+                if (dataGridView.Columns.Contains(colName))
+                    dataGridView.Columns[colName].Visible = false;
+            }
+        }
+
         public static void EnableTabStopForInputs(Control parent)
         {
             foreach (Control ctrl in parent.Controls)

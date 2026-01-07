@@ -43,6 +43,7 @@ namespace StorageDLHI.App.MprGUI
 
         private Panel pnNoDataMprs = new Panel();
         private Panel pnNoDataMprsDetail = new Panel();
+        private Panel pnNoDataProds = new Panel();
 
         public ucMPRMain()
         {
@@ -55,6 +56,10 @@ namespace StorageDLHI.App.MprGUI
             ucPanelNoData ucNoDataMPRDetail = new ucPanelNoData("No records found !");
             pnNoDataMprsDetail = ucNoDataMPRDetail.pnlNoData;
             dgvMPRDetail.Controls.Add(pnNoDataMprsDetail);
+
+            ucPanelNoData ucNoDataProd = new ucPanelNoData("No records found !");
+            pnNoDataProds = ucNoDataProd.pnlNoData;
+            dgvProds.Controls.Add(pnNoDataProds);
 
             LoadData();
 
@@ -92,12 +97,21 @@ namespace StorageDLHI.App.MprGUI
                 dgvProds.DataSource = CacheManager.Get<DataTable>(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR);
                 dtProds = CacheManager.Get<DataTable>(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR);
             }
-            ConfigDataGridView(dtProds, dgvProds, QueryStatement.HiddenColoumnOfProdForMPR.Split(','));
+            if (dtProds.Rows.Count > 0 && dtProds != null)
+            {
+                ConfigDataGridView(dtProds, dgvProds, QueryStatement.HiddenColoumnOfProdForMPR.Split(','));
+            }
+            else
+            {
+                Common.Common.ShowNoDataPanel(dgvProds, pnNoDataProds);
+            }
             //----------------------------------------
 
+
+            // ---------- LOAD DATA MPRS
             if (!CacheManager.Exists(CacheKeys.MPRS_DATATABLE_ALL_MPRS))
             {
-                dtMprs = await MprDAO.GetMprs();
+                dtMprs = await MprDAO.GetMprs_V2();
                 CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, dtMprs);
                 dgvMPRs.DataSource = dtMprs;
             }
@@ -105,8 +119,17 @@ namespace StorageDLHI.App.MprGUI
             {
                 dgvMPRs.DataSource = CacheManager.Get<DataTable>(CacheKeys.MPRS_DATATABLE_ALL_MPRS);
             }
+            if (dtMprs != null && dtMprs.Rows.Count > 0)
+            {
+                Common.Common.ConfigDataGridView(dtMprs, dgvMPRs, null);
+            }
+            else
+            {
+                Common.Common.ShowNoDataPanel(dgvMPRs, pnNoDataMprs);
+            }
+            //----------------------------------------
 
-            if (dtMprs.Rows.Count > 0 && dtMprs != null)
+            if (dtMprs != null && dtMprs.AsEnumerable().Any())
             {
                 var mprId = Guid.Parse(dgvMPRs.Rows[0].Cells[0].Value.ToString());
                 if (!CacheManager.Exists(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId)))
@@ -119,6 +142,18 @@ namespace StorageDLHI.App.MprGUI
                 {
                     dgvMPRDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId));
                 }
+                if (dtMprDetailById != null && dtMprDetailById.Rows.Count > 0)
+                {
+                    Common.Common.ConfigDataGridView(dtMprDetailById, dgvMPRDetail, null);
+                }
+                else
+                {
+                    Common.Common.ShowNoDataPanel(dgvMPRDetail, pnNoDataMprsDetail);
+                }
+            }
+            else
+            {
+                Common.Common.ShowNoDataPanel(dgvMPRDetail, pnNoDataMprsDetail);
             }
         }
 
@@ -547,8 +582,8 @@ namespace StorageDLHI.App.MprGUI
             {
                 Id = Guid.Parse(dgvMPRs.Rows[rsl].Cells[0].Value.ToString().Trim()),
                 Mpr_No = dgvMPRs.Rows[rsl].Cells[1].Value.ToString().Trim(),
-                Mpr_Wo_No = dgvMPRs.Rows[rsl].Cells[2].Value.ToString().Trim(),
-                Mpr_Project_Name_Code = dgvMPRs.Rows[rsl].Cells[3].Value.ToString().Trim(),
+                //Mpr_Wo_No = dgvMPRs.Rows[rsl].Cells[2].Value.ToString().Trim(),
+                //Mpr_Project_Name_Code = dgvMPRs.Rows[rsl].Cells[3].Value.ToString().Trim(),
                 Mpr_Rev_Total = dgvMPRs.Rows[rsl].Cells[4].Value.ToString().Trim(),
                 CreateDate = DateTime.Parse(dgvMPRs.Rows[rsl].Cells[5].Value.ToString().Trim()),
                 Expected_Delivery_Date = DateTime.Parse(dgvMPRs.Rows[rsl].Cells[6].Value.ToString().Trim()),
@@ -672,8 +707,8 @@ namespace StorageDLHI.App.MprGUI
             {
                 Id = Guid.Parse(dgvMPRs.Rows[rsl].Cells[0].Value.ToString().Trim()),
                 Mpr_No = dgvMPRs.Rows[rsl].Cells[1].Value.ToString().Trim(),
-                Mpr_Wo_No = dgvMPRs.Rows[rsl].Cells[2].Value.ToString().Trim(),
-                Mpr_Project_Name_Code = dgvMPRs.Rows[rsl].Cells[3].Value.ToString().Trim(),
+                //Mpr_Wo_No = dgvMPRs.Rows[rsl].Cells[2].Value.ToString().Trim(),
+                //Mpr_Project_Name_Code = dgvMPRs.Rows[rsl].Cells[3].Value.ToString().Trim(),
                 Mpr_Rev_Total = dgvMPRs.Rows[rsl].Cells[4].Value.ToString().Trim(),
                 CreateDate = DateTime.Parse(dgvMPRs.Rows[rsl].Cells[5].Value.ToString().Trim()),
                 Expected_Delivery_Date = DateTime.Parse(dgvMPRs.Rows[rsl].Cells[6].Value.ToString().Trim()),

@@ -10,8 +10,8 @@ namespace StorageDLHI.DAL.Models
     {
         public Guid Id { get; set; }
         public string Mpr_No { get; set; }
-        public string Mpr_Wo_No { get; set; }
-        public string Mpr_Project_Name_Code { get; set; }
+        //public string Mpr_Wo_No { get; set; }
+        //public string Mpr_Project_Name_Code { get; set; }
         public string Mpr_Rev_Total { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime Expected_Delivery_Date { get; set; }
@@ -21,6 +21,7 @@ namespace StorageDLHI.DAL.Models
         public bool IsMakePO { get; set; }
 
         public Guid Staff_Id { get; set; }
+        public Guid Project_Id  { get; set; }
     }
 
     public class Mpr_Detail

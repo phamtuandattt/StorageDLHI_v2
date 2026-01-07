@@ -28,7 +28,10 @@ namespace StorageDLHI.BLL.MprDAO
 
         public static async Task<bool> InsertMpr(Mprs mprs)
         {
-            string sqlQuery = string.Format(QueryStatement.ADD_MPR, mprs.Id, mprs.Mpr_No, mprs.Mpr_Wo_No, mprs.Mpr_Project_Name_Code, mprs.Mpr_Rev_Total,
+            //string sqlQuery = string.Format(QueryStatement.ADD_MPR, mprs.Id, mprs.Mpr_No, mprs.Mpr_Wo_No, mprs.Mpr_Project_Name_Code, mprs.Mpr_Rev_Total,
+            //    mprs.CreateDate, mprs.Expected_Delivery_Date, mprs.Mpr_Prepared, mprs.Mpr_Reviewed, mprs.Mpr_Approved, mprs.Staff_Id, mprs.IsMakePO);
+
+            string sqlQuery = string.Format(QueryStatement.ADD_MPR, mprs.Id, mprs.Mpr_No, mprs.Mpr_Rev_Total,
                 mprs.CreateDate, mprs.Expected_Delivery_Date, mprs.Mpr_Prepared, mprs.Mpr_Reviewed, mprs.Mpr_Approved, mprs.Staff_Id, mprs.IsMakePO);
 
             return await data.Insert(sqlQuery) > 0;
@@ -52,6 +55,11 @@ namespace StorageDLHI.BLL.MprDAO
         public static async Task<DataTable> GetMprs()
         {
             return await data.GetDataAsync(QueryStatement.GET_MPRs, "MPRs");
+        }
+
+        public static async Task<DataTable> GetMprs_V2()
+        {
+            return await data.GetDataAsync(QueryStatement.GET_MPRS_BY_PROJET, "MPR_BY_PROJECT");
         }
 
         public static async Task<DataTable> GetMprsForMakePO()
