@@ -63,11 +63,11 @@
             this.txtWoNo = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtMPRNo = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtPrepared = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.txtReviewed = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.txtApproved = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnSave = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.cboReview = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.cboApproved = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -104,6 +104,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel16)).BeginInit();
             this.kryptonPanel16.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboReview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboApproved)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -427,6 +429,8 @@
             this.cboProject.Name = "cboProject";
             this.cboProject.Size = new System.Drawing.Size(288, 25);
             this.cboProject.TabIndex = 1;
+            this.cboProject.SelectedIndexChanged += new System.EventHandler(this.cboProject_SelectedIndexChanged);
+            this.cboProject.Validating += new System.ComponentModel.CancelEventHandler(this.cboProject_Validating);
             // 
             // kryptonPanel12
             // 
@@ -460,7 +464,7 @@
             // 
             // kryptonPanel15
             // 
-            this.kryptonPanel15.Controls.Add(this.txtReviewed);
+            this.kryptonPanel15.Controls.Add(this.cboReview);
             this.kryptonPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel15.Location = new System.Drawing.Point(153, 153);
             this.kryptonPanel15.Name = "kryptonPanel15";
@@ -470,7 +474,7 @@
             // 
             // kryptonPanel16
             // 
-            this.kryptonPanel16.Controls.Add(this.txtApproved);
+            this.kryptonPanel16.Controls.Add(this.cboApproved);
             this.kryptonPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel16.Location = new System.Drawing.Point(603, 153);
             this.kryptonPanel16.Name = "kryptonPanel16";
@@ -510,28 +514,6 @@
             this.txtPrepared.Size = new System.Drawing.Size(289, 32);
             this.txtPrepared.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
             this.txtPrepared.TabIndex = 9;
-            // 
-            // txtReviewed
-            // 
-            this.txtReviewed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtReviewed.Location = new System.Drawing.Point(3, 6);
-            this.txtReviewed.Name = "txtReviewed";
-            this.txtReviewed.Size = new System.Drawing.Size(289, 32);
-            this.txtReviewed.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
-            this.txtReviewed.TabIndex = 9;
-            // 
-            // txtApproved
-            // 
-            this.txtApproved.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtApproved.Location = new System.Drawing.Point(3, 6);
-            this.txtApproved.Name = "txtApproved";
-            this.txtApproved.Size = new System.Drawing.Size(289, 32);
-            this.txtApproved.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
-            this.txtApproved.TabIndex = 9;
             // 
             // tableLayoutPanel3
             // 
@@ -596,6 +578,32 @@
             this.btnSave.Values.Text = "SAVE";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // cboReview
+            // 
+            this.cboReview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboReview.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboReview.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboReview.DropDownWidth = 350;
+            this.cboReview.Location = new System.Drawing.Point(3, 11);
+            this.cboReview.Name = "cboReview";
+            this.cboReview.Size = new System.Drawing.Size(288, 25);
+            this.cboReview.TabIndex = 1;
+            this.cboReview.Validating += new System.ComponentModel.CancelEventHandler(this.cboReview_Validating);
+            // 
+            // cboApproved
+            // 
+            this.cboApproved.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboApproved.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboApproved.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboApproved.DropDownWidth = 350;
+            this.cboApproved.Location = new System.Drawing.Point(3, 11);
+            this.cboApproved.Name = "cboApproved";
+            this.cboApproved.Size = new System.Drawing.Size(288, 25);
+            this.cboApproved.TabIndex = 1;
+            this.cboApproved.Validating += new System.ComponentModel.CancelEventHandler(this.cboApproved_Validating);
+            // 
             // frmCustomInfoMPR_V2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -652,11 +660,11 @@
             this.kryptonPanel14.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel15)).EndInit();
             this.kryptonPanel15.ResumeLayout(false);
-            this.kryptonPanel15.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel16)).EndInit();
             this.kryptonPanel16.ResumeLayout(false);
-            this.kryptonPanel16.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cboReview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboApproved)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -696,10 +704,10 @@
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtWoNo;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtMPRNo;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtPrepared;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtReviewed;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtApproved;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSave;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cboReview;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cboApproved;
     }
 }

@@ -90,7 +90,7 @@ namespace StorageDLHI.App.ProjectGUI
                 ProjectNo = txtProjectNo.Text,
                 WorkOrderNo = txtWoNo.Text,
                 ProductInfo = txtProjectInfo.Text,
-                Weight = decimal.Parse(txtWeight.Text.Trim()),
+                Weight = !string.IsNullOrEmpty(txtWeight.Text.Trim()) ? decimal.Parse(txtWeight.Text.Trim()) : 0,
                 CustomerId = Guid.Parse(cboCustomer.SelectedValue.ToString().Trim()),
             };
 

@@ -47,5 +47,12 @@ namespace StorageDLHI.BLL.StaffDAO
 
             return dtForCbo;
         }
+
+        public static async Task<DataTable> GetStaffManager()
+        {
+            string sqlQuery = string.Format(QueryStatement.GET_STAFF_MANAGER);
+
+            return await data.GetDataAsync(sqlQuery, "STAFF_MANAGER");
+        }
     }
 }

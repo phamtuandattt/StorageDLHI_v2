@@ -154,6 +154,7 @@ namespace StorageDLHI.DAL.QueryStatements
         //public const string GET_MPR_DETAIL_BY_MPR_ID = "SELECT *FROM MPR_DETAIL WHERE MPR_ID = '{0}'";
         public const string ADD_MPR = "SET DATEFORMAT DMY INSERT INTO MPRS (ID, MPR_NO, MPR_WO_NO, MPR_PROJECT_NAME, MPR_REV_TOTAL, \r\nMPR_CREATE_DATE, MPR_EXPECTED_DELIVERY_DATE, MPR_PREPARED, MPR_REVIEWED, MPR_APPROVED, STAFF_ID, IS_MAKE_PO)\r\nVALUES ('{0}', '{1}', '{2}', '{3}', N'{4}', N'{5}', N'{6}', N'{7}', '{8}', '{9}', '{10}', '{11}')";
         public const string ADD_MPR_DETAIL = "";
+        public const string ADD_MPR_V2 = "SET DATEFORMAT DMY INSERT INTO MPRS (ID, MPR_NO, MPR_REV_TOTAL, MPR_CREATE_DATE, MPR_EXPECTED_DELIVERY_DATE, MPR_PREPARED, MPR_REVIEWED, MPR_APPROVED, IS_MAKE_PO, STAFF_ID, PROJECT_ID) VALUES ('{0}', '{1}', '{2}', N'{3}', N'{4}', N'{5}', N'{6}', N'{7}', '{8}', '{9}', '{10}')";
         public const string DELETE_MPR = "DELETE FROM MPRS WHERE ID = '{0}'";
         public const string GET_MPR_DETAIL_FORM = "SELECT *FROM MPR_DETAIL WHERE ID = '00000000-0000-0000-0000-000000000000'";
         public const string GET_MPRs = "SELECT *FROM MPRS";
@@ -256,6 +257,7 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_STAFF_DEVICE_NAME = "STAFF_DEVICE_NAME";
         public const string GET_STAFF_BY_DEVICE = "SELECT *FROM STAFFS WHERE STAFF_DEVICE_NAME = '{0}'";
         public const string GET_STAFF_LOGIN_BY_ID = "SELECT STAFFS.ID, DEPARMENTS.DEP_CODE FROM STAFFS, DEPARMENTS WHERE STAFFS.DEPARMENT_ID = DEPARMENTS.ID AND STAFFS.ID = '{0}'";
+        public const string GET_STAFF_MANAGER = "EXEC GET_STAFF_MANAGER";
 
         // Deparment
         public const string PROPERTY_DEPARTMENT_DEP_CODE = "DEP_CODE";

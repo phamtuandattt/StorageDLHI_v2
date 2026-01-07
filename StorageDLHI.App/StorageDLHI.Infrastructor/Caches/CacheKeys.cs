@@ -47,5 +47,8 @@ namespace StorageDLHI.Infrastructor.Caches
         public const string MATERIAL_OF_TYPE_BY_TYPE_ID = "MaterialOfTypeByTypeId.DataTable.TypeId.{0}";
 
         public const string PROJECT_DATATABLE_ALL_FOR_COMBOBOX = "Project.DataTable.AllProject.ForCombobox";
+        public const string PROJECT_DATATABLE = "Project.DataTable.AllProject";
+
+        public const string USER_DATATABLE_USER_MANAGER_FOR_COMBOBOX = "User.DataTable.UserManager.ForCombobox";
     }
 }

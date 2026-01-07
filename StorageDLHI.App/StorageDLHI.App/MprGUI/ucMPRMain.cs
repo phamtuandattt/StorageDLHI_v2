@@ -111,7 +111,7 @@ namespace StorageDLHI.App.MprGUI
             // ---------- LOAD DATA MPRS
             if (!CacheManager.Exists(CacheKeys.MPRS_DATATABLE_ALL_MPRS))
             {
-                dtMprs = await MprDAO.GetMprs_V2();
+                dtMprs = await MprDAO.GetMprs_V2(Guid.Parse("3AD699A8-6C51-411F-A750-A94C84B7E7E7"));
                 CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, dtMprs);
                 dgvMPRs.DataSource = dtMprs;
             }
@@ -538,29 +538,30 @@ namespace StorageDLHI.App.MprGUI
 
         private async void btnConfirm_Click(object sender, EventArgs e)
         {
-            frmCustomInfoMPR_V2 frmCustomInfoMPR_V2 = new frmCustomInfoMPR_V2();
-            frmCustomInfoMPR_V2.ShowDialog();
-            //if (dtProdsOfMprs.Rows.Count <= 0 && dgvProdExistMpr.Rows.Count <= 0)
-            //{
-            //    MessageBoxHelper.ShowWarning("Please add product to create MPRs !");
-            //    return;
-            //}
+            if (dtProdsOfMprs.Rows.Count <= 0 && dgvProdExistMpr.Rows.Count <= 0)
+            {
+                MessageBoxHelper.ShowWarning("Please add product to create MPRs !");
+                return;
+            }
 
             //frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_ADD_INFO, true, dtProdsOfMprs);
             //frmCustomInfoMpr.ShowDialog();
 
-            //if (!frmCustomInfoMpr.CanelOrConfirm)
-            //{
-            //    return;
-            //}
+            frmCustomInfoMPR_V2 frmCustomInfoMPR_V2 = new frmCustomInfoMPR_V2(TitleManager.MPR_ADD_INFO, true, dtProdsOfMprs);
+            frmCustomInfoMPR_V2.ShowDialog();
 
-            //CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs());
-            //LoadData();
+            if (!frmCustomInfoMPR_V2.CanelOrConfirm)
+            {
+                return;
+            }
 
-            //prodsAdded.Clear();
-            //dtProdsOfMprs.Clear();
-            //dgvProdExistMpr.Refresh();
-            //tlsLabalQtyProd.Text = "Total: (0)";
+            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs_V2(Guid.Parse("3AD699A8-6C51-411F-A750-A94C84B7E7E7")));
+            LoadData();
+
+            prodsAdded.Clear();
+            dtProdsOfMprs.Clear();
+            dgvProdExistMpr.Refresh();
+            tlsLabalQtyProd.Text = "Total: (0)";
         }
 
         private void btnReload_Click(object sender, EventArgs e)

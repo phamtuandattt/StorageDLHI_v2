@@ -92,8 +92,8 @@ namespace StorageDLHI.App.Common
             CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX, await MaterialDAO.GetTaxs());
             CacheManager.Add(CacheKeys.UNIT_DATATABLE_ALLUNIT, await MaterialDAO.GetUnits());
             CacheManager.Add(CacheKeys.COST_DATATABLE_ALLCOST, await MaterialDAO.GetCosts());
-            CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, await ProductDAO.GetProductsForCreateMPR());
-            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs());
+            CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, await ProductDAO.GetProductsForCreateMPR_V2());
+            //CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs_V2());
             CacheManager.Add(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER, await SupplierDAO.GetSuppliers());
             CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, await PoDAO.GetPOs());
             CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, await MprDAO.GetMprsForMakePO());
@@ -129,11 +129,11 @@ namespace StorageDLHI.App.Common
                 }
             }
 
-            foreach (string colName in hiddenCols)
-            {
-                if (dataGridView.Columns.Contains(colName))
-                    dataGridView.Columns[colName].Visible = false;
-            }
+            //foreach (string colName in hiddenCols)
+            //{
+            //    if (dataGridView.Columns.Contains(colName))
+            //        dataGridView.Columns[colName].Visible = false;
+            //}
         }
 
         public static void EnableTabStopForInputs(Control parent)
