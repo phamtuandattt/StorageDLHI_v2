@@ -146,7 +146,9 @@ namespace StorageDLHI.App.MprGUI
                     Staff_Id = ShareData.UserId,
                     IsMakePO = false,
                     Project_Id = this.pModel.Id,
-                    Mpr_Rev_Total = ""
+                    Mpr_Rev_Total = "",
+                    IsCancel = false,
+                    CancelBy = ""
                 };
 
                 foreach (DataRow dr in dtProdOfMpr.Rows)

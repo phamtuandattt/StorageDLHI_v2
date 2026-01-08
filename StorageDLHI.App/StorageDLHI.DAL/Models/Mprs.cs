@@ -22,6 +22,9 @@ namespace StorageDLHI.DAL.Models
 
         public Guid Staff_Id { get; set; }
         public Guid Project_Id  { get; set; }
+
+        public bool IsCancel { get; set; }
+        public string CancelBy { get; set; }
     }
 
     public class Mpr_Detail
