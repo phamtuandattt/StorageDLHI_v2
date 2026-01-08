@@ -25,6 +25,9 @@ namespace StorageDLHI.DAL.Models
 
         public bool IsCancel { get; set; }
         public string CancelBy { get; set; }
+
+        public Guid ReviewedBy { get; set; }
+        public Guid ApprovedBy { get; set; }
     }
 
     public class Mpr_Detail

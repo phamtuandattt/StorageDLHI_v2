@@ -31,7 +31,7 @@ namespace StorageDLHI.App.MprGUI
         private bool isPrint = false;
         private DataTable dtProdOfMpr = new DataTable();
         private DataTable dtProdOfMprAdd = new DataTable();
-        private Mprs dtMPRDetail = new Mprs();
+        private Mprs dtMprs = new Mprs();
         private DataTable dtForPrint = new DataTable();
 
         public bool CanelOrConfirm { get; set; } = true; // true is confirm || cancel
@@ -47,6 +47,30 @@ namespace StorageDLHI.App.MprGUI
             this.Text = title;
             this.dtProdOfMpr = dtProdOfMpr;
             this.dtPickerCreate.MinDate = DateTime.Now;
+        }
+
+        public frmCustomInfoMPR_V2(string title, bool status, bool isPrint, Mprs dtMprs, DataTable dtForPrint) // status = false; isPrint = true
+        {
+            InitializeComponent();
+            //LoadDataProject();
+            //LoadUser();
+            this.Text = title;
+            this.dtForPrint = dtForPrint;
+            this.isPrint = isPrint;
+            this.dtMprs = dtMprs;
+
+            txtMPRNo.Text = this.dtMprs.Mpr_No.Trim();
+            txtPrepared.Text = this.dtMprs.Mpr_Prepared.Trim();
+            cboReview.SelectedValue = this.dtMprs.ReviewedBy;
+            cboApproved.SelectedValue = this.dtMprs.ApprovedBy;
+            dtPickerCreate.Value = this.dtMprs.CreateDate;
+            dtPickerDelivery.Value = this.dtMprs.Expected_Delivery_Date;
+            cboProject.SelectedValue = Guid.Parse(this.dtMprs.Project_Id.ToString());
+
+            txtMPRNo.ReadOnly = true;
+            txtWoNo.ReadOnly = true;
+            //txtProjectName.ReadOnly = true;
+            dtPickerCreate.Enabled = false;
         }
 
         private void frmCustomInfoMPR_V2_Load(object sender, EventArgs e)
@@ -78,6 +102,10 @@ namespace StorageDLHI.App.MprGUI
             }
             else
             {
+                cboReview.DisplayMember = QueryStatement.PROPERTY_STAFF_NAME;
+                cboReview.ValueMember = QueryStatement.PROPERTY_STAFF_ID;
+                cboApproved.DisplayMember = QueryStatement.PROPERTY_STAFF_NAME;
+                cboApproved.ValueMember = QueryStatement.PROPERTY_STAFF_ID;
                 cboReview.DataSource = CacheManager.Get<DataTable>(CacheKeys.USER_DATATABLE_USER_MANAGER_FOR_COMBOBOX);
                 cboApproved.DataSource = CacheManager.Get<DataTable>(CacheKeys.USER_DATATABLE_USER_MANAGER_FOR_COMBOBOX).Copy();
             }
@@ -112,6 +140,8 @@ namespace StorageDLHI.App.MprGUI
             }
             else
             {
+                cboProject.DisplayMember = QueryStatement.PROPERTY_PROJECT_NAME;
+                cboProject.ValueMember = QueryStatement.PROPERTY_PROJECT_ID;
                 cboProject.DataSource = CacheManager.Get<DataTable>(CacheKeys.PROJECT_DATATABLE_ALL_FOR_COMBOBOX);
                 this.dtProjects = CacheManager.Get<DataTable>(CacheKeys.PROJECT_DATATABLE);
             }
@@ -148,7 +178,9 @@ namespace StorageDLHI.App.MprGUI
                     Project_Id = this.pModel.Id,
                     Mpr_Rev_Total = "",
                     IsCancel = false,
-                    CancelBy = ""
+                    CancelBy = "",
+                    ReviewedBy = Guid.Parse(cboReview.SelectedValue.ToString()),
+                    ApprovedBy = Guid.Parse(cboApproved.SelectedValue.ToString()),
                 };
 
                 foreach (DataRow dr in dtProdOfMpr.Rows)
@@ -191,15 +223,13 @@ namespace StorageDLHI.App.MprGUI
             {
                 Mprs mprs = new Mprs()
                 {
-                    Id = this.dtMPRDetail.Id,
+                    Id = this.dtMprs.Id,
                     Mpr_No = txtMPRNo.Text.Trim(),
-                    //Mpr_Wo_No = txtWoNo.Text.Trim(),
-                    //Mpr_Project_Name_Code = txtProjectName.Text.Trim(),
-                    CreateDate = DateTime.Parse(dtPickerCreate.Value.ToString("dd/MM/yyyy")),
                     Expected_Delivery_Date = DateTime.Parse(dtPickerDelivery.Value.ToString("dd/MM/yyyy")),
-                    Mpr_Prepared = txtPrepared.Text.Trim(),
                     Mpr_Reviewed = cboReview.Text.Trim(),
                     Mpr_Approved = cboApproved.Text.Trim(),
+                    ReviewedBy = Guid.Parse(cboReview.SelectedValue.ToString().Trim()),
+                    ApprovedBy = Guid.Parse(cboApproved.SelectedValue.ToString().Trim()),
                 };
 
                 if (await MprDAO.UpdateMprInfo(mprs))
@@ -214,20 +244,30 @@ namespace StorageDLHI.App.MprGUI
             }
             else
             {
-                Guid mprId = dtMPRDetail.Id;
-                string mpr_no = dtMPRDetail.Mpr_No.Trim();
-                //string wo_no = dtMPRDetail.Mpr_Wo_No.Trim();
-                //string project_name = dtMPRDetail.Mpr_Project_Name_Code.Trim();
+                Guid mprId = this.dtMprs.Id;
+                string mpr_no = this.dtMprs.Mpr_No.Trim();
+                string wo_no = "";
+                string project_name = "";
+                var projectId = this.dtMprs.Project_Id;
+                foreach (DataRow dataRow in dtProjects.Rows)
+                {
+                    if (dataRow[0].ToString().Trim().Equals(projectId.ToString()))
+                    {
+                        project_name = dataRow[QueryStatement.PROPERTY_PROJECT_NAME].ToString().Trim();
+                        wo_no = dataRow[QueryStatement.PROPERTY_PROJECT_WO].ToString().Trim();
+                        break;
+                    }
+                }
 
                 var placeholders = new Dictionary<string, string>
                 {
-                    //{ Common.DictionaryKey.MPR_NO, mpr_no },
-                    //{ Common.DictionaryKey.WO_NO, wo_no },
-                    //{ Common.DictionaryKey.PROJECT_NAME, project_name },
+                    { Common.DictionaryKey.MPR_NO, mpr_no },
+                    { Common.DictionaryKey.WO_NO, wo_no },
+                    { Common.DictionaryKey.PROJECT_NAME, project_name },
                     { Common.DictionaryKey.DATE_EXPORT, DateTime.Now.ToString("dd/MM/yyyy") },
-                    { Common.DictionaryKey.PREPARED, dtMPRDetail.Mpr_Prepared },
-                    { Common.DictionaryKey.REVIEWED, dtMPRDetail.Mpr_Reviewed },
-                    { Common.DictionaryKey.APPROVED, dtMPRDetail.Mpr_Approved }
+                    { Common.DictionaryKey.PREPARED, this.dtMprs.Mpr_Prepared },
+                    { Common.DictionaryKey.REVIEWED, this.dtMprs.Mpr_Reviewed },
+                    { Common.DictionaryKey.APPROVED, this.dtMprs.Mpr_Approved }
                 };
 
                 string templatePath = Common.PathManager.GetPathTemplate(Common.PathManager.MPR_TEMPLATE_FILE_NAME);

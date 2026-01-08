@@ -598,7 +598,7 @@ namespace StorageDLHI.App.MprGUI
             frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_UPDATE_INFO, false, mprs);
             frmCustomInfoMpr.ShowDialog();
 
-            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs());
+            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs_V2(Guid.Parse("3AD699A8-6C51-411F-A750-A94C84B7E7E7")));
             LoadData();
         }
 
@@ -710,20 +710,23 @@ namespace StorageDLHI.App.MprGUI
             {
                 Id = Guid.Parse(dgvMPRs.Rows[rsl].Cells[0].Value.ToString().Trim()),
                 Mpr_No = dgvMPRs.Rows[rsl].Cells[1].Value.ToString().Trim(),
-                //Mpr_Wo_No = dgvMPRs.Rows[rsl].Cells[2].Value.ToString().Trim(),
-                //Mpr_Project_Name_Code = dgvMPRs.Rows[rsl].Cells[3].Value.ToString().Trim(),
                 Mpr_Rev_Total = dgvMPRs.Rows[rsl].Cells[4].Value.ToString().Trim(),
                 CreateDate = DateTime.Parse(dgvMPRs.Rows[rsl].Cells[5].Value.ToString().Trim()),
                 Expected_Delivery_Date = DateTime.Parse(dgvMPRs.Rows[rsl].Cells[6].Value.ToString().Trim()),
                 Mpr_Prepared = dgvMPRs.Rows[rsl].Cells[7].Value.ToString().Trim(),
                 Mpr_Reviewed = dgvMPRs.Rows[rsl].Cells[8].Value.ToString().Trim(),
                 Mpr_Approved = dgvMPRs.Rows[rsl].Cells[9].Value.ToString().Trim(),
+                Project_Id = Guid.Parse(dgvMPRs.Rows[rsl].Cells[12].Value.ToString().Trim()),
+                ReviewedBy = Guid.Parse(dgvMPRs.Rows[rsl].Cells[13].Value.ToString().Trim()),
+                ApprovedBy = Guid.Parse(dgvMPRs.Rows[rsl].Cells[14].Value.ToString().Trim()),
             };
 
             var dtExport = await MprDAO.GetDataForExportAsync(mprs.Id);
-            frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_EXPORT_EXCEL, false, true, mprs, dtExport);
-            frmCustomInfoMpr.ShowDialog();
+            //frmCustomInfoMpr frmCustomInfoMpr = new frmCustomInfoMpr(TitleManager.MPR_EXPORT_EXCEL, false, true, mprs, dtExport);
+            //frmCustomInfoMpr.ShowDialog();
 
+            frmCustomInfoMPR_V2 frmCustomInfoMPR_V2 = new frmCustomInfoMPR_V2(TitleManager.MPR_EXPORT_EXCEL, false, true, mprs, dtExport);
+            frmCustomInfoMPR_V2.ShowDialog();
         }
 
         private void txtSearchProd_TextChanged(object sender, EventArgs e)

@@ -39,7 +39,7 @@ namespace StorageDLHI.BLL.MprDAO
 
             string sqlQuery = string.Format(QueryStatement.ADD_MPR_V2, mprs.Id, mprs.Mpr_No, mprs.Mpr_Rev_Total,
                 mprs.CreateDate, mprs.Expected_Delivery_Date, mprs.Mpr_Prepared, mprs.Mpr_Reviewed, mprs.Mpr_Approved, 
-                mprs.IsMakePO, mprs.Staff_Id, mprs.Project_Id);
+                mprs.IsMakePO, mprs.Staff_Id, mprs.Project_Id, mprs.IsCancel, mprs.CancelBy, mprs.ReviewedBy, mprs.ReviewedBy);
 
             return await data.Insert(sqlQuery) > 0;
         }
@@ -76,8 +76,8 @@ namespace StorageDLHI.BLL.MprDAO
 
         public static async Task<bool> UpdateMprInfo(Mprs mprs)
         {
-            string sqlQuery = string.Format(QueryStatement.UPDATE_MPR_INFO, mprs.Expected_Delivery_Date, mprs.Mpr_Prepared, mprs.Mpr_Reviewed,
-                mprs.Mpr_Approved, mprs.Id);
+            string sqlQuery = string.Format(QueryStatement.UPDATE_MPR_INFO, mprs.Expected_Delivery_Date, mprs.Mpr_Reviewed,
+                mprs.Mpr_Approved, mprs.ReviewedBy, mprs.ApprovedBy, mprs.Id);
             return await data.Update(sqlQuery) > 0;
         }
 
