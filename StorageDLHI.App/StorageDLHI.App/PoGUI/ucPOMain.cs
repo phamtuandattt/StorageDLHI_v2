@@ -997,8 +997,8 @@ namespace StorageDLHI.App.PoGUI
             var lstProperty = new List<string>()
             {
                 QueryStatement.PROPERTY_MPR_MPR_NO,
-                QueryStatement.PROPERTY_MPR_MPR_WO_NO,
-                QueryStatement.PROPERTY_MPR_MPR_PROJECT_NAME
+                //QueryStatement.PROPERTY_MPR_MPR_WO_NO,
+                //QueryStatement.PROPERTY_MPR_MPR_PROJECT_NAME
             };
 
             dgvMPRs.DataSource = Common.Common.Search(tlsSearchMprForMakePO.Text.Trim(), dtMprs.Copy(), lstProperty);

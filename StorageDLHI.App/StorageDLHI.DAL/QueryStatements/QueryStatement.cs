@@ -135,6 +135,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_PROD_M_TYPE_ID = "M_TYPE_ID";
         public const string PROPERTY_PROD_STANDARD_ID = "STANDARD_ID";
         public const string PROPERTY_PROD_UNIT_CODE = "UNIT_CODE";
+        public const string PROPERTY_SEARCH_MATERIAL_TYPE_CODE = "MATERIAL_TYPE_CODE";
+        public const string PROPERTY_SEARCH_MATERIAL_TYPE_DETAIL_CODE = "MATERIAL_TYPE_DETAIL_CODE";
         public const string UPDATE_PROD = "UPDATE PRODUCTS\r\nSET PRODUCT_NAME = N'{0}', PRODUCT_DES_2 = '{1}', PRODUCT_CODE = '{2}', PRODUCT_MATERIAL_CODE = '{3}',\r\nPICTURE_LINK = N'{4}', PICTURE = (SELECT *FROM OPENROWSET(BULK N'{5}', SINGLE_BLOB) AS IMAGE),\r\nA_THINHNESS = '{6}', B_DEPTH = '{7}', C_WIDTH = '{8}', D_WEB ='{9}', E_FLAG = '{10}', F_LENGTH = '{11}', G_WEIGHT = '{12}',\r\nUSED_NOTE = N'{13}', UNIT_ID = '{14}', \tORIGIN_ID = '{15}', M_TYPE_ID = '{16}', STANDARD_ID = '{17}'\r\nWHERE ID = '{18}'";
         public const string GET_PRODUCTS_FOR_CREATE_MPR = "EXEC GET_PRODUCTS";
         public const string GET_ITEM_NUMBER_OF_MATERIAL_TYPE = "EXEC GET_ITEM_NUMBER_OF_MATERIAL_TYPE '{0}'";
@@ -166,8 +168,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_MPR_MPR_CREATE_DATE = "MPR_CREATE_DATE";
         public const string PROPERTY_MPR_MPR_EXPECTED_DELIVERY_DATE = "MPR_EXPECTED_DELIVERY_DATE";
         public const string PROPERTY_MPR_MPR_NO = "MPR_NO";
-        public const string PROPERTY_MPR_MPR_WO_NO = "MPR_WO_NO";
-        public const string PROPERTY_MPR_MPR_PROJECT_NAME = "MPR_PROJECT_NAME";
+        public const string PROPERTY_MPR_MPR_WO_NO = "WO_NO";
+        public const string PROPERTY_MPR_MPR_PROJECT_NAME = "PROJECT_NAME";
         public const string PROPERTY_MPR_MPR_PREPARED = "MPR_PREPARED";
         public const string PROPERTY_MPR_MPR_REVIEWED = "MPR_REVIEWED";
         public const string PROPERTY_MPR_MPR_APPROVED = "MPR_APPROVED";

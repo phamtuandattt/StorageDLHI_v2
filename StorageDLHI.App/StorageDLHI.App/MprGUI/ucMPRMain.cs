@@ -267,14 +267,14 @@ namespace StorageDLHI.App.MprGUI
             dataRow[2] = dgvProds.Rows[rsl].Cells[2].Value.ToString().Trim().ToUpper();
             dataRow[3] = dgvProds.Rows[rsl].Cells[3].Value.ToString().Trim().ToUpper();
             dataRow[4] = dgvProds.Rows[rsl].Cells[4].Value.ToString().Trim().ToUpper();
-            dataRow[5] = dgvProds.Rows[rsl].Cells[6].Value.ToString().Trim();
-            dataRow[6] = dgvProds.Rows[rsl].Cells[7].Value.ToString().Trim();
-            dataRow[7] = dgvProds.Rows[rsl].Cells[8].Value.ToString().Trim();
-            dataRow[8] = dgvProds.Rows[rsl].Cells[9].Value.ToString().Trim();
-            dataRow[9] = dgvProds.Rows[rsl].Cells[10].Value.ToString().Trim();
-            dataRow[10] = dgvProds.Rows[rsl].Cells[11].Value.ToString().Trim();
-            dataRow[11] = dgvProds.Rows[rsl].Cells[12].Value.ToString().Trim();
-            dataRow[12] = dgvProds.Rows[rsl].Cells[13].Value.ToString().Trim();
+            dataRow[5] = dgvProds.Rows[rsl].Cells[5].Value.ToString().Trim();
+            dataRow[6] = dgvProds.Rows[rsl].Cells[6].Value.ToString().Trim();
+            dataRow[7] = dgvProds.Rows[rsl].Cells[7].Value.ToString().Trim();
+            dataRow[8] = dgvProds.Rows[rsl].Cells[8].Value.ToString().Trim();
+            dataRow[9] = dgvProds.Rows[rsl].Cells[9].Value.ToString().Trim();
+            dataRow[10] = dgvProds.Rows[rsl].Cells[10].Value.ToString().Trim();
+            dataRow[11] = dgvProds.Rows[rsl].Cells[11].Value.ToString().Trim();
+            dataRow[12] = dgvProds.Rows[rsl].Cells[12].Value.ToString().Trim();
             dataRow[13] = qtyAdd;
             dataRow[14] = usageNote;
 
@@ -507,8 +507,9 @@ namespace StorageDLHI.App.MprGUI
                 $"OR {QueryStatement.PROPERTY_PROD_E} LIKE '%{txtSearchProd.Text}%' " +
                 $"OR {QueryStatement.PROPERTY_PROD_F} LIKE '%{txtSearchProd.Text}%' " +
                 $"OR {QueryStatement.PROPERTY_PROD_G} LIKE '%{txtSearchProd.Text}%' " +
-                $"OR {QueryStatement.PROPERTY_PROD_USAGE} LIKE '%{txtSearchProd.Text}%' " +
-                $"OR {QueryStatement.PROPERTY_PROD_UNIT_CODE} LIKE '%{txtSearchProd.Text}%' ";
+                $"OR {QueryStatement.PROPERTY_PROD_UNIT_CODE} LIKE '%{txtSearchProd.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_SEARCH_MATERIAL_TYPE_CODE} LIKE '%{txtSearchProd.Text}%' " +
+                $"OR {QueryStatement.PROPERTY_SEARCH_MATERIAL_TYPE_DETAIL_CODE} LIKE '%{txtSearchProd.Text}%' ";
 
             dgvProds.DataSource = dv;
         }
