@@ -92,6 +92,27 @@
             this.txtSearchProdExistMPR = new System.Windows.Forms.ToolStripTextBox();
             this.btnConfirm = new System.Windows.Forms.ToolStripButton();
             this.tlsLabalQtyProd = new System.Windows.Forms.ToolStripLabel();
+            this.pageMPRCanceled = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.kryptonPanel6 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonPanel7 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonPanel8 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.kryptonGroupBox4 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.dgvMPRCancelDetail = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.kryptonGroupBox6 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.dgvMPRCancel = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.toolStrip4 = new System.Windows.Forms.ToolStrip();
+            this.btnRefreshMPRCancel = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
+            this.txtSearchMPRCancel = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
+            this.cboProjects = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripLabel7 = new System.Windows.Forms.ToolStripLabel();
+            this.cboProjectForMPRCancel = new System.Windows.Forms.ToolStripComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pageMPRs)).BeginInit();
@@ -136,6 +157,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdExistMpr)).BeginInit();
             this.ctmUpdateQtyProdMpr.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pageMPRCanceled)).BeginInit();
+            this.pageMPRCanceled.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel6)).BeginInit();
+            this.kryptonPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel7)).BeginInit();
+            this.kryptonPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel8)).BeginInit();
+            this.kryptonPanel8.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).BeginInit();
+            this.kryptonGroupBox4.Panel.SuspendLayout();
+            this.kryptonGroupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMPRCancelDetail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox6.Panel)).BeginInit();
+            this.kryptonGroupBox6.Panel.SuspendLayout();
+            this.kryptonGroupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMPRCancel)).BeginInit();
+            this.toolStrip4.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonNavigator1
@@ -147,8 +188,9 @@
             this.kryptonNavigator1.Name = "kryptonNavigator1";
             this.kryptonNavigator1.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
             this.pageMPRs,
-            this.pageAddMPR});
-            this.kryptonNavigator1.SelectedIndex = 0;
+            this.pageAddMPR,
+            this.pageMPRCanceled});
+            this.kryptonNavigator1.SelectedIndex = 2;
             this.kryptonNavigator1.Size = new System.Drawing.Size(1386, 757);
             this.kryptonNavigator1.StateCommon.Panel.Color1 = System.Drawing.Color.White;
             this.kryptonNavigator1.StateCommon.Panel.Color2 = System.Drawing.Color.White;
@@ -194,11 +236,11 @@
             // 
             this.kryptonPanel5.Controls.Add(this.tableLayoutPanel2);
             this.kryptonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel5.Location = new System.Drawing.Point(0, 27);
+            this.kryptonPanel5.Location = new System.Drawing.Point(0, 28);
             this.kryptonPanel5.Name = "kryptonPanel5";
             this.kryptonPanel5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonPanel5.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundCustom1;
-            this.kryptonPanel5.Size = new System.Drawing.Size(1384, 699);
+            this.kryptonPanel5.Size = new System.Drawing.Size(1384, 698);
             this.kryptonPanel5.TabIndex = 6;
             // 
             // tableLayoutPanel2
@@ -213,13 +255,13 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.48927F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.51073F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1384, 699);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1384, 698);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // kryptonGroupBox5
             // 
             this.kryptonGroupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox5.Location = new System.Drawing.Point(3, 300);
+            this.kryptonGroupBox5.Location = new System.Drawing.Point(3, 299);
             this.kryptonGroupBox5.Name = "kryptonGroupBox5";
             this.kryptonGroupBox5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             // 
@@ -259,7 +301,7 @@
             // kryptonGroupBox3.Panel
             // 
             this.kryptonGroupBox3.Panel.Controls.Add(this.dgvMPRs);
-            this.kryptonGroupBox3.Size = new System.Drawing.Size(1378, 291);
+            this.kryptonGroupBox3.Size = new System.Drawing.Size(1378, 290);
             this.kryptonGroupBox3.TabIndex = 0;
             this.kryptonGroupBox3.Values.Heading = "MPRs";
             // 
@@ -277,7 +319,7 @@
             this.dgvMPRs.ReadOnly = true;
             this.dgvMPRs.RowHeadersWidth = 51;
             this.dgvMPRs.RowTemplate.Height = 30;
-            this.dgvMPRs.Size = new System.Drawing.Size(1374, 263);
+            this.dgvMPRs.Size = new System.Drawing.Size(1374, 262);
             this.dgvMPRs.TabIndex = 2;
             this.dgvMPRs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMPRs_CellClick);
             this.dgvMPRs.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMPRs_CellMouseDown);
@@ -291,19 +333,19 @@
             this.editMPRInfoToolStripMenuItem,
             this.cancelMPRToolStripMenuItem});
             this.ctmUpdateMpr.Name = "ctmUpdateMpr";
-            this.ctmUpdateMpr.Size = new System.Drawing.Size(211, 80);
+            this.ctmUpdateMpr.Size = new System.Drawing.Size(169, 52);
             // 
             // editMPRInfoToolStripMenuItem
             // 
             this.editMPRInfoToolStripMenuItem.Name = "editMPRInfoToolStripMenuItem";
-            this.editMPRInfoToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.editMPRInfoToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
             this.editMPRInfoToolStripMenuItem.Text = "Edit MPR info";
             this.editMPRInfoToolStripMenuItem.Click += new System.EventHandler(this.editMPRInfoToolStripMenuItem_Click);
             // 
             // cancelMPRToolStripMenuItem
             // 
             this.cancelMPRToolStripMenuItem.Name = "cancelMPRToolStripMenuItem";
-            this.cancelMPRToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.cancelMPRToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
             this.cancelMPRToolStripMenuItem.Text = "Cancel MPR";
             this.cancelMPRToolStripMenuItem.Click += new System.EventHandler(this.cancelMPRToolStripMenuItem_Click);
             // 
@@ -320,11 +362,14 @@
             this.toolStripSeparator4,
             this.tlsSearchDateCreateMPR,
             this.lblTime,
-            this.tlsClearSearchDate});
+            this.tlsClearSearchDate,
+            this.toolStripSeparator7,
+            this.toolStripLabel6,
+            this.cboProjects});
             this.toolStrip3.Location = new System.Drawing.Point(0, 0);
             this.toolStrip3.Name = "toolStrip3";
             this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip3.Size = new System.Drawing.Size(1384, 27);
+            this.toolStrip3.Size = new System.Drawing.Size(1384, 28);
             this.toolStrip3.TabIndex = 5;
             this.toolStrip3.Text = "toolStrip3";
             // 
@@ -334,26 +379,26 @@
             this.btnReload.Image = global::StorageDLHI.App.Properties.Resources.refresh;
             this.btnReload.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(29, 24);
+            this.btnReload.Size = new System.Drawing.Size(29, 25);
             this.btnReload.Text = "Refresh";
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripLabel3
             // 
             this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(56, 24);
+            this.toolStripLabel3.Size = new System.Drawing.Size(56, 25);
             this.toolStripLabel3.Text = "Search:";
             // 
             // txtSearchMPR
             // 
             this.txtSearchMPR.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSearchMPR.Name = "txtSearchMPR";
-            this.txtSearchMPR.Size = new System.Drawing.Size(200, 27);
+            this.txtSearchMPR.Size = new System.Drawing.Size(200, 28);
             this.txtSearchMPR.TextChanged += new System.EventHandler(this.txtSearchMPR_TextChanged);
             // 
             // tlsExportExcelMpr
@@ -362,14 +407,14 @@
             this.tlsExportExcelMpr.Image = global::StorageDLHI.App.Properties.Resources.excel;
             this.tlsExportExcelMpr.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsExportExcelMpr.Name = "tlsExportExcelMpr";
-            this.tlsExportExcelMpr.Size = new System.Drawing.Size(29, 24);
+            this.tlsExportExcelMpr.Size = new System.Drawing.Size(29, 25);
             this.tlsExportExcelMpr.Text = "Export";
             this.tlsExportExcelMpr.Click += new System.EventHandler(this.tlsExportExcelMpr_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
             // 
             // tlsSearchDateCreateMPR
             // 
@@ -377,14 +422,14 @@
             this.tlsSearchDateCreateMPR.Image = global::StorageDLHI.App.Properties.Resources.search;
             this.tlsSearchDateCreateMPR.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsSearchDateCreateMPR.Name = "tlsSearchDateCreateMPR";
-            this.tlsSearchDateCreateMPR.Size = new System.Drawing.Size(29, 24);
+            this.tlsSearchDateCreateMPR.Size = new System.Drawing.Size(29, 25);
             this.tlsSearchDateCreateMPR.Text = "Search date";
             this.tlsSearchDateCreateMPR.Click += new System.EventHandler(this.tlsSearchDateCreateMPR_Click);
             // 
             // lblTime
             // 
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(0, 24);
+            this.lblTime.Size = new System.Drawing.Size(0, 25);
             // 
             // tlsClearSearchDate
             // 
@@ -392,7 +437,7 @@
             this.tlsClearSearchDate.Image = global::StorageDLHI.App.Properties.Resources.clean;
             this.tlsClearSearchDate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsClearSearchDate.Name = "tlsClearSearchDate";
-            this.tlsClearSearchDate.Size = new System.Drawing.Size(29, 24);
+            this.tlsClearSearchDate.Size = new System.Drawing.Size(29, 25);
             this.tlsClearSearchDate.Text = "Clear";
             this.tlsClearSearchDate.Visible = false;
             this.tlsClearSearchDate.Click += new System.EventHandler(this.tlsClearSearchDate_Click);
@@ -804,6 +849,215 @@
             this.tlsLabalQtyProd.Text = "(0)";
             this.tlsLabalQtyProd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // pageMPRCanceled
+            // 
+            this.pageMPRCanceled.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.pageMPRCanceled.Controls.Add(this.kryptonPanel6);
+            this.pageMPRCanceled.Flags = 65534;
+            this.pageMPRCanceled.LastVisibleSet = true;
+            this.pageMPRCanceled.MinimumSize = new System.Drawing.Size(50, 50);
+            this.pageMPRCanceled.Name = "pageMPRCanceled";
+            this.pageMPRCanceled.Size = new System.Drawing.Size(1384, 726);
+            this.pageMPRCanceled.Text = "MRP Canceled";
+            this.pageMPRCanceled.ToolTipTitle = "MPR Canceled";
+            this.pageMPRCanceled.UniqueName = "9A54287E7A6741EBDC848B9339937458";
+            this.pageMPRCanceled.Click += new System.EventHandler(this.pageMPRCanceled_Click);
+            // 
+            // kryptonPanel6
+            // 
+            this.kryptonPanel6.Controls.Add(this.kryptonPanel7);
+            this.kryptonPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel6.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel6.Name = "kryptonPanel6";
+            this.kryptonPanel6.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.kryptonPanel6.Size = new System.Drawing.Size(1384, 726);
+            this.kryptonPanel6.TabIndex = 3;
+            // 
+            // kryptonPanel7
+            // 
+            this.kryptonPanel7.Controls.Add(this.kryptonPanel8);
+            this.kryptonPanel7.Controls.Add(this.toolStrip4);
+            this.kryptonPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel7.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel7.Name = "kryptonPanel7";
+            this.kryptonPanel7.Size = new System.Drawing.Size(1384, 726);
+            this.kryptonPanel7.TabIndex = 0;
+            // 
+            // kryptonPanel8
+            // 
+            this.kryptonPanel8.Controls.Add(this.tableLayoutPanel3);
+            this.kryptonPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel8.Location = new System.Drawing.Point(0, 28);
+            this.kryptonPanel8.Name = "kryptonPanel8";
+            this.kryptonPanel8.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.kryptonPanel8.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundCustom1;
+            this.kryptonPanel8.Size = new System.Drawing.Size(1384, 698);
+            this.kryptonPanel8.TabIndex = 6;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.94798F));
+            this.tableLayoutPanel3.Controls.Add(this.kryptonGroupBox4, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.kryptonGroupBox6, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.48927F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.51073F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1384, 698);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // kryptonGroupBox4
+            // 
+            this.kryptonGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonGroupBox4.Location = new System.Drawing.Point(3, 299);
+            this.kryptonGroupBox4.Name = "kryptonGroupBox4";
+            this.kryptonGroupBox4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            // 
+            // kryptonGroupBox4.Panel
+            // 
+            this.kryptonGroupBox4.Panel.Controls.Add(this.dgvMPRCancelDetail);
+            this.kryptonGroupBox4.Size = new System.Drawing.Size(1378, 396);
+            this.kryptonGroupBox4.TabIndex = 2;
+            this.kryptonGroupBox4.Values.Heading = "MPR Detail";
+            // 
+            // dgvMPRCancelDetail
+            // 
+            this.dgvMPRCancelDetail.AllowUserToAddRows = false;
+            this.dgvMPRCancelDetail.AllowUserToDeleteRows = false;
+            this.dgvMPRCancelDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMPRCancelDetail.ColumnHeadersHeight = 30;
+            this.dgvMPRCancelDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMPRCancelDetail.Location = new System.Drawing.Point(0, 0);
+            this.dgvMPRCancelDetail.Name = "dgvMPRCancelDetail";
+            this.dgvMPRCancelDetail.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.dgvMPRCancelDetail.ReadOnly = true;
+            this.dgvMPRCancelDetail.RowHeadersWidth = 51;
+            this.dgvMPRCancelDetail.RowTemplate.Height = 30;
+            this.dgvMPRCancelDetail.Size = new System.Drawing.Size(1374, 368);
+            this.dgvMPRCancelDetail.TabIndex = 3;
+            this.dgvMPRCancelDetail.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvMPRCancelDetail_RowPostPaint);
+            // 
+            // kryptonGroupBox6
+            // 
+            this.kryptonGroupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonGroupBox6.Location = new System.Drawing.Point(3, 3);
+            this.kryptonGroupBox6.Name = "kryptonGroupBox6";
+            this.kryptonGroupBox6.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            // 
+            // kryptonGroupBox6.Panel
+            // 
+            this.kryptonGroupBox6.Panel.Controls.Add(this.dgvMPRCancel);
+            this.kryptonGroupBox6.Size = new System.Drawing.Size(1378, 290);
+            this.kryptonGroupBox6.TabIndex = 0;
+            this.kryptonGroupBox6.Values.Heading = "MPRs";
+            // 
+            // dgvMPRCancel
+            // 
+            this.dgvMPRCancel.AllowUserToAddRows = false;
+            this.dgvMPRCancel.AllowUserToDeleteRows = false;
+            this.dgvMPRCancel.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMPRCancel.ColumnHeadersHeight = 30;
+            this.dgvMPRCancel.ContextMenuStrip = this.ctmUpdateMpr;
+            this.dgvMPRCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMPRCancel.Location = new System.Drawing.Point(0, 0);
+            this.dgvMPRCancel.Name = "dgvMPRCancel";
+            this.dgvMPRCancel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.dgvMPRCancel.ReadOnly = true;
+            this.dgvMPRCancel.RowHeadersWidth = 51;
+            this.dgvMPRCancel.RowTemplate.Height = 30;
+            this.dgvMPRCancel.Size = new System.Drawing.Size(1374, 262);
+            this.dgvMPRCancel.TabIndex = 2;
+            this.dgvMPRCancel.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMPRCancel_CellClick);
+            this.dgvMPRCancel.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvMPRCancel_RowPostPaint);
+            // 
+            // toolStrip4
+            // 
+            this.toolStrip4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip4.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnRefreshMPRCancel,
+            this.toolStripSeparator5,
+            this.toolStripLabel4,
+            this.txtSearchMPRCancel,
+            this.toolStripSeparator6,
+            this.toolStripLabel5,
+            this.toolStripLabel7,
+            this.cboProjectForMPRCancel});
+            this.toolStrip4.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip4.Name = "toolStrip4";
+            this.toolStrip4.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip4.Size = new System.Drawing.Size(1384, 28);
+            this.toolStrip4.TabIndex = 5;
+            this.toolStrip4.Text = "toolStrip4";
+            // 
+            // btnRefreshMPRCancel
+            // 
+            this.btnRefreshMPRCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRefreshMPRCancel.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.btnRefreshMPRCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefreshMPRCancel.Name = "btnRefreshMPRCancel";
+            this.btnRefreshMPRCancel.Size = new System.Drawing.Size(29, 28);
+            this.btnRefreshMPRCancel.Text = "Refresh";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 31);
+            // 
+            // toolStripLabel4
+            // 
+            this.toolStripLabel4.Name = "toolStripLabel4";
+            this.toolStripLabel4.Size = new System.Drawing.Size(56, 28);
+            this.toolStripLabel4.Text = "Search:";
+            // 
+            // txtSearchMPRCancel
+            // 
+            this.txtSearchMPRCancel.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSearchMPRCancel.Name = "txtSearchMPRCancel";
+            this.txtSearchMPRCancel.Size = new System.Drawing.Size(200, 31);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 31);
+            // 
+            // toolStripLabel5
+            // 
+            this.toolStripLabel5.Name = "toolStripLabel5";
+            this.toolStripLabel5.Size = new System.Drawing.Size(0, 28);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripLabel6
+            // 
+            this.toolStripLabel6.Name = "toolStripLabel6";
+            this.toolStripLabel6.Size = new System.Drawing.Size(82, 25);
+            this.toolStripLabel6.Text = "Project:      ";
+            // 
+            // cboProjects
+            // 
+            this.cboProjects.Name = "cboProjects";
+            this.cboProjects.Size = new System.Drawing.Size(250, 28);
+            this.cboProjects.SelectedIndexChanged += new System.EventHandler(this.cboProjects_SelectedIndexChanged);
+            // 
+            // toolStripLabel7
+            // 
+            this.toolStripLabel7.Name = "toolStripLabel7";
+            this.toolStripLabel7.Size = new System.Drawing.Size(84, 28);
+            this.toolStripLabel7.Text = "Projects:     ";
+            // 
+            // cboProjectForMPRCancel
+            // 
+            this.cboProjectForMPRCancel.Name = "cboProjectForMPRCancel";
+            this.cboProjectForMPRCancel.Size = new System.Drawing.Size(200, 28);
+            this.cboProjectForMPRCancel.SelectedIndexChanged += new System.EventHandler(this.cboProjectForMPRCancel_SelectedIndexChanged);
+            // 
             // ucMPRMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -812,6 +1066,7 @@
             this.Controls.Add(this.kryptonNavigator1);
             this.Name = "ucMPRMain";
             this.Size = new System.Drawing.Size(1386, 757);
+            this.Load += new System.EventHandler(this.ucMPRMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).EndInit();
             this.kryptonNavigator1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pageMPRs)).EndInit();
@@ -862,6 +1117,28 @@
             this.ctmUpdateQtyProdMpr.ResumeLayout(false);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pageMPRCanceled)).EndInit();
+            this.pageMPRCanceled.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel6)).EndInit();
+            this.kryptonPanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel7)).EndInit();
+            this.kryptonPanel7.ResumeLayout(false);
+            this.kryptonPanel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel8)).EndInit();
+            this.kryptonPanel8.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).EndInit();
+            this.kryptonGroupBox4.Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).EndInit();
+            this.kryptonGroupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMPRCancelDetail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox6.Panel)).EndInit();
+            this.kryptonGroupBox6.Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox6)).EndInit();
+            this.kryptonGroupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMPRCancel)).EndInit();
+            this.toolStrip4.ResumeLayout(false);
+            this.toolStrip4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -931,5 +1208,26 @@
         private System.Windows.Forms.ToolStripLabel lblTime;
         private System.Windows.Forms.ToolStripButton tlsClearSearchDate;
         private System.Windows.Forms.ToolStripMenuItem cancelMPRToolStripMenuItem;
+        private ComponentFactory.Krypton.Navigator.KryptonPage pageMPRCanceled;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel6;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel7;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel8;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox4;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvMPRCancelDetail;
+        private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox6;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvMPRCancel;
+        private System.Windows.Forms.ToolStrip toolStrip4;
+        private System.Windows.Forms.ToolStripButton btnRefreshMPRCancel;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel4;
+        private System.Windows.Forms.ToolStripTextBox txtSearchMPRCancel;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel5;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel6;
+        private System.Windows.Forms.ToolStripComboBox cboProjects;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel7;
+        private System.Windows.Forms.ToolStripComboBox cboProjectForMPRCancel;
     }
 }

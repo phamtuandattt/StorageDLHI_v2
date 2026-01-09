@@ -30,6 +30,8 @@ using Panel = System.Windows.Forms.Panel;
 using StorageDLHI.App.PoGUI;
 using System.Windows;
 using StorageDLHI.Infrastructor.Shared;
+using StorageDLHI.BLL.ProjectDAO;
+using System.Web.Management;
 
 namespace StorageDLHI.App.MprGUI
 {
@@ -41,10 +43,17 @@ namespace StorageDLHI.App.MprGUI
         private DataTable dtProdsOfMprs = new DataTable();
         private DataTable dtMprs = new DataTable();
         private DataTable dtMprDetailById = new DataTable();
+        private DataTable dtMprCancels = new DataTable();
+        private DataTable dtMprCancelDetail = new DataTable();
+        private DataTable dtProjects = new DataTable();
 
         private Panel pnNoDataMprs = new Panel();
         private Panel pnNoDataMprsDetail = new Panel();
         private Panel pnNoDataProds = new Panel();
+        private Panel pnNoDataMprCancels = new Panel();
+        private Panel pnNoDataMprCancelDetail = new Panel();
+
+        private bool _projectIsLoad = false;
 
         public ucMPRMain()
         {
@@ -61,6 +70,14 @@ namespace StorageDLHI.App.MprGUI
             ucPanelNoData ucNoDataProd = new ucPanelNoData("No records found !");
             pnNoDataProds = ucNoDataProd.pnlNoData;
             dgvProds.Controls.Add(pnNoDataProds);
+
+            ucPanelNoData ucNoDataMprCancels = new ucPanelNoData("No records found !");
+            pnNoDataMprCancels = ucNoDataMprCancels.pnlNoData;
+            dgvMPRCancel.Controls.Add(pnNoDataMprCancels);
+
+            ucPanelNoData ucNoDataMprCancelDetail = new ucPanelNoData("No records found !");
+            pnNoDataMprCancelDetail = ucNoDataMprCancelDetail.pnlNoData;
+            dgvMPRCancelDetail.Controls.Add(pnNoDataMprCancelDetail);
 
             LoadData();
 
@@ -83,6 +100,81 @@ namespace StorageDLHI.App.MprGUI
             dgvProdExistMpr.DataSource = dtProdsOfMprs;
         }
 
+        private async void ucMPRMain_Load(object sender, EventArgs e)
+        {
+            await LoadDataProject();
+            if (_projectIsLoad)
+            {
+                var projectId = Guid.Parse(cboProjects.ComboBox.SelectedValue.ToString().Trim());
+                await LoadDataMPRsByProject(projectId);
+
+                var projectIdForMprCancel = Guid.Parse(cboProjectForMPRCancel.ComboBox.SelectedValue.ToString().Trim());
+                await LoadMPRCancel(projectIdForMprCancel);
+            }
+        }
+
+        private async void LoadAll()
+        {
+            _projectIsLoad = false;
+            await LoadDataProject();
+            if (_projectIsLoad)
+            {
+                var projectId = Guid.Parse(cboProjects.ComboBox.SelectedValue.ToString().Trim());
+                await LoadDataMPRsByProject(projectId);
+
+                var projectIdForMprCancel = Guid.Parse(cboProjectForMPRCancel.ComboBox.SelectedValue.ToString().Trim());
+                await LoadMPRCancel(projectIdForMprCancel);
+
+                LoadData();
+            }
+        }
+
+        private async Task LoadDataProject()
+        {
+            // ----- LOAD DATA FOR PROD OF CREATE MPR
+            if (!CacheManager.Exists(CacheKeys.PROJECT_DATATABLE_ALL_FOR_COMBOBOX)
+                && !CacheManager.Exists(CacheKeys.PROJECT_DATATABLE))
+            {
+                var dtCommon = await ProjectDAO.GetProjects();
+                if (dtCommon != null && dtCommon.dtProjects != null && dtCommon.dtProjectForCombox != null
+                    && dtCommon.dtProjects.AsEnumerable().Any() && dtCommon.dtProjectForCombox.AsEnumerable().Any())
+                {
+                    var dtCombobox = dtCommon.dtProjectForCombox;
+                    this.dtProjects = dtCommon.dtProjects;
+
+                    cboProjects.ComboBox.DisplayMember = QueryStatement.PROPERTY_PROJECT_NAME;
+                    cboProjects.ComboBox.ValueMember = QueryStatement.PROPERTY_PROJECT_ID;
+                    cboProjects.ComboBox.DataSource = dtCombobox;
+
+                    cboProjectForMPRCancel.ComboBox.DisplayMember = QueryStatement.PROPERTY_PROJECT_NAME;
+                    cboProjectForMPRCancel.ComboBox.ValueMember = QueryStatement.PROPERTY_PROJECT_ID;
+                    cboProjectForMPRCancel.ComboBox.DataSource = dtCombobox.Copy();
+
+                    CacheManager.Add(CacheKeys.PROJECT_DATATABLE_ALL_FOR_COMBOBOX, dtCombobox);
+                    CacheManager.Add(CacheKeys.PROJECT_DATATABLE, dtProjects);
+                    _projectIsLoad = true;
+                }
+                else
+                {
+                    MessageBoxHelper.ShowError("Please add project before create MPRs !");
+                    return;
+                }
+            }
+            else
+            {
+                cboProjects.ComboBox.DisplayMember = QueryStatement.PROPERTY_PROJECT_NAME;
+                cboProjects.ComboBox.ValueMember = QueryStatement.PROPERTY_PROJECT_ID;
+                cboProjects.ComboBox.DataSource = CacheManager.Get<DataTable>(CacheKeys.PROJECT_DATATABLE_ALL_FOR_COMBOBOX);
+
+                cboProjectForMPRCancel.ComboBox.DisplayMember = QueryStatement.PROPERTY_PROJECT_NAME;
+                cboProjectForMPRCancel.ComboBox.ValueMember = QueryStatement.PROPERTY_PROJECT_ID;
+                cboProjectForMPRCancel.ComboBox.DataSource = CacheManager.Get<DataTable>(CacheKeys.PROJECT_DATATABLE_ALL_FOR_COMBOBOX).Copy();
+
+                this.dtProjects = CacheManager.Get<DataTable>(CacheKeys.PROJECT_DATATABLE);
+                _projectIsLoad = true;
+            }
+        }
+
         private async void LoadData()
         {
             // ----- LOAD DATA FOR PROD OF CREATE MPR
@@ -101,28 +193,32 @@ namespace StorageDLHI.App.MprGUI
             if (dtProds.Rows.Count > 0 && dtProds != null)
             {
                 ConfigDataGridView(dtProds, dgvProds, QueryStatement.HiddenColoumnOfProdForMPR.Split(','));
+                Common.Common.HideNoDataPanel(pnNoDataProds);
             }
             else
             {
                 Common.Common.ShowNoDataPanel(dgvProds, pnNoDataProds);
             }
-            //----------------------------------------
+        }
 
-
+        private async Task LoadDataMPRsByProject(Guid projectId)
+        {
             // ---------- LOAD DATA MPRS
-            if (!CacheManager.Exists(CacheKeys.MPRS_DATATABLE_ALL_MPRS))
+            if (!CacheManager.Exists(string.Format(CacheKeys.MPRS_DATATABLE_ALL_MPRS_OF_PROJECT, projectId)))
             {
-                dtMprs = await MprDAO.GetMprs_V2(Guid.Parse("3AD699A8-6C51-411F-A750-A94C84B7E7E7"));
-                CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, dtMprs);
+                dtMprs = await MprDAO.GetMprs_V2(projectId);
+                CacheManager.Add(string.Format(CacheKeys.MPRS_DATATABLE_ALL_MPRS_OF_PROJECT, projectId), dtMprs);
                 dgvMPRs.DataSource = dtMprs;
             }
             else
             {
-                dgvMPRs.DataSource = CacheManager.Get<DataTable>(CacheKeys.MPRS_DATATABLE_ALL_MPRS);
+                dgvMPRs.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPRS_DATATABLE_ALL_MPRS_OF_PROJECT, projectId));
             }
-            if (dtMprs != null && dtMprs.Rows.Count > 0)
+            if (dtMprs != null && dtMprs.Rows.Count > 0
+                && dgvMPRs.Rows.Count > 0)
             {
                 Common.Common.ConfigDataGridView(dtMprs, dgvMPRs, null);
+                Common.Common.HideNoDataPanel(pnNoDataMprs);
             }
             else
             {
@@ -130,7 +226,8 @@ namespace StorageDLHI.App.MprGUI
             }
             //----------------------------------------
 
-            if (dtMprs != null && dtMprs.AsEnumerable().Any())
+            if (dtMprs != null && dtMprs.AsEnumerable().Any()
+                && dgvMPRs.Rows.Count > 0)
             {
                 var mprId = Guid.Parse(dgvMPRs.Rows[0].Cells[0].Value.ToString());
                 if (!CacheManager.Exists(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId)))
@@ -143,9 +240,11 @@ namespace StorageDLHI.App.MprGUI
                 {
                     dgvMPRDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId));
                 }
-                if (dtMprDetailById != null && dtMprDetailById.Rows.Count > 0)
+                if (dtMprDetailById != null && dtMprDetailById.Rows.Count > 0
+                    && dgvMPRDetail.Rows.Count > 0)
                 {
                     Common.Common.ConfigDataGridView(dtMprDetailById, dgvMPRDetail, null);
+                    Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
                 }
                 else
                 {
@@ -557,8 +656,10 @@ namespace StorageDLHI.App.MprGUI
                 return;
             }
 
-            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs_V2(Guid.Parse("3AD699A8-6C51-411F-A750-A94C84B7E7E7")));
-            LoadData();
+            CacheManager.Add(string.Format(CacheKeys.MPRS_DATATABLE_ALL_MPRS_OF_PROJECT, Guid.Parse(cboProjects.ComboBox.SelectedValue.ToString().Trim())), 
+                await MprDAO.GetMprs_V2(Guid.Parse(cboProjects.ComboBox.SelectedValue.ToString().Trim())));
+            //LoadData();
+            LoadAll();
 
             prodsAdded.Clear();
             dtProdsOfMprs.Clear();
@@ -566,11 +667,21 @@ namespace StorageDLHI.App.MprGUI
             tlsLabalQtyProd.Text = "Total: (0)";
         }
 
-        private void btnReload_Click(object sender, EventArgs e)
+        private async void btnReload_Click(object sender, EventArgs e)
         {
             //ShowDialogManager.ShowDialogHelp();
+            _projectIsLoad = false;
+            await LoadDataProject();
+            if (_projectIsLoad)
+            {
+                var projectId = Guid.Parse(cboProjects.ComboBox.SelectedValue.ToString().Trim());
+                await LoadDataMPRsByProject(projectId);
 
-            LoadData();
+                var projectIdForMprCancel = Guid.Parse(cboProjectForMPRCancel.ComboBox.SelectedValue.ToString().Trim());
+                await LoadMPRCancel(projectIdForMprCancel);
+
+                LoadData();
+            }
         }
 
         private void dgvMPRs_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -618,8 +729,10 @@ namespace StorageDLHI.App.MprGUI
             frmCustomInfoMPR_V2 frmCustomInfoMPR_V2 = new frmCustomInfoMPR_V2(TitleManager.MPR_UPDATE_INFO, false, mprs);
             frmCustomInfoMPR_V2.ShowDialog();
 
-            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs_V2(Guid.Parse("3AD699A8-6C51-411F-A750-A94C84B7E7E7")));
-            LoadData();
+            CacheManager.Add(string.Format(CacheKeys.MPRS_DATATABLE_ALL_MPRS_OF_PROJECT, Guid.Parse(cboProjects.ComboBox.SelectedValue.ToString().Trim())),
+                await MprDAO.GetMprs_V2(Guid.Parse(cboProjects.ComboBox.SelectedValue.ToString().Trim())));
+            //LoadData();
+            LoadAll();
         }
 
         private void dgvMPRs_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -845,7 +958,8 @@ namespace StorageDLHI.App.MprGUI
         {
             lblTime.Text = "";
             dgvMPRs.Refresh();
-            dgvMPRs.DataSource = CacheManager.Get<DataTable>(CacheKeys.MPRS_DATATABLE_ALL_MPRS).Copy();
+            dgvMPRs.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPRS_DATATABLE_ALL_MPRS_OF_PROJECT,
+                Guid.Parse(cboProjects.ComboBox.SelectedValue.ToString().Trim()))).Copy();
 
             if (dgvMPRs.Rows.Count <= 0)
             {
@@ -901,13 +1015,128 @@ namespace StorageDLHI.App.MprGUI
             {
                 MessageBoxHelper.ShowInfo($"Cancel MPR [{dgvMPRs.Rows[rsl].Cells[1].Value.ToString().Trim()}] success !");
 
-                CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs_V2(Guid.Parse("3AD699A8-6C51-411F-A750-A94C84B7E7E7")));
-                LoadData();
+                CacheManager.Add(string.Format(CacheKeys.MPRS_DATATABLE_ALL_MPRS_OF_PROJECT, Guid.Parse(cboProjects.ComboBox.SelectedValue.ToString().Trim())),
+                    await MprDAO.GetMprs_V2(Guid.Parse(cboProjects.ComboBox.SelectedValue.ToString().Trim())));
+                //LoadData();
+                LoadAll();
             }
             else
             {
                 MessageBoxHelper.ShowWarning($"Cancel MPR [{dgvMPRs.Rows[rsl].Cells[1].Value.ToString().Trim()}] failed !");
             }
+        }
+
+        private void pageMPRCanceled_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private async Task LoadMPRCancel(Guid projectId)
+        {
+            // ---------- LOAD DATA MPRS CANCEL
+            if (!CacheManager.Exists(string.Format(CacheKeys.MPRS_CANCEL_DATATABLE_ALL_OF_PROJECT, projectId)))
+            {
+                dtMprCancels = await MprDAO.GetMprCanceled(projectId);
+                CacheManager.Add(string.Format(CacheKeys.MPRS_CANCEL_DATATABLE_ALL_OF_PROJECT, projectId), dtMprCancels);
+                dgvMPRCancel.DataSource = dtMprCancels;
+            }
+            else
+            {
+                dgvMPRCancel.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPRS_CANCEL_DATATABLE_ALL_OF_PROJECT, projectId));
+            }
+            if (dtMprCancels != null && dtMprCancels.Rows.Count > 0
+                && dgvMPRCancel.Rows.Count > 0)
+            {
+                Common.Common.ConfigDataGridView(dtMprCancels, dgvMPRCancel, null);
+                Common.Common.HideNoDataPanel(pnNoDataMprCancels);
+            }
+            else
+            {
+                Common.Common.ShowNoDataPanel(dgvMPRCancel, pnNoDataMprCancels);
+            }
+            //----------------------------------------
+
+            if (dtMprCancels != null && dtMprCancels.AsEnumerable().Any()
+                && dgvMPRCancel.Rows.Count > 0)
+            {
+                var mprId = Guid.Parse(dgvMPRCancel.Rows[0].Cells[0].Value.ToString());
+                if (!CacheManager.Exists(string.Format(CacheKeys.MPRS_CANCEL_DETAIL_BY_ID, mprId)))
+                {
+                    dtMprCancelDetail = await MprDAO.GetMprDetailByMpr(mprId);
+                    CacheManager.Add(string.Format(CacheKeys.MPRS_CANCEL_DETAIL_BY_ID, mprId), dtMprCancelDetail);
+                    dgvMPRCancelDetail.DataSource = dtMprCancelDetail;
+                }
+                else
+                {
+                    dgvMPRCancelDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPRS_CANCEL_DETAIL_BY_ID, mprId));
+                }
+                if (dtMprCancelDetail != null && dtMprCancelDetail.Rows.Count > 0
+                    && dgvMPRCancelDetail.Rows.Count > 0)
+                {
+                    Common.Common.ConfigDataGridView(dtMprCancelDetail, dgvMPRCancelDetail, null);
+                    Common.Common.HideNoDataPanel(pnNoDataMprCancelDetail);
+                }
+                else
+                {
+                    Common.Common.ShowNoDataPanel(dgvMPRCancelDetail, pnNoDataMprCancelDetail);
+                }
+            }
+            else
+            {
+                Common.Common.ShowNoDataPanel(dgvMPRCancelDetail, pnNoDataMprCancelDetail);
+            }
+        }
+
+        private async void dgvMPRCancel_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvMPRCancel.Rows.Count <= 0) { return; }
+            int rsl = dgvMPRCancel.CurrentRow.Index;
+
+            var mprId = Guid.Parse(dgvMPRCancel.Rows[rsl].Cells[0].Value.ToString());
+            if (!CacheManager.Exists(string.Format(CacheKeys.MPRS_CANCEL_DETAIL_BY_ID, mprId)))
+            {
+                dtMprCancelDetail = await MprDAO.GetMprDetailByMpr(mprId);
+                CacheManager.Add(string.Format(CacheKeys.MPRS_CANCEL_DETAIL_BY_ID, mprId), dtMprCancelDetail);
+                dgvMPRCancelDetail.DataSource = dtMprCancelDetail;
+            }
+            else
+            {
+                dgvMPRCancelDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPRS_CANCEL_DETAIL_BY_ID, mprId));
+            }
+            if (dtMprCancelDetail != null && dtMprCancelDetail.Rows.Count > 0)
+            {
+                Common.Common.ConfigDataGridView(dtMprCancelDetail, dgvMPRCancelDetail, null);
+            }
+            else
+            {
+                Common.Common.ShowNoDataPanel(dgvMPRCancelDetail, pnNoDataMprsDetail);
+            }
+        }
+
+        private void dgvMPRCancel_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Common.Common.RenderNumbering(sender, e, this.Font);
+        }
+
+        private void dgvMPRCancelDetail_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Common.Common.RenderNumbering(sender, e, this.Font);
+        }
+
+        private async void cboProjects_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!_projectIsLoad) return;
+
+            var projectId = Guid.Parse(cboProjects.ComboBox.SelectedValue.ToString().Trim());
+            await LoadDataMPRsByProject(projectId);
+        }
+
+        private async void cboProjectForMPRCancel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!_projectIsLoad) return;
+
+            var projectIdForMprCancel = Guid.Parse(cboProjectForMPRCancel.ComboBox.SelectedValue.ToString().Trim());
+            await LoadMPRCancel(projectIdForMprCancel);
         }
     }
 }
