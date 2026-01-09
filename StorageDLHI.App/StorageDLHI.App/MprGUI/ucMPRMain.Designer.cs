@@ -41,6 +41,7 @@
             this.dgvMPRs = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.ctmUpdateMpr = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editMPRInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cancelMPRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.btnReload = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -287,16 +288,24 @@
             this.ctmUpdateMpr.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ctmUpdateMpr.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.ctmUpdateMpr.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editMPRInfoToolStripMenuItem});
+            this.editMPRInfoToolStripMenuItem,
+            this.cancelMPRToolStripMenuItem});
             this.ctmUpdateMpr.Name = "ctmUpdateMpr";
-            this.ctmUpdateMpr.Size = new System.Drawing.Size(169, 28);
+            this.ctmUpdateMpr.Size = new System.Drawing.Size(211, 80);
             // 
             // editMPRInfoToolStripMenuItem
             // 
             this.editMPRInfoToolStripMenuItem.Name = "editMPRInfoToolStripMenuItem";
-            this.editMPRInfoToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
+            this.editMPRInfoToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.editMPRInfoToolStripMenuItem.Text = "Edit MPR info";
             this.editMPRInfoToolStripMenuItem.Click += new System.EventHandler(this.editMPRInfoToolStripMenuItem_Click);
+            // 
+            // cancelMPRToolStripMenuItem
+            // 
+            this.cancelMPRToolStripMenuItem.Name = "cancelMPRToolStripMenuItem";
+            this.cancelMPRToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.cancelMPRToolStripMenuItem.Text = "Cancel MPR";
+            this.cancelMPRToolStripMenuItem.Click += new System.EventHandler(this.cancelMPRToolStripMenuItem_Click);
             // 
             // toolStrip3
             // 
@@ -921,5 +930,6 @@
         private System.Windows.Forms.ToolStripButton tlsSearchDateCreateMPR;
         private System.Windows.Forms.ToolStripLabel lblTime;
         private System.Windows.Forms.ToolStripButton tlsClearSearchDate;
+        private System.Windows.Forms.ToolStripMenuItem cancelMPRToolStripMenuItem;
     }
 }

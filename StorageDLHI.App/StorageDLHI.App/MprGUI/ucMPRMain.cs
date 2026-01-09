@@ -29,6 +29,7 @@ using System.Text.RegularExpressions;
 using Panel = System.Windows.Forms.Panel;
 using StorageDLHI.App.PoGUI;
 using System.Windows;
+using StorageDLHI.Infrastructor.Shared;
 
 namespace StorageDLHI.App.MprGUI
 {
@@ -877,6 +878,36 @@ namespace StorageDLHI.App.MprGUI
 
             frmDisplayImageProd frmDisplayImageProd = new frmDisplayImageProd(pModel);
             frmDisplayImageProd.ShowDialog();
+        }
+
+        private async void cancelMPRToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvMPRs.Rows.Count <= 0) { return; }
+            int rsl = dgvMPRs.CurrentRow.Index;
+
+            if (!MessageBoxHelper.Confirm($"Are you sure Cancel MPR [{dgvMPRs.Rows[rsl].Cells[1].Value.ToString().Trim()}] ?"))
+            {
+                return;
+            }
+
+            Mprs mprs = new Mprs()
+            {
+                Id = Guid.Parse(dgvMPRs.Rows[rsl].Cells[0].Value.ToString().Trim()),
+                IsCancel = true,
+                CancelBy = ShareData.UserName
+            };
+
+            if (await MprDAO.CancelMPR(mprs))
+            {
+                MessageBoxHelper.ShowInfo($"Cancel MPR [{dgvMPRs.Rows[rsl].Cells[1].Value.ToString().Trim()}] success !");
+
+                CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs_V2(Guid.Parse("3AD699A8-6C51-411F-A750-A94C84B7E7E7")));
+                LoadData();
+            }
+            else
+            {
+                MessageBoxHelper.ShowWarning($"Cancel MPR [{dgvMPRs.Rows[rsl].Cells[1].Value.ToString().Trim()}] failed !");
+            }
         }
     }
 }

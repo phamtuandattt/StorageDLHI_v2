@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Runtime;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -66,7 +67,7 @@ namespace StorageDLHI.BLL.MprDAO
 
         public static async Task<DataTable> GetMprs_V2(Guid projectId)
         {
-            return await data.GetDataAsync(string.Format(QueryStatement.GET_MPRS_BY_PROJET, projectId), "MPR_BY_PROJECT");
+            return await data.GetDataAsync(string.Format(QueryStatement.GET_MPRS_BY_PROJET, projectId, false), "MPR_BY_PROJECT");
         }
 
         public static async Task<DataTable> GetMprsForMakePO()
@@ -104,6 +105,14 @@ namespace StorageDLHI.BLL.MprDAO
         {
             string sqlQurey = string.Format(QueryStatement.GET_NUMBER_OF_MPR_CREATED, projectName);
             return await data.GetDataAsync(sqlQurey, "NUMBER_OF_CREATED");
+        }
+
+        public static async Task<bool> CancelMPR(Mprs mModel)
+        {
+            string sqlQuery = string.Format(QueryStatement.CANCEL_MPR, mModel.IsCancel, mModel.CancelBy, mModel.Id);
+            var rs = await data.Update(sqlQuery);
+
+            return rs > 0;
         }
     }
 }
