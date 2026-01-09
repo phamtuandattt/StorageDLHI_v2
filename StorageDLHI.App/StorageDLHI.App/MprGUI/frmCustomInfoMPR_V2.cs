@@ -25,7 +25,9 @@ namespace StorageDLHI.App.MprGUI
     {
         private DataTable dtProjects = new DataTable();
         private bool _formIsLoad = false;
-        private Projects pModel = null;
+        private bool _userIsLoad = false;
+        private bool _projectIsLoad = false;
+        private Projects pModel = new Projects();
 
         private bool status = true;
         private bool isPrint = false;
@@ -52,40 +54,75 @@ namespace StorageDLHI.App.MprGUI
         public frmCustomInfoMPR_V2(string title, bool status, bool isPrint, Mprs dtMprs, DataTable dtForPrint) // status = false; isPrint = true
         {
             InitializeComponent();
-            //LoadDataProject();
-            //LoadUser();
             this.Text = title;
             this.dtForPrint = dtForPrint;
             this.isPrint = isPrint;
             this.dtMprs = dtMprs;
-
-            txtMPRNo.Text = this.dtMprs.Mpr_No.Trim();
-            txtPrepared.Text = this.dtMprs.Mpr_Prepared.Trim();
-            cboReview.SelectedValue = this.dtMprs.ReviewedBy;
-            cboApproved.SelectedValue = this.dtMprs.ApprovedBy;
-            dtPickerCreate.Value = this.dtMprs.CreateDate;
-            dtPickerDelivery.Value = this.dtMprs.Expected_Delivery_Date;
-            cboProject.SelectedValue = Guid.Parse(this.dtMprs.Project_Id.ToString());
-
-            txtMPRNo.ReadOnly = true;
-            txtWoNo.ReadOnly = true;
-            //txtProjectName.ReadOnly = true;
-            dtPickerCreate.Enabled = false;
+            this.status = status;
         }
 
-        private void frmCustomInfoMPR_V2_Load(object sender, EventArgs e)
+        public frmCustomInfoMPR_V2(string title, bool status, Mprs dtMprs)
         {
-            LoadDataProject();
-            LoadUser();            
-            this.pModel = new Projects();
+            InitializeComponent();
+
+            this.Text = title;
+            this.status = status;
+            this.dtMprs = dtMprs;
+        }
+
+        private async void frmCustomInfoMPR_V2_Load(object sender, EventArgs e)
+        {
+            //this.pModel = new Projects();
+            await LoadDataProject();
+            await LoadUser();
             txtPrepared.Text = ShareData.UserName;
             this.dtPickerCreate.MinDate = DateTime.Now;
             this.dtPickerDelivery.MinDate = DateTime.Now;
 
-            _formIsLoad = true;
+            if (_userIsLoad && _projectIsLoad)
+            {
+                _formIsLoad = true;
+            }
+
+            if (_formIsLoad && this.status && !this.isPrint) // Add
+            {
+                // 
+            }    
+            else if (_formIsLoad && !this.status && !this.isPrint) // Update
+            {
+                txtMPRNo.Text = this.dtMprs.Mpr_No.Trim();
+                txtPrepared.Text = this.dtMprs.Mpr_Prepared.Trim();
+                cboReview.SelectedValue = this.dtMprs.ReviewedBy;
+                cboApproved.SelectedValue = this.dtMprs.ApprovedBy;
+                dtPickerCreate.Value = this.dtMprs.CreateDate;
+                dtPickerDelivery.Value = this.dtMprs.Expected_Delivery_Date;
+                cboProject.SelectedValue = Guid.Parse(this.dtMprs.Project_Id.ToString());
+                GetInfoProject(Guid.Parse(cboProject.SelectedValue.ToString()));
+
+                txtMPRNo.ReadOnly = true;
+                txtWoNo.ReadOnly = true;
+                cboProject.Enabled = false;
+                dtPickerCreate.Enabled = false;
+            }
+            else if (_formIsLoad && !this.status && this.isPrint) // print
+            {
+                txtMPRNo.Text = this.dtMprs.Mpr_No.Trim();
+                txtPrepared.Text = this.dtMprs.Mpr_Prepared.Trim();
+                cboReview.SelectedValue = this.dtMprs.ReviewedBy;
+                cboApproved.SelectedValue = this.dtMprs.ApprovedBy;
+                dtPickerCreate.Value = this.dtMprs.CreateDate;
+                dtPickerDelivery.Value = this.dtMprs.Expected_Delivery_Date;
+                cboProject.SelectedValue = Guid.Parse(this.dtMprs.Project_Id.ToString());
+                GetInfoProject(Guid.Parse(cboProject.SelectedValue.ToString()));
+
+                txtMPRNo.ReadOnly = true;
+                txtWoNo.ReadOnly = true;
+                cboProject.Enabled = false;
+                dtPickerCreate.Enabled = false;
+            }
         }
 
-        private async void LoadUser()
+        private async Task LoadUser()
         {
             if (!CacheManager.Exists(CacheKeys.USER_DATATABLE_USER_MANAGER_FOR_COMBOBOX))
             {
@@ -99,6 +136,7 @@ namespace StorageDLHI.App.MprGUI
                 cboApproved.DataSource = dtS.Copy();
 
                 CacheManager.Add(CacheKeys.USER_DATATABLE_USER_MANAGER_FOR_COMBOBOX, dtS);
+                _userIsLoad = true;
             }
             else
             {
@@ -108,10 +146,11 @@ namespace StorageDLHI.App.MprGUI
                 cboApproved.ValueMember = QueryStatement.PROPERTY_STAFF_ID;
                 cboReview.DataSource = CacheManager.Get<DataTable>(CacheKeys.USER_DATATABLE_USER_MANAGER_FOR_COMBOBOX);
                 cboApproved.DataSource = CacheManager.Get<DataTable>(CacheKeys.USER_DATATABLE_USER_MANAGER_FOR_COMBOBOX).Copy();
+                _userIsLoad = true;
             }
         }
 
-        private async void LoadDataProject()
+        private async Task LoadDataProject()
         {
             // ----- LOAD DATA FOR PROD OF CREATE MPR
             if (!CacheManager.Exists(CacheKeys.PROJECT_DATATABLE_ALL_FOR_COMBOBOX)
@@ -122,7 +161,7 @@ namespace StorageDLHI.App.MprGUI
                     && dtCommon.dtProjects.AsEnumerable().Any() && dtCommon.dtProjectForCombox.AsEnumerable().Any())
                 {
                     var dtCombobox = dtCommon.dtProjectForCombox;
-                    dtProjects = dtCommon.dtProjects;
+                    this.dtProjects = dtCommon.dtProjects;
 
                     cboProject.DisplayMember = QueryStatement.PROPERTY_PROJECT_NAME;
                     cboProject.ValueMember = QueryStatement.PROPERTY_PROJECT_ID;
@@ -130,6 +169,7 @@ namespace StorageDLHI.App.MprGUI
 
                     CacheManager.Add(CacheKeys.PROJECT_DATATABLE_ALL_FOR_COMBOBOX, dtCombobox);
                     CacheManager.Add(CacheKeys.PROJECT_DATATABLE, dtProjects);
+                    _projectIsLoad = true;
                 }
                 else
                 {
@@ -144,6 +184,7 @@ namespace StorageDLHI.App.MprGUI
                 cboProject.ValueMember = QueryStatement.PROPERTY_PROJECT_ID;
                 cboProject.DataSource = CacheManager.Get<DataTable>(CacheKeys.PROJECT_DATATABLE_ALL_FOR_COMBOBOX);
                 this.dtProjects = CacheManager.Get<DataTable>(CacheKeys.PROJECT_DATATABLE);
+                _projectIsLoad = true;
             }
         }
 
@@ -305,10 +346,16 @@ namespace StorageDLHI.App.MprGUI
                 return;
             }
 
-            var projectId = cboProject.SelectedValue.ToString().Trim();
+            var projectId = Guid.Parse(cboProject.SelectedValue.ToString().Trim());
+            GetInfoProject(projectId);
+        }
+
+
+        private void GetInfoProject(Guid projectId)
+        {
             foreach (DataRow dataRow in dtProjects.Rows)
             {
-                if (dataRow[QueryStatement.PROPERTY_PROJECT_ID].ToString().Trim().Equals(projectId))
+                if (dataRow[QueryStatement.PROPERTY_PROJECT_ID].ToString().Trim().Equals(projectId.ToString().Trim()))
                 {
                     this.pModel.Id = Guid.Parse(dataRow[QueryStatement.PROPERTY_PROJECT_ID].ToString().Trim());
                     this.pModel.Name = dataRow[QueryStatement.PROPERTY_PROJECT_NAME].ToString().Trim();
@@ -322,7 +369,6 @@ namespace StorageDLHI.App.MprGUI
                 }
             }
         }
-
         private void cboReview_Validating(object sender, CancelEventArgs e)
         {
             if (cboReview.Items.Count <= 0) return;
