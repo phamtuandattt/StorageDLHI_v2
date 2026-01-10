@@ -52,6 +52,9 @@
             this.tlsSearchDateCreateMPR = new System.Windows.Forms.ToolStripButton();
             this.lblTime = new System.Windows.Forms.ToolStripLabel();
             this.tlsClearSearchDate = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
+            this.cboProjects = new System.Windows.Forms.ToolStripComboBox();
             this.pageAddMPR = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -108,9 +111,6 @@
             this.txtSearchMPRCancel = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
-            this.cboProjects = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripLabel7 = new System.Windows.Forms.ToolStripLabel();
             this.cboProjectForMPRCancel = new System.Windows.Forms.ToolStripComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
@@ -190,7 +190,7 @@
             this.pageMPRs,
             this.pageAddMPR,
             this.pageMPRCanceled});
-            this.kryptonNavigator1.SelectedIndex = 2;
+            this.kryptonNavigator1.SelectedIndex = 0;
             this.kryptonNavigator1.Size = new System.Drawing.Size(1386, 757);
             this.kryptonNavigator1.StateCommon.Panel.Color1 = System.Drawing.Color.White;
             this.kryptonNavigator1.StateCommon.Panel.Color2 = System.Drawing.Color.White;
@@ -441,6 +441,23 @@
             this.tlsClearSearchDate.Text = "Clear";
             this.tlsClearSearchDate.Visible = false;
             this.tlsClearSearchDate.Click += new System.EventHandler(this.tlsClearSearchDate_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripLabel6
+            // 
+            this.toolStripLabel6.Name = "toolStripLabel6";
+            this.toolStripLabel6.Size = new System.Drawing.Size(82, 25);
+            this.toolStripLabel6.Text = "Project:      ";
+            // 
+            // cboProjects
+            // 
+            this.cboProjects.Name = "cboProjects";
+            this.cboProjects.Size = new System.Drawing.Size(250, 28);
+            this.cboProjects.SelectedIndexChanged += new System.EventHandler(this.cboProjects_SelectedIndexChanged);
             // 
             // pageAddMPR
             // 
@@ -999,57 +1016,40 @@
             this.btnRefreshMPRCancel.Image = global::StorageDLHI.App.Properties.Resources.refresh;
             this.btnRefreshMPRCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefreshMPRCancel.Name = "btnRefreshMPRCancel";
-            this.btnRefreshMPRCancel.Size = new System.Drawing.Size(29, 28);
+            this.btnRefreshMPRCancel.Size = new System.Drawing.Size(29, 25);
             this.btnRefreshMPRCancel.Text = "Refresh";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripLabel4
             // 
             this.toolStripLabel4.Name = "toolStripLabel4";
-            this.toolStripLabel4.Size = new System.Drawing.Size(56, 28);
+            this.toolStripLabel4.Size = new System.Drawing.Size(56, 25);
             this.toolStripLabel4.Text = "Search:";
             // 
             // txtSearchMPRCancel
             // 
             this.txtSearchMPRCancel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSearchMPRCancel.Name = "txtSearchMPRCancel";
-            this.txtSearchMPRCancel.Size = new System.Drawing.Size(200, 31);
+            this.txtSearchMPRCancel.Size = new System.Drawing.Size(200, 28);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripLabel5
             // 
             this.toolStripLabel5.Name = "toolStripLabel5";
-            this.toolStripLabel5.Size = new System.Drawing.Size(0, 28);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 28);
-            // 
-            // toolStripLabel6
-            // 
-            this.toolStripLabel6.Name = "toolStripLabel6";
-            this.toolStripLabel6.Size = new System.Drawing.Size(82, 25);
-            this.toolStripLabel6.Text = "Project:      ";
-            // 
-            // cboProjects
-            // 
-            this.cboProjects.Name = "cboProjects";
-            this.cboProjects.Size = new System.Drawing.Size(250, 28);
-            this.cboProjects.SelectedIndexChanged += new System.EventHandler(this.cboProjects_SelectedIndexChanged);
+            this.toolStripLabel5.Size = new System.Drawing.Size(0, 25);
             // 
             // toolStripLabel7
             // 
             this.toolStripLabel7.Name = "toolStripLabel7";
-            this.toolStripLabel7.Size = new System.Drawing.Size(84, 28);
+            this.toolStripLabel7.Size = new System.Drawing.Size(84, 25);
             this.toolStripLabel7.Text = "Projects:     ";
             // 
             // cboProjectForMPRCancel

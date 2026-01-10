@@ -217,7 +217,7 @@ namespace StorageDLHI.App.MprGUI
             if (dtMprs != null && dtMprs.Rows.Count > 0
                 && dgvMPRs.Rows.Count > 0)
             {
-                Common.Common.ConfigDataGridView(dtMprs, dgvMPRs, null);
+                Common.Common.ConfigDataGridView(dtMprs, dgvMPRs, Common.Common.GetHiddenColumns(QueryStatement.HiddenColumnDataGridViewOfMprs));
                 Common.Common.HideNoDataPanel(pnNoDataMprs);
             }
             else
@@ -243,7 +243,7 @@ namespace StorageDLHI.App.MprGUI
                 if (dtMprDetailById != null && dtMprDetailById.Rows.Count > 0
                     && dgvMPRDetail.Rows.Count > 0)
                 {
-                    Common.Common.ConfigDataGridView(dtMprDetailById, dgvMPRDetail, null);
+                    Common.Common.ConfigDataGridView(dtMprDetailById, dgvMPRDetail, Common.Common.GetHiddenColumns(QueryStatement.HiddenColumnDataGirdViewOfMprDetails));
                     Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
                 }
                 else
@@ -1047,7 +1047,7 @@ namespace StorageDLHI.App.MprGUI
             if (dtMprCancels != null && dtMprCancels.Rows.Count > 0
                 && dgvMPRCancel.Rows.Count > 0)
             {
-                Common.Common.ConfigDataGridView(dtMprCancels, dgvMPRCancel, null);
+                Common.Common.ConfigDataGridView(dtMprCancels, dgvMPRCancel, Common.Common.GetHiddenColumns(QueryStatement.HiddenColumnDataGridViewOfMprCancels));
                 Common.Common.HideNoDataPanel(pnNoDataMprCancels);
             }
             else
@@ -1073,7 +1073,7 @@ namespace StorageDLHI.App.MprGUI
                 if (dtMprCancelDetail != null && dtMprCancelDetail.Rows.Count > 0
                     && dgvMPRCancelDetail.Rows.Count > 0)
                 {
-                    Common.Common.ConfigDataGridView(dtMprCancelDetail, dgvMPRCancelDetail, null);
+                    Common.Common.ConfigDataGridView(dtMprCancelDetail, dgvMPRCancelDetail, Common.Common.GetHiddenColumns(QueryStatement.HiddenColumnDataGirdViewOfMprCancelsDetails));
                     Common.Common.HideNoDataPanel(pnNoDataMprCancelDetail);
                 }
                 else
@@ -1105,7 +1105,7 @@ namespace StorageDLHI.App.MprGUI
             }
             if (dtMprCancelDetail != null && dtMprCancelDetail.Rows.Count > 0)
             {
-                Common.Common.ConfigDataGridView(dtMprCancelDetail, dgvMPRCancelDetail, null);
+                Common.Common.ConfigDataGridView(dtMprCancelDetail, dgvMPRCancelDetail, Common.Common.GetHiddenColumns(QueryStatement.HiddenColumnDataGirdViewOfMprCancelsDetails));
             }
             else
             {

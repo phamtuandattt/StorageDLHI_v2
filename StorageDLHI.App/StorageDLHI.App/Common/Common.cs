@@ -101,6 +101,11 @@ namespace StorageDLHI.App.Common
 
         }
 
+        public static string[] GetHiddenColumns(string hiddenString)
+        {
+            return hiddenString.Split(',');
+        }
+
         public static void ConfigDataGridView(DataTable dt, DataGridView dataGridView, string[] hiddenCols)
         {
             dataGridView.AutoGenerateColumns = true;
@@ -129,11 +134,14 @@ namespace StorageDLHI.App.Common
                 }
             }
 
-            //foreach (string colName in hiddenCols)
-            //{
-            //    if (dataGridView.Columns.Contains(colName))
-            //        dataGridView.Columns[colName].Visible = false;
-            //}
+            if (hiddenCols != null && hiddenCols.Length > 0)
+            {
+                foreach (string colName in hiddenCols)
+                {
+                    if (dataGridView.Columns.Contains(colName))
+                        dataGridView.Columns[colName].Visible = false;
+                }
+            }
         }
 
         public static void EnableTabStopForInputs(Control parent)

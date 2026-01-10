@@ -150,9 +150,11 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string HiddenColoumnOfProdForMPR = "ID,UNIT_ID,ORIGIN_ID,STANDARD_ID,TYPE_ID,MATERIAL_OF_TYPE,ITEM_TYPE,PICTURE,PICTURE_LINK";
         public const string CANCEL_MPR = "UPDATE MPRS SET IS_CANCEL = '{0}', CANCEL_BY = N'{1}' WHERE ID = '{2}'";
 
+
         // MPRs
         public const string GET_MPR_DETAILs = "SELECT *FROM MPR_DETAIL";
-        public const string GET_MPRS_BY_PROJET = "  EXEC GET_MPR_CANCEL_BY_PROJECT '{0}', {1}";
+        public const string GET_MPR_BY_PROJECT = "EXEC GET_MPR_BY_PROJECT '{0}', {1}";
+        public const string GET_MPR_CANCEL_BY_PROJECT = "EXEC GET_MPR_CANCEL_BY_PROJECT '{0}', {1}";
         //public const string GET_MPR_DETAIL_BY_MPR_ID = "SELECT *FROM MPR_DETAIL WHERE MPR_ID = '{0}'";
         public const string ADD_MPR = "SET DATEFORMAT DMY INSERT INTO MPRS (ID, MPR_NO, MPR_WO_NO, MPR_PROJECT_NAME, MPR_REV_TOTAL, \r\nMPR_CREATE_DATE, MPR_EXPECTED_DELIVERY_DATE, MPR_PREPARED, MPR_REVIEWED, MPR_APPROVED, STAFF_ID, IS_MAKE_PO)\r\nVALUES ('{0}', '{1}', '{2}', '{3}', N'{4}', N'{5}', N'{6}', N'{7}', '{8}', '{9}', '{10}', '{11}')";
         public const string ADD_MPR_DETAIL = "";
@@ -174,6 +176,11 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_MPR_MPR_REVIEWED = "MPR_REVIEWED";
         public const string PROPERTY_MPR_MPR_APPROVED = "MPR_APPROVED";
         public const string GET_NUMBER_OF_MPR_CREATED = "EXEC GET_NUMBER_OF_MPR_CREATED '{0}'";
+        public const string HiddenColumnDataGridViewOfMprs = "ID,STAFF_ID,PROJECT_ID,REVIEWED_BY_ID,APPROVERD_BY_ID";
+        public const string HiddenColumnDataGirdViewOfMprDetails = "ID,MPR_ID,PRODUCT_ID";
+
+        public const string HiddenColumnDataGridViewOfMprCancels = "ID,STAFF_ID,PROJECT_ID,REVIEWED_BY_ID,APPROVERD_BY_ID";
+        public const string HiddenColumnDataGirdViewOfMprCancelsDetails = "ID,MPR_ID,PRODUCT_ID";
 
         // PO
         public const string INSERT_PO = "SET DATEFORMAT DMY " +

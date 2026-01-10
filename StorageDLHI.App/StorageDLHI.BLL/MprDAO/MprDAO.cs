@@ -67,12 +67,12 @@ namespace StorageDLHI.BLL.MprDAO
 
         public static async Task<DataTable> GetMprs_V2(Guid projectId)
         {
-            return await data.GetDataAsync(string.Format(QueryStatement.GET_MPRS_BY_PROJET, projectId, false), "MPR_BY_PROJECT");
+            return await data.GetDataAsync(string.Format(QueryStatement.GET_MPR_BY_PROJECT, projectId, false), $"MPR_BY_PROJECT_{projectId}");
         }
 
         public static async Task<DataTable> GetMprCanceled(Guid projectId)
         {
-            return await data.GetDataAsync(string.Format(QueryStatement.GET_MPRS_BY_PROJET, projectId, true), "MPR_CANCELED");
+            return await data.GetDataAsync(string.Format(QueryStatement.GET_MPR_CANCEL_BY_PROJECT, projectId, true), $"MPR_CANCELED_{projectId}");
         }
 
         public static async Task<DataTable> GetMprsForMakePO()
