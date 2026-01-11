@@ -1167,6 +1167,7 @@
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCustomInfoPO_FormClosing);
+            this.Load += new System.EventHandler(this.frmCustomInfoPO_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel20.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel33)).EndInit();

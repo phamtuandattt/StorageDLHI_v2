@@ -179,6 +179,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string HiddenColumnDataGridViewOfMprs = "ID,STAFF_ID,PROJECT_ID,REVIEWED_BY_ID,APPROVERD_BY_ID";
         public const string HiddenColumnDataGirdViewOfMprDetails = "ID,MPR_ID,PRODUCT_ID";
 
+        public const string HiddenColumnDataGridViewMPRsOfCreatePOs = "ID,MPR_REV_TOTAL,MPR_EXPECTED_DELIVERY_DATE,MPR_PREPARED,MPR_REVIEWED,MPR_APPROVED,IS_MAKE_PO,STAFF_ID,PROJECT_ID,REVIEWED_BY_ID,APPROVERD_BY_ID";
+
         public const string HiddenColumnDataGridViewOfMprCancels = "ID,STAFF_ID,PROJECT_ID,REVIEWED_BY_ID,APPROVERD_BY_ID";
         public const string HiddenColumnDataGirdViewOfMprCancelsDetails = "ID,MPR_ID,PRODUCT_ID";
 

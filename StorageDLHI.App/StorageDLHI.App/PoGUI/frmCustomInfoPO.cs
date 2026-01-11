@@ -32,16 +32,16 @@ namespace StorageDLHI.App.PoGUI
         private double totalAmount = 0;
         private Guid mprID = Guid.Empty;
 
+        private bool _supplierLoaded = false;
+
         public frmCustomInfoPO()
         {
             InitializeComponent();
-            LoadData();
         }
 
         public frmCustomInfoPO(string title, bool status, Pos mPO, DataTable dtPODetail, double totalAmount, Guid mprID)
         {
             InitializeComponent();
-            LoadData();
             this.Text = title;
             this.mPO = mPO;
             this.dtPODetail = dtPODetail;
@@ -62,6 +62,18 @@ namespace StorageDLHI.App.PoGUI
             {
                 ShowSecondColumn(1);
                 ResizeFormToFitTable();
+            }
+        }
+
+        private async void frmCustomInfoPO_Load(object sender, EventArgs e)
+        {
+            await LoadSuppliers();
+            if (!_supplierLoaded)
+            {
+                MessageBoxHelper.ShowWarning("Please add Supplier before create POs");
+                this.completed = false;
+                this.Close();
+                return;
             }
         }
 
@@ -113,13 +125,17 @@ namespace StorageDLHI.App.PoGUI
             this.MinimumSize = this.Size;
         }
 
-        private async void LoadData()
+        private async Task LoadSuppliers()
         {
             if (!CacheManager.Exists(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER))
             {
                 var dtSupp = await SupplierDAO.GetSuppliers();
-                LoadDataCombox(cboSuppplier, dtSupp, QueryStatement.PROPERTY_SUPPLIER_NAME, QueryStatement.PROPERTY_SUPPLIER_ID);
-                CacheManager.Add(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER, dtSupp);
+                if (dtSupp.Rows.Count > 0)
+                {
+                    LoadDataCombox(cboSuppplier, dtSupp, QueryStatement.PROPERTY_SUPPLIER_NAME, QueryStatement.PROPERTY_SUPPLIER_ID);
+                    CacheManager.Add(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER, dtSupp);
+                    _supplierLoaded = true;
+                }
             }
             else
             {

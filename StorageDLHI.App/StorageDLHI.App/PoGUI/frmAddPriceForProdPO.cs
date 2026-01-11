@@ -16,6 +16,7 @@ using System.Security.AccessControl;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Management;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -44,6 +45,10 @@ namespace StorageDLHI.App.PoGUI
         private DataTable dtProdInfo = new DataTable();
         private string QtyProd = "";
         private bool IsAdd = true;
+
+        private bool _taxLoaded = false;
+        private bool _costLoaded = false;
+        private bool _formulaLoaded = false;
 
         private Dictionary<Guid, string> cboCostDataSrouce = new Dictionary<Guid, string>();
         private Dictionary<string, string> exchangeRate = new Dictionary<string, string>();
@@ -92,6 +97,14 @@ namespace StorageDLHI.App.PoGUI
             await LoadTaxs();
             await LoadFormula();
             await LoadCost();
+
+            if (!_taxLoaded || !_formulaLoaded || !_costLoaded)
+            {
+                MessageBoxHelper.ShowWarning("Please check TAX, Formula, COST before create POs");
+                this.Price = 0;
+                this.Close();
+                return;
+            }
 
             if (this.IsAdd)
             {
@@ -170,17 +183,26 @@ namespace StorageDLHI.App.PoGUI
             if (!CacheManager.Exists(CacheKeys.TAX_DATATABLE_ALLTAX_CUSTOM))
             {
                 dtTax = await MaterialDAO.GetTaxCustoms();
-                CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX_CUSTOM, dtTax);
-
+                if (dtTax.Rows.Count > 0)
+                {
+                    CacheManager.Add(CacheKeys.TAX_DATATABLE_ALLTAX_CUSTOM, dtTax);
+                    _taxLoaded = true;
+                }
+                else
+                {
+                    _taxLoaded = false;
+                    return;
+                }
             }
             else
             {
                 dtTax = CacheManager.Get<DataTable>(CacheKeys.TAX_DATATABLE_ALLTAX_CUSTOM);
+                _taxLoaded = true;
             }
             
-            cboTax.DataSource = dtTax;
             cboTax.ValueMember = QueryStatement.PROPERTY_TAX_ID;
             cboTax.DisplayMember = QueryStatement.PROPERTY_TAX_CUSTOM_VALUE;
+            cboTax.DataSource = dtTax;
         }
 
         public async Task LoadFormula()
@@ -188,12 +210,21 @@ namespace StorageDLHI.App.PoGUI
             if (!CacheManager.Exists(CacheKeys.FORMULA_DATATABLE_ALLFORMULA))
             {
                 dtFormula = await MaterialDAO.GetFormulaParas();
-                CacheManager.Add(CacheKeys.FORMULA_DATATABLE_ALLFORMULA, dtFormula);
-
+                if (dtFormula.Rows.Count > 0)
+                {
+                    CacheManager.Add(CacheKeys.FORMULA_DATATABLE_ALLFORMULA, dtFormula);
+                    _formulaLoaded = true;
+                }
+                else
+                {
+                    _formulaLoaded = false;
+                    return;
+                }
             }
             else
             {
                 dtFormula = CacheManager.Get<DataTable>(CacheKeys.FORMULA_DATATABLE_ALLFORMULA);
+                _formulaLoaded = true;
             }
 
             cboFormula.ValueMember = QueryStatement.PROPERTY_FORMULA_PARAS;
@@ -206,12 +237,21 @@ namespace StorageDLHI.App.PoGUI
             if (!CacheManager.Exists(CacheKeys.COST_DATATABLE_ALLCOST))
             {
                 dtCost = await MaterialDAO.GetCosts();
-                CacheManager.Add(CacheKeys.COST_DATATABLE_ALLCOST, dtCost);
-
+                if (dtCost.Rows.Count > 0)
+                {
+                    CacheManager.Add(CacheKeys.COST_DATATABLE_ALLCOST, dtCost);
+                    _costLoaded = true;
+                }
+                else
+                {
+                    _costLoaded = false;
+                    return;
+                }
             }
             else
             {
                 dtCost = CacheManager.Get<DataTable>(CacheKeys.COST_DATATABLE_ALLCOST);
+                _costLoaded = true;
             }
 
             // Create Dictionary For display combobox
@@ -223,9 +263,9 @@ namespace StorageDLHI.App.PoGUI
                 exchangeRate.Add(member, display);
             }
 
-            cboCost.DataSource = new BindingSource(cboCostDataSrouce, null);
             cboCost.DisplayMember = "Value";
             cboCost.ValueMember = "Key";
+            cboCost.DataSource = new BindingSource(cboCostDataSrouce, null);
         }
 
         private void btnAddProdIntoMpr_Click(object sender, EventArgs e)
@@ -332,7 +372,7 @@ namespace StorageDLHI.App.PoGUI
 
         private void cboCost_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboCost.Items.Count < 0) return;
+            if (cboCost.Items.Count < 0 || !_costLoaded) return;
             var key = ((KeyValuePair<Guid, string>)cboCost.SelectedItem).Key.ToString();
             this.exchangeRate.TryGetValue(key, out string currency);
 
