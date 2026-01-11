@@ -182,6 +182,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string HiddenColumnDataGridViewOfMprCancels = "ID,STAFF_ID,PROJECT_ID,REVIEWED_BY_ID,APPROVERD_BY_ID";
         public const string HiddenColumnDataGirdViewOfMprCancelsDetails = "ID,MPR_ID,PRODUCT_ID";
 
+        public const string GET_MPR_FOR_CREATE_PO_BY_PROJECTS = "EXEC GET_MPR_FOR_CREATE_PO_BY_PROJECTS '{0}'";
+
         // PO
         public const string INSERT_PO = "SET DATEFORMAT DMY " +
             "INSERT INTO POS VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', N'{5}', '{6}', '{7}', N'{8}', N'{9}', N'{10}', N'{11}', N'{12}', N'{13}', {14}, " +

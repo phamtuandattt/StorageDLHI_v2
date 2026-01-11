@@ -75,9 +75,9 @@ namespace StorageDLHI.BLL.MprDAO
             return await data.GetDataAsync(string.Format(QueryStatement.GET_MPR_CANCEL_BY_PROJECT, projectId, true), $"MPR_CANCELED_{projectId}");
         }
 
-        public static async Task<DataTable> GetMprsForMakePO()
+        public static async Task<DataTable> GetMprsForMakePO(Guid projectId)
         {
-            return await data.GetDataAsync(QueryStatement.GET_MPRS_FOR_MAKE_PO, "MPRS_FOR_MPO");
+            return await data.GetDataAsync(string.Format(QueryStatement.GET_MPR_FOR_CREATE_PO_BY_PROJECTS, projectId), $"MPRS_FOR_MPO_{projectId}");
         }
 
         public static async Task<bool> UpdateMprInfo(Mprs mprs)

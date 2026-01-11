@@ -1,4 +1,5 @@
-﻿using log4net.Appender;
+﻿using ComponentFactory.Krypton.Toolkit;
+using log4net.Appender;
 using StorageDLHI.App.Common;
 using StorageDLHI.App.Common.CommonGUI;
 using StorageDLHI.App.Enums;
@@ -6,6 +7,7 @@ using StorageDLHI.BLL.ImportDAO;
 using StorageDLHI.BLL.MprDAO;
 using StorageDLHI.BLL.PoDAO;
 using StorageDLHI.BLL.ProductDAO;
+using StorageDLHI.BLL.ProjectDAO;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
 using StorageDLHI.Infrastructor.Caches;
@@ -48,6 +50,9 @@ namespace StorageDLHI.App.PoGUI
         private double totalAmount = 0;
         private string CurrencyDefault = "";
 
+        private bool _projectIsLoad = false;
+        private DataTable dtProjects = new DataTable();
+
 
         public ucPOMain()
         {
@@ -69,7 +74,6 @@ namespace StorageDLHI.App.PoGUI
             pnNoDataPODetail = ucNoDataPODetail.pnlNoData;
             dgvPODetail.Controls.Add(pnNoDataPODetail);
 
-            LoadData();
 
             //// Modify columns name DataTable dtMprDetailTemporary
             //dtMprDetailByIdTemporary.Columns[QueryStatement.PROPERTY_PROD_A].ColumnName = "A_THINH_M";
@@ -126,8 +130,22 @@ namespace StorageDLHI.App.PoGUI
             }
         }
 
-        private async void LoadData()
+        private async void ucPOMain_Load(object sender, EventArgs e)
         {
+            Common.Common.SetupComboxOfToolStrip(this.cboProjectForAddPO, QueryStatement.PROPERTY_PROJECT_NAME, QueryStatement.PROPERTY_PROJECT_ID);
+
+            await LoadProjets();
+            if (_projectIsLoad)
+            {
+                var projectId = Guid.Parse(cboProjectForAddPO.ComboBox.SelectedValue.ToString().Trim());
+                await LoadData();
+                await LoadMPRByProjectForCreatePO(projectId);
+            }
+        }
+
+        private async Task LoadData()
+        {
+            // --------- LOAD POs
             if (!CacheManager.Exists(CacheKeys.POS_DATATABLE_ALL_PO))
             {
                 dtPos = await PoDAO.GetPOs();
@@ -156,18 +174,34 @@ namespace StorageDLHI.App.PoGUI
                 }
             }
 
+            // ---------------------------------------------------
+            // Load MPRs
+        }
 
-            if (!CacheManager.Exists(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS))
+        private async Task LoadMPRByProjectForCreatePO(Guid projectId)
+        {
+            if (!CacheManager.Exists(string.Format(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS_OF_PROJECT, projectId)))
             {
-                dtMprs = await ShowDialogManager.WithLoader(() => MprDAO.GetMprsForMakePO());
-                CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, dtMprs);
+                dtMprs = await ShowDialogManager.WithLoader(() => MprDAO.GetMprsForMakePO(projectId));
+                CacheManager.Add(string.Format(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS_OF_PROJECT, projectId), dtMprs);
                 dgvMPRs.DataSource = dtMprs;
             }
             else
             {
-                dtMprs = await ShowDialogManager.WithLoader(() => MprDAO.GetMprsForMakePO());
-                dgvMPRs.DataSource = CacheManager.Get<DataTable>(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS);
+                dtMprs = await ShowDialogManager.WithLoader(() => MprDAO.GetMprsForMakePO(projectId));
+                dgvMPRs.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS_OF_PROJECT, projectId));
             }
+            if (dtMprs != null && dtMprs.Rows.Count > 0 && dgvMPRs.Rows.Count > 0)
+            {
+                Common.Common.ConfigDataGridView(dtMprs, dgvMPRs, Common.Common.GetHiddenColumns(QueryStatement.HiddenColumnDataGridViewOfMprs));
+                Common.Common.HideNoDataPanel(pnNoDataMprs);
+            }
+            else
+            {
+                Common.Common.ShowNoDataPanel(dgvMPRs, pnNoDataMprs);
+            }
+            
+            //-----------------------
 
             if (dtMprs.Rows.Count > 0 && dtMprs != null && dgvMPRs.Rows.Count > 0)
             {
@@ -183,12 +217,22 @@ namespace StorageDLHI.App.PoGUI
                     dtMprDetailById = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId));
                     dgvMPRDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId));
                 }
+                if (dtMprDetailById != null && dtMprDetailById.Rows.Count > 0
+                         && dgvMPRDetail.Rows.Count > 0)
+                {
+                    Common.Common.ConfigDataGridView(dtMprDetailById, dgvMPRDetail, Common.Common.GetHiddenColumns(QueryStatement.HiddenColumnDataGirdViewOfMprDetails));
+                    Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
+                }
+                else
+                {
+                    Common.Common.ShowNoDataPanel(dgvMPRDetail, pnNoDataMprsDetail);
+                }
 
                 dtMprDetailByIdTemporary = dtMprDetailById.Copy();
                 dtMprDetailByIdTemporary.Clear();
 
-                Common.Common.HideNoDataPanel(pnNoDataMprs);
-                Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
+                //Common.Common.HideNoDataPanel(pnNoDataMprs);
+                //Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
             }
             else
             {
@@ -197,19 +241,65 @@ namespace StorageDLHI.App.PoGUI
             }
         }
 
-        private async void btnReload_Click(object sender, EventArgs e)
+        private async Task LoadProjets()
         {
-            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, await MprDAO.GetMprsForMakePO());
-            LoadData();
-            if (dgvMPRs.Rows.Count <= 0)
+            // ----- LOAD DATA FOR PROD OF CREATE MPR
+            if (!CacheManager.Exists(CacheKeys.PROJECT_DATATABLE_ALL_FOR_COMBOBOX)
+                && !CacheManager.Exists(CacheKeys.PROJECT_DATATABLE))
             {
-                Common.Common.ShowNoDataPanel(dgvMPRs, pnNoDataMprs);
-                Common.Common.ShowNoDataPanel(dgvMPRDetail, pnNoDataMprsDetail);
+                var dtCommon = await ProjectDAO.GetProjects();
+                if (dtCommon != null && dtCommon.dtProjects != null && dtCommon.dtProjectForCombox != null
+                    && dtCommon.dtProjects.AsEnumerable().Any() && dtCommon.dtProjectForCombox.AsEnumerable().Any())
+                {
+                    var dtCombobox = dtCommon.dtProjectForCombox;
+                    this.dtProjects = dtCommon.dtProjects;
+
+                    cboProjectForAddPO.ComboBox.DataSource = dtCombobox;
+
+                    CacheManager.Add(CacheKeys.PROJECT_DATATABLE_ALL_FOR_COMBOBOX, dtCombobox);
+                    CacheManager.Add(CacheKeys.PROJECT_DATATABLE, dtProjects);
+                    _projectIsLoad = true;
+                }
+                else
+                {
+                    MessageBoxHelper.ShowError("Please add project and MPRs before create POs !");
+                    return;
+                }
             }
             else
             {
-                Common.Common.HideNoDataPanel(pnNoDataMprs);
-                Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
+                cboProjectForAddPO.ComboBox.DataSource = CacheManager.Get<DataTable>(CacheKeys.PROJECT_DATATABLE_ALL_FOR_COMBOBOX);
+
+                this.dtProjects = CacheManager.Get<DataTable>(CacheKeys.PROJECT_DATATABLE);
+                _projectIsLoad = true;
+            }
+        }
+
+        private async void btnReload_Click(object sender, EventArgs e)
+        {
+            //CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, await MprDAO.GetMprsForMakePO());
+            //await LoadData();
+            //if (dgvMPRs.Rows.Count <= 0)
+            //{
+            //    Common.Common.ShowNoDataPanel(dgvMPRs, pnNoDataMprs);
+            //    Common.Common.ShowNoDataPanel(dgvMPRDetail, pnNoDataMprsDetail);
+            //}
+            //else
+            //{
+            //    Common.Common.HideNoDataPanel(pnNoDataMprs);
+            //    Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
+            //}
+            _projectIsLoad = false;
+            await LoadData();
+            await LoadProjets();
+            if (_projectIsLoad)
+            {
+                var projectId = Guid.Parse(cboProjectForAddPO.ComboBox.SelectedValue.ToString().Trim());
+
+                var reloadModel = await ShowDialogManager.WithLoader(() => MprDAO.GetMprsForMakePO(projectId));
+                CacheManager.Add(string.Format(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS_OF_PROJECT, projectId), reloadModel);
+
+                await LoadMPRByProjectForCreatePO(projectId);
             }
         }
 
@@ -631,10 +721,14 @@ namespace StorageDLHI.App.PoGUI
             dgvMPRs.Enabled = true;
             // Update data in cache
             CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, await PoDAO.GetPOs());
-            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, await MprDAO.GetMprsForMakePO());
+
+            //CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, await MprDAO.GetMprsForMakePO());
+            var projectId = Guid.Parse(cboProjectForAddPO.ComboBox.SelectedValue.ToString().Trim());
+            CacheManager.Add(string.Format(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS_OF_PROJECT, projectId), dtMprs);
+
             CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, await ImportProductDAO.GetImportProducts());
 
-            LoadData();
+            await LoadData();
         }
 
         private void UpdateFooter()
@@ -688,14 +782,14 @@ namespace StorageDLHI.App.PoGUI
 
         private void dgvMPRDetail_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            dgvMPRDetail.Columns["A_THINHNESS_M"].DefaultCellStyle.Format = "N0";
-            dgvMPRDetail.Columns["B_DEPTH_M"].DefaultCellStyle.Format = "N0";
-            dgvMPRDetail.Columns["C_WIDTH_M"].DefaultCellStyle.Format = "N0";
-            dgvMPRDetail.Columns["D_WEB_M"].DefaultCellStyle.Format = "N0";
-            dgvMPRDetail.Columns["E_FLAG_M"].DefaultCellStyle.Format = "N0";
-            dgvMPRDetail.Columns["F_LENGTH_M"].DefaultCellStyle.Format = "N0";
-            dgvMPRDetail.Columns["G_WEIGHT_M"].DefaultCellStyle.Format = "N0";
-            dgvMPRDetail.Columns["MPR_QTY_M"].DefaultCellStyle.Format = "N0";
+            //dgvMPRDetail.Columns["A_THINHNESS_M"].DefaultCellStyle.Format = "N0";
+            //dgvMPRDetail.Columns["B_DEPTH_M"].DefaultCellStyle.Format = "N0";
+            //dgvMPRDetail.Columns["C_WIDTH_M"].DefaultCellStyle.Format = "N0";
+            //dgvMPRDetail.Columns["D_WEB_M"].DefaultCellStyle.Format = "N0";
+            //dgvMPRDetail.Columns["E_FLAG_M"].DefaultCellStyle.Format = "N0";
+            //dgvMPRDetail.Columns["F_LENGTH_M"].DefaultCellStyle.Format = "N0";
+            //dgvMPRDetail.Columns["G_WEIGHT_M"].DefaultCellStyle.Format = "N0";
+            //dgvMPRDetail.Columns["MPR_QTY_M"].DefaultCellStyle.Format = "N0";
         }
 
         private void dgvProdOfPO_Scroll(object sender, ScrollEventArgs e)
@@ -759,11 +853,17 @@ namespace StorageDLHI.App.PoGUI
             }
         }
 
-        private void tlsReloadPOs_Click(object sender, EventArgs e)
+        private async void tlsReloadPOs_Click(object sender, EventArgs e)
         {
             CacheManager.Remove(CacheKeys.POS_DATATABLE_ALL_PO);
             lblDateTimeSeacrh.Text = "";
-            LoadData();
+
+            // Reload POs
+            if (_projectIsLoad)
+            {
+                await LoadData();
+            }
+
             if (dgvPOList.Rows.Count <= 0)
             {
                 Common.Common.ShowNoDataPanel(dgvPOList, pnNoDataPOs);
@@ -1079,6 +1179,14 @@ namespace StorageDLHI.App.PoGUI
             this.CurrencyDefault = frmAddPriceForProdPO.CurrencyOption;
 
             UpdateFooter();
+        }
+
+        private async void cboProjectForAddPO_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!_projectIsLoad) return;
+
+            var projectId = Guid.Parse(cboProjectForAddPO.ComboBox.SelectedValue.ToString().Trim());
+            await LoadMPRByProjectForCreatePO(projectId);
         }
     }
 }

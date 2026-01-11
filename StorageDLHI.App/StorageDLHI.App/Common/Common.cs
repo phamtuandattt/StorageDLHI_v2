@@ -96,10 +96,24 @@ namespace StorageDLHI.App.Common
             //CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs_V2());
             CacheManager.Add(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER, await SupplierDAO.GetSuppliers());
             CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, await PoDAO.GetPOs());
-            CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, await MprDAO.GetMprsForMakePO());
+            //CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, await MprDAO.GetMprsForMakePO());
             CacheManager.Add(CacheKeys.WAREHOUSE_DATATABLE_ALL, await ShowDialogManager.WithLoader(() => WarehouseDAO.GetWarehouses()));
 
         }
+
+
+        public static void SetupKryptonCombox(KryptonComboBox comboBox, string displayMember, string valueMember)
+        {
+            comboBox.DisplayMember = displayMember;
+            comboBox.ValueMember = valueMember;
+        }
+
+        public static void SetupComboxOfToolStrip(ToolStripComboBox comboBox, string displayMember, string valueMember)
+        {
+            comboBox.ComboBox.DisplayMember = displayMember;
+            comboBox.ComboBox.ValueMember = valueMember;
+        }
+
 
         public static string[] GetHiddenColumns(string hiddenString)
         {
