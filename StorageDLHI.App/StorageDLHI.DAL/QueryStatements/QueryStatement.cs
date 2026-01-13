@@ -191,12 +191,17 @@ namespace StorageDLHI.DAL.QueryStatements
             "INSERT INTO POS VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', N'{5}', '{6}', '{7}', N'{8}', N'{9}', N'{10}', N'{11}', N'{12}', N'{13}', {14}, " +
             //"'{15}', '{16}', " +
             "'{15}', '{16}', '{17}')  ";
+        public const string INSERT_PO_V2 = "SET DATEFORMAT DMY " +
+            "INSERT INTO POS VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', N'{5}', '{6}', '{7}', N'{8}', N'{9}', N'{10}', N'{11}', N'{12}', N'{13}', {14}, " +
+            //"'{15}', '{16}', " +
+            "'{15}', '{16}', '{17}', '{18}', '{19}', '{20}', '{21}')  ";
         public const string GET_PO_DETAIL_FORM = "SELECT *FROM PO_DETAIL WHERE ID = '00000000-0000-0000-0000-000000000000'";
         public const string GET_PO_DETAILS = "SELECT *FROM PO_DETAIL";
         public const string DELETE_PO_BY_ID = "DELETE FROM POS WHERE ID = '{0}'";
         public const string GET_PO_DETAIL_BY_PO_ID = "EXEC GET_PO_DETAIL '{0}'";
         public const string GET_PO_DETAIL_BY_PO_ID_FOR_IMPORT = "EXEC GET_PO_DETAIL_FOR_IMPORT '{0}'";
         public const string GET_POS = "EXEC GET_POS";
+        public const string GET_POS_V2 = "EXEC GET_POS_V2 '{0}'";
         public const string PROPERTY_PO_NO = "PO_NO";
         public const string PROPERTY_PO_MPR_NO = "PO_MPR_NO";
         public const string PROPERTY_PO_WO_NO = "PO_WO_NO";

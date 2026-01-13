@@ -140,6 +140,9 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.cboProjectForAddPO = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
+            this.cboProjectsForPOs = new System.Windows.Forms.ToolStripComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pagePOs)).BeginInit();
@@ -207,7 +210,7 @@
             this.kryptonNavigator1.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
             this.pagePOs,
             this.pageAddPO});
-            this.kryptonNavigator1.SelectedIndex = 1;
+            this.kryptonNavigator1.SelectedIndex = 0;
             this.kryptonNavigator1.Size = new System.Drawing.Size(1559, 741);
             this.kryptonNavigator1.StateCommon.Panel.Color1 = System.Drawing.Color.White;
             this.kryptonNavigator1.StateCommon.Panel.Color2 = System.Drawing.Color.White;
@@ -243,11 +246,11 @@
             // 
             this.kryptonPanel8.Controls.Add(this.tableLayoutPanel3);
             this.kryptonPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel8.Location = new System.Drawing.Point(0, 27);
+            this.kryptonPanel8.Location = new System.Drawing.Point(0, 31);
             this.kryptonPanel8.Name = "kryptonPanel8";
             this.kryptonPanel8.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonPanel8.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundCustom1;
-            this.kryptonPanel8.Size = new System.Drawing.Size(1557, 683);
+            this.kryptonPanel8.Size = new System.Drawing.Size(1557, 679);
             this.kryptonPanel8.TabIndex = 6;
             // 
             // tableLayoutPanel3
@@ -262,20 +265,20 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.48927F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.51073F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1557, 683);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1557, 679);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // kryptonGroupBox2
             // 
             this.kryptonGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox2.Location = new System.Drawing.Point(3, 293);
+            this.kryptonGroupBox2.Location = new System.Drawing.Point(3, 291);
             this.kryptonGroupBox2.Name = "kryptonGroupBox2";
             this.kryptonGroupBox2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             // 
             // kryptonGroupBox2.Panel
             // 
             this.kryptonGroupBox2.Panel.Controls.Add(this.dgvPODetail);
-            this.kryptonGroupBox2.Size = new System.Drawing.Size(1551, 387);
+            this.kryptonGroupBox2.Size = new System.Drawing.Size(1551, 385);
             this.kryptonGroupBox2.TabIndex = 2;
             this.kryptonGroupBox2.Values.Heading = "PO Detail";
             // 
@@ -313,7 +316,7 @@
             this.dgvPODetail.ReadOnly = true;
             this.dgvPODetail.RowHeadersWidth = 51;
             this.dgvPODetail.RowTemplate.Height = 30;
-            this.dgvPODetail.Size = new System.Drawing.Size(1547, 359);
+            this.dgvPODetail.Size = new System.Drawing.Size(1547, 357);
             this.dgvPODetail.TabIndex = 3;
             this.dgvPODetail.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvPODetail_DataBindingComplete);
             this.dgvPODetail.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvPODetail_RowPostPaint);
@@ -491,7 +494,7 @@
             // kryptonGroupBox4.Panel
             // 
             this.kryptonGroupBox4.Panel.Controls.Add(this.dgvPOList);
-            this.kryptonGroupBox4.Size = new System.Drawing.Size(1551, 284);
+            this.kryptonGroupBox4.Size = new System.Drawing.Size(1551, 282);
             this.kryptonGroupBox4.TabIndex = 0;
             this.kryptonGroupBox4.Values.Heading = "POs";
             // 
@@ -525,7 +528,7 @@
             this.dgvPOList.ReadOnly = true;
             this.dgvPOList.RowHeadersWidth = 51;
             this.dgvPOList.RowTemplate.Height = 30;
-            this.dgvPOList.Size = new System.Drawing.Size(1547, 256);
+            this.dgvPOList.Size = new System.Drawing.Size(1547, 254);
             this.dgvPOList.TabIndex = 2;
             this.dgvPOList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPOList_CellClick);
             this.dgvPOList.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvPOList_DataBindingComplete);
@@ -676,11 +679,14 @@
             this.toolStripSeparator4,
             this.lblDateTimeSeacrh,
             this.tlsClearSearchDate,
-            this.tlsExportPO});
+            this.tlsExportPO,
+            this.toolStripSeparator6,
+            this.toolStripLabel4,
+            this.cboProjectsForPOs});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip2.Size = new System.Drawing.Size(1557, 27);
+            this.toolStrip2.Size = new System.Drawing.Size(1557, 31);
             this.toolStrip2.TabIndex = 5;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -690,19 +696,19 @@
             this.tlsReloadPOs.Image = global::StorageDLHI.App.Properties.Resources.refresh;
             this.tlsReloadPOs.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsReloadPOs.Name = "tlsReloadPOs";
-            this.tlsReloadPOs.Size = new System.Drawing.Size(29, 24);
+            this.tlsReloadPOs.Size = new System.Drawing.Size(29, 28);
             this.tlsReloadPOs.Text = "Refresh";
             this.tlsReloadPOs.Click += new System.EventHandler(this.tlsReloadPOs_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(56, 24);
+            this.toolStripLabel1.Size = new System.Drawing.Size(56, 28);
             this.toolStripLabel1.Text = "Search:";
             // 
             // txtSearchPO
@@ -716,7 +722,7 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
             // 
             // tlsSearchDate
             // 
@@ -724,19 +730,19 @@
             this.tlsSearchDate.Image = global::StorageDLHI.App.Properties.Resources.search;
             this.tlsSearchDate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsSearchDate.Name = "tlsSearchDate";
-            this.tlsSearchDate.Size = new System.Drawing.Size(29, 24);
+            this.tlsSearchDate.Size = new System.Drawing.Size(29, 28);
             this.tlsSearchDate.Text = "Seacrch date";
             this.tlsSearchDate.Click += new System.EventHandler(this.tlsSearchDate_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 31);
             // 
             // lblDateTimeSeacrh
             // 
             this.lblDateTimeSeacrh.Name = "lblDateTimeSeacrh";
-            this.lblDateTimeSeacrh.Size = new System.Drawing.Size(0, 24);
+            this.lblDateTimeSeacrh.Size = new System.Drawing.Size(0, 28);
             // 
             // tlsClearSearchDate
             // 
@@ -744,7 +750,7 @@
             this.tlsClearSearchDate.Image = global::StorageDLHI.App.Properties.Resources.clean;
             this.tlsClearSearchDate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsClearSearchDate.Name = "tlsClearSearchDate";
-            this.tlsClearSearchDate.Size = new System.Drawing.Size(29, 24);
+            this.tlsClearSearchDate.Size = new System.Drawing.Size(29, 28);
             this.tlsClearSearchDate.Text = "Clear";
             this.tlsClearSearchDate.Visible = false;
             this.tlsClearSearchDate.Click += new System.EventHandler(this.tlsClearSearchDate_Click);
@@ -755,7 +761,7 @@
             this.tlsExportPO.Image = global::StorageDLHI.App.Properties.Resources.excel;
             this.tlsExportPO.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsExportPO.Name = "tlsExportPO";
-            this.tlsExportPO.Size = new System.Drawing.Size(29, 24);
+            this.tlsExportPO.Size = new System.Drawing.Size(29, 28);
             this.tlsExportPO.Text = "Export make purchase order";
             this.tlsExportPO.Click += new System.EventHandler(this.tlsExportPO_Click);
             // 
@@ -1276,14 +1282,14 @@
             this.btnReload.Image = global::StorageDLHI.App.Properties.Resources.refresh;
             this.btnReload.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(29, 28);
+            this.btnReload.Size = new System.Drawing.Size(29, 25);
             this.btnReload.Text = "Refresh";
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
             // 
             // btnAddAllProdIntoPO
             // 
@@ -1291,7 +1297,7 @@
             this.btnAddAllProdIntoPO.Image = global::StorageDLHI.App.Properties.Resources.mark;
             this.btnAddAllProdIntoPO.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAddAllProdIntoPO.Name = "btnAddAllProdIntoPO";
-            this.btnAddAllProdIntoPO.Size = new System.Drawing.Size(223, 28);
+            this.btnAddAllProdIntoPO.Size = new System.Drawing.Size(223, 25);
             this.btnAddAllProdIntoPO.Text = "Add all product to create PO";
             this.btnAddAllProdIntoPO.Visible = false;
             this.btnAddAllProdIntoPO.Click += new System.EventHandler(this.btnAddAllProdIntoPO_Click);
@@ -1300,31 +1306,31 @@
             // 
             this.tlsMPRNo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tlsMPRNo.Name = "tlsMPRNo";
-            this.tlsMPRNo.Size = new System.Drawing.Size(18, 28);
+            this.tlsMPRNo.Size = new System.Drawing.Size(18, 25);
             this.tlsMPRNo.Text = "...";
             // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(56, 28);
+            this.toolStripLabel2.Size = new System.Drawing.Size(56, 25);
             this.toolStripLabel2.Text = "Search:";
             // 
             // tlsSearchMprForMakePO
             // 
             this.tlsSearchMprForMakePO.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tlsSearchMprForMakePO.Name = "tlsSearchMprForMakePO";
-            this.tlsSearchMprForMakePO.Size = new System.Drawing.Size(200, 31);
+            this.tlsSearchMprForMakePO.Size = new System.Drawing.Size(200, 28);
             this.tlsSearchMprForMakePO.TextChanged += new System.EventHandler(this.tlsSearchMprForMakePO_TextChanged);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripLabel3
             // 
             this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(88, 28);
+            this.toolStripLabel3.Size = new System.Drawing.Size(88, 25);
             this.toolStripLabel3.Text = "Projects:      ";
             // 
             // cboProjectForAddPO
@@ -1332,6 +1338,23 @@
             this.cboProjectForAddPO.Name = "cboProjectForAddPO";
             this.cboProjectForAddPO.Size = new System.Drawing.Size(200, 28);
             this.cboProjectForAddPO.SelectedIndexChanged += new System.EventHandler(this.cboProjectForAddPO_SelectedIndexChanged);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 31);
+            // 
+            // toolStripLabel4
+            // 
+            this.toolStripLabel4.Name = "toolStripLabel4";
+            this.toolStripLabel4.Size = new System.Drawing.Size(84, 28);
+            this.toolStripLabel4.Text = "Projects:     ";
+            // 
+            // cboProjectsForPOs
+            // 
+            this.cboProjectsForPOs.Name = "cboProjectsForPOs";
+            this.cboProjectsForPOs.Size = new System.Drawing.Size(200, 31);
+            this.cboProjectsForPOs.SelectedIndexChanged += new System.EventHandler(this.cboProjectsForPOs_SelectedIndexChanged);
             // 
             // ucPOMain
             // 
@@ -1520,5 +1543,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripLabel toolStripLabel3;
         private System.Windows.Forms.ToolStripComboBox cboProjectForAddPO;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel4;
+        private System.Windows.Forms.ToolStripComboBox cboProjectsForPOs;
     }
 }

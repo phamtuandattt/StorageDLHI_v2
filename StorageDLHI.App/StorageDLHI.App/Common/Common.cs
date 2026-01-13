@@ -95,10 +95,37 @@ namespace StorageDLHI.App.Common
             CacheManager.Add(CacheKeys.PRODUCT_DATATABLE_ALL_PRODS_FOR_EPR, await ProductDAO.GetProductsForCreateMPR_V2());
             //CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS, await MprDAO.GetMprs_V2());
             CacheManager.Add(CacheKeys.SUPPLIER_DATATABLE_ALL_SUPPLIER, await SupplierDAO.GetSuppliers());
-            CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, await PoDAO.GetPOs());
+            //CacheManager.Add(CacheKeys.POS_DATATABLE_ALL_PO, await PoDAO.GetPOs());
             //CacheManager.Add(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS, await MprDAO.GetMprsForMakePO());
             CacheManager.Add(CacheKeys.WAREHOUSE_DATATABLE_ALL, await ShowDialogManager.WithLoader(() => WarehouseDAO.GetWarehouses()));
 
+        }
+
+        public static DataTable CreateDataTableSchema(Dictionary<string, Type> propertiesDictionary, string[] propertiesList)
+        {
+            //var variables = new Dictionary<string, Type>
+            //{
+            //    {QueryStatement.PROPERTY_PROD_A, typeof(Guid)},
+            //    {QueryStatement.PROPERTY_PROD_B, typeof(Guid)},
+            //    {QueryStatement.PROPERTY_PROD_C, typeof(Guid)},
+            //    {QueryStatement.PROPERTY_PROD_D, typeof(Guid)},
+            //    {QueryStatement.PROPERTY_PROD_E, typeof(Guid)},
+            //    {QueryStatement.PROPERTY_PROD_F, typeof(Guid)},
+            //    {QueryStatement.PROPERTY_PROD_G, typeof(Guid)},
+            //    {QueryStatement.QTY_PARA, typeof(Guid)},
+            //};
+            //var dt = new DataTable();
+            //foreach (var variable in variables)
+            //{
+            //    dt.Columns.Add(new DataColumn(variable.Key, variable.Value));
+            //}
+            var dt = new DataTable();
+            foreach (var variable in propertiesList)
+            {
+                dt.Columns.Add(new DataColumn(variable));
+            }
+
+            return dt;
         }
 
 

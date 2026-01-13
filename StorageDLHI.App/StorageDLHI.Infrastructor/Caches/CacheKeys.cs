@@ -33,7 +33,7 @@ namespace StorageDLHI.Infrastructor.Caches
         public const string MPRS_CANCEL_DATATABLE_ALL_OF_PROJECT = "Mprs.Cancel.DataTable.AllMprs.{0}";
         public const string MPRS_CANCEL_DETAIL_BY_ID = "Mprs.Cancel.Detail.Mpr.Id.{0}";
 
-        public const string POS_DATATABLE_ALL_PO = "Po.DataTable.AllPos";
+        public const string POS_DATATABLE_ALL_PO_BY_PROJECT = "Po.DataTable.AllPos.Project.{0}";
         public const string PO_DETAL_BY_ID = "Po.Detail.Po.ID.{0}";
         public const string POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD = "Po.DataTable.AllPos.ImoprtProd";
         public const string PO_DETAIL_BY_ID_FOR_IMPORT_PROD = "Po.Detail.Po.ImportProd.ID.{0}";

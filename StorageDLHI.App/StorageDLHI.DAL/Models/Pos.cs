@@ -31,6 +31,10 @@ namespace StorageDLHI.DAL.Models
         public Guid Staff_Id { get; set; }
 
         public Guid Project_Id { get; set; }
+
+        public Guid ReviewBy { get; set; } 
+        public Guid AgrementBy { get; set; }
+        public Guid ApprovedBy { get; set; }
     }
 
     public class Po_Detail

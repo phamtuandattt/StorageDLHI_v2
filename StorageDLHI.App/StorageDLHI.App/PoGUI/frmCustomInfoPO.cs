@@ -3,6 +3,7 @@ using StorageDLHI.App.Common;
 using StorageDLHI.BLL.MaterialDAO;
 using StorageDLHI.BLL.MprDAO;
 using StorageDLHI.BLL.PoDAO;
+using StorageDLHI.BLL.StaffDAO;
 using StorageDLHI.BLL.SupplierDAO;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
@@ -33,6 +34,7 @@ namespace StorageDLHI.App.PoGUI
         private Guid mprID = Guid.Empty;
 
         private bool _supplierLoaded = false;
+        private bool _userIsLoad = false;
 
         public frmCustomInfoPO()
         {
@@ -68,9 +70,10 @@ namespace StorageDLHI.App.PoGUI
         private async void frmCustomInfoPO_Load(object sender, EventArgs e)
         {
             await LoadSuppliers();
-            if (!_supplierLoaded)
+            await LoadUser();
+            if (!_supplierLoaded || !_userIsLoad)
             {
-                MessageBoxHelper.ShowWarning("Please add Supplier before create POs");
+                MessageBoxHelper.ShowWarning(!_supplierLoaded ? "Please add Supplier before create POs" : "Please check staff before create POs");
                 this.completed = false;
                 this.Close();
                 return;
@@ -145,6 +148,34 @@ namespace StorageDLHI.App.PoGUI
 
         }
 
+        private async Task LoadUser()
+        {
+            cboReview.DisplayMember = QueryStatement.PROPERTY_STAFF_NAME;
+            cboReview.ValueMember = QueryStatement.PROPERTY_STAFF_ID;
+            cboAggrement.DisplayMember = QueryStatement.PROPERTY_STAFF_NAME;
+            cboAggrement.ValueMember = QueryStatement.PROPERTY_STAFF_ID;
+            cboApproved.DisplayMember = QueryStatement.PROPERTY_STAFF_NAME;
+            cboApproved.ValueMember = QueryStatement.PROPERTY_STAFF_ID;
+
+            if (!CacheManager.Exists(CacheKeys.USER_DATATABLE_USER_MANAGER_FOR_COMBOBOX))
+            {
+                var dtS = await StaffDAO.GetStaffManager();
+                cboReview.DataSource = dtS;
+                cboApproved.DataSource = dtS.Copy();
+                cboAggrement.DataSource = dtS.Copy();
+
+                CacheManager.Add(CacheKeys.USER_DATATABLE_USER_MANAGER_FOR_COMBOBOX, dtS);
+                _userIsLoad = true;
+            }
+            else
+            {
+                cboReview.DataSource = CacheManager.Get<DataTable>(CacheKeys.USER_DATATABLE_USER_MANAGER_FOR_COMBOBOX);
+                cboAggrement.DataSource = CacheManager.Get<DataTable>(CacheKeys.USER_DATATABLE_USER_MANAGER_FOR_COMBOBOX).Copy();
+                cboApproved.DataSource = CacheManager.Get<DataTable>(CacheKeys.USER_DATATABLE_USER_MANAGER_FOR_COMBOBOX).Copy();
+                _userIsLoad = true;
+            }
+        }
+
         private void LoadDataCombox(KryptonComboBox comboBox, DataTable dataTable, string displayMember, string valueMemeber)
         {
             comboBox.DataSource = dataTable;
@@ -183,9 +214,9 @@ namespace StorageDLHI.App.PoGUI
                 Po_CreateDate = DateTime.Parse(dtPickerCreate.Value.ToString("dd/MM/yyyy")),
                 Po_Expected_Delivery_Date = DateTime.Parse(dtPickerDelivery.Value.ToString("dd/MM/yyyy")),
                 Po_Prepared = txtPrepared.Text.Trim(),
-                Po_Reviewed = txtReviewed.Text.Trim(),
-                Po_Agrement = txtAggrement.Text.Trim(),
-                Po_Approved = txtApproved.Text.Trim(),
+                Po_Reviewed = cboReview.Text.Trim(),
+                Po_Agrement = cboAggrement.Text.Trim(),
+                Po_Approved = cboApproved.Text.Trim(),
                 Po_Payment_Term = paymentTerm,
                 Po_Dispatch_Box = "",
                 Po_Total_Amount = totalAmount,
@@ -193,7 +224,12 @@ namespace StorageDLHI.App.PoGUI
                 //TaxId = Guid.Parse(cboTax.SelectedValue.ToString()),
                 SupplierId = Guid.Parse(cboSuppplier.SelectedValue.ToString()),
                 Staff_Id = ShareData.UserId,
-                IsImported = false
+                IsImported = false,
+
+                Project_Id = this.mPO.Project_Id,
+                ReviewBy = Guid.Parse(cboReview.SelectedValue.ToString().Trim()),
+                AgrementBy = Guid.Parse(cboAggrement.SelectedValue.ToString().Trim()),
+                ApprovedBy = Guid.Parse(cboApproved.SelectedValue.ToString().Trim())
             };
 
             // Convert dtProdOfAddPO to dtProdOfPO_UpdateDB
@@ -216,7 +252,7 @@ namespace StorageDLHI.App.PoGUI
                 dtProdOfPO_UpdateDB.Rows.Add(dataRow);
             }
 
-            if (await PoDAO.InsertPO(pos))
+            if (await PoDAO.InsertPO_V2(pos))
             {
                 if (PoDAO.InsertPODetail(dtProdOfPO_UpdateDB) && await MprDAO.UpdateMprIsMakePO(this.mprID))
                 {
@@ -318,35 +354,35 @@ namespace StorageDLHI.App.PoGUI
 
         private void txtReviewed_TextChanged(object sender, EventArgs e)
         {
-            string cleaned = Regex.Replace(txtReviewed.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
-            if (txtReviewed.Text != cleaned)
-            {
-                int pos = txtReviewed.SelectionStart - 1;
-                txtReviewed.Text = cleaned;
-                txtReviewed.SelectionStart = Math.Max(pos, 0);
-            }
+            //string cleaned = Regex.Replace(txtReviewed.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            //if (txtReviewed.Text != cleaned)
+            //{
+            //    int pos = txtReviewed.SelectionStart - 1;
+            //    txtReviewed.Text = cleaned;
+            //    txtReviewed.SelectionStart = Math.Max(pos, 0);
+            //}
         }
 
         private void txtAggrement_TextChanged(object sender, EventArgs e)
         {
-            string cleaned = Regex.Replace(txtAggrement.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
-            if (txtAggrement.Text != cleaned)
-            {
-                int pos = txtAggrement.SelectionStart - 1;
-                txtAggrement.Text = cleaned;
-                txtAggrement.SelectionStart = Math.Max(pos, 0);
-            }
+            //string cleaned = Regex.Replace(txtAggrement.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            //if (txtAggrement.Text != cleaned)
+            //{
+            //    int pos = txtAggrement.SelectionStart - 1;
+            //    txtAggrement.Text = cleaned;
+            //    txtAggrement.SelectionStart = Math.Max(pos, 0);
+            //}
         }
 
         private void txtApproved_TextChanged(object sender, EventArgs e)
         {
-            string cleaned = Regex.Replace(txtApproved.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
-            if (txtApproved.Text != cleaned)
-            {
-                int pos = txtApproved.SelectionStart - 1;
-                txtApproved.Text = cleaned;
-                txtApproved.SelectionStart = Math.Max(pos, 0);
-            }
+            //string cleaned = Regex.Replace(txtApproved.Text, Infrastructor.Commons.Common.REGEX_VALID_DES, "");
+            //if (txtApproved.Text != cleaned)
+            //{
+            //    int pos = txtApproved.SelectionStart - 1;
+            //    txtApproved.Text = cleaned;
+            //    txtApproved.SelectionStart = Math.Max(pos, 0);
+            //}
         }
 
         private void txtWithIn_TextChanged(object sender, EventArgs e)

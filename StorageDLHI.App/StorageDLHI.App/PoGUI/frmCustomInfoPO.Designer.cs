@@ -34,17 +34,14 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonPanel33 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.txtApproved = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonPanel34 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonLabel16 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonPanel31 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.txtAggrement = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonPanel32 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonLabel15 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonPanel27 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.txtReviewed = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonPanel28 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonLabel13 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
@@ -108,6 +105,12 @@
             this.radOption3 = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.kryptonPanel9 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.cboReview = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.kryptonPanel10 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.cboAggrement = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.kryptonPanel11 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.cboApproved = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel20.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel33)).BeginInit();
@@ -180,6 +183,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
             this.kryptonGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel9)).BeginInit();
+            this.kryptonPanel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboReview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel10)).BeginInit();
+            this.kryptonPanel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboAggrement)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel11)).BeginInit();
+            this.kryptonPanel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboApproved)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -267,25 +279,13 @@
             // 
             // kryptonPanel33
             // 
-            this.kryptonPanel33.Controls.Add(this.txtApproved);
+            this.kryptonPanel33.Controls.Add(this.kryptonPanel11);
             this.kryptonPanel33.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel33.Location = new System.Drawing.Point(138, 3);
             this.kryptonPanel33.Name = "kryptonPanel33";
             this.kryptonPanel33.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonPanel33.Size = new System.Drawing.Size(297, 38);
             this.kryptonPanel33.TabIndex = 3;
-            // 
-            // txtApproved
-            // 
-            this.txtApproved.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtApproved.Location = new System.Drawing.Point(3, 3);
-            this.txtApproved.Name = "txtApproved";
-            this.txtApproved.Size = new System.Drawing.Size(291, 32);
-            this.txtApproved.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
-            this.txtApproved.TabIndex = 18;
-            this.txtApproved.TextChanged += new System.EventHandler(this.txtApproved_TextChanged);
             // 
             // kryptonPanel34
             // 
@@ -324,25 +324,13 @@
             // 
             // kryptonPanel31
             // 
-            this.kryptonPanel31.Controls.Add(this.txtAggrement);
+            this.kryptonPanel31.Controls.Add(this.kryptonPanel10);
             this.kryptonPanel31.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel31.Location = new System.Drawing.Point(138, 3);
             this.kryptonPanel31.Name = "kryptonPanel31";
             this.kryptonPanel31.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonPanel31.Size = new System.Drawing.Size(296, 38);
             this.kryptonPanel31.TabIndex = 3;
-            // 
-            // txtAggrement
-            // 
-            this.txtAggrement.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAggrement.Location = new System.Drawing.Point(3, 3);
-            this.txtAggrement.Name = "txtAggrement";
-            this.txtAggrement.Size = new System.Drawing.Size(290, 32);
-            this.txtAggrement.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
-            this.txtAggrement.TabIndex = 17;
-            this.txtAggrement.TextChanged += new System.EventHandler(this.txtAggrement_TextChanged);
             // 
             // kryptonPanel32
             // 
@@ -381,25 +369,13 @@
             // 
             // kryptonPanel27
             // 
-            this.kryptonPanel27.Controls.Add(this.txtReviewed);
+            this.kryptonPanel27.Controls.Add(this.kryptonPanel9);
             this.kryptonPanel27.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel27.Location = new System.Drawing.Point(138, 3);
             this.kryptonPanel27.Name = "kryptonPanel27";
             this.kryptonPanel27.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonPanel27.Size = new System.Drawing.Size(297, 38);
             this.kryptonPanel27.TabIndex = 3;
-            // 
-            // txtReviewed
-            // 
-            this.txtReviewed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtReviewed.Location = new System.Drawing.Point(2, 3);
-            this.txtReviewed.Name = "txtReviewed";
-            this.txtReviewed.Size = new System.Drawing.Size(292, 32);
-            this.txtReviewed.StateCommon.Content.Padding = new System.Windows.Forms.Padding(5);
-            this.txtReviewed.TabIndex = 16;
-            this.txtReviewed.TextChanged += new System.EventHandler(this.txtReviewed_TextChanged);
             // 
             // kryptonPanel28
             // 
@@ -1156,6 +1132,72 @@
             this.kryptonGroupBox1.Size = new System.Drawing.Size(150, 150);
             this.kryptonGroupBox1.TabIndex = 5;
             // 
+            // kryptonPanel9
+            // 
+            this.kryptonPanel9.Controls.Add(this.cboReview);
+            this.kryptonPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel9.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel9.Name = "kryptonPanel9";
+            this.kryptonPanel9.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
+            this.kryptonPanel9.Size = new System.Drawing.Size(297, 38);
+            this.kryptonPanel9.TabIndex = 12;
+            // 
+            // cboReview
+            // 
+            this.cboReview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboReview.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboReview.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboReview.DropDownWidth = 350;
+            this.cboReview.Location = new System.Drawing.Point(3, 7);
+            this.cboReview.Name = "cboReview";
+            this.cboReview.Size = new System.Drawing.Size(291, 25);
+            this.cboReview.TabIndex = 1;
+            // 
+            // kryptonPanel10
+            // 
+            this.kryptonPanel10.Controls.Add(this.cboAggrement);
+            this.kryptonPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel10.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel10.Name = "kryptonPanel10";
+            this.kryptonPanel10.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
+            this.kryptonPanel10.Size = new System.Drawing.Size(296, 38);
+            this.kryptonPanel10.TabIndex = 12;
+            // 
+            // cboAggrement
+            // 
+            this.cboAggrement.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboAggrement.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboAggrement.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboAggrement.DropDownWidth = 350;
+            this.cboAggrement.Location = new System.Drawing.Point(3, 7);
+            this.cboAggrement.Name = "cboAggrement";
+            this.cboAggrement.Size = new System.Drawing.Size(290, 25);
+            this.cboAggrement.TabIndex = 1;
+            // 
+            // kryptonPanel11
+            // 
+            this.kryptonPanel11.Controls.Add(this.cboApproved);
+            this.kryptonPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel11.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel11.Name = "kryptonPanel11";
+            this.kryptonPanel11.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
+            this.kryptonPanel11.Size = new System.Drawing.Size(297, 38);
+            this.kryptonPanel11.TabIndex = 12;
+            // 
+            // cboApproved
+            // 
+            this.cboApproved.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboApproved.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboApproved.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboApproved.DropDownWidth = 350;
+            this.cboApproved.Location = new System.Drawing.Point(3, 7);
+            this.cboApproved.Name = "cboApproved";
+            this.cboApproved.Size = new System.Drawing.Size(291, 25);
+            this.cboApproved.TabIndex = 1;
+            // 
             // frmCustomInfoPO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1172,21 +1214,18 @@
             this.tableLayoutPanel20.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel33)).EndInit();
             this.kryptonPanel33.ResumeLayout(false);
-            this.kryptonPanel33.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel34)).EndInit();
             this.kryptonPanel34.ResumeLayout(false);
             this.kryptonPanel34.PerformLayout();
             this.tableLayoutPanel19.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel31)).EndInit();
             this.kryptonPanel31.ResumeLayout(false);
-            this.kryptonPanel31.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel32)).EndInit();
             this.kryptonPanel32.ResumeLayout(false);
             this.kryptonPanel32.PerformLayout();
             this.tableLayoutPanel17.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel27)).EndInit();
             this.kryptonPanel27.ResumeLayout(false);
-            this.kryptonPanel27.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel28)).EndInit();
             this.kryptonPanel28.ResumeLayout(false);
             this.kryptonPanel28.PerformLayout();
@@ -1261,6 +1300,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
             this.kryptonGroupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel9)).EndInit();
+            this.kryptonPanel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cboReview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel10)).EndInit();
+            this.kryptonPanel10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cboAggrement)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel11)).EndInit();
+            this.kryptonPanel11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cboApproved)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1271,17 +1319,14 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel20;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel33;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtApproved;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel34;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel16;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel31;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtAggrement;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel32;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel15;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel27;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtReviewed;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel28;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel13;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
@@ -1345,5 +1390,11 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel8;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel11;
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox1;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel11;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cboApproved;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel10;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cboAggrement;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel9;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cboReview;
     }
 }
