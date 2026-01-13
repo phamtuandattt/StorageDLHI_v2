@@ -116,6 +116,11 @@ namespace StorageDLHI.BLL.MaterialDAO
             return await data.GetDataAsync(QueryStatement.GET_MATERIAL_OF_TYPE, "Types");
         }
 
+        public static async Task<DataTable> GetMaterialTypes_V2(Guid typeId)
+        {
+            return await data.GetDataAsync(string.Format(QueryStatement.GET_MATERIAL_TYPE_BY_TYPE_ID, typeId) , $"Types_{typeId}");
+        }
+
         public static async Task<DataTable> GetMaterialStandards()
         {
             return await data.GetDataAsync(QueryStatement.GET_MATERIAL_STANDARDS, "Standards");

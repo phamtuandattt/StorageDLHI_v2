@@ -62,8 +62,9 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_M_TYPE_CODE = "TYPE_CODE";
         public const string PROPERTY_M_TYPE_DES = "TYPE_DES";
         public const string GET_TYPES = "SELECT *FROM MATERIAL_TYPES";
-        public const string GET_MATERIAL_OF_TYPE = "SELECT *FROM MATERIAL_TYPE_DETAIL";
+        public const string GET_MATERIAL_OF_TYPE = "EXEC GET_MATERIAL_TYPE";
         public const string GET_ITEMS_OF_MATERIAL_TYPE = "SELECT *FROM MATERIAL_TYPE_DETAIL_ITEM";
+        public const string GET_MATERIAL_TYPE_BY_TYPE_ID = "EXEC GET_MATERIAL_TYPE_BY_TYPE '{0}'";
 
         // Material Standards
         public const string GET_MATERIAL_STANDARDS = "SELECT *FROM MATERIAL_STANDARD";
