@@ -180,6 +180,8 @@ namespace StorageDLHI.App.PoGUI
 
         private async Task LoadMPRByProjectForCreatePO(Guid projectId)
         {
+            Common.Common.ShowNoDataPanel(dgvMPRDetail, pnNoDataMprsDetail);
+
             if (!CacheManager.Exists(string.Format(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS_OF_PROJECT, projectId)))
             {
                 dtMprs = await ShowDialogManager.WithLoader(() => MprDAO.GetMprsForMakePO(projectId));
@@ -200,7 +202,7 @@ namespace StorageDLHI.App.PoGUI
             {
                 Common.Common.ShowNoDataPanel(dgvMPRs, pnNoDataMprs);
             }
-            
+
             //-----------------------
 
             if (dtMprs.Rows.Count > 0 && dtMprs != null && dgvMPRs.Rows.Count > 0)
@@ -210,18 +212,17 @@ namespace StorageDLHI.App.PoGUI
                 {
                     dtMprDetailById = await MprDAO.GetMprDetailByMpr(mprId);
                     CacheManager.Add(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId), dtMprDetailById);
-                    dgvMPRDetail.DataSource = dtMprDetailById;
+                    //dgvMPRDetail.DataSource = dtMprDetailById;
                 }
                 else
                 {
                     dtMprDetailById = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId));
-                    dgvMPRDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId));
+                    //dgvMPRDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId));
                 }
-                if (dtMprDetailById != null && dtMprDetailById.Rows.Count > 0
-                         && dgvMPRDetail.Rows.Count > 0)
+                if (dtMprDetailById != null && dtMprDetailById.Rows.Count > 0)
                 {
                     Common.Common.ConfigDataGridView(dtMprDetailById, dgvMPRDetail, Common.Common.GetHiddenColumns(QueryStatement.HiddenColumnDataGirdViewOfMprDetails));
-                    Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
+                    //Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
                 }
                 else
                 {
@@ -367,6 +368,16 @@ namespace StorageDLHI.App.PoGUI
             else
             {
                 dgvMPRDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID_FOR_POS, mprId));
+            }
+            if (dtMprDetailById != null && dtMprDetailById.Rows.Count > 0
+                     && dgvMPRDetail.Rows.Count > 0)
+            {
+                Common.Common.ConfigDataGridView(dtMprDetailById, dgvMPRDetail, Common.Common.GetHiddenColumns(QueryStatement.HiddenColumnDataGirdViewOfMprDetails));
+                Common.Common.HideNoDataPanel(pnNoDataMprsDetail);
+            }
+            else
+            {
+                Common.Common.ShowNoDataPanel(dgvMPRDetail, pnNoDataMprsDetail);
             }
             UpdateFooter();
         }
