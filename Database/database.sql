@@ -70,9 +70,9 @@ GO
 CREATE TABLE SUPPLIERS (
 	ID UNIQUEIDENTIFIER NOT NULL, -- Thêm NOT NULL và thuộc tính khóa chính -> Khi vô tình thêm mà không truyền giá trị cho ID thì nó sẽ báo lỗi k cho nhập
 	NAME NVARCHAR(MAX),
-	CERT CHAR(10), -- Dữ liệu đã có thể giới hạn thì nên để giới hạn cho đỡ tốn bộ nhớ, và do dữ liệu không có chữ nên mình dùng CHAR được gòi
+	CERT CHAR(50), -- Dữ liệu đã có thể giới hạn thì nên để giới hạn cho đỡ tốn bộ nhớ, và do dữ liệu không có chữ nên mình dùng CHAR được gòi
 	EMAIL NVARCHAR(MAX),
-	PHONE CHAR(12), -- Phone mình sẽ kiểm tra trong code
+	PHONE CHAR(20), -- Phone mình sẽ kiểm tra trong code
 	VIETTAT NVARCHAR(50),
 	ADDRESS NVARCHAR(MAX),
 
