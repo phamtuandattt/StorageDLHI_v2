@@ -29,6 +29,8 @@ namespace StorageDLHI.DAL.Models
 
         public Guid SupplierId { get; set; }
         public Guid Staff_Id { get; set; }
+
+        public Guid Project_Id { get; set; }
     }
 
     public class Po_Detail
