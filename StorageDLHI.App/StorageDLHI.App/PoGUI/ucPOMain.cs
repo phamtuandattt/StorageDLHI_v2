@@ -771,7 +771,7 @@ namespace StorageDLHI.App.PoGUI
             dtMprs = await ShowDialogManager.WithLoader(() => MprDAO.GetMprsForMakePO(projectId));
             CacheManager.Add(string.Format(CacheKeys.MPRS_DATATABLE_ALL_MPRS_FOR_POS_OF_PROJECT, projectId), dtMprs);
 
-            CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, await ImportProductDAO.GetImportProducts());
+            CacheManager.Add(string.Format(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL_BY_PROJECT, projectId), await ImportProductDAO.GetImportProducts_V2(projectId));
 
             await LoadData(projectId);
         }

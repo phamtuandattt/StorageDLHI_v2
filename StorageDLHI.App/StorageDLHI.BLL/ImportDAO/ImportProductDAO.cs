@@ -19,6 +19,11 @@ namespace StorageDLHI.BLL.ImportDAO
             return await data.GetDataAsync(QueryStatement.GET_IMPORTS, "IMPORTS");
         }
 
+        public static async Task<DataTable> GetImportProducts_V2(Guid projectId)
+        {
+            return await data.GetDataAsync(string.Format(QueryStatement.GET_IMPORTS_V2, projectId), $"IMPORTS_{projectId}");
+        }
+
         public static async Task<DataTable> GetImportProductDetailByID(Guid guid)
         {
             return await data.GetDataAsync(string.Format(QueryStatement.GET_IMPORT_DETAIL_BY_ID, guid), $"IMPORT_DETAIL_BY_ID_{guid}");

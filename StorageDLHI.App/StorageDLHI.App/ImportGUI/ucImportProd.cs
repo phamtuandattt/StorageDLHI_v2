@@ -108,7 +108,7 @@ namespace StorageDLHI.App.ImportGUI
         private async void ucImportProd_Load(object sender, EventArgs e)
         {
             Common.Common.SetupComboxOfToolStrip(this.cboProjectForImport, QueryStatement.PROPERTY_PROJECT_NAME, QueryStatement.PROPERTY_PROJECT_ID);
-            //Common.Common.SetupComboxOfToolStrip(this.cboProjectsForPOs, QueryStatement.PROPERTY_PROJECT_NAME, QueryStatement.PROPERTY_PROJECT_ID);
+            Common.Common.SetupComboxOfToolStrip(this.cboProjectsImportList, QueryStatement.PROPERTY_PROJECT_NAME, QueryStatement.PROPERTY_PROJECT_ID);
             await LoadDataProject();
             if (_projectIsLoad)
             {
@@ -137,6 +137,7 @@ namespace StorageDLHI.App.ImportGUI
                     this.dtProjects = dtCommon.dtProjects;
 
                     cboProjectForImport.ComboBox.DataSource = dtCombobox;
+                    cboProjectsImportList.ComboBox.DataSource = dtCombobox;
 
                     CacheManager.Add(CacheKeys.PROJECT_DATATABLE_ALL_FOR_COMBOBOX, dtCombobox);
                     CacheManager.Add(CacheKeys.PROJECT_DATATABLE, dtProjects);
@@ -151,6 +152,7 @@ namespace StorageDLHI.App.ImportGUI
             else
             {
                 cboProjectForImport.ComboBox.DataSource = CacheManager.Get<DataTable>(CacheKeys.PROJECT_DATATABLE_ALL_FOR_COMBOBOX);
+                cboProjectsImportList.ComboBox.DataSource = CacheManager.Get<DataTable>(CacheKeys.PROJECT_DATATABLE_ALL_FOR_COMBOBOX);
 
                 this.dtProjects = CacheManager.Get<DataTable>(CacheKeys.PROJECT_DATATABLE);
                 _projectIsLoad = true;
@@ -160,32 +162,42 @@ namespace StorageDLHI.App.ImportGUI
         private async Task LoadData(Guid projectId)
         {
             // Load data common
-            if (!CacheManager.Exists(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL))
+            if (!CacheManager.Exists(string.Format(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL_BY_PROJECT, projectId)))
             {
-                dtImportProducts = await ImportProductDAO.GetImportProducts();
-                CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, await ImportProductDAO.GetImportProducts());
+                //dtImportProducts = await ImportProductDAO.GetImportProducts();
+                dtImportProducts = await ImportProductDAO.GetImportProducts_V2(projectId);
+                CacheManager.Add(string.Format(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL_BY_PROJECT, projectId), dtImportProducts);
                 dgvImports.DataSource = dtImportProducts;
             }
             else
             {
-                dtImportProducts = CacheManager.Get<DataTable>(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL);
+                dtImportProducts = CacheManager.Get<DataTable>(string.Format(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL_BY_PROJECT, projectId));
                 dgvImports.DataSource = dtImportProducts;
             }
 
             if (dgvImports.Rows.Count > 0)
             {
+                Common.Common.HideNoDataPanel(pnlNoDataImport);
+                Common.Common.ShowNoDataPanel(dgvImportDetail, pnlNoDataImportDetail);
                 Guid imId = Guid.Parse(dgvImports.Rows[0].Cells[0].Value.ToString());
                 if (!CacheManager.Exists(string.Format(CacheKeys.IMPORT_PRODUCT_DETIAL_BY_ID, imId)))
                 {
                     dtImportProductDetailById = await ImportProductDAO.GetImportProductDetailByID(imId);
                     CacheManager.Add(string.Format(CacheKeys.IMPORT_PRODUCT_DETIAL_BY_ID, imId), dtImportProductDetailById);
                     dgvImportDetail.DataSource = dtImportProductDetailById;
+                    Common.Common.HideNoDataPanel(pnlNoDataImportDetail);
                 }
                 else
                 {
                     dtImportProductDetailById = CacheManager.Get<DataTable>(string.Format(CacheKeys.IMPORT_PRODUCT_DETIAL_BY_ID, imId));
                     dgvImportDetail.DataSource = dtImportProductDetailById;
+                    Common.Common.HideNoDataPanel(pnlNoDataImportDetail);
                 }
+            }
+            else
+            {
+                Common.Common.ShowNoDataPanel(dgvImports, pnlNoDataImport);
+                Common.Common.ShowNoDataPanel(dgvImportDetail, pnlNoDataImportDetail);
             }
 
             // Load data for Import
@@ -354,7 +366,7 @@ namespace StorageDLHI.App.ImportGUI
             CacheManager.Add(string.Format(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD_BY_PROJECT, projectId), dtPos.Copy());
             dgvPOs.DataSource = dtPos;
 
-            CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, await ImportProductDAO.GetImportProducts());
+            CacheManager.Add(string.Format(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL_BY_PROJECT, projectId), await ImportProductDAO.GetImportProducts_V2(projectId));
             CacheManager.Add(CacheKeys.WAREHOUSE_DATATABLE_ALL, await WarehouseDAO.GetWarehouses());
             await LoadData(projectId);
         }
@@ -801,7 +813,8 @@ namespace StorageDLHI.App.ImportGUI
         {
             lblDateTimeSeacrh.Text = "";
             dgvImports.Refresh();
-            dgvImports.DataSource = CacheManager.Get<DataTable>(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL).Copy();
+            var projectId = Guid.Parse(cboProjectsImportList.ComboBox.SelectedValue.ToString().Trim());
+            dgvImports.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL_BY_PROJECT, projectId)).Copy();
             tlsClearSeacrhDate.Visible = false;
             dgvImports.Visible = true;
             Common.Common.HideNoDataPanel(pnlNoDataImport);
@@ -998,6 +1011,14 @@ namespace StorageDLHI.App.ImportGUI
             if (!_projectIsLoad) return;
 
             var projectId = Guid.Parse(cboProjectForImport.ComboBox.SelectedValue.ToString().Trim());
+            await LoadData(projectId);
+        }
+
+        private async void cboProjectsImportList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!_projectIsLoad) return;
+
+            var projectId = Guid.Parse(cboProjectsImportList.ComboBox.SelectedValue.ToString().Trim());
             await LoadData(projectId);
         }
     }
