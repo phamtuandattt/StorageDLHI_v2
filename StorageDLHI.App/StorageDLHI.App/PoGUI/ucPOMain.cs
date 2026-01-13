@@ -171,6 +171,7 @@ namespace StorageDLHI.App.PoGUI
 
             if (dtPos != null && dgvPOList.Rows.Count > 0)
             {
+                Common.Common.HideNoDataPanel(pnNoDataPOs);
                 Guid poId = Guid.Parse(dgvPOList.Rows[0].Cells[0].Value.ToString());
                 if (!CacheManager.Exists(string.Format(CacheKeys.PO_DETAL_BY_ID, poId)))
                 {
@@ -183,6 +184,19 @@ namespace StorageDLHI.App.PoGUI
                     dtPoById = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAL_BY_ID, poId));
                     dgvPODetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAL_BY_ID, poId));
                 }
+                if (dtPoById != null && dgvPODetail.Rows.Count > 0)
+                {
+                    Common.Common.HideNoDataPanel(pnNoDataPODetail);
+                }
+                else
+                {
+                    Common.Common.ShowNoDataPanel(dgvPODetail, pnNoDataPODetail);
+                }
+            } 
+            else
+            {
+                Common.Common.ShowNoDataPanel(dgvPOList, pnNoDataPOs);
+                Common.Common.ShowNoDataPanel(dgvPODetail, pnNoDataPODetail);
             }
 
             // ---------------------------------------------------
@@ -1243,7 +1257,7 @@ namespace StorageDLHI.App.PoGUI
             if (!_projectIsLoad) return;
 
             var projectId = Guid.Parse(cboProjectsForPOs.ComboBox.SelectedValue.ToString().Trim());
-            await LoadMPRByProjectForCreatePO(projectId);
+            await LoadData(projectId);
         }
     }
 }
