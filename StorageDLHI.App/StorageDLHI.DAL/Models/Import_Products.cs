@@ -16,6 +16,7 @@ namespace StorageDLHI.DAL.Models
         public int ImportYear { get; set; }
         public Int32 Import_Total_Qty { get; set; }
         public Guid Staff_Id { get; set; }
+        public Guid Project_Id {  get; set; }
     }
 
     public class Import_Product_Detail

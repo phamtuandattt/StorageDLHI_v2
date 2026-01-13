@@ -214,7 +214,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_PO_PAYMENT_TERM = "PO_PAYMENT_TERM";
         public const string PROPERTY_PO_DISPATCH_BOX = "PO_PLACE_OF_CONTRY";
         public const string PROPERTY_PO_TOTAL_AMOUNT = "PO_TOTAL_AMOUNT";
-        public const string GET_POS_FOR_IMPORT_PRODUCT = "GET_POS_FOR_IMPORT_PRODUCT";
+        public const string GET_POS_FOR_IMPORT_PRODUCT = "EXEC GET_POS_FOR_IMPORT_PRODUCT";
+        public const string GET_POS_FOR_IMPORT_PRODUCT_V2 = "EXEC GET_POS_FOR_IMPORT_PRODUCT_V2 '{0}'";
         public const string PROPERTY_PO_PO_CREATE_DATE = "PO_CREATE_DATE";
         public const string PROPERTY_PO_PO_EXPECTED_DELIVERY_DATE = "PO_EXPECTED_DELIVERY_DATE";
         public const string UPDATE_PO_IS_IMPORTED = "UPDATE POS SET IS_IMPORTED = '{0}' WHERE ID = '{1}'";

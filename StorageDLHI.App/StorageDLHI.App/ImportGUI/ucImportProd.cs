@@ -4,6 +4,7 @@ using StorageDLHI.App.PoGUI;
 using StorageDLHI.BLL.ImportDAO;
 using StorageDLHI.BLL.MprDAO;
 using StorageDLHI.BLL.PoDAO;
+using StorageDLHI.BLL.ProjectDAO;
 using StorageDLHI.BLL.WarehouseDAO;
 using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
@@ -37,6 +38,7 @@ namespace StorageDLHI.App.ImportGUI
         private DataTable dtImportProductDetailById = new DataTable();
         private DataTable dtWarehouseDetail = new DataTable();
         //DataTable dtWarehouseDetail = new DataTable();
+        private DataTable dtProjects = new DataTable();
 
 
         private DataTable dtPoDetailCoppy = new DataTable();
@@ -52,6 +54,7 @@ namespace StorageDLHI.App.ImportGUI
         private int rslOld;
         private int previousRowIndex = -1;
         private Int32 totalAmount = 0;
+        private bool _projectIsLoad = false;
 
         public ucImportProd()
         {
@@ -104,17 +107,57 @@ namespace StorageDLHI.App.ImportGUI
 
         private async void ucImportProd_Load(object sender, EventArgs e)
         {
-            await LoadData();
-            Common.Common.InitializeFooterGrid(dgvPO_Detail, dgvFooterOfPODetail);
-            UpdateFooterOfPoDetail();
-            if (dgvPO_Detail.Rows.Count > 0)
+            Common.Common.SetupComboxOfToolStrip(this.cboProjectForImport, QueryStatement.PROPERTY_PROJECT_NAME, QueryStatement.PROPERTY_PROJECT_ID);
+            //Common.Common.SetupComboxOfToolStrip(this.cboProjectsForPOs, QueryStatement.PROPERTY_PROJECT_NAME, QueryStatement.PROPERTY_PROJECT_ID);
+            await LoadDataProject();
+            if (_projectIsLoad)
             {
-                rowClonePODetail = (DataGridViewRow)dgvPO_Detail.Rows[0].Clone();
+                var projectId = Guid.Parse(cboProjectForImport.ComboBox.SelectedValue.ToString().Trim());
+                await LoadData(projectId);
+                Common.Common.InitializeFooterGrid(dgvPO_Detail, dgvFooterOfPODetail);
+                UpdateFooterOfPoDetail();
+                if (dgvPO_Detail.Rows.Count > 0)
+                {
+                    rowClonePODetail = (DataGridViewRow)dgvPO_Detail.Rows[0].Clone();
+                }
             }
         }
 
+        private async Task LoadDataProject()
+        {
+            // ----- LOAD DATA FOR PROD OF CREATE MPR
+            if (!CacheManager.Exists(CacheKeys.PROJECT_DATATABLE_ALL_FOR_COMBOBOX)
+                && !CacheManager.Exists(CacheKeys.PROJECT_DATATABLE))
+            {
+                var dtCommon = await ProjectDAO.GetProjects();
+                if (dtCommon != null && dtCommon.dtProjects != null && dtCommon.dtProjectForCombox != null
+                    && dtCommon.dtProjects.AsEnumerable().Any() && dtCommon.dtProjectForCombox.AsEnumerable().Any())
+                {
+                    var dtCombobox = dtCommon.dtProjectForCombox;
+                    this.dtProjects = dtCommon.dtProjects;
 
-        private async Task LoadData()
+                    cboProjectForImport.ComboBox.DataSource = dtCombobox;
+
+                    CacheManager.Add(CacheKeys.PROJECT_DATATABLE_ALL_FOR_COMBOBOX, dtCombobox);
+                    CacheManager.Add(CacheKeys.PROJECT_DATATABLE, dtProjects);
+                    _projectIsLoad = true;
+                }
+                else
+                {
+                    MessageBoxHelper.ShowError("Please add project before create MPRs !");
+                    return;
+                }
+            }
+            else
+            {
+                cboProjectForImport.ComboBox.DataSource = CacheManager.Get<DataTable>(CacheKeys.PROJECT_DATATABLE_ALL_FOR_COMBOBOX);
+
+                this.dtProjects = CacheManager.Get<DataTable>(CacheKeys.PROJECT_DATATABLE);
+                _projectIsLoad = true;
+            }
+        }
+
+        private async Task LoadData(Guid projectId)
         {
             // Load data common
             if (!CacheManager.Exists(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL))
@@ -146,13 +189,16 @@ namespace StorageDLHI.App.ImportGUI
             }
 
             // Load data for Import
-            if (!CacheManager.Exists(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD))
+            //var projectId = Guid.Parse(cboProjectForImport.ComboBox.SelectedValue.ToString().Trim());
+            if (!CacheManager.Exists(string.Format(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD_BY_PROJECT, projectId)))
             {
-                dtPos = await PoDAO.GetPosForImportProduct();
+                //dtPos = await PoDAO.GetPosForImportProduct();
+                dtPos = await PoDAO.GetPosForImportProduct_V2(projectId);
                 if (dtPos != null)
                 {
-                    CacheManager.Add(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD, dtPos.Copy());
+                    CacheManager.Add(string.Format(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD_BY_PROJECT, projectId), dtPos.Copy());
                     dgvPOs.DataSource = dtPos;
+                    Common.Common.HideNoDataPanel(pnlNoDataPOList);
                 }
                 else
                 {
@@ -161,10 +207,11 @@ namespace StorageDLHI.App.ImportGUI
             }
             else
             {
-                dtPos = CacheManager.Get<DataTable>(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD);
+                dtPos = CacheManager.Get<DataTable>(string.Format(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD_BY_PROJECT, projectId));
                 if (dtPos != null)
                 {
-                    dgvPOs.DataSource = CacheManager.Get<DataTable>(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD);
+                    dgvPOs.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD_BY_PROJECT, projectId));
+                    Common.Common.HideNoDataPanel(pnlNoDataPOList);
                 }
                 else
                 {
@@ -180,11 +227,13 @@ namespace StorageDLHI.App.ImportGUI
                     dtPoById = await ShowDialogManager.WithLoader(() => PoDAO.GetPODetailByIdForImport(poId));
                     CacheManager.Add(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId), dtPoById.Copy());
                     dgvPO_Detail.DataSource = dtPoById;
+                    Common.Common.HideNoDataPanel(pnlNoDataPODetail);
                 }
                 else
                 {
                     dtPoById = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId));
                     dgvPO_Detail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.PO_DETAIL_BY_ID_FOR_IMPORT_PROD, poId));
+                    Common.Common.HideNoDataPanel(pnlNoDataPODetail);
                 }
                 dgvPOs.Rows[0].Selected = true;
             }
@@ -199,7 +248,10 @@ namespace StorageDLHI.App.ImportGUI
         private async void btnReload_Click(object sender, EventArgs e)
         {
             //CacheManager.Add(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD, PoDAO.GetPosForImportProduct());
-            await LoadData();
+            if (!_projectIsLoad) return;
+
+            var projectId = Guid.Parse(cboProjectForImport.ComboBox.SelectedValue.ToString().Trim());
+            await LoadData(projectId);
             if (dgvPOs.Rows.Count <= 0)
             {
                 Common.Common.ShowNoDataPanel(dgvPOs, pnlNoDataPOList);
@@ -297,13 +349,14 @@ namespace StorageDLHI.App.ImportGUI
             UpdateFooterOfPoDetail();
             dgvPOs.Enabled = true;
 
-            dtPos = await PoDAO.GetPosForImportProduct();
-            CacheManager.Add(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD, dtPos.Copy());
+            var projectId = Guid.Parse(cboProjectForImport.ComboBox.SelectedValue.ToString().Trim());
+            dtPos = await PoDAO.GetPosForImportProduct_V2(projectId);
+            CacheManager.Add(string.Format(CacheKeys.POS_DATETABLE_GET_ALL_PO_FOR_IMPORT_PROD_BY_PROJECT, projectId), dtPos.Copy());
             dgvPOs.DataSource = dtPos;
 
             CacheManager.Add(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL, await ImportProductDAO.GetImportProducts());
             CacheManager.Add(CacheKeys.WAREHOUSE_DATATABLE_ALL, await WarehouseDAO.GetWarehouses());
-            await LoadData();
+            await LoadData(projectId);
         }
 
         private void btnAddAllProdToImport_Click(object sender, EventArgs e)
@@ -645,11 +698,13 @@ namespace StorageDLHI.App.ImportGUI
             dgvImportDetail.Columns["QTY_PRODUCT_IMPORT"].DefaultCellStyle.Format = "N0";
         }
 
-        private void tlsReloadImportList_Click(object sender, EventArgs e)
+        private async void tlsReloadImportList_Click(object sender, EventArgs e)
         {
             dgvImports.Refresh();
             lblDateTimeSeacrh.Text = "";
-            LoadData();
+            if (!_projectIsLoad) return;
+            var projectId = Guid.Parse(cboProjectForImport.ComboBox.SelectedValue.ToString().Trim());
+            await LoadData(projectId);
         }
 
         private void dgvImports_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -936,6 +991,14 @@ namespace StorageDLHI.App.ImportGUI
         private void dgvProdForImport_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
 
+        }
+
+        private async void cboProjectForImport_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!_projectIsLoad) return;
+
+            var projectId = Guid.Parse(cboProjectForImport.ComboBox.SelectedValue.ToString().Trim());
+            await LoadData(projectId);
         }
     }
 }
