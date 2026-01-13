@@ -101,7 +101,7 @@ namespace StorageDLHI.App.Common
 
         }
 
-        public static DataTable CreateDataTableSchema(Dictionary<string, Type> propertiesDictionary, string[] propertiesList)
+        public static void CreateDataTableSchema(DataTable dataTable, Dictionary<string, Type> propertiesDictionary, string[] propertiesList)
         {
             //var variables = new Dictionary<string, Type>
             //{
@@ -119,13 +119,11 @@ namespace StorageDLHI.App.Common
             //{
             //    dt.Columns.Add(new DataColumn(variable.Key, variable.Value));
             //}
-            var dt = new DataTable();
+
             foreach (var variable in propertiesList)
             {
-                dt.Columns.Add(new DataColumn(variable));
+                dataTable.Columns.Add(new DataColumn(variable));
             }
-
-            return dt;
         }
 
 

@@ -178,13 +178,11 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_NUMBER_OF_MPR_CREATED = "EXEC GET_NUMBER_OF_MPR_CREATED '{0}'";
         public const string HiddenColumnDataGridViewOfMprs = "ID,STAFF_ID,PROJECT_ID,REVIEWED_BY_ID,APPROVERD_BY_ID";
         public const string HiddenColumnDataGirdViewOfMprDetails = "ID,MPR_ID,PRODUCT_ID";
-
         public const string HiddenColumnDataGridViewMPRsOfCreatePOs = "ID,MPR_REV_TOTAL,MPR_EXPECTED_DELIVERY_DATE,MPR_PREPARED,MPR_REVIEWED,MPR_APPROVED,IS_MAKE_PO,STAFF_ID,PROJECT_ID,REVIEWED_BY_ID,APPROVERD_BY_ID";
-
         public const string HiddenColumnDataGridViewOfMprCancels = "ID,STAFF_ID,PROJECT_ID,REVIEWED_BY_ID,APPROVERD_BY_ID";
         public const string HiddenColumnDataGirdViewOfMprCancelsDetails = "ID,MPR_ID,PRODUCT_ID";
-
         public const string GET_MPR_FOR_CREATE_PO_BY_PROJECTS = "EXEC GET_MPR_FOR_CREATE_PO_BY_PROJECTS '{0}'";
+        public const string PROPERTIES_LIST_MPR = "ID,MPR_NO,WO_NO,PROJECT_NAME,MPR_REV_TOTAL,MPR_CREATE_DATE,MPR_EXPECTED_DELIVERY_DATE,MPR_PREPARED,MPR_REVIEWED,MPR_APPROVED,IS_MAKE_PO,STAFF_ID,PROJECT_ID,REVIEWED_BY_ID,APPROVERD_BY_ID";
 
         // PO
         public const string INSERT_PO = "SET DATEFORMAT DMY " +

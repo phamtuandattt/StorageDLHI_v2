@@ -131,17 +131,20 @@ namespace StorageDLHI.App.PoGUI
             }
         }
 
-        //private void CreateDataTableMprsSchema()
-        //{
-        //    var stringProperties = "ID,MPR_NO,WO_NO,PROJECT_NAME,MPR_REV_TOTAL,MPR_CREATE_DATE,MPR_EXPECTED_DELIVERY_DATE,MPR_PREPARED,MPR_REVIEWED,MPR_APPROVED,IS_MAKE_PO,STAFF_ID,PROJECT_ID,REVIEWED_BY_ID,APPROVERD_BY_ID'";
-        //    this.dtMprs = Common.Common.CreateDataTableSchema(null, stringProperties.Split(','));
-        //}
+        private void CreateDataTableMprsSchema()
+        {
+            Common.Common.CreateDataTableSchema(this.dtMprs, null, QueryStatement.PROPERTIES_LIST_MPR.Split(','));
+            dgvMPRs.DataSource = dtMprs;
+            Common.Common.ConfigDataGridView(dtMprs, dgvMPRs, Common.Common.GetHiddenColumns(QueryStatement.HiddenColumnDataGridViewMPRsOfCreatePOs));
+        }
 
         private async void ucPOMain_Load(object sender, EventArgs e)
         {
             Common.Common.SetupComboxOfToolStrip(this.cboProjectForAddPO, QueryStatement.PROPERTY_PROJECT_NAME, QueryStatement.PROPERTY_PROJECT_ID);
             Common.Common.SetupComboxOfToolStrip(this.cboProjectsForPOs, QueryStatement.PROPERTY_PROJECT_NAME, QueryStatement.PROPERTY_PROJECT_ID);
-            
+
+            CreateDataTableMprsSchema();
+
             await LoadProjets();
             if (_projectIsLoad)
             {
@@ -203,7 +206,7 @@ namespace StorageDLHI.App.PoGUI
             }
             if (dtMprs != null && dtMprs.Rows.Count > 0 && dgvMPRs.Rows.Count > 0)
             {
-                Common.Common.ConfigDataGridView(dtMprs, dgvMPRs, Common.Common.GetHiddenColumns(QueryStatement.HiddenColumnDataGridViewMPRsOfCreatePOs));
+                //Common.Common.ConfigDataGridView(dtMprs, dgvMPRs, Common.Common.GetHiddenColumns(QueryStatement.HiddenColumnDataGridViewMPRsOfCreatePOs));
                 Common.Common.HideNoDataPanel(pnNoDataMprs);
             }
             else
