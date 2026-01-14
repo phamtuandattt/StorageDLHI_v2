@@ -66,11 +66,6 @@
             this.kryptonGroupBox5 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonPanel12 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.dgvCost = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CURRENCY_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CURRENCY_VALUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CURRENCY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip5 = new System.Windows.Forms.ToolStrip();
             this.tlsAddCost = new System.Windows.Forms.ToolStripButton();
             this.tlsLoadCost = new System.Windows.Forms.ToolStripButton();
@@ -94,6 +89,11 @@
             this.tlsAddStandard = new System.Windows.Forms.ToolStripButton();
             this.tlsLoadStandard = new System.Windows.Forms.ToolStripButton();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CURRENCY_VALUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -598,9 +598,9 @@
             this.dgvCost.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column9,
             this.Column10,
-            this.CURRENCY_CODE,
-            this.CURRENCY_VALUE,
-            this.CURRENCY});
+            this.Column13,
+            this.Column14,
+            this.CURRENCY_VALUE});
             this.dgvCost.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCost.Location = new System.Drawing.Point(0, 27);
             this.dgvCost.MultiSelect = false;
@@ -615,47 +615,6 @@
             this.dgvCost.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCost_CellContentDoubleClick);
             this.dgvCost.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvCost_DataBindingComplete);
             this.dgvCost.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvCost_RowPostPaint);
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "ID";
-            this.Column9.HeaderText = "ID";
-            this.Column9.MinimumWidth = 6;
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Visible = false;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "COST_NAME";
-            this.Column10.HeaderText = "Cost name";
-            this.Column10.MinimumWidth = 6;
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // CURRENCY_CODE
-            // 
-            this.CURRENCY_CODE.DataPropertyName = "CURRENCY_CODE";
-            this.CURRENCY_CODE.HeaderText = "Code";
-            this.CURRENCY_CODE.MinimumWidth = 6;
-            this.CURRENCY_CODE.Name = "CURRENCY_CODE";
-            this.CURRENCY_CODE.ReadOnly = true;
-            // 
-            // CURRENCY_VALUE
-            // 
-            this.CURRENCY_VALUE.DataPropertyName = "CURRENCY_VALUE";
-            this.CURRENCY_VALUE.HeaderText = "Exchange rate";
-            this.CURRENCY_VALUE.MinimumWidth = 6;
-            this.CURRENCY_VALUE.Name = "CURRENCY_VALUE";
-            this.CURRENCY_VALUE.ReadOnly = true;
-            // 
-            // CURRENCY
-            // 
-            this.CURRENCY.DataPropertyName = "CURRENCY";
-            this.CURRENCY.HeaderText = "Currency";
-            this.CURRENCY.MinimumWidth = 6;
-            this.CURRENCY.Name = "CURRENCY";
-            this.CURRENCY.ReadOnly = true;
             // 
             // toolStrip5
             // 
@@ -968,6 +927,47 @@
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, 5, -1);
             // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "ID";
+            this.Column9.HeaderText = "ID";
+            this.Column9.MinimumWidth = 6;
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Visible = false;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "COST_NAME";
+            this.Column10.HeaderText = "Name";
+            this.Column10.MinimumWidth = 6;
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "CURRENCY";
+            this.Column13.HeaderText = "Currency";
+            this.Column13.MinimumWidth = 6;
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "CURRENCY_CODE";
+            this.Column14.HeaderText = "Code";
+            this.Column14.MinimumWidth = 6;
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            // 
+            // CURRENCY_VALUE
+            // 
+            this.CURRENCY_VALUE.DataPropertyName = "CURRENCY_VALUE";
+            this.CURRENCY_VALUE.HeaderText = "Ex.rate";
+            this.CURRENCY_VALUE.MinimumWidth = 6;
+            this.CURRENCY_VALUE.Name = "CURRENCY_VALUE";
+            this.CURRENCY_VALUE.ReadOnly = true;
+            // 
             // ManageCommonUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1112,13 +1112,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn TAX_VALUE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CURRENCY_CODE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CURRENCY_VALUE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CURRENCY;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CURRENCY_VALUE;
     }
 }

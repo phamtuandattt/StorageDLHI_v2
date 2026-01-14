@@ -327,9 +327,9 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
             {
                 Id = Guid.Parse(dgvCost.Rows[rsl].Cells[0].Value.ToString()),
                 Cost_Name = dgvCost.Rows[rsl].Cells[1].Value.ToString(),
-                Currency_code = dgvCost.Rows[rsl].Cells[2].Value.ToString(),
-                Currency_Value = decimal.Parse( dgvCost.Rows[rsl].Cells[3].Value.ToString()),
-                Currency = dgvCost.Rows[rsl].Cells[4].Value.ToString(),
+                Currency = dgvCost.Rows[rsl].Cells[2].Value.ToString(),
+                Currency_code = dgvCost.Rows[rsl].Cells[3].Value.ToString(),
+                Currency_Value = decimal.Parse(dgvCost.Rows[rsl].Cells[4].Value.ToString()),
             };
 
             TaxUnitCostDto dtos = new TaxUnitCostDto()
