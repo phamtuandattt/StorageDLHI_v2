@@ -256,7 +256,7 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_IMPORT_ID = "";
         public const string GET_IMPORT_DETAILS = "SELECT *FROM IMPORT_PRODUCT_DETAIL";
         public const string GET_IMPORT_DETAIL_FORM = "SELECT *FROM IMPORT_PRODUCT_DETAIL WHERE ID = '00000000-0000-0000-0000-000000000000'";
-        public const string ADD_IMPORT_PRODUCT = "SET DATEFORMAT DMY  INSERT INTO IMPORT_PRODUCTS VALUES('{0}', '{1}', {2}, {3}, {4}, {5}, '{6}',  N'{7}')";
+        public const string ADD_IMPORT_PRODUCT = "SET DATEFORMAT DMY INSERT INTO [dbo].[IMPORT_PRODUCTS] ([ID],[FROM_PO_NO],[IMPORT_DATE],[IMPORT_DAY],[IMPORT_MONTH],[IMPORT_YEAR],[IMPORT_QTY_TOTAL],[STAFF_ID],[PROJECT_ID]) VALUES ('{0}',N'{1}','{2}',{3},{4},{5},{6},'{7}','{8}')";
         public const string DELETE_IMPORT_PRODUCT = "DELETE FROM IMPORT_PRODUCTS WHERE ID = '{0}'";
         public const string GET_IMPORTS = "EXEC GET_IMPORTS";
         public const string GET_IMPORTS_V2 = "EXEC GET_IMPORTS_V2 '{0}'";

@@ -304,6 +304,8 @@ namespace StorageDLHI.App.ImportGUI
                 ImportYear = DateTime.Now.Year,
                 Import_Total_Qty = totalQty,
                 Staff_Id = ShareData.UserId,
+
+                Project_Id = Guid.Parse(cboProjectForImport.ComboBox.SelectedValue.ToString().Trim())
             };
 
             // Convert dtProdForImport to dtProdForImportUpdateDB
