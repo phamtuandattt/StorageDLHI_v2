@@ -56,6 +56,14 @@ namespace StorageDLHI.BLL.MaterialDAO
             return await GetDataForCombobox(QueryStatement.GET_ORIGINS, "OrginForCob");
         }
 
+        public static async Task<bool> InsertMaterialTypeDetail(Material_Type_Detail material_Type_Detail)
+        {
+            string sqlQuery = string.Format(QueryStatement.INSERT_MATERIAL_TYPE_DETIAL, material_Type_Detail.Id, material_Type_Detail.Material_Type_Code, 
+                material_Type_Detail.Material_Type_Name, material_Type_Detail.Material_Types_Id);
+
+            return await data.Insert(sqlQuery) > 0;
+        }
+
         /// <summary>
         /// Get Types of Product
         /// </summary>

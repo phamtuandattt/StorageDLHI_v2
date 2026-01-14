@@ -288,25 +288,34 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
 
         private async void dgvMaterialTypes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvMaterialTypes.Rows.Count <= 0) return;
-            int rsl = dgvMaterialTypes.CurrentRow.Index;
+            //if (dgvMaterialTypes.Rows.Count <= 0) return;
+            //int rsl = dgvMaterialTypes.CurrentRow.Index;
 
-            Material_Types material_Types = new Material_Types()
-            {
-                Id = Guid.Parse(dgvMaterialTypes.Rows[rsl].Cells[0].Value.ToString()),
-                Type_Code = dgvMaterialTypes.Rows[rsl].Cells[1].Value.ToString(),
-                Type_Des = dgvMaterialTypes.Rows[rsl].Cells[2].Value.ToString()
-            };
+            //Material_Types material_Types = new Material_Types()
+            //{
+            //    Id = Guid.Parse(dgvMaterialTypes.Rows[rsl].Cells[0].Value.ToString()),
+            //    Type_Code = dgvMaterialTypes.Rows[rsl].Cells[1].Value.ToString(),
+            //    Type_Des = dgvMaterialTypes.Rows[rsl].Cells[2].Value.ToString()
+            //};
 
-            MaterialCommonDto dtos = new MaterialCommonDto()
-            {
-                MaterialType = material_Types,
-            };
+            //MaterialCommonDto dtos = new MaterialCommonDto()
+            //{
+            //    MaterialType = material_Types,
+            //};
 
-            frmAddMaterials frmAdd = new frmAddMaterials(TitleManager.STANDARD_UPDATE_TITLE, Enums.Materials.Types, false, dtos);
-            frmAdd.ShowDialog();
-            CacheManager.Add(CacheKeys.MATERIAL_TYPE_DATATABLE_ALLTYPE, await MaterialDAO.GetMaterialTypes());
-            LoadData();
+            //frmAddMaterials frmAdd = new frmAddMaterials(TitleManager.STANDARD_UPDATE_TITLE, Enums.Materials.Types, false, dtos);
+            //frmAdd.ShowDialog();
+
+            //Material_Type_Detail model = new Material_Type_Detail()
+            //{
+            //    Material_Types_Id = Guid.Parse(dgvMaterialTypes.Rows[rsl].Cells[3].Value.ToString().Trim())
+            //};
+
+            //frmAddMaterial_V2 frmAddMaterial_V2 = new frmAddMaterial_V2(true, model);
+            //frmAddMaterial_V2.ShowDialog();
+
+            //CacheManager.Add(CacheKeys.MATERIAL_TYPE_DATATABLE_ALLTYPE, await MaterialDAO.GetMaterialTypes());
+            //LoadData();
         }
 
         private async void dgvCost_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)

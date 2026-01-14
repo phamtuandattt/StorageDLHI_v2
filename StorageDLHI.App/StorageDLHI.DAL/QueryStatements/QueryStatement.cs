@@ -66,6 +66,11 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_MATERIAL_OF_TYPE_FOR_COMBOBOX = "EXEC GET_MATERIAL_TYPE_FOR_COMBOX";
         public const string GET_ITEMS_OF_MATERIAL_TYPE = "SELECT *FROM MATERIAL_TYPE_DETAIL_ITEM";
         public const string GET_MATERIAL_TYPE_BY_TYPE_ID = "EXEC GET_MATERIAL_TYPE_BY_TYPE '{0}'";
+        public const string PROPERTY_MATERIAL_ID = "ID";
+        public const string PROPERTY_MATERIAL_TYPE_CODE = "MATERIAL_TYPE_CODE";
+        public const string PROPERTY_MATERIAL_TYPE_NAME = "MATERIAL_TYPE_NAME";
+        public const string PROPERTY_MATERIAL_TYPES_ID = "MATERIAL_TYPES_ID";
+        public const string INSERT_MATERIAL_TYPE_DETIAL = "INSERT INTO MATERIAL_TYPE_DETAIL VALUES ('{0}', N'{1}', N'{2}', '{3}')";
 
         // Material Standards
         public const string GET_MATERIAL_STANDARDS = "SELECT *FROM MATERIAL_STANDARD";
@@ -73,6 +78,7 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string UPDATE_MATERIAL_STANDARD = "UPDATE MATERIAL_STANDARD SET STANDARD_CODE = '{0}', STANDARD_DES = N'{1}' WHERE ID = '{2}'";
         public const string PROPERTY_M_STANDARD_CODE = "STANDARD_CODE";
         public const string PROPERTY_M_STANDARD_DES = "STANDARD_DES";
+        public const string HiddenColumnDataGridViewOfAddMaterial = "ID,MATERIAL_TYPES_ID";
 
         // Tax
         public const string GET_TAXS = "SELECT *FROM TAX";
