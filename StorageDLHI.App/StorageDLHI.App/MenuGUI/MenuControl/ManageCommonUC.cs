@@ -132,8 +132,12 @@ namespace StorageDLHI.App.MenuGUI.MenuControl
 
         private async void tlsAddMaterialTypes_Click(object sender, EventArgs e)
         {
-            frmAddMaterials frmAdd = new frmAddMaterials(TitleManager.MATERIAL_TYPE_ADD_TITLE, Enums.Materials.Types, true, null);
-            frmAdd.ShowDialog();
+            //frmAddMaterials frmAdd = new frmAddMaterials(TitleManager.MATERIAL_TYPE_ADD_TITLE, Enums.Materials.Types, true, null);
+            //frmAdd.ShowDialog();
+
+            frmAddMaterial_V2 frmAddMaterial_V2 = new frmAddMaterial_V2();
+            frmAddMaterial_V2.ShowDialog();
+
             // Overwrite cache after add item
             CacheManager.Add(CacheKeys.MATERIAL_TYPE_DATATABLE_ALLTYPE, await MaterialDAO.GetMaterialTypes());
             LoadData();

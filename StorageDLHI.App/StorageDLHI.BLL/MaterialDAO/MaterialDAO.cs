@@ -71,7 +71,7 @@ namespace StorageDLHI.BLL.MaterialDAO
         /// <returns></returns>
         public static async Task<DataTable> GetMaterialOfTypeForCombobox()
         {
-            return await data.GetDataAsync(QueryStatement.GET_MATERIAL_OF_TYPE, "Material_Of_TypeForCob");
+            return await data.GetDataAsync(QueryStatement.GET_MATERIAL_OF_TYPE_FOR_COMBOBOX, "Material_Of_TypeForCob");
         }
 
         /// <summary>

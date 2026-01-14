@@ -31,21 +31,30 @@ namespace StorageDLHI.App.MprGUI
         private string itemNumberOfMaterialType = string.Empty;
 
         private DataTable dtMaterialOfType = new DataTable();
+
+        private bool _typeLoaded = false;
+        private bool _materialTypeLoaded = false;
+
+
         public frmCustomProd_v2()
         {
             InitializeComponent();
-            LoadData();
+            //LoadData();
         }
 
         private void frmCustomProd_v2_Load(object sender, EventArgs e)
         {
-
+            LoadData();
         }
 
         public frmCustomProd_v2(string title, bool status, Products pModel) // true is ADD || UPDATE
         {
             InitializeComponent();
-            LoadData();
+
+            //dtMaterialOfType.Columns.Add("ID");
+            //dtMaterialOfType.Columns.Add("MATERIAL_TYPE_CODE");
+            //dtMaterialOfType.Columns.Add("MATERIAL_TYPE_NAME");
+
             this.Text = title;
             this.pModel = pModel;
             this.status = status;
@@ -106,28 +115,87 @@ namespace StorageDLHI.App.MprGUI
                 cboUnit.SelectedIndex = 0;
             }
 
+            //// Type
+            //cboType.DisplayMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_DISPLAY;
+            //cboType.ValueMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_VALUE;
+            //var dtTypes = await MaterialDAO.GetMTypeForCombobox();
+
+            //if (dtTypes.Rows.Count > 0)
+            //{
+            //    LoadDataCombox(cboType, dtTypes);
+            //}
+            //else
+            //{
+            //    MessageBoxHelper.ShowError("Please check the list of Types !");
+            //}
+            // ----- LOAD TYPES
+            await LoadType();
+
+
+            // --------------------- Material of type
+            await LoadMaterialOfType();
+            //if (!CacheManager.Exists(CacheKeys.MATERIAL_OF_TYPES))
+            //{
+            //    dtMaterialOfType = await ShowDialogManager.WithLoader(() => MaterialDAO.GetMaterialOfTypeForCombobox());
+            //    if (dtMaterialOfType.Rows.Count > 0)
+            //    {
+            //        CacheManager.Add(CacheKeys.MATERIAL_OF_TYPES, dtMaterialOfType);
+            //    }
+            //    else
+            //    {
+            //        MessageBoxHelper.ShowError("Please check the list materials of The types !");
+            //    }
+            //}
+            //else
+            //{
+            //    dtMaterialOfType = CacheManager.Get<DataTable>(CacheKeys.MATERIAL_OF_TYPES);
+            //}
+
+            // Get list material of type by TypeId and Load data for Combobox
+            if (_typeLoaded && _materialTypeLoaded)
+            {
+                var dtCombobox = GetDataForComboBoxMaterialType(Guid.Parse(cboType.SelectedValue.ToString()));
+                if (dtCombobox != null && dtCombobox.Rows.Count > 0)
+                {
+                    cboMaterialOfType.DisplayMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_DISPLAY;
+                    cboMaterialOfType.ValueMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_VALUE;
+                    cboMaterialOfType.DataSource = dtCombobox;
+                }
+                else
+                {
+                    MessageBoxHelper.ShowError("Please check the list materials of The types !");
+                }
+            }
+            //---------------------------------------------
+        }
+
+        private async Task LoadType()
+        {
             // Type
-            cboType.DisplayMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_DISPLAY;
-            cboType.ValueMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_VALUE;
+            //cboType.DisplayMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_DISPLAY;
+            //cboType.ValueMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_VALUE;
             var dtTypes = await MaterialDAO.GetMTypeForCombobox();
-            
+
             if (dtTypes.Rows.Count > 0)
             {
                 LoadDataCombox(cboType, dtTypes);
+                _typeLoaded = true;
             }
             else
             {
                 MessageBoxHelper.ShowError("Please check the list of Types !");
             }
-            
+        }
 
-            // --------------------- Material of type
+        private async Task LoadMaterialOfType()
+        {
             if (!CacheManager.Exists(CacheKeys.MATERIAL_OF_TYPES))
             {
                 dtMaterialOfType = await ShowDialogManager.WithLoader(() => MaterialDAO.GetMaterialOfTypeForCombobox());
                 if (dtMaterialOfType.Rows.Count > 0)
                 {
                     CacheManager.Add(CacheKeys.MATERIAL_OF_TYPES, dtMaterialOfType);
+                    _materialTypeLoaded = true;
                 }
                 else
                 {
@@ -137,21 +205,8 @@ namespace StorageDLHI.App.MprGUI
             else
             {
                 dtMaterialOfType = CacheManager.Get<DataTable>(CacheKeys.MATERIAL_OF_TYPES);
+                _materialTypeLoaded = true;
             }
-
-            // Get list material of type by TypeId and Load data for Combobox
-            var dtCombobox = GetDataForComboBoxMaterialType(Guid.Parse(cboType.SelectedValue.ToString()));
-            if (dtCombobox != null && dtCombobox.Rows.Count > 0)
-            {
-                cboMaterialOfType.DisplayMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_DISPLAY;
-                cboMaterialOfType.ValueMember = QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_VALUE;
-                cboMaterialOfType.DataSource = dtCombobox;
-            }
-            else
-            {
-                MessageBoxHelper.ShowError("Please check the list materials of The types !");
-            }
-            //---------------------------------------------
         }
 
         private DataTable GetDataForComboBoxMaterialType(Guid typeId)
@@ -161,9 +216,12 @@ namespace StorageDLHI.App.MprGUI
                 return CacheManager.Get<DataTable>(string.Format(CacheKeys.MATERIAL_OF_TYPE_BY_TYPE_ID, typeId));
             }
 
-            var filtered = dtMaterialOfType.AsEnumerable()
-                .Where(r => r.Field<Guid>("MATERIAL_TYPES_ID").Equals(typeId));
-            if (!filtered.Any())
+            //var filtered = dtMaterialOfType.AsEnumerable();
+            //var rs = filtered.Where(r => r.Field<Guid>("ID").Equals(typeId));
+            DataRow[] dataRows = dtMaterialOfType.Select($"MATERIAL_TYPES_ID = '{typeId.ToString()}'");
+
+
+            if (!dataRows.Any())
             {
                 return null;
             }
@@ -171,7 +229,7 @@ namespace StorageDLHI.App.MprGUI
             var data = new DataTable();
             data.Columns.Add(QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_VALUE);
             data.Columns.Add(QueryStatement.PROPERTY_FOR_ORI_TYPE_STAND_DISPLAY);
-            foreach (DataRow row in filtered.CopyToDataTable().Rows)
+            foreach (DataRow row in dataRows)
             {
                 DataRow r = data.NewRow();
                 r[0] = row[0].ToString().Trim();
@@ -222,7 +280,7 @@ namespace StorageDLHI.App.MprGUI
 
         private void cboType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboType.Items.Count <= 0)
+            if (!_typeLoaded)
             {
                 return;
             }
