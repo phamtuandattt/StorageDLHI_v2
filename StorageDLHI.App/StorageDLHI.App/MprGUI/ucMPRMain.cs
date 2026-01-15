@@ -213,6 +213,7 @@ namespace StorageDLHI.App.MprGUI
             else
             {
                 dgvMPRs.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPRS_DATATABLE_ALL_MPRS_OF_PROJECT, projectId));
+                dtMprs = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPRS_DATATABLE_ALL_MPRS_OF_PROJECT, projectId));
             }
             if (dtMprs != null && dtMprs.Rows.Count > 0
                 && dgvMPRs.Rows.Count > 0)
@@ -239,6 +240,7 @@ namespace StorageDLHI.App.MprGUI
                 else
                 {
                     dgvMPRDetail.DataSource = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId));
+                    dtMprDetailById = CacheManager.Get<DataTable>(string.Format(CacheKeys.MPR_DETAIL_BY_ID, mprId));
                 }
                 if (dtMprDetailById != null && dtMprDetailById.Rows.Count > 0
                     && dgvMPRDetail.Rows.Count > 0)

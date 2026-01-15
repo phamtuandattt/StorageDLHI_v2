@@ -168,11 +168,13 @@ namespace StorageDLHI.App.ImportGUI
                 dtImportProducts = await ImportProductDAO.GetImportProducts_V2(projectId);
                 CacheManager.Add(string.Format(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL_BY_PROJECT, projectId), dtImportProducts);
                 dgvImports.DataSource = dtImportProducts;
+                //Common.Common.ConfigDataGridView(dtImportProducts, dgvImports, Common.Common.GetHiddenColumns(QueryStatement.HiddenColumnDataGirdViewOfMprDetails));
             }
             else
             {
                 dtImportProducts = CacheManager.Get<DataTable>(string.Format(CacheKeys.IMPORT_PRODUCT_DATATABLE_ALL_BY_PROJECT, projectId));
                 dgvImports.DataSource = dtImportProducts;
+                //Common.Common.ConfigDataGridView(dtImportProducts, dgvImports, Common.Common.GetHiddenColumns(QueryStatement.HiddenColumnDataGirdViewOfMprDetails));
             }
 
             if (dgvImports.Rows.Count > 0)
@@ -186,12 +188,14 @@ namespace StorageDLHI.App.ImportGUI
                     CacheManager.Add(string.Format(CacheKeys.IMPORT_PRODUCT_DETIAL_BY_ID, imId), dtImportProductDetailById);
                     dgvImportDetail.DataSource = dtImportProductDetailById;
                     Common.Common.HideNoDataPanel(pnlNoDataImportDetail);
+                    //Common.Common.ConfigDataGridView(dtImportProductDetailById, dgvImportDetail, Common.Common.GetHiddenColumns(QueryStatement.HiddenColumnDataGirdViewOfMprDetails));
                 }
                 else
                 {
                     dtImportProductDetailById = CacheManager.Get<DataTable>(string.Format(CacheKeys.IMPORT_PRODUCT_DETIAL_BY_ID, imId));
                     dgvImportDetail.DataSource = dtImportProductDetailById;
                     Common.Common.HideNoDataPanel(pnlNoDataImportDetail);
+                    //Common.Common.ConfigDataGridView(dtImportProductDetailById, dgvImportDetail, Common.Common.GetHiddenColumns(QueryStatement.HiddenColumnDataGirdViewOfMprDetails));
                 }
             }
             else

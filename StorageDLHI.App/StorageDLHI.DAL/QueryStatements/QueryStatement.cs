@@ -264,6 +264,8 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string PROPERTY_IMPORT_PRODUCT_FROM_PO_NO = "FROM_PO_NO";
         public const string PROPERTY_IMPORT_PRODUCT_IMPORT_DATE = "IMPORT_DATE";
         public const string PROPERTY_IMPORT_PRODUCT_STAFF_NAME = "STAFF_NAME";
+        public const string HiddenColumnDataGirdViewOfImports = "ID";
+        public const string HiddenColumnDataGirdViewOfImportDetail = "";
 
         // Export
         public const string GET_DELIVERY_DETAIL_FORM = "SELECT *FROM DELIVERY_PRODUCT_DETAIL WHERE ID = '00000000-0000-0000-0000-000000000000'";

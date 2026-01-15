@@ -87,6 +87,7 @@ namespace StorageDLHI.App.MprGUI
             if (_formIsLoad && this.status && !this.isPrint) // Add
             {
                 // 
+                GetInfoProject(Guid.Parse(cboProject.SelectedValue.ToString()));
             }    
             else if (_formIsLoad && !this.status && !this.isPrint) // Update
             {
