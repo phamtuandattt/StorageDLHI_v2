@@ -5,6 +5,7 @@ using StorageDLHI.DAL.QueryStatements;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics.SymbolStore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,11 +49,31 @@ namespace StorageDLHI.BLL.StaffDAO
             return dtForCbo;
         }
 
+        public static async Task<DataTable> GetStaffRole()
+        {
+            string sqlQuery = QueryStatement.GET_STAFF_ROLES;
+
+            return await data.GetDataAsync(sqlQuery, "STAFF_ROLES");
+        }
+
         public static async Task<DataTable> GetStaffManager()
         {
             string sqlQuery = string.Format(QueryStatement.GET_STAFF_MANAGER);
 
             return await data.GetDataAsync(sqlQuery, "STAFF_MANAGER");
+        }
+
+        public static async Task<bool> CreateNewUser(Staffs model, string dbName)
+        {
+            var isUserCreated = data.CreateAndGrantPermissionForUser(dbName, model.Name, model.Staff_Pwd);
+            if (isUserCreated)
+            {
+                var sqlQuery = string.Format(QueryStatement.CREATE_NEW_USER_LOGIN, model.Id, model.Staff_Code, model.Staff_Pwd,
+                    model.Name, model.DeviceName, model.DepartmentId, model.Staff_RoleId);
+
+                return await data.Insert(sqlQuery) > 0;
+            }
+            return false;
         }
     }
 }

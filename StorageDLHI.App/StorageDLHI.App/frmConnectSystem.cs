@@ -109,6 +109,7 @@ namespace StorageDLHI.App
 
                     Properties.Settings.Default.DbConnectionString = ConnectionString;
                     Properties.Settings.Default.RememberLogin = $"{userId}|{userName}|{device}";
+                    Properties.Settings.Default.Database = $"{txtDatabase.Text.Trim()}";
                     Properties.Settings.Default.Save();
 
                     KryptonMessageBox.Show("Connection saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -135,6 +136,7 @@ namespace StorageDLHI.App
         {
             Properties.Settings.Default.DbConnectionString = "";
             Properties.Settings.Default.RememberLogin = "";
+            Properties.Settings.Default.Database = "";
             Properties.Settings.Default.Save();
 
             KryptonMessageBox.Show("Connection settings reset. Please restart the application.", "Reset", MessageBoxButtons.OK, MessageBoxIcon.Information);

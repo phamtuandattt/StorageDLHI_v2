@@ -135,6 +135,12 @@
     <Compile Include="CustomerGUI\frmCustomerCRUD.Designer.cs">
       <DependentUpon>frmCustomerCRUD.cs</DependentUpon>
     </Compile>
+    <Compile Include="Emp&amp;DepGUI\frmCustomerEmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Emp&amp;DepGUI\frmCustomerEmp.Designer.cs">
+      <DependentUpon>frmCustomerEmp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Emp&amp;DepGUI\ucEmpDepManage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -339,6 +345,9 @@
     <EmbeddedResource Include="CustomerGUI\frmCustomerCRUD.resx">
       <DependentUpon>frmCustomerCRUD.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Emp&amp;DepGUI\frmCustomerEmp.resx">
+      <DependentUpon>frmCustomerEmp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Emp&amp;DepGUI\ucEmpDepManage.resx">
       <DependentUpon>ucEmpDepManage.cs</DependentUpon>
     </EmbeddedResource>
@@ -489,7 +498,9 @@
     <Content Include="Resources\Dual Ring%401x-1.0s-200px-200px.gif" />
     <Content Include="Resources\excel.png" />
     <Content Include="Resources\export.png" />
+    <None Include="Resources\eye.png" />
     <Content Include="Resources\green-dot.png" />
+    <None Include="Resources\hidden.png" />
     <Content Include="Resources\list.png" />
     <Content Include="Resources\mark.png" />
     <Content Include="Resources\pen.png" />

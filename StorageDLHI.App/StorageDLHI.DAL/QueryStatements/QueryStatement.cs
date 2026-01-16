@@ -286,6 +286,10 @@ namespace StorageDLHI.DAL.QueryStatements
         public const string GET_STAFF_BY_DEVICE = "SELECT *FROM STAFFS WHERE STAFF_DEVICE_NAME = '{0}'";
         public const string GET_STAFF_LOGIN_BY_ID = "SELECT STAFFS.ID, DEPARMENTS.DEP_CODE FROM STAFFS, DEPARMENTS WHERE STAFFS.DEPARMENT_ID = DEPARMENTS.ID AND STAFFS.ID = '{0}'";
         public const string GET_STAFF_MANAGER = "EXEC GET_STAFF_MANAGER";
+        public const string GET_STAFF_ROLES = "SELECT [ID],[ROLE_NAME] FROM [STAFF_ROLE]";
+        public const string PROPERTY_STAFF_ROLE_ID = "ID";
+        public const string PROPERTY_STAFF_ROLE_NAME = "ROLE_NAME";
+        public const string CREATE_NEW_USER_LOGIN = "INSERT INTO STAFFS ([ID],[STAFF_CODE],[STAFF_PWD],[STAFF_NAME],[STAFF_DEVICE_NAME],[DEPARMENT_ID],[STAFF_ROLE_ID])\r\nVALUES ('{0}', '{1}', '{2}', N'{3}', N'{4}', '{5}', '{6}')";
 
         // Deparment
         public const string PROPERTY_DEPARTMENT_DEP_CODE = "DEP_CODE";

@@ -126,8 +126,8 @@ namespace StorageDLHI.DAL.DataProvider
                     // 3. Grant SELECT permission on all tables in schema dbo
                     string grantPermissionQuery = $@"
                                 USE [{databaseName}];
-                                GRANT SELECT ON SCHEMA::dbo TO [{loginName}];
-                                GRANT EXECUTE TO [{loginName}];";
+                                GRANT SELECT, INSERT, UPDATE ON SCHEMA::dbo TO [{loginName}];
+                                GRANT EXECUTE ON SCHEMA::dbo TO [{loginName}];";
 
                     ExecuteNonQuery(conn, grantPermissionQuery);
 

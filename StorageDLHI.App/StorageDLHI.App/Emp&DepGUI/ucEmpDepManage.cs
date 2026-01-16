@@ -82,5 +82,16 @@ namespace StorageDLHI.App.Emp_DepGUI
         {
             Common.Common.RenderNumbering(sender, e, this.Font);
         }
+
+        private void tlsRefresh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddEmp_Click(object sender, EventArgs e)
+        {
+            frmCustomerEmp frmCustomerEmp = new frmCustomerEmp();
+            frmCustomerEmp.ShowDialog();
+        }
     }
 }

@@ -43,10 +43,11 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tlsRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.cboDep = new System.Windows.Forms.ToolStripComboBox();
+            this.tlsRefresh = new System.Windows.Forms.ToolStripButton();
+            this.btnAddEmp = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -219,22 +220,14 @@
             this.tlsRefresh,
             this.toolStripSeparator1,
             this.toolStripLabel1,
-            this.cboDep});
+            this.cboDep,
+            this.btnAddEmp});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.toolStrip1.Size = new System.Drawing.Size(1401, 28);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // tlsRefresh
-            // 
-            this.tlsRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsRefresh.Image = global::StorageDLHI.App.Properties.Resources.refresh;
-            this.tlsRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsRefresh.Name = "tlsRefresh";
-            this.tlsRefresh.Size = new System.Drawing.Size(29, 25);
-            this.tlsRefresh.Text = "toolStripButton1";
             // 
             // toolStripSeparator1
             // 
@@ -252,6 +245,27 @@
             this.cboDep.Name = "cboDep";
             this.cboDep.Size = new System.Drawing.Size(200, 28);
             this.cboDep.SelectedIndexChanged += new System.EventHandler(this.cboDep_SelectedIndexChanged);
+            // 
+            // tlsRefresh
+            // 
+            this.tlsRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsRefresh.Image = global::StorageDLHI.App.Properties.Resources.refresh;
+            this.tlsRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsRefresh.Name = "tlsRefresh";
+            this.tlsRefresh.Size = new System.Drawing.Size(29, 25);
+            this.tlsRefresh.Text = "toolStripButton1";
+            this.tlsRefresh.Click += new System.EventHandler(this.tlsRefresh_Click);
+            // 
+            // btnAddEmp
+            // 
+            this.btnAddEmp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAddEmp.Image = global::StorageDLHI.App.Properties.Resources.add;
+            this.btnAddEmp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAddEmp.Name = "btnAddEmp";
+            this.btnAddEmp.Size = new System.Drawing.Size(29, 25);
+            this.btnAddEmp.Text = "Add staff";
+            this.btnAddEmp.ToolTipText = "Add staff";
+            this.btnAddEmp.Click += new System.EventHandler(this.btnAddEmp_Click);
             // 
             // ucEmpDepManage
             // 
@@ -300,5 +314,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.ToolStripButton btnAddEmp;
     }
 }
