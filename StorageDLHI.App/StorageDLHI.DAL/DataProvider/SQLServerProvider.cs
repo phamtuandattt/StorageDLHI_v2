@@ -3,8 +3,11 @@ using StorageDLHI.Infrastructor.Shared;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +27,57 @@ namespace StorageDLHI.DAL.DataProvider
             _connString = AppSettings.GetConnectionString("StorageDLHI");
             _connection = new SqlConnection(_connString);
         }
+
+        public void ImportDatabase(string serverName, string databaseName, string userName, string pwd)
+        {
+            //// Path to SqlPackage.exe (bundled with the application)
+            //string sqlPackagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SqlPackage", "SqlPackage.exe");
+
+            //// Path to the .bacpac file
+            //string bacpacFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "your_database.bacpac");
+
+            //// SQL Server connection details
+            //string targetServerName = serverName;
+            //string targetDatabaseName = databaseName;
+
+            //// Check if SqlPackage exists
+            //if (!File.Exists(sqlPackagePath))
+            //{
+            //    throw new FileNotFoundException("SqlPackage.exe not found. Please ensure it is bundled with the application.");
+            //}
+
+            //// Run SqlPackage to import the database
+            //ProcessStartInfo processStartInfo = new ProcessStartInfo
+            //{
+            //    FileName = sqlPackagePath,
+            //    Arguments = $"/Action:Import /SourceFile:\"{bacpacFile}\" /TargetServerName:\"{targetServerName}\" /TargetDatabaseName:\"{targetDatabaseName}\"",
+            //    RedirectStandardOutput = true,
+            //    RedirectStandardError = true,
+            //    UseShellExecute = false,
+            //    CreateNoWindow = true
+            //};
+
+            //using (Process process = Process.Start(processStartInfo))
+            //{
+            //    process.WaitForExit();
+            //    string output = process.StandardOutput.ReadToEnd();
+            //    string error = process.StandardError.ReadToEnd();
+
+            //    if (process.ExitCode != 0)
+            //    {
+            //        throw new Exception($"Error importing database: {error}");
+            //    }
+            //}
+        }
+
+        //public static bool IsDatabaseImported(string databaseName, string serverName)
+        //{
+        //    // Connect to SQL Server
+        //    Server server = new Server(serverName);
+
+        //    // Check if the database exists
+        //    return server.Databases.Cast<Database>().Any(db => db.Name == databaseName);
+        //}
 
         public bool CheckConnection(string connectionString)
         {

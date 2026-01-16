@@ -67,6 +67,8 @@ namespace StorageDLHI.App
                 ConnectionString = $"server={txtServerName.Text};database={txtDatabase.Text};Integrated Security = true;uid={txtUser.Text};pwd={txtPwd.Text}";
             }
 
+            // Import DB before connection sql
+            _services.ImportDatabase(txtServerName.Text, txtDatabase.Text, txtUser.Text, txtPwd.Text);
 
             if (_services.CheckConnection(ConnectionString))
             {
