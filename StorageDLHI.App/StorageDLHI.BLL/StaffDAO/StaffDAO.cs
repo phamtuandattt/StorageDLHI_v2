@@ -75,5 +75,12 @@ namespace StorageDLHI.BLL.StaffDAO
             }
             return false;
         }
+
+        public static async Task<bool> UpdateUser(Staffs staffs)
+        {
+            var sqlQuery = string.Format(QueryStatement.UPDATE_USER_LOGIN, staffs.Name, staffs.DepartmentId, staffs.Staff_RoleId, staffs.Id);
+
+            return await data.Update(sqlQuery) > 0;
+        }
     }
 }

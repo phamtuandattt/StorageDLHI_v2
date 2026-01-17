@@ -14,6 +14,8 @@ using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Xml.Linq;
 
 namespace StorageDLHI.App.Emp_DepGUI
 {
@@ -22,6 +24,8 @@ namespace StorageDLHI.App.Emp_DepGUI
         private bool _isShowPwd = false;
         private DataTable dtDeps = new DataTable();
         private DataTable dtStaffRoles = new DataTable();
+        private Staffs staff = new Staffs();
+        private bool _isUpdate = false;
 
         public frmCustomerEmp()
         {
@@ -32,6 +36,22 @@ namespace StorageDLHI.App.Emp_DepGUI
 
             cboRole.ComboBox.ValueMember = QueryStatement.PROPERTY_STAFF_ROLE_ID;
             cboRole.ComboBox.DisplayMember = QueryStatement.PROPERTY_STAFF_ROLE_NAME;
+        }
+
+        public frmCustomerEmp(bool isUpdate, Staffs staffs)
+        {
+            InitializeComponent();
+            txtPassword.UseSystemPasswordChar = true;
+            cboDep.ComboBox.ValueMember = QueryStatement.PROPERTY_FOR_COMBO_DEP_ID;
+            cboDep.ComboBox.DisplayMember = QueryStatement.PROPERTY_FOR_COMBO_DEP_NAME_CODE;
+
+            cboRole.ComboBox.ValueMember = QueryStatement.PROPERTY_STAFF_ROLE_ID;
+            cboRole.ComboBox.DisplayMember = QueryStatement.PROPERTY_STAFF_ROLE_NAME;
+
+            this.staff = staffs;
+            this._isUpdate = isUpdate;
+
+            txtUserName.Text = this.staff.Name;
         }
 
         private async void frmCustomerEmp_Load(object sender, EventArgs e)
@@ -47,6 +67,8 @@ namespace StorageDLHI.App.Emp_DepGUI
 
             cboDep.DataSource = dtDeps;
             cboRole.DataSource = dtStaffRoles;
+            cboDep.ComboBox.SelectedValue = this.staff.DepartmentId;
+            cboRole.ComboBox.SelectedValue = this.staff.Staff_RoleId;
         }
 
         private async Task LoadDep()
@@ -73,27 +95,50 @@ namespace StorageDLHI.App.Emp_DepGUI
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            var dbName = Properties.Settings.Default.Database.Trim();
-            Staffs staffs = new Staffs()
+            if (_isUpdate)
             {
-                Id = Guid.NewGuid(),
-                Name = txtUserName.Text.Trim(),
-                Staff_Pwd = txtPassword.Text.Trim(),
-                Staff_Code = txtUserName.Text.Trim().ToUpper(),
-                DeviceName = System.Environment.MachineName,
-                DepartmentId = Guid.Parse(cboDep.SelectedValue.ToString().Trim()),
-                Staff_RoleId = Guid.Parse(cboRole.SelectedValue.ToString().Trim())
-            };
-
-            if (await StaffDAO.CreateNewUser(staffs, dbName))
-            {
-                MessageBoxHelper.ShowInfo("User Created !");
-                this.Close();
-                return;
+                var sM = new Staffs()
+                {
+                    Id = this.staff.Id,
+                    Name = txtUserName.Text.Trim(),
+                    DepartmentId = Guid.Parse(cboDep.SelectedValue.ToString().Trim()),
+                    Staff_RoleId = Guid.Parse(cboRole.SelectedValue.ToString().Trim())
+                };
+                if (await StaffDAO.UpdateUser(sM))
+                {
+                    MessageBoxHelper.ShowInfo("User updated!");
+                    this.Close();
+                    return;
+                }
+                else
+                {
+                    MessageBoxHelper.ShowError("User update failed !");
+                }
             }
             else
             {
-                MessageBoxHelper.ShowError("Create user failed !");
+                var dbName = Properties.Settings.Default.Database.Trim();
+                Staffs staffs = new Staffs()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = txtUserName.Text.Trim(),
+                    Staff_Pwd = txtPassword.Text.Trim(),
+                    Staff_Code = txtUserName.Text.Trim().ToUpper(),
+                    DeviceName = System.Environment.MachineName,
+                    DepartmentId = Guid.Parse(cboDep.SelectedValue.ToString().Trim()),
+                    Staff_RoleId = Guid.Parse(cboRole.SelectedValue.ToString().Trim())
+                };
+
+                if (await StaffDAO.CreateNewUser(staffs, dbName))
+                {
+                    MessageBoxHelper.ShowInfo("User Created !");
+                    this.Close();
+                    return;
+                }
+                else
+                {
+                    MessageBoxHelper.ShowError("Create user failed !");
+                }
             }
         }
     }

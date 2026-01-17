@@ -1,6 +1,7 @@
 ﻿using StorageDLHI.App.Common;
 using StorageDLHI.App.Common.CommonGUI;
 using StorageDLHI.BLL.StaffDAO;
+using StorageDLHI.DAL.Models;
 using StorageDLHI.DAL.QueryStatements;
 using System;
 using System.CodeDom;
@@ -92,6 +93,34 @@ namespace StorageDLHI.App.Emp_DepGUI
         {
             frmCustomerEmp frmCustomerEmp = new frmCustomerEmp();
             frmCustomerEmp.ShowDialog();
+        }
+
+        private async void updateEmpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvEmpsOfDep.Rows.Count <= 0) return;
+            var rsl = dgvEmpsOfDep.CurrentRow.Index;
+
+            var mS = new Staffs()
+            {
+                Id = Guid.Parse(dgvEmpsOfDep.Rows[rsl].Cells[0].Value.ToString().Trim()),
+                Name = dgvEmpsOfDep.Rows[rsl].Cells[2].Value.ToString().Trim(),
+                DepartmentId = Guid.Parse(dgvEmpsOfDep.Rows[rsl].Cells[5].Value.ToString().Trim()),
+                Staff_RoleId = Guid.Parse(dgvEmpsOfDep.Rows[rsl].Cells[3].Value.ToString().Trim())
+            };
+
+            frmCustomerEmp frmCustomerEmp = new frmCustomerEmp(true, mS);
+            frmCustomerEmp.ShowDialog();
+
+            var dtStaffs = await LoadEmpOfDep(Guid.Parse(cboDep.ComboBox.SelectedValue.ToString().Trim()));
+            if (dtStaffs != null && dtStaffs.Rows.Count > 0)
+            {
+                dgvEmpsOfDep.DataSource = dtStaffs;
+                Common.Common.HideNoDataPanel(pnNoDataStaff);
+            }
+            else
+            {
+                Common.Common.ShowNoDataPanel(dgvEmpsOfDep, pnNoDataStaff);
+            }
         }
     }
 }
