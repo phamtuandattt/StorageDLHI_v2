@@ -168,6 +168,8 @@ namespace StorageDLHI.App.MainGUI
         private void ResetConnectionString(object sender, EventArgs e)
         {
             Properties.Settings.Default.DbConnectionString = "";
+            Properties.Settings.Default.RememberLogin = "";
+            Properties.Settings.Default.Database = "";
             Properties.Settings.Default.Save();
 
             KryptonMessageBox.Show(NotificationManager.RESET_CONNECTION_STRING, "Reset", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -24,6 +24,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Permissions;
 using System.Security.Policy;
@@ -53,6 +54,38 @@ namespace StorageDLHI.App.Common
         public const string SUPPLIER_EMAIL = "<<SUPPLIER_EMAIL>>";
         public const string SUPPLIER_CERT = "<<SUPPLIER_CERT>>";
     }
+
+    //public static class ExtensionMethods
+    //{
+    //    public static DataTable ToDataTable<T>(this IList<T> data)
+    //    {
+    //        DataTable dataTable = new DataTable(typeof(T).Name);
+
+    //        // Get all properties of the type T
+    //        PropertyInfo[] props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+    //        // Create the columns in the DataTable
+    //        foreach (PropertyInfo prop in props)
+    //        {
+    //            // Handle Nullable types by getting the underlying type
+    //            Type colType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+    //            dataTable.Columns.Add(prop.Name, colType);
+    //        }
+
+    //        // Populate the data rows
+    //        foreach (T item in data)
+    //        {
+    //            var values = new object[props.Length];
+    //            for (int i = 0; i < props.Length; i++)
+    //            {
+    //                values[i] = props[i].GetValue(item, null) ?? DBNull.Value;
+    //            }
+    //            dataTable.Rows.Add(values);
+    //        }
+
+    //        return dataTable;
+    //    }
+    //}
 
     public static class PathManager
     {
